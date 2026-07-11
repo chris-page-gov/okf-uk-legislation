@@ -1,0 +1,22 @@
+{
+  "@context": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/context.jsonld",
+  "@id": "https://chris-page-gov.github.io/okf-uk-legislation/",
+  "@type": "okf:Bundle",
+  "description": "Complete work-level index of legislation.gov.uk with ELI/Schema.org normalization, corpus facets, official full-text search, and live CLML provision-level progressive discovery.",
+  "descriptor": {
+    "@id": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"
+  },
+  "generatedAt": "2026-07-11T18:00:00Z",
+  "license": {
+    "@id": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+  },
+  "profile": {
+    "@id": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/"
+  },
+  "publisher": {
+    "@id": "https://github.com/chris-page-gov"
+  },
+  "status": "preview",
+  "title": "UK Legislation OKF",
+  "version": "0.2.0"
+}

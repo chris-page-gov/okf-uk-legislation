@@ -1,0 +1,22 @@
+name: OKF bundle CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 -m unittest discover -s tests -v
+      - run: python3 scripts/check_legislation_okf.py
+      - run: python3 scripts/build_checksums.py --check
+      - name: Fixture generation
+        run: python3 scripts/build_legislation_okf.py --fixture tests/fixtures/legislation_okf/sample.feed.xml --output "$RUNNER_TEMP/fixture" --generated-at 2026-07-11T00:00:00Z
