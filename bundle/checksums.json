@@ -1,9 +1,5 @@
 {
   "files": {
-    ".DS_Store": {
-      "bytes": 6148,
-      "sha256": "846406f750c5b4ab10f781a1bbf04355bd1bedb4f58309ba1fbf48f06041141b"
-    },
     "access/api-overview.md": {
       "bytes": 684,
       "sha256": "1450136d9e084af6ceb04a51afe83c70470ee8166b333247ad6adc381f72d04e"
@@ -47,10 +43,6 @@
     "access/sparql.md": {
       "bytes": 905,
       "sha256": "b8007ae1d66aa5cdce7a3131149de87aa953038f1a612b0f4ae40cdc6bdb16c1"
-    },
-    "data/.DS_Store": {
-      "bytes": 6148,
-      "sha256": "6e5f5f26e9a495789a1369e6380c7b358b788a834a67573eb902f9e26db9f3f6"
     },
     "data/adjacency/00.json.gz": {
       "bytes": 26140,
@@ -1791,10 +1783,6 @@
     "data/relationships-99.json.gz": {
       "bytes": 18565,
       "sha256": "cb53c28561eafec03d970ea112903f83a3a221752cfb893f6b1b37c0fd34dac0"
-    },
-    "data/search/.DS_Store": {
-      "bytes": 6148,
-      "sha256": "b7327ae982acc67cd33194f361abc085bb6bbd600933903ed2a3da7829e92d32"
     },
     "data/search/doc-map.json.gz": {
       "bytes": 1874417,

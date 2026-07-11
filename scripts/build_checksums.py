@@ -16,7 +16,7 @@ OUTPUT = BUNDLE / "checksums.json"
 def build() -> str:
     rows = {}
     for path in sorted(BUNDLE.rglob("*")):
-        if path.is_file() and path != OUTPUT:
+        if path.is_file() and path != OUTPUT and path.name != ".DS_Store":
             rows[path.relative_to(BUNDLE).as_posix()] = {
                 "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
                 "bytes": path.stat().st_size,
