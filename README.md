@@ -36,6 +36,10 @@ The cached full rebuild is deliberately separate from routine CI because it
 reconstructs hundreds of thousands of records. Fixture generation runs in CI;
 the complete checked publication is validated structurally on every change.
 
+`main` is protected by the checked-in `.github/branch-protection.json`
+contract: current CI, one approving review, resolved conversations, linear
+history, administrator enforcement and no force pushes or deletion.
+
 ## Source and reuse constraints
 
 Official material is generally available under the Open Government Licence
