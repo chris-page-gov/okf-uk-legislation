@@ -1,12 +1,3 @@
----
-type: "Access Index"
-title: "Legislation data access"
-description: "All documented ways to discover, retrieve, monitor and reuse legislation.gov.uk data."
-resource: "https://legislation.github.io/data-documentation/api/overview.html"
-timestamp: "2026-07-11T18:00:00Z"
-tags: ["api", "access", "provenance"]
----
-
 # Access surfaces
 
 * [API overview](api-overview.md)

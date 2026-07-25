@@ -3,8 +3,10 @@ type: "Legal Ontology"
 title: "Normalized legislation vocabulary"
 description: "Agent-facing vocabulary covering works, versions, manifestations and every CLML structural level."
 resource: "https://legislation.github.io/data-documentation/model/legislation.html"
-timestamp: "2026-07-11T18:00:00Z"
 tags: ["ontology", "normalized-legislation-vocabulary"]
+generated: {"by": "process:legislation-okf-builder", "at": "2026-07-11T18:00:00Z"}
+status: "draft"
+sources: [{"id": "official-source", "resource": "https://legislation.github.io/data-documentation/model/legislation.html"}]
 ---
 
 # Model
@@ -23,7 +25,6 @@ tags: ["ontology", "normalized-legislation-vocabulary"]
 | Signature / Explanatory note | `SignedSection`, `ExplanatoryNotes` | Closing and explanatory matter |
 | Legal effect | changes/effects feed | Amendment, repeal, substitution, commencement or other impact |
 
-# Citations
-
+# Source notes
 [1] [Normalized legislation vocabulary](https://legislation.github.io/data-documentation/model/legislation.html)
 [2] [Legislation.gov.uk data model](https://legislation.github.io/data-documentation/model/legislation.html)

@@ -5,6 +5,16 @@ legislation.gov.uk work catalogue at its generation checkpoint, with official
 Atom/CLML provenance, ELI and Schema.org mappings, static search, governed
 model-assisted enrichment, and route-scoped relationship adjacency.
 
+The Markdown tree is the canonical OKF v0.2 layer. The root index declares
+`okf_version: "0.2"`; non-reserved concepts carry structured `generated` and
+`sources` metadata, while directory indexes and the update log remain reserved
+frontmatter-free files. The publication is still a preview, so concepts are
+`draft` and no `verified` event is asserted without evidence.
+
+The frozen publication time in `generated.at` is distinct from official work
+and feed dates. Source dates and item-level official identifiers remain in the
+large-corpus records and provenance extensions.
+
 The checked publication contains **365,786 legal works** and **853,883 typed
 relationships**. It does not reproduce authoritative legal text: the Explorer
 resolves the selected work's current CLML structure and passage links directly
@@ -25,6 +35,15 @@ permanent government domain remains intentionally unresolved; repository Pages
 URLs are the current preview identifiers.
 
 ## Validate
+
+Refresh the checked v0.2 projection and integrity manifest with:
+
+```sh
+python3 scripts/upgrade_okf_v02.py
+python3 scripts/build_checksums.py
+```
+
+Validate without changing the publication with:
 
 ```sh
 python3 -m unittest discover -s tests -v

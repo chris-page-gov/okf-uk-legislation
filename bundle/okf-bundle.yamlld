@@ -10,6 +10,7 @@
   "license": {
     "@id": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
   },
+  "okf_version": "0.2",
   "profile": {
     "@id": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/"
   },

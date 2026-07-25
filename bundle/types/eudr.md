@@ -3,8 +3,10 @@ type: "Legislation Type"
 title: "European Union Directives"
 description: "Official `eudr` collection mapped to `EuropeanUnionDirective`."
 resource: "https://www.legislation.gov.uk/eudr"
-timestamp: "2026-07-11T18:00:00Z"
 tags: ["type", "eudr", "eu-origin"]
+generated: {"by": "process:legislation-okf-builder", "at": "2026-07-11T18:00:00Z"}
+status: "draft"
+sources: [{"id": "official-source", "resource": "https://www.legislation.gov.uk/eudr"}, {"id": "reference-1", "resource": "https://legislation.github.io/data-documentation/model/uris.html", "title": "URI schema reference"}, {"id": "reference-2", "resource": "https://legislation.github.io/data-documentation/what-we-have.html", "title": "Coverage by type"}]
 ---
 
 # Identity
@@ -24,7 +26,6 @@ tags: ["type", "eudr", "eu-origin"]
 * Identifier template: `https://www.legislation.gov.uk/id/eudr/{year}/{number}`
 * CLML template: `https://www.legislation.gov.uk/eudr/{year}/{number}/data.xml`
 
-# Citations
-
+# Source notes
 [1] [URI schema reference](https://legislation.github.io/data-documentation/model/uris.html)
 [2] [Coverage by type](https://legislation.github.io/data-documentation/what-we-have.html)
