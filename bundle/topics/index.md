@@ -1,12 +1,3 @@
----
-type: "Topic Index"
-title: "Derived legislation topics"
-description: "Deterministic title-derived discovery topics with explicit non-authoritative status."
-resource: "https://www.legislation.gov.uk/all"
-timestamp: "2026-07-11T18:00:00Z"
-tags: ["topics", "derived-classification"]
----
-
 # Important status
 
 These topics are navigation aids inferred only from titles. They are not legal advice, official subject headings, or a substitute for full-text research. Each result retains its official type, identifier and source passage route.

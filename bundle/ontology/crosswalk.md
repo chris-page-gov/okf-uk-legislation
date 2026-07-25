@@ -3,8 +3,10 @@ type: "Legal Ontology"
 title: "Legal standards crosswalk"
 description: "Normalized relationships between the source model and interoperable vocabularies."
 resource: "https://legislation.github.io/data-documentation/model/legislation.html"
-timestamp: "2026-07-11T18:00:00Z"
 tags: ["ontology", "legal-standards-crosswalk"]
+generated: {"by": "process:legislation-okf-builder", "at": "2026-07-11T18:00:00Z"}
+status: "draft"
+sources: [{"id": "official-source", "resource": "https://legislation.github.io/data-documentation/model/legislation.html"}]
 ---
 
 # Model
@@ -18,7 +20,6 @@ tags: ["ontology", "legal-standards-crosswalk"]
 | Effect | ELI-I `Impact` / ELI change properties | `legislationChanges` specializations | Legal effect |
 | Official URI | `eli:uri_schema` / `eli:id_local` | `legislationIdentifier` | Provenance link |
 
-# Citations
-
+# Source notes
 [1] [Legal standards crosswalk](https://legislation.github.io/data-documentation/model/legislation.html)
 [2] [Legislation.gov.uk data model](https://legislation.github.io/data-documentation/model/legislation.html)

@@ -1,12 +1,3 @@
----
-type: "Methodology"
-title: "Corpus completeness, provenance and limitations"
-description: "How the complete website corpus is enumerated, normalized, validated and refreshed."
-resource: "https://www.legislation.gov.uk/all/data.feed"
-timestamp: "2026-07-11T18:00:00Z"
-tags: ["methodology", "provenance", "quality"]
----
-
 # Completeness contract
 
 * Every official `facetYear` partition is retrieved with `results-count=10000`.
@@ -24,8 +15,7 @@ The public documentation advertises SPARQL and bulk downloads, but both surfaces
 
 Latest-available text may have unapplied changes and is not guaranteed to be legally current. Historical coverage, effects and format availability vary. Answers must cite work/provision URI, version/extent/language context and retrieved passage.
 
-# Citations
-
+# Source notes
 [1] [Atom API](https://legislation.github.io/data-documentation/api/overview.html)
 [2] [Coverage limitations](https://legislation.github.io/data-documentation/what-we-have.html)
 [3] [Linked Data limitations](https://legislation.github.io/data-documentation/api/linked-data.html)

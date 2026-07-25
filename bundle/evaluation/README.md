@@ -1,3 +1,14 @@
+---
+type: "Evaluation Reference"
+title: "README"
+description: "Evaluation contract for the UK Legislation OKF publication."
+resource: "https://github.com/chris-page-gov/okf-uk-legislation/blob/main/evaluation/legislation/README.md"
+tags: ["evaluation", "quality"]
+generated: {"by": "process:legislation-okf-builder", "at": "2026-07-11T18:00:00Z"}
+status: "draft"
+sources: [{"id": "repository-source", "resource": "https://github.com/chris-page-gov/okf-uk-legislation/blob/main/evaluation/legislation/README.md", "title": "README.md"}]
+---
+
 # UK legislation AI-answer evaluation
 
 This suite measures whether an AI can produce a useful, source-grounded answer for counsel—not merely retrieve a title. Its 100 questions span primary and secondary legislation, retained-EU material, devolution, public and private law, criminal law, procedure, employment, family, housing, planning, data and commercial law.

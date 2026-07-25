@@ -1,10 +1,5 @@
 ---
-type: "Legal Knowledge Bundle"
-title: "legislation.gov.uk complete corpus"
-description: "Progressive-disclosure OKF catalogue of every work exposed by legislation.gov.uk, with live provision-level traversal."
-resource: "https://www.legislation.gov.uk/"
-timestamp: "2026-07-11T18:00:00Z"
-tags: ["legislation", "eli", "clml", "complete-corpus"]
+okf_version: "0.2"
 ---
 
 # Scope
@@ -26,8 +21,7 @@ This pack indexes **365,786 legal works** returned by the official legislation a
 * [Coverage, provenance and limitations](methodology/)
 * [Explorer descriptor](okf-explorer.json)
 
-# Citations
-
+# Source notes
 [1] [Legislation.gov.uk data reuse documentation](https://legislation.github.io/data-documentation/)
 [2] [Legislation document data model](https://legislation.github.io/data-documentation/model/legislation.html)
 [3] [ELI ontology](https://op.europa.eu/en/web/eu-vocabularies/eli)

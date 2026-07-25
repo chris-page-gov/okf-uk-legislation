@@ -100,4 +100,4 @@ cd apps/okf-explorer && pnpm test && pnpm check && pnpm build
 cd ../.. && python3 scripts/build_site.py
 ```
 
-The source cache under `tmp/legislation-okf-source/` is intentionally untracked. The generated `legislation/` pack is checked in so Pages deployment and review do not depend on live upstream availability.
+The source cache under `tmp/legislation-okf-source/` is intentionally untracked. The generated `bundle/` pack is checked in so Pages deployment and review do not depend on live upstream availability. Its Markdown hierarchy conforms to OKF v0.2; JSON/YAML-LD descriptors, static search, adjacency and live CLML resolution remain additive Explorer extensions.

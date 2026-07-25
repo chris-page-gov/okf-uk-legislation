@@ -1,12 +1,3 @@
----
-type: "Legislation Type Index"
-title: "Legislation types"
-description: "Every live document type returned by the official corpus facets."
-resource: "https://legislation.github.io/data-documentation/model/uris.html"
-timestamp: "2026-07-11T18:00:00Z"
-tags: ["types", "legislation"]
----
-
 # Types
 
 * [European Union Regulations](eur.md) — 124,855 works.
@@ -42,7 +33,6 @@ tags: ["types", "legislation"]
 * [Measures of the Northern Ireland Assembly](mnia.md) — 2 works.
 * [UK Ministerial Directions](ukmd.md) — 1 works.
 
-# Citations
-
+# Source notes
 [1] [URI schema reference](https://legislation.github.io/data-documentation/model/uris.html)
 [2] [Live Atom facets](https://www.legislation.gov.uk/all/data.feed?results-count=1)

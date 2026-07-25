@@ -8,7 +8,7 @@ This guide keeps the corpus, documentation spine and illustrated manual independ
 
 | Surface | Source of truth | Generated or maintained output |
 |---|---|---|
-| work catalogue and facets | official Atom feeds plus `scripts/build_legislation_okf.py` | `legislation/` |
+| work catalogue and facets | official Atom feeds plus `scripts/build_legislation_okf.py` | `bundle/` |
 | provision normalization | `apps/okf-explorer/src/lib/legislation/structure.ts` | live browser CLML tree |
 | answer benchmark | `scripts/build_legislation_evaluation.py` | `evaluation/legislation/questions.json` |
 | documentation spine | `docs/uk-legislation/` and `docs/uk-legislation-okf.md` | Pages `docs/` routes |
@@ -33,7 +33,9 @@ Screenshots are 1280×720 JPEG captures unless the manifest declares a deliberat
 4. capture the viewport;
 5. crop only when the screenshot's declared `crop` requires it;
 6. inspect the image at original resolution;
-7. update `captured_at`, dimensions and corpus generation timestamp in the manifest;
+7. update `captured_at`, dimensions and the frozen publication
+   `generated.at` timestamp in the manifest; retain official source dates
+   separately in source provenance;
 8. update the manual if the interaction or expected behaviour changed.
 
 Refresh screenshots when:
