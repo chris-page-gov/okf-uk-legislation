@@ -1,0 +1,2941 @@
+{
+  "audit_id": "codex-assisted-v3-independent-audit-20260726",
+  "chunks": [
+    {
+      "bytes": 55137,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-000.json.gz",
+      "records": 645,
+      "sha256": "b34678e34913ffc17414e5f1ed12078bd5a9ff9e3f372cd520fcf8e004711724"
+    },
+    {
+      "bytes": 30539,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-001.json.gz",
+      "records": 354,
+      "sha256": "fef7988ebe92b94aeb84d41212ec188ab9d7c3c8ca71b1d32d161fc263a7e690"
+    },
+    {
+      "bytes": 63594,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-002.json.gz",
+      "records": 745,
+      "sha256": "f02a977c5b6538e26e9296af2178f441f89adcc9630675b9a0615628b258bf7a"
+    },
+    {
+      "bytes": 11493,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-003.json.gz",
+      "records": 129,
+      "sha256": "6e8b5724b77bafbe0a5b7b5cf97dbe863c04b90a8ca5af3be50ae1dfa6053b70"
+    },
+    {
+      "bytes": 63812,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-004.json.gz",
+      "records": 748,
+      "sha256": "e75aafae266f5b142de74789a7811a2012694acaf967c055be2d6444642b0a93"
+    },
+    {
+      "bytes": 20729,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-005.json.gz",
+      "records": 238,
+      "sha256": "4ce4133812c6da31c0a9224f36738133f4b06fc7bf4eb599c37f80811ae1d7a6"
+    },
+    {
+      "bytes": 45309,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-006.json.gz",
+      "records": 529,
+      "sha256": "093fa0856704be2b0177c3d24d2568790eb8095fee3a4b24b903e200bbc2152e"
+    },
+    {
+      "bytes": 31962,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-007.json.gz",
+      "records": 371,
+      "sha256": "01761f9800d936165298c22e9847f6951ad5bd086f5477ed6b81b15e3573257a"
+    },
+    {
+      "bytes": 20709,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-008.json.gz",
+      "records": 237,
+      "sha256": "4019608058f06a3507d4972e73f0cd0ac54c203fdcba5588aa512779396185e0"
+    },
+    {
+      "bytes": 40564,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-009.json.gz",
+      "records": 473,
+      "sha256": "a2481afbcb2c22d04781c4897b6d83dafe2107fd4fb035aa9b156aaf561d8fb6"
+    },
+    {
+      "bytes": 16057,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-010.json.gz",
+      "records": 183,
+      "sha256": "f7234b5e09e92e8e3c544d28ca624cbac80605bbbd6970204fa015fdd2fc7d89"
+    },
+    {
+      "bytes": 26370,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-011.json.gz",
+      "records": 305,
+      "sha256": "8cccb744ee971263cb738a8f2ed2a1c4c0b1d16f83959ed0572f2dcd4af6a188"
+    },
+    {
+      "bytes": 20892,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-012.json.gz",
+      "records": 240,
+      "sha256": "ef61e7a7f16e22ad3e34741cbfda75280b4eeb1927ff887e20995c3cba28d646"
+    },
+    {
+      "bytes": 9000,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-013.json.gz",
+      "records": 100,
+      "sha256": "dc34df1d93bec5ce0821d210e4ba29ccec9604982dcd2bb9465d1a8e7a72cb9f"
+    },
+    {
+      "bytes": 21061,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-014.json.gz",
+      "records": 242,
+      "sha256": "081cb5b1cbe4f2978cfb695b9b4e44803d040779b9addededeaca95139156a55"
+    },
+    {
+      "bytes": 14622,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-015.json.gz",
+      "records": 166,
+      "sha256": "4de3553d1016281a6745bdff4029f07b84fddacbaaa740a8875143fb71eade7b"
+    },
+    {
+      "bytes": 10992,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-016.json.gz",
+      "records": 123,
+      "sha256": "762d16106efb4e25de6abbb42a1bb7dfca9f281c6e73462f8ebaa2191d4e4fe8"
+    },
+    {
+      "bytes": 3498,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-017.json.gz",
+      "records": 35,
+      "sha256": "5f0de7961c4d3cf12744207c9999dbcee251a13b00609cc3f30885d79c4a11c2"
+    },
+    {
+      "bytes": 22162,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-018.json.gz",
+      "records": 255,
+      "sha256": "334234d323d9cc296de6ba18f3f2631c0e0fe29cb1532ce28bef92b96c305cb8"
+    },
+    {
+      "bytes": 31318,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-019.json.gz",
+      "records": 363,
+      "sha256": "4cd47aba126e8aedc7e4e2b189526b168d3ac35b65ac7ddb2c9a0e6c57882405"
+    },
+    {
+      "bytes": 14539,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-020.json.gz",
+      "records": 165,
+      "sha256": "2ded3e121788ed1cb8697fde1811045db57301364e2ba432641bfc180e842847"
+    },
+    {
+      "bytes": 2543,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-021.json.gz",
+      "records": 24,
+      "sha256": "5ed587f212e58219844a4b0987bf65478ab1a034c190724cdb99bd9fabad1d12"
+    },
+    {
+      "bytes": 7924,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-022.json.gz",
+      "records": 87,
+      "sha256": "b2d383095ed49a5d2227b675b419302450e19a3125a9a1e8a7be77867f4e6b3b"
+    },
+    {
+      "bytes": 44850,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-023.json.gz",
+      "records": 523,
+      "sha256": "b062c453afb35eeb798a8cfd24a673b2f80c9092f79155dec65368471200b419"
+    },
+    {
+      "bytes": 18649,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-024.json.gz",
+      "records": 213,
+      "sha256": "c740fc949d2734e087bdd69122f18dd5e6e0111395e393dddea3cf6fe985671d"
+    },
+    {
+      "bytes": 3390,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-025.json.gz",
+      "records": 34,
+      "sha256": "ef5a363bd0af8fae80498b6abd523c4094b0ac3a4ed9c5eba68de9bceaf724e3"
+    },
+    {
+      "bytes": 3813,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-026.json.gz",
+      "records": 39,
+      "sha256": "2bb37bd42011c7623c3fbd357738a90601379326d57e30de12516b9cf27df78b"
+    },
+    {
+      "bytes": 38520,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-027.json.gz",
+      "records": 449,
+      "sha256": "2d1ad39e993012f313f0854ee719552ea19770a210e416154794f206ef0c4066"
+    },
+    {
+      "bytes": 14816,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-028.json.gz",
+      "records": 168,
+      "sha256": "6e403fc9c7e77edda8b11fe7e594faa0c20770eb800e5490542751b480b84a6f"
+    },
+    {
+      "bytes": 2535,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-029.json.gz",
+      "records": 24,
+      "sha256": "92f4daf9780487e8474a7cd9bf4c6634ac557229d67388b559607f7e8294933e"
+    },
+    {
+      "bytes": 2104,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-030.json.gz",
+      "records": 19,
+      "sha256": "5384f2b075ec20450816adeb1e450a78a174788f0d3fd8d8e40e2b40bba85a11"
+    },
+    {
+      "bytes": 34297,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-031.json.gz",
+      "records": 398,
+      "sha256": "b3765ca871ba1b5e3147c8fc399d400aa8b149e08407beda82e8dfda8424023f"
+    },
+    {
+      "bytes": 20520,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-032.json.gz",
+      "records": 235,
+      "sha256": "57b5eea97022f7232a8334b5cbc8cd8c195e1f18901d7b1cac5143fda0ba7dd1"
+    },
+    {
+      "bytes": 8105,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-033.json.gz",
+      "records": 89,
+      "sha256": "d39e0372fc38c22f7e4e0868f1f6c03c43ac8ef004f1a1b9949ecab35d21d326"
+    },
+    {
+      "bytes": 1674,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-034.json.gz",
+      "records": 14,
+      "sha256": "c6676baf92fe09a8f157afeb55bf6882bc82aa76f826ce24db9c474593e3f9f5"
+    },
+    {
+      "bytes": 7899,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-035.json.gz",
+      "records": 87,
+      "sha256": "c83f9ce26c65a1225673f9af8b2f38343351e51c0c7170cc8e06d3b475a1c413"
+    },
+    {
+      "bytes": 29533,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-036.json.gz",
+      "records": 342,
+      "sha256": "5b9ee09225aa3bcbfe363e54730480bcf3748524207941dcdb825a36b77a09d4"
+    },
+    {
+      "bytes": 25440,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-037.json.gz",
+      "records": 294,
+      "sha256": "ffd4fa34000461248b6c831dc9f417adffa670f75e5d6d24b0df87748bcb1638"
+    },
+    {
+      "bytes": 16916,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-038.json.gz",
+      "records": 193,
+      "sha256": "4410ac9cc488dcdeab1f7810709f996a2b4aa9aea16ff7374fc95d5ac8f117df"
+    },
+    {
+      "bytes": 980,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-039.json.gz",
+      "records": 6,
+      "sha256": "ab8f3f35df5ffc4c739559dfe47b0a76e0aacddc90c6ff18a9573075028efc60"
+    },
+    {
+      "bytes": 2369,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-040.json.gz",
+      "records": 22,
+      "sha256": "68c4f26f7763bcd9498cd3bc7fdd8bdb68f93ff4d463adf771c78c34d21d77d4"
+    },
+    {
+      "bytes": 13955,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-041.json.gz",
+      "records": 158,
+      "sha256": "1895f10297fe3532e5b8168458ac20610e8d0f7cdd56af2f5dba2a689ec4f696"
+    },
+    {
+      "bytes": 12500,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-042.json.gz",
+      "records": 141,
+      "sha256": "d53f5846ffa2b5ce5be715d1c58f2109234b274d01f1bb12dcb6ccdbbef3fc6a"
+    },
+    {
+      "bytes": 16915,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-043.json.gz",
+      "records": 193,
+      "sha256": "6b29a0b39a525d00cac7cb7143a9dc33b81dfb961a1f585d7fd373ac769f96d7"
+    },
+    {
+      "bytes": 20571,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-044.json.gz",
+      "records": 236,
+      "sha256": "cc14829c1ddf81dea336b17f9f01e46624822a20ad4bfe2d2420197195af2e75"
+    },
+    {
+      "bytes": 11542,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-045.json.gz",
+      "records": 130,
+      "sha256": "e64764874d6f12b08edb7657be057e681a38a50e9a8960339bb37bc911482ae9"
+    },
+    {
+      "bytes": 3310,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-046.json.gz",
+      "records": 33,
+      "sha256": "f0105e42c942ba4aeebbd11f3c30f962d353538009a63acc2eba786a3a3be792"
+    },
+    {
+      "bytes": 3223,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-047.json.gz",
+      "records": 32,
+      "sha256": "bec21e69831af7fcc1c9ee31a37f173fc2bfd786a61983c6dd83c46c2d4cafda"
+    },
+    {
+      "bytes": 24401,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-048.json.gz",
+      "records": 281,
+      "sha256": "588d91faef5fb58ae30182fc5c7f27b474ea4611e8578071d5825df2b33e8681"
+    },
+    {
+      "bytes": 9780,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-049.json.gz",
+      "records": 109,
+      "sha256": "23b26043dd2ea2771fb9de5033b03d1396dac86c835c8ef9f02b53ac80d7b881"
+    },
+    {
+      "bytes": 14024,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-050.json.gz",
+      "records": 159,
+      "sha256": "28023886d4cfeb6b4a1b724ca0a15ee1466393559a910fa54d13eb6004859312"
+    },
+    {
+      "bytes": 21163,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-051.json.gz",
+      "records": 243,
+      "sha256": "6e0491c852213c8fc1513843a78c1bafe94b0aff03e0a01b09f267f77fbe9873"
+    },
+    {
+      "bytes": 7323,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-052.json.gz",
+      "records": 80,
+      "sha256": "e6dc029d4f5eb9dc7ff478d849e43515aa2466e80ebc2ce6d1305a42c4a1f985"
+    },
+    {
+      "bytes": 3392,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-053.json.gz",
+      "records": 34,
+      "sha256": "587b631d272b5b4a6b4f99b9eb9ee6691b614f732e419f976ea947619460e1a4"
+    },
+    {
+      "bytes": 11306,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-054.json.gz",
+      "records": 127,
+      "sha256": "7016d1014f391e082d83c278b156adee3cf4877a1bf0590a5cdedfb8e2964665"
+    },
+    {
+      "bytes": 11579,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-055.json.gz",
+      "records": 130,
+      "sha256": "e7fdeb2e0e0cb5eb5d185e252a21cefe294e407e6429122237eaf108ff05dfb2"
+    },
+    {
+      "bytes": 13102,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-056.json.gz",
+      "records": 148,
+      "sha256": "33bd3fa0f5273f089a9747eac613d968531c0b95b5d1ff626f8b4c7de1544fe2"
+    },
+    {
+      "bytes": 23994,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-057.json.gz",
+      "records": 277,
+      "sha256": "6446834a70308c8a859e6b9afb777a44fbf4fdb768c4222c3af9e8dcb1e5775f"
+    },
+    {
+      "bytes": 18243,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-058.json.gz",
+      "records": 208,
+      "sha256": "2c1eab36dc3a489eaf2e5905d163a6a43656ab8c5ba7f00e39b6d18d3f58fc5c"
+    },
+    {
+      "bytes": 12585,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-059.json.gz",
+      "records": 142,
+      "sha256": "c68d7f9b0328cf46d324f370169bcacc3d5aa359415a206b4eb446ce6fde795d"
+    },
+    {
+      "bytes": 2371,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-060.json.gz",
+      "records": 22,
+      "sha256": "f7c686cdba86fa6c71bb62569a64015f3b0d1d9a4fea6f273c1b4e235c7b5e5b"
+    },
+    {
+      "bytes": 10801,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-061.json.gz",
+      "records": 121,
+      "sha256": "127c1655d7cd4465f558762d13b123c7fe8450c83c36e1e2a708fecae3f15e7e"
+    },
+    {
+      "bytes": 13277,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-062.json.gz",
+      "records": 150,
+      "sha256": "265ba4816b40aa82978ff9bfe0c17bfbfa8d91f71cdfa1c61d17a90a3a0065ac"
+    },
+    {
+      "bytes": 18773,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-063.json.gz",
+      "records": 215,
+      "sha256": "c9ede406ab35360be568a5a4d3e7bd7ef4f55609450e8d09c57e8ada38932d7a"
+    },
+    {
+      "bytes": 19210,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-064.json.gz",
+      "records": 220,
+      "sha256": "eecb1f6c53346f5f4f1d46cca20e220dfd8a99a23e8dafb1c631232e17111c3c"
+    },
+    {
+      "bytes": 19701,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-065.json.gz",
+      "records": 226,
+      "sha256": "00291c5a352b89ecb50ad8b4b2f6a045826a1730a6edd15e2cf8c61e02b4d6f3"
+    },
+    {
+      "bytes": 8626,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-066.json.gz",
+      "records": 95,
+      "sha256": "b26002924f76b2ac21aa9086ac74122dfe1284d36d2c8de008369d6b3db34ecf"
+    },
+    {
+      "bytes": 6979,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-067.json.gz",
+      "records": 76,
+      "sha256": "7fdd3b01b9b45c99af2f50ae3d47a4654c1367aa78d05919517914111d84cd8d"
+    },
+    {
+      "bytes": 13034,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-068.json.gz",
+      "records": 147,
+      "sha256": "4a3e764dfa13aec584248efb2f07fa8da6d85e1cc2d28bfbf1fe3cd073bc5e8a"
+    },
+    {
+      "bytes": 10470,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-069.json.gz",
+      "records": 117,
+      "sha256": "e592f13a7357fc431fa3f8bc5cbb85f1d703aa5913bc22ae798d68756013d046"
+    },
+    {
+      "bytes": 15644,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-070.json.gz",
+      "records": 178,
+      "sha256": "7053b67ce92ffe8ed9f04c8cbe0167099a2cae62d19645e686951fcd01586612"
+    },
+    {
+      "bytes": 24111,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-071.json.gz",
+      "records": 278,
+      "sha256": "5189ccd5240e2ddb7bd33e2d568630d04d2c82a10db51f368889234ed4c6fc97"
+    },
+    {
+      "bytes": 19368,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-072.json.gz",
+      "records": 222,
+      "sha256": "123f55c4978a292b2c38c122a16a54db3e38bc28cb0725ecf12b46db5aaf76ee"
+    },
+    {
+      "bytes": 6555,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-073.json.gz",
+      "records": 71,
+      "sha256": "74824ece121f1ca023400e501a6e0fe115e47769a2594ed2a48fd0394260f1a5"
+    },
+    {
+      "bytes": 12167,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-074.json.gz",
+      "records": 137,
+      "sha256": "d6268d6ad205bea7e16d5d4841dd1f4a86853b55765870863df92183d6ee3193"
+    },
+    {
+      "bytes": 19536,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-075.json.gz",
+      "records": 224,
+      "sha256": "d87ae3d7924420a57af1dd9b863e1b9af39d0ab27318f69214e67faf556390ed"
+    },
+    {
+      "bytes": 18110,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-076.json.gz",
+      "records": 207,
+      "sha256": "8536d23444589607e3daeb136e6f427d22fe4a411f2198f0ada3162c8ed657c6"
+    },
+    {
+      "bytes": 14730,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-077.json.gz",
+      "records": 167,
+      "sha256": "d2bca535c16b1e73552e1009bccbb203d7946e72199a03a9156cdc124f3749d6"
+    },
+    {
+      "bytes": 6845,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-078.json.gz",
+      "records": 74,
+      "sha256": "6711eda814be3a74db9581d5506a1764342acd3ea2e5b758ce913e7eb6b75cc1"
+    },
+    {
+      "bytes": 17793,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-079.json.gz",
+      "records": 203,
+      "sha256": "8b20767f6311c3e2b848a770609cc1ddac5a760f4f057a9c804e52e7ce0f5b9a"
+    },
+    {
+      "bytes": 21462,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-080.json.gz",
+      "records": 247,
+      "sha256": "b22a211a711db1949da70c6cff29e45450851beb07641e5e2021d47c360e4da0"
+    },
+    {
+      "bytes": 16564,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-081.json.gz",
+      "records": 189,
+      "sha256": "a7298f12c90cbfad890d523dc473d10d187a8799a0a3d5c9f5ca1e345c9c7a8d"
+    },
+    {
+      "bytes": 7830,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-082.json.gz",
+      "records": 86,
+      "sha256": "2e1891e67e17ac924db4e4928001ab831aa82fd173a1011810ecf93652190000"
+    },
+    {
+      "bytes": 6051,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-083.json.gz",
+      "records": 65,
+      "sha256": "f070d40b2e9db7d7c1c3efbf5fa667f0f15c322cbb9f2a5ebe84177a4875f927"
+    },
+    {
+      "bytes": 21825,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-084.json.gz",
+      "records": 251,
+      "sha256": "1cad19a243a9a68c8355167093ed0e2ed9f31bbaab4b8470a1ac80ff37633217"
+    },
+    {
+      "bytes": 20674,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-085.json.gz",
+      "records": 237,
+      "sha256": "d0da441ff97f2e572bb8191f987112c5fe083070752dc4bd3b83d8bce750fcb9"
+    },
+    {
+      "bytes": 22078,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-086.json.gz",
+      "records": 254,
+      "sha256": "89ed00d040c099751a95ebbe36aea6993591fd96eca3eab3dddb032ffd18b742"
+    },
+    {
+      "bytes": 6549,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-087.json.gz",
+      "records": 71,
+      "sha256": "113acc25b0c422a9bba7d9dfa9303e116f027800da68d5e448111d801fcc82e8"
+    },
+    {
+      "bytes": 5708,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-088.json.gz",
+      "records": 61,
+      "sha256": "faa0e686219ed0a8cb572048537036d5bc6516f93c78f8bccb43c104526c63bb"
+    },
+    {
+      "bytes": 8276,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-089.json.gz",
+      "records": 91,
+      "sha256": "7dcf9f2d5cf13214de76c2be19b89f97bc7062dae260e0c528eebcf4879d2e74"
+    },
+    {
+      "bytes": 22756,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-090.json.gz",
+      "records": 262,
+      "sha256": "7830d18835aa6c2f857ccb28bbc9c0cc5497358a76c6cfebc8c862ded93dc199"
+    },
+    {
+      "bytes": 18605,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-091.json.gz",
+      "records": 213,
+      "sha256": "8370aa498f420485b2eabaafbc319332180762b3cc17cecd82a01e037dc6e413"
+    },
+    {
+      "bytes": 15100,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-092.json.gz",
+      "records": 171,
+      "sha256": "28d9e53211771f7f9b0563fc249ec2ff528591da858740edaef008b5723f43b4"
+    },
+    {
+      "bytes": 4849,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-093.json.gz",
+      "records": 51,
+      "sha256": "9e8b47ac23d081e8ca49420ef7e3279b396fbf556447397197bbda29414b87ee"
+    },
+    {
+      "bytes": 6988,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-094.json.gz",
+      "records": 76,
+      "sha256": "fbb86dfa794643680c3f8db42a033f9f7ce72d7553ee8752a213d5f34bdd495f"
+    },
+    {
+      "bytes": 10023,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-095.json.gz",
+      "records": 112,
+      "sha256": "263b259f48ce8cb1817b4326fe630bdae2545fd6d4c7e7a2f729a72c7b7b807b"
+    },
+    {
+      "bytes": 23613,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-096.json.gz",
+      "records": 272,
+      "sha256": "54c61ec4f10190ea6826890633f0a08c714a2a53c671ad0205ba3f41b4f4c39a"
+    },
+    {
+      "bytes": 16082,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-097.json.gz",
+      "records": 183,
+      "sha256": "268456746cda523c45632c34a9602f2860beb883be5ed581a733ac056029dd02"
+    },
+    {
+      "bytes": 11847,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-098.json.gz",
+      "records": 133,
+      "sha256": "534e06ddf127fc449782864a6ed400572880420df2beaeca8e4cafb7e5692c48"
+    },
+    {
+      "bytes": 6871,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-099.json.gz",
+      "records": 75,
+      "sha256": "577dafad12f006097c8d9b261653fb6576fca5d58ee8b4bb948c0a0dbfbdbe3e"
+    },
+    {
+      "bytes": 6983,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-100.json.gz",
+      "records": 76,
+      "sha256": "741c4fdd68ea165eca64c5c92eb9a2b1c886f35be060fe9eea23e20d395005a4"
+    },
+    {
+      "bytes": 12844,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-101.json.gz",
+      "records": 145,
+      "sha256": "810de3a79c8449b61fbbc9571bf52a5a30d189f6a35de4a1a4ceb0ee1dc2d896"
+    },
+    {
+      "bytes": 21748,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-102.json.gz",
+      "records": 250,
+      "sha256": "3b39c450151ceacfa723284c100e4697c93242556c6c722dfdc22b362df1477a"
+    },
+    {
+      "bytes": 17927,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-103.json.gz",
+      "records": 205,
+      "sha256": "91448b8aa3b66069683ce071735b0b34af1e5adb9483ae449b1cf8e4147b6596"
+    },
+    {
+      "bytes": 11302,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-104.json.gz",
+      "records": 127,
+      "sha256": "2c108a148f78654366ed2152675e451f063f365182c9acb9faf4392d454d40a8"
+    },
+    {
+      "bytes": 7414,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-105.json.gz",
+      "records": 81,
+      "sha256": "64ff7220db39064f4410dec0cb4310318ac5400fe7e460d2c63f84f8e098de49"
+    },
+    {
+      "bytes": 8132,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-106.json.gz",
+      "records": 90,
+      "sha256": "3ad7e8b879f1e6a95ff9e0b33c970fdf778a60091b2756babb3615f656140701"
+    },
+    {
+      "bytes": 11394,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-107.json.gz",
+      "records": 128,
+      "sha256": "14cbfa288ecf977cc86ed346473fa71ca0e814df5892989dad37dfb7614be3c4"
+    },
+    {
+      "bytes": 26664,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-108.json.gz",
+      "records": 308,
+      "sha256": "655f760ee2b136bdfc87eb19e6f3fe8680c60c93f558b8ad99b0e677ceda0ae0"
+    },
+    {
+      "bytes": 22594,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-109.json.gz",
+      "records": 260,
+      "sha256": "8baf1facbd850b1d79c671feceabe9ed12e7c7ebfdda699ec7dcd9ed0144830e"
+    },
+    {
+      "bytes": 11500,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-110.json.gz",
+      "records": 129,
+      "sha256": "773f8193ddac9bbb3b8cf9ee54e0f384b0a289ecf1d445bc43f7d85dd9f9da9a"
+    },
+    {
+      "bytes": 9203,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-111.json.gz",
+      "records": 102,
+      "sha256": "9ccb7ae55d71bfa91531b977e0a9a8d3825732646a1f16729f5b24f6883185fa"
+    },
+    {
+      "bytes": 7483,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-112.json.gz",
+      "records": 82,
+      "sha256": "e96fca5e121af58d317ebf6b2509a2d451021f0bdd80165f8f23aea4beef0f09"
+    },
+    {
+      "bytes": 21761,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-113.json.gz",
+      "records": 250,
+      "sha256": "9428bb6da3d059f22c97420a0310623ecb5addd796b20ef95324b6d12257390d"
+    },
+    {
+      "bytes": 25985,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-114.json.gz",
+      "records": 300,
+      "sha256": "347e12bbe21b98043ae0925e676de27e64bd10d585faaf076bf4d17d6c8921cc"
+    },
+    {
+      "bytes": 24600,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-115.json.gz",
+      "records": 284,
+      "sha256": "0fde6535173dba2b2066cbef685bb8787497e383188704fcf19f0dc8a6a8de4e"
+    },
+    {
+      "bytes": 14462,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-116.json.gz",
+      "records": 164,
+      "sha256": "3d9ac68f201220f956d4899c7d375be87f3319b842369608570fcfa67f40d7e3"
+    },
+    {
+      "bytes": 10188,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-117.json.gz",
+      "records": 114,
+      "sha256": "35eef70e6e474e4c0e82c3c85610a0fd808ab1af2c91960241654ee2d1b4da1c"
+    },
+    {
+      "bytes": 8254,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-118.json.gz",
+      "records": 91,
+      "sha256": "52a418dae47bbe08b396f4bb8e9b0c87e65c5bf00eb10927b8339420d1c3c526"
+    },
+    {
+      "bytes": 15771,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-119.json.gz",
+      "records": 179,
+      "sha256": "0cfa3de97147029c9e37a02af3dd9aeba9e518fc423f4f4565aca81c3a033ced"
+    },
+    {
+      "bytes": 53668,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-120.json.gz",
+      "records": 628,
+      "sha256": "a9c6e9421b36fd9a50fe9eb7bcc84d349451607e53bd04e16dd36c0e4c6f38cd"
+    },
+    {
+      "bytes": 42417,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-121.json.gz",
+      "records": 495,
+      "sha256": "7820735f4d01f229f4a70d96ec56bfc6bfaa71a57ba2db9cb987380abe25c9c6"
+    },
+    {
+      "bytes": 34408,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-122.json.gz",
+      "records": 400,
+      "sha256": "c2bed6d07af1375ff5c03518e8e0d9389e46c4b2539f964659cb81fe6dd5f19d"
+    },
+    {
+      "bytes": 7572,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-123.json.gz",
+      "records": 83,
+      "sha256": "408ff77080faa6a62ef8eec7aebb8b817862dcad1381ff5b9e748273aae90b48"
+    },
+    {
+      "bytes": 12427,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-124.json.gz",
+      "records": 140,
+      "sha256": "b53d5848758fa86058c378757ce3533fb7ef55f0b9a023d1b19cca49e6051a05"
+    },
+    {
+      "bytes": 16680,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-125.json.gz",
+      "records": 190,
+      "sha256": "fb5d5d8a84570b26e0d0fd331be05c8e8cbe86d079accf768cd2b0a5b8527747"
+    },
+    {
+      "bytes": 20300,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-126.json.gz",
+      "records": 233,
+      "sha256": "bc66d53e61d722fb8766fe24710aeea46a1d9df250d86e8fa31a553967f7216d"
+    },
+    {
+      "bytes": 24183,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-127.json.gz",
+      "records": 279,
+      "sha256": "9d02fb4de5e1c9a3adaaec823e0f586e07224bf42806e119b72911422215ac7f"
+    },
+    {
+      "bytes": 18601,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-128.json.gz",
+      "records": 213,
+      "sha256": "b8d00333cb9a19d918163a02a69032902ea2345c5720efdcf42ad906f6bc8b08"
+    },
+    {
+      "bytes": 9263,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-129.json.gz",
+      "records": 103,
+      "sha256": "f4e94d5fc5983e4214180dee961616a907551aa1bae754cd074561fe71b0a554"
+    },
+    {
+      "bytes": 10806,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-130.json.gz",
+      "records": 121,
+      "sha256": "a766ed98c9d044865676f2a6f6fc06429f6c6e5b5eda91d356a42927ec821461"
+    },
+    {
+      "bytes": 10376,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-131.json.gz",
+      "records": 116,
+      "sha256": "46dd96111dc73910456755eaa77572f99b358f06db713ce32e2c365b1a9e84d3"
+    },
+    {
+      "bytes": 14645,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-132.json.gz",
+      "records": 166,
+      "sha256": "2c48c68fc69e0115442392b520416b0dd707c8f6196a06a49902bf3879324f13"
+    },
+    {
+      "bytes": 23843,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-133.json.gz",
+      "records": 275,
+      "sha256": "dcb22f2e3a3c10d2f0a55526b278b368728fd39cec499db8389861809f4b4081"
+    },
+    {
+      "bytes": 18740,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-134.json.gz",
+      "records": 214,
+      "sha256": "be32cc2c2bb9324a3eac908c8f75695c2b814dd36d0017b5b160c0a01081abe3"
+    },
+    {
+      "bytes": 8516,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-135.json.gz",
+      "records": 94,
+      "sha256": "bbb4bdf7016aa541e617f6d77e24780c3bace23c3d9b5a4d9b9edec6c341f390"
+    },
+    {
+      "bytes": 9938,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-136.json.gz",
+      "records": 111,
+      "sha256": "e09a40b62307310d24b3efe2ea9f2a0c61ded79a6f2456574de9f0922f4240f3"
+    },
+    {
+      "bytes": 10141,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-137.json.gz",
+      "records": 113,
+      "sha256": "112d35f8c677289f1bdf0154d34081304ad7e9ce111ed271e3fd3389f9bb07c3"
+    },
+    {
+      "bytes": 12656,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-138.json.gz",
+      "records": 143,
+      "sha256": "b1c5c3cc889c76997e99a65188469963af1c90268febe8445fbacc7382d7ef9b"
+    },
+    {
+      "bytes": 21932,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-139.json.gz",
+      "records": 252,
+      "sha256": "79886af48e980a1b38f91684dbd4d48bb320edb80c9b0a849cdc65336470176d"
+    },
+    {
+      "bytes": 23971,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-140.json.gz",
+      "records": 276,
+      "sha256": "e64bdf03e6ff74a36fb5608c25c878cb1d72245b16b20f7a54d8f031bdd17532"
+    },
+    {
+      "bytes": 9436,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-141.json.gz",
+      "records": 105,
+      "sha256": "7791a0d34ec70604050f06306903aa8f3ee3ffa2d8144c853bea750733a8a978"
+    },
+    {
+      "bytes": 10221,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-142.json.gz",
+      "records": 114,
+      "sha256": "65fc1515ababbcadb1a9ef665e45d65ab53447a79b1369ee50dee35d1489b686"
+    },
+    {
+      "bytes": 9216,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-143.json.gz",
+      "records": 102,
+      "sha256": "09e182b779d58641eac294bfc4a04c10607fa0a15a036bbf5952e0b8f775953b"
+    },
+    {
+      "bytes": 24521,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-144.json.gz",
+      "records": 283,
+      "sha256": "cb25af0c2bb20c3fd207fc993018c8309ef935f277cd8cae276679ec64774b3c"
+    },
+    {
+      "bytes": 26713,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-145.json.gz",
+      "records": 309,
+      "sha256": "5325499acc08926c7ef8789a8f2a391bc696cc56617d7aa3dbcd8931f26bd568"
+    },
+    {
+      "bytes": 20906,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-146.json.gz",
+      "records": 240,
+      "sha256": "13ecd88b2103807ec91c02e2dbb1282729e2cd760e25f8bb645636b28691f59e"
+    },
+    {
+      "bytes": 10904,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-147.json.gz",
+      "records": 122,
+      "sha256": "1320e6bfc8b5d51782ebdc3673f182127ac2fb9ce1957633e4105177f59e7ade"
+    },
+    {
+      "bytes": 10300,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-148.json.gz",
+      "records": 115,
+      "sha256": "b9f9e1adb8622beada1bea6028d598ff13a369dea48f907385a9dd103ae686e2"
+    },
+    {
+      "bytes": 18344,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-149.json.gz",
+      "records": 210,
+      "sha256": "4f622d6f804b4eb81df98e637c48bd787853bdf5d36119ad519703bc1ef740bf"
+    },
+    {
+      "bytes": 17511,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-150.json.gz",
+      "records": 200,
+      "sha256": "f4b1b08f60e4ab7750e0c0a49f1ee207b2da70ac82a5af7b578d77b91ae74a38"
+    },
+    {
+      "bytes": 18808,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-151.json.gz",
+      "records": 215,
+      "sha256": "8222cb19648e7398971470544541a0e0647a04646636d28674a63439175d065d"
+    },
+    {
+      "bytes": 22021,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-152.json.gz",
+      "records": 253,
+      "sha256": "6f649461bf1df48c93d075cd415c4e1963ee142f961bd833988983ba6ef33330"
+    },
+    {
+      "bytes": 13072,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-153.json.gz",
+      "records": 148,
+      "sha256": "3fa98e59c315c263d37e884723fc6fdd2038c29c84077e3af117a8a588c778ea"
+    },
+    {
+      "bytes": 15122,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-154.json.gz",
+      "records": 172,
+      "sha256": "51ecc4bb5de7d7ce0270ab6d5b8ab3710099d61ef4c5fdc731f4fb4b1875813d"
+    },
+    {
+      "bytes": 14054,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-155.json.gz",
+      "records": 159,
+      "sha256": "fa9e40c651d8e5e19c8be0fa2fd944c48cbe900ce923a343ec7c93cdd09b931a"
+    },
+    {
+      "bytes": 16980,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-156.json.gz",
+      "records": 193,
+      "sha256": "c408bbeb2616c69d47375aa7201a9d87d655410a7d2b4bbb1a14333fbe303370"
+    },
+    {
+      "bytes": 21887,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-157.json.gz",
+      "records": 252,
+      "sha256": "e54e13a1cd10eae56a2f15ae6b455209a8581d72defc70884adb4d2200569c9a"
+    },
+    {
+      "bytes": 10941,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-158.json.gz",
+      "records": 123,
+      "sha256": "4fdc085cdbbc817208b9858bfd76da2f583b88e629e4ca94951b15ca516cf7e5"
+    },
+    {
+      "bytes": 7234,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-159.json.gz",
+      "records": 79,
+      "sha256": "ab0e2e17ff9eac41ebcee73f41b933ba0e42a2aff3c424fca9350a4681287fe2"
+    },
+    {
+      "bytes": 11320,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-160.json.gz",
+      "records": 127,
+      "sha256": "242f12a3be0fc1fc6a298677e3d799f9bd5b5aff5c387392b72a305c45a35e0d"
+    },
+    {
+      "bytes": 4081,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-161.json.gz",
+      "records": 42,
+      "sha256": "5d311d2b316575e1912c188ec69d9a5036aa32d66d10f4439debe2527be0cc1b"
+    },
+    {
+      "bytes": 24350,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-162.json.gz",
+      "records": 281,
+      "sha256": "c6e425be5eecf3bfa45022ab563c0b811ce37444add4e9e9db066a28e234f078"
+    },
+    {
+      "bytes": 17961,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-163.json.gz",
+      "records": 205,
+      "sha256": "04e711cc5c7506c41e63039fbca5c842c790db82e145f9295e911322caa6e450"
+    },
+    {
+      "bytes": 13876,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-164.json.gz",
+      "records": 157,
+      "sha256": "e649d1089ee3eb5ddfc81715504857cd5971185834fbb43fcdb11af4ce69d197"
+    },
+    {
+      "bytes": 1506,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-165.json.gz",
+      "records": 12,
+      "sha256": "e113846a04dd9e063caa7b4ca414f3c842f8ef5ea4b87b7de7c6d74d5341e0ca"
+    },
+    {
+      "bytes": 1418,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-166.json.gz",
+      "records": 11,
+      "sha256": "7af224093d42457e9262f4dce60686b25f149763d37c4822393d050ee382912c"
+    },
+    {
+      "bytes": 2193,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-167.json.gz",
+      "records": 20,
+      "sha256": "75610cdf87d7681eb3f48a3f3cb38157c635e936bcc966bd419b6b7f306c19fc"
+    },
+    {
+      "bytes": 6223,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-168.json.gz",
+      "records": 67,
+      "sha256": "04df60d73acfbd66201c438d96f65c51e562368f31f410735437a686f86de42b"
+    },
+    {
+      "bytes": 17674,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-169.json.gz",
+      "records": 202,
+      "sha256": "b8a04839b03c19ce9d92aa4e890592d6e9f2bcdfbb730e7362d91b4908999533"
+    },
+    {
+      "bytes": 20410,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-170.json.gz",
+      "records": 234,
+      "sha256": "5993fb0c953ed2d571b0d412a0e72055279295e59a9f221970d5c84061dccd34"
+    },
+    {
+      "bytes": 9806,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-171.json.gz",
+      "records": 109,
+      "sha256": "43c16b945b802c0758035f2982104ef847cbbe433a2401b1d42d251435275264"
+    },
+    {
+      "bytes": 1336,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-172.json.gz",
+      "records": 10,
+      "sha256": "549dd85d721fd919d0d227c1a93cae1373589726bc2d81e78596f9e55baf2173"
+    },
+    {
+      "bytes": 889,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-173.json.gz",
+      "records": 5,
+      "sha256": "04342a79bf99afdca218097523f1be326f9af69926bbb753af26d97bc0124871"
+    },
+    {
+      "bytes": 1855,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-174.json.gz",
+      "records": 16,
+      "sha256": "548cca7f3698cf4f541e342f703988e3b7cbb4cbbec7217b4cc8b593b17f2ec9"
+    },
+    {
+      "bytes": 12836,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-175.json.gz",
+      "records": 145,
+      "sha256": "d96bef1dcc732ccdf812ed76450295cca26794b7c7e645a5f1a9f1e12e36fe35"
+    },
+    {
+      "bytes": 23346,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-176.json.gz",
+      "records": 269,
+      "sha256": "79689f48a90524de2727f7b603498e3d60602a2d1c2bc7a14e0ac97dfb199bc9"
+    },
+    {
+      "bytes": 21648,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-177.json.gz",
+      "records": 249,
+      "sha256": "3f9279aad547539536737fb7ea9a4d6d8a86c1966b3ffb649db4d6dd0afcf1c4"
+    },
+    {
+      "bytes": 5021,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-178.json.gz",
+      "records": 53,
+      "sha256": "10251ecbe223c0a6257f97969ca9e774e5ded9b4e9aa99aed7ef74fbbd576423"
+    },
+    {
+      "bytes": 1507,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-179.json.gz",
+      "records": 12,
+      "sha256": "9a15ad592fcc03e1b3b0648073d9673becf629b18d34a1198c23372e0e0ef1af"
+    },
+    {
+      "bytes": 1068,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-180.json.gz",
+      "records": 7,
+      "sha256": "1b07fd64208a52de73a8274284863bbb871c2510dacf699272602c30c1841b18"
+    },
+    {
+      "bytes": 1242,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-181.json.gz",
+      "records": 9,
+      "sha256": "c7a0dc2b2fd83e410e4cfa817307c7dfa1be0a449484215f091b28ae8f1131a2"
+    },
+    {
+      "bytes": 9344,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-182.json.gz",
+      "records": 104,
+      "sha256": "e6cda9085fa8299504c0f4e5ec632783e4d8ea219d289b143b866443157e8bb0"
+    },
+    {
+      "bytes": 24227,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-183.json.gz",
+      "records": 279,
+      "sha256": "1eec7dc4b4adb75f88a6723d43c1dc830d3e0300587dfc598d4361690bcbaa45"
+    },
+    {
+      "bytes": 27121,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-184.json.gz",
+      "records": 314,
+      "sha256": "95144c01e230cc8e75e288ebde1e950fa63c05b3149245cfbfbc891e4395c848"
+    },
+    {
+      "bytes": 1845,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-185.json.gz",
+      "records": 16,
+      "sha256": "90fc46635dbe8da8a32b8b79f1872dfc3bf24d57cde86bf897ee7c1aedf37fbc"
+    },
+    {
+      "bytes": 1068,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-186.json.gz",
+      "records": 7,
+      "sha256": "d7ba6ba2d68f0a73db22884a16accfa8b4bd12e9280d31f8b38193b7c1db33b1"
+    },
+    {
+      "bytes": 793,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-187.json.gz",
+      "records": 4,
+      "sha256": "42d28a5b424550bea75c446914faaebfa1b6ef4dc7892c52131c5360c57b0119"
+    },
+    {
+      "bytes": 1507,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-188.json.gz",
+      "records": 12,
+      "sha256": "17343624386a613281f04e9079546dae74858f6fb06087843c1d6665bbb6e54b"
+    },
+    {
+      "bytes": 15319,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-189.json.gz",
+      "records": 174,
+      "sha256": "6e14fd00a65ebe5cca2ea1913ddcb441f7858af9d6ae11f050373f18bc1ee7a5"
+    },
+    {
+      "bytes": 21300,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-190.json.gz",
+      "records": 245,
+      "sha256": "980c06336d8daecadc8876b5e7952964dde3e46ade871a892ba768685181e2d9"
+    },
+    {
+      "bytes": 15364,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-191.json.gz",
+      "records": 175,
+      "sha256": "8507f798d549c54755e43f1e34f7630be566a65b81b334f7a28fee8a5b8118bf"
+    },
+    {
+      "bytes": 977,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-192.json.gz",
+      "records": 6,
+      "sha256": "c1df6f0eb2e3cd0e370cc4c98d9bdf078d11fd1bfa35e98c65739dc29daff23a"
+    },
+    {
+      "bytes": 798,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-193.json.gz",
+      "records": 4,
+      "sha256": "3e00996228dd71a8a7b250db745730c32e247441737055a65779472533b58d85"
+    },
+    {
+      "bytes": 977,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-194.json.gz",
+      "records": 6,
+      "sha256": "a2d42720f4937b94295285604200db888fb65551094001a0d4d62f499ccf79fc"
+    },
+    {
+      "bytes": 1851,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-195.json.gz",
+      "records": 16,
+      "sha256": "944da3511c3d47c59b3300adab9abbb0b5c17962e28120fd8d8f3d270eaa878b"
+    },
+    {
+      "bytes": 24662,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-196.json.gz",
+      "records": 284,
+      "sha256": "97a805ad6c0fe97e6028c5b20257c8777e2f48852954a8cd83200947fd674a15"
+    },
+    {
+      "bytes": 25456,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-197.json.gz",
+      "records": 294,
+      "sha256": "4607d9795f0975bf42593a77058d0b3b59f3393396a2963aa0826416865e25cb"
+    },
+    {
+      "bytes": 5037,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-198.json.gz",
+      "records": 53,
+      "sha256": "502d2cded7609c36ad09f89352052f440f845ef33a3e7354910ba9a37e958dc2"
+    },
+    {
+      "bytes": 1062,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-199.json.gz",
+      "records": 7,
+      "sha256": "9bc601d9926c99f7867e0e80ee9aed7ab86a22d2edb809e070e8eeb24617d152"
+    },
+    {
+      "bytes": 1066,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-200.json.gz",
+      "records": 7,
+      "sha256": "2b5564f0be63b2774897adaaacf885f323a2e7928c91db2dd1e61087dbd286f1"
+    },
+    {
+      "bytes": 1154,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-201.json.gz",
+      "records": 8,
+      "sha256": "e9ecc01f85632acea09cd75d605edd701034dafbfec3ef8c25d954ff446c9d77"
+    },
+    {
+      "bytes": 10388,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-202.json.gz",
+      "records": 116,
+      "sha256": "de74d1520f7d819251bcf2e2ee30ad65790d5f1c0e55b494530e7a9620bce67a"
+    },
+    {
+      "bytes": 26948,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-203.json.gz",
+      "records": 312,
+      "sha256": "e25a24d8441dca6cf5be65ac3dbe28499f6905a5b852975c51eb5fe3ee584549"
+    },
+    {
+      "bytes": 20331,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-204.json.gz",
+      "records": 233,
+      "sha256": "88a10af42bf646759f5e1d81cc4963564bec64df607e08a51b4badc735244136"
+    },
+    {
+      "bytes": 978,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-205.json.gz",
+      "records": 6,
+      "sha256": "11759bc1d7664ce94fc04d22b309de2a228f691d01aceffb5adc64e547831061"
+    },
+    {
+      "bytes": 976,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-206.json.gz",
+      "records": 6,
+      "sha256": "22ad03a96dc123e5b83c794a8972dc2ef203605d871aae19256a3ed6c1865990"
+    },
+    {
+      "bytes": 889,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-207.json.gz",
+      "records": 5,
+      "sha256": "9ed3f71d6e3b589a59a08c09755e85d727abdfa9019f1dd22ba6fd36d49a2741"
+    },
+    {
+      "bytes": 890,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-208.json.gz",
+      "records": 5,
+      "sha256": "b8b0a52f0dfbfd1e595091e15fe642302addf2d7c196f9e1e77f62644c83218b"
+    },
+    {
+      "bytes": 15484,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-209.json.gz",
+      "records": 176,
+      "sha256": "7cc64085643d49316c54ba711414ca971912132f28e85c629624de8deb19025c"
+    },
+    {
+      "bytes": 33264,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-210.json.gz",
+      "records": 386,
+      "sha256": "9c2b42df5f1757e699e407715a9822b6ee1cb27506814aff7efe7b351fa08350"
+    },
+    {
+      "bytes": 10536,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-211.json.gz",
+      "records": 118,
+      "sha256": "3732bef8c54e5c57b2a6cb96c70d1eed8c8c914ea7be5d6f62feea97e7ab2a69"
+    },
+    {
+      "bytes": 888,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-212.json.gz",
+      "records": 5,
+      "sha256": "2a958af96a7439442cd214ad3456d850954ff3bcf3a8bd6bca293940817de59a"
+    },
+    {
+      "bytes": 1419,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-213.json.gz",
+      "records": 11,
+      "sha256": "8db0be2c2a2fbd31680f81a3cdd7e7c132393062197d99017600c4bd8eb73825"
+    },
+    {
+      "bytes": 1068,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-214.json.gz",
+      "records": 7,
+      "sha256": "3febfea059a818362a804fffb24f6b0a0fb2e019c902d5806a583983626e3ff5"
+    },
+    {
+      "bytes": 1500,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-215.json.gz",
+      "records": 12,
+      "sha256": "814d221029e55400cf71210eb419f809051f25ce00bc173f785e84b51a839ea3"
+    },
+    {
+      "bytes": 26677,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-216.json.gz",
+      "records": 308,
+      "sha256": "0824a6cd393a936ad92b3d1c675673991fbaf0c5fc0c9ee5ed3ee454a7b376b8"
+    },
+    {
+      "bytes": 29843,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-217.json.gz",
+      "records": 346,
+      "sha256": "c7d0e4c2ad268b05503c109ec6593989ebdea8fa5394c5a70e87f58e74737a8d"
+    },
+    {
+      "bytes": 6916,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-218.json.gz",
+      "records": 75,
+      "sha256": "518940f881bedb628fe958e55ba389420c7142b8624d6af515dfa866fca9e890"
+    },
+    {
+      "bytes": 2197,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-219.json.gz",
+      "records": 20,
+      "sha256": "9da05ec164a15f86617e7459ea86ae3481f90cacb677b906461b3c4b7e66e6e5"
+    },
+    {
+      "bytes": 1065,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-220.json.gz",
+      "records": 7,
+      "sha256": "ef26228296bfade189d2dee7652f61def2be1b976a8fba687d23be2177510aa0"
+    },
+    {
+      "bytes": 17650,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-221.json.gz",
+      "records": 201,
+      "sha256": "a3372d0dc578d62e842a4256139a70a3a801d8d3f23224c6312c54ecdcce904b"
+    },
+    {
+      "bytes": 34175,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-222.json.gz",
+      "records": 397,
+      "sha256": "54382308eee1de223c6dc387c6e8320f20ef724595d2d27c3b1e05d065bfc0f6"
+    },
+    {
+      "bytes": 15661,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-223.json.gz",
+      "records": 178,
+      "sha256": "8044063cec0ef5915deef1a2ff5d7c3d73f8e47bc1209336ee3372bdd505f90b"
+    },
+    {
+      "bytes": 1156,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-224.json.gz",
+      "records": 8,
+      "sha256": "b1eb92f36b2e30b5cf1d094cc95623f2dd17d4ea742268b8f722569544c448e3"
+    },
+    {
+      "bytes": 1245,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-225.json.gz",
+      "records": 9,
+      "sha256": "6f0c30b48552b946dd653ca9443934b2aa83c6e1633c922dfa2ff3c76f97f757"
+    },
+    {
+      "bytes": 1415,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-226.json.gz",
+      "records": 11,
+      "sha256": "4813615964bd9b03b522114328574e36885ec7c97e7b573ee4073f07dc0730a1"
+    },
+    {
+      "bytes": 8505,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-227.json.gz",
+      "records": 94,
+      "sha256": "0ba0c37e3f9ceb66f1858499fdcf3c9960ad6dc8e95826e08f3a7d8657b4c4c3"
+    },
+    {
+      "bytes": 42514,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-228.json.gz",
+      "records": 496,
+      "sha256": "f303a97f37a556730e1e99474cc23780ebcdb184cab5ff89a1ecf2ddac9fd3ed"
+    },
+    {
+      "bytes": 17843,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-229.json.gz",
+      "records": 204,
+      "sha256": "645986907843a5091e1feede1406de472de0cf29256afc13f6842ee8fa30057a"
+    },
+    {
+      "bytes": 708,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-230.json.gz",
+      "records": 3,
+      "sha256": "e8a126dab768f9c3aa4bf73efe1edce372b59f1641c9e117f2c5d52df7b0dd3f"
+    },
+    {
+      "bytes": 797,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-231.json.gz",
+      "records": 4,
+      "sha256": "e1a2798491705bae70535b86d69ce19a861d89ecd21bac72b4aa7e449589d021"
+    },
+    {
+      "bytes": 978,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-232.json.gz",
+      "records": 6,
+      "sha256": "6b376f0761fb6898a78407834592c46ba9d5245c425be17467c6bb3d869e5383"
+    },
+    {
+      "bytes": 7979,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-233.json.gz",
+      "records": 88,
+      "sha256": "841df3b09f959acf9ebe3ebfd31f041fbe8b23dab8624154ee23cfac014b7196"
+    },
+    {
+      "bytes": 30666,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-234.json.gz",
+      "records": 355,
+      "sha256": "6eedec888d8defdb11c0e3b9534d09cc745a191b44d41085991d727a2d018073"
+    },
+    {
+      "bytes": 11132,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-235.json.gz",
+      "records": 125,
+      "sha256": "b4e939e51a6a534648c94501502c18bf14e088f8fa8c754cc46f5026af2fe55b"
+    },
+    {
+      "bytes": 1064,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-236.json.gz",
+      "records": 7,
+      "sha256": "5d41acd8bb1132345f39fe500b367591c4df16d82908e8e7e07430967d05b25e"
+    },
+    {
+      "bytes": 1067,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-237.json.gz",
+      "records": 7,
+      "sha256": "144f651c861e7ddc115d287bd224a0e580f7c413ca348537911ead5b69923d3a"
+    },
+    {
+      "bytes": 1058,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-238.json.gz",
+      "records": 7,
+      "sha256": "c68f8f11b7a3392c3220974a24a526b4849a55aa404837712ae7fa1f6b9296ce"
+    },
+    {
+      "bytes": 12191,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-239.json.gz",
+      "records": 137,
+      "sha256": "c9acc142b830d23a4d14997a1286e62181669af35a78a29e4cefb9a4693d4701"
+    },
+    {
+      "bytes": 19483,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-240.json.gz",
+      "records": 223,
+      "sha256": "162a02ff52a696f555c07b776123e1a1a1aa5f31beb0b7133d6648a4f9acb394"
+    },
+    {
+      "bytes": 10804,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-241.json.gz",
+      "records": 121,
+      "sha256": "b1c37292b027188c422dc38438a35df5b35b6bf4343e46c7ec36545c7c959608"
+    },
+    {
+      "bytes": 1502,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-242.json.gz",
+      "records": 12,
+      "sha256": "cf40f099c6f222ec0e209063ed968effeddac9c46858447c27ecf4fd42621e5f"
+    },
+    {
+      "bytes": 1070,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-243.json.gz",
+      "records": 7,
+      "sha256": "21aaea7db82018c789b696251073e304fd54f6fe91175133311c69d678014dc1"
+    },
+    {
+      "bytes": 2028,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-244.json.gz",
+      "records": 18,
+      "sha256": "f2f8a0bf5fac048ff99b20fa2e2a6362179b72f76ca94ae39903c6645b5f2130"
+    },
+    {
+      "bytes": 9035,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-245.json.gz",
+      "records": 100,
+      "sha256": "a042df73d057378ac1e73ca2e96f8c9fb0ea6cde5942ad2d4ab6329e4370abef"
+    },
+    {
+      "bytes": 20794,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-246.json.gz",
+      "records": 239,
+      "sha256": "b09b8f3823ceae9d95bddd289e0ee49de075945edbbdbc7bb1d9ee6e260f390d"
+    },
+    {
+      "bytes": 10713,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-247.json.gz",
+      "records": 120,
+      "sha256": "8688f7c4a8673662159ed1eef857b58124c654de4bfbd0235ad31e60f99bdc34"
+    },
+    {
+      "bytes": 1422,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-248.json.gz",
+      "records": 11,
+      "sha256": "307b713feee91232b3dda17c7fc4e4c4b4395467426974779b8dc7b71800b47d"
+    },
+    {
+      "bytes": 981,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-249.json.gz",
+      "records": 6,
+      "sha256": "716b4b95ed2fb65df874ab3b1ca374e44b2ae72c51b732a4e4541f2609a15181"
+    },
+    {
+      "bytes": 10778,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-250.json.gz",
+      "records": 121,
+      "sha256": "3aafd27d6b5f291bcb741e76e8e95541d1a7216933729024af98b5a22084aca9"
+    },
+    {
+      "bytes": 21681,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-251.json.gz",
+      "records": 249,
+      "sha256": "313ddacf9e1198873656737676f2298dd6dda150355d731f4910af6356d994e5"
+    },
+    {
+      "bytes": 19875,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-252.json.gz",
+      "records": 228,
+      "sha256": "2bf0a1972dc9d314774523fa4c433b5ebd3f3c94b3bc293cf1b77f6a768e4513"
+    },
+    {
+      "bytes": 510,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-253.json.gz",
+      "records": 1,
+      "sha256": "23541844fe14fdd4836ec0c1bea170b35fc343a240ad15d7b9de731319ac43aa"
+    },
+    {
+      "bytes": 3315,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-254.json.gz",
+      "records": 33,
+      "sha256": "53a08982737af582ec5b341318580c6c80fd00cc92e0c251dcff96292dbf5fb2"
+    },
+    {
+      "bytes": 15018,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-255.json.gz",
+      "records": 170,
+      "sha256": "40e5e37ab93a7a838cd7423cf752d926eaa03a4c7a3aabde9d8844bae45841e6"
+    },
+    {
+      "bytes": 24691,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-256.json.gz",
+      "records": 285,
+      "sha256": "cd20e29d5bbd932692362fd7257e562855e46dbee5419cef50012bf1082cbb49"
+    },
+    {
+      "bytes": 3582,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-257.json.gz",
+      "records": 36,
+      "sha256": "98338fdb4ee55e4c5302ab7702347b3d93fb05c4a04372c63bb981beee1747ba"
+    },
+    {
+      "bytes": 613,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-258.json.gz",
+      "records": 2,
+      "sha256": "0e59318976c6ffe629ff0948629e50332846b0bd96379a9db0a6f7892348b442"
+    },
+    {
+      "bytes": 890,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-259.json.gz",
+      "records": 5,
+      "sha256": "ea40c02eb7ddcbec43fb4efcbd7bc13daff434d7df04b9872b4cee5f5b35bea6"
+    },
+    {
+      "bytes": 5290,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-260.json.gz",
+      "records": 56,
+      "sha256": "23c2a14229797c5abda1097d15fe47c3902f9836b79ca181c62c08b86d387cdb"
+    },
+    {
+      "bytes": 19493,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-261.json.gz",
+      "records": 223,
+      "sha256": "f4f1bc472c84a690eb2d749a789cd3965379be4b5fd07010ebe5f0f7ffbc7a2e"
+    },
+    {
+      "bytes": 21299,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-262.json.gz",
+      "records": 245,
+      "sha256": "48da4afe31dd47dd1e5162ed7827843d472ad1d00c475ab1e7f0deb893a53d92"
+    },
+    {
+      "bytes": 1070,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-263.json.gz",
+      "records": 7,
+      "sha256": "bf21543adbf3b93a1be98a9d6ee5f8cfe618812dc79a534dc3b8f58fd323010d"
+    },
+    {
+      "bytes": 613,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-264.json.gz",
+      "records": 2,
+      "sha256": "1b37d5e41f5335bd6ccb98e706d194a22508ad2ec123c0fab3a5c4f9fc2cfba3"
+    },
+    {
+      "bytes": 2968,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-265.json.gz",
+      "records": 29,
+      "sha256": "c93abc6984efba9a31b8e4306228372948c55269a4a82447384b746ccc6ed36c"
+    },
+    {
+      "bytes": 12158,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-266.json.gz",
+      "records": 137,
+      "sha256": "1971a31f018b9beb6b1dab829a33ddf1b8efcc57ba9cbd6784c9fd73717b77e3"
+    },
+    {
+      "bytes": 25820,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-267.json.gz",
+      "records": 298,
+      "sha256": "22a11b9fa1010b62d7e0d68211f5b8014431d3d7e2453ce77fce3618b9e26fa8"
+    },
+    {
+      "bytes": 10012,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-268.json.gz",
+      "records": 112,
+      "sha256": "b1e752f53a46d0fd7675a495fff96e528b862def9a155d4fd857e729f787dcbd"
+    },
+    {
+      "bytes": 886,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-269.json.gz",
+      "records": 5,
+      "sha256": "8415eee3c509c286eb777ba3c422a91c72c8542f273ac4aa900a25b90c3379df"
+    },
+    {
+      "bytes": 1160,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-270.json.gz",
+      "records": 8,
+      "sha256": "c2de3cf2a11c1ed4dfa3ce3b546d1b9a4781ae0e07fb73d5b64b6602e0d4b811"
+    },
+    {
+      "bytes": 5795,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-271.json.gz",
+      "records": 62,
+      "sha256": "329a5184f0e84f34f733bb03652b8b7de539cadd43f2a29c8bda0c88ba54f5e5"
+    },
+    {
+      "bytes": 27383,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-272.json.gz",
+      "records": 317,
+      "sha256": "bec0e9cd1133c6fa270dd0e3a16462cc967c5733e2e16ce460bd882e5a3e18b6"
+    },
+    {
+      "bytes": 20633,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-273.json.gz",
+      "records": 237,
+      "sha256": "ff0584d4c0181da957917d0800caed707b694b320a7375e42ab23ff8037e979a"
+    },
+    {
+      "bytes": 707,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-274.json.gz",
+      "records": 3,
+      "sha256": "20a944f1b27e037355a86cd5a72937005cd368a22fb92f3fb407a470ac767b36"
+    },
+    {
+      "bytes": 796,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-275.json.gz",
+      "records": 4,
+      "sha256": "31c066b7fdbd25cc6c4eec9404224b2a4247c88df02f1a2e410f8854dd7acea6"
+    },
+    {
+      "bytes": 887,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-276.json.gz",
+      "records": 5,
+      "sha256": "abeb5a17eda08413ec09eca7e8fde14b160647e0d3ee9ae8cf0e750b7f6a7327"
+    },
+    {
+      "bytes": 17627,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-277.json.gz",
+      "records": 201,
+      "sha256": "c69477128e6155145400c208bb9401401101c107e3cd8b7df27696971df3c345"
+    },
+    {
+      "bytes": 32035,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-278.json.gz",
+      "records": 372,
+      "sha256": "b14873bc0723c0a58f2d061bb0de3fb206484fdd6364410953cb3cf7259eb58a"
+    },
+    {
+      "bytes": 17677,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-279.json.gz",
+      "records": 202,
+      "sha256": "44d82902b26116f33d1f3615a777d4de8107b17904b2084a0cb1945b5dafd02a"
+    },
+    {
+      "bytes": 705,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-280.json.gz",
+      "records": 3,
+      "sha256": "7772c9ef6d0c1c3c147436fb76d66b555279f0560368825bc180f9d48e54f38b"
+    },
+    {
+      "bytes": 1064,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-281.json.gz",
+      "records": 7,
+      "sha256": "b18852fae7b0f4b746c906ca872e72c4c06f76677d86231197d4dcceeffeffb8"
+    },
+    {
+      "bytes": 707,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-282.json.gz",
+      "records": 3,
+      "sha256": "73c2a4d56b34b664de869a52851f1677268a0202adfd356e9deb48cc19877440"
+    },
+    {
+      "bytes": 19465,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-283.json.gz",
+      "records": 223,
+      "sha256": "148fed998993f719c5a641015004a66dbc6575e5493afdc26842ad8ba84a7d17"
+    },
+    {
+      "bytes": 33240,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-284.json.gz",
+      "records": 386,
+      "sha256": "9d9102488893747e10874788473622ad6b7559f597e1729f52f2cd5d80564cd0"
+    },
+    {
+      "bytes": 14976,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-285.json.gz",
+      "records": 170,
+      "sha256": "eb740e35a34a7dc844169252a449e23d353873a83348ee0fb9e7129d1b240afb"
+    },
+    {
+      "bytes": 709,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-286.json.gz",
+      "records": 3,
+      "sha256": "db218c577c7627b1de616ba81cbc79ebfa6b262d592cbf73c6ab21dd3bb4f4d2"
+    },
+    {
+      "bytes": 981,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-287.json.gz",
+      "records": 6,
+      "sha256": "1b724fde98aafbfcf199aefac4c2ee7c895b834292aaffa98c692fe9de66b54e"
+    },
+    {
+      "bytes": 2453,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-288.json.gz",
+      "records": 23,
+      "sha256": "61f974f158aaae613801e6e64cf45a480351508ee1f207d5f83438374a653c03"
+    },
+    {
+      "bytes": 27748,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-289.json.gz",
+      "records": 321,
+      "sha256": "d082b1e660db9d1d3edd91d7d87f6ab92d51c2facd04425553bd20bd60e69860"
+    },
+    {
+      "bytes": 30471,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-290.json.gz",
+      "records": 353,
+      "sha256": "0c10db3230bdcec276ac96c8d9472a08dd087443de2911349fdfcce3d64a99b0"
+    },
+    {
+      "bytes": 9452,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-291.json.gz",
+      "records": 105,
+      "sha256": "16181a58c24b4b36a3346b0570879528b1d8d6bc04110a30c5c13d2ac0dbc116"
+    },
+    {
+      "bytes": 612,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-292.json.gz",
+      "records": 2,
+      "sha256": "fab5f4aa42e613940f19c6f3008ad0bf381069cfd675206595d07c6f8c418387"
+    },
+    {
+      "bytes": 888,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-293.json.gz",
+      "records": 5,
+      "sha256": "321886f971ed78e63bdbcd878cc504d59ee32e582c4fac40c92c11b59807e865"
+    },
+    {
+      "bytes": 1159,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-294.json.gz",
+      "records": 8,
+      "sha256": "1943864d24c148311e9cdabf8611276de06f5862664b32e902aebf71eb82fcf5"
+    },
+    {
+      "bytes": 31405,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-295.json.gz",
+      "records": 364,
+      "sha256": "4b1137a714a8ec36f73034367e4ad99deabb68db2c6f6574c49c613b7649460d"
+    },
+    {
+      "bytes": 21744,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-296.json.gz",
+      "records": 250,
+      "sha256": "049af0b293e67ce8c28322ac36bc81ae435a2978d7f484cb7e827679ca5aa307"
+    },
+    {
+      "bytes": 29620,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-297.json.gz",
+      "records": 343,
+      "sha256": "7fab6d7c7d2c64b61187433437616130835b1847039fa651efbcc3710ccf13e8"
+    },
+    {
+      "bytes": 24034,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-298.json.gz",
+      "records": 277,
+      "sha256": "90576673c17b70c35f6ffdd985fedad4a2e1a4105b41b142969082380a0262f8"
+    },
+    {
+      "bytes": 30162,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-299.json.gz",
+      "records": 350,
+      "sha256": "fcfacbc439021edebb63f3d7bd57982ed3b1580b8f7452f2dacf7ced36d6fc95"
+    },
+    {
+      "bytes": 23602,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-300.json.gz",
+      "records": 272,
+      "sha256": "80d64b6fff8284f7689031d496478995452c96d95a83c4bb781fe4506a8bb5fc"
+    },
+    {
+      "bytes": 34091,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-301.json.gz",
+      "records": 396,
+      "sha256": "bb7f2c28922c7ee487387f6b87271c00c0a9d7371a8c84ee253d5bb97e15e351"
+    },
+    {
+      "bytes": 28713,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-302.json.gz",
+      "records": 333,
+      "sha256": "d2af4443fe583ac26e6c5a8cc672ac6a67ed289b0e5cc1c199d233f609d3ed98"
+    },
+    {
+      "bytes": 32808,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-303.json.gz",
+      "records": 381,
+      "sha256": "8ccba59885faf1e1066f51384b358b16f72143a587cf482326f45f8903f8c97f"
+    },
+    {
+      "bytes": 31754,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-304.json.gz",
+      "records": 368,
+      "sha256": "b1c32c405b6ddcf93ce132b9297e2da91778d14785e17f18a6d6fb7a272c1824"
+    },
+    {
+      "bytes": 28927,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-305.json.gz",
+      "records": 335,
+      "sha256": "509148f84cdc1483018c2f2936bdb57bc9917935575515a76aa3ad128da24920"
+    },
+    {
+      "bytes": 27764,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-306.json.gz",
+      "records": 321,
+      "sha256": "b589b228a86ea5b2e4124e06fc5238b4c5d50abfd7d4912ebbaaaf1ee8c6cba6"
+    },
+    {
+      "bytes": 34637,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-307.json.gz",
+      "records": 402,
+      "sha256": "260a8031f408774a883d7eee932d247430fd2682127a9a98db968bd1d18cea7b"
+    },
+    {
+      "bytes": 27314,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-308.json.gz",
+      "records": 316,
+      "sha256": "782a2ca9434a59c22b340e3c349a1a33174c901aa52191c6db904fa1aafd1ddc"
+    },
+    {
+      "bytes": 26620,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-309.json.gz",
+      "records": 308,
+      "sha256": "f1ffd51a67fc4ad9f797feb489cf64535d784c5a1fd54ebb581a2dc7a541e803"
+    },
+    {
+      "bytes": 27467,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-310.json.gz",
+      "records": 318,
+      "sha256": "8ae22a411d9f34b36024b71e9c62d432e894493c4ac20a97457c9f0d5516e70e"
+    },
+    {
+      "bytes": 27753,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-311.json.gz",
+      "records": 321,
+      "sha256": "4b5643bf7d80c6eb32ef04873c1af9ba1ad69d076f235c2323105cf0c410c615"
+    },
+    {
+      "bytes": 25704,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-312.json.gz",
+      "records": 297,
+      "sha256": "aaecde910ecf94ad23aedb2b0de59ec23c25b5c7c6f71af9573712763b84e58c"
+    },
+    {
+      "bytes": 23122,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-313.json.gz",
+      "records": 266,
+      "sha256": "82ae2fe3f3ba0286c369e490354291cf9c6039c77c46b6bb5c5a58fd0751391b"
+    },
+    {
+      "bytes": 28457,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-314.json.gz",
+      "records": 329,
+      "sha256": "bb13858e428a35209a3af08633190e329242c5db848b1a4d645ab2730451cf0d"
+    },
+    {
+      "bytes": 34817,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-315.json.gz",
+      "records": 405,
+      "sha256": "9bc83ff61e5d70dbe28685810d2bb180eec037915ed00ee1475068c7a2297aee"
+    },
+    {
+      "bytes": 27060,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-316.json.gz",
+      "records": 313,
+      "sha256": "5cf09a387ea2a48e1c35b4ee70b32a7c0bcc02c887bdb0f04ec00a4619dc3a10"
+    },
+    {
+      "bytes": 28667,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-317.json.gz",
+      "records": 332,
+      "sha256": "e15e928aa2e5876fc0dfb76722290b84d6c98d1d328c27a4f13259a1d72bdc8b"
+    },
+    {
+      "bytes": 29050,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-318.json.gz",
+      "records": 336,
+      "sha256": "0cfd855830c6b998438551eb10700d4ebbe3c6091800a768b459854254a23e6a"
+    },
+    {
+      "bytes": 23865,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-319.json.gz",
+      "records": 275,
+      "sha256": "692aa5e14b49b754c5951907b649754d812634bbd73f6f5a01f443f6f8343485"
+    },
+    {
+      "bytes": 31006,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-320.json.gz",
+      "records": 359,
+      "sha256": "7bb787ec67409cd78061e3a821fb3eacc0f1fe6585cd62b19cd16d0e7ab7cfa0"
+    },
+    {
+      "bytes": 32355,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-321.json.gz",
+      "records": 375,
+      "sha256": "16c9df533d61e9534605b7f43f0fbe5525187e33b21feeb9bc204d633ffec7c5"
+    },
+    {
+      "bytes": 22522,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-322.json.gz",
+      "records": 259,
+      "sha256": "fecd6ecd248f066857f5808d3bc373f86959b8c062ede59a429ef2b0c94e2bb7"
+    },
+    {
+      "bytes": 25875,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-323.json.gz",
+      "records": 299,
+      "sha256": "eddf517a82a74d5268be245449c3bf867096d553018226785fe410fb61b99c46"
+    },
+    {
+      "bytes": 23123,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-324.json.gz",
+      "records": 266,
+      "sha256": "c9b876c0fedcc4048dd277aa1565a4ba575bbcba6c388a843702683c9aec5934"
+    },
+    {
+      "bytes": 17514,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-325.json.gz",
+      "records": 200,
+      "sha256": "5d7b9f688345defa0fcb581ee9fc84c315890ad29e78debf759bd64ad967ca99"
+    },
+    {
+      "bytes": 14109,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-326.json.gz",
+      "records": 160,
+      "sha256": "fb3be29132d763324b88082875e6a7c901e2be9cb6faeb2c38de79c91ca5546b"
+    },
+    {
+      "bytes": 8617,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-327.json.gz",
+      "records": 95,
+      "sha256": "8680ceb79a50a2b628ed38e70cd910e3eb7e701c9170c229b42e9be00e94517c"
+    },
+    {
+      "bytes": 9691,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-328.json.gz",
+      "records": 108,
+      "sha256": "ce18afdb8ddc5696d37d015b9b43446349a558d9f93358e5b867bcd1068943c2"
+    },
+    {
+      "bytes": 7925,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-329.json.gz",
+      "records": 87,
+      "sha256": "926dffc853ee17f48e25bdd6fbcb043e962a07d65f7e40646748a09a2575e6c3"
+    },
+    {
+      "bytes": 5867,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-330.json.gz",
+      "records": 63,
+      "sha256": "25e1f6156763e5f56f8e972c2d66c7020a30577f4cdcb012f634ec66a1cf555e"
+    },
+    {
+      "bytes": 6135,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-331.json.gz",
+      "records": 66,
+      "sha256": "d4cfda031eabc86bc105356e0d50b7cf4c6b258799b07f850487c2836f32cc99"
+    },
+    {
+      "bytes": 7588,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-332.json.gz",
+      "records": 83,
+      "sha256": "16ff82927d25a15a64e62065d20d4ac2394c7f63d0d03e87d15cc1a8a224b206"
+    },
+    {
+      "bytes": 6978,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-333.json.gz",
+      "records": 76,
+      "sha256": "fcfca5ea7001da4f08024098a6ffc230a0c1ab737d441f1c7945cc38439b745d"
+    },
+    {
+      "bytes": 3316,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-334.json.gz",
+      "records": 33,
+      "sha256": "88aeedf11657a4a9363f37da861dbcd9c3c9a4618a68cbfe5fee33297d7a475f"
+    },
+    {
+      "bytes": 4170,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-335.json.gz",
+      "records": 43,
+      "sha256": "17a091f3fd7bc14a632c15519f0223b9bfde6a47eed80c5977ebde4db751c2b8"
+    },
+    {
+      "bytes": 1504,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-336.json.gz",
+      "records": 12,
+      "sha256": "d75216fcf9233666c2bf3946a3fab2b6c9aad53775c988aef78a3c7d2c1d32a6"
+    },
+    {
+      "bytes": 2374,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-337.json.gz",
+      "records": 22,
+      "sha256": "d7cb56cec7299ce0c36375784d8f5a24f9a97a7b62358851591092515d99d8b5"
+    },
+    {
+      "bytes": 2286,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-338.json.gz",
+      "records": 21,
+      "sha256": "445e66ded836ada4124b587c8162c65ec541a656d052e15bb91dcd0c0ffb21e0"
+    },
+    {
+      "bytes": 2028,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-339.json.gz",
+      "records": 18,
+      "sha256": "501da47b205a201e8ee5a2c80b99932254f726ac36519986de278583fa391d21"
+    },
+    {
+      "bytes": 2712,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-340.json.gz",
+      "records": 26,
+      "sha256": "24f066887805efeacd828f6620fc185fbd1ab8f3fc990d49dd0c9386d487d436"
+    },
+    {
+      "bytes": 1324,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-341.json.gz",
+      "records": 10,
+      "sha256": "16d0bd08d3467958b8f3f1886a64437d29fdf588747bfecf131dd745fd0d6776"
+    },
+    {
+      "bytes": 1511,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-342.json.gz",
+      "records": 12,
+      "sha256": "35eee0ff7c5fdbd636ae79fb201cb8d019a81c09dcf4e124ff3b49bbfe2dd1b0"
+    },
+    {
+      "bytes": 2624,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-343.json.gz",
+      "records": 25,
+      "sha256": "4843cafb8f82182f2991210ca0f41df62040c6c02f672ea3394221e36ad87dab"
+    },
+    {
+      "bytes": 1842,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-344.json.gz",
+      "records": 16,
+      "sha256": "fabbd66fc59f8137c37a6be05e1a3801d7ec71f3b2427d4988e9216afcabff87"
+    },
+    {
+      "bytes": 1673,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-345.json.gz",
+      "records": 14,
+      "sha256": "d5fb3fbd5617759a0d20198b3a2ff770f60c54ed06a7b192106b3f25b8d5490b"
+    },
+    {
+      "bytes": 1675,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-346.json.gz",
+      "records": 14,
+      "sha256": "c9c6c9089fef94c257253894a4b1f1d5032953cfbd8cbcdadc5c740a3b73a1b6"
+    },
+    {
+      "bytes": 2716,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-347.json.gz",
+      "records": 26,
+      "sha256": "1145149014394b49dbecb9f09f9054c4fe1421056152b2fb022f1c58a9958f28"
+    },
+    {
+      "bytes": 2110,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-348.json.gz",
+      "records": 19,
+      "sha256": "c3313e609dd1520de12822baee3f21cfc7e58a9df9443547b592b099223a2c8e"
+    },
+    {
+      "bytes": 1248,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-349.json.gz",
+      "records": 9,
+      "sha256": "dfaf744a6cb888bfb26c9c7b322c938e80399e9a88aec37845e6e831f6078276"
+    },
+    {
+      "bytes": 977,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-350.json.gz",
+      "records": 6,
+      "sha256": "c799b9040c63b4212056612d5012922fbdeebabd31e67149bf1df935a6ad0c11"
+    },
+    {
+      "bytes": 797,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-351.json.gz",
+      "records": 4,
+      "sha256": "2eeff3f6e47d7395f5f32f4c7c02b54262ff03a4c964cb496717fa180fe9b42c"
+    },
+    {
+      "bytes": 795,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-352.json.gz",
+      "records": 4,
+      "sha256": "04f6cbfb37760d90625e023cd8afbd34723370a57b8991df0ddee3ac9a98fcdd"
+    },
+    {
+      "bytes": 1329,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-353.json.gz",
+      "records": 10,
+      "sha256": "8671e15a7384f304f814a1c79356700c4719ccb5ad5ad3f6e6d2db35bdddd128"
+    },
+    {
+      "bytes": 1848,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-354.json.gz",
+      "records": 16,
+      "sha256": "d3c382435c6071e42c1dbbd4b957f73466bb07855e9ecad450577046cb30c1fd"
+    },
+    {
+      "bytes": 706,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-355.json.gz",
+      "records": 3,
+      "sha256": "e9ffc8e95264fd4f16e3f47a57af04e362787662a9b4f24512ce99a06bfd5123"
+    },
+    {
+      "bytes": 1155,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-356.json.gz",
+      "records": 8,
+      "sha256": "f0b8d38ebb50fbbaa09f173d5e8eda581693f3ed9fdace665a7e7d0fd09d394f"
+    },
+    {
+      "bytes": 2112,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-357.json.gz",
+      "records": 19,
+      "sha256": "8bfbbb67738a90268dd839cce760e6899c6fe7154919d2a83e62558e5b17b54d"
+    },
+    {
+      "bytes": 1158,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-358.json.gz",
+      "records": 8,
+      "sha256": "c1513e81829570685d78ebf412e3cacdd19efc5227289914c612e370389d7ca0"
+    },
+    {
+      "bytes": 2189,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-359.json.gz",
+      "records": 20,
+      "sha256": "85e7ec27d13410a46f774092a021a74b1347e009a2d8bcb85a9ec7a7b6bb69aa"
+    },
+    {
+      "bytes": 1322,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-360.json.gz",
+      "records": 10,
+      "sha256": "701795b4501d13852d2eda87bb2b643c9a6fcf41bb354f170c7699b64e00d7c4"
+    },
+    {
+      "bytes": 1326,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-361.json.gz",
+      "records": 10,
+      "sha256": "365e5da3bd67821f7fe572686f2a44a64e9eb5399fe095aa59fe729b0b8f02c6"
+    },
+    {
+      "bytes": 1333,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-362.json.gz",
+      "records": 10,
+      "sha256": "8844609e4bef10053e447f41620160d6b2b8f3c89e39c2f38cce844a9b04cc58"
+    },
+    {
+      "bytes": 2021,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-363.json.gz",
+      "records": 18,
+      "sha256": "eb0dcb950304b204a135d794b8fe40a25ca81a2251f1e9f282e2d66f715940de"
+    },
+    {
+      "bytes": 975,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-364.json.gz",
+      "records": 6,
+      "sha256": "9d057759dcaaffa28ccfc5fee90dcb5b41c76b357b9b21ef833bb69bd17a23ff"
+    },
+    {
+      "bytes": 799,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdicts/verdicts-365.json.gz",
+      "records": 4,
+      "sha256": "80a36d92aa2a1662fd7ac7d8ac957257dc7a50a52e777dccc14c1e6f7529dd3c"
+    }
+  ],
+  "counts": {
+    "accepted": 56479,
+    "rejected": 0,
+    "review_verdicts": 56479
+  },
+  "generated_at": "2026-07-26T12:30:00Z",
+  "review_materials_sha256": "a28f1c2d0edf1e5859ed3a57ff2b55b77f36734b5c27bf5e57a650d05b1d090e",
+  "schema": "okf-enrichment-review-verdict-manifest.v3"
+}

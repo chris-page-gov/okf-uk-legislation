@@ -31,15 +31,19 @@
         "source": "https://www.legislation.gov.uk/"
       },
       "counts": {
-        "model_assisted_relationships_v2": 22299,
+        "historical_model_assisted_relationships_v2": 22299,
+        "model_assisted_concept_relationships_v3": 31874,
+        "model_assisted_entity_relationships_v3": 1136,
+        "model_assisted_relationships_v3": 56479,
+        "model_assisted_topic_relationships_v3": 23469,
         "official_effect_relationships": 14712,
-        "relationships": 872574,
+        "relationships": 906754,
         "works": 365786
       },
       "coverage": {
         "applicable": 365786,
         "as_of": "2026-07-25",
-        "assertions": 872574,
+        "assertions": 906754,
         "notes": [
           "The work index is complete against its recorded official enumeration.",
           "Full text, effects and source-family coverage remain explicitly partial."
@@ -98,15 +102,19 @@
         "source": "https://www.legislation.gov.uk/"
       },
       "counts": {
-        "model_assisted_relationships_v2": 22299,
+        "historical_model_assisted_relationships_v2": 22299,
+        "model_assisted_concept_relationships_v3": 31874,
+        "model_assisted_entity_relationships_v3": 1136,
+        "model_assisted_relationships_v3": 56479,
+        "model_assisted_topic_relationships_v3": 23469,
         "official_effect_relationships": 14712,
-        "relationships": 872574,
+        "relationships": 906754,
         "works": 365786
       },
       "coverage": {
         "applicable": 365786,
         "as_of": "2026-07-25",
-        "assertions": 872574,
+        "assertions": 906754,
         "notes": [
           "The work index is complete against its recorded official enumeration.",
           "Full text, effects and source-family coverage remain explicitly partial."
@@ -213,7 +221,12 @@
     "evaluation_executions": "evaluation/executions/index.json",
     "integrity": "integrity.json",
     "markdown_index": "index.md",
-    "model_enrichment": "../data/enrichment/manifest.json",
+    "model_enrichment_v2_historical": "../enrichment/codex-assisted-v2.json",
+    "model_enrichment_v3": "../data/enrichment-v3/manifest.json",
+    "model_enrichment_v3_accepted_manifest": "../enrichment/codex-assisted-v3/accepted-manifest.json",
+    "model_enrichment_v3_coverage": "../enrichment/codex-assisted-v3/coverage.json",
+    "model_enrichment_v3_independent_audit": "assurance/enrichment-v3-independent-audit-20260726.json",
+    "model_enrichment_v3_reviewer": "assurance/enrichment-v3-reviewer-task-receipt.json",
     "official_effects": "../data/effects/manifest.json",
     "ontology": "ontology/index.md",
     "relationship_summary": "data/relationship-summary.json",
@@ -241,7 +254,7 @@
   "license": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
   "notices": [
     "Only the UK Legislation child bundle is currently loadable; the 36 legal-source classes are governed federation metadata, not fabricated child bundles.",
-    "Official effects cover the declared seed snapshot; model-assisted topics are non-official discovery metadata.",
+    "Official effects cover the declared seed snapshot; independently accepted v3 topics, concepts and entity links are non-official discovery metadata.",
     "GitHub Pages serves YAML-LD as application/octet-stream; JSON-LD is the strict transport fallback."
   ],
   "okf_version": "0.2",
@@ -250,18 +263,18 @@
   "relationship_summary": {
     "by_authority": {
       "derived": 469777,
-      "model-assisted": 22299,
+      "model-assisted": 56479,
       "official": 380498
     },
     "by_datapack": {
-      "codex-assisted-v2": {
+      "codex-assisted-v3": {
         "assertion_contract": "okf-relationship-assertion.v2",
-        "count": 22299,
+        "count": 56479,
         "freshness": "current",
-        "notes": "Audited derived discovery assertions inherit the currency window of their bound legislation-title snapshot.",
-        "observed_at": "2026-07-25T22:20:00Z",
-        "refresh_window": "input-snapshot-P31D",
-        "stale_after": "2026-08-11T18:00:00Z"
+        "notes": "Only independently accepted topic, concept and entity-link assertions are active. Candidate and historical v2 rows are excluded.",
+        "observed_at": "2026-07-26T12:30:00Z",
+        "refresh_window": "governed-v3-assertion-window",
+        "stale_after": "2026-10-26T00:00:00Z"
       },
       "core": {
         "assertion_contract": "okf-core-relationship-row.v1",
@@ -283,13 +296,15 @@
       }
     },
     "by_freshness": {
-      "current": 872574,
+      "current": 906754,
       "stale": 0,
       "unknown": 0
     },
     "by_predicate": {
-      "classified as": 492076,
+      "classified as": 493246,
+      "has discovery concept": 31874,
       "has document type": 365786,
+      "mentions entity": 1136,
       "official effect: act renamed": 1,
       "official effect: added": 65,
       "official effect: added (1.1.1996) (saving)": 4,
@@ -1227,7 +1242,7 @@
     },
     "scope": "federated-data-plane",
     "snapshot": "whole-law-2026-07-25",
-    "total": 872574
+    "total": 906754
   },
   "schema": "okf-explorer-federation.v1",
   "semantic_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.yamlld",

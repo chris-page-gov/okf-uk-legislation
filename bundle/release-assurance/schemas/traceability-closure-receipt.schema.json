@@ -30,10 +30,10 @@
       "$ref": "#/$defs/candidate"
     },
     "requirements_total": {
-      "const": 62
+      "const": 63
     },
     "requirements_closed": {
-      "const": 62
+      "const": 63
     },
     "unresolved_must_haves": {
       "const": 0
@@ -43,8 +43,8 @@
     },
     "closures": {
       "type": "array",
-      "minItems": 62,
-      "maxItems": 62,
+      "minItems": 63,
+      "maxItems": 63,
       "items": {
         "$ref": "#/$defs/closure"
       }

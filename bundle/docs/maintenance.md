@@ -57,8 +57,9 @@ performs network access. See the
 | work catalogue and facets | official Atom feeds and legislation builders | `bundle/` |
 | provision normalization | Explorer CLML loader | live browser CLML tree |
 | official effect snapshot | immutable request/response envelopes and effects config | `bundle/data/effects/` |
-| historical model-assisted discovery | governed rules, calibration and independent audits | `bundle/data/enrichment/` and `bundle/enrichment/codex-assisted-v2.json` |
-| governed paid model-assisted discovery | `enrichment/model-assisted-paid-v2/` observed evidence | optional `bundle/enrichment/model-assisted-paid-v2.json` |
+| governed Codex-assisted discovery | hash-bound prompts, rules, per-work outcomes and independent review | `bundle/enrichment/codex-assisted-v3/` and the active `bundle/data/enrichment-v3/` projection |
+| historical Codex v2 discovery | preserved rules, calibration and independent audit | `bundle/enrichment/codex-assisted-v2.json` |
+| optional direct API discovery profile | `enrichment/model-assisted-paid-v2/` observed evidence | optional `bundle/enrichment/model-assisted-paid-v2.json`; not a release prerequisite |
 | Whole-Law contracts and ontology | `whole-law/` | `bundle/whole-law/` |
 | answer benchmarks | evaluation builders | root and Whole-Law evaluation routes |
 | documentation | `docs/`, `whole-law/` and preserved compatibility docs | Pages documentation routes |
@@ -69,7 +70,8 @@ performs network access. See the
 python3 scripts/build_legislation_okf.py --from-existing
 python3 scripts/build_model_enrichment_input_evidence.py
 python3 scripts/build_codex_semantic_enrichment.py
-python3 scripts/build_model_enrichment_paid_publication.py
+python3 scripts/build_codex_semantic_enrichment_v3.py
+python3 scripts/audit_codex_semantic_enrichment_v3.py
 python3 scripts/build_legislation_effects.py --offline
 python3 scripts/rebuild_legislation_discovery.py
 python3 scripts/build_legislation_evaluation.py
@@ -98,9 +100,10 @@ itself. Omitting either pass is not an equivalent release build.
 
 The model-enrichment input-evidence build is ordered immediately after the base
 corpus. It fixes the complete work order and credential-free eligibility
-projection before either historical enrichment or a dedicated paid-run
-publication is considered. Its 365,786 preflight rows are not terminal paid
-outcomes.
+projection before the governed Codex v3 build. The v3 terminal ledger then
+records exactly one outcome for each of all 365,786 works. The historical v2
+and optional direct API publication checks remain preservation/contract checks;
+neither an API key nor a direct API call is required by the current release.
 
 Network refreshes are separate and create immutable acquisition attempts. They
 must not overwrite the evidence used by an existing release candidate.
@@ -122,7 +125,8 @@ python3 -m unittest discover -s tests -v
 python3 scripts/check_legislation_okf.py
 python3 scripts/build_model_enrichment_input_evidence.py --check
 python3 scripts/build_codex_semantic_enrichment.py --check
-python3 scripts/build_model_enrichment_paid_publication.py --check
+python3 scripts/build_codex_semantic_enrichment_v3.py check
+python3 scripts/audit_codex_semantic_enrichment_v3.py check
 python3 scripts/build_legislation_effects.py --check
 python3 scripts/rebuild_legislation_discovery.py --check
 python3 scripts/build_whole_law_evaluation.py --check
@@ -136,6 +140,11 @@ python3 scripts/build_release_assurance.py --check
 python3 scripts/check_internal_links.py
 python3 scripts/build_checksums.py --check
 ```
+
+The direct-API/paid-model profile remains preserved historical evidence. It is
+excluded from the active build and validation sequences, requires a new
+explicit decision, and must not request an API key or block this Codex-only
+release.
 
 Validation includes OKF 0.2 Markdown, YAML-LD/JSON-LD RDF equivalence, complete
 descriptor-graph SHACL, exhaustive JSON Schema checks over all core/provider

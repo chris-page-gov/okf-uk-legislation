@@ -64,7 +64,7 @@ SCHEMAS = {
 }
 PROVIDER_MANIFESTS = {
     "legislation-effects": BUNDLE / "data" / "effects" / "manifest.json",
-    "codex-assisted-v2": BUNDLE / "data" / "enrichment" / "manifest.json",
+    "codex-assisted-v3": BUNDLE / "data" / "enrichment-v3" / "manifest.json",
 }
 
 OKFLAW = rdflib.Namespace(
@@ -434,11 +434,28 @@ def validate_provider_rows(
                 f"{datapack_id}: declared {expected_rows} assertions but "
                 f"validated {rows_validated}"
             )
-        manifest_directory = manifest_path.parent
-        actual_chunk_paths = {
-            path.relative_to(BUNDLE).as_posix()
-            for path in manifest_directory.glob("*.json.gz")
+        actual_chunk_paths: set[str] = set()
+        chunk_directories = {
+            PurePosixPath(relative).parent
+            for relative in declared_paths
+            if relative
         }
+        for chunk_directory in sorted(chunk_directories, key=str):
+            directory = safe_bundle_path(
+                chunk_directory.as_posix(),
+                errors,
+            )
+            if directory is None or not directory.is_dir():
+                errors.append(
+                    f"{datapack_id}: declared chunk directory is missing: "
+                    f"{chunk_directory}"
+                )
+                continue
+            actual_chunk_paths.update(
+                path.relative_to(BUNDLE).as_posix()
+                for path in directory.glob("*.json.gz")
+                if path.is_file()
+            )
         if declared_paths != actual_chunk_paths:
             errors.append(
                 f"{datapack_id}: declared and present provider chunk sets differ"

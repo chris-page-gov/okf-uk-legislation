@@ -18,6 +18,257 @@ import check_legislation_okf as checker  # noqa: E402
 class LegislationOkfTests(unittest.TestCase):
     fixture = ROOT / "tests" / "fixtures" / "legislation_okf" / "sample.feed.xml"
 
+    def governed_v3_fixture(self, root: Path) -> tuple[Path, Path]:
+        accepted_directory = (
+            root
+            / "bundle"
+            / "enrichment"
+            / "codex-assisted-v3"
+            / "accepted-assertions"
+        )
+        accepted_directory.mkdir(parents=True)
+        reviewer_path = (
+            root
+            / "enrichment"
+            / "codex-assisted-v3"
+            / "reviewer-task-receipt.json"
+        )
+        reviewer_path.parent.mkdir(parents=True)
+        reviewer = {
+            "status": "accepted",
+            "verdict": "accepted",
+            "source_edits_made_by_reviewer": False,
+            "review_task_id": "review-task-fixture",
+        }
+        reviewer_path.write_text(json.dumps(reviewer), encoding="utf-8")
+        audit_relative = (
+            "whole-law/assurance/"
+            "enrichment-v3-independent-audit-20260726.json"
+        )
+        dimensions = [
+            ("topic", "classified as"),
+            ("concept", "has discovery concept"),
+            ("concept", "has discovery concept"),
+            ("entity", "mentions entity"),
+        ]
+        profiles = [
+            ("title-only", ("title",)),
+            ("notes-only", ("notes",)),
+            ("multi-field", ("title", "notes")),
+            ("title-only", ("title",)),
+        ]
+
+        def evidence_item(
+            *,
+            source: str,
+            field: str,
+            rule_id: str,
+            index: int,
+        ) -> dict[str, str]:
+            if field == "title":
+                source_value = f"Fixture Title Match {index} Act"
+                value = "Title Match"
+                provenance = "official-source-record-work-title"
+            else:
+                source_value = (
+                    f"Substantive Fixture Notes Match {index} provision"
+                )
+                value = "Notes Match"
+                provenance = (
+                    "official-source-record-explanatory-note-or-"
+                    "long-title-equivalent"
+                )
+            canonical = json.dumps(
+                source_value,
+                ensure_ascii=False,
+                separators=(",", ":"),
+                sort_keys=True,
+            ).encode("utf-8")
+            return {
+                "url": source,
+                "type": f"literal-{field}-match",
+                "source_field": field,
+                "field_provenance": provenance,
+                "source_value": source_value,
+                "source_value_sha256": hashlib.sha256(
+                    canonical
+                ).hexdigest(),
+                "source_value_hash_canonicalization": "canonical-json-utf8",
+                "normalization": "Unicode-NFC-and-whitespace-collapse",
+                "value": value,
+                "literal_sha256": hashlib.sha256(
+                    value.encode("utf-8")
+                ).hexdigest(),
+                "rule_id": rule_id,
+                "rationale": "Fixture literal evidence.",
+            }
+
+        rows = []
+        for index, ((dimension, predicate), (profile, fields)) in enumerate(
+            zip(dimensions, profiles, strict=True)
+        ):
+            source = f"https://www.legislation.gov.uk/fixture/{index}"
+            rule_id = f"fixture-rule-{index}"
+            rows.append({
+                "schema": "okf-relationship-assertion.v2",
+                "id": (
+                    "urn:okf:enrichment:sha256:"
+                    f"{hashlib.sha256(f'candidate-{index}'.encode()).hexdigest()}"
+                ),
+                "acceptance_id": (
+                    "urn:okf:model-acceptance:"
+                    f"{hashlib.sha256(f'acceptance-{index}'.encode()).hexdigest()}"
+                ),
+                "source": source,
+                "target": f"urn:okf:fixture-target:{index}",
+                "dimension": dimension,
+                "predicate": predicate,
+                "rule_id": rule_id,
+                "rule_label": "Fixture rule",
+                "derivation": (
+                    "codex-authored-deterministic-literal-rule-v3"
+                ),
+                "confidence": 0.95,
+                "evidence": [
+                    evidence_item(
+                        source=source,
+                        field=field,
+                        rule_id=rule_id,
+                        index=index,
+                    )
+                    for field in fields
+                ],
+                "support_profile": profile,
+                "generated_at": "2026-07-26T12:00:00Z",
+                "observed_at": "2026-07-26T12:00:00Z",
+                "stale_after": "2026-10-26T00:00:00Z",
+                "freshness": "current",
+                "review_status": "accepted-independent-review",
+                "official_legal_classification": False,
+                "authority": {"class": "model-assisted"},
+                "rights": {
+                    "source": legislation.OGL,
+                    "assertion": "derived discovery metadata",
+                },
+                "review": {
+                    "audit_id": "v3-audit-fixture",
+                    "audit_path": audit_relative,
+                    "verdict_id": f"fixture-verdict-{index}",
+                    "review_task_id": "review-task-fixture",
+                },
+                "verified": [
+                    {"by": "process:fixture-reconstruction"},
+                    {"by": "process:fixture-semantic-review"},
+                ],
+            })
+        chunk_path = accepted_directory / "assertions-000.json.gz"
+        chunk_body = gzip.compress(
+            json.dumps(rows).encode("utf-8"),
+            mtime=0,
+        )
+        chunk_path.write_bytes(chunk_body)
+        accepted_path = (
+            root
+            / "bundle"
+            / "enrichment"
+            / "codex-assisted-v3"
+            / "accepted-manifest.json"
+        )
+        accepted = {
+            "schema": "okf-enrichment-accepted-assertion-manifest.v3",
+            "id": "fixture-v3-accepted",
+            "audit_id": "v3-audit-fixture",
+            "generated_at": "2026-07-26T12:00:00Z",
+            "snapshot_id": "fixture-2026-07-26T12:00:00Z",
+            "review_materials_sha256": "a" * 64,
+            "counts": {
+                "assertions": len(rows),
+                "by_kind": {"topic": 1, "concept": 2, "entity": 1},
+                "by_support": {
+                    "title-only": 2,
+                    "notes-only": 1,
+                    "metadata-only": 0,
+                    "multi-field": 1,
+                },
+            },
+            "authority": "derived-model-assisted-discovery-metadata",
+            "official_legal_classification": False,
+            "chunks": [
+                {
+                    "path": (
+                        "bundle/enrichment/codex-assisted-v3/"
+                        "accepted-assertions/assertions-000.json.gz"
+                    ),
+                    "sha256": hashlib.sha256(chunk_body).hexdigest(),
+                    "bytes": len(chunk_body),
+                    "records": len(rows),
+                    "media_type": "application/json",
+                    "compression": "gzip",
+                }
+            ],
+        }
+        accepted_path.write_text(json.dumps(accepted), encoding="utf-8")
+        run_path = accepted_path.with_name("run.json")
+        coverage_path = accepted_path.with_name("coverage.json")
+        run_path.write_text(
+            json.dumps({"schema": "okf-model-enrichment-run.v3"}),
+            encoding="utf-8",
+        )
+        coverage_path.write_text(
+            json.dumps({"schema": "okf-model-enrichment-coverage.v3"}),
+            encoding="utf-8",
+        )
+        for relative in (
+            legislation.MODEL_ENRICHMENT_V3_AUDIT_MATERIAL_PATHS.values()
+        ):
+            path = root / relative
+            if path.exists():
+                continue
+            path.parent.mkdir(parents=True, exist_ok=True)
+            if path.suffix == ".json":
+                path.write_text("{}\n", encoding="utf-8")
+            else:
+                path.write_text("fixture governed material\n", encoding="utf-8")
+
+        def binding(path: Path) -> dict[str, object]:
+            body = path.read_bytes()
+            return {
+                "path": path.relative_to(root).as_posix(),
+                "bytes": len(body),
+                "sha256": hashlib.sha256(body).hexdigest(),
+            }
+
+        audit_path = root / audit_relative
+        audit_path.parent.mkdir(parents=True)
+        audit = {
+            "schema": "okf-enrichment-independent-audit.v3",
+            "audit_id": "v3-audit-fixture",
+            "artifact_state": "hash-bound-accepted",
+            "materials": {
+                name: binding(root / relative)
+                for name, relative in (
+                    legislation
+                    .MODEL_ENRICHMENT_V3_AUDIT_MATERIAL_PATHS
+                    .items()
+                )
+            },
+            "counts": {
+                "accepted_assertions": len(rows),
+                "accepted_by_kind": accepted["counts"]["by_kind"],
+                "accepted_by_support": accepted["counts"]["by_support"],
+            },
+            "checks": [{"id": "fixture", "status": "passed"}],
+            "decision": {
+                "release_gate_passed": True,
+                "independent_review_status": "accepted",
+                "accepted_assertions": len(rows),
+                "accepted_by_kind": accepted["counts"]["by_kind"],
+                "errors": [],
+            },
+        }
+        audit_path.write_text(json.dumps(audit), encoding="utf-8")
+        return reviewer_path, accepted_path
+
     def test_from_existing_preserves_timestamp_and_every_base_byte(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             output = Path(temp) / "bundle"
@@ -60,6 +311,42 @@ class LegislationOkfTests(unittest.TestCase):
                 (output / "okf-explorer.json").read_text(encoding="utf-8")
             )
             self.assertEqual(generated_at, descriptor["generated_at"])
+
+    def test_from_existing_preserves_files_owned_by_other_builders(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            output = Path(temp) / "bundle"
+            self.assertEqual(
+                0,
+                legislation.main(
+                    [
+                        "--fixture",
+                        str(self.fixture),
+                        "--output",
+                        str(output),
+                        "--generated-at",
+                        "2026-07-10T00:00:00Z",
+                    ]
+                ),
+            )
+            provider = output / "whole-law" / "provider-owned.json"
+            provider.parent.mkdir(parents=True)
+            provider.write_text("provider-owned\n", encoding="utf-8")
+
+            self.assertEqual(
+                0,
+                legislation.main(
+                    [
+                        "--from-existing",
+                        "--output",
+                        str(output),
+                    ]
+                ),
+            )
+
+            self.assertEqual(
+                "provider-owned\n",
+                provider.read_text(encoding="utf-8"),
+            )
 
     def test_fixture_maps_to_eli_and_schema_org(self) -> None:
         rows, _ = legislation.load_fixture(self.fixture)
@@ -236,6 +523,13 @@ class LegislationOkfTests(unittest.TestCase):
         self.assertEqual([0, 1], payload[alias])
 
     def test_relationship_composition_reconciles_every_dimension(self) -> None:
+        self.assertEqual(
+            (
+                ("effects", "legislation-effects"),
+                ("enrichment-v3", "codex-assisted-v3"),
+            ),
+            checker.ACTIVE_RELATIONSHIP_PROVIDER_MANIFESTS,
+        )
         rows, meta = legislation.load_fixture(self.fixture)
         corpus = legislation.build_corpus(rows, meta, "2026-07-10T00:00:00Z")
         composition = corpus["relationship_composition"]
@@ -255,6 +549,183 @@ class LegislationOkfTests(unittest.TestCase):
             composition["total"],
             sum(row["count"] for row in composition["breakdown"]),
         )
+
+    def test_v3_graph_input_is_only_hash_bound_accepted_assertions(self) -> None:
+        with tempfile.TemporaryDirectory(dir=ROOT) as temp:
+            root = Path(temp)
+            self.governed_v3_fixture(root)
+            governed = legislation.load_governed_model_enrichment_v3(root)
+            self.assertEqual(4, governed["counts"]["assertions"])
+            self.assertEqual(
+                {"topic": 1, "concept": 2, "entity": 1},
+                governed["counts"]["by_kind"],
+            )
+            self.assertEqual(
+                {
+                    "title-only": 2,
+                    "notes-only": 1,
+                    "metadata-only": 0,
+                    "multi-field": 1,
+                },
+                governed["counts"]["by_support"],
+            )
+            self.assertEqual(
+                ["title", "notes"],
+                [
+                    item["source_field"]
+                    for item in governed["rows"][2]["evidence"]
+                ],
+            )
+            self.assertEqual(
+                "multi-field",
+                governed["rows"][2]["support_profile"],
+            )
+            projection = legislation.model_enrichment_v3_explorer_manifest(
+                governed
+            )
+            self.assertEqual("okf-provider-datapack.v1", projection["schema"])
+            self.assertEqual(
+                "legislation-work-catalogue",
+                projection["source_id"],
+            )
+            self.assertEqual(
+                {
+                    "kind": (
+                        "governed-codex-task-surface-policy-with-"
+                        "deterministic-corpus-application"
+                    ),
+                    "authority": (
+                        "derived-model-assisted-discovery-metadata"
+                    ),
+                    "assistant_surface": "Codex interactive task surface",
+                    "input_manifest": "data/manifest.json",
+                    "run": "enrichment/codex-assisted-v3/run.json",
+                    "coverage": "enrichment/codex-assisted-v3/coverage.json",
+                    "accepted_manifest": (
+                        "enrichment/codex-assisted-v3/"
+                        "accepted-manifest.json"
+                    ),
+                    "independent_audit": (
+                        "whole-law/assurance/"
+                        "enrichment-v3-independent-audit-20260726.json"
+                    ),
+                    "semantic_reviewer": (
+                        "whole-law/assurance/"
+                        "enrichment-v3-reviewer-task-receipt.json"
+                    ),
+                    "api_calls": 0,
+                    "official_legal_classification": False,
+                },
+                projection["acquisition"],
+            )
+            self.assertEqual(
+                (
+                    "enrichment/codex-assisted-v3/"
+                    "accepted-assertions/assertions-000.json.gz"
+                ),
+                projection["chunks"][0]["path"],
+            )
+            self.assertEqual(
+                "enrichment/codex-assisted-v3/accepted-manifest.json",
+                projection["source_contract"]["path"],
+            )
+            self.assertEqual(
+                (
+                    "whole-law/assurance/"
+                    "enrichment-v3-reviewer-task-receipt.json"
+                ),
+                projection["semantic_reviewer"]["path"],
+            )
+            self.assertEqual(
+                {
+                    "classified as": 1,
+                    "has discovery concept": 2,
+                    "mentions entity": 1,
+                },
+                {
+                    row["predicate"]: row["count"]
+                    for row in projection["relationship_kinds"]
+                },
+            )
+            self.assertEqual(
+                "stable-ordered-list",
+                projection["provenance"]["evidence_shape"],
+            )
+            self.assertEqual(
+                ["title", "notes"],
+                projection["provenance"]["support_profiles"]["multi-field"],
+            )
+            self.assertEqual(
+                governed["counts"]["by_support"],
+                projection["counts"]["by_support"],
+            )
+
+    def test_v3_graph_input_rejects_a_stale_reviewer_binding(self) -> None:
+        with tempfile.TemporaryDirectory(dir=ROOT) as temp:
+            root = Path(temp)
+            reviewer_path, _ = self.governed_v3_fixture(root)
+            reviewer = json.loads(reviewer_path.read_text(encoding="utf-8"))
+            reviewer["review_task_id"] = "tampered"
+            reviewer_path.write_text(json.dumps(reviewer), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "reviewer"):
+                legislation.load_governed_model_enrichment_v3(root)
+
+    def test_v3_graph_input_rejects_non_integer_binding_bytes(self) -> None:
+        with tempfile.TemporaryDirectory(dir=ROOT) as temp:
+            root = Path(temp)
+            self.governed_v3_fixture(root)
+            audit_path = (
+                root
+                / "whole-law"
+                / "assurance"
+                / "enrichment-v3-independent-audit-20260726.json"
+            )
+            audit = json.loads(audit_path.read_text(encoding="utf-8"))
+            audit["materials"]["accepted_manifest"]["bytes"] = True
+            audit_path.write_text(json.dumps(audit), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "binding is malformed"):
+                legislation.load_governed_model_enrichment_v3(root)
+
+    def test_v3_graph_input_rejects_extra_audit_material(self) -> None:
+        with tempfile.TemporaryDirectory(dir=ROOT) as temp:
+            root = Path(temp)
+            _, accepted_path = self.governed_v3_fixture(root)
+            audit_path = (
+                root
+                / "whole-law"
+                / "assurance"
+                / "enrichment-v3-independent-audit-20260726.json"
+            )
+            audit = json.loads(audit_path.read_text(encoding="utf-8"))
+            body = accepted_path.read_bytes()
+            audit["materials"]["unreviewed_extra"] = {
+                "path": accepted_path.relative_to(root).as_posix(),
+                "bytes": len(body),
+                "sha256": hashlib.sha256(body).hexdigest(),
+            }
+            audit_path.write_text(json.dumps(audit), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "inventory"):
+                legislation.load_governed_model_enrichment_v3(root)
+
+    def test_v3_gzip_reader_rejects_concatenated_members(self) -> None:
+        with tempfile.TemporaryDirectory(dir=ROOT) as temp:
+            path = Path(temp) / "concatenated.json.gz"
+            path.write_bytes(
+                gzip.compress(b"[]", mtime=0)
+                + gzip.compress(b"[]", mtime=0)
+            )
+            with self.assertRaisesRegex(ValueError, "trailing"):
+                legislation.inflate_single_gzip(path)
+
+    def test_v3_repository_path_rejects_symlink_components(self) -> None:
+        with tempfile.TemporaryDirectory(dir=ROOT) as temp:
+            root = Path(temp)
+            target = root / "target.json"
+            target.write_text("{}\n", encoding="utf-8")
+            link = root / "linked.json"
+            link.symlink_to(target)
+            with self.assertRaisesRegex(ValueError, "symlink"):
+                legislation.repository_path(root, "linked.json", "fixture")
 
     def test_v02_actor_and_date_validation(self) -> None:
         self.assertTrue(checker.valid_actor("human:reviewer"))

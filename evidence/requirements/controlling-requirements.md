@@ -383,3 +383,9 @@ Source: Subsequent user decision
 Verbatim: yes
 
 > Regarding fair use, I work for the government and this is a prototype of augmenting the sources that will be included within gov.uk so don't constrain any functionality by fair use so that the demonstration of this poc is complete and universal. Log any constraints that have been triggered by fair use or license concerns so that they can be escalated internally.
+
+## D-13
+Source: Subsequent user decision
+Verbatim: yes
+
+> We decided earlier that you would use Codex to do this and not require API calls

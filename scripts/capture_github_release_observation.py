@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Capture one immutable GitHub release observation in external evidence.
 
-Only the three release/tag pairs fixed by the external-finalization contract
-are accepted.  The tool performs one bounded request per required GitHub
+Only the four supported current-or-historical release/tag pairs are accepted.
+The tool performs one bounded request per required GitHub
 endpoint, follows redirects manually through a fixed HTTPS host allowlist, and
 does not retry failed requests.  ``GITHUB_TOKEN`` is optional, is sent only to
 ``api.github.com``, and is never written to the evidence directory.
@@ -74,6 +74,15 @@ class Target:
 
 
 TARGETS = {
+    (
+        "https://github.com/chris-page-gov/okf-explorer",
+        "v0.5.1",
+    ): Target(
+        repository="https://github.com/chris-page-gov/okf-explorer",
+        slug="chris-page-gov/okf-explorer",
+        tag="v0.5.1",
+        observation_filename="explorer-release-observation.json",
+    ),
     (
         "https://github.com/chris-page-gov/okf-explorer",
         "v0.5.0",

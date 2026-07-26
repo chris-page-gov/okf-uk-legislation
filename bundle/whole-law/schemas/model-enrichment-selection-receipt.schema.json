@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-selection-receipt.schema.json",
-  "title": "OKF model enrichment selection receipt v1",
-  "description": "Observed calibration evidence selecting the lowest-cost qualifying generator and separately designating reviewer and strongest-model roles.",
+  "title": "OKF optional direct-API model-enrichment selection receipt v1",
+  "description": "Optional future direct-API profile contract, activated only by a new explicit user decision and not required for the current Codex/no-direct-API release. Observed calibration evidence selecting the lowest-cost qualifying generator and separately designating reviewer and strongest-model roles.",
   "type": "object",
   "required": [
     "schema",

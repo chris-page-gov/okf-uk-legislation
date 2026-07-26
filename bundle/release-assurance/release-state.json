@@ -5,28 +5,28 @@
       "GATE-12": "passed"
     },
     "release_report": {
-      "bytes": 141761,
+      "bytes": 145372,
       "path": "bundle/release-assurance/release-report.json",
-      "sha256": "3e4630fc1505b3a4bf8d61b8231cf15518d96fd1860011ee08b9192ef2176b6e"
+      "sha256": "2a29ba1cf8498b5efad37ef32466210aba0c39b03015cddfc103edc6583120b5"
     }
   },
   "external_finalization": {
     "contract": {
-      "bytes": 5019,
+      "bytes": 5027,
       "path": "release-assurance/external-finalization-contract.json",
       "projected_path": "external-finalization-contract.json",
-      "sha256": "5b423fc7ba13f7d77da463425ed5ad9d2b6b93392b91a97a0c675c61f273a4ad"
+      "sha256": "11d8db4b74d64d12525f9a082b830baa6e4906d85b0e80f254138a708f328d69"
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
-      "bytes": 122711,
+      "bytes": 121407,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "0217a0c2e7e8dcbb92832f9c86deb03740b199f8727a01ac30b95d64f4c676c2"
+      "sha256": "d729871380d636f85ba5c4dfbfe0129013287bf9ca2e8e977d93b64b79462074"
     },
     "release_observation_controller": {
-      "bytes": 33683,
+      "bytes": 33974,
       "path": "scripts/capture_github_release_observation.py",
-      "sha256": "dabe0c5c5f8ec0162d046f5a4b045b76006037035a665b25d781912bd20a0383"
+      "sha256": "b656f20b963db3435a1b73ad9b4b7600f18e78f5d7005e855526a2ea6ca42b58"
     },
     "workflow": [
       {
@@ -53,8 +53,8 @@
   },
   "fail_closed": true,
   "gate_counts": {
-    "passed": 5,
-    "pending": 9
+    "passed": 6,
+    "pending": 8
   },
   "gates": [
     {
@@ -91,8 +91,126 @@
       "evidence_plane": "embedded",
       "group": "validation",
       "id": "GATE-05",
-      "requirement": "The official effects graph is non-empty and queryable, live reconciliation is evidenced, and a dedicated governed paid run records exactly one unique terminal outcome for every one of the 365,786 eligible records. Historical Codex-assisted output cannot satisfy the paid-run denominator.",
-      "status": "pending"
+      "observed_evidence": {
+        "accepted_assertions": 56479,
+        "candidate_assertions": 56479,
+        "candidate_support": {
+          "metadata-only": 0,
+          "multi-field": 13002,
+          "notes-only": 5003,
+          "title-only": 38474
+        },
+        "fresh_network_free_validation": {
+          "checked_materials": 18,
+          "checked_rows": 535223,
+          "checked_shards": 1464,
+          "status": "passed"
+        },
+        "materials": [
+          {
+            "bytes": 9647,
+            "path": "bundle/enrichment/codex-assisted-v3/run.json",
+            "sha256": "0d3a0b236e87e2a091d731904641cff1533b10293f9b5a020811faff86d71a4f"
+          },
+          {
+            "bytes": 14732,
+            "path": "bundle/enrichment/codex-assisted-v3/coverage.json",
+            "sha256": "6836e5b43ff7491c630afb2fa0d365ba9544e935c1651ac3d53dc5eb9736c458"
+          },
+          {
+            "bytes": 108688,
+            "path": "bundle/enrichment/codex-assisted-v3/candidate-manifest.json",
+            "sha256": "b6950fb54d1f5014348f3a421e1432397e626227a8451d955886602334771773"
+          },
+          {
+            "bytes": 111805,
+            "path": "bundle/enrichment/codex-assisted-v3/terminal-outcome-manifest.json",
+            "sha256": "d260b118f3d3c2c9ffa0f0a9956b695cc9265df6624abe08bc1bb485f3895bc3"
+          },
+          {
+            "bytes": 2224116,
+            "path": "bundle/enrichment/codex-assisted-v3/checkpoints.json",
+            "sha256": "b19b98f34c4de52d04b4691116e7427fc3ee35c9c594d6c2422ed40c8d20538d"
+          },
+          {
+            "bytes": 3698,
+            "path": "bundle/enrichment/codex-assisted-v3/calibration-result.json",
+            "sha256": "de19c3a93eb23f9af711e994c660cf7ce69af4746687afb4360e71dd0a2b8fc4"
+          },
+          {
+            "bytes": 109400,
+            "path": "bundle/enrichment/codex-assisted-v3/review-verdict-manifest.json",
+            "sha256": "248a1465b410da380f01b0b780af74e66d05b07e898b24fb5ba7e6b2b2f6eae3"
+          },
+          {
+            "bytes": 112096,
+            "path": "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+            "sha256": "ea4fe5dd9975a8775369bc0ef33f4a082c7e357c4e15268458760a831dbf3de7"
+          },
+          {
+            "bytes": 375488,
+            "path": "bundle/enrichment/codex-assisted-v3/review-checkpoints.json",
+            "sha256": "ed135b21fcc12e1b60ab6bcd2541d17bbb5e0d63ecce7ebd21a4795624397b41"
+          },
+          {
+            "bytes": 9133,
+            "path": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+            "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
+          },
+          {
+            "bytes": 22602,
+            "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
+            "sha256": "e5f8b992daa45a477433d71af47eb04001bab0ce3da77b29e27baea4246a60be"
+          },
+          {
+            "bytes": 96352,
+            "path": "scripts/build_codex_semantic_enrichment_v3.py",
+            "sha256": "29d5193c6ca6216f97689fb3ddfb1c97759a365e86a390c4a8bae5ef88b55b6f"
+          },
+          {
+            "bytes": 105528,
+            "path": "scripts/audit_codex_semantic_enrichment_v3.py",
+            "sha256": "8d1b2dd28cbac3bb92fc936b00a9b1044b240a9d06f84d3f1ceca2d6e272d5b0"
+          },
+          {
+            "bytes": 11810,
+            "path": "enrichment/codex-assisted-v3/calibration.json",
+            "sha256": "ef755dc285528faddd44466384024d4e1982bcf7400ae41a249b575961747090"
+          },
+          {
+            "bytes": 3254,
+            "path": "enrichment/codex-assisted-v3/generator-prompt.md",
+            "sha256": "7e6f9596252ff5ff68bcd0952f930019e43ea34b910f33acdd869e7309d32dd0"
+          },
+          {
+            "bytes": 2910,
+            "path": "enrichment/codex-assisted-v3/reviewer-prompt.md",
+            "sha256": "328adff9c3c8f5932ca1031eb729f55f448987adf9dbddfa1cb7a88488278dca"
+          },
+          {
+            "bytes": 12014,
+            "path": "enrichment/codex-assisted-v3/rules.json",
+            "sha256": "d44081c9f88819790f4d5c29cd5da5a0299353a98b2f66fbf1a147e212947e31"
+          },
+          {
+            "bytes": 3577,
+            "path": "enrichment/codex-assisted-v3/review-policy.json",
+            "sha256": "4b40176e617c94478dc0af0854dabbe6ffb72e79988c04ad88f134545bcbbafe"
+          },
+          {
+            "bytes": 4111,
+            "path": "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+            "sha256": "2168de01aa604288912161e4bf9d63cabb8024381ab19b78fd71e77f11d1788a"
+          }
+        ],
+        "reason": "governed-codex-v3-evidence-verified",
+        "records_attempted": 365786,
+        "status": "passed",
+        "terminal_outcomes": 365786
+      },
+      "observed_reason": "The official-effects graph and the governed Codex v3 full-corpus terminal, independent-review, accepted-projection and zero-direct-API receipts pass their bound checks.",
+      "requirement": "The official effects graph is non-empty and queryable, live reconciliation is evidenced, and the governed Codex generator/reviewer workflow records exactly one unique terminal outcome for every one of the 365,786 eligible records with deterministic evidence checks, independent review and resumable integrity-bound receipts. The optional direct API profile is not a release prerequisite. GATE-05 status is derived from those artefacts and cannot be passed by this authored gate record alone.",
+      "status": "passed"
     },
     {
       "evidence_plane": "external",
@@ -162,7 +280,7 @@
       "group": "publication",
       "id": "GATE-14",
       "prerequisite_state": "rc",
-      "requirement": "All 62 originating requirements have item-level final evidence-backed passed, explicitly accepted deferred, externally blocked or superseded closure; no must-have is merely accepted and the immutable closure receipt is bound to the frozen ledger and commit.",
+      "requirement": "All 63 originating requirements have item-level final evidence-backed passed, explicitly accepted deferred, externally blocked or superseded closure; no must-have is merely accepted and the immutable closure receipt is bound to the frozen ledger and commit.",
       "status": "pending"
     }
   ],

@@ -59,11 +59,11 @@ class ReleaseContractSchemaTests(unittest.TestCase):
             schema["properties"]["requirements_closed"]["const"],
         )
         self.assertEqual(
-            62,
+            63,
             schema["properties"]["closures"]["minItems"],
         )
         self.assertEqual(
-            62,
+            63,
             schema["properties"]["closures"]["maxItems"],
         )
 
@@ -79,6 +79,30 @@ class ReleaseContractSchemaTests(unittest.TestCase):
             self.contract["pre_rc_authorization"]["required_embedded_state"],
             embedded["properties"]["current_state"]["const"],
         )
+
+    def test_active_explorer_contract_requires_corrective_v051_release(
+        self,
+    ) -> None:
+        self.assertEqual("v0.5.1", self.contract["explorer"]["required_tag"])
+        active_schema_names = (
+            "accessibility-assurance-receipt.schema.json",
+            "explorer-release-receipt.schema.json",
+            "explorer-runtime-receipt.schema.json",
+            "external-finalization-receipt.schema.json",
+            "final-promotion-authorization-receipt.schema.json",
+            "performance-assurance-receipt.schema.json",
+            "pre-rc-authorization-receipt.schema.json",
+        )
+        for name in active_schema_names:
+            serialized = json.dumps(load(SCHEMAS / name), sort_keys=True)
+            self.assertIn("v0.5.1", serialized, name)
+            self.assertNotIn("v0.5.0", serialized, name)
+        observation = load(
+            SCHEMAS / "github-release-observation.schema.json"
+        )
+        allowed_tags = set(observation["properties"]["tag"]["enum"])
+        self.assertIn("v0.5.1", allowed_tags)
+        self.assertIn("v0.5.0", allowed_tags)
 
     def test_final_receipt_requires_prior_promotion_authorization(self) -> None:
         schema = load(SCHEMAS / "external-finalization-receipt.schema.json")

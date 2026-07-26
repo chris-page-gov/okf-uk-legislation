@@ -139,7 +139,7 @@
               "const": "v0.3.0-rc.1"
             },
             "explorer_release": {
-              "const": "v0.5.0"
+              "const": "v0.5.1"
             }
           }
         },
@@ -169,10 +169,10 @@
       ],
       "properties": {
         "requirements_total": {
-          "const": 62
+          "const": 63
         },
         "requirements_closed": {
-          "const": 62
+          "const": 63
         },
         "unresolved_must_haves": {
           "const": 0

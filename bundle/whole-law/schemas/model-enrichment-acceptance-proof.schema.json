@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-acceptance-proof.schema.json",
-  "title": "OKF paid model-enrichment acceptance proof v1",
-  "description": "One compact proof joining a published model-assisted relationship to frozen input, generator, independent reviewer, strongest-model escalation when required, and assertion-level deterministic validation.",
+  "title": "OKF optional direct-API model-enrichment acceptance proof v1",
+  "description": "Optional future direct-API profile contract, activated only by a new explicit user decision and not required for the current Codex/no-direct-API release. One compact proof joining a published model-assisted relationship to frozen input, generator, independent reviewer, strongest-model escalation when required, and assertion-level deterministic validation.",
   "type": "object",
   "required": [
     "schema",

@@ -1,0 +1,220 @@
+{
+  "artifact_state": "hash-bound-accepted",
+  "audit_date": "2026-07-26",
+  "audit_id": "codex-assisted-v3-independent-audit-20260726",
+  "checks": [
+    {
+      "dimension": "separate-semantic-review",
+      "evidence": "A different Codex task reviewed hash-bound prompts, rules, concepts, entity targets, corpus and generated manifests under task codex-v3-independent-semantic-review-r3-20260726.",
+      "id": "V3IA-001",
+      "status": "passed"
+    },
+    {
+      "dimension": "actual-output-contract-validity",
+      "evidence": "Candidate/terminal schema validity 1.0; 56,479/56,479 verdict and 56,479/56,479 accepted rows satisfy their actual output contracts.",
+      "id": "V3IA-007",
+      "status": "passed"
+    },
+    {
+      "dimension": "full-corpus-terminal-coverage",
+      "evidence": "365,786 records and terminal outcomes independently reconstructed with topic, concept and entity attempts.",
+      "id": "V3IA-002",
+      "status": "passed"
+    },
+    {
+      "dimension": "candidate-and-verdict-reconstruction",
+      "evidence": "56,479 candidates and 56,479 one-to-one verdicts reconstructed.",
+      "id": "V3IA-003",
+      "status": "passed"
+    },
+    {
+      "dimension": "literal-evidence-and-abstention",
+      "evidence": "Every accepted candidate has exact hash-bound literal title and/or substantive notes evidence. Field support is title-only=38,474, notes-only=5,003, multi-field=13,002; metadata-only=0. All governed metadata fields record considered no-supported-match receipts.",
+      "id": "V3IA-004",
+      "status": "passed"
+    },
+    {
+      "dimension": "audit-linked-accepted-projection",
+      "evidence": "56,479 assertions published with accepted review state, verdict, reviewer task and audit links.",
+      "id": "V3IA-005",
+      "status": "passed"
+    },
+    {
+      "dimension": "zero-direct-api-cost",
+      "evidence": "Run records zero direct API calls/tokens and USD/GBP 0 incremental API cost; Codex subscription/allowance usage is not exposed.",
+      "id": "V3IA-006",
+      "status": "passed"
+    }
+  ],
+  "counts": {
+    "accepted_assertions": 56479,
+    "accepted_by_kind": {
+      "concept": 31874,
+      "entity": 1136,
+      "topic": 23469
+    },
+    "accepted_by_support": {
+      "metadata-only": 0,
+      "multi-field": 13002,
+      "notes-only": 5003,
+      "title-only": 38474
+    },
+    "candidates": 56479,
+    "records_attempted": 365786,
+    "rejected_candidates": 0,
+    "review_verdicts": 56479,
+    "terminal_outcomes": 365786
+  },
+  "decision": {
+    "accepted_assertions": 56479,
+    "accepted_by_kind": {
+      "concept": 31874,
+      "entity": 1136,
+      "topic": 23469
+    },
+    "candidate_modified_by_audit": false,
+    "errors": [],
+    "independent_review_status": "accepted",
+    "release_gate_passed": true
+  },
+  "limitations": [
+    "This is not qualified UK legal-practitioner or third-party assurance.",
+    "Literal rules are incomplete discovery metadata; abstention is not absence.",
+    "No frozen CLML body was available to this pass.",
+    "Exact Codex deployment, subscription token usage, weekly allowance usage and attributable subscription cost are not exposed.",
+    "Zero cost means zero incremental direct OpenAI API cost, not zero total economic cost.",
+    "This bounded R3 semantic re-review relied on the separately reported independent full-population reconstruction for candidate and terminal integrity; it independently inspected the complete 1,136-candidate entity population and did not rerun that reconstruction.",
+    "This independent Codex semantic review is not qualified legal-practitioner assurance.",
+    "Literal topic, concept and entity matches are derived discovery metadata, not official legal classifications or legal advice.",
+    "An abstention is not evidence that a work lacks a topic, concept or entity.",
+    "No frozen CLML body was available; advertised or derived routes were not treated as retrieved semantic evidence.",
+    "The task surface does not expose exact deployment identity, sampling parameters, subscription token usage, weekly allowance usage or attributable subscription cost."
+  ],
+  "materials": {
+    "accepted_manifest": {
+      "bytes": 112096,
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+      "sha256": "ea4fe5dd9975a8775369bc0ef33f4a082c7e357c4e15268458760a831dbf3de7"
+    },
+    "auditor": {
+      "bytes": 105528,
+      "path": "scripts/audit_codex_semantic_enrichment_v3.py",
+      "sha256": "8d1b2dd28cbac3bb92fc936b00a9b1044b240a9d06f84d3f1ceca2d6e272d5b0"
+    },
+    "calibration_result": {
+      "bytes": 3698,
+      "path": "bundle/enrichment/codex-assisted-v3/calibration-result.json",
+      "sha256": "de19c3a93eb23f9af711e994c660cf7ce69af4746687afb4360e71dd0a2b8fc4"
+    },
+    "calibration_source": {
+      "bytes": 11810,
+      "path": "enrichment/codex-assisted-v3/calibration.json",
+      "sha256": "ef755dc285528faddd44466384024d4e1982bcf7400ae41a249b575961747090"
+    },
+    "candidate_manifest": {
+      "bytes": 108688,
+      "path": "bundle/enrichment/codex-assisted-v3/candidate-manifest.json",
+      "sha256": "b6950fb54d1f5014348f3a421e1432397e626227a8451d955886602334771773"
+    },
+    "coverage": {
+      "bytes": 14732,
+      "path": "bundle/enrichment/codex-assisted-v3/coverage.json",
+      "sha256": "6836e5b43ff7491c630afb2fa0d365ba9544e935c1651ac3d53dc5eb9736c458"
+    },
+    "generation_checkpoints": {
+      "bytes": 2224116,
+      "path": "bundle/enrichment/codex-assisted-v3/checkpoints.json",
+      "sha256": "b19b98f34c4de52d04b4691116e7427fc3ee35c9c594d6c2422ed40c8d20538d"
+    },
+    "generator_executable": {
+      "bytes": 96352,
+      "path": "scripts/build_codex_semantic_enrichment_v3.py",
+      "sha256": "29d5193c6ca6216f97689fb3ddfb1c97759a365e86a390c4a8bae5ef88b55b6f"
+    },
+    "generator_prompt": {
+      "bytes": 3254,
+      "path": "enrichment/codex-assisted-v3/generator-prompt.md",
+      "sha256": "7e6f9596252ff5ff68bcd0952f930019e43ea34b910f33acdd869e7309d32dd0"
+    },
+    "review_checkpoints": {
+      "bytes": 375488,
+      "path": "bundle/enrichment/codex-assisted-v3/review-checkpoints.json",
+      "sha256": "ed135b21fcc12e1b60ab6bcd2541d17bbb5e0d63ecce7ebd21a4795624397b41"
+    },
+    "review_policy": {
+      "bytes": 3577,
+      "path": "enrichment/codex-assisted-v3/review-policy.json",
+      "sha256": "4b40176e617c94478dc0af0854dabbe6ffb72e79988c04ad88f134545bcbbafe"
+    },
+    "review_verdict_manifest": {
+      "bytes": 109400,
+      "path": "bundle/enrichment/codex-assisted-v3/review-verdict-manifest.json",
+      "sha256": "248a1465b410da380f01b0b780af74e66d05b07e898b24fb5ba7e6b2b2f6eae3"
+    },
+    "reviewer_prompt": {
+      "bytes": 2910,
+      "path": "enrichment/codex-assisted-v3/reviewer-prompt.md",
+      "sha256": "328adff9c3c8f5932ca1031eb729f55f448987adf9dbddfa1cb7a88488278dca"
+    },
+    "reviewer_task_receipt": {
+      "bytes": 4111,
+      "path": "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+      "sha256": "2168de01aa604288912161e4bf9d63cabb8024381ab19b78fd71e77f11d1788a"
+    },
+    "rules": {
+      "bytes": 12014,
+      "path": "enrichment/codex-assisted-v3/rules.json",
+      "sha256": "d44081c9f88819790f4d5c29cd5da5a0299353a98b2f66fbf1a147e212947e31"
+    },
+    "run": {
+      "bytes": 9647,
+      "path": "bundle/enrichment/codex-assisted-v3/run.json",
+      "sha256": "0d3a0b236e87e2a091d731904641cff1533b10293f9b5a020811faff86d71a4f"
+    },
+    "source_manifest": {
+      "bytes": 16322,
+      "path": "bundle/data/manifest.json",
+      "sha256": "35d971c619a770e800f3c1b7588ecd46c59aeae1658bfc1574691815af74a4b6"
+    },
+    "terminal_outcome_manifest": {
+      "bytes": 111805,
+      "path": "bundle/enrichment/codex-assisted-v3/terminal-outcome-manifest.json",
+      "sha256": "d260b118f3d3c2c9ffa0f0a9956b695cc9265df6624abe08bc1bb485f3895bc3"
+    }
+  },
+  "method": {
+    "generator": "Codex-authored deterministic high-precision policy, applied without one model call per work.",
+    "policy_execution": "This auditor independently reconstructed every source/rule/candidate/outcome join; deterministic execution is distinct from the semantic reviewer.",
+    "semantic_reviewer": "Separate Codex task bound by reviewer-task-receipt.json."
+  },
+  "metrics": {
+    "attempt_coverage": 1.0,
+    "cost": {
+      "codex_subscription_cost_attributable_to_run": "not exposed",
+      "codex_subscription_token_usage": "not exposed",
+      "codex_weekly_allowance_usage": "not exposed",
+      "cost_per_accepted_assertion_usd": 0.0,
+      "incremental_openai_api_gbp": 0.0,
+      "incremental_openai_api_usd": 0.0,
+      "openai_api_calls": 0,
+      "openai_api_input_tokens": 0,
+      "openai_api_output_tokens": 0
+    },
+    "output_contract_schema_validity": {
+      "accepted_assertion": {
+        "total": 56479,
+        "valid": 56479,
+        "value": 1.0
+      },
+      "candidate_and_terminal": 1.0,
+      "passed": true,
+      "review_verdict": {
+        "total": 56479,
+        "valid": 56479,
+        "value": 1.0
+      }
+    },
+    "verdict_coverage": 1.0
+  },
+  "schema": "okf-enrichment-independent-audit.v3"
+}

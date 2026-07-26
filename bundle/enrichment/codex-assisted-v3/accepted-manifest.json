@@ -1,0 +1,2954 @@
+{
+  "audit_id": "codex-assisted-v3-independent-audit-20260726",
+  "authority": "derived-model-assisted-discovery-metadata",
+  "chunks": [
+    {
+      "bytes": 146258,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-000.json.gz",
+      "records": 645,
+      "sha256": "970e0517e3479b390abafd011a1a5512b983707c0f09f23ef0219b8a83d4d13f"
+    },
+    {
+      "bytes": 82825,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-001.json.gz",
+      "records": 354,
+      "sha256": "8ee3a40657644ca5eb85166b7f6519a296edb14597eb6139eaaaddb9f1983632"
+    },
+    {
+      "bytes": 167071,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-002.json.gz",
+      "records": 745,
+      "sha256": "d80edec2606eb57ecad109026cb3add7a5573495df8293d8ee5576116c47de46"
+    },
+    {
+      "bytes": 39332,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-003.json.gz",
+      "records": 129,
+      "sha256": "89c92c7bb61c8dfe160eb415bf430dfdf3bfc1128747e38dbd6cfbe176b376be"
+    },
+    {
+      "bytes": 168906,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-004.json.gz",
+      "records": 748,
+      "sha256": "e0418e81e87a6019dff24a2aee3df5644c8e11e7dfb77b7a22ce6d6487b85dc4"
+    },
+    {
+      "bytes": 75878,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-005.json.gz",
+      "records": 238,
+      "sha256": "17bd3f47209e6dc18f9823a0843be9456ddc05b3072ee2ea51becade1b7decad"
+    },
+    {
+      "bytes": 113100,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-006.json.gz",
+      "records": 529,
+      "sha256": "ada87b08b339ca3faea9b884c280b11e83799b24765e472606305ff315eb3d65"
+    },
+    {
+      "bytes": 104580,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-007.json.gz",
+      "records": 371,
+      "sha256": "c9e80dd1053dcca56d88aecac5b047e794346a70d7caea6ec56b0bd820f4164c"
+    },
+    {
+      "bytes": 63955,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-008.json.gz",
+      "records": 237,
+      "sha256": "50737cd74a1df1aaacc05cee5f589688f9dcf7c1e85b608141eed7195dd904b8"
+    },
+    {
+      "bytes": 115022,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-009.json.gz",
+      "records": 473,
+      "sha256": "57baf7bf1f7ea8e55e9d766e8a056a7ba93af7b7d70b38597e221c86d8957a2c"
+    },
+    {
+      "bytes": 59561,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-010.json.gz",
+      "records": 183,
+      "sha256": "252112d29a12497b67fd275ddaf5238e12b9ca9e848be97362f8c610259ef4a3"
+    },
+    {
+      "bytes": 75426,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-011.json.gz",
+      "records": 305,
+      "sha256": "5385cb23379b3bca9207d7fc18fe409ace67dd6fdc899fcfacccd77e6621ea5e"
+    },
+    {
+      "bytes": 75753,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-012.json.gz",
+      "records": 240,
+      "sha256": "f043b93f78132c07f2fa40e0a71aad820414be83cb29900c1d1a90b88a01a1bd"
+    },
+    {
+      "bytes": 31530,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-013.json.gz",
+      "records": 100,
+      "sha256": "bde083c48c14b44e91ab7dd29064623c11e3fce44b34b54197e7cb4299f77f6a"
+    },
+    {
+      "bytes": 73971,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-014.json.gz",
+      "records": 242,
+      "sha256": "f4d7e4ea445bf976801a7c04f6c1336e776ecb044548f74a050cbef6955d6596"
+    },
+    {
+      "bytes": 51972,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-015.json.gz",
+      "records": 166,
+      "sha256": "ff600a5581c8bbce4f93a226ccedc272a70bcddd1e9300a46515434d407260b3"
+    },
+    {
+      "bytes": 37159,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-016.json.gz",
+      "records": 123,
+      "sha256": "0eff4c5498c4919315059fe551b0a81eb37bc0009f7e1643359b698b59a6d944"
+    },
+    {
+      "bytes": 11796,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-017.json.gz",
+      "records": 35,
+      "sha256": "53965ac781c63c2a1c46d3134b836c6cc67852e8b64385db55a0342459e3a1ab"
+    },
+    {
+      "bytes": 61124,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-018.json.gz",
+      "records": 255,
+      "sha256": "fbe3b51bb0ffbb2a0a1fe663925ba2716b09cb4ba81da867045b1f51df2753b5"
+    },
+    {
+      "bytes": 103438,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-019.json.gz",
+      "records": 363,
+      "sha256": "552f9bdeaf36ee4d714117d78c5bde88b3197d433c3fe2d746b129694c05097e"
+    },
+    {
+      "bytes": 51932,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-020.json.gz",
+      "records": 165,
+      "sha256": "8008d6a2b3f8e88d078cf5e70aaf97cb3d8e12e077fe043498461405ca497c94"
+    },
+    {
+      "bytes": 8871,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-021.json.gz",
+      "records": 24,
+      "sha256": "578e15769b91f81692c3f324fc268e35ca540c9d2fdd52d73c2bbc1d21c4e767"
+    },
+    {
+      "bytes": 26281,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-022.json.gz",
+      "records": 87,
+      "sha256": "9733de72c9cad61c6dd6b07b53eb6387b997602a709fda2a41115a9787a3b0be"
+    },
+    {
+      "bytes": 143776,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-023.json.gz",
+      "records": 523,
+      "sha256": "3695caeb225bea22229c246b607d9be820172aa730ff24ac207c5f19317cbbe3"
+    },
+    {
+      "bytes": 69900,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-024.json.gz",
+      "records": 213,
+      "sha256": "6c9a53461ea4a6acce37bb45f51ac0fa7622020c64dd1dc66253ff755220d787"
+    },
+    {
+      "bytes": 9729,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-025.json.gz",
+      "records": 34,
+      "sha256": "2870ceef899e78250c38d4d6142d1b7cf92cd7d9239778ce8c6a46bc4dc6b706"
+    },
+    {
+      "bytes": 11901,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-026.json.gz",
+      "records": 39,
+      "sha256": "a3ec1e8f3f0e210f6b2bd4827317a9bc90f1ae932ffce6474e9126cb6157b620"
+    },
+    {
+      "bytes": 119753,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-027.json.gz",
+      "records": 449,
+      "sha256": "8d08b410be0ff80ef2042d4512365190ef4f7c0cb61247b3002edb95209b21fa"
+    },
+    {
+      "bytes": 51905,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-028.json.gz",
+      "records": 168,
+      "sha256": "675bd699c3d7e157f544fb7d977922c2ad90fbd04a7d77f222c72689beb649ad"
+    },
+    {
+      "bytes": 7925,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-029.json.gz",
+      "records": 24,
+      "sha256": "0a93f7683ced5529cc66c746cccf9002ad2d3b4fcf0f4e971fdd456b3d88cf63"
+    },
+    {
+      "bytes": 7195,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-030.json.gz",
+      "records": 19,
+      "sha256": "15d81b7aadb5524e0d7a348df45aefae8bbc13be858bcbbf026da2f6be30013e"
+    },
+    {
+      "bytes": 107756,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-031.json.gz",
+      "records": 398,
+      "sha256": "abd4705a97a2979451ca2957177a455f9a62679481a6573e2e97ecc5a4376cfe"
+    },
+    {
+      "bytes": 76458,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-032.json.gz",
+      "records": 235,
+      "sha256": "e361adcd7e436d1e12ce2f7900866fc79ea3976502d505def0c252811693208b"
+    },
+    {
+      "bytes": 28868,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-033.json.gz",
+      "records": 89,
+      "sha256": "ce8d2eb4d3f3bbd7a2c4ce77b3705f4a64101701d9dcc2ec295059f60ada54ab"
+    },
+    {
+      "bytes": 5445,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-034.json.gz",
+      "records": 14,
+      "sha256": "a15aee4f2ed04b2c87bfa6938dd8e0b25e9c89fe556f4ad88effb7743080a5f3"
+    },
+    {
+      "bytes": 33719,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-035.json.gz",
+      "records": 87,
+      "sha256": "ee5005d8882940b24ecd4f50042faf7fdc2384b8dc90a1e53eda81ed15c6f430"
+    },
+    {
+      "bytes": 104374,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-036.json.gz",
+      "records": 342,
+      "sha256": "337d10c2d1c78be87261c08ac476f68d678d39f686093ecf1bac85d3c0ce86ef"
+    },
+    {
+      "bytes": 83684,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-037.json.gz",
+      "records": 294,
+      "sha256": "1a210c6a756cd080bf2763d5fc4fa203abae7bfabcf940f00570c26cc1c6bcdc"
+    },
+    {
+      "bytes": 59434,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-038.json.gz",
+      "records": 193,
+      "sha256": "d481d16b1c5129e255742865bf9b6804203c84f4d50a2c86133679ceb97b075e"
+    },
+    {
+      "bytes": 3037,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-039.json.gz",
+      "records": 6,
+      "sha256": "a06c263d251788ab7f7374a03333bfe887f681764c9e6e4b97e2ec97f2cbed88"
+    },
+    {
+      "bytes": 7728,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-040.json.gz",
+      "records": 22,
+      "sha256": "851333235b2690fe588230f8b266766cde48abf82cff31459f984b0b0ea87e59"
+    },
+    {
+      "bytes": 54326,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-041.json.gz",
+      "records": 158,
+      "sha256": "8132702aeeccf95f52cbea6dadfd444b03ce58ca9c37c05f16c3ca5c4d1b3dac"
+    },
+    {
+      "bytes": 45228,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-042.json.gz",
+      "records": 141,
+      "sha256": "84600e54c330172e4131fb3403411d513069a06be48000cca8ca0e78f4fc5142"
+    },
+    {
+      "bytes": 59587,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-043.json.gz",
+      "records": 193,
+      "sha256": "67990ac52c1d2884a4dea8e2f53868996fa2bf840dc49d6a3581c691e72e2f46"
+    },
+    {
+      "bytes": 74575,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-044.json.gz",
+      "records": 236,
+      "sha256": "82c6d3f6feb7728011c1139ac293ea67a2e9dfef0abebc53b6a2033650772bbd"
+    },
+    {
+      "bytes": 39750,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-045.json.gz",
+      "records": 130,
+      "sha256": "1677ae4b73fa60c5993796d1f55211dd1f00756ce50ad1a96b4fb3a495afd183"
+    },
+    {
+      "bytes": 9695,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-046.json.gz",
+      "records": 33,
+      "sha256": "4b13d535b5e718b1b77a3d554fe5c3d5fb71fa7234e6454ef63eef3c86eec7f3"
+    },
+    {
+      "bytes": 10286,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-047.json.gz",
+      "records": 32,
+      "sha256": "ee600076c32a86cc6c149e98bbf4728bfa01a1aa8d5d3e204b41239a86dd5a89"
+    },
+    {
+      "bytes": 83630,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-048.json.gz",
+      "records": 281,
+      "sha256": "b59253d261ca82faadeb744aa9beacae26bed9406559943b3a17e06866609dac"
+    },
+    {
+      "bytes": 36882,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-049.json.gz",
+      "records": 109,
+      "sha256": "59682847b7c0a641fa5a33f8df4356e11d4c4ec5a7d1b0a4f45cc661bb52b300"
+    },
+    {
+      "bytes": 51538,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-050.json.gz",
+      "records": 159,
+      "sha256": "5ccf99475dac3fcddfc322c8a69c54f0c7c6e0d8f59fa1e49d0f55957c1af4ce"
+    },
+    {
+      "bytes": 81245,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-051.json.gz",
+      "records": 243,
+      "sha256": "78a34718d995b7c2e0465bf742f30dca96296bf8f85e6f74cde143fd87b9ac4f"
+    },
+    {
+      "bytes": 21206,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-052.json.gz",
+      "records": 80,
+      "sha256": "106ca61b72da46f0a95ffc1a1443c4fd470e96193e68254182c3aeea45d481db"
+    },
+    {
+      "bytes": 10273,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-053.json.gz",
+      "records": 34,
+      "sha256": "038b5cf9d9529bc241adad96f46779eab8a5b491f31e2dfaeb425a07e21c475f"
+    },
+    {
+      "bytes": 33258,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-054.json.gz",
+      "records": 127,
+      "sha256": "6f652be6e576b716a4fb2b301a4b7214a2104dc84cfa25df2f0edbfc60656cf7"
+    },
+    {
+      "bytes": 43066,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-055.json.gz",
+      "records": 130,
+      "sha256": "a1f21c030c7c922581bfd6dfc1130ce43b99398e6e8ff91b73fd5a3a2eb9f664"
+    },
+    {
+      "bytes": 43983,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-056.json.gz",
+      "records": 148,
+      "sha256": "d468a56e97443cf35d3cce05403f4af4055ca1ef9e02230450e0188770cb2ae7"
+    },
+    {
+      "bytes": 73121,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-057.json.gz",
+      "records": 277,
+      "sha256": "2f89c24f72587b6d8d482f6a0ad620d382302527f42f1e61dc5298f41dcdc043"
+    },
+    {
+      "bytes": 59991,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-058.json.gz",
+      "records": 208,
+      "sha256": "1f4997aa47c0ddd2b23e151a52641fa1356ec4400edffb3985556d012a94d642"
+    },
+    {
+      "bytes": 29948,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-059.json.gz",
+      "records": 142,
+      "sha256": "8855726ef8a35e12bec30b44743e8c690656ad13f50663e1a7b46d3f9a1af8e3"
+    },
+    {
+      "bytes": 7517,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-060.json.gz",
+      "records": 22,
+      "sha256": "37c2f474937ae99ac7a72e4a5aa28cc6d50b85e764283d34f91c5badf94e6d3a"
+    },
+    {
+      "bytes": 38140,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-061.json.gz",
+      "records": 121,
+      "sha256": "10b0e979ce4c2f17d4d81a3fa9cd588e250bfd90d13cf66c6e2caab15e252828"
+    },
+    {
+      "bytes": 44331,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-062.json.gz",
+      "records": 150,
+      "sha256": "cb5caf2d19fd0658227858a1fc1b11dfef2270b2e02ceef01f18d5827e693e49"
+    },
+    {
+      "bytes": 57659,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-063.json.gz",
+      "records": 215,
+      "sha256": "fa942d200fb695675d1b00bbada34bebd12942ac8e157867f19e00d2d59ac8e1"
+    },
+    {
+      "bytes": 66074,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-064.json.gz",
+      "records": 220,
+      "sha256": "de47b07fde4b8690e1ba1b80b8bdf2ef267f38ff48bf6de5dd48df547cf9ba42"
+    },
+    {
+      "bytes": 46368,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-065.json.gz",
+      "records": 226,
+      "sha256": "45c314672d73a8553445a42330c0d5d76d7e3af0b3782f84a69b88773d0f0403"
+    },
+    {
+      "bytes": 21959,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-066.json.gz",
+      "records": 95,
+      "sha256": "868f00ef28589e5533afcb125aa438a1997d3d005e0349dc5dde495b15ed8a0b"
+    },
+    {
+      "bytes": 28027,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-067.json.gz",
+      "records": 76,
+      "sha256": "26e55e5e63c9747393e39cf7ee1400afe27d6e2ca90c3d0e770d0c6bbfe43155"
+    },
+    {
+      "bytes": 48065,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-068.json.gz",
+      "records": 147,
+      "sha256": "ea285520a426348d2844f00aa651fd5b79e1bc8d07fb7410d60191ca4e1d7485"
+    },
+    {
+      "bytes": 33883,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-069.json.gz",
+      "records": 117,
+      "sha256": "b88e6190d9902c7aec708bfafd20206a060a4aebc700ab8dbd91c22123bc9379"
+    },
+    {
+      "bytes": 61892,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-070.json.gz",
+      "records": 178,
+      "sha256": "076bef8454f573b74a68f1c1a3070948d81ef9338f9019cc795b2a01533829a6"
+    },
+    {
+      "bytes": 72221,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-071.json.gz",
+      "records": 278,
+      "sha256": "52c486c9f8d64773d3e4ee336c70e7bc340d1fb4e791f9bf7eb6f7a67177a0f7"
+    },
+    {
+      "bytes": 44910,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-072.json.gz",
+      "records": 222,
+      "sha256": "3076686dd8d84e8abff374ad48c9dbcd4227b8f36f49b08382c5cdee80bb4cd3"
+    },
+    {
+      "bytes": 26210,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-073.json.gz",
+      "records": 71,
+      "sha256": "67ea6ab06fd6dc1bcc6059a6fd0fdb0485e4cfc06502df61258f0cdf08797f4a"
+    },
+    {
+      "bytes": 51220,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-074.json.gz",
+      "records": 137,
+      "sha256": "19284fd7fe949a59d25d604caa2398a3e24606995d16163b8b9b3c9183029914"
+    },
+    {
+      "bytes": 77961,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-075.json.gz",
+      "records": 224,
+      "sha256": "3622f3bb5675ffca7285de78db9097104cc48a387055de0a9be4950fc95b504c"
+    },
+    {
+      "bytes": 61901,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-076.json.gz",
+      "records": 207,
+      "sha256": "e277c7018d7b1ade4312205a14dade990658e7694832f8385a89107abd528289"
+    },
+    {
+      "bytes": 35554,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-077.json.gz",
+      "records": 167,
+      "sha256": "f25e8d221f4df839b010f8303cab6a6419a0564880370de9d5192c3e93c74ff1"
+    },
+    {
+      "bytes": 19563,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-078.json.gz",
+      "records": 74,
+      "sha256": "c472172b433f811ca79ed81ec9ad730845f257737aea1b419aabc93bd07d390a"
+    },
+    {
+      "bytes": 73334,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-079.json.gz",
+      "records": 203,
+      "sha256": "6495fd409fb4de2e06a9b8322072e4bf61bd317eb4bfb78290db854cf97ab738"
+    },
+    {
+      "bytes": 90396,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-080.json.gz",
+      "records": 247,
+      "sha256": "d36522bbdc4ffacbd323154eba1adfcd58c13155c125e337b87ad0fa8d61defe"
+    },
+    {
+      "bytes": 55700,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-081.json.gz",
+      "records": 189,
+      "sha256": "8ea1cd1d24149841dfe23e646ca6a3891d861621236aed200462645c3f9afe7c"
+    },
+    {
+      "bytes": 20288,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-082.json.gz",
+      "records": 86,
+      "sha256": "418acaf250497859a1c9cb94835873d47f0f40ce98f6d35f85fead4f5999a477"
+    },
+    {
+      "bytes": 18419,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-083.json.gz",
+      "records": 65,
+      "sha256": "27c45636d80ca15b699c3ea846e592ace06b42fd84928566169593eab7bc23bf"
+    },
+    {
+      "bytes": 90734,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-084.json.gz",
+      "records": 251,
+      "sha256": "2c619a1016620444a7916fdf3c35d9959bde4ea3ed16e2dfe42b23707fdcb2a2"
+    },
+    {
+      "bytes": 84711,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-085.json.gz",
+      "records": 237,
+      "sha256": "c7b5a1f4b48e4dd18fbf12f933650092293b3c6ded27fcf70e0135389f99601e"
+    },
+    {
+      "bytes": 80000,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-086.json.gz",
+      "records": 254,
+      "sha256": "ad67da1eda09f3d65e306e6f6d6c925e4ba44742abd388192aff26eb5e4c7964"
+    },
+    {
+      "bytes": 17981,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-087.json.gz",
+      "records": 71,
+      "sha256": "3b8c6f07fd7e2b3543410461d8cdd86dc3dd5fb813a654f0934f332b7686f717"
+    },
+    {
+      "bytes": 14285,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-088.json.gz",
+      "records": 61,
+      "sha256": "1d3b047f47f0b881a7f9a6989b244a954cd9e3d45d53a4b6910f76f7aa30b2cd"
+    },
+    {
+      "bytes": 31156,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-089.json.gz",
+      "records": 91,
+      "sha256": "141d1a8b4b1396e03b0cd0cf2c42245c8251d720d41b7875ae6003f531b6c937"
+    },
+    {
+      "bytes": 96792,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-090.json.gz",
+      "records": 262,
+      "sha256": "d53931f24b0eca99cc30b9837fa2a8174f2e1844178fe35835e876c267d6f22b"
+    },
+    {
+      "bytes": 72000,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-091.json.gz",
+      "records": 213,
+      "sha256": "d378353a355791a25c5df21b9290c5b2a54003d47ce1d7ae62c60a90ab9349c3"
+    },
+    {
+      "bytes": 51077,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-092.json.gz",
+      "records": 171,
+      "sha256": "3cff48549d8ea4ab02a105e23510e8efd5840185510d9e3cdd33ef5653345e76"
+    },
+    {
+      "bytes": 11757,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-093.json.gz",
+      "records": 51,
+      "sha256": "041966fcef4c361f5202d1833d21a5c9d1220574b46b4b195a657adce8dcdfd5"
+    },
+    {
+      "bytes": 18710,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-094.json.gz",
+      "records": 76,
+      "sha256": "1d2c84852ad96e418541925de539471f1e23dc90626cc90d7f9c4bbdf574cb0a"
+    },
+    {
+      "bytes": 40431,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-095.json.gz",
+      "records": 112,
+      "sha256": "2502b02ebde7412a9cd92c2c07b87e2c3187592b61fa39b65f3352c65fe643dc"
+    },
+    {
+      "bytes": 98044,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-096.json.gz",
+      "records": 272,
+      "sha256": "49b496b0edc51571a925a4604d2c41f1b6c0e6e1121012360a69664dbf216fb6"
+    },
+    {
+      "bytes": 64206,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-097.json.gz",
+      "records": 183,
+      "sha256": "86d3d28161e9351d57781709279beab10861116bc680aba1bf171eaa23b1c93f"
+    },
+    {
+      "bytes": 42064,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-098.json.gz",
+      "records": 133,
+      "sha256": "7ac46067c0a90b846bef92181af1ddf428ff127929d365caf01a64e4792b8f2c"
+    },
+    {
+      "bytes": 17189,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-099.json.gz",
+      "records": 75,
+      "sha256": "687c3e46e3ca34149c494f95f303d0f25cd941ee8ae59c6bc1558946a786a1b9"
+    },
+    {
+      "bytes": 18944,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-100.json.gz",
+      "records": 76,
+      "sha256": "b3a1c6f0585844e42261440fd9f883aa44701e9bd9f0b73d77bf3c2a28084c48"
+    },
+    {
+      "bytes": 51103,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-101.json.gz",
+      "records": 145,
+      "sha256": "128e307d551330973f959d0fac4154e48f6bf8f8752eec7bed2676fad1054d6d"
+    },
+    {
+      "bytes": 87472,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-102.json.gz",
+      "records": 250,
+      "sha256": "b1b0eccc24bed636334ffd700790a3eceeba0cda704ad932fb411fc56651f7d0"
+    },
+    {
+      "bytes": 70717,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-103.json.gz",
+      "records": 205,
+      "sha256": "f7afc13feb65526a062bff5b10a27169cfc5f1e09ab502ea91a6b687aaba4289"
+    },
+    {
+      "bytes": 32827,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-104.json.gz",
+      "records": 127,
+      "sha256": "0d387f3c5ca715a5fc419bd9538b166d9c5de082d6dc962c54ea7c1aabbab0e9"
+    },
+    {
+      "bytes": 16518,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-105.json.gz",
+      "records": 81,
+      "sha256": "64cb2daa16a1e83903b40d9f7143bbe3d1669852a5d965b7dbc0ff2124a692da"
+    },
+    {
+      "bytes": 21465,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-106.json.gz",
+      "records": 90,
+      "sha256": "85d44f6467f2c365bfc1d8036280037810e71e91ace0b9a454e0e11cddd6f9e4"
+    },
+    {
+      "bytes": 46216,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-107.json.gz",
+      "records": 128,
+      "sha256": "be82d8135571d3d072adf31a8dcd27a9bbc2e21fa118479d8e4b03bd0a0d22b7"
+    },
+    {
+      "bytes": 107900,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-108.json.gz",
+      "records": 308,
+      "sha256": "5f8d1438b9606387a4d8107cdd0980e84a32fb81232bad36f1fe7ee17600306a"
+    },
+    {
+      "bytes": 88501,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-109.json.gz",
+      "records": 260,
+      "sha256": "85fa2f888db4c6908e23e9937568605e5fa7a25d9d2a6b7389027ef098551611"
+    },
+    {
+      "bytes": 32616,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-110.json.gz",
+      "records": 129,
+      "sha256": "b3624bc89321c660f3bd43b2b87214a899140cc83316330380dcdc81b2660232"
+    },
+    {
+      "bytes": 20698,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-111.json.gz",
+      "records": 102,
+      "sha256": "9c483dc09c3db327aa9fba69c3c636f51b8619b7f5167dd0ca3a92b109921a59"
+    },
+    {
+      "bytes": 19398,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-112.json.gz",
+      "records": 82,
+      "sha256": "c612a40abde86cc1fcbd288e79766ce5bc5a37d3cf121439268fd2c16426e184"
+    },
+    {
+      "bytes": 69279,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-113.json.gz",
+      "records": 250,
+      "sha256": "c4362c7828b27e3a67dddaec42c09af6646e2c84f98c9a0f661c50ccdd410a2e"
+    },
+    {
+      "bytes": 103042,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-114.json.gz",
+      "records": 300,
+      "sha256": "caa34dda47b450078e288016e9e43483559ad82b297b557a50519cb08ba8b6fa"
+    },
+    {
+      "bytes": 88816,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-115.json.gz",
+      "records": 284,
+      "sha256": "1de7b6b00e10ddb27ddb2c6e3c7445bc14961449090fb6b5ee0a1766548f0de6"
+    },
+    {
+      "bytes": 41725,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-116.json.gz",
+      "records": 164,
+      "sha256": "78ca64c1607fc089322b91f2f3cb0eb9a44939d1cafe2743e7872536db2ddde0"
+    },
+    {
+      "bytes": 23476,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-117.json.gz",
+      "records": 114,
+      "sha256": "2f1948a1aeed7a68c5b5941f01ee9128342ad5a07a32e10323b79fada8ae0f3a"
+    },
+    {
+      "bytes": 20415,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-118.json.gz",
+      "records": 91,
+      "sha256": "721f6aa4963a00f79b83e73db63ac6e9e341ac8946e6ab9c756a855250b30fa2"
+    },
+    {
+      "bytes": 57104,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-119.json.gz",
+      "records": 179,
+      "sha256": "cc64f0882eea619aaf3c2ea1fe440486d900d6f4fed0df583975c012b749dd30"
+    },
+    {
+      "bytes": 188269,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-120.json.gz",
+      "records": 628,
+      "sha256": "3aae3b82233c3892518ff64ff2a46e341b7c4fbde3260ab1049bc224ada36ed3"
+    },
+    {
+      "bytes": 169872,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-121.json.gz",
+      "records": 495,
+      "sha256": "ffc185c64ad1b0b4aea3db31cf392040bc995c52e91479efcb91f8e18d0d31da"
+    },
+    {
+      "bytes": 117736,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-122.json.gz",
+      "records": 400,
+      "sha256": "89be60bca31e3a577c371cf0d50ebaa202b5b69c3e30f6d6dd15e4b44e7aa01a"
+    },
+    {
+      "bytes": 17088,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-123.json.gz",
+      "records": 83,
+      "sha256": "1a2f29ad7ed66624d675923437baa99e460bc6d83a2c6ac5ea3c9dfa0b4dca74"
+    },
+    {
+      "bytes": 26810,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-124.json.gz",
+      "records": 140,
+      "sha256": "3d3f21748ec9c9630a251727430e744c0cdb39c8fb13e5755569f4346794dbea"
+    },
+    {
+      "bytes": 43103,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-125.json.gz",
+      "records": 190,
+      "sha256": "9edfb82ab23d524b8b69b354eee8f25a3c8b719dde5bf9bb1cfcfe898b40a98a"
+    },
+    {
+      "bytes": 76850,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-126.json.gz",
+      "records": 233,
+      "sha256": "8dbb5e4f9a8fbb9fc41b29d566fd1a20ebf41aad07c1fc220dad0ae2cbba873b"
+    },
+    {
+      "bytes": 92539,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-127.json.gz",
+      "records": 279,
+      "sha256": "ec78c07bea719819714859e62f21c9a35cade81510e07d42e501bf50714b2d5b"
+    },
+    {
+      "bytes": 63269,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-128.json.gz",
+      "records": 213,
+      "sha256": "5bb2deab9f9edf13a8fe8c64d62435d6e8601d713a45d838ca44fc1e2da158e0"
+    },
+    {
+      "bytes": 20720,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-129.json.gz",
+      "records": 103,
+      "sha256": "6eb89f02ae20a0330afed95b51a5b304cbecec10179c59c1df29867f22525bde"
+    },
+    {
+      "bytes": 23719,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-130.json.gz",
+      "records": 121,
+      "sha256": "5058e4248d17fd2cb4711993e76112ec3311fdaec724a192f401e651828dab1c"
+    },
+    {
+      "bytes": 25559,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-131.json.gz",
+      "records": 116,
+      "sha256": "08113fed0c8a0bef1a2162e5f74038f6f1698982b9f6d7fdf3649fbeeb624672"
+    },
+    {
+      "bytes": 58673,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-132.json.gz",
+      "records": 166,
+      "sha256": "e49a33df43c27e9b1b770c453a01d0a9561c710a8f5694a5ea533fd6f5f4d46a"
+    },
+    {
+      "bytes": 94415,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-133.json.gz",
+      "records": 275,
+      "sha256": "00ab784d06585bd31b4a1138bfea184be3776d0b14faadd869b4a9756460ef82"
+    },
+    {
+      "bytes": 70903,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-134.json.gz",
+      "records": 214,
+      "sha256": "911c4d5d78a57d0f4e9901b1c1a25041f4e45c8b54a0c7a3e551cf8bd2320baf"
+    },
+    {
+      "bytes": 19226,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-135.json.gz",
+      "records": 94,
+      "sha256": "e7d57e8f00117a7caa75949bf3f32d2f0e402055b875078611ff1f13d34e8de1"
+    },
+    {
+      "bytes": 21521,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-136.json.gz",
+      "records": 111,
+      "sha256": "ac5ccba12b679072176e612b7ca241fca82c0a615f7bd4cee0e5a9156304b8d9"
+    },
+    {
+      "bytes": 24727,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-137.json.gz",
+      "records": 113,
+      "sha256": "795d1cc125531cdc1905d4230a91670d6c2936655c80bd7b1acb80b9594817c4"
+    },
+    {
+      "bytes": 47169,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-138.json.gz",
+      "records": 143,
+      "sha256": "15b373fb0d0b4f81fd82466008e893123ad9139a7df96761d46250ae6fa27756"
+    },
+    {
+      "bytes": 75017,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-139.json.gz",
+      "records": 252,
+      "sha256": "63aeffc6faf174cc469c38e8467c3954ad1242c987cc79aa71a146626013f1ec"
+    },
+    {
+      "bytes": 83095,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-140.json.gz",
+      "records": 276,
+      "sha256": "a96c0b5860cecc16b60dbf1c114da973c8a11c2603be8c3a140871d1064fc477"
+    },
+    {
+      "bytes": 21919,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-141.json.gz",
+      "records": 105,
+      "sha256": "52a3024fe96d56752dbf4ff5106e54c8fe1acb88cc841e8648657e1aa537e551"
+    },
+    {
+      "bytes": 22933,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-142.json.gz",
+      "records": 114,
+      "sha256": "7be85efabb96e684624806a163b848f0ff39fb5b0fa9fc22a235c891c2144f0f"
+    },
+    {
+      "bytes": 22250,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-143.json.gz",
+      "records": 102,
+      "sha256": "24c7f7c8015fefb5352930fd4a53116f8edec85970f1ef324318cf0b83d69768"
+    },
+    {
+      "bytes": 82225,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-144.json.gz",
+      "records": 283,
+      "sha256": "62f525f5d80f011220ef8bbc4daa5ea75acf9f5a245b5474fb0f9178be842d7b"
+    },
+    {
+      "bytes": 94856,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-145.json.gz",
+      "records": 309,
+      "sha256": "4176aa0432b5aa15756f0c3fc694c3315d1969b643cbbc2b4e6aba06f1948e12"
+    },
+    {
+      "bytes": 74259,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-146.json.gz",
+      "records": 240,
+      "sha256": "6d9c762dd1903e8184c80b397a1282b5f21d04e56e64243e9dd61d807413cde1"
+    },
+    {
+      "bytes": 24527,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-147.json.gz",
+      "records": 122,
+      "sha256": "2c64ac8ce987565dc8634272fae0a4e3d8c6e56ecb15f2bb4127e534cdf909f3"
+    },
+    {
+      "bytes": 23174,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-148.json.gz",
+      "records": 115,
+      "sha256": "a8b3090b811f2a5d1ef41f50a867488cf95044d7705ea9bb68e60b04fd46af0c"
+    },
+    {
+      "bytes": 42693,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-149.json.gz",
+      "records": 210,
+      "sha256": "5d6434e0ae2655ef58013f96e1ec361f7089f01fae4a91065856d27e56ef512a"
+    },
+    {
+      "bytes": 61084,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-150.json.gz",
+      "records": 200,
+      "sha256": "feddc910211dc65ffca793f545be8ce3eff2777e7f7633e4688223092a580b10"
+    },
+    {
+      "bytes": 67492,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-151.json.gz",
+      "records": 215,
+      "sha256": "3a2719b2320dccf74ed847b8587b0858061d9df40df5a07f32977a841fc5479b"
+    },
+    {
+      "bytes": 78575,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-152.json.gz",
+      "records": 253,
+      "sha256": "85725c24feb1973b5d9d3f8fc29fbe9fd8c5cdb3c89cd66df4027178c26c84f1"
+    },
+    {
+      "bytes": 29392,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-153.json.gz",
+      "records": 148,
+      "sha256": "c6da7312fc82aa53e4e4e45914ffe233dbed8bf4ba8e2aff611e16cc5e0b9861"
+    },
+    {
+      "bytes": 33899,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-154.json.gz",
+      "records": 172,
+      "sha256": "4677f783bf0b1cec579aadf94bd057d25e07c65b9b861025b74876dc14a3be7b"
+    },
+    {
+      "bytes": 35079,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-155.json.gz",
+      "records": 159,
+      "sha256": "06ec450a0d4eaba2a0e30625595d66f048c6bebd20fe822ce841e1dc4ddeaef2"
+    },
+    {
+      "bytes": 62596,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-156.json.gz",
+      "records": 193,
+      "sha256": "5cad399b799521893d0c8e477b495223d306831b3de0115bc444259e05f84734"
+    },
+    {
+      "bytes": 77608,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-157.json.gz",
+      "records": 252,
+      "sha256": "764f85f9fcdd85ff8461030255239787102e4685920b355c10bed0b7a594caf2"
+    },
+    {
+      "bytes": 32585,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-158.json.gz",
+      "records": 123,
+      "sha256": "83b8ee094b4670264c1c5bf9187c5ce28ef99a47cb981ff87c3e626f3611df70"
+    },
+    {
+      "bytes": 16764,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-159.json.gz",
+      "records": 79,
+      "sha256": "b92312efbaf0984552a7c2543918fa010731459d22aeed2105093e0ea1044739"
+    },
+    {
+      "bytes": 25203,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-160.json.gz",
+      "records": 127,
+      "sha256": "51f335ecefc39f79eecea6f4cba71a414f02c20fc724faa3711fa48fa5bca599"
+    },
+    {
+      "bytes": 12269,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-161.json.gz",
+      "records": 42,
+      "sha256": "9d5f48038cdd8378c96b0e9c3919777f24297bf6d9dd8f3e174cd0ad6f617bd5"
+    },
+    {
+      "bytes": 79769,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-162.json.gz",
+      "records": 281,
+      "sha256": "03687052f712a4af67677ade43f1079886e87818ea69e9e02af8def081d50271"
+    },
+    {
+      "bytes": 67364,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-163.json.gz",
+      "records": 205,
+      "sha256": "2352d069c85ff74199351cb9d40d6ec98e43fa288467ad05eb83302a2f0670b4"
+    },
+    {
+      "bytes": 41243,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-164.json.gz",
+      "records": 157,
+      "sha256": "c657a0fc34f335327c7d6463b4a1b8813b61712c8fe809714895d53effb366c7"
+    },
+    {
+      "bytes": 4404,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-165.json.gz",
+      "records": 12,
+      "sha256": "ba5aeebc5e4d362030290d9145bdfea00247ba86856b94184f5d9f1393bd80de"
+    },
+    {
+      "bytes": 3906,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-166.json.gz",
+      "records": 11,
+      "sha256": "15072f3a9e52106c858a21e35e5dbf541ef3900667cbbe14bb49566b36428b13"
+    },
+    {
+      "bytes": 6178,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-167.json.gz",
+      "records": 20,
+      "sha256": "61b7843413e2dcb3c8bdfd43c505bc499dd57d35daa99ca382c6733f80aa306b"
+    },
+    {
+      "bytes": 20045,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-168.json.gz",
+      "records": 67,
+      "sha256": "2e5bdd22f3b26157902eb2e8074b5ed3ec255c8f03f4ab2eaa5542b588763646"
+    },
+    {
+      "bytes": 64135,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-169.json.gz",
+      "records": 202,
+      "sha256": "803d4b890c2d648d958ca779f26c1e6ce43b1fdab265a252386fff2115480c03"
+    },
+    {
+      "bytes": 74988,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-170.json.gz",
+      "records": 234,
+      "sha256": "5b16aa8229eb8fd0f6c491e124e07a4eec3616d4b668048f7165bbd6f848b016"
+    },
+    {
+      "bytes": 27074,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-171.json.gz",
+      "records": 109,
+      "sha256": "95e96a53f11b3272f1e8e2ecf07eb78f0eb1482c505426d9b92da56ab0c21741"
+    },
+    {
+      "bytes": 4057,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-172.json.gz",
+      "records": 10,
+      "sha256": "28775b58d851398123240a8fb19a64d30ed1ed7ca472ade92f673a468b58d63d"
+    },
+    {
+      "bytes": 2507,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-173.json.gz",
+      "records": 5,
+      "sha256": "035b2b63caffad40977a05f0aa763cae10ebfb281d8005e229347d66e5e7a1a3"
+    },
+    {
+      "bytes": 4953,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-174.json.gz",
+      "records": 16,
+      "sha256": "bd23cab4c2adc8dd29f0d6e94004099a6c410773760b631fb67b8e8ac5484dc7"
+    },
+    {
+      "bytes": 40071,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-175.json.gz",
+      "records": 145,
+      "sha256": "72edad5d3d9169eeea19d7fbadda38dbd603f5d4af05ef0eecea6f0fff991b7c"
+    },
+    {
+      "bytes": 83592,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-176.json.gz",
+      "records": 269,
+      "sha256": "11e326f4a3b15c1b9014c34f2587dec6c6e099c52812e139daecc64a416e678f"
+    },
+    {
+      "bytes": 72444,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-177.json.gz",
+      "records": 249,
+      "sha256": "8ceee4ad41f4a0be89907bdef3aef923c4c8cad95c232cad7417143c959b835d"
+    },
+    {
+      "bytes": 14745,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-178.json.gz",
+      "records": 53,
+      "sha256": "5798ff58ad4e35561593d5100237e7e704213b12dae7b22c14e5722481eca880"
+    },
+    {
+      "bytes": 4624,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-179.json.gz",
+      "records": 12,
+      "sha256": "1f10e3c69c65107cfdcbd6f882d583ae555a243b82e543873f7b287bd7532db8"
+    },
+    {
+      "bytes": 3089,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-180.json.gz",
+      "records": 7,
+      "sha256": "6a37cf36157dfd602c6a9fab825a1c026e99372931c99c2ae2dd53ee548dbce3"
+    },
+    {
+      "bytes": 3461,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-181.json.gz",
+      "records": 9,
+      "sha256": "0be6de0bcdc5fca7bf588d49a8abdbd2fd7dc31ad27342b8977991c76eb33d13"
+    },
+    {
+      "bytes": 30417,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-182.json.gz",
+      "records": 104,
+      "sha256": "ab99c8a96c01b530e4a3cec124f6ccdfa787494c25caa4067eca46d36873d9c4"
+    },
+    {
+      "bytes": 84731,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-183.json.gz",
+      "records": 279,
+      "sha256": "79f8c604c031111f127213c0b07164a690bb24feaddc14a8296ff5343cc01a1e"
+    },
+    {
+      "bytes": 87781,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-184.json.gz",
+      "records": 314,
+      "sha256": "267f4b4460342b114bf2bed1cbb67f2529000237b3f634e9ed47901edbe0588e"
+    },
+    {
+      "bytes": 5202,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-185.json.gz",
+      "records": 16,
+      "sha256": "a2e9d1aa22dc835ad1afe2dc4fe373c6b3cf6f9d4b8ac7db8c493b69dca4081b"
+    },
+    {
+      "bytes": 2945,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-186.json.gz",
+      "records": 7,
+      "sha256": "87819af28c8024f150d52c62f6788ab7d484d39cb0eb26f2a8251d02054e118d"
+    },
+    {
+      "bytes": 2599,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-187.json.gz",
+      "records": 4,
+      "sha256": "536b032b2dcb121244b7546fd23966ea6dd2bab3b6cd06e80fe5749f2ee87b42"
+    },
+    {
+      "bytes": 4085,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-188.json.gz",
+      "records": 12,
+      "sha256": "6a4fdb02890faaa528c8c1ecf3d10e2d66e877ab3f744877d8830480492c06f5"
+    },
+    {
+      "bytes": 60548,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-189.json.gz",
+      "records": 174,
+      "sha256": "4dbbe59b32add1afa770d600090be7c72de5e39b641cb41f441e2656e8ac4f26"
+    },
+    {
+      "bytes": 90679,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-190.json.gz",
+      "records": 245,
+      "sha256": "fbcfdce8990b2867c194a4d6fcd0cf7ca2d23764acefc7119f34f07f0a3a7b2d"
+    },
+    {
+      "bytes": 49494,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-191.json.gz",
+      "records": 175,
+      "sha256": "a1eb7ebb65ee6462b58b8f91856adb0282a0e72a81d8d4c8183bcb508e62c1be"
+    },
+    {
+      "bytes": 2806,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-192.json.gz",
+      "records": 6,
+      "sha256": "748f80fa5ee4783d827f7be816ff891053e742d01d5ed7fb04abc75fe0d63803"
+    },
+    {
+      "bytes": 2086,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-193.json.gz",
+      "records": 4,
+      "sha256": "5e39cedcc290886737c592ab313ddac6344be6f40ef8b69e51ad1a89f0c928eb"
+    },
+    {
+      "bytes": 2801,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-194.json.gz",
+      "records": 6,
+      "sha256": "ec4cf297bcfbdcbcd5e27b134d9d0a620be107aeaa48d816bed8b29f52614f95"
+    },
+    {
+      "bytes": 5893,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-195.json.gz",
+      "records": 16,
+      "sha256": "ac263eaacd42b188f3604f515ee4f2810056862e1e8c51e51d3e1643a10c21c5"
+    },
+    {
+      "bytes": 100588,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-196.json.gz",
+      "records": 284,
+      "sha256": "9b111d9451504e9586c49abfc6be715f9ee39ba389f42002aef9821212c8b335"
+    },
+    {
+      "bytes": 97592,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-197.json.gz",
+      "records": 294,
+      "sha256": "1932d8f22d15c317dd0c6a8ecedc944ea8e24144184bdcbf61168a94fee6bbfa"
+    },
+    {
+      "bytes": 14097,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-198.json.gz",
+      "records": 53,
+      "sha256": "d7ae6d06bcb64643f8aed9dd21ed9ac06449dc2c6af7844cf9c09652ed7fec79"
+    },
+    {
+      "bytes": 3138,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-199.json.gz",
+      "records": 7,
+      "sha256": "b0998b618bcf5a4f3cb7300f02a350a806719bcb47409f84ad1a219d14ee35b5"
+    },
+    {
+      "bytes": 3174,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-200.json.gz",
+      "records": 7,
+      "sha256": "d048c143fd8951c3559916b70460c99122f55c842dad7146ca00d0325bf4494b"
+    },
+    {
+      "bytes": 3138,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-201.json.gz",
+      "records": 8,
+      "sha256": "d9e6ddc4864090ffef296f40c13db27537e373a1e73f984bbbcf0b7cbc741c72"
+    },
+    {
+      "bytes": 35357,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-202.json.gz",
+      "records": 116,
+      "sha256": "1d2d3c35c4ef9a363e739a4b444921fa4afb88fa25eb398ec667c10fe92b5647"
+    },
+    {
+      "bytes": 110411,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-203.json.gz",
+      "records": 312,
+      "sha256": "9b4ddf3cbd824273e1cd14a9452831e446bbe3107aad9cc8c850e0ab422465db"
+    },
+    {
+      "bytes": 71932,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-204.json.gz",
+      "records": 233,
+      "sha256": "d174fd19d3fea8c3a426bb880739506a922289ec09b9516dcd5f7cbf5848644f"
+    },
+    {
+      "bytes": 2745,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-205.json.gz",
+      "records": 6,
+      "sha256": "a380e235edeaafda6c1bcd9f9c70ee31398a503d9228f1ceff5170204d3ec291"
+    },
+    {
+      "bytes": 2792,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-206.json.gz",
+      "records": 6,
+      "sha256": "abc2b510972a12fce0201f19a4724299cf8e7160367bf789e4a2bba4029bac03"
+    },
+    {
+      "bytes": 2607,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-207.json.gz",
+      "records": 5,
+      "sha256": "7697143d9a4c88b4914e5d55f76531e3630f0433c3dfaebe2e0df3b554b562a8"
+    },
+    {
+      "bytes": 2481,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-208.json.gz",
+      "records": 5,
+      "sha256": "366ed2066a1e37a37b60254479f16d9839243c87b956b8b95b0bf7661cd0be0c"
+    },
+    {
+      "bytes": 50657,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-209.json.gz",
+      "records": 176,
+      "sha256": "84a110ce8f1855299d9769bc756af9aa03e382458f27fbafd77a9533878b216e"
+    },
+    {
+      "bytes": 128914,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-210.json.gz",
+      "records": 386,
+      "sha256": "58e0be61e2ac4a2dcdeb252a20d443a035b4de71b7b19902d80fbc442cee043a"
+    },
+    {
+      "bytes": 30294,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-211.json.gz",
+      "records": 118,
+      "sha256": "cfe5d29d1fe9d74726dd8867bd3d81877fee2884ddb1ead29b0f4d9e781634a8"
+    },
+    {
+      "bytes": 2486,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-212.json.gz",
+      "records": 5,
+      "sha256": "97165953087efe279fe9fa6cb208674430eff161ed7bfbe20245af1572264bf7"
+    },
+    {
+      "bytes": 4090,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-213.json.gz",
+      "records": 11,
+      "sha256": "13869d03e3cd566cc04eafa46a825ba52f502f95d0b7b47b52cd0e2783f949f4"
+    },
+    {
+      "bytes": 3101,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-214.json.gz",
+      "records": 7,
+      "sha256": "5d862ae1727fd1aa74e744c3a5e77f3f540ffee347a8200bbdb8d902cc0c9ac0"
+    },
+    {
+      "bytes": 4048,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-215.json.gz",
+      "records": 12,
+      "sha256": "17be280609722d0a13a8911e03c47f84015b45b606ec8d897b1501461e42495e"
+    },
+    {
+      "bytes": 65879,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-216.json.gz",
+      "records": 308,
+      "sha256": "2cf91a99a1f5f49cdf1f7f55f407c7cbe0e987a132912608778926e6aed684ee"
+    },
+    {
+      "bytes": 76977,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-217.json.gz",
+      "records": 346,
+      "sha256": "73d6a9391acadcfbfb866b6704091d48d7bd607ec110d73c20e9211318a73721"
+    },
+    {
+      "bytes": 18819,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-218.json.gz",
+      "records": 75,
+      "sha256": "6fcd2857e386aac660642ed5132a3b27b9cc03b173cbdf001995712f11b6a7a3"
+    },
+    {
+      "bytes": 6630,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-219.json.gz",
+      "records": 20,
+      "sha256": "48fcae61f51201b4429b7b0ed36ae43fe1196dc1716bf7cd98512749bc54939b"
+    },
+    {
+      "bytes": 2784,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-220.json.gz",
+      "records": 7,
+      "sha256": "dbe88ede4458bcf8c7b6d8991baeb99871cbe0bf695328ce2c3d7e2427af5c2a"
+    },
+    {
+      "bytes": 42318,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-221.json.gz",
+      "records": 201,
+      "sha256": "79288d6ed17d0f8ccaef55b23a76aa266ebfd48c0df1496ee474e5832ab530da"
+    },
+    {
+      "bytes": 83302,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-222.json.gz",
+      "records": 397,
+      "sha256": "7f32cebf0c5f7bed0cc815a116b974c7820b194b3b35fb0f531763f9c31d1e15"
+    },
+    {
+      "bytes": 41322,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-223.json.gz",
+      "records": 178,
+      "sha256": "f8d4f82f6f1a770680e46435e98bcaa92ec421bbe63450a8acf3bacc361d6b74"
+    },
+    {
+      "bytes": 3416,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-224.json.gz",
+      "records": 8,
+      "sha256": "7bb9fbda941233302e721a9e3b953021b55e0e2c206499ba7a2e4668d136b206"
+    },
+    {
+      "bytes": 3470,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-225.json.gz",
+      "records": 9,
+      "sha256": "d655da25686ffe832044e64d64d22032aec788c63df2af21f417fcb56f1b5a01"
+    },
+    {
+      "bytes": 4016,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-226.json.gz",
+      "records": 11,
+      "sha256": "4179345ce9af35dd8d5e2d7d40038b4a1cd055160d2bc252d44a5956170daa8e"
+    },
+    {
+      "bytes": 21214,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-227.json.gz",
+      "records": 94,
+      "sha256": "dd562b2798b40a0eab65ce05e97adf56eac5d1549c6bc1ea9a7263fe32e8f70d"
+    },
+    {
+      "bytes": 103834,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-228.json.gz",
+      "records": 496,
+      "sha256": "c021721cc5f18e9ed618e51063c20d00b2d5a188a55969394360be759d0c9754"
+    },
+    {
+      "bytes": 48257,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-229.json.gz",
+      "records": 204,
+      "sha256": "6eebbd7371cbeabe90c87d4643d0ca61221a01edcb31ab0fa23db7a19e132c31"
+    },
+    {
+      "bytes": 2125,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-230.json.gz",
+      "records": 3,
+      "sha256": "81ae00aa26fd979a7f9a19032536d9055cd1416f93e1380a2a7945bb27dded30"
+    },
+    {
+      "bytes": 2077,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-231.json.gz",
+      "records": 4,
+      "sha256": "9e546c9b5e92ab44a60370fabe3d92a12f18d2edaceb12f4c2d877e012c4e9c5"
+    },
+    {
+      "bytes": 2733,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-232.json.gz",
+      "records": 6,
+      "sha256": "dd3ce328ef35581c22bc762f6487225592fa4245f478b8ae0289a158c3f3f069"
+    },
+    {
+      "bytes": 20450,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-233.json.gz",
+      "records": 88,
+      "sha256": "7ee40ea1d3c28a6ed043e3fbaa3390996ec2535b991a2877f0f80be5187b20ff"
+    },
+    {
+      "bytes": 79976,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-234.json.gz",
+      "records": 355,
+      "sha256": "d5d5f03e95657bda03a9042e4110f293ef2d6843a8d8cbd735526786ec5c2cbe"
+    },
+    {
+      "bytes": 31621,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-235.json.gz",
+      "records": 125,
+      "sha256": "3b4814b3284f3b27e9bf90f27803258fb2f4210541da1e2402a8e71772d0ccf7"
+    },
+    {
+      "bytes": 2964,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-236.json.gz",
+      "records": 7,
+      "sha256": "44d6fd6c6f9b9a77c2a00bbca3d0e3a761c8737fb3a561638c7a0ae84d0a7004"
+    },
+    {
+      "bytes": 2995,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-237.json.gz",
+      "records": 7,
+      "sha256": "cacee0c4246ba47302ec54812712913540d10aba1b94d9df70930713ae84c733"
+    },
+    {
+      "bytes": 2939,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-238.json.gz",
+      "records": 7,
+      "sha256": "4c8990ebde05c54c229c355935be6f7039098abcb92f72d2713e389ee62721b7"
+    },
+    {
+      "bytes": 32095,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-239.json.gz",
+      "records": 137,
+      "sha256": "4a36582defe9c2b365c3d577ba5492825c86b77196e5f6c5e0a8f601f987ecf3"
+    },
+    {
+      "bytes": 53874,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-240.json.gz",
+      "records": 223,
+      "sha256": "d471d32d081b4c62f9da874fa46d8bac0596b760a045c127abb0ffea2f3e429f"
+    },
+    {
+      "bytes": 28814,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-241.json.gz",
+      "records": 121,
+      "sha256": "7ad552844970df1f5002ba25b6475a91c0d42d0bb5c480cb236d2cd7e6f28282"
+    },
+    {
+      "bytes": 4261,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-242.json.gz",
+      "records": 12,
+      "sha256": "9cd7a958dad3cce7d995f543dd198be908930c4a3803fdc1618a77027a966a9d"
+    },
+    {
+      "bytes": 3156,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-243.json.gz",
+      "records": 7,
+      "sha256": "6312441c63510b960afbe4cef6fb45626725c7aac3843716621846feb2be39ee"
+    },
+    {
+      "bytes": 5939,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-244.json.gz",
+      "records": 18,
+      "sha256": "954ea0e40e2d701ac7bcb7274464febcb8d961f5ba6f4f05ec88a6f26c8d81c2"
+    },
+    {
+      "bytes": 24014,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-245.json.gz",
+      "records": 100,
+      "sha256": "41eb49a2bf236abca373962734db7247c459c174b925d3cf370e33e83da59955"
+    },
+    {
+      "bytes": 56505,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-246.json.gz",
+      "records": 239,
+      "sha256": "a4de698e76cf192bdd9f299294fd567b6fa73b588ac1bf0dbe8ce8b23634ec6f"
+    },
+    {
+      "bytes": 29298,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-247.json.gz",
+      "records": 120,
+      "sha256": "7ee8027208ee5943d00a64247379dcef322e29d108cdacd37a634b0d9a23ef67"
+    },
+    {
+      "bytes": 4445,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-248.json.gz",
+      "records": 11,
+      "sha256": "749c671b043b9f512367be7e6b1b4e8aa1e4ecf7b808748041e35f97dc79f02a"
+    },
+    {
+      "bytes": 2643,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-249.json.gz",
+      "records": 6,
+      "sha256": "01c07f48989ff54848abdb87b896f2f98d13f82d113f66b4ee4c65fb9cf17525"
+    },
+    {
+      "bytes": 28452,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-250.json.gz",
+      "records": 121,
+      "sha256": "835efc132007c8fd10339460ca7d7321de413e1d9fff190e0ca72edbca402671"
+    },
+    {
+      "bytes": 57882,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-251.json.gz",
+      "records": 249,
+      "sha256": "8a823beb583f3f421c93cac7238b1128e40f79eeb105e151a3f3bf093236e71b"
+    },
+    {
+      "bytes": 54530,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-252.json.gz",
+      "records": 228,
+      "sha256": "dd67fc19fc70f1fd1c15f779fb6e9e14d51c3cc2e75667b2f8779c45d00e9fab"
+    },
+    {
+      "bytes": 1413,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-253.json.gz",
+      "records": 1,
+      "sha256": "1e08315f98dfeb2bdd323860e0f3345785a839c6edbe3e686772ef1c74a76213"
+    },
+    {
+      "bytes": 9684,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-254.json.gz",
+      "records": 33,
+      "sha256": "ef7d717cf76b33ebf76e55864a1df4839f2f8da974250ff7491dfeb888d0a087"
+    },
+    {
+      "bytes": 41458,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-255.json.gz",
+      "records": 170,
+      "sha256": "fcff7eae9b423a5ce310f160d9b47756ca7315e45acf90f1f442b2b0663e55e6"
+    },
+    {
+      "bytes": 68746,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-256.json.gz",
+      "records": 285,
+      "sha256": "8fa64df8f10f5e1a2b32b52808e37e32ff0beb1627243ad6f6ae46dcbd61e2bb"
+    },
+    {
+      "bytes": 9817,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-257.json.gz",
+      "records": 36,
+      "sha256": "c1bd05c091f4301960742250d83cb9a1dec330789f1d06868453d4cd242fed28"
+    },
+    {
+      "bytes": 1601,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-258.json.gz",
+      "records": 2,
+      "sha256": "159e27b7d6ad5d067c3f018d03961c8dc4071cd5a86aa5e432e106588177f29f"
+    },
+    {
+      "bytes": 2634,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-259.json.gz",
+      "records": 5,
+      "sha256": "07e01fdffbbce3853dbb64be281f34a42c1df5e54f5a5c09a8817dadbb033bc0"
+    },
+    {
+      "bytes": 14614,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-260.json.gz",
+      "records": 56,
+      "sha256": "e837d6b25cd34e667322ddf089a4e3248b0c30534d6b08399979353644485c84"
+    },
+    {
+      "bytes": 50690,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-261.json.gz",
+      "records": 223,
+      "sha256": "f409003a0d5744bdab375f8ef182bf62ac9be1f5f5b33feb552cdb1f9325bc6c"
+    },
+    {
+      "bytes": 56396,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-262.json.gz",
+      "records": 245,
+      "sha256": "54efa6c929c9bff476dfc9d95fbf1ba3fe5a1d756e5d57528ced7b4742eba307"
+    },
+    {
+      "bytes": 3225,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-263.json.gz",
+      "records": 7,
+      "sha256": "2e91d6854941f13c8a46c4876ef0466bc68828288e6413f21b29d29c03cbfe3d"
+    },
+    {
+      "bytes": 1605,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-264.json.gz",
+      "records": 2,
+      "sha256": "425a738f3bdfd7747d99f7e158b204f770eed64853b936a797126418119f1b0f"
+    },
+    {
+      "bytes": 7888,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-265.json.gz",
+      "records": 29,
+      "sha256": "5e7cdab0567c9bd49b9d48f7480b064ecb7c4f5b196719cc933566f5f076f9a8"
+    },
+    {
+      "bytes": 32510,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-266.json.gz",
+      "records": 137,
+      "sha256": "c0807689c7406b7d30e5389d2e959c92cb548539c559b635344903915328fc3d"
+    },
+    {
+      "bytes": 69200,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-267.json.gz",
+      "records": 298,
+      "sha256": "77769f642b6b6ee0bb38bbd32278a82e7f52a7f0c1ba03b640646236ac1f53f6"
+    },
+    {
+      "bytes": 25986,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-268.json.gz",
+      "records": 112,
+      "sha256": "4b94a09c1b21b71bdb86507750483fab8f4815003589dc3ad6e076817bc48c00"
+    },
+    {
+      "bytes": 2602,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-269.json.gz",
+      "records": 5,
+      "sha256": "eeba37c790688872f0c089fa4688b75046a6b4200afb5f6fe600aa22f9186d25"
+    },
+    {
+      "bytes": 3211,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-270.json.gz",
+      "records": 8,
+      "sha256": "fbe7da479997dab49a20e5aa20ba35bb11a3f0092b419b60842f9eda1b7462c1"
+    },
+    {
+      "bytes": 15379,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-271.json.gz",
+      "records": 62,
+      "sha256": "0cd516cf418421a1be1ab770ad0064817add49a1b2a498d854142fee48b86bc3"
+    },
+    {
+      "bytes": 71857,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-272.json.gz",
+      "records": 317,
+      "sha256": "be269f195d0f363b32707cfab5a81e6dca3ec8a0c4cb5bd45042fd732ad71354"
+    },
+    {
+      "bytes": 55510,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-273.json.gz",
+      "records": 237,
+      "sha256": "86397275fbf02f51b3f6958bf8c8b6e1b175e2bbfce1656e879aafea7bd78b33"
+    },
+    {
+      "bytes": 2165,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-274.json.gz",
+      "records": 3,
+      "sha256": "abe00fa3405da73a623fab4651f6b218c38ddc3ff518126045dd8701b4fdd76c"
+    },
+    {
+      "bytes": 2314,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-275.json.gz",
+      "records": 4,
+      "sha256": "55a805e639ef60477c605ce713581d2c23fe08a7ec69d9e30e1872f5e6dc4a44"
+    },
+    {
+      "bytes": 2410,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-276.json.gz",
+      "records": 5,
+      "sha256": "4c02b1b2c5b8bcca867ace1d65f7bdc0b04d4b09027e3c5323fa06fc601c6bd0"
+    },
+    {
+      "bytes": 46315,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-277.json.gz",
+      "records": 201,
+      "sha256": "cf88955bc5f5e157cc9d25c0d1f9270607bb5e7a4be59abf3cac171dc25dbc12"
+    },
+    {
+      "bytes": 83121,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-278.json.gz",
+      "records": 372,
+      "sha256": "38d610f2e4dc9a2331c2cfcac2f62cecd9bf8970849d50f07f1a386568ca4908"
+    },
+    {
+      "bytes": 47925,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-279.json.gz",
+      "records": 202,
+      "sha256": "3bf8fd5bfe0dcf1fa557cf0aea19aa6716eecd07bd075af66f2e7967f41b0682"
+    },
+    {
+      "bytes": 1942,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-280.json.gz",
+      "records": 3,
+      "sha256": "ba9b016265606b64eca4e0514c4337b3a48a78ab38b91d585d61a86bd4e5fff0"
+    },
+    {
+      "bytes": 2869,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-281.json.gz",
+      "records": 7,
+      "sha256": "2f432566cd67e46ac918a8c74cac2c5b94a11cf029995f70dcf12c40050a2a65"
+    },
+    {
+      "bytes": 2008,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-282.json.gz",
+      "records": 3,
+      "sha256": "606b28294aecbdc0ef0d9c0d43af457b49b706b7983c10cdaf72d161b1d9dd9e"
+    },
+    {
+      "bytes": 50351,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-283.json.gz",
+      "records": 223,
+      "sha256": "63e68a88e48f11d1b12275b9679e9196609ff80841dfa41d146bb22889ab0911"
+    },
+    {
+      "bytes": 84426,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-284.json.gz",
+      "records": 386,
+      "sha256": "84c4cf8ab3795ae0a5ab5bd33cdbd5e75ac70aa0730d6ab99922a5093c376dce"
+    },
+    {
+      "bytes": 39161,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-285.json.gz",
+      "records": 170,
+      "sha256": "ebbc589221ceafb388a0dab5ad024a3bd908aea43f205439d7781d9b86bd3c4b"
+    },
+    {
+      "bytes": 2067,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-286.json.gz",
+      "records": 3,
+      "sha256": "c3c901462403ebd2d84b8e6f3446539d74efe5e85401aa1ae7b27a24942a392d"
+    },
+    {
+      "bytes": 2436,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-287.json.gz",
+      "records": 6,
+      "sha256": "d8d69dd8fa13abab03948d2324c2e220f67fad312a6763d953372df88586dbcd"
+    },
+    {
+      "bytes": 6476,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-288.json.gz",
+      "records": 23,
+      "sha256": "3f3a3be84c7a37c9133a030c4e3eb3d796d9951f4df5e233fe8b83efd3d65037"
+    },
+    {
+      "bytes": 70220,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-289.json.gz",
+      "records": 321,
+      "sha256": "4dbb9ec21edca9024bf91c495a070d7669127c3067522f51cbcdd9e4d87e86bb"
+    },
+    {
+      "bytes": 78800,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-290.json.gz",
+      "records": 353,
+      "sha256": "cb1d45e9d606c2a21d63b9aacc61987943b96cc767ab0a651be319cea5702ffe"
+    },
+    {
+      "bytes": 24022,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-291.json.gz",
+      "records": 105,
+      "sha256": "d2c9a2f9586fad38ee191e3e6280d9e788424a49cae3441c17d8071133073a44"
+    },
+    {
+      "bytes": 1604,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-292.json.gz",
+      "records": 2,
+      "sha256": "901d5019acba8baecce23cf39b61b1c7086a400e54ab418dd5114634606ba17c"
+    },
+    {
+      "bytes": 2404,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-293.json.gz",
+      "records": 5,
+      "sha256": "94450fb63c67b1c234041ac1b0edc872b54bf853f87baa829ae3e40fa510df02"
+    },
+    {
+      "bytes": 3582,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-294.json.gz",
+      "records": 8,
+      "sha256": "70893f5ad55b59ab2e9dffe0055d1c4c4169ba294d4447f7181f3e332122b7da"
+    },
+    {
+      "bytes": 81196,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-295.json.gz",
+      "records": 364,
+      "sha256": "8bf7eaa843ed8ec2edaf3bb7856c0ecb7204cc8e01670bb55bd62eef27713270"
+    },
+    {
+      "bytes": 58300,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-296.json.gz",
+      "records": 250,
+      "sha256": "cdeeddc0fa169431d3c050df8f02edbbbf4de74f3aab7ba66154cd39fd2645f1"
+    },
+    {
+      "bytes": 76776,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-297.json.gz",
+      "records": 343,
+      "sha256": "c27262796a7ffc6536f507b6bc12a14e1c886ecda018d677b4427c447901b27c"
+    },
+    {
+      "bytes": 62592,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-298.json.gz",
+      "records": 277,
+      "sha256": "ee94d3500eb480cad10428ad85adc3689a262d566deda79bc760c86a43dc4ffa"
+    },
+    {
+      "bytes": 78728,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-299.json.gz",
+      "records": 350,
+      "sha256": "754651ae6a1393a65dbb479aef6d48664ba29c55afc243e17965071bcc25f1cc"
+    },
+    {
+      "bytes": 60300,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-300.json.gz",
+      "records": 272,
+      "sha256": "fb8b0aded8e952f4fd08c6ef072b7d5e3be2516a6af24b6d4c72361de1b927a0"
+    },
+    {
+      "bytes": 86258,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-301.json.gz",
+      "records": 396,
+      "sha256": "f72da9980055626362994b4cf9b9c3db1363ecffa9bd5431b4873b5c77aa17aa"
+    },
+    {
+      "bytes": 74346,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-302.json.gz",
+      "records": 333,
+      "sha256": "d8c1dc1aa1d2a5d8379c03122a9a6212aa8a674385c07ed853aa5e5c24984dc3"
+    },
+    {
+      "bytes": 83449,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-303.json.gz",
+      "records": 381,
+      "sha256": "a13672b20f9366efdcabdcd6332e292b2c143eba161e94a4671d5482808c4c48"
+    },
+    {
+      "bytes": 80929,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-304.json.gz",
+      "records": 368,
+      "sha256": "a9729da311c2f9d145a8c9244c26850a78efe2939146788c4ee87cc58d5fb62d"
+    },
+    {
+      "bytes": 74317,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-305.json.gz",
+      "records": 335,
+      "sha256": "23b3977f60428648877a37abe501dfdea1320e97f9f270f8da82a676b96fb21d"
+    },
+    {
+      "bytes": 71536,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-306.json.gz",
+      "records": 321,
+      "sha256": "4358b16625701024c98c22fd4e546c5e8329ca14bdb048261190b5573a35f04f"
+    },
+    {
+      "bytes": 87599,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-307.json.gz",
+      "records": 402,
+      "sha256": "88d87eeacf10ef65b2792b5a04016bdd92cd222159352aea1111c28e20487189"
+    },
+    {
+      "bytes": 70175,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-308.json.gz",
+      "records": 316,
+      "sha256": "b524506a49d1ce28d211edc40ee9f7edad9f1cbc38bc9bd985dd59fe92ca37fc"
+    },
+    {
+      "bytes": 68878,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-309.json.gz",
+      "records": 308,
+      "sha256": "61d307a0bf7b31e17431a3702d264b38abd77c342b5ebd8db0f923df9fc612b1"
+    },
+    {
+      "bytes": 69616,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-310.json.gz",
+      "records": 318,
+      "sha256": "95389ab16a73cfa09187ca6242a25e1ffc7f77e3f018aaff3d4402dc0e49fa89"
+    },
+    {
+      "bytes": 70113,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-311.json.gz",
+      "records": 321,
+      "sha256": "4617e597b63c0c45de2e55c81a3c4ca0471e54594dde04909056d266e37bc570"
+    },
+    {
+      "bytes": 64684,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-312.json.gz",
+      "records": 297,
+      "sha256": "404e137f46c06d677c138897a09b0b8ba0cdb0f6b649ce21625a1f4e4f280f0d"
+    },
+    {
+      "bytes": 59962,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-313.json.gz",
+      "records": 266,
+      "sha256": "03bd2239264b77e90097235dc47601b52d08c76c5b4e5358bdc7a2b3cb910ef5"
+    },
+    {
+      "bytes": 70816,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-314.json.gz",
+      "records": 329,
+      "sha256": "041e43d9b7f10b5becfe194ddd2bef6980da32e948cf8db49c17dc8a9f1384ae"
+    },
+    {
+      "bytes": 87014,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-315.json.gz",
+      "records": 405,
+      "sha256": "fbd24fb5aa670b61335deb39fff155b46c9dafb7ab099bc8ec88ac8d09ed82b3"
+    },
+    {
+      "bytes": 67107,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-316.json.gz",
+      "records": 313,
+      "sha256": "d382ac09a0b90a19cdc932d91534b1380018aa976b227aa4dbd8c87496c5d6a1"
+    },
+    {
+      "bytes": 73333,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-317.json.gz",
+      "records": 332,
+      "sha256": "86adcf7e083767a78faf24d4828c283020056e789d5761dfd2d82cba91f4f458"
+    },
+    {
+      "bytes": 73948,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-318.json.gz",
+      "records": 336,
+      "sha256": "e12c4fe8c76b38d602cdaee70250ab5474580109b2676c8c7b2fbf1ba0c5c4ca"
+    },
+    {
+      "bytes": 58902,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-319.json.gz",
+      "records": 275,
+      "sha256": "c0552bd4bcc51f34feaf3efb5ec89e0aaeb55de91ff11671556b56f248c6724b"
+    },
+    {
+      "bytes": 77781,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-320.json.gz",
+      "records": 359,
+      "sha256": "b72144e1b1d068ad12bdb0eecdb58fa0d49a07395fdee60a3b1d0124e18a832c"
+    },
+    {
+      "bytes": 78968,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-321.json.gz",
+      "records": 375,
+      "sha256": "4b4b81b8dd1f424d8b376cab256b0b78d1b44a65014508280c6a5f360e834482"
+    },
+    {
+      "bytes": 56310,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-322.json.gz",
+      "records": 259,
+      "sha256": "295c0ee0e18428169449b18d985e91242830af3e631e307dfb3c2ed23466e721"
+    },
+    {
+      "bytes": 64976,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-323.json.gz",
+      "records": 299,
+      "sha256": "d725d4515e95b6571b8c9ea065bc93a330607c145da2c276732b53c4542107dc"
+    },
+    {
+      "bytes": 57688,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-324.json.gz",
+      "records": 266,
+      "sha256": "398f282c2864ffc8b26e30e9f40e7652a3faef3243be4fc5efaa0e5b26f47dfc"
+    },
+    {
+      "bytes": 45136,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-325.json.gz",
+      "records": 200,
+      "sha256": "8f90f7fff2639f7c9980d52142671d6847d5f24735345c70ce1d8396ca9e8788"
+    },
+    {
+      "bytes": 35770,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-326.json.gz",
+      "records": 160,
+      "sha256": "c4a97dc93299c2cd450b080f4787fc47325752c7a477e9d568cce2b067695d84"
+    },
+    {
+      "bytes": 23318,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-327.json.gz",
+      "records": 95,
+      "sha256": "8a6d278f7456b4c9573db267cb8158f91d6d42918e31e958ae6fc49c642820ae"
+    },
+    {
+      "bytes": 24970,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-328.json.gz",
+      "records": 108,
+      "sha256": "9756607673fa82abb269a6e040601ce8e4c52982ae6442699dfa3ae78aa93c35"
+    },
+    {
+      "bytes": 21620,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-329.json.gz",
+      "records": 87,
+      "sha256": "68b99474f8188534e66c177d218894bca0071a48190de7c78eec9f3c606c3855"
+    },
+    {
+      "bytes": 18133,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-330.json.gz",
+      "records": 63,
+      "sha256": "1ed0c555644b08360e6ea884e772ae5d6648d682e47d3a6335b2f1a6604e06a4"
+    },
+    {
+      "bytes": 17061,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-331.json.gz",
+      "records": 66,
+      "sha256": "54c9096af5a6c7ad136d0341de9f17563fd8300cbe02b135432058b784337c7e"
+    },
+    {
+      "bytes": 19890,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-332.json.gz",
+      "records": 83,
+      "sha256": "ec433b75296388ced41dcc3d836e6e955293413712de0909000cdb9b0b16b484"
+    },
+    {
+      "bytes": 18984,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-333.json.gz",
+      "records": 76,
+      "sha256": "c4a376e9c05ed56796d113ff879199ccd253f645fd6c12ff31b185e17365e637"
+    },
+    {
+      "bytes": 8254,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-334.json.gz",
+      "records": 33,
+      "sha256": "5dc99a29b509244083202f5ee1cdef5ff1b46ddbf4b44022430293227e041004"
+    },
+    {
+      "bytes": 10631,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-335.json.gz",
+      "records": 43,
+      "sha256": "a2636491e111d4c07c54753588ba363122a072924b70a59347b685a3ef172d90"
+    },
+    {
+      "bytes": 4040,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-336.json.gz",
+      "records": 12,
+      "sha256": "9f40fa4439f7f04ec65832bc98a5559f315bcaa2e645efed06526fba2cd677a6"
+    },
+    {
+      "bytes": 5828,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-337.json.gz",
+      "records": 22,
+      "sha256": "79d76f2c139f0a0c6c730a9b86e33ea29677fe9d08b67baa0c1d7d27c47b94d4"
+    },
+    {
+      "bytes": 5889,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-338.json.gz",
+      "records": 21,
+      "sha256": "0f988440a8281ac8cdd5d31718ac8c17d8149f97c7208cc92709a7ccaedae519"
+    },
+    {
+      "bytes": 5109,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-339.json.gz",
+      "records": 18,
+      "sha256": "e9cb2f8eb9fbdb3663c788ad3b7a4c27785f88119d58838f6a02915bfc88dba2"
+    },
+    {
+      "bytes": 6726,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-340.json.gz",
+      "records": 26,
+      "sha256": "c183f59fd04f4573eba33e8bb8bda2dcef87422ae8190762eb5510454a825439"
+    },
+    {
+      "bytes": 3394,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-341.json.gz",
+      "records": 10,
+      "sha256": "ae971893ad2a376652745116802c47158c4a743dfad439d666ca0a50d8045b3e"
+    },
+    {
+      "bytes": 4139,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-342.json.gz",
+      "records": 12,
+      "sha256": "fcfd8d7ff9b696edb79dcbd6444549850b45e3a7a5d58d6088ba70a3eca83c26"
+    },
+    {
+      "bytes": 6278,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-343.json.gz",
+      "records": 25,
+      "sha256": "8dab42d460c89c6eefbeed45ab79608a4bb0cbf0c4270477a4da489592b25d98"
+    },
+    {
+      "bytes": 4744,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-344.json.gz",
+      "records": 16,
+      "sha256": "cae21d7ec6a35caf1abe72ddb5c07c6c1c95e0d0512221c25ef98ead9b0daa14"
+    },
+    {
+      "bytes": 4672,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-345.json.gz",
+      "records": 14,
+      "sha256": "2496aa35628c7006c9453a1333078fdb00deb65e38d82d6aee3325b809875ca9"
+    },
+    {
+      "bytes": 4157,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-346.json.gz",
+      "records": 14,
+      "sha256": "e8ebc6aa08d0d3b625e65e46362b85291a3a9771d076be0d108ea3032a726288"
+    },
+    {
+      "bytes": 8090,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-347.json.gz",
+      "records": 26,
+      "sha256": "96dd5c1e09ae8abc8725f1abf4033ff426f8d7192d60aef594fac6ff2d68bd1c"
+    },
+    {
+      "bytes": 5968,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-348.json.gz",
+      "records": 19,
+      "sha256": "a10a01b0f7eb00f3b93488860b3c2eb834e948904844f58fc79db32d88c48d64"
+    },
+    {
+      "bytes": 3422,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-349.json.gz",
+      "records": 9,
+      "sha256": "d46cb56ea2c8ee95548c5e49c6f513689acf73de1f110a0fc027ea62b5adc7c4"
+    },
+    {
+      "bytes": 2542,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-350.json.gz",
+      "records": 6,
+      "sha256": "f0a7b89b623d8e1907b1f753dfd2b10ccc18800b1ee7d9d0d39e0844609f410f"
+    },
+    {
+      "bytes": 2377,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-351.json.gz",
+      "records": 4,
+      "sha256": "d05421ca5483bf8c4f9ad5208bcd62211114dea7dcdd118fd8ad7684e47b9813"
+    },
+    {
+      "bytes": 2135,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-352.json.gz",
+      "records": 4,
+      "sha256": "013845268cec3e14c0fe8433fc969a77369765c3c55f038ab8fd155d9473de39"
+    },
+    {
+      "bytes": 4081,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-353.json.gz",
+      "records": 10,
+      "sha256": "47eb27baee3ecbc6edb1639e522ad4f249f618099c54f9936655f512c1ec4c80"
+    },
+    {
+      "bytes": 5290,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-354.json.gz",
+      "records": 16,
+      "sha256": "ac8f80fd54015a66bd5df6ec573b9d4242247df0be5bbe0cd3229e670d64e9cb"
+    },
+    {
+      "bytes": 2054,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-355.json.gz",
+      "records": 3,
+      "sha256": "75d86306ed93bb1ca1c3ef746ed1e7f4bd105f36a9f878a5d202fb93db374687"
+    },
+    {
+      "bytes": 3346,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-356.json.gz",
+      "records": 8,
+      "sha256": "866efea224e863689135298ab119bae4080a91037161db9a0a3a6383606ab559"
+    },
+    {
+      "bytes": 6649,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-357.json.gz",
+      "records": 19,
+      "sha256": "9a399e482b376c7bf6d56dc094b2d9c45c35bb4e457d5c89d38fb91a917e1b29"
+    },
+    {
+      "bytes": 3688,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-358.json.gz",
+      "records": 8,
+      "sha256": "1afa22db9ef5e64108d0a42c690b513f48894e95bf7f0f12aabd5534af48b3ac"
+    },
+    {
+      "bytes": 6808,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-359.json.gz",
+      "records": 20,
+      "sha256": "297e6cb68511aa9f82f0ef8fca5b6aa60029f5297a6da084665bf7bca192131f"
+    },
+    {
+      "bytes": 4029,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-360.json.gz",
+      "records": 10,
+      "sha256": "820fcbde92b93ba9fa691d70fbfedbe048a6f851def944c6adc245ae31e6a013"
+    },
+    {
+      "bytes": 4441,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-361.json.gz",
+      "records": 10,
+      "sha256": "47fb074b1d04cf93118a758b61a754d5ffc1c6040084706d28d266d50d9f8ca2"
+    },
+    {
+      "bytes": 4090,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-362.json.gz",
+      "records": 10,
+      "sha256": "4ce72c83c827652d8dc5c698b8a5ec28b4b30a08ff5ca0fc6539532245006bc9"
+    },
+    {
+      "bytes": 6398,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-363.json.gz",
+      "records": 18,
+      "sha256": "34a9b21ff1dd432e1c321ef3ad5dc0dd08a56e4254fcda095c74b9e3d21663cd"
+    },
+    {
+      "bytes": 3420,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-364.json.gz",
+      "records": 6,
+      "sha256": "99c19e19684b0c5163ffe87bc06a9c2e46e85bb4ffd1b71e9c0eec14ff1af610"
+    },
+    {
+      "bytes": 2639,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-assertions/assertions-365.json.gz",
+      "records": 4,
+      "sha256": "d834849255e8abe8808200bb62ed64a31102efb3706a7a6e461f4859249f8c97"
+    }
+  ],
+  "counts": {
+    "assertions": 56479,
+    "by_kind": {
+      "concept": 31874,
+      "entity": 1136,
+      "topic": 23469
+    },
+    "by_support": {
+      "metadata-only": 0,
+      "multi-field": 13002,
+      "notes-only": 5003,
+      "title-only": 38474
+    }
+  },
+  "generated_at": "2026-07-26T12:30:00Z",
+  "id": "uk-legislation-codex-assisted-v3-accepted",
+  "official_legal_classification": false,
+  "review_materials_sha256": "a28f1c2d0edf1e5859ed3a57ff2b55b77f36734b5c27bf5e57a650d05b1d090e",
+  "schema": "okf-enrichment-accepted-assertion-manifest.v3",
+  "snapshot_id": "legislation-2026-07-11T18:00:00Z"
+}

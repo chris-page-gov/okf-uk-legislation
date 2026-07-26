@@ -464,10 +464,6 @@ class FinalizationFixture:
         }
         self.provenance_path = self.reproduction_dir / "provenance-inputs.json"
         write_json(self.provenance_path, provenance)
-        runtime_material = finalization.material(
-            self.runtime_paths["explorer"],
-            "release-assurance/explorer-runtime-acceptance.json",
-        )
         reproduction = {
             "schema": "okf-reproduction-receipt.v1",
             "status": "passed",
@@ -524,21 +520,6 @@ class FinalizationFixture:
                     "sha256": finalization.sha256_file(self.provenance_path),
                 },
             },
-            "required_receipts": [
-                {
-                    "id": "okf-explorer-runtime-v0.5.0",
-                    "schema": "okf-explorer-runtime-acceptance.v2",
-                    "material": runtime_material,
-                    "assertions": [
-                        {
-                            "pointer": "/status",
-                            "equals": "passed",
-                            "passed": True,
-                        }
-                    ],
-                    "status": "passed",
-                }
-            ],
             "release_gate": {
                 "gate": "GATE-06",
                 "eligible": True,
@@ -1078,7 +1059,7 @@ class FinalizationFixture:
 class ReleaseFinalizationTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory(
-            prefix="okf-finalization-", dir="/private/tmp"
+            prefix="okf-finalization-"
         )
         self.fixture = FinalizationFixture(Path(self.temporary.name))
 
@@ -1086,11 +1067,34 @@ class ReleaseFinalizationTests(unittest.TestCase):
         self.temporary.cleanup()
 
     def test_authorize_rc_reconstructs_embedded_and_runtime_gates(self) -> None:
+        reproduction = json.loads(
+            self.fixture.reproduction_path.read_text(encoding="utf-8")
+        )
+        self.assertNotIn("required_receipts", reproduction)
         receipt = self.fixture.authorize_rc()
         self.assertEqual("rc_eligible", receipt["state"])
         self.assertEqual("validated", receipt["embedded_validation"]["current_state"])
         for gate_id in finalization.EMBEDDED_RC_GATES:
             self.assertEqual("passed", receipt["gates"][gate_id])
+
+    def test_external_v2_runtime_candidate_mismatch_is_rejected(self) -> None:
+        runtime_path = self.fixture.runtime_paths["explorer"]
+        runtime = json.loads(runtime_path.read_text(encoding="utf-8"))
+        runtime["candidate"]["commit"] = "f" * 40
+        write_json(runtime_path, runtime)
+        explorer_receipt = json.loads(
+            self.fixture.explorer_receipt.read_text(encoding="utf-8")
+        )
+        for row in explorer_receipt["materials"]:
+            if row["role"] == "runtime":
+                row["bytes"] = runtime_path.stat().st_size
+                row["sha256"] = finalization.sha256_file(runtime_path)
+        write_json(self.fixture.explorer_receipt, explorer_receipt)
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "Explorer runtime candidate binding",
+        ):
+            self.fixture.authorize_rc()
 
     def test_pending_embedded_gate_blocks_rc_authorization(self) -> None:
         self.fixture.set_embedded_gate("GATE-12", "pending")

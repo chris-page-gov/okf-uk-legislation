@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-cache-manifest.schema.json",
-  "title": "OKF model-enrichment cache manifest v1",
-  "description": "A complete integrity-bound inventory of immutable credential-free cache entries for one governed paid run.",
+  "title": "OKF optional direct-API model-enrichment cache manifest v1",
+  "description": "Optional future direct-API profile contract, activated only by a new explicit user decision and not required for the current Codex/no-direct-API release. A complete integrity-bound inventory of immutable credential-free cache entries for one governed paid run.",
   "type": "object",
   "required": [
     "schema",

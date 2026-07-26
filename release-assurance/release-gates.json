@@ -33,7 +33,7 @@
       "evidence_plane": "embedded",
       "group": "validation",
       "id": "GATE-05",
-      "requirement": "The official effects graph is non-empty and queryable, live reconciliation is evidenced, and a dedicated governed paid run records exactly one unique terminal outcome for every one of the 365,786 eligible records. Historical Codex-assisted output cannot satisfy the paid-run denominator.",
+      "requirement": "The official effects graph is non-empty and queryable, live reconciliation is evidenced, and the governed Codex generator/reviewer workflow records exactly one unique terminal outcome for every one of the 365,786 eligible records with deterministic evidence checks, independent review and resumable integrity-bound receipts. The optional direct API profile is not a release prerequisite. GATE-05 status is derived from those artefacts and cannot be passed by this authored gate record alone.",
       "status": "pending"
     },
     {
@@ -103,7 +103,7 @@
       "group": "publication",
       "id": "GATE-14",
       "prerequisite_state": "rc",
-      "requirement": "All 62 originating requirements have item-level final evidence-backed passed, explicitly accepted deferred, externally blocked or superseded closure; no must-have is merely accepted and the immutable closure receipt is bound to the frozen ledger and commit.",
+      "requirement": "All 63 originating requirements have item-level final evidence-backed passed, explicitly accepted deferred, externally blocked or superseded closure; no must-have is merely accepted and the immutable closure receipt is bound to the frozen ledger and commit.",
       "status": "pending"
     }
   ],

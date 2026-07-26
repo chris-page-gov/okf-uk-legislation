@@ -1,18 +1,18 @@
 {
   "by_authority": {
     "derived": 469777,
-    "model-assisted": 22299,
+    "model-assisted": 56479,
     "official": 380498
   },
   "by_datapack": {
-    "codex-assisted-v2": {
+    "codex-assisted-v3": {
       "assertion_contract": "okf-relationship-assertion.v2",
-      "count": 22299,
+      "count": 56479,
       "freshness": "current",
-      "notes": "Audited derived discovery assertions inherit the currency window of their bound legislation-title snapshot.",
-      "observed_at": "2026-07-25T22:20:00Z",
-      "refresh_window": "input-snapshot-P31D",
-      "stale_after": "2026-08-11T18:00:00Z"
+      "notes": "Only independently accepted topic, concept and entity-link assertions are active. Candidate and historical v2 rows are excluded.",
+      "observed_at": "2026-07-26T12:30:00Z",
+      "refresh_window": "governed-v3-assertion-window",
+      "stale_after": "2026-10-26T00:00:00Z"
     },
     "core": {
       "assertion_contract": "okf-core-relationship-row.v1",
@@ -34,13 +34,15 @@
     }
   },
   "by_freshness": {
-    "current": 872574,
+    "current": 906754,
     "stale": 0,
     "unknown": 0
   },
   "by_predicate": {
-    "classified as": 492076,
+    "classified as": 493246,
+    "has discovery concept": 31874,
     "has document type": 365786,
+    "mentions entity": 1136,
     "official effect: act renamed": 1,
     "official effect: added": 65,
     "official effect: added (1.1.1996) (saving)": 4,
@@ -978,5 +980,5 @@
   },
   "scope": "federated-data-plane",
   "snapshot": "whole-law-2026-07-25",
-  "total": 872574
+  "total": 906754
 }

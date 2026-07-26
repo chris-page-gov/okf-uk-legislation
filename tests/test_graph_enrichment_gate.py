@@ -42,6 +42,15 @@ def checks_by_id() -> dict[str, dict]:
     return {item["id"]: item for item in receipt()["checks"]}
 
 
+def accepted_manifest() -> dict:
+    return json.loads(
+        (
+            ROOT
+            / "bundle/enrichment/codex-assisted-v3/accepted-manifest.json"
+        ).read_text(encoding="utf-8")
+    )
+
+
 def test_assurance_receipt_is_current_and_passed() -> None:
     expected = AUDITOR.build_receipt()
     assert receipt() == expected
@@ -69,14 +78,23 @@ def test_official_effects_are_non_empty_source_derived_and_reconciled() -> None:
 def test_enrichment_covers_every_eligible_work_and_excludes_v1() -> None:
     result = receipt()
     checks = checks_by_id()
+    accepted = accepted_manifest()
     assert result["metrics"]["enrichment_attempts"] == 365_786
-    assert result["metrics"]["model_assisted_assertions"] == 22_299
+    assert (
+        result["metrics"]["model_assisted_assertions"]
+        == accepted["counts"]["assertions"]
+    )
+    assert (
+        result["metrics"]["model_assisted_assertions_by_kind"]
+        == accepted["counts"]["by_kind"]
+    )
     assert checks["G05-ENRICHMENT-ATTEMPTS"]["status"] == "passed"
     assert checks["G05-ENRICHMENT"]["status"] == "passed"
     assert checks["G05-ENRICHMENT"]["evidence"]["v1_contamination"] == 0
+    assert checks["G05-ENRICHMENT"]["evidence"]["v2_contamination"] == 0
     assert (
-        checks["G05-ENRICHMENT"]["evidence"]["candidate_review_status"]
-        == "pending-independent-audit"
+        checks["G05-ENRICHMENT"]["evidence"]["active_review_status"]
+        == "accepted-independent-review"
     )
     assert (
         checks["G05-ENRICHMENT"]["evidence"]["independent_audit_status"]
@@ -98,19 +116,25 @@ def test_zero_cost_claim_is_limited_to_incremental_api_usage() -> None:
 def test_relationship_dimensions_reconcile_across_all_publications() -> None:
     result = receipt()
     checks = checks_by_id()
-    assert result["metrics"]["combined_relationships"] == 872_574
+    accepted = accepted_manifest()
+    expected_total = (
+        result["metrics"]["core_relationships"]
+        + result["metrics"]["official_effects"]
+        + accepted["counts"]["assertions"]
+    )
+    assert result["metrics"]["combined_relationships"] == expected_total
     assert result["metrics"]["composition"]["by_datapack"] == {
-        "codex-assisted-v2": 22_299,
+        "codex-assisted-v3": accepted["counts"]["assertions"],
         "core": 835_563,
         "legislation-effects": 14_712,
     }
     assert result["metrics"]["composition"]["by_authority"] == {
         "derived": 469_777,
-        "model-assisted": 22_299,
+        "model-assisted": accepted["counts"]["assertions"],
         "official": 380_498,
     }
     assert result["metrics"]["composition"]["by_freshness"] == {
-        "current": 872_574
+        "current": expected_total
     }
     assert checks["G05-COMPOSITION"]["status"] == "passed"
     assert checks["G05-ROOT-SUMMARY"]["status"] == "passed"
@@ -119,8 +143,16 @@ def test_relationship_dimensions_reconcile_across_all_publications() -> None:
 
 def test_descriptor_entrypoints_and_explorer_receipt_are_digest_bound() -> None:
     checks = checks_by_id()
+    accepted = accepted_manifest()
     assert checks["G05-DESCRIPTORS"]["status"] == "passed"
     assert checks["G05-GRAPH-INDEX"]["status"] == "passed"
+    assert checks["G05-GRAPH-INDEX"]["evidence"][
+        "model_assisted_relationship_kinds"
+    ] == {
+        "classified as": accepted["counts"]["by_kind"]["topic"],
+        "has discovery concept": accepted["counts"]["by_kind"]["concept"],
+        "mentions entity": accepted["counts"]["by_kind"]["entity"],
+    }
     assert checks["G05-EXPLORER"]["status"] == "passed"
     assert checks["G05-EXPLORER"]["evidence"][
         "legislation_descriptor_current"

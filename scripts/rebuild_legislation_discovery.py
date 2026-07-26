@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Rebuild the browser-safe legislation discovery plane from published shards.
 
-This deliberately leaves work, relationship, official-effects and enrichment
-datapacks untouched.  It replaces only generated search/facet/locator files
-and synchronizes their descriptor, overview, analysis and performance
-contracts.
+This deliberately leaves work, core relationships, official effects, the
+historical v2 datapack and governed v3 evidence untouched.  It replaces the
+generated search/facet/locator files and publishes a browser-compatible graph
+projection whose only model-assisted inputs are independently accepted v3
+assertions.
 """
 
 from __future__ import annotations
@@ -31,6 +32,7 @@ IMMUTABLE_INPUTS = (
     ROOT / "evidence",
     DATA / "effects",
     DATA / "enrichment",
+    PACK / "enrichment",
 )
 DISCOVERY_RECORD_FIELDS = {
     "access_model",
@@ -226,6 +228,7 @@ def resolved_bundle_path(relative: str) -> Path:
 
 def relationship_dimensions(
     manifest: dict[str, Any],
+    governed_v3: dict[str, Any],
 ) -> tuple[int, int, list[dict[str, Any]], str]:
     """Stream every materialized relationship and produce exact dimensions."""
 
@@ -274,17 +277,12 @@ def relationship_dimensions(
 
     generated_at = str(manifest["generated_at"])
     provider_total = 0
-    for directory, datapack, count_key in (
-        ("effects", "legislation-effects", "assertions"),
-        ("enrichment", "codex-assisted-v2", "assertions"),
-    ):
-        provider_manifest_path = DATA / directory / "manifest.json"
-        if not provider_manifest_path.is_file():
-            continue
-        provider = load_json(provider_manifest_path)
-        generated_at = max(generated_at, str(provider.get("generated_at", "")))
+    effects_manifest_path = DATA / "effects" / "manifest.json"
+    if effects_manifest_path.is_file():
+        effects = load_json(effects_manifest_path)
+        generated_at = max(generated_at, str(effects.get("generated_at", "")))
         observed = 0
-        for chunk in provider.get("chunks", []):
+        for chunk in effects.get("chunks", []):
             relative = str(chunk["path"])
             path = resolved_bundle_path(relative)
             body = path.read_bytes()
@@ -298,16 +296,30 @@ def relationship_dimensions(
             if expected_bytes is not None and len(body) != int(expected_bytes):
                 raise ValueError(f"provider chunk byte count mismatch: {relative}")
             rows = json.loads(gzip.decompress(body).decode("utf-8"))
-            chunk_count = consume(rows, datapack)
+            chunk_count = consume(rows, "legislation-effects")
             if chunk_count != int(chunk["records"]):
                 raise ValueError(f"provider chunk record mismatch: {relative}")
             observed += chunk_count
-        expected = int(provider.get("counts", {}).get(count_key, 0))
+        expected = int(effects.get("counts", {}).get("assertions", 0))
         if observed != expected:
             raise ValueError(
-                f"{datapack} relationship count mismatch: {observed} != {expected}"
+                "legislation-effects relationship count mismatch: "
+                f"{observed} != {expected}"
             )
         provider_total += observed
+
+    accepted_rows = governed_v3["rows"]
+    accepted = consume(accepted_rows, "codex-assisted-v3")
+    if accepted != governed_v3["counts"]["assertions"]:
+        raise ValueError(
+            "codex-assisted-v3 relationship count mismatch: "
+            f"{accepted} != {governed_v3['counts']['assertions']}"
+        )
+    provider_total += accepted
+    generated_at = max(
+        generated_at,
+        str(governed_v3["manifest"]["generated_at"]),
+    )
 
     rows = [
         {
@@ -327,6 +339,73 @@ def relationship_dimensions(
         ), count in sorted(counts.items())
     ]
     return core_total, core_total + provider_total, rows, generated_at
+
+
+def relationship_summary_document(
+    rows: list[dict[str, Any]],
+    *,
+    core_total: int,
+    combined_total: int,
+    generated_at: str,
+) -> dict[str, Any]:
+    reduced: Counter[tuple[str, str, str]] = Counter()
+    for row in rows:
+        authority = {
+            "official": "official-source",
+            "derived": "derived-non-official",
+        }.get(str(row["authority"]), str(row["authority"]))
+        reduced[
+            (
+                str(row["datapack"]),
+                str(row["predicate"]),
+                authority,
+            )
+        ] += int(row["count"])
+    relationships = [
+        {
+            "datapack": datapack,
+            "predicate": predicate,
+            "authority": authority,
+            "count": count,
+        }
+        for (datapack, predicate, authority), count in sorted(reduced.items())
+    ]
+    return {
+        "schema": "okf-relationship-summary.v1",
+        "generated_at": generated_at,
+        "core_total": core_total,
+        "external_datapack_total": combined_total - core_total,
+        "combined_total": combined_total,
+        "relationships": relationships,
+        "notice": (
+            "Active model-assisted counts include only independently accepted "
+            "Codex v3 topic, concept and entity-link assertions. The v2 "
+            "datapack remains historical evidence and is not counted."
+        ),
+    }
+
+
+def historical_v2_metadata() -> dict[str, Any]:
+    manifest_path = DATA / "enrichment" / "manifest.json"
+    coverage_path = DATA / "enrichment" / "coverage.json"
+    run_path = PACK / "enrichment" / "codex-assisted-v2.json"
+    if not all(path.is_file() for path in (manifest_path, coverage_path, run_path)):
+        raise ValueError("historical v2 enrichment evidence is incomplete")
+    manifest = load_json(manifest_path)
+    coverage = load_json(coverage_path)
+    run = load_json(run_path)
+    return {
+        "assertions": int(manifest.get("counts", {}).get("assertions", 0)),
+        "attempted_records": int(
+            coverage.get("counts", {}).get("records", {}).get(
+                "attempted",
+                run.get("counts", {}).get("records", {}).get("attempted", 0),
+            )
+        ),
+        "manifest": "data/enrichment/manifest.json",
+        "coverage": "data/enrichment/coverage.json",
+        "run": "enrichment/codex-assisted-v2.json",
+    }
 
 
 def gzip_measure(paths: list[Path]) -> dict[str, int]:
@@ -447,7 +526,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     immutable_before = tree_digest(IMMUTABLE_INPUTS)
     descriptor = load_json(PACK / "okf-explorer.json")
-    manifest = load_json(DATA / "manifest.json")
+    manifest_path = DATA / "manifest.json"
+    manifest_bytes_before = manifest_path.read_bytes()
+    manifest = json.loads(manifest_bytes_before)
+    governed_v3 = builder.load_governed_model_enrichment_v3()
+    historical_v2 = historical_v2_metadata()
     records, record_chunks, record_chunk_metadata = load_records(manifest)
     if len(records) != int(manifest["counts"]["works"]):
         raise SystemExit("Published work shards do not match the manifest count")
@@ -481,12 +564,49 @@ def main(argv: list[str] | None = None) -> int:
         combined_relationships,
         relationship_rows,
         composition_generated_at,
-    ) = relationship_dimensions(manifest)
+    ) = relationship_dimensions(manifest, governed_v3)
     relationship_composition = builder.relationship_composition_document(
         relationship_rows,
         snapshot,
         composition_generated_at,
     )
+    relationship_summary = relationship_summary_document(
+        relationship_rows,
+        core_total=core_relationships,
+        combined_total=combined_relationships,
+        generated_at=composition_generated_at,
+    )
+    relationships_by_datapack = {
+        key: int(value)
+        for key, value in relationship_composition["by_datapack"].items()
+    }
+    active_relationship_counts = {
+        "core_relationships": core_relationships,
+        "relationships": combined_relationships,
+        "relationships_with_external_datapacks": combined_relationships,
+        "external_datapack_relationships": (
+            combined_relationships - core_relationships
+        ),
+        "official_effect_relationships": relationships_by_datapack.get(
+            "legislation-effects",
+            0,
+        ),
+        "model_assisted_relationships_v3": governed_v3["counts"][
+            "assertions"
+        ],
+        "model_assisted_topic_relationships_v3": governed_v3["counts"][
+            "by_kind"
+        ]["topic"],
+        "model_assisted_concept_relationships_v3": governed_v3["counts"][
+            "by_kind"
+        ]["concept"],
+        "model_assisted_entity_relationships_v3": governed_v3["counts"][
+            "by_kind"
+        ]["entity"],
+        "historical_model_assisted_relationships_v2": historical_v2[
+            "assertions"
+        ],
+    }
     analysis = builder.analysis_for(
         records,
         facets,
@@ -510,6 +630,29 @@ def main(argv: list[str] | None = None) -> int:
         if not args.check:
             write_json(PACK / relative_path, value)
 
+    explorer_enrichment = builder.model_enrichment_v3_explorer_manifest(
+        governed_v3
+    )
+    if len(explorer_enrichment["chunks"]) != len(record_chunk_metadata):
+        raise ValueError(
+            "accepted v3 chunks are not aligned with published work chunks"
+        )
+    enrichment_projection_path = Path(
+        builder.MODEL_ENRICHMENT_V3_EXPLORER_MANIFEST
+    )
+    enrichment_projection_body = builder.large_corpus.render_json(
+        explorer_enrichment
+    )
+    enrichment_projection_reference = {
+        "path": enrichment_projection_path.as_posix(),
+        "sha256": hashlib.sha256(
+            enrichment_projection_body.encode("utf-8")
+        ).hexdigest(),
+    }
+    generated_files[enrichment_projection_path] = enrichment_projection_body
+    if not args.check:
+        write_json(PACK / enrichment_projection_path, explorer_enrichment)
+
     if not args.check:
         with tempfile.TemporaryDirectory(
             prefix=".discovery-staging-",
@@ -524,49 +667,15 @@ def main(argv: list[str] | None = None) -> int:
     publish_json("data/presentation.json", presentation)
     publish_json("data/analysis/overview.json", analysis)
     publish_json("data/relationship-composition.json", relationship_composition)
-
-    manifest["snapshot"] = snapshot
-    manifest["indexes"].update(
-        {
-            "facets": "data/facets.json",
-            "presentation": "data/presentation.json",
-            "record_locator": "data/records/manifest.json",
-            "search": "data/search/manifest.json",
-            "performance": "data/performance.json",
-            "relationship_composition": "data/relationship-composition.json",
-        }
-    )
-    manifest["performance"].update(
-        {
-            "startup_mode": "overview-first",
-            "full_record_hydration": "single-shard-by-route-or-search-ordinal",
-            "full_corpus_hydration": "disabled-in-browser",
-            "facet_hydration": "exact-v2-filter-postings",
-            "search": (
-                "bounded gzip static worker shards plus official remote "
-                "full-text Atom search"
-            ),
-        }
-    )
-    manifest["search"] = {
-        "schema": search["manifest"]["schema"],
-        "documents": len(records),
-        "tokens": search["manifest"]["counts"]["tokens"],
-        "result_limit": search["manifest"]["result_limit"],
-        "filter_postings": len(search["manifest"]["entrypoints"]["filter_postings"]),
-    }
-    manifest["counts"].update(
-        {
-            "core_relationships": core_relationships,
-            "relationships_with_external_datapacks": combined_relationships,
-            "external_datapack_relationships": (
-                combined_relationships - core_relationships
-            ),
-        }
-    )
-    publish_json("data/manifest.json", manifest)
+    publish_json("data/relationship-summary.json", relationship_summary)
 
     overview = load_json(DATA / "overview.json")
+    overview_counts = {
+        **overview.get("counts", {}),
+        **descriptor["counts"],
+        **active_relationship_counts,
+    }
+    overview_counts.pop("model_assisted_relationships_v2", None)
     recent_ordinals = sorted(
         range(len(records)),
         key=lambda ordinal: str(records[ordinal].get("creation_date", "")),
@@ -575,15 +684,7 @@ def main(argv: list[str] | None = None) -> int:
     overview.update(
         {
             "snapshot": snapshot,
-            "counts": {
-                **overview.get("counts", {}),
-                **descriptor["counts"],
-                "core_relationships": core_relationships,
-                "relationships": combined_relationships,
-                "external_datapack_relationships": (
-                    combined_relationships - core_relationships
-                ),
-            },
+            "counts": overview_counts,
             "recent_datasets": [
                 builder.search_result_document(
                     discovery_records[ordinal],
@@ -601,6 +702,34 @@ def main(argv: list[str] | None = None) -> int:
     descriptor["snapshot"] = snapshot
     descriptor["entrypoints"].update(
         {
+            "model_enrichment_v3": enrichment_projection_reference,
+            "model_enrichment_v3_accepted_manifest": {
+                **governed_v3["bindings"]["accepted_manifest"],
+                "path": (
+                    "enrichment/codex-assisted-v3/accepted-manifest.json"
+                ),
+            },
+            "model_enrichment_v3_coverage": (
+                "enrichment/codex-assisted-v3/coverage.json"
+            ),
+            "model_enrichment_v3_independent_audit": {
+                **governed_v3["bindings"]["independent_audit"],
+                "path": (
+                    "whole-law/assurance/"
+                    "enrichment-v3-independent-audit-20260726.json"
+                ),
+            },
+            "model_enrichment_v3_reviewer": {
+                **governed_v3["bindings"]["reviewer_task_receipt"],
+                "path": (
+                    "whole-law/assurance/"
+                    "enrichment-v3-reviewer-task-receipt.json"
+                ),
+            },
+            "model_enrichment_v2_historical": historical_v2["run"],
+            "model_enrichment_v2_historical_manifest": historical_v2[
+                "manifest"
+            ],
             "presentation": "data/presentation.json",
             "record_locator": "data/records/manifest.json",
             "performance": "data/performance.json",
@@ -609,17 +738,45 @@ def main(argv: list[str] | None = None) -> int:
             "search_manifest": "data/search/manifest.json",
         }
     )
+    descriptor["entrypoints"].pop("model_enrichment_v2", None)
     descriptor["performance"] = manifest["performance"]
-    descriptor["counts"].update(
-        {
-            "core_relationships": core_relationships,
-            "relationships": combined_relationships,
-            "relationships_with_external_datapacks": combined_relationships,
-            "external_datapack_relationships": (
-                combined_relationships - core_relationships
-            ),
-        }
+    descriptor["counts"].pop("model_assisted_relationships_v2", None)
+    descriptor["counts"].update(active_relationship_counts)
+    descriptor.setdefault("extensions", {}).pop(
+        "okf-model-enrichment.v2",
+        None,
     )
+    descriptor["extensions"]["okf-model-enrichment.v3"] = {
+        "mode": "external-provider-datapack",
+        "entrypoint": "model_enrichment_v3",
+        "accepted_manifest": "model_enrichment_v3_accepted_manifest",
+        "coverage": "model_enrichment_v3_coverage",
+        "independent_audit": "model_enrichment_v3_independent_audit",
+        "semantic_reviewer": "model_enrichment_v3_reviewer",
+        "accepted_assertions": governed_v3["counts"]["assertions"],
+        "accepted_by_kind": governed_v3["counts"]["by_kind"],
+        "attempted_records": governed_v3["audit"]["counts"][
+            "records_attempted"
+        ],
+        "authority": "derived-model-assisted-discovery-metadata",
+        "official_legal_classification": False,
+        "direct_openai_api_calls": 0,
+        "incremental_openai_api_usd": 0,
+        "incremental_openai_api_gbp": 0,
+        "explorer_transport_schema": "okf-provider-datapack.v1",
+        "source_schema": (
+            "okf-enrichment-accepted-assertion-manifest.v3"
+        ),
+    }
+    descriptor["extensions"]["okf-model-enrichment.v2-historical"] = {
+        "mode": "historical-evidence-not-active",
+        "entrypoint": "model_enrichment_v2_historical",
+        "manifest": "model_enrichment_v2_historical_manifest",
+        "accepted_assertions_at_v2_snapshot": historical_v2["assertions"],
+        "attempted_records": historical_v2["attempted_records"],
+        "included_in_active_relationship_totals": False,
+        "authority": "derived-non-official",
+    }
     descriptor.setdefault("extensions", {})[
         "okf-large-corpus-publication.v2"
     ] = {
@@ -666,8 +823,50 @@ def main(argv: list[str] | None = None) -> int:
     }
     publish_json("okf-explorer.json", descriptor)
 
+    graph = load_json(DATA / "graph.json")
+    graph["external_edge_counts"] = [
+        {
+            "kind": row["predicate"],
+            "dimension": row["dimension"],
+            "count": row["count"],
+            "authority": "model-assisted",
+            "datapack": enrichment_projection_path.as_posix(),
+        }
+        for row in explorer_enrichment["relationship_kinds"]
+    ]
+    effects_manifest_path = DATA / "effects" / "manifest.json"
+    if effects_manifest_path.is_file():
+        effects_manifest = load_json(effects_manifest_path)
+        graph["external_edge_counts"].append(
+            {
+                "kind": "official legislation effect",
+                "count": int(
+                    effects_manifest.get("counts", {}).get("assertions", 0)
+                ),
+                "authority": "official-source",
+                "datapack": "data/effects/manifest.json",
+                "coverage_status": effects_manifest.get(
+                    "acquisition",
+                    {},
+                ).get("coverage_status", "unknown"),
+            }
+        )
+    graph["relationship_summary"] = "data/relationship-summary.json"
+    graph["model_enrichment_v3"] = enrichment_projection_reference
+    graph["model_enrichment_v3_accepted_manifest"] = governed_v3[
+        "bindings"
+    ]["accepted_manifest"]
+    graph["model_enrichment_v3_independent_audit"] = governed_v3[
+        "bindings"
+    ]["independent_audit"]
+    publish_json("data/graph.json", graph)
+
     performance = performance_report(descriptor, locator)
     publish_json("data/performance.json", performance)
+    if manifest_path.read_bytes() != manifest_bytes_before:
+        raise SystemExit(
+            "The v3-audited source data manifest changed during discovery rebuild"
+        )
     immutable_after = tree_digest(IMMUTABLE_INPUTS)
     if immutable_after != immutable_before:
         raise SystemExit(

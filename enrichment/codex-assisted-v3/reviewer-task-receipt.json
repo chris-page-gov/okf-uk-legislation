@@ -1,0 +1,41 @@
+{
+  "schema": "okf-codex-semantic-review-task-receipt.v1",
+  "status": "accepted",
+  "review_task_id": "codex-v3-independent-semantic-review-r3-20260726",
+  "reviewer_visible_model_label": "Codex task surface (exact deployment not exposed)",
+  "reviewed_materials": {
+    "generator_executable_sha256": "29d5193c6ca6216f97689fb3ddfb1c97759a365e86a390c4a8bae5ef88b55b6f",
+    "generator_prompt_sha256": "7e6f9596252ff5ff68bcd0952f930019e43ea34b910f33acdd869e7309d32dd0",
+    "reviewer_prompt_sha256": "328adff9c3c8f5932ca1031eb729f55f448987adf9dbddfa1cb7a88488278dca",
+    "rules_sha256": "d44081c9f88819790f4d5c29cd5da5a0299353a98b2f66fbf1a147e212947e31",
+    "review_policy_sha256": "4b40176e617c94478dc0af0854dabbe6ffb72e79988c04ad88f134545bcbbafe",
+    "calibration_sha256": "ef755dc285528faddd44466384024d4e1982bcf7400ae41a249b575961747090",
+    "calibration_result_sha256": "de19c3a93eb23f9af711e994c660cf7ce69af4746687afb4360e71dd0a2b8fc4",
+    "source_corpus_semantic_sha256": "33272f76d4db5bb90332dffed3f4a7cab991dc78b0c9752a5324222b8fa7a121",
+    "candidate_manifest_sha256": "b6950fb54d1f5014348f3a421e1432397e626227a8451d955886602334771773",
+    "terminal_outcome_manifest_sha256": "d260b118f3d3c2c9ffa0f0a9956b695cc9265df6624abe08bc1bb485f3895bc3",
+    "coverage_sha256": "6836e5b43ff7491c630afb2fa0d365ba9544e935c1651ac3d53dc5eb9736c458",
+    "checkpoints_sha256": "b19b98f34c4de52d04b4691116e7427fc3ee35c9c594d6c2422ed40c8d20538d"
+  },
+  "verdict": "accepted",
+  "semantic_review_scope": [
+    "topic rule meanings and exclusions",
+    "concept labels and targets",
+    "entity identities and official targets",
+    "title and substantive notes evidence-field policy",
+    "metadata field profile and mandatory no-subject abstention",
+    "multi-field evidence ordering, hashing and deduplication",
+    "abstention and non-official authority language",
+    "candidate and terminal-outcome population summaries"
+  ],
+  "limitations": [
+    "This bounded R3 semantic re-review relied on the separately reported independent full-population reconstruction for candidate and terminal integrity; it independently inspected the complete 1,136-candidate entity population and did not rerun that reconstruction.",
+    "This independent Codex semantic review is not qualified legal-practitioner assurance.",
+    "Literal topic, concept and entity matches are derived discovery metadata, not official legal classifications or legal advice.",
+    "An abstention is not evidence that a work lacks a topic, concept or entity.",
+    "No frozen CLML body was available; advertised or derived routes were not treated as retrieved semantic evidence.",
+    "The task surface does not expose exact deployment identity, sampling parameters, subscription token usage, weekly allowance usage or attributable subscription cost."
+  ],
+  "source_edits_made_by_reviewer": false,
+  "notes": "Accepted after a bounded R3 review of the frozen rules, calibration, review policy and all 1,136 active entity candidates. All 12 reviewed bindings matched the R3 freeze, every candidate-shard binding verified, and aggregate counts were 56,479 total: topic 23,469, concept 31,874 and entity 1,136; support was title-only 38,474, notes-only 5,003, multi-field 13,002 and metadata-only 0. The entity sweep found no unregistered target, duplicate identifier, unmatched evidence literal or surviving unsafe qualified-name collision. E020 exclusively carries all 19 European Environment Agency candidates to its official EEA target; E004 carries none. E002 excludes Imperial Bank of England, E005 excludes every Pensions Regulator Tribunal context, E011 excludes Montserrat's commission while retaining the UK founding Act, E001 remains retired, and E017/E018/E019 have 1/11/12 jurisdiction-specific candidates. Residual immediate prefix and compound contexts were inspected and referred to the same registered body or a non-entity modifier. A separate independent Codex full-population reconstruction reported zero candidate or terminal mismatches across 365,786 works; this bounded R3 task did not rerun it and made no source edits."
+}

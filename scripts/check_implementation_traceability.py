@@ -82,7 +82,7 @@ def parse_clauses() -> tuple[dict[str, dict[str, Any]], list[str]]:
         }.items()
         for item in range(1, count + 1)
     }
-    expected_decisions = {f"D-{item:02d}" for item in range(1, 13)}
+    expected_decisions = {f"D-{item:02d}" for item in range(1, 14)}
     expected = expected_phase | expected_decisions
     if set(clauses) != expected:
         errors.append(

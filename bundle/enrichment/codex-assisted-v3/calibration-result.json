@@ -1,0 +1,174 @@
+{
+  "calibration_id": "codex-assisted-v3-fixed-20260726-r3",
+  "case_set_sha256": "41a6c7046566220f25b833e3be01d2e885de3cdfff2ff271580777a1fc223259",
+  "concept": {
+    "evidence_support": {
+      "denominator": 55,
+      "numerator": 55,
+      "value": 1.0
+    },
+    "joined": 55,
+    "mapping_coverage": 1.0,
+    "mappings": 55,
+    "near_miss": {
+      "passed": 55,
+      "total": 55
+    },
+    "passed": true,
+    "positive": {
+      "passed": 55,
+      "total": 55
+    },
+    "precision": {
+      "denominator": 55,
+      "numerator": 55,
+      "value": 1.0
+    }
+  },
+  "entity": {
+    "evidence_support": {
+      "denominator": 19,
+      "numerator": 19,
+      "value": 1.0
+    },
+    "exclusion": {
+      "passed": 7,
+      "total": 7
+    },
+    "jurisdiction_collision": {
+      "passed": 4,
+      "total": 4
+    },
+    "near_miss": {
+      "passed": 19,
+      "total": 19
+    },
+    "passed": true,
+    "positive": {
+      "passed": 19,
+      "total": 19
+    },
+    "precision": {
+      "denominator": 19,
+      "numerator": 19,
+      "value": 1.0
+    },
+    "retained_context": {
+      "passed": 1,
+      "total": 1
+    },
+    "retirement_abstention": {
+      "passed": 1,
+      "total": 1
+    },
+    "rule_coverage": 1.0,
+    "rule_tests": 19,
+    "rules": 19
+  },
+  "evidence_support": {
+    "denominator": 122,
+    "numerator": 122,
+    "value": 1.0
+  },
+  "field_policy": {
+    "passed": true,
+    "semantic_text": {
+      "fields": [
+        "title",
+        "notes"
+      ],
+      "near_miss": {
+        "passed": 3,
+        "total": 3
+      },
+      "positive": {
+        "passed": 3,
+        "total": 3
+      }
+    },
+    "source_metadata": {
+      "abstention": {
+        "passed": 4,
+        "total": 4
+      },
+      "candidate_dimensions": [],
+      "fields": [
+        "category",
+        "document_type",
+        "publisher_title",
+        "tags"
+      ]
+    },
+    "tests": 7
+  },
+  "generated_at": "2026-07-26T12:00:00Z",
+  "passed": true,
+  "population_level_precision_claimed": false,
+  "precision": {
+    "denominator": 118,
+    "numerator": 118,
+    "value": 1.0
+  },
+  "rule_calibration_passed": true,
+  "schema": "okf-codex-enrichment-calibration-result.v3",
+  "schema_validation": {
+    "candidate": {
+      "total": 56479,
+      "valid": 56479
+    },
+    "scope": "Actual generated candidate and terminal-outcome rows; review verdict and accepted-projection rows are validated by the independent auditor.",
+    "terminal_outcome": {
+      "total": 365786,
+      "valid": 365786
+    },
+    "total": 422265,
+    "valid": 422265
+  },
+  "schema_validity": 1.0,
+  "scope": {
+    "meaning": "Designed rule-level calibration for deterministic literal discovery rules.",
+    "population_level_precision_claimed": false,
+    "warning": "Passing these fixed positives and near misses does not prove exhaustive population-level legal-semantic accuracy."
+  },
+  "source": "enrichment/codex-assisted-v3/calibration.json",
+  "thresholds": {
+    "concept_mapping_coverage": 1.0,
+    "entity_rule_coverage": 1.0,
+    "evidence_support": 0.95,
+    "precision": 0.95,
+    "schema_validity": 1.0,
+    "topic_rule_coverage": 1.0
+  },
+  "topic": {
+    "cases": {
+      "passed": 58,
+      "total": 58
+    },
+    "evidence_support": {
+      "denominator": 45,
+      "numerator": 45,
+      "value": 1.0
+    },
+    "near_miss": {
+      "passed": 55,
+      "total": 55
+    },
+    "passed": true,
+    "positive": {
+      "passed": 55,
+      "total": 55
+    },
+    "precision": {
+      "denominator": 41,
+      "numerator": 41,
+      "value": 1.0
+    },
+    "recall": {
+      "denominator": 41,
+      "numerator": 41,
+      "value": 1.0
+    },
+    "rule_tests": 55,
+    "rules": 55
+  }
+}

@@ -11,11 +11,13 @@ reproduction, constraint and model-cost reports into
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
 import json
 import re
 import shutil
 import uuid
+import zlib
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -51,7 +53,11 @@ RELATIONSHIP_COMPOSITION = (
 )
 EFFECTS_COVERAGE = ROOT / "bundle" / "data" / "effects" / "coverage.json"
 ENRICHMENT_COVERAGE = (
-    ROOT / "bundle" / "data" / "enrichment" / "coverage.json"
+    ROOT
+    / "bundle"
+    / "enrichment"
+    / "codex-assisted-v3"
+    / "coverage.json"
 )
 WHOLE_LAW_COVERAGE = ROOT / "bundle" / "whole-law" / "data" / "coverage.json"
 SOURCE_ACCESS_SUMMARY = (
@@ -72,8 +78,53 @@ PAID_MODEL_RUN = (
 PAID_MODEL_PUBLICATION = (
     ROOT / "bundle" / "enrichment" / "model-assisted-paid-v2.json"
 )
+OPTIONAL_DIRECT_API_PROFILE_MATERIALS = (
+    ROOT / "enrichment" / "model-assisted-paid-governance-v1.json",
+    ROOT / "enrichment" / "model-assisted-paid-v2" / "README.md",
+    ROOT
+    / "enrichment"
+    / "model-assisted-paid-v2"
+    / "publication-contract.json",
+    ROOT / "scripts" / "build_model_enrichment_paid_publication.py",
+)
 HISTORICAL_MODEL_PUBLICATION = (
     ROOT / "bundle" / "enrichment" / "codex-assisted-v2.json"
+)
+CODEX_MODEL_ROOT = (
+    ROOT / "bundle" / "enrichment" / "codex-assisted-v3"
+)
+CODEX_MODEL_RUN = CODEX_MODEL_ROOT / "run.json"
+CODEX_MODEL_COVERAGE = CODEX_MODEL_ROOT / "coverage.json"
+CODEX_MODEL_CANDIDATE_MANIFEST = (
+    CODEX_MODEL_ROOT / "candidate-manifest.json"
+)
+CODEX_MODEL_TERMINAL_MANIFEST = (
+    CODEX_MODEL_ROOT / "terminal-outcome-manifest.json"
+)
+CODEX_MODEL_CHECKPOINTS = CODEX_MODEL_ROOT / "checkpoints.json"
+CODEX_MODEL_CALIBRATION_RESULT = (
+    CODEX_MODEL_ROOT / "calibration-result.json"
+)
+CODEX_MODEL_REVIEW_MANIFEST = (
+    CODEX_MODEL_ROOT / "review-verdict-manifest.json"
+)
+CODEX_MODEL_ACCEPTED_MANIFEST = (
+    CODEX_MODEL_ROOT / "accepted-manifest.json"
+)
+CODEX_MODEL_REVIEW_CHECKPOINTS = (
+    CODEX_MODEL_ROOT / "review-checkpoints.json"
+)
+CODEX_MODEL_AUDIT = (
+    ROOT
+    / "whole-law"
+    / "assurance"
+    / "enrichment-v3-independent-audit-20260726.json"
+)
+GRAPH_ENRICHMENT_GATE = (
+    ROOT
+    / "whole-law"
+    / "assurance"
+    / "graph-enrichment-gate-20260726.json"
 )
 VALID_STATUSES = {
     "proposed",
@@ -182,6 +233,38 @@ def external_finalization_projection(
         )
     if contract.get("evidence_plane") != "external-write-once":
         errors.append("external finalization evidence plane must be write-once")
+    traceability_contract = contract.get("traceability")
+    traceability_document = load(TRACEABILITY)
+    traceability_ids = [
+        row.get("id")
+        for row in traceability_document.get("requirements", [])
+        if isinstance(row, dict)
+    ]
+    if not isinstance(traceability_contract, dict):
+        errors.append(
+            "external finalization contract lacks traceability binding"
+        )
+    else:
+        if (
+            traceability_contract.get("frozen_ledger_path")
+            != TRACEABILITY.relative_to(ROOT).as_posix()
+        ):
+            errors.append(
+                "external finalization contract names the wrong "
+                "traceability ledger"
+            )
+        if (
+            traceability_contract.get("frozen_ledger_sha256")
+            != digest(TRACEABILITY)
+        ):
+            errors.append(
+                "external finalization contract traceability SHA-256 is stale"
+            )
+        if traceability_contract.get("frozen_ids") != traceability_ids:
+            errors.append(
+                "external finalization contract frozen IDs differ from the "
+                "ordered traceability ledger"
+            )
     release_observations = contract.get("release_observations", {})
     expected_observation_controller = (
         RELEASE_OBSERVATION_CONTROLLER.relative_to(ROOT).as_posix()
@@ -655,6 +738,75 @@ def build_release_report(
             errors.append(
                 f"release report relationship composition lacks {dimension}"
             )
+    enrichment_gate = model_cost.get("enrichment_gate")
+    accepted_assertions = (
+        enrichment_gate.get("accepted_assertions")
+        if isinstance(enrichment_gate, dict)
+        else None
+    )
+    attempted_records = (
+        enrichment_gate.get("records_attempted")
+        if isinstance(enrichment_gate, dict)
+        else None
+    )
+    candidate_assertions = (
+        enrichment_gate.get("candidate_assertions")
+        if isinstance(enrichment_gate, dict)
+        else None
+    )
+    candidate_support = (
+        enrichment_gate.get("candidate_support")
+        if isinstance(enrichment_gate, dict)
+        else None
+    )
+    enrichment_counts = enrichment.get("counts")
+    enrichment_record_counts = (
+        enrichment_counts.get("records")
+        if isinstance(enrichment_counts, dict)
+        else None
+    )
+    enrichment_candidate_counts = (
+        enrichment_counts.get("candidates")
+        if isinstance(enrichment_counts, dict)
+        else None
+    )
+    composition_by_datapack = composition.get("by_datapack")
+    if not isinstance(composition_by_datapack, dict):
+        composition_by_datapack = {}
+    composition_by_authority = composition.get("by_authority")
+    if not isinstance(composition_by_authority, dict):
+        composition_by_authority = {}
+    if (
+        enrichment.get("schema") != "okf-codex-enrichment-coverage.v3"
+        or enrichment.get("attempt_coverage") != 1.0
+        or not isinstance(enrichment_record_counts, dict)
+        or enrichment_record_counts.get("attempted") != attempted_records
+        or enrichment_record_counts.get("terminal_outcomes")
+        != attempted_records
+        or not isinstance(enrichment_candidate_counts, dict)
+        or enrichment_candidate_counts.get("total")
+        != candidate_assertions
+        or enrichment_counts.get("candidate_support")
+        != candidate_support
+    ):
+        errors.append(
+            "release report active enrichment coverage does not reconcile "
+            "to the governed Codex v3 run"
+        )
+    if (
+        not isinstance(accepted_assertions, int)
+        or isinstance(accepted_assertions, bool)
+        or accepted_assertions < 0
+        or composition_by_datapack.get("codex-assisted-v3")
+        != accepted_assertions
+        or "codex-assisted-v2" in composition_by_datapack
+        or composition_by_authority.get("model-assisted")
+        != accepted_assertions
+    ):
+        errors.append(
+            "release report relationship composition does not reconcile "
+            "to the governed Codex v3 accepted assertions"
+        )
 
     latest_run_id = evaluation_index.get("latest_run_id")
     execution = next(
@@ -733,8 +885,28 @@ def build_release_report(
         errors.append("release report unresolved-gap counts do not reconcile")
 
     cost = model_cost.get("incremental_cost", {})
-    if not all(key in cost for key in ("usd", "gbp")):
-        errors.append("release report must record model cost in USD and GBP")
+    if not (
+        isinstance(cost, dict)
+        and all(
+            isinstance(cost.get(key), (int, float))
+            and not isinstance(cost.get(key), bool)
+            and cost.get(key) >= 0
+            for key in ("usd", "gbp")
+        )
+    ):
+        errors.append(
+            "release report must record validated numeric model cost in "
+            "USD and GBP"
+        )
+    if model_cost.get("validation_errors"):
+        errors.append(
+            "release report cannot pass with model-cost validation errors"
+        )
+    if model_cost.get("release_effect") != "candidate":
+        errors.append(
+            "release report requires a candidate-ready governed Codex "
+            "enrichment and cost receipt"
+        )
     if not isinstance(constraint_report.get("escalations"), list):
         errors.append("release report must record licence/access escalations")
 
@@ -815,21 +987,26 @@ def build_release_report(
             "boundary": model_cost.get(
                 "cost_boundary",
                 (
-                    "Governed paid-run cost is unavailable. Any recorded "
-                    "historical Codex-assisted amount is a separate fallback "
-                    "observation and cannot satisfy the paid-run gate."
+                    "The selected Codex workflow records direct API cost "
+                    "separately from unexposed subscription/task usage."
                 ),
             ),
-            "governed_paid_cost": model_cost.get("governed_paid_cost"),
-            "historical_fallback_cost": model_cost.get(
-                "historical_fallback_cost"
+            "codex_service_cost": model_cost.get("codex_service_cost"),
+            "cost_per_accepted_assertion": model_cost.get(
+                "cost_per_accepted_assertion"
             ),
+            "enrichment_gate": model_cost.get("enrichment_gate"),
             "incremental_cost": cost,
             "model_deployment_identity_available": model_cost.get(
                 "model_deployment_identity_available"
             ),
             "model_identity": model_cost.get("model_identity"),
-            "paid_run_gate": model_cost.get("paid_run_gate"),
+            "model_identity_limitation": model_cost.get(
+                "model_identity_limitation"
+            ),
+            "optional_direct_api_profile": model_cost.get(
+                "optional_direct_api_profile"
+            ),
             "release_effect": model_cost.get("release_effect"),
             "run_id": model_cost.get("run_id"),
             "source": projected_material(
@@ -912,6 +1089,7 @@ def release_state(
     generated_at: str,
     evidence_ok: bool,
     traceability_accounted_for: bool,
+    enrichment_gate: dict[str, Any],
     release_report_material: dict[str, Any],
     release_report_ok: bool,
     external_finalization: dict[str, Any],
@@ -940,6 +1118,25 @@ def release_state(
                 if evidence_ok
                 else "Immutable evidence verification failed."
             )
+        if row["id"] == "GATE-05":
+            observed_status = enrichment_gate.get("status")
+            row["status"] = (
+                str(observed_status)
+                if observed_status in {"passed", "pending", "failed"}
+                else "failed"
+            )
+            row["observed_reason"] = (
+                "The official-effects graph and the governed Codex v3 "
+                "full-corpus terminal, independent-review, accepted-projection "
+                "and zero-direct-API receipts pass their bound checks."
+                if row["status"] == "passed"
+                else (
+                    "Governed Codex v3 evidence is not yet complete."
+                    if row["status"] == "pending"
+                    else "Governed Codex v3 evidence is present but invalid."
+                )
+            )
+            row["observed_evidence"] = enrichment_gate
         if row["id"] == "GATE-12":
             row["status"] = "passed" if release_report_ok else "failed"
             row["observed_reason"] = (
@@ -1211,7 +1408,7 @@ def build_spdx(generated_at: str, materials_digest: str) -> dict[str, Any]:
     }
 
 
-def build_model_cost(generated_at: str) -> dict[str, Any]:
+def _build_model_cost_paid_legacy(generated_at: str) -> dict[str, Any]:
     authored_entry_present = PAID_MODEL_RUN.exists() or PAID_MODEL_RUN.is_symlink()
     published_entry_present = (
         PAID_MODEL_PUBLICATION.exists()
@@ -1617,6 +1814,1582 @@ def build_model_cost(generated_at: str) -> dict[str, Any]:
     }
 
 
+def _load_regular_json(
+    path: Path,
+    label: str,
+    errors: list[str],
+    *,
+    max_bytes: int = 8_000_000,
+) -> dict[str, Any] | None:
+    """Load one bounded assurance input without following a symlink."""
+
+    if not path.exists() and not path.is_symlink():
+        return None
+    if not path.is_file() or path.is_symlink():
+        errors.append(f"{label} must be a regular non-symlink file")
+        return None
+    try:
+        byte_count = path.stat().st_size
+    except OSError as exc:
+        errors.append(f"{label} cannot be inspected: {exc}")
+        return None
+    if byte_count > max_bytes:
+        errors.append(
+            f"{label} exceeds the {max_bytes}-byte JSON input bound"
+        )
+        return None
+    try:
+        value = load(path)
+    except (OSError, json.JSONDecodeError) as exc:
+        errors.append(f"{label} cannot be read: {exc}")
+        return None
+    if not isinstance(value, dict):
+        errors.append(f"{label} must be a JSON object")
+        return None
+    return value
+
+
+def _nested_int(
+    value: dict[str, Any],
+    *path: str,
+) -> int | None:
+    current: Any = value
+    for key in path:
+        if not isinstance(current, dict):
+            return None
+        current = current.get(key)
+    if (
+        isinstance(current, int)
+        and not isinstance(current, bool)
+        and current >= 0
+    ):
+        return current
+    return None
+
+
+def _run_fresh_codex_v3_validation() -> dict[str, Any]:
+    """Run the network-free auditor; kept injectable for bounded unit tests."""
+
+    import audit_codex_semantic_enrichment_v3 as v3_auditor
+
+    return v3_auditor.check()
+
+
+def _safe_material_path(
+    relative: Any,
+    label: str,
+    errors: list[str],
+    *,
+    expected_subtree: str | None = None,
+) -> Path | None:
+    if not isinstance(relative, str) or not relative:
+        errors.append(f"{label} path is missing")
+        return None
+    candidate = Path(relative)
+    if candidate.is_absolute() or ".." in candidate.parts or "\\" in relative:
+        errors.append(f"{label} path is unsafe: {relative!r}")
+        return None
+    if candidate.as_posix() != relative:
+        errors.append(f"{label} path is not normalized: {relative!r}")
+        return None
+    if expected_subtree is not None:
+        subtree = Path(expected_subtree)
+        if candidate.parent != subtree:
+            errors.append(
+                f"{label} is outside {expected_subtree}: {relative!r}"
+            )
+            return None
+    unresolved = ROOT / candidate
+    cursor = ROOT
+    for part in candidate.parts:
+        cursor = cursor / part
+        if cursor.is_symlink():
+            errors.append(f"{label} path traverses a symlink: {relative!r}")
+            return None
+    try:
+        resolved = unresolved.resolve()
+    except (OSError, RuntimeError, ValueError) as exc:
+        errors.append(f"{label} path cannot be resolved: {exc}")
+        return None
+    if not resolved.is_relative_to(ROOT.resolve()):
+        errors.append(f"{label} path escapes the repository: {relative!r}")
+        return None
+    if not resolved.is_file() or resolved.is_symlink():
+        errors.append(f"{label} is not a regular non-symlink file")
+        return None
+    return resolved
+
+
+def _verify_material_binding(
+    binding: Any,
+    label: str,
+    errors: list[str],
+    *,
+    expected_subtree: str | None = None,
+) -> Path | None:
+    if not isinstance(binding, dict):
+        errors.append(f"{label} binding must be an object")
+        return None
+    path = _safe_material_path(
+        binding.get("path"),
+        label,
+        errors,
+        expected_subtree=expected_subtree,
+    )
+    if path is None:
+        return None
+    expected_bytes = binding.get("bytes")
+    expected_sha256 = binding.get("sha256")
+    if (
+        not isinstance(expected_bytes, int)
+        or isinstance(expected_bytes, bool)
+        or expected_bytes < 0
+        or path.stat().st_size != expected_bytes
+    ):
+        errors.append(f"{label} byte count does not match")
+    if (
+        not isinstance(expected_sha256, str)
+        or not re.fullmatch(r"[0-9a-f]{64}", expected_sha256)
+        or digest(path) != expected_sha256
+    ):
+        errors.append(f"{label} SHA-256 does not match")
+    return path
+
+
+def _verify_chunk_manifest(
+    manifest: dict[str, Any],
+    *,
+    label: str,
+    expected_total: int | None,
+    unique_field: str,
+    required_fields: frozenset[str],
+    expected_subtree: str,
+    errors: list[str],
+) -> tuple[
+    set[str],
+    Counter[str],
+    Counter[str],
+    dict[str, str],
+    dict[str, str],
+]:
+    """Verify every compressed row and return unique IDs and dimensions."""
+
+    chunks = manifest.get("chunks")
+    if not isinstance(chunks, list) or not chunks:
+        errors.append(f"{label} chunks must be a non-empty list")
+        return set(), Counter(), Counter(), {}, {}
+    identifiers: set[str] = set()
+    dimensions: Counter[str] = Counter()
+    referenced_ids: Counter[str] = Counter()
+    sources: dict[str, str] = {}
+    reference_owners: dict[str, str] = {}
+    row_total = 0
+    for ordinal, binding in enumerate(chunks):
+        chunk_label = f"{label} chunk {ordinal}"
+        path = _verify_material_binding(
+            binding,
+            chunk_label,
+            errors,
+            expected_subtree=expected_subtree,
+        )
+        if path is None:
+            continue
+        if binding.get("compression") != "gzip":
+            errors.append(f"{chunk_label} must declare gzip compression")
+        compressed = path.read_bytes()
+        if len(compressed) > 8_000_000:
+            errors.append(f"{chunk_label} exceeds compressed-size bound")
+            continue
+        try:
+            inflater = zlib.decompressobj(16 + zlib.MAX_WBITS)
+            decoded = inflater.decompress(compressed, 64_000_001)
+            if (
+                len(decoded) > 64_000_000
+                or inflater.unconsumed_tail
+                or not inflater.eof
+                or inflater.unused_data
+            ):
+                raise ValueError(
+                    "gzip payload exceeds bound, is incomplete, or has "
+                    "concatenated/extra data"
+                )
+            decoded += inflater.flush(64_000_001 - len(decoded))
+            if len(decoded) > 64_000_000:
+                raise ValueError("gzip payload exceeds decompressed-size bound")
+            rows = json.loads(decoded)
+        except (
+            OSError,
+            EOFError,
+            ValueError,
+            zlib.error,
+            json.JSONDecodeError,
+        ) as exc:
+            errors.append(f"{chunk_label} cannot be decoded: {exc}")
+            continue
+        if not isinstance(rows, list):
+            errors.append(f"{chunk_label} payload must be a JSON list")
+            continue
+        if len(rows) > 5_000:
+            errors.append(f"{chunk_label} exceeds row-count bound")
+            continue
+        declared_records = binding.get("records")
+        if (
+            not isinstance(declared_records, int)
+            or isinstance(declared_records, bool)
+            or declared_records < 0
+            or declared_records != len(rows)
+        ):
+            errors.append(f"{chunk_label} record count does not match")
+        row_total += len(rows)
+        for row_index, row in enumerate(rows):
+            if not isinstance(row, dict):
+                errors.append(
+                    f"{chunk_label} row {row_index} must be an object"
+                )
+                continue
+            missing = required_fields - set(row)
+            if missing:
+                errors.append(
+                    f"{chunk_label} row {row_index} is missing "
+                    + ", ".join(sorted(missing))
+                )
+                continue
+            identifier = row.get(unique_field)
+            if not isinstance(identifier, str) or not identifier:
+                errors.append(
+                    f"{chunk_label} row {row_index} has no {unique_field}"
+                )
+            elif identifier in identifiers:
+                errors.append(
+                    f"{label} duplicate {unique_field}: {identifier}"
+                )
+            else:
+                identifiers.add(identifier)
+                source = row.get("source")
+                if isinstance(source, str) and source:
+                    sources[identifier] = source
+            dimension = row.get("dimension")
+            if isinstance(dimension, str):
+                dimensions[dimension] += 1
+            attempts = row.get("attempts")
+            if unique_field == "work_id":
+                if not isinstance(attempts, dict) or set(attempts) != {
+                    "concept",
+                    "entity_link",
+                    "topic",
+                }:
+                    errors.append(
+                        f"{chunk_label} row {row_index} lacks three explicit "
+                        "semantic attempt dimensions"
+                    )
+                    attempts = {}
+                candidate_ids = row.get("candidate_ids")
+                if (
+                    not isinstance(candidate_ids, list)
+                    or any(
+                        not isinstance(value, str) or not value
+                        for value in candidate_ids
+                    )
+                    or not isinstance(row.get("candidate_count"), int)
+                    or isinstance(row.get("candidate_count"), bool)
+                    or row.get("candidate_count") != len(candidate_ids)
+                ):
+                    errors.append(
+                        f"{chunk_label} row {row_index} candidate IDs/count "
+                        "do not reconcile"
+                    )
+                else:
+                    if len(candidate_ids) != len(set(candidate_ids)):
+                        errors.append(
+                            f"{chunk_label} row {row_index} repeats a "
+                            "candidate reference"
+                        )
+                    for candidate_id in candidate_ids:
+                        referenced_ids[candidate_id] += 1
+                        owner = reference_owners.setdefault(
+                            candidate_id,
+                            str(row.get("work_id", "")),
+                        )
+                        if owner != row.get("work_id"):
+                            errors.append(
+                                f"{label} candidate {candidate_id} is "
+                                "referenced by multiple works"
+                            )
+                    attempt_candidate_ids: list[str] = []
+                    allowed_statuses = {
+                        "abstained-no-literal-support",
+                        "candidate-generated",
+                        "suppressed-no-new-candidate",
+                    }
+                    any_suppressions = False
+                    for attempt_name, attempt in attempts.items():
+                        if not isinstance(attempt, dict):
+                            errors.append(
+                                f"{chunk_label} row {row_index} "
+                                f"{attempt_name} attempt must be an object"
+                            )
+                            continue
+                        attempt_ids = attempt.get("candidate_ids")
+                        suppressions = attempt.get("suppressions")
+                        status = attempt.get("status")
+                        if (
+                            not isinstance(attempt_ids, list)
+                            or any(
+                                not isinstance(value, str) or not value
+                                for value in attempt_ids
+                            )
+                            or len(attempt_ids) != len(set(attempt_ids))
+                        ):
+                            errors.append(
+                                f"{chunk_label} row {row_index} "
+                                f"{attempt_name} candidate IDs are invalid"
+                            )
+                            attempt_ids = []
+                        if not isinstance(suppressions, list):
+                            errors.append(
+                                f"{chunk_label} row {row_index} "
+                                f"{attempt_name} suppressions are invalid"
+                            )
+                            suppressions = []
+                        if suppressions:
+                            any_suppressions = True
+                        if status not in allowed_statuses:
+                            errors.append(
+                                f"{chunk_label} row {row_index} "
+                                f"{attempt_name} status is invalid"
+                            )
+                        expected_status = (
+                            "candidate-generated"
+                            if attempt_ids
+                            else (
+                                "suppressed-no-new-candidate"
+                                if suppressions
+                                else "abstained-no-literal-support"
+                            )
+                        )
+                        if status != expected_status:
+                            errors.append(
+                                f"{chunk_label} row {row_index} "
+                                f"{attempt_name} status does not match "
+                                "candidates/suppressions"
+                            )
+                        attempt_candidate_ids.extend(attempt_ids)
+                    if (
+                        len(attempt_candidate_ids)
+                        != len(set(attempt_candidate_ids))
+                        or set(attempt_candidate_ids) != set(candidate_ids)
+                    ):
+                        errors.append(
+                            f"{chunk_label} row {row_index} attempt candidate "
+                            "union does not match the terminal row"
+                        )
+                    expected_terminal = (
+                        "candidate-generated"
+                        if candidate_ids
+                        else (
+                            "suppressed-no-new-candidate"
+                            if any_suppressions
+                            else "abstained-no-supported-candidate"
+                        )
+                    )
+                    if row.get("terminal_outcome") != expected_terminal:
+                        errors.append(
+                            f"{chunk_label} row {row_index} terminal outcome "
+                            "does not match candidate population"
+                        )
+    if expected_total is not None and row_total != expected_total:
+        errors.append(
+            f"{label} rows total {row_total} does not equal {expected_total}"
+        )
+    if len(identifiers) != row_total:
+        errors.append(
+            f"{label} unique {unique_field} total does not equal row total"
+        )
+    return (
+        identifiers,
+        dimensions,
+        referenced_ids,
+        sources,
+        reference_owners,
+    )
+
+
+def build_model_cost(generated_at: str) -> dict[str, Any]:
+    """Build the current Codex/no-direct-API cost and evidence receipt.
+
+    The direct API controller remains in the repository as an optional future
+    profile. Its absence is expected and cannot block this release. The
+    selected release path is the hash-bound Codex task/subagent workflow, whose
+    checked-in runner performs no direct model API calls.
+    """
+
+    errors: list[str] = []
+    v3_material_paths = [
+        CODEX_MODEL_RUN,
+        CODEX_MODEL_COVERAGE,
+        CODEX_MODEL_CANDIDATE_MANIFEST,
+        CODEX_MODEL_TERMINAL_MANIFEST,
+        CODEX_MODEL_CHECKPOINTS,
+        CODEX_MODEL_CALIBRATION_RESULT,
+        CODEX_MODEL_REVIEW_MANIFEST,
+        CODEX_MODEL_ACCEPTED_MANIFEST,
+        CODEX_MODEL_REVIEW_CHECKPOINTS,
+        CODEX_MODEL_AUDIT,
+        GRAPH_ENRICHMENT_GATE,
+        ROOT / "scripts" / "build_codex_semantic_enrichment_v3.py",
+        ROOT / "scripts" / "audit_codex_semantic_enrichment_v3.py",
+        ROOT / "enrichment" / "codex-assisted-v3" / "calibration.json",
+        ROOT / "enrichment" / "codex-assisted-v3" / "generator-prompt.md",
+        ROOT / "enrichment" / "codex-assisted-v3" / "reviewer-prompt.md",
+        ROOT / "enrichment" / "codex-assisted-v3" / "rules.json",
+        ROOT / "enrichment" / "codex-assisted-v3" / "review-policy.json",
+        ROOT
+        / "enrichment"
+        / "codex-assisted-v3"
+        / "reviewer-task-receipt.json",
+    ]
+    v3_present = any(
+        path.exists() or path.is_symlink() for path in v3_material_paths
+    )
+    missing_v3 = [
+        path.relative_to(ROOT).as_posix()
+        for path in v3_material_paths
+        if not path.is_file() or path.is_symlink()
+    ]
+    optional_authored = (
+        PAID_MODEL_RUN.exists() or PAID_MODEL_RUN.is_symlink()
+    )
+    optional_published = (
+        PAID_MODEL_PUBLICATION.exists()
+        or PAID_MODEL_PUBLICATION.is_symlink()
+    )
+    optional_authored_regular = (
+        PAID_MODEL_RUN.is_file() and not PAID_MODEL_RUN.is_symlink()
+    )
+    optional_published_regular = (
+        PAID_MODEL_PUBLICATION.is_file()
+        and not PAID_MODEL_PUBLICATION.is_symlink()
+    )
+
+    source_path = (
+        CODEX_MODEL_RUN
+        if CODEX_MODEL_RUN.is_file() and not CODEX_MODEL_RUN.is_symlink()
+        else HISTORICAL_MODEL_PUBLICATION
+    )
+    source_kind = (
+        "governed-codex-assisted-v3"
+        if source_path == CODEX_MODEL_RUN
+        else "historical-codex-assisted-v2-pending-v3"
+    )
+    source = _load_regular_json(
+        source_path,
+        "Codex enrichment run",
+        errors,
+    )
+    if source is None:
+        optional_present = optional_authored or optional_published
+        return {
+            "cost_boundary": (
+                "No governed Codex enrichment run is available; no cost "
+                "value is inferred."
+            ),
+            "enrichment_gate": {
+                "reason": (
+                    "unexpected-direct-api-profile-artifact"
+                    if optional_present
+                    else "missing-codex-enrichment-run"
+                ),
+                "status": "failed" if optional_present else "pending",
+            },
+            "generated_at": generated_at,
+            "optional_direct_api_profile": {
+                "authored_run_available": optional_authored,
+                "authored_run_regular_non_symlink": (
+                    optional_authored_regular
+                ),
+                "current_release_required": False,
+                "public_projection_available": optional_published,
+                "public_projection_regular_non_symlink": (
+                    optional_published_regular
+                ),
+                "status": (
+                    "unexpected-unauthorised-artifact"
+                    if optional_present
+                    else "not-invoked"
+                ),
+            },
+            "release_effect": (
+                "blocked-unexpected-direct-api-profile-artifact"
+                if optional_present
+                else "pending-missing-codex-enrichment-run"
+            ),
+            "schema": "okf-model-cost-report.v2",
+            "source_available": False,
+            "source_kind": "missing",
+            "validation_errors": errors
+            + (
+                [
+                    "a direct-API paid-profile artefact is present even "
+                    "though the current release is authorised for the "
+                    "Codex/no-API route only"
+                ]
+                if optional_present
+                else []
+            ),
+        }
+
+    provider = source.get("provider")
+    run_id = source.get("run_id")
+    model_identity = source.get("model_identity") or source.get(
+        "assistant_surface"
+    )
+    model_identity_available = source.get(
+        "model_deployment_identity_available",
+        source.get("exact_model_deployment_identity_available"),
+    )
+    if not isinstance(provider, str) or not provider:
+        errors.append("Codex enrichment provider is missing")
+    if not isinstance(run_id, str) or not run_id:
+        errors.append("Codex enrichment run identifier is missing")
+    if not isinstance(model_identity, str) or not model_identity:
+        errors.append("Codex visible model/task identity is missing")
+    if model_identity_available is not False:
+        errors.append(
+            "current Codex task route must record that exact deployment "
+            "identity is unavailable; a visible task-surface label is not "
+            "deployment provenance"
+        )
+
+    usage = source.get("usage")
+    cost = source.get("cost")
+    if not isinstance(usage, dict):
+        usage = {}
+        errors.append("Codex enrichment usage object is missing")
+    if not isinstance(cost, dict):
+        cost = {}
+        errors.append("Codex enrichment cost object is missing")
+    for key in ("api_calls", "api_input_tokens", "api_output_tokens"):
+        value = usage.get(key)
+        if (
+            not isinstance(value, int)
+            or isinstance(value, bool)
+            or value != 0
+        ):
+            errors.append(
+                f"current Codex route requires {key}=0; "
+                f"observed {value!r}"
+            )
+    for key in (
+        "codex_subscription_token_usage",
+        "codex_weekly_allowance_usage",
+    ):
+        if usage.get(key) != "not exposed":
+            errors.append(
+                f"current Codex route requires {key}='not exposed'; "
+                f"observed {usage.get(key)!r}"
+            )
+    usd = cost.get("incremental_openai_api_usd")
+    gbp = cost.get("incremental_openai_api_gbp")
+    cap = cost.get("cap_usd")
+    cap_triggered = cost.get("cap_triggered")
+    valid_usd = (
+        float(usd)
+        if isinstance(usd, (int, float))
+        and not isinstance(usd, bool)
+        and usd >= 0
+        else None
+    )
+    valid_gbp = (
+        float(gbp)
+        if isinstance(gbp, (int, float))
+        and not isinstance(gbp, bool)
+        and gbp >= 0
+        else None
+    )
+    valid_cap = (
+        float(cap)
+        if isinstance(cap, (int, float))
+        and not isinstance(cap, bool)
+        and cap >= 0
+        else None
+    )
+    if valid_usd is None:
+        errors.append("incremental OpenAI API USD cost is missing or invalid")
+    elif valid_usd != 0:
+        errors.append(
+            "current Codex route requires zero incremental OpenAI API USD"
+        )
+    if valid_gbp is None:
+        errors.append("incremental OpenAI API GBP cost is missing or invalid")
+    elif valid_gbp != 0:
+        errors.append(
+            "current Codex route requires zero incremental OpenAI API GBP"
+        )
+    if valid_cap is None:
+        errors.append("model cost cap is missing or invalid")
+    elif valid_cap != 250:
+        errors.append("model cost cap is not the approved US$250")
+    if cap_triggered is not False:
+        errors.append("zero-API Codex route cannot have triggered the API cap")
+    if (
+        cost.get("codex_subscription_cost_attributable_to_run")
+        != "not exposed"
+    ):
+        errors.append(
+            "Codex subscription cost attributable to this run must be "
+            "recorded as 'not exposed'"
+        )
+    exchange_rate = cost.get("exchange_rate")
+    if (
+        not isinstance(exchange_rate, dict)
+        or exchange_rate.get("date") is not None
+        or exchange_rate.get("rate") is not None
+        or exchange_rate.get("source")
+        != "not applicable: zero direct API spend"
+    ):
+        errors.append(
+            "zero direct API spend must record currency conversion as "
+            "explicitly not applicable"
+        )
+    zero_api_evidence_valid = (
+        valid_usd == 0.0
+        and valid_gbp == 0.0
+        and valid_cap == 250.0
+        and cap_triggered is False
+        and usage.get("codex_subscription_token_usage") == "not exposed"
+        and usage.get("codex_weekly_allowance_usage") == "not exposed"
+        and cost.get("codex_subscription_cost_attributable_to_run")
+        == "not exposed"
+        and isinstance(exchange_rate, dict)
+        and exchange_rate.get("date") is None
+        and exchange_rate.get("rate") is None
+        and exchange_rate.get("source")
+        == "not applicable: zero direct API spend"
+        and all(
+            isinstance(usage.get(key), int)
+            and not isinstance(usage.get(key), bool)
+            and usage.get(key) == 0
+            for key in (
+                "api_calls",
+                "api_input_tokens",
+                "api_output_tokens",
+            )
+        )
+    )
+
+    audit_errors: list[str] = []
+    audit = _load_regular_json(
+        CODEX_MODEL_AUDIT,
+        "Codex v3 independent audit",
+        audit_errors,
+    )
+    graph = _load_regular_json(
+        GRAPH_ENRICHMENT_GATE,
+        "graph and enrichment gate receipt",
+        audit_errors,
+    )
+    terminal_manifest = _load_regular_json(
+        CODEX_MODEL_TERMINAL_MANIFEST,
+        "Codex v3 terminal-outcome manifest",
+        audit_errors,
+    )
+    candidate_manifest = _load_regular_json(
+        CODEX_MODEL_CANDIDATE_MANIFEST,
+        "Codex v3 candidate manifest",
+        audit_errors,
+    )
+    review_manifest = _load_regular_json(
+        CODEX_MODEL_REVIEW_MANIFEST,
+        "Codex v3 review-verdict manifest",
+        audit_errors,
+    )
+    accepted_manifest = _load_regular_json(
+        CODEX_MODEL_ACCEPTED_MANIFEST,
+        "Codex v3 accepted-assertion manifest",
+        audit_errors,
+    )
+    coverage = _load_regular_json(
+        CODEX_MODEL_COVERAGE,
+        "Codex v3 coverage receipt",
+        audit_errors,
+    )
+    calibration_result = _load_regular_json(
+        CODEX_MODEL_CALIBRATION_RESULT,
+        "Codex v3 executed calibration result",
+        audit_errors,
+    )
+
+    attempted = _nested_int(source, "counts", "records", "attempted")
+    terminal_count = _nested_int(
+        source,
+        "counts",
+        "records",
+        "terminal_outcomes",
+    )
+    candidate_total = _nested_int(
+        source,
+        "counts",
+        "candidates",
+        "total",
+    )
+    candidate_support = (
+        source.get("counts", {}).get("candidate_support")
+        if isinstance(source.get("counts"), dict)
+        else None
+    )
+    accepted = (
+        _nested_int(audit or {}, "decision", "accepted_assertions")
+        if audit
+        else None
+    )
+    if attempted != 365_786:
+        audit_errors.append(
+            "Codex v3 attempted-record denominator must equal 365786"
+        )
+    if terminal_count != attempted:
+        audit_errors.append(
+            "Codex v3 terminal outcomes do not equal attempted records"
+        )
+    if candidate_total is None:
+        audit_errors.append("Codex v3 candidate denominator is missing")
+    if (
+        not isinstance(candidate_support, dict)
+        or set(candidate_support)
+        != {"metadata-only", "multi-field", "notes-only", "title-only"}
+        or any(
+            not isinstance(value, int)
+            or isinstance(value, bool)
+            or value < 0
+            for value in (
+                candidate_support.values()
+                if isinstance(candidate_support, dict)
+                else []
+            )
+        )
+        or (
+            isinstance(candidate_support, dict)
+            and sum(candidate_support.values()) != candidate_total
+        )
+        or (
+            isinstance(candidate_support, dict)
+            and candidate_support.get("metadata-only") != 0
+        )
+    ):
+        audit_errors.append(
+            "Codex v3 candidate support counts are invalid, do not sum to "
+            "the candidate total, or contain metadata-only assertions"
+        )
+    if accepted is None:
+        audit_errors.append(
+            "Codex v3 independent accepted-assertion denominator is missing"
+        )
+
+    expected_output_paths = {
+        "calibration_result": CODEX_MODEL_CALIBRATION_RESULT,
+        "candidate_manifest": CODEX_MODEL_CANDIDATE_MANIFEST,
+        "checkpoints": CODEX_MODEL_CHECKPOINTS,
+        "coverage": CODEX_MODEL_COVERAGE,
+        "terminal_outcome_manifest": CODEX_MODEL_TERMINAL_MANIFEST,
+    }
+    output_bindings = source.get("output_bindings")
+    if (
+        not isinstance(output_bindings, dict)
+        or set(output_bindings) != set(expected_output_paths)
+    ):
+        audit_errors.append(
+            "Codex v3 run output bindings are missing or not the exact "
+            "governed inventory"
+        )
+    else:
+        for name, expected_path in expected_output_paths.items():
+            binding = output_bindings[name]
+            if (
+                not isinstance(binding, dict)
+                or binding.get("path")
+                != expected_path.relative_to(ROOT).as_posix()
+            ):
+                audit_errors.append(
+                    f"Codex v3 output binding path differs: {name}"
+                )
+                continue
+            _verify_material_binding(
+                binding,
+                f"Codex v3 output binding {name}",
+                audit_errors,
+                expected_subtree=(
+                    CODEX_MODEL_ROOT.relative_to(ROOT).as_posix()
+                ),
+            )
+
+    run_material_root = source.get("materials_sha256")
+    if not (
+        isinstance(run_material_root, str)
+        and re.fullmatch(r"[0-9a-f]{64}", run_material_root)
+    ):
+        audit_errors.append("Codex v3 run material root is missing or invalid")
+    run_materials = source.get("materials")
+    if not isinstance(run_materials, dict) or not run_materials:
+        audit_errors.append("Codex v3 run materials are missing")
+    else:
+        for name, binding in sorted(run_materials.items()):
+            _verify_material_binding(
+                binding,
+                f"Codex v3 run material {name}",
+                audit_errors,
+            )
+        recomputed_material_root = digest_bytes(
+            b"".join(
+                (
+                    name.encode("utf-8")
+                    + b"\0"
+                    + str(run_materials[name].get("sha256", "")).encode(
+                        "ascii",
+                        errors="ignore",
+                    )
+                    + b"\n"
+                )
+                for name in sorted(run_materials)
+                if isinstance(run_materials[name], dict)
+            )
+        )
+        if recomputed_material_root != run_material_root:
+            audit_errors.append(
+                "Codex v3 run material root does not recompute"
+            )
+
+    candidate_ids: set[str] = set()
+    candidate_dimensions: Counter[str] = Counter()
+    candidate_sources: dict[str, str] = {}
+    if candidate_manifest is not None:
+        if (
+            candidate_manifest.get("schema")
+            != "okf-enrichment-candidate-manifest.v3"
+        ):
+            audit_errors.append("Codex v3 candidate manifest schema is wrong")
+        if candidate_manifest.get("materials_sha256") != run_material_root:
+            audit_errors.append(
+                "Codex v3 candidate manifest material root does not match run"
+            )
+        if (
+            _nested_int(candidate_manifest, "counts", "assertions")
+            != candidate_total
+        ):
+            audit_errors.append(
+                "Codex v3 candidate manifest total does not match run"
+            )
+        (
+            candidate_ids,
+            candidate_dimensions,
+            _,
+            candidate_sources,
+            _,
+        ) = _verify_chunk_manifest(
+            candidate_manifest,
+            label="Codex v3 candidate",
+            expected_total=candidate_total,
+            unique_field="id",
+            required_fields=frozenset(
+                {
+                    "authority",
+                    "derivation",
+                    "dimension",
+                    "evidence",
+                    "id",
+                    "predicate",
+                    "review_status",
+                    "source",
+                    "target",
+                }
+            ),
+            expected_subtree=(
+                "bundle/enrichment/codex-assisted-v3/candidates"
+            ),
+            errors=audit_errors,
+        )
+        expected_by_kind = (
+            source.get("counts", {}).get("candidates", {})
+            if isinstance(source.get("counts"), dict)
+            else {}
+        )
+        manifest_by_kind = (
+            candidate_manifest.get("counts", {}).get("by_kind", {})
+            if isinstance(candidate_manifest.get("counts"), dict)
+            else {}
+        )
+        if set(candidate_dimensions) - {"concept", "entity", "topic"}:
+            audit_errors.append(
+                "Codex v3 candidate population contains an unsupported "
+                "dimension"
+            )
+        if (
+            not isinstance(expected_by_kind, dict)
+            or not isinstance(manifest_by_kind, dict)
+        ):
+            audit_errors.append(
+                "Codex v3 candidate by-kind counts must be objects"
+            )
+        for kind in ("concept", "entity", "topic"):
+            expected = (
+                expected_by_kind.get(kind)
+                if isinstance(expected_by_kind, dict)
+                else None
+            )
+            manifest_count = (
+                manifest_by_kind.get(kind)
+                if isinstance(manifest_by_kind, dict)
+                else None
+            )
+            if (
+                not isinstance(expected, int)
+                or isinstance(expected, bool)
+                or expected < 0
+                or not isinstance(manifest_count, int)
+                or isinstance(manifest_count, bool)
+                or manifest_count < 0
+                or candidate_dimensions.get(kind, 0) != expected
+                or manifest_count != expected
+            ):
+                audit_errors.append(
+                    f"Codex v3 {kind} candidate counts do not reconcile"
+                )
+        if (
+            isinstance(expected_by_kind, dict)
+            and all(
+                isinstance(expected_by_kind.get(kind), int)
+                and not isinstance(expected_by_kind.get(kind), bool)
+                for kind in ("concept", "entity", "topic")
+            )
+            and sum(
+                expected_by_kind[kind]
+                for kind in ("concept", "entity", "topic")
+            )
+            != candidate_total
+        ):
+            audit_errors.append(
+                "Codex v3 candidate by-kind counts do not sum to the total"
+            )
+
+    terminal_work_ids: set[str] = set()
+    if terminal_manifest is not None:
+        if (
+            terminal_manifest.get("schema")
+            != "okf-enrichment-terminal-outcome-manifest.v3"
+        ):
+            audit_errors.append(
+                "Codex v3 terminal-outcome manifest schema is wrong"
+            )
+        if terminal_manifest.get("materials_sha256") != run_material_root:
+            audit_errors.append(
+                "Codex v3 terminal manifest material root does not match run"
+            )
+        if (
+            _nested_int(
+                terminal_manifest,
+                "counts",
+                "records_attempted",
+            )
+            != attempted
+            or _nested_int(
+                terminal_manifest,
+                "counts",
+                "terminal_outcomes",
+            )
+            != terminal_count
+        ):
+            audit_errors.append(
+                "Codex v3 terminal manifest counts do not match run"
+            )
+        (
+            terminal_work_ids,
+            _,
+            terminal_candidate_references,
+            _,
+            terminal_reference_owners,
+        ) = _verify_chunk_manifest(
+            terminal_manifest,
+            label="Codex v3 terminal outcome",
+            expected_total=terminal_count,
+            unique_field="work_id",
+            required_fields=frozenset(
+                {
+                    "attempts",
+                    "candidate_count",
+                    "candidate_ids",
+                    "input",
+                    "terminal_outcome",
+                    "work_id",
+                }
+            ),
+            expected_subtree=(
+                "bundle/enrichment/codex-assisted-v3/terminal-outcomes"
+            ),
+            errors=audit_errors,
+        )
+        if set(terminal_candidate_references) != candidate_ids:
+            audit_errors.append(
+                "Codex v3 terminal candidate references do not equal the "
+                "candidate population"
+            )
+        for candidate_id in candidate_ids:
+            if terminal_candidate_references.get(candidate_id) != 1:
+                audit_errors.append(
+                    f"Codex v3 candidate {candidate_id} is not referenced "
+                    "exactly once"
+                )
+            if (
+                terminal_reference_owners.get(candidate_id)
+                != candidate_sources.get(candidate_id)
+            ):
+                audit_errors.append(
+                    f"Codex v3 candidate {candidate_id} is attached to the "
+                    "wrong source work"
+                )
+
+    if coverage is not None:
+        if coverage.get("schema") != "okf-codex-enrichment-coverage.v3":
+            audit_errors.append("Codex v3 coverage schema is wrong")
+        if (
+            _nested_int(coverage, "counts", "records", "attempted")
+            != attempted
+            or _nested_int(
+                coverage,
+                "counts",
+                "records",
+                "terminal_outcomes",
+            )
+            != terminal_count
+            or _nested_int(
+                coverage,
+                "counts",
+                "candidates",
+                "total",
+            )
+            != candidate_total
+        ):
+            audit_errors.append("Codex v3 coverage counts do not match run")
+
+    if calibration_result is not None:
+        thresholds = calibration_result.get("thresholds")
+        schema_validity = calibration_result.get("schema_validity")
+        if (
+            calibration_result.get("schema")
+            != "okf-codex-enrichment-calibration-result.v3"
+            or calibration_result.get("passed") is not True
+            or calibration_result.get("population_level_precision_claimed")
+            is not False
+            or not isinstance(
+                calibration_result.get("case_set_sha256"),
+                str,
+            )
+            or re.fullmatch(
+                r"[0-9a-f]{64}",
+                str(calibration_result.get("case_set_sha256", "")),
+            )
+            is None
+            or isinstance(schema_validity, bool)
+            or not isinstance(schema_validity, (int, float))
+            or schema_validity != 1.0
+            or not isinstance(thresholds, dict)
+        ):
+            audit_errors.append(
+                "Codex v3 executed calibration headline contract failed"
+            )
+        else:
+            precision_threshold = thresholds.get("precision")
+            evidence_threshold = thresholds.get("evidence_support")
+            for name in ("topic", "concept", "entity"):
+                row = calibration_result.get(name)
+                precision = (
+                    row.get("precision", {}).get("value")
+                    if isinstance(row, dict)
+                    and isinstance(row.get("precision"), dict)
+                    else None
+                )
+                evidence_support = (
+                    row.get("evidence_support", {}).get("value")
+                    if isinstance(row, dict)
+                    and isinstance(row.get("evidence_support"), dict)
+                    else None
+                )
+                if (
+                    not isinstance(row, dict)
+                    or row.get("passed") is not True
+                    or isinstance(precision, bool)
+                    or not isinstance(precision, (int, float))
+                    or isinstance(evidence_support, bool)
+                    or not isinstance(evidence_support, (int, float))
+                    or isinstance(precision_threshold, bool)
+                    or not isinstance(
+                        precision_threshold,
+                        (int, float),
+                    )
+                    or isinstance(evidence_threshold, bool)
+                    or not isinstance(
+                        evidence_threshold,
+                        (int, float),
+                    )
+                    or precision < max(0.95, precision_threshold)
+                    or evidence_support
+                    < max(0.95, evidence_threshold)
+                ):
+                    audit_errors.append(
+                        f"Codex v3 {name} calibration thresholds failed"
+                    )
+
+    decision = audit.get("decision", {}) if audit else {}
+    if audit and (
+        decision.get("independent_review_status") != "accepted"
+        or decision.get("release_gate_passed") is not True
+        or decision.get("errors") not in ([], None)
+    ):
+        audit_errors.append(
+            "Codex v3 independent audit did not record clean acceptance"
+        )
+    if graph is not None:
+        graph_metrics = graph.get("metrics")
+        graph_checks = graph.get("checks")
+        accepted_by_kind = (
+            decision.get("accepted_by_kind")
+            if isinstance(decision, dict)
+            else None
+        )
+        required_graph_checks = {
+            "G05-COMPOSITION",
+            "G05-DESCRIPTORS",
+            "G05-ENRICHMENT",
+            "G05-ENRICHMENT-ATTEMPTS",
+            "G05-ENRICHMENT-CHUNKS",
+            "G05-ENRICHMENT-COST",
+            "G05-EXPLORER",
+            "G05-FEDERATION-SUMMARY",
+            "G05-GRAPH-INDEX",
+            "G05-ROOT-SUMMARY",
+            "G05-TOTALS",
+        }
+        observed_graph_checks = {
+            row.get("id")
+            for row in graph_checks
+            if isinstance(row, dict)
+        } if isinstance(graph_checks, list) else set()
+        reviewer_receipt_path = (
+            ROOT
+            / "enrichment"
+            / "codex-assisted-v3"
+            / "reviewer-task-receipt.json"
+        )
+        expected_graph_bindings = {
+            "accepted_manifest": (
+                material(CODEX_MODEL_ACCEPTED_MANIFEST)
+                if CODEX_MODEL_ACCEPTED_MANIFEST.is_file()
+                and not CODEX_MODEL_ACCEPTED_MANIFEST.is_symlink()
+                else None
+            ),
+            "independent_audit": (
+                material(CODEX_MODEL_AUDIT)
+                if CODEX_MODEL_AUDIT.is_file()
+                and not CODEX_MODEL_AUDIT.is_symlink()
+                else None
+            ),
+            "run": (
+                material(CODEX_MODEL_RUN)
+                if CODEX_MODEL_RUN.is_file()
+                and not CODEX_MODEL_RUN.is_symlink()
+                else None
+            ),
+            "reviewer_task_receipt": (
+                material(reviewer_receipt_path)
+                if reviewer_receipt_path.is_file()
+                and not reviewer_receipt_path.is_symlink()
+                else None
+            ),
+        }
+        graph_contract_ok = (
+            graph.get("schema")
+            == "okf-graph-enrichment-gate-assurance.v1"
+            and graph.get("gate") == "GATE-05"
+            and graph.get("status") == "passed"
+            and graph.get("blockers") == []
+            and isinstance(graph.get("scope"), str)
+            and "v3 accepted" in graph["scope"]
+            and isinstance(graph_metrics, dict)
+            and graph_metrics.get("enrichment_attempts") == attempted
+            and graph_metrics.get("model_assisted_assertions") == accepted
+            and graph_metrics.get("model_assisted_assertions_by_kind")
+            == accepted_by_kind
+            and all(expected_graph_bindings.values())
+            and graph_metrics.get("accepted_manifest")
+            == expected_graph_bindings["accepted_manifest"]
+            and graph_metrics.get("independent_audit")
+            == expected_graph_bindings["independent_audit"]
+            and graph_metrics.get("run") == expected_graph_bindings["run"]
+            and graph_metrics.get("reviewer_task_receipt")
+            == expected_graph_bindings["reviewer_task_receipt"]
+            and isinstance(graph_checks, list)
+            and bool(graph_checks)
+            and all(
+                isinstance(row, dict) and row.get("status") == "passed"
+                for row in graph_checks
+            )
+            and required_graph_checks.issubset(observed_graph_checks)
+        )
+        if not graph_contract_ok:
+            audit_errors.append(
+                "graph assurance is stale or not bound to the governed "
+                "Codex v3 accepted manifest, independent audit, reviewer, "
+                "run and exact relationship counts"
+            )
+    for label, document in (
+        ("terminal outcome", terminal_manifest),
+        ("candidate", candidate_manifest),
+        ("review verdict", review_manifest),
+        ("accepted assertion", accepted_manifest),
+        ("coverage", coverage),
+        ("executed calibration", calibration_result),
+    ):
+        if v3_present and document is None:
+            audit_errors.append(f"Codex v3 {label} evidence is missing")
+
+    reviewer_task = _load_regular_json(
+        ROOT
+        / "enrichment"
+        / "codex-assisted-v3"
+        / "reviewer-task-receipt.json",
+        "Codex v3 reviewer task receipt",
+        audit_errors,
+    )
+    if v3_present and reviewer_task is None:
+        audit_errors.append("separate Codex reviewer task receipt is missing")
+    elif reviewer_task is not None and (
+            reviewer_task.get("status") != "accepted"
+            or reviewer_task.get("verdict") != "accepted"
+            or reviewer_task.get("source_edits_made_by_reviewer") is not False
+            or not reviewer_task.get("review_task_id")
+            or not reviewer_task.get("reviewer_visible_model_label")
+        ):
+        audit_errors.append(
+            "separate Codex reviewer task receipt is not accepted and complete"
+        )
+    if reviewer_task is not None:
+        reviewed = reviewer_task.get("reviewed_materials")
+        expected_reviewed_hashes = {
+            "generator_prompt_sha256": digest(
+                ROOT
+                / "enrichment"
+                / "codex-assisted-v3"
+                / "generator-prompt.md"
+            ),
+            "generator_executable_sha256": digest(
+                ROOT
+                / "scripts"
+                / "build_codex_semantic_enrichment_v3.py"
+            ),
+            "reviewer_prompt_sha256": digest(
+                ROOT
+                / "enrichment"
+                / "codex-assisted-v3"
+                / "reviewer-prompt.md"
+            ),
+            "rules_sha256": digest(
+                ROOT / "enrichment" / "codex-assisted-v3" / "rules.json"
+            ),
+            "review_policy_sha256": digest(
+                ROOT
+                / "enrichment"
+                / "codex-assisted-v3"
+                / "review-policy.json"
+            ),
+            "calibration_sha256": digest(
+                ROOT
+                / "enrichment"
+                / "codex-assisted-v3"
+                / "calibration.json"
+            ),
+            "calibration_result_sha256": (
+                digest(CODEX_MODEL_CALIBRATION_RESULT)
+                if CODEX_MODEL_CALIBRATION_RESULT.is_file()
+                and not CODEX_MODEL_CALIBRATION_RESULT.is_symlink()
+                else None
+            ),
+            "source_corpus_semantic_sha256": source.get(
+                "source_corpus_semantic_sha256"
+            ),
+            "candidate_manifest_sha256": (
+                digest(CODEX_MODEL_CANDIDATE_MANIFEST)
+                if CODEX_MODEL_CANDIDATE_MANIFEST.is_file()
+                and not CODEX_MODEL_CANDIDATE_MANIFEST.is_symlink()
+                else None
+            ),
+            "terminal_outcome_manifest_sha256": (
+                digest(CODEX_MODEL_TERMINAL_MANIFEST)
+                if CODEX_MODEL_TERMINAL_MANIFEST.is_file()
+                and not CODEX_MODEL_TERMINAL_MANIFEST.is_symlink()
+                else None
+            ),
+            "coverage_sha256": (
+                digest(CODEX_MODEL_COVERAGE)
+                if CODEX_MODEL_COVERAGE.is_file()
+                and not CODEX_MODEL_COVERAGE.is_symlink()
+                else None
+            ),
+            "checkpoints_sha256": (
+                digest(CODEX_MODEL_CHECKPOINTS)
+                if CODEX_MODEL_CHECKPOINTS.is_file()
+                and not CODEX_MODEL_CHECKPOINTS.is_symlink()
+                else None
+            ),
+        }
+        if not isinstance(reviewed, dict):
+            audit_errors.append(
+                "separate Codex reviewer material bindings are missing"
+            )
+        else:
+            if set(reviewed) != set(expected_reviewed_hashes):
+                audit_errors.append(
+                    "separate Codex reviewer material inventory is not "
+                    "the exact governed key set"
+                )
+            for key, expected in expected_reviewed_hashes.items():
+                if reviewed.get(key) != expected:
+                    audit_errors.append(
+                        f"separate Codex reviewer binding differs: {key}"
+                    )
+
+    fresh_audit_validation: dict[str, Any] | None = None
+    if v3_present and not missing_v3:
+        try:
+            fresh_result = _run_fresh_codex_v3_validation()
+        except Exception as exc:  # fail closed at the assurance boundary
+            audit_errors.append(
+                "fresh network-free Codex v3 validation raised "
+                f"{type(exc).__name__}: {exc}"
+            )
+        else:
+            if not isinstance(fresh_result, dict):
+                audit_errors.append(
+                    "fresh network-free Codex v3 validation returned no "
+                    "structured result"
+                )
+            else:
+                fresh_audit_validation = fresh_result
+                fresh_counts = fresh_result.get("counts")
+                expected_fresh_counts = {
+                    "records_attempted": attempted,
+                    "terminal_outcomes": terminal_count,
+                    "candidates": candidate_total,
+                    "accepted_assertions": accepted,
+                }
+                if (
+                    fresh_result.get("status") != "passed"
+                    or fresh_result.get("errors") != []
+                    or not isinstance(fresh_counts, dict)
+                ):
+                    audit_errors.append(
+                        "fresh network-free Codex v3 validation did not pass"
+                    )
+                else:
+                    for key, expected in expected_fresh_counts.items():
+                        if fresh_counts.get(key) != expected:
+                            audit_errors.append(
+                                "fresh network-free Codex v3 count differs: "
+                                f"{key}"
+                            )
+
+    optional_status = "not-invoked"
+    optional_validation: dict[str, Any] | None = None
+    if optional_authored or optional_published:
+        optional_validation = _build_model_cost_paid_legacy(generated_at)
+        optional_status = "unexpected-unauthorised-artifact"
+        errors.append(
+            "a direct-API paid-profile artefact is present even though the "
+            "current release is authorised for the Codex/no-API route only"
+        )
+        errors.extend(
+            "unexpected direct API profile: " + str(message)
+            for message in optional_validation.get(
+                "validation_errors",
+                [],
+            )
+        )
+
+    if not v3_present:
+        gate_status = "pending"
+        gate_reason = "governed-codex-v3-evidence-not-yet-complete"
+    elif missing_v3:
+        gate_status = "failed"
+        gate_reason = "missing-governed-codex-v3-materials"
+    elif source_kind != "governed-codex-assisted-v3":
+        gate_status = "failed"
+        gate_reason = "invalid-governed-codex-v3-run-entry"
+    elif audit_errors:
+        gate_status = "failed"
+        gate_reason = "invalid-governed-codex-v3-evidence"
+    elif optional_authored or optional_published:
+        gate_status = "failed"
+        gate_reason = "unexpected-direct-api-profile-artifact"
+    elif errors:
+        gate_status = "failed"
+        gate_reason = "invalid-zero-api-cost-evidence"
+    else:
+        gate_status = "passed"
+        gate_reason = "governed-codex-v3-evidence-verified"
+
+    if v3_present:
+        errors.extend(audit_errors)
+
+    accepted_count = accepted if isinstance(accepted, int) else 0
+    v3_materials = [
+        material(path)
+        for path in v3_material_paths
+        if path.is_file() and not path.is_symlink()
+    ]
+    return {
+        "accepted_assertions": accepted_count,
+        "cap": {
+            "cap_triggered": cap_triggered,
+            "cap_usd": valid_cap,
+            "remaining_usd": (
+                max(0.0, valid_cap - valid_usd)
+                if valid_cap is not None and valid_usd is not None
+                else None
+            ),
+        },
+        "codex_service_cost": {
+            "attributable_subscription_cost": None,
+            "billing_boundary": (
+                "Codex subscription/task-surface cost and weekly-allowance "
+                "consumption are not exposed."
+            ),
+            "subscription_usage": "unavailable-unmetered",
+            "weekly_allowance_usage": "unavailable-unmetered",
+        },
+        "cost_boundary": (
+            (
+                "Exact incremental direct OpenAI API cost only. The selected "
+                "Codex workflow made zero direct API calls; this does not "
+                "claim that total economic or subscription cost is zero."
+            )
+            if zero_api_evidence_valid
+            else (
+                "Direct OpenAI API usage/cost evidence is missing or invalid; "
+                "no zero-cost claim is made."
+            )
+        ),
+        "cost_per_accepted_assertion": {
+            "gbp": (
+                valid_gbp / accepted_count
+                if accepted_count and valid_gbp is not None
+                else None
+            ),
+            "usd": (
+                valid_usd / accepted_count
+                if accepted_count and valid_usd is not None
+                else None
+            ),
+        },
+        "enrichment_gate": {
+            "accepted_assertions": accepted_count,
+            "candidate_assertions": candidate_total,
+            "candidate_support": candidate_support,
+            "fresh_network_free_validation": (
+                {
+                    "checked_materials": fresh_audit_validation.get(
+                        "checked_materials"
+                    ),
+                    "checked_rows": fresh_audit_validation.get(
+                        "checked_rows"
+                    ),
+                    "checked_shards": fresh_audit_validation.get(
+                        "checked_shards"
+                    ),
+                    "status": fresh_audit_validation.get("status"),
+                }
+                if fresh_audit_validation is not None
+                else None
+            ),
+            "materials": v3_materials,
+            "reason": gate_reason,
+            "records_attempted": attempted,
+            "status": gate_status,
+            "terminal_outcomes": terminal_count,
+        },
+        "generated_at": generated_at,
+        "incremental_cost": {
+            "gbp": valid_gbp,
+            "usd": valid_usd,
+        },
+        "model_deployment_identity_available": (
+            model_identity_available
+            if isinstance(model_identity_available, bool)
+            else None
+        ),
+        "model_identity": model_identity,
+        "model_identity_limitation": (
+            (
+                "The Codex task surface does not expose the exact underlying "
+                "deployment or sampling parameters; no value is inferred."
+                if model_identity_available is False
+                else (
+                    "The source claimed an exact deployment identity without "
+                    "the separately governed provenance required by this "
+                    "route; the release is blocked."
+                )
+            )
+        ),
+        "notes": [
+            str(cost.get("note", "")),
+            (
+                (
+                    "Direct OpenAI API calls and API tokens are exactly zero "
+                    "for the selected workflow."
+                )
+                if zero_api_evidence_valid
+                else (
+                    "Direct API usage/cost fields did not validate; consult "
+                    "validation_errors."
+                )
+            ),
+            (
+                "Codex subscription/task usage and the user's weekly "
+                "allowance are not exposed as billable token data."
+            ),
+            (
+                "No currency conversion is required for zero direct API spend."
+                if zero_api_evidence_valid
+                else "No currency-conversion conclusion is available."
+            ),
+        ],
+        "optional_direct_api_profile": {
+            "authored_run_available": optional_authored,
+            "authored_run_regular_non_symlink": optional_authored_regular,
+            "current_release_required": False,
+            "public_projection_available": optional_published,
+            "public_projection_regular_non_symlink": (
+                optional_published_regular
+            ),
+            "status": optional_status,
+            "validation": optional_validation,
+        },
+        "provider": provider,
+        "release_effect": (
+            "candidate"
+            if gate_status == "passed" and not errors
+            else (
+                "pending-governed-codex-v3"
+                if gate_status == "pending"
+                else "blocked-invalid-governed-codex-evidence"
+            )
+        ),
+        "run_id": run_id,
+        "schema": "okf-model-cost-report.v2",
+        "source": material(source_path),
+        "source_available": True,
+        "source_kind": source_kind,
+        "source_run_schema": source.get("schema"),
+        "usage": usage,
+        "validation_errors": errors,
+    }
+
+
 def build_constraint_report(generated_at: str) -> dict[str, Any]:
     source_path = (
         ROOT
@@ -1809,7 +3582,11 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
     constraint_body = render(constraint_report)
     model_cost = build_model_cost(generated_at)
     model_cost_body = render(model_cost)
-    paid_governance = paid_publication.validate_governance_inputs()
+    optional_direct_api_materials = [
+        path
+        for path in OPTIONAL_DIRECT_API_PROFILE_MATERIALS
+        if path.is_file() and not path.is_symlink()
+    ]
     release_report, release_report_inputs, release_report_errors = (
         build_release_report(
             generated_at,
@@ -1827,6 +3604,13 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
         generated_at,
         evidence_ok=not evidence_errors,
         traceability_accounted_for=traceability_accounted_for,
+        enrichment_gate=model_cost.get(
+            "enrichment_gate",
+            {
+                "reason": "missing-model-enrichment-gate",
+                "status": "failed",
+            },
+        ),
         release_report_material=projected_material(
             "release-report.json", release_report_body
         ),
@@ -1837,7 +3621,6 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
         evidence_errors
         + status_errors
         + external_errors
-        + list(paid_governance.errors)
         + release_report_errors
         + state_errors
     )
@@ -1864,12 +3647,44 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
         / "current"
         / "source-constraint-ledger.json",
         CLAUDE_TRANSCRIPT,
-        *paid_governance.materials,
+        *optional_direct_api_materials,
+        *[
+            path
+            for path in (
+                CODEX_MODEL_RUN,
+                CODEX_MODEL_COVERAGE,
+                CODEX_MODEL_CANDIDATE_MANIFEST,
+                CODEX_MODEL_TERMINAL_MANIFEST,
+                CODEX_MODEL_REVIEW_MANIFEST,
+                CODEX_MODEL_ACCEPTED_MANIFEST,
+                CODEX_MODEL_AUDIT,
+                GRAPH_ENRICHMENT_GATE,
+                ROOT
+                / "enrichment"
+                / "codex-assisted-v3"
+                / "generator-prompt.md",
+                ROOT
+                / "enrichment"
+                / "codex-assisted-v3"
+                / "reviewer-prompt.md",
+                ROOT / "enrichment" / "codex-assisted-v3" / "rules.json",
+                ROOT
+                / "enrichment"
+                / "codex-assisted-v3"
+                / "review-policy.json",
+                ROOT
+                / "enrichment"
+                / "codex-assisted-v3"
+                / "reviewer-task-receipt.json",
+            )
+            if path.is_file() and not path.is_symlink()
+        ],
         *schema_paths,
         *release_report_inputs,
     ]
     for enrichment in (
         HISTORICAL_MODEL_PUBLICATION,
+        CODEX_MODEL_RUN,
         PAID_MODEL_RUN,
         PAID_MODEL_PUBLICATION,
     ):
@@ -1901,7 +3716,33 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
         "generated_at": generated_at,
         "materials": inputs,
         "materials_digest": f"sha256:{materials_digest}",
-        "paid_model_governance": {
+        "codex_model_governance": {
+            "accepted_manifest": (
+                material(CODEX_MODEL_ACCEPTED_MANIFEST)
+                if CODEX_MODEL_ACCEPTED_MANIFEST.is_file()
+                and not CODEX_MODEL_ACCEPTED_MANIFEST.is_symlink()
+                else None
+            ),
+            "audit": (
+                material(CODEX_MODEL_AUDIT)
+                if CODEX_MODEL_AUDIT.is_file()
+                and not CODEX_MODEL_AUDIT.is_symlink()
+                else None
+            ),
+            "release_gate": model_cost.get("enrichment_gate"),
+            "run": (
+                material(CODEX_MODEL_RUN)
+                if CODEX_MODEL_RUN.is_file()
+                and not CODEX_MODEL_RUN.is_symlink()
+                else None
+            ),
+            "status": (
+                "validated-governed-codex-v3"
+                if model_cost.get("release_effect") == "candidate"
+                else "pending-or-invalid-governed-codex-v3"
+            ),
+        },
+        "optional_direct_api_model_governance": {
             "authored_run": (
                 material(PAID_MODEL_RUN)
                 if PAID_MODEL_RUN.is_file()
@@ -1910,8 +3751,7 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
             ),
             "inputs": [
                 material(path)
-                for path in paid_governance.materials
-                if path.is_file() and not path.is_symlink()
+                for path in optional_direct_api_materials
             ],
             "public_projection": (
                 material(PAID_MODEL_PUBLICATION)
@@ -1919,11 +3759,13 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
                 and not PAID_MODEL_PUBLICATION.is_symlink()
                 else None
             ),
-            "release_gate": model_cost.get("paid_run_gate"),
+            "current_release_required": False,
+            "validation": model_cost.get("optional_direct_api_profile"),
             "status": (
-                "validated-observed-run"
-                if model_cost.get("release_effect") == "candidate"
-                else "blocked-awaiting-valid-observed-run"
+                model_cost.get("optional_direct_api_profile", {}).get(
+                    "status",
+                    "not-invoked",
+                )
             ),
         },
         "outputs": {

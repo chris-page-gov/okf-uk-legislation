@@ -10,7 +10,7 @@
   "evidence_plane": "external-write-once",
   "explorer": {
     "repository": "https://github.com/chris-page-gov/okf-explorer",
-    "required_tag": "v0.5.0"
+    "required_tag": "v0.5.1"
   },
   "finalization": {
     "archive_rebuild_prohibited": true,
@@ -91,12 +91,12 @@
       "P09-01", "P09-02", "P09-03", "P09-04", "P09-05",
       "P10-01", "P10-02", "P10-03", "P10-04", "P10-05",
       "D-01", "D-02", "D-03", "D-04", "D-05", "D-06",
-      "D-07", "D-08", "D-09", "D-10", "D-11", "D-12"
+      "D-07", "D-08", "D-09", "D-10", "D-11", "D-12", "D-13"
     ],
     "frozen_ledger_path": "release-assurance/implementation-traceability.json",
-    "frozen_ledger_sha256": "ae26ab80e9a39fa0b76102495db3f545cceefa9ebef6e847fe6996e0e04ad642",
+    "frozen_ledger_sha256": "650c74298155abf3b665a94a3377fdad6c36ff51dcebabd921473842f36511a2",
     "terminal_dispositions": ["passed", "deferred", "blocked", "superseded"]
   },
   "schema": "okf-external-finalization-contract.v2",
-  "version": "2.0.0"
+  "version": "2.1.0"
 }

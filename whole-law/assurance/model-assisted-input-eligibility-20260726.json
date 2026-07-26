@@ -2,9 +2,9 @@
   "artifact_state": "credential-free-preflight-evidence",
   "bindings": {
     "builder": {
-      "bytes": 69706,
+      "bytes": 70101,
       "path": "scripts/build_model_enrichment_input_evidence.py",
-      "sha256": "871553252cfb4fad87d83c19f37da534daf7ffe114cff15e0cfe5c727bd340d7"
+      "sha256": "38f8e30df291b5b8c0d7e2d829f4eb01942d96bd24a95695b2cab63350fa6608"
     },
     "calibration_manifest": {
       "bytes": 43532,
@@ -15587,7 +15587,7 @@
       "terminal-insufficient-input-evidence": 0,
       "terminal-invalid-input-record": 0
     },
-    "paid_run_eligibility_note": "The current receipt is intentionally incapable of making a paid-run authorization decision.",
+    "paid_run_eligibility_note": "The optional direct API profile is outside the current release and this receipt intentionally cannot authorize it. The governed Codex workflow consumes this frozen input evidence without an API key or direct API call.",
     "paid_run_eligible_now": 0
   },
   "field_coverage": {
@@ -15665,7 +15665,7 @@
     "137,119 works source-advertise a CLML manifestation and 228,667 have only a deterministically derived structure route. This snapshot binds zero retrieved CLML bodies; neither route class proves live availability or annotation coverage.",
     "The notes field contains 35,156 deterministic `Official … record for …` fallback strings, which are excluded from semantic evidence. Remaining prose can be explanatory or synopsis text; it is not represented as an exact statutory long title.",
     "This is deterministic input and eligibility evidence, not legal-semantic classification, legal advice or independent validation of future model outputs.",
-    "A future paid run must record its own governed terminal outcome for every eligible work; these preflight outcomes must not be substituted for that run ledger."
+    "The current governed Codex workflow must record its own terminal outcome for every work; these preflight outcomes must not be substituted for that terminal ledger. Any separately authorised future direct API profile would also need its own independent outcome ledger."
   ],
   "observed_date": "2026-07-26",
   "priority_strata": [

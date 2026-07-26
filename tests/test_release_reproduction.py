@@ -377,6 +377,57 @@ class ReleaseReproductionTests(unittest.TestCase):
             commands[-3:],
         )
 
+    def test_production_profile_uses_active_v3_audit_without_embedded_runtime(
+        self,
+    ) -> None:
+        profile = json.loads(
+            (
+                ROOT
+                / "release-assurance"
+                / "reproduction-profile.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertIn(
+            [
+                "{python}",
+                "scripts/audit_codex_semantic_enrichment_v3.py",
+                "audit",
+            ],
+            profile["build_commands"],
+        )
+        self.assertNotIn(
+            [
+                "{python}",
+                "scripts/audit_codex_semantic_enrichment_v3.py",
+                "build",
+            ],
+            profile["build_commands"],
+        )
+        capabilities = {
+            row["capability"]: row for row in profile["subsumed_checks"]
+        }
+        self.assertIn(
+            "governed-v3-independent-enrichment-audit",
+            capabilities,
+        )
+        self.assertIn(
+            "historical-v1-rejection-and-v2-preservation",
+            capabilities,
+        )
+        self.assertNotIn("required_receipts", profile)
+        contract = json.loads(
+            (
+                ROOT
+                / "release-assurance"
+                / "external-finalization-contract.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual("v0.5.1", contract["explorer"]["required_tag"])
+        self.assertEqual(
+            "release-assurance/schemas/explorer-runtime-receipt.schema.json",
+            contract["input_schemas"]["explorer_runtime_receipt"],
+        )
+
     def test_profile_requires_canonical_release_observation_controller(
         self,
     ) -> None:

@@ -10,8 +10,9 @@ This deterministic audit reads the built publication only. It does not rebuild t
 - Core relationships: 835,563
 - Official effects: 14,712
 - Eligible enrichment attempts: 365,786
-- Independently accepted model-assisted assertions: 22,299
-- Combined relationships: 872,574
+- Independently accepted model-assisted assertions: 56,479
+- Accepted v3 kinds: topic 23,469, concept 31,874, entity 1,136
+- Combined relationships: 906,754
 
 ## Checks
 
@@ -22,9 +23,9 @@ This deterministic audit reads the built publication only. It does not rebuild t
 - `G05-EFFECTS-CHUNKS` — **passed** — EFFECTS-chunk-integrity
 - `G05-EFFECTS-EVIDENCE` — **passed** — immutable-official-evidence
 - `G05-EFFECTS-LIVE` — **passed** — post-build-live-reconciliation
-- `G05-ENRICHMENT` — **passed** — accepted-model-assisted-assertions
-- `G05-ENRICHMENT-ATTEMPTS` — **passed** — eligible-record-attempt-outcomes
-- `G05-ENRICHMENT-CHUNKS` — **passed** — ENRICHMENT-chunk-integrity
+- `G05-ENRICHMENT` — **passed** — accepted-v3-model-assisted-assertions
+- `G05-ENRICHMENT-ATTEMPTS` — **passed** — complete-v3-terminal-outcomes-and-review
+- `G05-ENRICHMENT-CHUNKS` — **passed** — accepted-v3-chunk-integrity
 - `G05-ENRICHMENT-COST` — **passed** — model-cost-boundary
 - `G05-EXPLORER` — **passed** — explorer-queryability
 - `G05-FEDERATION-SUMMARY` — **passed** — federation-relationship-summary-reconciliation
@@ -36,7 +37,7 @@ This deterministic audit reads the built publication only. It does not rebuild t
 ## Scope boundaries
 
 - Official effects are source-derived assertions from successful frozen legislation.gov.uk routes; coverage remains explicitly partial.
-- Enrichment is derived discovery metadata, not official legal classification or legal advice.
+- Active enrichment contains only independently accepted v3 topic, concept and entity-link discovery metadata. Historical v2 evidence is not counted; no enrichment is official legal classification or legal advice.
 - The zero-cost statement is limited to incremental OpenAI API usage recorded by the repository. Codex subscription usage and external billing are not exposed.
 - Core-row freshness describes the current immutable publication snapshot; it is not a claim that each provision is in force.
 - The separately bound Explorer acceptance receipt proves loading, federation and relationship rendering for the exact descriptor digests. Informational JSON entrypoints are also directly resolvable.

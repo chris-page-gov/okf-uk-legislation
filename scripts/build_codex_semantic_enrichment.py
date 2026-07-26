@@ -675,7 +675,19 @@ def build() -> tuple[dict[Path, bytes], dict[str, Any], dict[str, Any]]:
 def update_json(path: Path, transform) -> None:
     value = load(path)
     transform(value)
-    path.write_text(render(value), encoding="utf-8")
+    if path == DATA / "manifest.json":
+        body = (
+            json.dumps(
+                value,
+                ensure_ascii=False,
+                separators=(",", ":"),
+                sort_keys=True,
+            )
+            + "\n"
+        )
+    else:
+        body = render(value)
+    path.write_text(body, encoding="utf-8")
 
 
 def reconcile_relationship_counts(

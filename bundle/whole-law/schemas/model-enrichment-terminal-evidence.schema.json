@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-terminal-evidence.schema.json",
-  "title": "OKF model-enrichment terminal evidence receipt v1",
-  "description": "Typed per-record evidence for one terminal paid-run outcome. Attempt materials must join the complete attempt ledger; deterministic-only outcomes must join the exact frozen eligibility projection or a concrete existing assertion.",
+  "title": "OKF optional direct-API model-enrichment terminal evidence receipt v1",
+  "description": "Optional future direct-API profile contract, activated only by a new explicit user decision and not required for the current Codex/no-direct-API release. Typed per-record evidence for one terminal paid-run outcome; attempt materials must join the complete attempt ledger, while deterministic-only outcomes must join the exact frozen eligibility projection or a concrete existing assertion.",
   "type": "object",
   "required": [
     "schema",

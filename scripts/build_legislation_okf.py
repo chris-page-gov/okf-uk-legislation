@@ -22,9 +22,10 @@ import threading
 import time
 import unicodedata
 import xml.etree.ElementTree as ET
+import zlib
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
@@ -72,6 +73,77 @@ MODEL_ENRICHMENT_PAID_GOVERNANCE_PATH = (
 MODEL_ENRICHMENT_CALIBRATION_MANIFEST_PATH = (
     ROOT / "enrichment" / "model-assisted-calibration-manifest-v1.json"
 )
+MODEL_ENRICHMENT_V3_DIRECTORY = (
+    ROOT / "bundle" / "enrichment" / "codex-assisted-v3"
+)
+MODEL_ENRICHMENT_V3_ACCEPTED_PATH = (
+    MODEL_ENRICHMENT_V3_DIRECTORY / "accepted-manifest.json"
+)
+MODEL_ENRICHMENT_V3_COVERAGE_PATH = (
+    MODEL_ENRICHMENT_V3_DIRECTORY / "coverage.json"
+)
+MODEL_ENRICHMENT_V3_AUDIT_PATH = (
+    ROOT
+    / "whole-law"
+    / "assurance"
+    / "enrichment-v3-independent-audit-20260726.json"
+)
+MODEL_ENRICHMENT_V3_REVIEWER_PATH = (
+    ROOT / "enrichment" / "codex-assisted-v3" / "reviewer-task-receipt.json"
+)
+MODEL_ENRICHMENT_V3_EXPLORER_MANIFEST = (
+    "data/enrichment-v3/manifest.json"
+)
+MODEL_ENRICHMENT_V3_PREDICATES = {
+    "topic": "classified as",
+    "concept": "has discovery concept",
+    "entity": "mentions entity",
+}
+MODEL_ENRICHMENT_V3_AUDIT_MATERIAL_PATHS = {
+    "auditor": "scripts/audit_codex_semantic_enrichment_v3.py",
+    "generator_executable": "scripts/build_codex_semantic_enrichment_v3.py",
+    "run": "bundle/enrichment/codex-assisted-v3/run.json",
+    "generator_prompt": "enrichment/codex-assisted-v3/generator-prompt.md",
+    "reviewer_prompt": "enrichment/codex-assisted-v3/reviewer-prompt.md",
+    "rules": "enrichment/codex-assisted-v3/rules.json",
+    "review_policy": "enrichment/codex-assisted-v3/review-policy.json",
+    "calibration_source": "enrichment/codex-assisted-v3/calibration.json",
+    "calibration_result": (
+        "bundle/enrichment/codex-assisted-v3/calibration-result.json"
+    ),
+    "reviewer_task_receipt": (
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json"
+    ),
+    "candidate_manifest": (
+        "bundle/enrichment/codex-assisted-v3/candidate-manifest.json"
+    ),
+    "terminal_outcome_manifest": (
+        "bundle/enrichment/codex-assisted-v3/terminal-outcome-manifest.json"
+    ),
+    "generation_checkpoints": (
+        "bundle/enrichment/codex-assisted-v3/checkpoints.json"
+    ),
+    "coverage": "bundle/enrichment/codex-assisted-v3/coverage.json",
+    "source_manifest": "bundle/data/manifest.json",
+    "review_checkpoints": (
+        "bundle/enrichment/codex-assisted-v3/review-checkpoints.json"
+    ),
+    "review_verdict_manifest": (
+        "bundle/enrichment/codex-assisted-v3/review-verdict-manifest.json"
+    ),
+    "accepted_manifest": (
+        "bundle/enrichment/codex-assisted-v3/accepted-manifest.json"
+    ),
+}
+MODEL_ENRICHMENT_V3_EVIDENCE_PROFILES = {
+    ("title",): "title-only",
+    ("notes",): "notes-only",
+    ("title", "notes"): "multi-field",
+}
+MAX_GOVERNED_JSON_BYTES = 64 * 1024 * 1024
+MAX_GOVERNED_GZIP_COMPRESSED_BYTES = 8 * 1024 * 1024
+MAX_GOVERNED_GZIP_DECOMPRESSED_BYTES = 64 * 1024 * 1024
+GOVERNED_IO_BLOCK_BYTES = 64 * 1024
 SEARCH_RESULT_DOC_CHUNK_SIZE = 500
 SEARCH_MAX_POSTINGS_PER_TOKEN = 10_000
 MISSING_FILTER_VALUE = "__missing__"
@@ -242,6 +314,699 @@ MODEL_ENRICHMENT = (
 
 def now_utc() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def assert_regular_no_symlinks(path: Path) -> None:
+    """Require a regular file reached without following any symlink."""
+
+    absolute = path.absolute()
+    current = Path(absolute.parts[0])
+    try:
+        for part in absolute.parts[1:]:
+            current /= part
+            if current.is_symlink():
+                raise ValueError(f"symlink component is forbidden: {current}")
+        if not path.is_file() or path.is_symlink():
+            raise ValueError(f"path is not a regular file: {path}")
+    except OSError as exc:
+        raise ValueError(f"cannot inspect governed file: {path}") from exc
+
+
+def read_bounded(path: Path, maximum: int) -> bytes:
+    """Read one stable regular file with an explicit upper bound."""
+
+    assert_regular_no_symlinks(path)
+    try:
+        size = path.stat().st_size
+        if size > maximum:
+            raise ValueError(f"file exceeds {maximum}-byte bound: {path}")
+        with path.open("rb") as source:
+            body = source.read(maximum + 1)
+            if len(body) > maximum or source.read(1):
+                raise ValueError(f"file grew beyond bound: {path}")
+        if len(body) != size:
+            raise ValueError(f"file size changed while reading: {path}")
+    except OSError as exc:
+        raise ValueError(f"cannot read governed file: {path}") from exc
+    return body
+
+
+def inflate_single_gzip(path: Path) -> bytes:
+    """Inflate exactly one bounded gzip member and reject trailing bytes."""
+
+    compressed = read_bounded(path, MAX_GOVERNED_GZIP_COMPRESSED_BYTES)
+    decoder = zlib.decompressobj(16 + zlib.MAX_WBITS)
+    output = bytearray()
+    position = 0
+    try:
+        while position < len(compressed):
+            block = compressed[
+                position : position + GOVERNED_IO_BLOCK_BYTES
+            ]
+            position += len(block)
+            pending = block
+            while pending:
+                remaining = (
+                    MAX_GOVERNED_GZIP_DECOMPRESSED_BYTES - len(output)
+                )
+                piece = decoder.decompress(pending, remaining + 1)
+                output.extend(piece)
+                if len(output) > MAX_GOVERNED_GZIP_DECOMPRESSED_BYTES:
+                    raise ValueError(
+                        f"gzip exceeds decompressed bound: {path}"
+                    )
+                if decoder.unused_data:
+                    raise ValueError(
+                        f"gzip has trailing member or bytes: {path}"
+                    )
+                next_pending = decoder.unconsumed_tail
+                if decoder.eof:
+                    if next_pending or position != len(compressed):
+                        raise ValueError(
+                            f"gzip has trailing compressed bytes: {path}"
+                        )
+                    pending = b""
+                    break
+                if next_pending == pending and not piece:
+                    raise ValueError(
+                        f"gzip decoder made no progress: {path}"
+                    )
+                pending = next_pending
+    except zlib.error as exc:
+        raise ValueError(f"invalid gzip stream: {path}") from exc
+    if not decoder.eof:
+        raise ValueError(f"truncated gzip stream: {path}")
+    tail = decoder.flush(
+        MAX_GOVERNED_GZIP_DECOMPRESSED_BYTES - len(output) + 1
+    )
+    output.extend(tail)
+    if len(output) > MAX_GOVERNED_GZIP_DECOMPRESSED_BYTES:
+        raise ValueError(f"gzip exceeds decompressed bound: {path}")
+    return bytes(output)
+
+
+def sha256_file(path: Path) -> str:
+    return hashlib.sha256(
+        read_bounded(path, MAX_GOVERNED_JSON_BYTES)
+    ).hexdigest()
+
+
+def repository_path(root: Path, relative: Any, label: str) -> Path:
+    """Resolve one declared repository path without accepting traversal."""
+
+    if not isinstance(relative, str) or not relative:
+        raise ValueError(f"{label} path is missing")
+    lexical = PurePosixPath(relative)
+    if (
+        "\\" in relative
+        or lexical.is_absolute()
+        or any(part in {".", ".."} for part in lexical.parts)
+        or lexical.as_posix() != relative
+    ):
+        raise ValueError(f"{label} path is unsafe: {relative}")
+    resolved_root = root.resolve()
+    candidate = root.joinpath(*lexical.parts)
+    assert_regular_no_symlinks(candidate)
+    resolved = candidate.resolve()
+    if resolved != resolved_root and resolved_root not in resolved.parents:
+        raise ValueError(f"{label} path escapes the repository: {relative}")
+    return resolved
+
+
+def bound_file(
+    root: Path,
+    binding: Any,
+    label: str,
+    *,
+    expected_path: str | None = None,
+    maximum: int = MAX_GOVERNED_JSON_BYTES,
+) -> Path:
+    """Verify a path/size/SHA-256 material binding and return its file."""
+
+    if not isinstance(binding, dict):
+        raise ValueError(f"{label} binding is missing")
+    if expected_path is not None and binding.get("path") != expected_path:
+        raise ValueError(
+            f"{label} path differs from the governed path: "
+            f"{binding.get('path')} != {expected_path}"
+        )
+    if "bytes" not in binding or "sha256" not in binding:
+        raise ValueError(f"{label} binding is malformed")
+    expected_bytes = binding["bytes"]
+    expected_sha256 = binding["sha256"]
+    if (
+        isinstance(expected_bytes, bool)
+        or not isinstance(expected_bytes, int)
+        or expected_bytes < 0
+        or not isinstance(expected_sha256, str)
+    ):
+        raise ValueError(f"{label} binding is malformed")
+    path = repository_path(root, binding.get("path"), label)
+    body = read_bounded(path, maximum)
+    if expected_bytes != len(body):
+        raise ValueError(f"{label} byte count does not match its binding")
+    if not re.fullmatch(r"[0-9a-f]{64}", expected_sha256):
+        raise ValueError(f"{label} SHA-256 is malformed")
+    if hashlib.sha256(body).hexdigest() != expected_sha256:
+        raise ValueError(f"{label} SHA-256 does not match its binding")
+    return path
+
+
+def _json_object(path: Path, label: str) -> dict[str, Any]:
+    try:
+        value = json.loads(
+            read_bounded(path, MAX_GOVERNED_JSON_BYTES).decode("utf-8")
+        )
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError(f"{label} is not valid UTF-8 JSON") from exc
+    if not isinstance(value, dict):
+        raise ValueError(f"{label} must be a JSON object")
+    return value
+
+
+def validate_model_enrichment_v3_evidence(
+    row: dict[str, Any],
+    *,
+    label: str = "v3 accepted assertion",
+) -> None:
+    """Validate the ordered, field-specific evidence kept on one assertion."""
+
+    evidence = row.get("evidence")
+    source = row.get("source")
+    rule_id = row.get("rule_id")
+    if (
+        not isinstance(evidence, list)
+        or not evidence
+        or any(not isinstance(item, dict) for item in evidence)
+    ):
+        raise ValueError(f"{label} evidence must be a non-empty object list")
+    fields = tuple(item.get("source_field") for item in evidence)
+    expected_profile = MODEL_ENRICHMENT_V3_EVIDENCE_PROFILES.get(fields)
+    if expected_profile is None or row.get("support_profile") != expected_profile:
+        raise ValueError(f"{label} evidence order/support_profile is invalid")
+    if not isinstance(source, str) or not source:
+        raise ValueError(f"{label} source is missing")
+    if not isinstance(rule_id, str) or not rule_id:
+        raise ValueError(f"{label} rule_id is missing")
+
+    provenance = {
+        "title": "official-source-record-work-title",
+        "notes": (
+            "official-source-record-explanatory-note-or-"
+            "long-title-equivalent"
+        ),
+    }
+    for index, item in enumerate(evidence):
+        field = fields[index]
+        value = item.get("value")
+        source_value = item.get("source_value")
+        literal_sha256 = item.get("literal_sha256")
+        source_value_sha256 = item.get("source_value_sha256")
+        if (
+            item.get("url") != source
+            or item.get("type") != f"literal-{field}-match"
+            or item.get("field_provenance") != provenance[field]
+            or item.get("source_value_hash_canonicalization")
+            != "canonical-json-utf8"
+            or item.get("normalization")
+            != "Unicode-NFC-and-whitespace-collapse"
+            or item.get("rule_id") != rule_id
+            or not isinstance(item.get("rationale"), str)
+            or not item["rationale"]
+            or not isinstance(value, str)
+            or not value
+            or not isinstance(source_value, str)
+            or not source_value
+            or not isinstance(literal_sha256, str)
+            or not re.fullmatch(r"[0-9a-f]{64}", literal_sha256)
+            or hashlib.sha256(value.encode("utf-8")).hexdigest()
+            != literal_sha256
+            or not isinstance(source_value_sha256, str)
+            or not re.fullmatch(r"[0-9a-f]{64}", source_value_sha256)
+        ):
+            raise ValueError(f"{label} evidence item {index} is invalid")
+        canonical_source_value = json.dumps(
+            source_value,
+            ensure_ascii=False,
+            separators=(",", ":"),
+            sort_keys=True,
+        ).encode("utf-8")
+        if (
+            hashlib.sha256(canonical_source_value).hexdigest()
+            != source_value_sha256
+        ):
+            raise ValueError(
+                f"{label} evidence item {index} source hash is invalid"
+            )
+        normalized_source = re.sub(
+            r"\s+",
+            " ",
+            unicodedata.normalize("NFC", source_value),
+        ).strip()
+        if value.casefold() not in normalized_source.casefold():
+            raise ValueError(
+                f"{label} evidence item {index} is not source-supported"
+            )
+
+
+def load_governed_model_enrichment_v3(
+    root: Path = ROOT,
+    *,
+    include_rows: bool = True,
+) -> dict[str, Any]:
+    """Load only independently accepted v3 assertions, failing closed.
+
+    Candidate, terminal-outcome and review-verdict manifests are evidence, not
+    active graph inputs.  The accepted manifest is usable only when the
+    independent audit and separate reviewer receipt are current, hash-bound,
+    accepted and internally reconciled.
+    """
+
+    accepted_relative = (
+        "bundle/enrichment/codex-assisted-v3/accepted-manifest.json"
+    )
+    audit_relative = (
+        "whole-law/assurance/"
+        "enrichment-v3-independent-audit-20260726.json"
+    )
+    reviewer_relative = (
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json"
+    )
+    audit_path = repository_path(root, audit_relative, "v3 independent audit")
+    independent = _json_object(audit_path, "v3 independent audit")
+    decision = independent.get("decision")
+    if (
+        independent.get("schema") != "okf-enrichment-independent-audit.v3"
+        or not isinstance(independent.get("audit_id"), str)
+        or not independent["audit_id"]
+        or independent.get("artifact_state") != "hash-bound-accepted"
+        or not isinstance(decision, dict)
+        or decision.get("release_gate_passed") is not True
+        or decision.get("independent_review_status") != "accepted"
+        or decision.get("errors") != []
+    ):
+        raise ValueError("v3 independent audit did not accept the publication")
+    checks = independent.get("checks")
+    if (
+        not isinstance(checks, list)
+        or not checks
+        or any(
+            not isinstance(check, dict) or check.get("status") != "passed"
+            for check in checks
+        )
+    ):
+        raise ValueError("v3 independent audit checks are not all passed")
+
+    materials = independent.get("materials")
+    if (
+        not isinstance(materials, dict)
+        or set(materials) != set(MODEL_ENRICHMENT_V3_AUDIT_MATERIAL_PATHS)
+    ):
+        raise ValueError(
+            "v3 independent audit material inventory is not exact"
+        )
+    material_paths = {
+        name: bound_file(
+            root,
+            materials[name],
+            f"v3 audit material {name}",
+            expected_path=expected_path,
+        )
+        for name, expected_path in sorted(
+            MODEL_ENRICHMENT_V3_AUDIT_MATERIAL_PATHS.items()
+        )
+    }
+    accepted_path = material_paths["accepted_manifest"]
+    reviewer_path = material_paths["reviewer_task_receipt"]
+    accepted = _json_object(accepted_path, "v3 accepted manifest")
+    reviewer = _json_object(reviewer_path, "v3 semantic reviewer receipt")
+
+    if (
+        accepted.get("schema")
+        != "okf-enrichment-accepted-assertion-manifest.v3"
+        or not isinstance(accepted.get("id"), str)
+        or not accepted["id"]
+        or not isinstance(accepted.get("snapshot_id"), str)
+        or not accepted["snapshot_id"]
+        or not isinstance(accepted.get("generated_at"), str)
+        or not accepted["generated_at"]
+        or not isinstance(accepted.get("review_materials_sha256"), str)
+        or re.fullmatch(
+            r"[0-9a-f]{64}",
+            accepted["review_materials_sha256"],
+        )
+        is None
+        or accepted.get("official_legal_classification") is not False
+        or accepted.get("authority")
+        != "derived-model-assisted-discovery-metadata"
+    ):
+        raise ValueError("v3 accepted manifest release contract is invalid")
+    audit_id = accepted.get("audit_id")
+    if (
+        not isinstance(audit_id, str)
+        or not audit_id
+        or independent.get("audit_id") != audit_id
+    ):
+        raise ValueError("v3 accepted manifest audit_id is unbound")
+    if (
+        reviewer.get("status") != "accepted"
+        or reviewer.get("verdict") != "accepted"
+        or reviewer.get("source_edits_made_by_reviewer") is not False
+        or not isinstance(reviewer.get("review_task_id"), str)
+        or not reviewer["review_task_id"]
+    ):
+        raise ValueError("v3 semantic reviewer receipt is not accepted")
+
+    counts = accepted.get("counts")
+    by_kind = counts.get("by_kind") if isinstance(counts, dict) else None
+    by_support = (
+        counts.get("by_support") if isinstance(counts, dict) else None
+    )
+    support_profiles = {
+        "title-only",
+        "notes-only",
+        "metadata-only",
+        "multi-field",
+    }
+    if (
+        not isinstance(counts, dict)
+        or not isinstance(by_kind, dict)
+        or set(by_kind) != set(MODEL_ENRICHMENT_V3_PREDICATES)
+        or any(
+            isinstance(by_kind[kind], bool)
+            or not isinstance(by_kind[kind], int)
+            or by_kind[kind] < 0
+            for kind in MODEL_ENRICHMENT_V3_PREDICATES
+        )
+        or not isinstance(by_support, dict)
+        or set(by_support) != support_profiles
+        or any(
+            isinstance(by_support[profile], bool)
+            or not isinstance(by_support[profile], int)
+            or by_support[profile] < 0
+            for profile in support_profiles
+        )
+        or by_support["metadata-only"] != 0
+        or isinstance(counts.get("assertions"), bool)
+        or not isinstance(counts.get("assertions"), int)
+        or counts["assertions"] < 0
+        or counts["assertions"] != sum(by_kind.values())
+        or counts["assertions"] != sum(by_support.values())
+    ):
+        raise ValueError("v3 accepted manifest counts do not reconcile")
+    independent_counts = independent.get("counts")
+    if (
+        not isinstance(independent_counts, dict)
+        or decision.get("accepted_assertions") != counts["assertions"]
+        or decision.get("accepted_by_kind") != by_kind
+        or independent_counts.get("accepted_assertions")
+        != counts["assertions"]
+        or independent_counts.get("accepted_by_kind") != by_kind
+        or independent_counts.get("accepted_by_support") != by_support
+    ):
+        raise ValueError("v3 accepted manifest and audit counts differ")
+
+    chunks = accepted.get("chunks")
+    if not isinstance(chunks, list) or not chunks:
+        raise ValueError("v3 accepted manifest has no assertion chunks")
+    rows: list[dict[str, Any]] = []
+    observed_by_kind: Counter[str] = Counter()
+    observed_by_support: Counter[str] = Counter()
+    seen_ids: set[str] = set()
+    observed_records = 0
+    for index, chunk in enumerate(chunks):
+        expected_chunk_path = (
+            "bundle/enrichment/codex-assisted-v3/accepted-assertions/"
+            f"assertions-{index:03d}.json.gz"
+        )
+        path = bound_file(
+            root,
+            chunk,
+            f"v3 accepted chunk {index}",
+            expected_path=expected_chunk_path,
+            maximum=MAX_GOVERNED_GZIP_COMPRESSED_BYTES,
+        )
+        if (
+            chunk.get("compression") != "gzip"
+            or chunk.get("media_type") != "application/json"
+            or isinstance(chunk.get("records"), bool)
+            or not isinstance(chunk.get("records"), int)
+            or chunk["records"] < 0
+        ):
+            raise ValueError(f"v3 accepted chunk {index} metadata is invalid")
+        try:
+            chunk_rows = json.loads(
+                inflate_single_gzip(path).decode("utf-8")
+            )
+        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise ValueError(
+                f"v3 accepted chunk {index} is not valid gzip JSON"
+            ) from exc
+        if (
+            not isinstance(chunk_rows, list)
+            or len(chunk_rows) != chunk["records"]
+            or any(not isinstance(row, dict) for row in chunk_rows)
+        ):
+            raise ValueError(f"v3 accepted chunk {index} row count is invalid")
+        observed_records += len(chunk_rows)
+        for row_index, row in enumerate(chunk_rows):
+            dimension = row.get("dimension")
+            identifier = row.get("id")
+            review = row.get("review")
+            authority = row.get("authority")
+            rights = row.get("rights")
+            confidence = row.get("confidence")
+            verified = row.get("verified")
+            if (
+                row.get("schema") != "okf-relationship-assertion.v2"
+                or dimension not in MODEL_ENRICHMENT_V3_PREDICATES
+                or row.get("predicate")
+                != MODEL_ENRICHMENT_V3_PREDICATES[dimension]
+                or row.get("review_status")
+                != "accepted-independent-review"
+                or row.get("official_legal_classification") is not False
+                or not isinstance(authority, dict)
+                or authority.get("class") != "model-assisted"
+                or not isinstance(identifier, str)
+                or re.fullmatch(
+                    r"urn:okf:enrichment:sha256:[0-9a-f]{64}",
+                    identifier,
+                )
+                is None
+                or identifier in seen_ids
+                or not isinstance(row.get("acceptance_id"), str)
+                or re.fullmatch(
+                    r"urn:okf:model-acceptance:[0-9a-f]{64}",
+                    row["acceptance_id"],
+                )
+                is None
+                or not isinstance(row.get("source"), str)
+                or not row["source"]
+                or not isinstance(row.get("target"), str)
+                or not row["target"]
+                or row.get("derivation")
+                != "codex-authored-deterministic-literal-rule-v3"
+                or isinstance(confidence, bool)
+                or not isinstance(confidence, (int, float))
+                or not 0 <= confidence <= 1
+                or not isinstance(rights, dict)
+                or rights.get("source") != OGL
+                or rights.get("assertion") != "derived discovery metadata"
+                or row.get("freshness") != "current"
+                or not isinstance(review, dict)
+                or review.get("audit_id") != audit_id
+                or review.get("audit_path") != audit_relative
+                or review.get("review_task_id") != reviewer["review_task_id"]
+                or not isinstance(review.get("verdict_id"), str)
+                or not review["verdict_id"]
+                or not isinstance(verified, list)
+                or len(verified) != 2
+                or any(not isinstance(item, dict) for item in verified)
+            ):
+                raise ValueError("v3 accepted assertion contract is invalid")
+            validate_model_enrichment_v3_evidence(
+                row,
+                label=(
+                    f"v3 accepted assertion chunk {index} row {row_index}"
+                ),
+            )
+            seen_ids.add(identifier)
+            observed_by_kind[str(dimension)] += 1
+            observed_by_support[str(row["support_profile"])] += 1
+        if include_rows:
+            rows.extend(chunk_rows)
+    observed_kinds = {
+        kind: observed_by_kind[kind]
+        for kind in MODEL_ENRICHMENT_V3_PREDICATES
+    }
+    observed_support = {
+        profile: observed_by_support[profile]
+        for profile in (
+            "title-only",
+            "notes-only",
+            "metadata-only",
+            "multi-field",
+        )
+    }
+    if (
+        observed_records != counts["assertions"]
+        or observed_kinds != by_kind
+        or observed_support != by_support
+    ):
+        raise ValueError("v3 accepted assertion rows do not match manifest counts")
+
+    return {
+        "manifest": accepted,
+        "audit": independent,
+        "reviewer": reviewer,
+        "rows": rows,
+        "counts": {
+            "assertions": observed_records,
+            "by_kind": observed_kinds,
+            "by_support": observed_support,
+        },
+        "predicate_counts": {
+            MODEL_ENRICHMENT_V3_PREDICATES[kind]: observed_kinds[kind]
+            for kind in MODEL_ENRICHMENT_V3_PREDICATES
+        },
+        "bindings": {
+            "accepted_manifest": {
+                "path": accepted_relative,
+                "bytes": accepted_path.stat().st_size,
+                "sha256": sha256_file(accepted_path),
+            },
+            "independent_audit": {
+                "path": audit_relative,
+                "bytes": audit_path.stat().st_size,
+                "sha256": sha256_file(audit_path),
+            },
+            "reviewer_task_receipt": {
+                "path": reviewer_relative,
+                "bytes": reviewer_path.stat().st_size,
+                "sha256": sha256_file(reviewer_path),
+            },
+            "run": dict(materials["run"]),
+            "coverage": dict(materials["coverage"]),
+        },
+    }
+
+
+def model_enrichment_v3_explorer_manifest(
+    governed: dict[str, Any],
+) -> dict[str, Any]:
+    """Project accepted v3 bindings into Explorer's provider transport schema."""
+
+    accepted = governed["manifest"]
+    accepted_binding = dict(governed["bindings"]["accepted_manifest"])
+    accepted_binding_path = Path(str(accepted_binding["path"]))
+    if (
+        len(accepted_binding_path.parts) < 2
+        or accepted_binding_path.parts[0] != "bundle"
+    ):
+        raise ValueError(
+            "v3 accepted-manifest binding is not rooted beneath bundle"
+        )
+    accepted_binding["path"] = Path(
+        *accepted_binding_path.parts[1:]
+    ).as_posix()
+    reviewer_binding = {
+        **governed["bindings"]["reviewer_task_receipt"],
+        "path": (
+            "whole-law/assurance/"
+            "enrichment-v3-reviewer-task-receipt.json"
+        ),
+    }
+    chunks = []
+    for chunk in accepted["chunks"]:
+        path = Path(str(chunk["path"]))
+        if not path.parts or path.parts[0] != "bundle":
+            raise ValueError(
+                "v3 accepted chunk is not rooted beneath the published bundle"
+            )
+        chunks.append(
+            {
+                **chunk,
+                "path": Path(*path.parts[1:]).as_posix(),
+            }
+        )
+    return {
+        "schema": "okf-provider-datapack.v1",
+        "id": accepted["id"],
+        "source_id": "legislation-work-catalogue",
+        "snapshot_id": accepted["snapshot_id"],
+        "generated_at": accepted["generated_at"],
+        "authority": accepted["authority"],
+        "official_legal_classification": False,
+        "acquisition": {
+            "kind": (
+                "governed-codex-task-surface-policy-with-deterministic-"
+                "corpus-application"
+            ),
+            "authority": accepted["authority"],
+            "assistant_surface": "Codex interactive task surface",
+            "input_manifest": "data/manifest.json",
+            "run": "enrichment/codex-assisted-v3/run.json",
+            "coverage": "enrichment/codex-assisted-v3/coverage.json",
+            "accepted_manifest": accepted_binding["path"],
+            "independent_audit": governed["bindings"][
+                "independent_audit"
+            ]["path"],
+            "semantic_reviewer": reviewer_binding["path"],
+            "api_calls": 0,
+            "official_legal_classification": False,
+        },
+        "source_contract": {
+            **accepted_binding,
+            "schema": accepted["schema"],
+            "audit_id": accepted["audit_id"],
+        },
+        "independent_audit": governed["bindings"]["independent_audit"],
+        "semantic_reviewer": reviewer_binding,
+        "counts": governed["counts"],
+        "relationship_kinds": [
+            {
+                "dimension": kind,
+                "predicate": MODEL_ENRICHMENT_V3_PREDICATES[kind],
+                "count": governed["counts"]["by_kind"][kind],
+            }
+            for kind in MODEL_ENRICHMENT_V3_PREDICATES
+        ],
+        "provenance": {
+            "evidence_field": "evidence",
+            "evidence_shape": "stable-ordered-list",
+            "source_field_order": ["title", "notes"],
+            "support_profile_field": "support_profile",
+            "support_profiles": {
+                "title-only": ["title"],
+                "notes-only": ["notes"],
+                "multi-field": ["title", "notes"],
+            },
+            "item_fields": [
+                "url",
+                "type",
+                "source_field",
+                "field_provenance",
+                "source_value",
+                "source_value_sha256",
+                "source_value_hash_canonicalization",
+                "normalization",
+                "value",
+                "literal_sha256",
+                "rule_id",
+                "rationale",
+            ],
+            "notice": (
+                "Render every evidence item in list order; do not collapse "
+                "multi-field support to a single provenance object."
+            ),
+        },
+        "chunks": chunks,
+        "notice": (
+            "Compatibility projection for Explorer. Every row and chunk is "
+            "taken only from the independently accepted v3 manifest; candidate "
+            "and review-verdict shards are not graph inputs."
+        ),
+    }
 
 
 def slugify(value: str) -> str:
@@ -1723,6 +2488,7 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
             "graph": "data/graph.json",
             "relationship_adjacency": "data/adjacency/manifest.json",
             "relationship_composition": "data/relationship-composition.json",
+            "performance": "data/performance.json",
         },
         "chunks": {"datasets": [str(path) for path, _ in record_chunks], "resources": [str(path) for path, _ in resource_chunks], "publishers": [str(path) for path, _ in publisher_chunks], "relationships": [str(path) for path, _ in relationship_chunks]},
         "performance": {
@@ -1732,7 +2498,7 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
             "facet_hydration": "exact-v2-filter-postings",
             "relationship_hydration": "lazy",
             "route_relationship_hydration": "hash-sharded adjacency",
-            "search": "bounded static worker shards plus official remote full-text Atom search",
+            "search": "bounded gzip static worker shards plus official remote full-text Atom search",
             "provision_hydration": "live CLML per selected work",
         },
         "search": {
@@ -2170,6 +2936,27 @@ def load_existing_records(
     return records, source_meta
 
 
+def write_owned_files_overlay(
+    output: Path, files: dict[Path, str | bytes]
+) -> None:
+    """Replace this builder's files without deleting other publication planes.
+
+    The complete publication is assembled by several owner-specific builders.
+    An offline rebuild of the base legislation plane therefore must not clear
+    provider datapacks, Whole-Law, assurance, documentation, or checksum files
+    owned by later stages.
+    """
+
+    output.mkdir(parents=True, exist_ok=True)
+    for relative, content in files.items():
+        target = output / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if isinstance(content, bytes):
+            target.write_bytes(content)
+        else:
+            target.write_text(content, encoding="utf-8")
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
@@ -2222,7 +3009,10 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         print(f"Legislation OKF is synchronized with {len(records):,} legal works")
         return 0
-    large_corpus.write_files(output, files)
+    if args.from_existing:
+        write_owned_files_overlay(output, files)
+    else:
+        large_corpus.write_files(output, files)
     output_label = output.relative_to(ROOT) if output.is_relative_to(ROOT) else output
     print(f"wrote {len(files):,} files for {len(records):,} legal works to {output_label}")
     return 0

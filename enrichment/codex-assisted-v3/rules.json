@@ -1,0 +1,233 @@
+{
+  "schema": "okf-codex-enrichment-rules.v3",
+  "ruleset_id": "codex-assisted-v3-20260726-r3",
+  "authorship": {
+    "surface": "OpenAI Codex interactive task surface",
+    "role": "Codex-authored governed deterministic high-precision ruleset",
+    "exact_model_deployment_identity_available": false,
+    "production_mode": "deterministic full-corpus application; not one LLM call per work"
+  },
+  "topic_rules": {
+    "source": "enrichment/codex-assisted-v2-rules.json",
+    "calibration": "enrichment/codex-assisted-v2-calibration.json",
+    "required_rule_count": 55,
+    "required_calibration_precision": 0.95,
+    "required_evidence_support": 0.95
+  },
+  "evidence_field_policy": {
+    "semantic_text_fields": [
+      {
+        "source_field": "title",
+        "field_provenance": "official-source-record-work-title",
+        "required_state": "substantive",
+        "allowed_dimensions": ["topic", "concept", "entity"]
+      },
+      {
+        "source_field": "notes",
+        "field_provenance": "official-source-record-explanatory-note-or-long-title-equivalent",
+        "required_state": "substantive-source-note",
+        "allowed_dimensions": ["topic", "concept", "entity"]
+      }
+    ],
+    "source_metadata_fields": [
+      {
+        "source_field": "category",
+        "field_provenance": "official-source-record-publication-category",
+        "semantic_role": "publication-partition-not-subject",
+        "allowed_dimensions": [],
+        "reason": "The four values identify primary, secondary, draft or EU-origin publication partitions, not legal subjects."
+      },
+      {
+        "source_field": "document_type",
+        "field_provenance": "official-source-record-legal-form",
+        "semantic_role": "legal-form-not-subject",
+        "allowed_dimensions": [],
+        "reason": "The 32 values identify legal-resource forms and cannot safely imply a topic, concept or named entity."
+      },
+      {
+        "source_field": "publisher_title",
+        "field_provenance": "official-source-record-publication-partition-label",
+        "semantic_role": "publication-partition-label-not-publisher-organisation",
+        "allowed_dimensions": [],
+        "reason": "The values Primary, Secondary, Draft and Eu Origin label corpus partitions; they are not publisher organisations."
+      },
+      {
+        "source_field": "tags",
+        "field_provenance": "official-source-record-structural-index-tags",
+        "semantic_role": "type-category-year-index-not-subject",
+        "allowed_dimensions": [],
+        "reason": "Every tag set is exactly the work type code, publication category and year tag; no tag is a governed subject or entity."
+      }
+    ],
+    "metadata_integrity_profile": {
+      "snapshot_id": "legislation-2026-07-11T18:00:00Z",
+      "category_values": ["draft", "eu-origin", "primary", "secondary"],
+      "publisher_title_by_category": {
+        "draft": "Draft",
+        "eu-origin": "Eu Origin",
+        "primary": "Primary",
+        "secondary": "Secondary"
+      },
+      "document_type_count": 32,
+      "tags_exactly": ["type_code", "category", "year-{year}"],
+      "metadata_only_candidate_count_required": 0
+    }
+  },
+  "concepts": [
+    {"rule_id": "R001", "label": "Air navigation"},
+    {"rule_id": "R002", "label": "Restriction of flying"},
+    {"rule_id": "R003", "label": "Motor vehicles"},
+    {"rule_id": "R004", "label": "Parking places"},
+    {"rule_id": "R005", "label": "Speed limits"},
+    {"rule_id": "R006", "label": "Driving licences"},
+    {"rule_id": "R007", "label": "Vehicle construction and use"},
+    {"rule_id": "R008", "label": "Legal aid"},
+    {"rule_id": "R009", "label": "Advice and assistance"},
+    {"rule_id": "R010", "label": "Magistrates' courts civil procedure"},
+    {"rule_id": "R011", "label": "Civil legal services"},
+    {"rule_id": "R012", "label": "Import duties"},
+    {"rule_id": "R013", "label": "Double taxation relief"},
+    {"rule_id": "R014", "label": "Taxation relief"},
+    {"rule_id": "R015", "label": "Non-domestic rating"},
+    {"rule_id": "R016", "label": "Industrial training"},
+    {"rule_id": "R017", "label": "Training levy"},
+    {"rule_id": "R018", "label": "Wages regulation"},
+    {"rule_id": "R019", "label": "Trade unions"},
+    {"rule_id": "R020", "label": "Superannuation"},
+    {"rule_id": "R021", "label": "Financial services"},
+    {"rule_id": "R022", "label": "Building societies"},
+    {"rule_id": "R023", "label": "Friendly societies"},
+    {"rule_id": "R024", "label": "Credit unions"},
+    {"rule_id": "R025", "label": "Offshore installations"},
+    {"rule_id": "R026", "label": "Sea fishing"},
+    {"rule_id": "R027", "label": "Feeding stuffs"},
+    {"rule_id": "R028", "label": "Diseases of animals"},
+    {"rule_id": "R029", "label": "Environmentally sensitive areas"},
+    {"rule_id": "R030", "label": "Smoke control"},
+    {"rule_id": "R031", "label": "Foot-and-mouth disease"},
+    {"rule_id": "R032", "label": "Primary care trusts"},
+    {"rule_id": "R033", "label": "Medicines"},
+    {"rule_id": "R034", "label": "Poisons regulation"},
+    {"rule_id": "R035", "label": "Secondary schools"},
+    {"rule_id": "R036", "label": "Student support"},
+    {"rule_id": "R037", "label": "Teachers' salaries"},
+    {"rule_id": "R038", "label": "Births, deaths and marriages"},
+    {"rule_id": "R039", "label": "Marriage validity"},
+    {"rule_id": "R040", "label": "National assistance"},
+    {"rule_id": "R041", "label": "Social Fund"},
+    {"rule_id": "R042", "label": "Housing benefit"},
+    {"rule_id": "R043", "label": "Wireless telegraphy"},
+    {"rule_id": "R044", "label": "Telecommunication systems"},
+    {"rule_id": "R045", "label": "Television licence fees"},
+    {"rule_id": "R046", "label": "Weights and measures"},
+    {"rule_id": "R047", "label": "Product safety"},
+    {"rule_id": "R048", "label": "Representation of the people"},
+    {"rule_id": "R049", "label": "Firearms control"},
+    {"rule_id": "R050", "label": "Misuse of drugs"},
+    {"rule_id": "R051", "label": "Homelessness"},
+    {"rule_id": "R052", "label": "Naval discipline"},
+    {"rule_id": "R053", "label": "European Communities"},
+    {"rule_id": "R054", "label": "Public interest disclosure"},
+    {"rule_id": "R055", "label": "Veterinary surgeons"}
+  ],
+  "entity_rules": [
+    {"id": "E002", "label": "Bank of England", "pattern": "(?<!Imperial )\\bBank of England\\b", "target": "https://www.bankofengland.co.uk/"},
+    {"id": "E003", "label": "Civil Aviation Authority", "pattern": "\\bCivil Aviation Authority\\b", "target": "https://www.caa.co.uk/"},
+    {
+      "id": "E004",
+      "label": "Environment Agency (England)",
+      "pattern": "\\bEnvironment Agency\\b",
+      "exclude_pattern": "\\b(?:Northern Ireland|European) Environment Agency\\b",
+      "target": "https://www.gov.uk/government/organisations/environment-agency",
+      "jurisdiction_scope": ["England"],
+      "identity_evidence": "https://www.gov.uk/government/organisations/environment-agency/about"
+    },
+    {"id": "E005", "label": "The Pensions Regulator", "pattern": "\\b(?:The )?Pensions Regulator\\b(?! Tribunal\\b)", "target": "https://www.thepensionsregulator.gov.uk/"},
+    {"id": "E006", "label": "Care Quality Commission", "pattern": "\\bCare Quality Commission\\b", "target": "https://www.cqc.org.uk/"},
+    {"id": "E007", "label": "Office of Communications", "pattern": "\\bOffice of Communications\\b", "target": "https://www.ofcom.org.uk/"},
+    {"id": "E008", "label": "National Crime Agency", "pattern": "\\bNational Crime Agency\\b", "target": "https://www.nationalcrimeagency.gov.uk/"},
+    {"id": "E009", "label": "Competition and Markets Authority", "pattern": "\\bCompetition and Markets Authority\\b", "target": "https://www.gov.uk/government/organisations/competition-and-markets-authority"},
+    {
+      "id": "E010",
+      "label": "Health and Safety Executive (Great Britain)",
+      "pattern": "\\bHealth and Safety Executive\\b",
+      "exclude_pattern": "\\bHealth and Safety Executive for Northern Ireland\\b",
+      "target": "https://www.hse.gov.uk/",
+      "jurisdiction_scope": ["England", "Scotland", "Wales"],
+      "identity_evidence": "https://www.hse.gov.uk/enforce/strategy-policy-legal.htm"
+    },
+    {
+      "id": "E011",
+      "label": "Electoral Commission",
+      "pattern": "\\bElectoral Commission\\b",
+      "exclude_pattern": "\\bnew Constitution for Montserrat\\b[\\s\\S]*\\ban Electoral Commission\\b[\\s\\S]*\\bestablished for the first time\\b",
+      "target": "https://www.electoralcommission.org.uk/"
+    },
+    {"id": "E012", "label": "Driver and Vehicle Licensing Agency", "pattern": "\\bDriver and Vehicle Licensing Agency\\b", "target": "https://www.gov.uk/government/organisations/driver-and-vehicle-licensing-agency"},
+    {"id": "E013", "label": "National Institute for Health and Care Excellence", "pattern": "\\bNational Institute for Health and Care Excellence\\b", "target": "https://www.nice.org.uk/"},
+    {"id": "E014", "label": "Financial Conduct Authority", "pattern": "\\bFinancial Conduct Authority\\b", "target": "https://www.fca.org.uk/"},
+    {
+      "id": "E015",
+      "label": "Charity Commission (England and Wales)",
+      "pattern": "\\bCharity Commission\\b",
+      "exclude_pattern": "\\bCharity Commission for Northern Ireland\\b",
+      "target": "https://www.gov.uk/government/organisations/charity-commission",
+      "jurisdiction_scope": ["England", "Wales"],
+      "identity_evidence": "https://www.gov.uk/government/organisations/charity-commission/about"
+    },
+    {"id": "E016", "label": "Office for Students", "pattern": "\\bOffice for Students\\b", "target": "https://www.officeforstudents.org.uk/"},
+    {
+      "id": "E017",
+      "label": "Northern Ireland Environment Agency",
+      "pattern": "\\bNorthern Ireland Environment Agency\\b",
+      "target": "https://www.daera-ni.gov.uk/articles/northern-ireland-environment-agency",
+      "jurisdiction_scope": ["Northern Ireland"],
+      "identity_evidence": "https://www.daera-ni.gov.uk/articles/northern-ireland-environment-agency"
+    },
+    {
+      "id": "E018",
+      "label": "Health and Safety Executive for Northern Ireland",
+      "pattern": "\\bHealth and Safety Executive for Northern Ireland\\b",
+      "target": "https://www.hseni.gov.uk/",
+      "jurisdiction_scope": ["Northern Ireland"],
+      "identity_evidence": "https://www.hseni.gov.uk/"
+    },
+    {
+      "id": "E019",
+      "label": "Charity Commission for Northern Ireland",
+      "pattern": "\\bCharity Commission for Northern Ireland\\b",
+      "target": "https://www.charitycommissionni.org.uk/",
+      "jurisdiction_scope": ["Northern Ireland"],
+      "identity_evidence": "https://www.charitycommissionni.org.uk/about-us/"
+    },
+    {
+      "id": "E020",
+      "label": "European Environment Agency",
+      "pattern": "\\bEuropean Environment Agency\\b",
+      "target": "https://www.eea.europa.eu/en",
+      "jurisdiction_scope": ["European Union"],
+      "identity_evidence": "https://www.eea.europa.eu/en/about/who-we-are"
+    }
+  ],
+  "retired_entity_rules": [
+    {
+      "id": "E001",
+      "label": "National Health Service",
+      "former_pattern": "\\bNational Health Service\\b",
+      "former_target": "https://www.nhs.uk/",
+      "former_target_scope": ["England"],
+      "decision": "retired-fail-closed",
+      "reason": "The literal denotes multiple jurisdiction-specific UK health systems while nhs.uk is explicitly the NHS website for England; no single stable organisation target is supported across the corpus.",
+      "identity_evidence": "https://www.nhs.uk/about-us/about-the-nhs-website/"
+    }
+  ],
+  "assertion_policy": {
+    "topic_predicate": "classified as",
+    "concept_predicate": "has discovery concept",
+    "entity_predicate": "mentions entity",
+    "authority": "model-assisted",
+    "status": "candidate-pending-independent-review",
+    "rights": "derived discovery metadata from OGL source records",
+    "official_classification_claimed": false
+  }
+}

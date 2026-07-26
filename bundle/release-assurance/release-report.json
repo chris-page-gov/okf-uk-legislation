@@ -26,7 +26,7 @@
     },
     "explorer": {
       "repository": "https://github.com/chris-page-gov/okf-explorer",
-      "required_tag": "v0.5.0"
+      "required_tag": "v0.5.1"
     }
   },
   "schema": "okf-release-report.v1",
@@ -39,9 +39,9 @@
           "sha256": "4708f0d5880703f97c621b92fa3e5fc9143cd00ea266af5d5575a4e0f52e7131"
         },
         {
-          "bytes": 21587,
-          "path": "bundle/data/enrichment/coverage.json",
-          "sha256": "b1d3ddcf49d4574dbc9f9690f411ed8b2f5e2467c1f94d7bbc2604c6616f4c7e"
+          "bytes": 14732,
+          "path": "bundle/enrichment/codex-assisted-v3/coverage.json",
+          "sha256": "6836e5b43ff7491c630afb2fa0d365ba9544e935c1651ac3d53dc5eb9736c458"
         },
         {
           "bytes": 23446,
@@ -57,16 +57,26 @@
       "model_assisted": {
         "attempt_coverage": 1.0,
         "counts": {
-          "assertions": {
-            "accepted": 22299
+          "candidate_support": {
+            "metadata-only": 0,
+            "multi-field": 13002,
+            "notes-only": 5003,
+            "title-only": 38474
+          },
+          "candidates": {
+            "concept": 31874,
+            "entity": 1136,
+            "topic": 23469,
+            "total": 56479
           },
           "records": {
             "attempted": 365786,
-            "with_accepted_assertions": 22284,
-            "without_new_supported_assertions": 343502
+            "terminal_outcomes": 365786,
+            "with_candidates": 28635,
+            "without_supported_candidates": 337151
           }
         },
-        "generated_at": "2026-07-25T22:20:00Z"
+        "generated_at": "2026-07-26T12:00:00Z"
       },
       "official_effects": {
         "generated_at": "2026-07-25T21:30:00Z",
@@ -137,42 +147,42 @@
         "No browser, public HTTP or compatibility-host result was inferred from a local descriptor check."
       ],
       "corpus_navigation_score": 100,
-      "executed_at": "2026-07-26T02:05:28Z",
+      "executed_at": "2026-07-26T17:17:39Z",
       "hard_failures": [],
       "materials": [
         {
-          "bytes": 4845,
+          "bytes": 5293,
           "path": "bundle/whole-law/evaluation/executions/index.json",
-          "sha256": "ad0ca1e1753866612b03a9a5bca1776b03f117b4768a232c65475823af0c3198"
+          "sha256": "dba408a12eb4f028e40ef53711b3707b4e95d784564492e66c6cd4b992c56818"
         },
         {
-          "bytes": 3125034,
-          "path": "bundle/whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/results.json",
-          "sha256": "10857af6abdb9e0d1a34ae770a60fbc32d8b7c952059c373415c0264f4daa04a"
+          "bytes": 3125033,
+          "path": "bundle/whole-law/evaluation/executions/eval-24eeb1c54bbb2b604c70/results.json",
+          "sha256": "6844635bbd4545d2997d117b407a7085fefbb90714249f99c82ce0d9aac4df40"
         },
         {
           "bytes": 10678,
-          "path": "bundle/whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/scores.json",
+          "path": "bundle/whole-law/evaluation/executions/eval-24eeb1c54bbb2b604c70/scores.json",
           "sha256": "8228f85adbf098493e28892d5901c15d2f7ce11ea2e84d82b97281b778a3642c"
         }
       ],
       "minimum_critical_family_score": 100,
-      "run_id": "eval-f58a8fc7155f9ce36b2c",
+      "run_id": "eval-24eeb1c54bbb2b604c70",
       "scope": "corpus-navigation-metadata",
       "status": "passed"
     },
     "gaps": {
       "counts": {
-        "blocked": 4,
+        "blocked": 3,
         "deferred": 3,
-        "open": 7,
-        "resolved": 11,
-        "total": 25
+        "open": 5,
+        "resolved": 15,
+        "total": 26
       },
       "source": {
-        "bytes": 18550,
+        "bytes": 22063,
         "path": "release-assurance/gap-register.json",
-        "sha256": "5699e035eca919135b71a36fdb5541412bc968ea2bc2ee4bb33b3cc230a9e8fe"
+        "sha256": "651d371cfcf520fdb8084b7853e2077f84a2fa5897073b1ce290ef0c2c5c048d"
       },
       "unresolved": [
         {
@@ -186,10 +196,10 @@
         {
           "area": "browser, accessibility and performance",
           "id": "IMP-GAP-012",
-          "next_action": "Bind or rerun the passing Chrome, Firefox and WebKit receipt against the exact Explorer v0.5.0 commit and frozen Legislation descriptor digests, then record that binding in external finalization evidence.",
+          "next_action": "Publish the green corrective Explorer v0.5.1 release, then bind or rerun the Chrome, Firefox and WebKit receipt against its exact commit and the frozen Legislation descriptor digests before recording that binding in external finalization evidence.",
           "release_effect": "blocks-GATE-07-and-GATE-08",
           "status": "blocked",
-          "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations, but it is not yet bound to the exact released Explorer commit and frozen Legislation candidate."
+          "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations. Explorer v0.5.0 remains the completed release-order milestone, but corrective v0.5.1 is now the exact finalization prerequisite and is not yet published or bound to the frozen Legislation candidate."
         },
         {
           "area": "public access and links",
@@ -248,14 +258,6 @@
           "summary": "Fair-use, licence, authentication, availability and related constraints remain visible rather than silently reducing prototype scope."
         },
         {
-          "area": "historical model execution metadata",
-          "id": "IMP-GAP-021",
-          "next_action": "Retain this as a historical-only Codex task-surface limitation. Do not use it to satisfy the dedicated paid-run gate; that run must produce its own exact model, token, cache, retry and cost receipts.",
-          "release_effect": "externally-blocked-historical-metadata",
-          "status": "blocked",
-          "summary": "Historical Codex-assisted evidence records the provider and task model, but the task surface does not expose its exact underlying deployment identifier or billable subscription-token usage. This gap is historical-only and cannot stand in for a dedicated paid-run receipt."
-        },
-        {
           "area": "legal entity model coverage",
           "id": "IMP-GAP-022",
           "next_action": "Future child bundles may acquire independently counted expression, provision, case, court, organisation, publication, jurisdiction and temporal-state inventories without changing or overstating the v0.3.0 federation catalogue.",
@@ -264,28 +266,12 @@
           "summary": "The semantic contract represents every named class at the approved catalogue/schema grain. Complete population of every future source-family child bundle is explicitly outside the initial v0.3.0 federation claim."
         },
         {
-          "area": "OpenAI model calibration and selection",
-          "id": "IMP-GAP-023",
-          "next_action": "After explicit approval to reuse the configured API key, run the fixed calibration through the available OpenAI structured-output candidates, select the lowest-cost model meeting all thresholds, exercise strongest-model escalation on disagreements/high-risk records, and bind exact model, usage and cost receipts.",
-          "release_effect": "blocks-full-P05-02-and-GATE-01",
+          "area": "final Codex cost and secret-safe release evidence",
+          "id": "IMP-GAP-026",
+          "next_action": "At final candidate closure, preserve the accepted v3 denominator and exact zero direct-API cost receipt in the final report, then bind exact-RC security evidence that no credential or secret entered Git or logs.",
+          "release_effect": "blocks-full-P05-06-finalization",
           "status": "open",
-          "summary": "Credential-free calibration and fail-closed selection contracts exist, but no dedicated paid run proves lowest-cost qualifying OpenAI structured-output model selection or strongest-model escalation. Historical Codex-assisted output cannot satisfy this gate."
-        },
-        {
-          "area": "model enrichment input evidence",
-          "id": "IMP-GAP-024",
-          "next_action": "Use the fixed 365,786-work input order in the dedicated run: process the 359,140 local-semantic records, freeze and reconcile CLML for the 6,646 deferred records, then record one unique terminal outcome per work. Zero CLML bodies are currently frozen; lack of frozen evidence must yield abstention rather than an assertion.",
-          "release_effect": "blocks-full-P05-01-and-GATE-01",
-          "status": "open",
-          "summary": "Credential-free preflight covers all 365,786 works, with 359,140 local-semantic candidates and 6,646 deferred pending frozen CLML, but zero CLML bodies are frozen and no dedicated paid-run terminal-outcome manifest exists."
-        },
-        {
-          "area": "independent model review",
-          "id": "IMP-GAP-025",
-          "next_action": "Run a separately hashed reviewer prompt with an exact reviewer model distinct from the selected generator over every proposed assertion, then deterministically reconstruct accept, reject and escalation outcomes.",
-          "release_effect": "blocks-full-P05-04-and-GATE-01",
-          "status": "open",
-          "summary": "Strict reviewer and role-separation contracts exist, but the historical independent deterministic reconstruction is not a separately identified reviewer prompt/model and no dedicated paid run has reviewed every proposed assertion."
+          "summary": "D-13 partially supersedes P05-06: direct-API paid-stage preflight and cap mechanics are not used by the selected no-API route. The accepted v3 evidence now records 56,479 accepted assertions, zero API calls and input/output tokens, exact USD 0 / GBP 0 direct API spend, USD 0 cost per accepted assertion, exchange-rate non-applicability and unavailable/unmetered Codex service fields. No API key was required or used; final exact-RC secret-safe evidence and report binding remain outstanding."
         }
       ]
     },
@@ -1319,72 +1305,194 @@
       }
     },
     "model_cost": {
-      "boundary": "Governed paid-run cost is unavailable. The numeric incremental_cost field is retained only as the historical Codex-assisted fallback observation and cannot satisfy the paid-run gate.",
-      "governed_paid_cost": {
-        "available": false,
-        "gbp": null,
-        "reason": "missing-dedicated-paid-run",
-        "usd": null
+      "boundary": "Exact incremental direct OpenAI API cost only. The selected Codex workflow made zero direct API calls; this does not claim that total economic or subscription cost is zero.",
+      "codex_service_cost": {
+        "attributable_subscription_cost": null,
+        "billing_boundary": "Codex subscription/task-surface cost and weekly-allowance consumption are not exposed.",
+        "subscription_usage": "unavailable-unmetered",
+        "weekly_allowance_usage": "unavailable-unmetered"
       },
-      "historical_fallback_cost": {
-        "accepted_assertions": 22299,
+      "cost_per_accepted_assertion": {
         "gbp": 0.0,
-        "scope": "historical-codex-assisted-only",
         "usd": 0.0
+      },
+      "enrichment_gate": {
+        "accepted_assertions": 56479,
+        "candidate_assertions": 56479,
+        "candidate_support": {
+          "metadata-only": 0,
+          "multi-field": 13002,
+          "notes-only": 5003,
+          "title-only": 38474
+        },
+        "fresh_network_free_validation": {
+          "checked_materials": 18,
+          "checked_rows": 535223,
+          "checked_shards": 1464,
+          "status": "passed"
+        },
+        "materials": [
+          {
+            "bytes": 9647,
+            "path": "bundle/enrichment/codex-assisted-v3/run.json",
+            "sha256": "0d3a0b236e87e2a091d731904641cff1533b10293f9b5a020811faff86d71a4f"
+          },
+          {
+            "bytes": 14732,
+            "path": "bundle/enrichment/codex-assisted-v3/coverage.json",
+            "sha256": "6836e5b43ff7491c630afb2fa0d365ba9544e935c1651ac3d53dc5eb9736c458"
+          },
+          {
+            "bytes": 108688,
+            "path": "bundle/enrichment/codex-assisted-v3/candidate-manifest.json",
+            "sha256": "b6950fb54d1f5014348f3a421e1432397e626227a8451d955886602334771773"
+          },
+          {
+            "bytes": 111805,
+            "path": "bundle/enrichment/codex-assisted-v3/terminal-outcome-manifest.json",
+            "sha256": "d260b118f3d3c2c9ffa0f0a9956b695cc9265df6624abe08bc1bb485f3895bc3"
+          },
+          {
+            "bytes": 2224116,
+            "path": "bundle/enrichment/codex-assisted-v3/checkpoints.json",
+            "sha256": "b19b98f34c4de52d04b4691116e7427fc3ee35c9c594d6c2422ed40c8d20538d"
+          },
+          {
+            "bytes": 3698,
+            "path": "bundle/enrichment/codex-assisted-v3/calibration-result.json",
+            "sha256": "de19c3a93eb23f9af711e994c660cf7ce69af4746687afb4360e71dd0a2b8fc4"
+          },
+          {
+            "bytes": 109400,
+            "path": "bundle/enrichment/codex-assisted-v3/review-verdict-manifest.json",
+            "sha256": "248a1465b410da380f01b0b780af74e66d05b07e898b24fb5ba7e6b2b2f6eae3"
+          },
+          {
+            "bytes": 112096,
+            "path": "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+            "sha256": "ea4fe5dd9975a8775369bc0ef33f4a082c7e357c4e15268458760a831dbf3de7"
+          },
+          {
+            "bytes": 375488,
+            "path": "bundle/enrichment/codex-assisted-v3/review-checkpoints.json",
+            "sha256": "ed135b21fcc12e1b60ab6bcd2541d17bbb5e0d63ecce7ebd21a4795624397b41"
+          },
+          {
+            "bytes": 9133,
+            "path": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+            "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
+          },
+          {
+            "bytes": 22602,
+            "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
+            "sha256": "e5f8b992daa45a477433d71af47eb04001bab0ce3da77b29e27baea4246a60be"
+          },
+          {
+            "bytes": 96352,
+            "path": "scripts/build_codex_semantic_enrichment_v3.py",
+            "sha256": "29d5193c6ca6216f97689fb3ddfb1c97759a365e86a390c4a8bae5ef88b55b6f"
+          },
+          {
+            "bytes": 105528,
+            "path": "scripts/audit_codex_semantic_enrichment_v3.py",
+            "sha256": "8d1b2dd28cbac3bb92fc936b00a9b1044b240a9d06f84d3f1ceca2d6e272d5b0"
+          },
+          {
+            "bytes": 11810,
+            "path": "enrichment/codex-assisted-v3/calibration.json",
+            "sha256": "ef755dc285528faddd44466384024d4e1982bcf7400ae41a249b575961747090"
+          },
+          {
+            "bytes": 3254,
+            "path": "enrichment/codex-assisted-v3/generator-prompt.md",
+            "sha256": "7e6f9596252ff5ff68bcd0952f930019e43ea34b910f33acdd869e7309d32dd0"
+          },
+          {
+            "bytes": 2910,
+            "path": "enrichment/codex-assisted-v3/reviewer-prompt.md",
+            "sha256": "328adff9c3c8f5932ca1031eb729f55f448987adf9dbddfa1cb7a88488278dca"
+          },
+          {
+            "bytes": 12014,
+            "path": "enrichment/codex-assisted-v3/rules.json",
+            "sha256": "d44081c9f88819790f4d5c29cd5da5a0299353a98b2f66fbf1a147e212947e31"
+          },
+          {
+            "bytes": 3577,
+            "path": "enrichment/codex-assisted-v3/review-policy.json",
+            "sha256": "4b40176e617c94478dc0af0854dabbe6ffb72e79988c04ad88f134545bcbbafe"
+          },
+          {
+            "bytes": 4111,
+            "path": "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+            "sha256": "2168de01aa604288912161e4bf9d63cabb8024381ab19b78fd71e77f11d1788a"
+          }
+        ],
+        "reason": "governed-codex-v3-evidence-verified",
+        "records_attempted": 365786,
+        "status": "passed",
+        "terminal_outcomes": 365786
       },
       "incremental_cost": {
         "gbp": 0.0,
         "usd": 0.0
       },
       "model_deployment_identity_available": false,
-      "model_identity": "Codex task model (exact deployment identifier not exposed)",
-      "paid_run_gate": {
-        "authored_receipt_available": false,
+      "model_identity": "Codex interactive task surface",
+      "model_identity_limitation": "The Codex task surface does not expose the exact underlying deployment or sampling parameters; no value is inferred.",
+      "optional_direct_api_profile": {
+        "authored_run_available": false,
+        "authored_run_regular_non_symlink": false,
+        "current_release_required": false,
         "public_projection_available": false,
-        "reason": "missing-dedicated-paid-run",
-        "status": "blocked"
+        "public_projection_regular_non_symlink": false,
+        "status": "not-invoked",
+        "validation": null
       },
-      "release_effect": "blocked-missing-exact-model-identity",
-      "run_id": "codex-assisted-v2-2-2026-07-25",
+      "release_effect": "candidate",
+      "run_id": "codex-assisted-v3-20260726",
       "source": {
-        "bytes": 2145,
+        "bytes": 6778,
         "path": "bundle/release-assurance/model-cost-report.json",
-        "sha256": "cc226090fead43f781d45946dc6502fc675d93a09eff7fdcb49c6710d153f8ca"
+        "sha256": "8fe570c020f70240eb84e7a49012c3d286b28a54ae2cfb1a823ecf207127b763"
       },
-      "source_kind": "historical-codex-assisted-fallback",
+      "source_kind": "governed-codex-assisted-v3",
       "usage": {
         "api_calls": 0,
         "api_input_tokens": 0,
         "api_output_tokens": 0,
-        "codex_task_usage": "not exposed as billable token data"
+        "codex_subscription_token_usage": "not exposed",
+        "codex_weekly_allowance_usage": "not exposed"
       }
     },
     "relationship_composition": {
       "by_authority": {
         "derived": 469777,
-        "model-assisted": 22299,
+        "model-assisted": 56479,
         "official": 380498
       },
       "by_confidence": {
-        "0.96": 2197,
-        "0.97": 2332,
-        "0.98": 6719,
-        "0.99": 11051,
-        "1": 14712,
+        "0.96": 4961,
+        "0.97": 5103,
+        "0.98": 16812,
+        "0.99": 28467,
+        "1": 15848,
         "high": 365786,
         "low": 469777
       },
       "by_datapack": {
-        "codex-assisted-v2": 22299,
+        "codex-assisted-v3": 56479,
         "core": 835563,
         "legislation-effects": 14712
       },
       "by_freshness": {
-        "current": 872574
+        "current": 906754
       },
       "by_predicate": {
-        "classified as": 492076,
+        "classified as": 493246,
+        "has discovery concept": 31874,
         "has document type": 365786,
+        "mentions entity": 1136,
         "official effect: act renamed": 1,
         "official effect: added": 65,
         "official effect: added (1.1.1996) (saving)": 4,
@@ -2310,15 +2418,15 @@
         "official effect: words substituted in earlier amending provision s.i. 2019/419, sch. 2 para. 85(4)": 1,
         "official effect: words substituted in earlier amending provision s.i. 2019/419, sch. 2 para. 85(7)": 1
       },
-      "generated_at": "2026-07-25T22:20:00Z",
+      "generated_at": "2026-07-26T12:30:00Z",
       "notice": "Counts describe materialized rows in the declared core and provider datapacks. They do not imply complete legal coverage.",
       "snapshot": "legislation-work-index-2026-07-11T18:00:00Z",
       "source": {
-        "bytes": 243985,
+        "bytes": 244796,
         "path": "bundle/data/relationship-composition.json",
-        "sha256": "baeda4ffcf6ce43938c1bdc89bdd71c922fe1405a7a6c9a61f1a56c93e3c9564"
+        "sha256": "6c6f74acf08b2596b4804427fe6dcfc927a49b5836a345c1aac66013808015a7"
       },
-      "total": 872574
+      "total": 906754
     },
     "yaml_ld_mime_exception": {
       "expected_media_type": "application/ld+yaml",

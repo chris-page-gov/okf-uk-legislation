@@ -22,6 +22,8 @@ from pathlib import Path
 from typing import Any, Iterable
 from urllib.parse import urljoin
 
+import build_legislation_okf as legislation_builder
+
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "whole-law"
 RESEARCH = ROOT / "research" / "whole-law-okf-research"
@@ -251,7 +253,23 @@ def relationship_summary() -> dict[str, Any]:
     effects_reconciliation = load(
         ROOT / "bundle" / "data" / "effects" / "reconciliation.json"
     )
-    enrichment = load(ROOT / "bundle" / "data" / "enrichment" / "coverage.json")
+    governed_v3 = legislation_builder.load_governed_model_enrichment_v3()
+    if any(
+        row.get("datapack") == "codex-assisted-v2"
+        for row in source.get("relationships", [])
+    ):
+        raise ValueError(
+            "active relationship summary still contains historical v2 rows"
+        )
+    published_v3 = sum(
+        int(row["count"])
+        for row in source.get("relationships", [])
+        if row.get("datapack") == "codex-assisted-v3"
+    )
+    if published_v3 != governed_v3["counts"]["assertions"]:
+        raise ValueError(
+            "active relationship summary does not reconcile to accepted v3"
+        )
     predicates: Counter[str] = Counter()
     authorities: Counter[str] = Counter()
     freshness: Counter[str] = Counter()
@@ -275,7 +293,12 @@ def relationship_summary() -> dict[str, Any]:
 
     core_observed = str(legislation["generated_at"])
     effects_observed = str(effects["generated_at"])
-    enrichment_observed = str(enrichment["generated_at"])
+    enrichment_observed = str(governed_v3["manifest"]["generated_at"])
+    v3_stale_after = (
+        min(str(row["stale_after"]) for row in governed_v3["rows"])
+        if governed_v3["rows"]
+        else rendered(parsed(enrichment_observed) + timedelta(days=31))
+    )
     datapack_policy = {
         "core": {
             "assertion_contract": "okf-core-relationship-row.v1",
@@ -297,14 +320,14 @@ def relationship_summary() -> dict[str, Any]:
                 "are counted; inaccessible reconciliation routes are reported separately."
             ),
         },
-        "codex-assisted-v2": {
+        "codex-assisted-v3": {
             "assertion_contract": "okf-relationship-assertion.v2",
             "observed_at": enrichment_observed,
-            "stale_after": rendered(parsed(core_observed) + timedelta(days=31)),
-            "refresh_window": "input-snapshot-P31D",
+            "stale_after": v3_stale_after,
+            "refresh_window": "governed-v3-assertion-window",
             "notes": (
-                "Audited derived discovery assertions inherit the currency window "
-                "of their bound legislation-title snapshot."
+                "Only independently accepted topic, concept and entity-link "
+                "assertions are active. Candidate and historical v2 rows are excluded."
             ),
         },
     }
@@ -376,6 +399,7 @@ def descriptor(
     source_register: dict[str, Any],
     taxonomy: dict[str, Any],
     families: list[dict[str, Any]],
+    relations: dict[str, Any],
 ) -> dict[str, Any]:
     legislation = load(LEGISLATION_DESCRIPTOR)
     work_count = int(legislation["counts"]["works"])
@@ -455,8 +479,29 @@ def descriptor(
             "official_effect_relationships": int(
                 legislation["counts"].get("official_effect_relationships", 0)
             ),
-            "model_assisted_relationships_v2": int(
-                legislation["counts"].get("model_assisted_relationships_v2", 0)
+            "historical_model_assisted_relationships_v2": int(
+                legislation["counts"].get(
+                    "historical_model_assisted_relationships_v2",
+                    0,
+                )
+            ),
+            "model_assisted_relationships_v3": int(
+                legislation["counts"]["model_assisted_relationships_v3"]
+            ),
+            "model_assisted_topic_relationships_v3": int(
+                legislation["counts"][
+                    "model_assisted_topic_relationships_v3"
+                ]
+            ),
+            "model_assisted_concept_relationships_v3": int(
+                legislation["counts"][
+                    "model_assisted_concept_relationships_v3"
+                ]
+            ),
+            "model_assisted_entity_relationships_v3": int(
+                legislation["counts"][
+                    "model_assisted_entity_relationships_v3"
+                ]
             ),
         },
     }
@@ -527,7 +572,22 @@ def descriptor(
             "evaluation": "evaluation/release-questions.json",
             "evaluation_coverage": "evaluation/coverage.json",
             "official_effects": "../data/effects/manifest.json",
-            "model_enrichment": "../data/enrichment/manifest.json",
+            "model_enrichment_v3": "../data/enrichment-v3/manifest.json",
+            "model_enrichment_v3_accepted_manifest": (
+                "../enrichment/codex-assisted-v3/accepted-manifest.json"
+            ),
+            "model_enrichment_v3_coverage": (
+                "../enrichment/codex-assisted-v3/coverage.json"
+            ),
+            "model_enrichment_v3_independent_audit": (
+                "assurance/enrichment-v3-independent-audit-20260726.json"
+            ),
+            "model_enrichment_v3_reviewer": (
+                "assurance/enrichment-v3-reviewer-task-receipt.json"
+            ),
+            "model_enrichment_v2_historical": (
+                "../enrichment/codex-assisted-v2.json"
+            ),
             "integrity": "integrity.json",
             "docs": "docs/index.md",
         },
@@ -546,7 +606,7 @@ def descriptor(
         },
         "children": [child],
         "bundles": [child],
-        "relationship_summary": relationship_summary(),
+        "relationship_summary": relations,
         "source_families": families,
         "alternate_access": [
             {"kind": "pages", "url": f"{PUBLIC}/whole-law/okf-explorer.json"},
@@ -569,7 +629,7 @@ def descriptor(
         },
         "notices": [
             "Only the UK Legislation child bundle is currently loadable; the 36 legal-source classes are governed federation metadata, not fabricated child bundles.",
-            "Official effects cover the declared seed snapshot; model-assisted topics are non-official discovery metadata.",
+            "Official effects cover the declared seed snapshot; independently accepted v3 topics, concepts and entity links are non-official discovery metadata.",
             "GitHub Pages serves YAML-LD as application/octet-stream; JSON-LD is the strict transport fallback.",
         ],
     }
@@ -727,7 +787,7 @@ def build_files() -> dict[Path, bytes]:
     family_by_id = {row["id"]: row for row in families}
     constraints = build_constraints(source_register)
     relations = relationship_summary()
-    desc = descriptor(source_register, taxonomy, families)
+    desc = descriptor(source_register, taxonomy, families, relations)
     execution_rows: list[dict[str, Any]] = []
     execution_root = SOURCE / "evaluation" / "executions"
     if execution_root.is_dir():
@@ -817,6 +877,10 @@ def build_files() -> dict[Path, bytes]:
         if source_path.is_file():
             relative = source_path.relative_to(SOURCE)
             put(relative, source_path.read_bytes())
+    put(
+        "assurance/enrichment-v3-reviewer-task-receipt.json",
+        legislation_builder.MODEL_ENRICHMENT_V3_REVIEWER_PATH.read_bytes(),
+    )
 
     put("okf-explorer.json", render_json(desc))
     put("okf-bundle.jsonld", render_json(semantic))

@@ -1,0 +1,2953 @@
+{
+  "chunks": [
+    {
+      "bytes": 86144,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-000.json.gz",
+      "records": 645,
+      "sha256": "b1e3cca6a0fa5dc17b054aefe1f172081652a01ca82eae7f5892c395ac029ed4"
+    },
+    {
+      "bytes": 49369,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-001.json.gz",
+      "records": 354,
+      "sha256": "54fc2e61952ed35ce23e5bd97084ce73090f2f406d978f9b4318d0b71fb8bab7"
+    },
+    {
+      "bytes": 97555,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-002.json.gz",
+      "records": 745,
+      "sha256": "1fd241dbef2bdd650691ac44a84c4f8c8e76034fde552c02eb15983371f15a1d"
+    },
+    {
+      "bytes": 26029,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-003.json.gz",
+      "records": 129,
+      "sha256": "1af188d63f622ebd49d36630cb847535541ececfbcb9246529a95cee0ce530ce"
+    },
+    {
+      "bytes": 98634,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-004.json.gz",
+      "records": 748,
+      "sha256": "d17e7ebf64e6b3b4e9628c7a92b43f939f86e145e57b914dcdc68e1950222cdf"
+    },
+    {
+      "bytes": 51803,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-005.json.gz",
+      "records": 238,
+      "sha256": "d57d43b2879a7870c0c65128df1272902d3bb122665d647b49ec46f656e0ba6c"
+    },
+    {
+      "bytes": 63680,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-006.json.gz",
+      "records": 529,
+      "sha256": "8cc19288d2e94679a595437c1258a98b573643e57086945ebf3ac04b2aace4dd"
+    },
+    {
+      "bytes": 67750,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-007.json.gz",
+      "records": 371,
+      "sha256": "adad912262327c9c9fe6523c9591f289c773e44fb053c5a9f887a1565381686c"
+    },
+    {
+      "bytes": 41084,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-008.json.gz",
+      "records": 237,
+      "sha256": "cd477f6677a52d3a8592473201148d72dc341098aca7f68c9e2a667caa2befb4"
+    },
+    {
+      "bytes": 69766,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-009.json.gz",
+      "records": 473,
+      "sha256": "f28950d752b0f5984e5d4aab1fc27dd9de191aba3332adccbd6811828097644a"
+    },
+    {
+      "bytes": 41150,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-010.json.gz",
+      "records": 183,
+      "sha256": "10a67a54b4ab2d23b657cb82062952a192a96b577c8ff8f503edd457937c1e10"
+    },
+    {
+      "bytes": 45847,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-011.json.gz",
+      "records": 305,
+      "sha256": "49c95e029a6f40235291494879077a7d3a156fa89a3e67e20eca9fd59187d378"
+    },
+    {
+      "bytes": 50896,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-012.json.gz",
+      "records": 240,
+      "sha256": "ca5e39c569fc6af1c716438d07dff56cc1c754dd4cd26a07664481604eacfa82"
+    },
+    {
+      "bytes": 21261,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-013.json.gz",
+      "records": 100,
+      "sha256": "db72127809042a43a0e5165977d52ce518752d690cc7daeb19d1fb2226d4a411"
+    },
+    {
+      "bytes": 48998,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-014.json.gz",
+      "records": 242,
+      "sha256": "770675262c8e9635e54a6f51b7a48fbf11cb4aaff31f8a2002cf052bd3ad4400"
+    },
+    {
+      "bytes": 34286,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-015.json.gz",
+      "records": 166,
+      "sha256": "a2e62a5c3d28e62d46e8d59f3b0eb0eda9523d02eed6044ff626dc408a56847a"
+    },
+    {
+      "bytes": 24834,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-016.json.gz",
+      "records": 123,
+      "sha256": "28f02a64832fe058ed71a33ed63dfee2d94aa0815bbbe358517ab0fe9a0ec049"
+    },
+    {
+      "bytes": 7715,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-017.json.gz",
+      "records": 35,
+      "sha256": "0fafa0bdd88cc0fef5b7c7b8dc8b247adcf50bad6b8ac1cfa1a6fc967ae7a572"
+    },
+    {
+      "bytes": 36545,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-018.json.gz",
+      "records": 255,
+      "sha256": "70f58605bd58c718365703174ebab5b0b858cfac18756107bee3184f20fae730"
+    },
+    {
+      "bytes": 66200,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-019.json.gz",
+      "records": 363,
+      "sha256": "b03798b747fdd9e0c054c065b42605271f036ee6b5bd78b22b44504ad48ce5dc"
+    },
+    {
+      "bytes": 34337,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-020.json.gz",
+      "records": 165,
+      "sha256": "4db5799aea503dd02d00e3b7676f865303bc5c36b067dfb25732084c72db979e"
+    },
+    {
+      "bytes": 6212,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-021.json.gz",
+      "records": 24,
+      "sha256": "c8ef7fecda7f713db468526f7b2fec8409954e0fec8fe12773451367e59b61d4"
+    },
+    {
+      "bytes": 17512,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-022.json.gz",
+      "records": 87,
+      "sha256": "29511ec56551bafe7ce307e69ed945ebe2ad7c7cbcc253bf2ff9597b95d45b45"
+    },
+    {
+      "bytes": 91885,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-023.json.gz",
+      "records": 523,
+      "sha256": "903a571f7287435ecf9700a0fa61dce312ac2466cbb490c606ed7e25bc1e48c5"
+    },
+    {
+      "bytes": 48167,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-024.json.gz",
+      "records": 213,
+      "sha256": "d4dc5bc487543c8434303e55b7f0770d879ea67164bf8a596e451579d3201db0"
+    },
+    {
+      "bytes": 6054,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-025.json.gz",
+      "records": 34,
+      "sha256": "e3c93646d6fcc4f878642989dcfcfe221e0ad6ee52d3c561553dece0ac7ff5b0"
+    },
+    {
+      "bytes": 7892,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-026.json.gz",
+      "records": 39,
+      "sha256": "09dfaa474798ed233b6b92c0d1c50cd95698ec382fa65a2b7bf63c9ea116fc1d"
+    },
+    {
+      "bytes": 75556,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-027.json.gz",
+      "records": 449,
+      "sha256": "3a0c8331e5154afc64d699d990c687578b8905addce0eb1f0cdb2b5abc4f1676"
+    },
+    {
+      "bytes": 35060,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-028.json.gz",
+      "records": 168,
+      "sha256": "52366fc22e2944db48d9fe979a363ea99aad688436f9ff86875413132af486a5"
+    },
+    {
+      "bytes": 5339,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-029.json.gz",
+      "records": 24,
+      "sha256": "921b753665207a11c759c14935d29ece724b8218e8941c47f08048411024d335"
+    },
+    {
+      "bytes": 4997,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-030.json.gz",
+      "records": 19,
+      "sha256": "62b4b158d994e63bbc6b075aa79c14fce71a9ad89c8acedff269b2d82ff71415"
+    },
+    {
+      "bytes": 68169,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-031.json.gz",
+      "records": 398,
+      "sha256": "5f1eed7e447c69a3e6e568f34f81ffbd91772bd8c407f60e935ac9172dd1460c"
+    },
+    {
+      "bytes": 51848,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-032.json.gz",
+      "records": 235,
+      "sha256": "4d2b33de2a05fbe50a2906d8d04720dd8bffc62e0915542900dfe3a1ba537b05"
+    },
+    {
+      "bytes": 19833,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-033.json.gz",
+      "records": 89,
+      "sha256": "8277a5eb512a4ea500f3dce9098275d9a51bac23d1c0f013b652fdc1ed928cf5"
+    },
+    {
+      "bytes": 3783,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-034.json.gz",
+      "records": 14,
+      "sha256": "135f7b6aec5ee343c02028aaeed9a4fef3621f2f1ed619ef0a64c03cb52ee1f0"
+    },
+    {
+      "bytes": 24450,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-035.json.gz",
+      "records": 87,
+      "sha256": "471383d47a7caff764366b24d15d8e1c6a59226e74e65fa2dc7a3e8ea7cd4565"
+    },
+    {
+      "bytes": 71081,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-036.json.gz",
+      "records": 342,
+      "sha256": "ea5efe90fa9166a82762dc919a1a5a1073132403cd807e5791ce447914855661"
+    },
+    {
+      "bytes": 54492,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-037.json.gz",
+      "records": 294,
+      "sha256": "3b4ec2751b895c37f04915d44314b8fd3b3324e07ecebbfcfc0ef89d970f63e1"
+    },
+    {
+      "bytes": 39916,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-038.json.gz",
+      "records": 193,
+      "sha256": "e0ba98c09573ba496945f560dcd86df718b9c689abe96c3771bb715615a92eb8"
+    },
+    {
+      "bytes": 2141,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-039.json.gz",
+      "records": 6,
+      "sha256": "51f837ffaf1c554fdaceca565dc01b9d21620a2400974916ff4003001e9611ea"
+    },
+    {
+      "bytes": 5241,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-040.json.gz",
+      "records": 22,
+      "sha256": "824f912d15d4cdbe03e4c03dc550fffdcdd4a610eafdb192339b09d7465b3450"
+    },
+    {
+      "bytes": 37565,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-041.json.gz",
+      "records": 158,
+      "sha256": "3745a982b8f05498a616c80d2fb7a22f49620c08d3fa306842aeca801680063f"
+    },
+    {
+      "bytes": 30706,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-042.json.gz",
+      "records": 141,
+      "sha256": "4948d252faf97f4b77ad032cd7efb6bbea614ffc790c477e2661cd5f9ffee054"
+    },
+    {
+      "bytes": 40373,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-043.json.gz",
+      "records": 193,
+      "sha256": "b29811f54658891a3377e3d1bbb12874d60dbc6f2a19664b782be521fa8b2d02"
+    },
+    {
+      "bytes": 50504,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-044.json.gz",
+      "records": 236,
+      "sha256": "b8a5a68f51ae9f128523719f8e9a651a82a16d2cd8557848f01fcd674f35718f"
+    },
+    {
+      "bytes": 26580,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-045.json.gz",
+      "records": 130,
+      "sha256": "4b3448d85e416a96747558ea2493776cb3ce0641590dbb5708ac5c12fc69cc7d"
+    },
+    {
+      "bytes": 6094,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-046.json.gz",
+      "records": 33,
+      "sha256": "3bf252a7da3b30051956bd0c8976580fc77d1161d28dedc2e13f81febaa7438d"
+    },
+    {
+      "bytes": 6817,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-047.json.gz",
+      "records": 32,
+      "sha256": "2fe82181a7ca46fa62cb85c234f22944e9a90a4af9099372bd81658c33b55d3c"
+    },
+    {
+      "bytes": 55411,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-048.json.gz",
+      "records": 281,
+      "sha256": "95bb9e40421b744227644d4f7f88b59cda078b2c6608ebdf16aaffbd541c5d6b"
+    },
+    {
+      "bytes": 25539,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-049.json.gz",
+      "records": 109,
+      "sha256": "55d0e69e15760b4f8dd3a66478a16f6b55aa09c548a9576a5b3227a6dacc2e44"
+    },
+    {
+      "bytes": 34825,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-050.json.gz",
+      "records": 159,
+      "sha256": "500cd7ee90c2850332f35a29beb8eda2f32872d57cabe2e88ecf4c49e76ca685"
+    },
+    {
+      "bytes": 55723,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-051.json.gz",
+      "records": 243,
+      "sha256": "799c30ad43b43b7541acb9eef05bfce38ea6b3cae7be47f065472c42f32e3c5c"
+    },
+    {
+      "bytes": 13460,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-052.json.gz",
+      "records": 80,
+      "sha256": "9936ab5ee7efff216d9424048455c170126edc7eaf7d44b1173252011f0a1cd9"
+    },
+    {
+      "bytes": 6549,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-053.json.gz",
+      "records": 34,
+      "sha256": "644daba34a156032aef1f1ffb9ff03eb38309ec46e1ca883ccc4054c1cf35663"
+    },
+    {
+      "bytes": 21138,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-054.json.gz",
+      "records": 127,
+      "sha256": "babcab0f7db679255a3f1d1fefc3e235a77f2537f09402cdd66393ba6a7b7b6a"
+    },
+    {
+      "bytes": 29641,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-055.json.gz",
+      "records": 130,
+      "sha256": "7f0e11f53a370beae542ccc04aefd35155f0f31e8e2b489051b6339c7c706d9c"
+    },
+    {
+      "bytes": 29295,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-056.json.gz",
+      "records": 148,
+      "sha256": "53704f55a1bb92ca7cfc3b43412485e5f4693d5945b115b9bbe31eda2be6cb99"
+    },
+    {
+      "bytes": 46080,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-057.json.gz",
+      "records": 277,
+      "sha256": "725364aee31255a1b3878f512d234084be401636a41479a90981fefe6ea6cd19"
+    },
+    {
+      "bytes": 39739,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-058.json.gz",
+      "records": 208,
+      "sha256": "6ad3903f58272470e4867a28db7bcb10f88299eab92f7f8935826291c0334a53"
+    },
+    {
+      "bytes": 16801,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-059.json.gz",
+      "records": 142,
+      "sha256": "8e6e1a5319d20a63ae13b57cb560606501db44f97892037e13f55b3b7c634b7c"
+    },
+    {
+      "bytes": 4995,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-060.json.gz",
+      "records": 22,
+      "sha256": "c7134c0376b0c83871294d85c454d403f2d29ce86d0f1cc48697d465d5b5522b"
+    },
+    {
+      "bytes": 25396,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-061.json.gz",
+      "records": 121,
+      "sha256": "a093e6b7e2394fcead44f534df04ac9d323a43b357c8f2ccc7b27a3103ee2ed9"
+    },
+    {
+      "bytes": 29476,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-062.json.gz",
+      "records": 150,
+      "sha256": "196f6167ed18d5cd25f6e7e242e7664cd08861baebb4efb2d9257b2d08349896"
+    },
+    {
+      "bytes": 36347,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-063.json.gz",
+      "records": 215,
+      "sha256": "f0d250472e5e74fe32b7c19154861542623cb71023633d2e9180384e1ba0f825"
+    },
+    {
+      "bytes": 43944,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-064.json.gz",
+      "records": 220,
+      "sha256": "3287f4b4eb978bc852b8f947d57e7d8367823e77d4de8c1a075ba6f702f0ab06"
+    },
+    {
+      "bytes": 25716,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-065.json.gz",
+      "records": 226,
+      "sha256": "67128f35948e14e42b6a6118794441f8a6116c40f7e6753ea826d5fe7fadef97"
+    },
+    {
+      "bytes": 12531,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-066.json.gz",
+      "records": 95,
+      "sha256": "78dcc17e0b40cdca7ea93c22d2d3a4aad64791e71a05a9d3c2effdee181f4cad"
+    },
+    {
+      "bytes": 19642,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-067.json.gz",
+      "records": 76,
+      "sha256": "c25fcbc0ed4078f3a105e9cf7730839c8e4eb623ec95d99d286dd5203af7c2b1"
+    },
+    {
+      "bytes": 32928,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-068.json.gz",
+      "records": 147,
+      "sha256": "b1b5c0a8e99b52149adc665ad1ca23ed9201730d0350077433dd296fcf376384"
+    },
+    {
+      "bytes": 22159,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-069.json.gz",
+      "records": 117,
+      "sha256": "7dc3254640792f47632b6c592dbd035f49e68cc82380a2a7718a3e9c6c735732"
+    },
+    {
+      "bytes": 43915,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-070.json.gz",
+      "records": 178,
+      "sha256": "a8372c492f56710367efe3d6226e43d928fa958a913b37d9ae88bcdf46aa4896"
+    },
+    {
+      "bytes": 45543,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-071.json.gz",
+      "records": 278,
+      "sha256": "c65f75bd30cb3f1cd30898c8711cc88161f4bb7b1bf3649a8dccc702ce4e8544"
+    },
+    {
+      "bytes": 24644,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-072.json.gz",
+      "records": 222,
+      "sha256": "30062ec7b98229a901a35d77a96a0eca93e139d96dbecf0c8203995230902403"
+    },
+    {
+      "bytes": 18491,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-073.json.gz",
+      "records": 71,
+      "sha256": "462305c6ecd7383a62333068a1e2f537bd64332c760eef8c4982627c11f6c76c"
+    },
+    {
+      "bytes": 36719,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-074.json.gz",
+      "records": 137,
+      "sha256": "bcc8d0f63a36f809817c50726094cd2357b0b29fa944ec12894601936151760d"
+    },
+    {
+      "bytes": 54945,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-075.json.gz",
+      "records": 224,
+      "sha256": "6d5eae159797840538baa9efe0a0e769e0675b33f4fa4989d672e3155a8c64c4"
+    },
+    {
+      "bytes": 40864,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-076.json.gz",
+      "records": 207,
+      "sha256": "4088817f7e7ceb5dc7d39575a2695a94d9d2a42d8706baca7f9de0d5e113065e"
+    },
+    {
+      "bytes": 20194,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-077.json.gz",
+      "records": 167,
+      "sha256": "371c4e4c495c44c346352e649debc8b48daa9a630eadb17255db699d72979286"
+    },
+    {
+      "bytes": 12119,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-078.json.gz",
+      "records": 74,
+      "sha256": "41fe0eb0a1137508e301ab56c7d2854b093e181d13280a7e225cd1e33b39ac0a"
+    },
+    {
+      "bytes": 52977,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-079.json.gz",
+      "records": 203,
+      "sha256": "d926272a8268a8314a1a9920ac4b3184d3fea58a604e194effbd93b974d2a131"
+    },
+    {
+      "bytes": 64711,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-080.json.gz",
+      "records": 247,
+      "sha256": "1ba63c66bb2cf3218df1e4d50f5de2f92dacd0277f520e504a869e53040ebdb6"
+    },
+    {
+      "bytes": 36916,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-081.json.gz",
+      "records": 189,
+      "sha256": "b551381ff2efd0338cf328253a10875e48cc68211a56a594aec72be193ec6fcf"
+    },
+    {
+      "bytes": 11981,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-082.json.gz",
+      "records": 86,
+      "sha256": "57a7f427830cfcdaa16067cb7c708b1d116e882b726ae1ca0d81e7ce3928a86b"
+    },
+    {
+      "bytes": 11561,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-083.json.gz",
+      "records": 65,
+      "sha256": "b7daad96378e8099928d39240e8a89c218352412ade09dfa343b1c71265042f0"
+    },
+    {
+      "bytes": 65539,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-084.json.gz",
+      "records": 251,
+      "sha256": "8d5e2de7eb0e8a0aa8d4ba1e3245826612f40174aafadfea72d94ce59aa7ca95"
+    },
+    {
+      "bytes": 60317,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-085.json.gz",
+      "records": 237,
+      "sha256": "0a11826eeacda8c76475dac3f7314dcbad5ca1e89f410c92836d911204bc5a63"
+    },
+    {
+      "bytes": 53948,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-086.json.gz",
+      "records": 254,
+      "sha256": "a3fd0795349849c3e73c836cd03dc89e19b6efce43219691aa90d4b755d368f1"
+    },
+    {
+      "bytes": 11016,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-087.json.gz",
+      "records": 71,
+      "sha256": "43192d110ca1d72cec13fb1a440ecaf7c9f4d4e4668069f81bfeb311c4196d3b"
+    },
+    {
+      "bytes": 8482,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-088.json.gz",
+      "records": 61,
+      "sha256": "626a7a94f37f5c35d3cd8b3e4e93ff2cb22962678c25091380e4722701781d05"
+    },
+    {
+      "bytes": 21823,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-089.json.gz",
+      "records": 91,
+      "sha256": "9193088230de335d50482d8a4acbbbfbe45e15b49a0d18bbb4a3d5eb3f4ef8db"
+    },
+    {
+      "bytes": 70009,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-090.json.gz",
+      "records": 262,
+      "sha256": "caf0ea8e32fb43beb525a2e9efa9e7042409fdb1f312f87100d0ebc520b3592b"
+    },
+    {
+      "bytes": 50059,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-091.json.gz",
+      "records": 213,
+      "sha256": "97acedf6d858db59f867f5932b1ca470b0bca3026e702be2ecdc46200d230c02"
+    },
+    {
+      "bytes": 34298,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-092.json.gz",
+      "records": 171,
+      "sha256": "51c83833f3a17fad27b673a188ffa1eb3ac2e914afe4ae2c6ec0294c00c12eaa"
+    },
+    {
+      "bytes": 6823,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-093.json.gz",
+      "records": 51,
+      "sha256": "80db345375d61c742673bf6398e0a5ede385fddb4e7f6f5ab47c91308e8d44bf"
+    },
+    {
+      "bytes": 11310,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-094.json.gz",
+      "records": 76,
+      "sha256": "e24540e63fa86034ec2d347197430ef19e346e38c062f03e8bbd5a962723ea70"
+    },
+    {
+      "bytes": 28791,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-095.json.gz",
+      "records": 112,
+      "sha256": "d2aabc497dc63e320cbb87864a81d528f8043c48d227e2583e73461f99480852"
+    },
+    {
+      "bytes": 70254,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-096.json.gz",
+      "records": 272,
+      "sha256": "789867dbc39fc482cabaedbb00c6a2dfee0e73c6a86f7ab698b70ee09c2eb47c"
+    },
+    {
+      "bytes": 44628,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-097.json.gz",
+      "records": 183,
+      "sha256": "432b081b9fb20b8a72be012d784a2422896851df087077613bfddd5dd2a726a8"
+    },
+    {
+      "bytes": 28828,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-098.json.gz",
+      "records": 133,
+      "sha256": "e827798b0501cc0a76455c0ce66b015ee5ceeb0b3e36dfaadd71ff3a284f4852"
+    },
+    {
+      "bytes": 10037,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-099.json.gz",
+      "records": 75,
+      "sha256": "90e2ef553f312fcefe2558e5dafcd30ce0eaf7a759efdfe64b05fe72e24da34a"
+    },
+    {
+      "bytes": 11681,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-100.json.gz",
+      "records": 76,
+      "sha256": "8a552bac04b80713fffbcc43e8e3d508b6fc975c4f7a879c3ae8c3b58960f351"
+    },
+    {
+      "bytes": 36388,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-101.json.gz",
+      "records": 145,
+      "sha256": "dd7b977fed59415141c2b96cff228ac08dd25af78e2db71a89f92f83ce7de66c"
+    },
+    {
+      "bytes": 62062,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-102.json.gz",
+      "records": 250,
+      "sha256": "568657152f8ab6062403d3c00671a6a3fde472ec39bbd15730c04f6a7609423f"
+    },
+    {
+      "bytes": 49932,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-103.json.gz",
+      "records": 205,
+      "sha256": "a3ab1ecfad313ca2ec845dfb8287abbc4182ee5d75cfb6db97ff93758569cfa3"
+    },
+    {
+      "bytes": 20805,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-104.json.gz",
+      "records": 127,
+      "sha256": "d7a726268f4c3a6512d5b8d350616a07127b5a40e759906501ef532b30a1219e"
+    },
+    {
+      "bytes": 9037,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-105.json.gz",
+      "records": 81,
+      "sha256": "25ee5b24ff243725580be5912649dd5af58c718dfee459c024c2563b6900a6ce"
+    },
+    {
+      "bytes": 12929,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-106.json.gz",
+      "records": 90,
+      "sha256": "7d1b894a53306c336695365a11902a602cecee79c36b1b5b0056e03f004433cb"
+    },
+    {
+      "bytes": 32948,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-107.json.gz",
+      "records": 128,
+      "sha256": "a6cf6cad4121be43e1dd3b22f0ab69ff6bed70ba172d3fbe51092fd9a6d2322b"
+    },
+    {
+      "bytes": 76381,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-108.json.gz",
+      "records": 308,
+      "sha256": "df8b0b32e2c53e105469aadc43b00441dd939fb45dd12dc4b58d9c81a9417287"
+    },
+    {
+      "bytes": 61953,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-109.json.gz",
+      "records": 260,
+      "sha256": "970169acf40528ba2a77237c4847fa6cc3e6e08e12c11c5f0cdc268d8d488b85"
+    },
+    {
+      "bytes": 20672,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-110.json.gz",
+      "records": 129,
+      "sha256": "93394dac7e9ea1bd96dcb370661f7c92decf6fee75bb939137d5d2d07a0e808c"
+    },
+    {
+      "bytes": 11301,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-111.json.gz",
+      "records": 102,
+      "sha256": "fac9e119fdfb539f8646838430782c39dff4125880774e9603d3f617c5808e19"
+    },
+    {
+      "bytes": 11605,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-112.json.gz",
+      "records": 82,
+      "sha256": "35e3d8be5d9b76c4a84eb15bdb9d1b1305c1a0fd9949be7550480f4a9ff25a58"
+    },
+    {
+      "bytes": 44540,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-113.json.gz",
+      "records": 250,
+      "sha256": "4faf9b336be8c5eb1b76d95a4db497685f28a12f59fd18e8ee48bb5a79f5b155"
+    },
+    {
+      "bytes": 72140,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-114.json.gz",
+      "records": 300,
+      "sha256": "54790f3c0bb73e92ecb300b2c638ead18122777044de3975e98290b0e55207ff"
+    },
+    {
+      "bytes": 60811,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-115.json.gz",
+      "records": 284,
+      "sha256": "9afa2257ecd5c0ca4dfe755411c3799604663eea0d18d6c6854dcb8ec591a715"
+    },
+    {
+      "bytes": 25694,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-116.json.gz",
+      "records": 164,
+      "sha256": "d0b6439616a47d6c509d0cf995d34bb5a154c684dbf0c9811d784075e1ae5b43"
+    },
+    {
+      "bytes": 12948,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-117.json.gz",
+      "records": 114,
+      "sha256": "58d2b079398f2fd376560677bf04988afa0e799c88f1425fbfe6a3fb07f5984d"
+    },
+    {
+      "bytes": 11894,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-118.json.gz",
+      "records": 91,
+      "sha256": "4418fdebee898359dd3daddb47b49feb1d5ddf85c7e61743eba69a849009077a"
+    },
+    {
+      "bytes": 39334,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-119.json.gz",
+      "records": 179,
+      "sha256": "48a79004d34790f80593e27da50dd48ee5336c3059308115eef06b42785ba843"
+    },
+    {
+      "bytes": 127361,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-120.json.gz",
+      "records": 628,
+      "sha256": "4f8cdaea6985f05987a65680b6d6c21037d4ea317699e7041e400355fa1ec9e8"
+    },
+    {
+      "bytes": 118788,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-121.json.gz",
+      "records": 495,
+      "sha256": "b956644662ea4c6e2d3d2bdf721e312e9c34cf64774528913103ca12537c5e7c"
+    },
+    {
+      "bytes": 78043,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-122.json.gz",
+      "records": 400,
+      "sha256": "ce2c313b6c800ac71c09fce497f8c634229fb0c72ed1dda90f595f224dbd0c7d"
+    },
+    {
+      "bytes": 9293,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-123.json.gz",
+      "records": 83,
+      "sha256": "80ee9d62647bdb7f000f6420423bcb3513cbc4c5cc61ee4d3e2a3d80bb5e0be3"
+    },
+    {
+      "bytes": 14232,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-124.json.gz",
+      "records": 140,
+      "sha256": "1b9de3e995f84c6d2dd2231fbab0e2c5325eedcbda1c98d198bfa0a13fc0f863"
+    },
+    {
+      "bytes": 25013,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-125.json.gz",
+      "records": 190,
+      "sha256": "6e70acb2ae2a70de4e12452df6b5a84b5dc129d1e307c1d6614d3aa4a7aa1c9b"
+    },
+    {
+      "bytes": 53324,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-126.json.gz",
+      "records": 233,
+      "sha256": "4a2d484d7b7670e82501958c8a220b63a9571ed82e96d0a611dd712f89fd88c1"
+    },
+    {
+      "bytes": 64154,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-127.json.gz",
+      "records": 279,
+      "sha256": "e4fda9a89ae08f53b2f2a3270ebafe59c7fedead1efe3cac2386a2021fb12886"
+    },
+    {
+      "bytes": 41478,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-128.json.gz",
+      "records": 213,
+      "sha256": "e46220cf216ecd2d821550dc4b699a3c5483f90b6f03d7fc35fbfb7621b4e8fb"
+    },
+    {
+      "bytes": 11179,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-129.json.gz",
+      "records": 103,
+      "sha256": "2169fcd3514572439e40218fa60012bd471d81e8a98b62923f65027d36398186"
+    },
+    {
+      "bytes": 12706,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-130.json.gz",
+      "records": 121,
+      "sha256": "ea431bac0add23b3baacf08aab1826f81c442a71380f706e776d8cc605e31084"
+    },
+    {
+      "bytes": 14793,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-131.json.gz",
+      "records": 116,
+      "sha256": "5d0b88e85b58c35e00df716b6eb7c011437c953866d952363a48b9d65f1a072b"
+    },
+    {
+      "bytes": 41934,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-132.json.gz",
+      "records": 166,
+      "sha256": "36391379a277d28f3cea0f76bcf5644050e06bc7555523519806cc42cd435c3e"
+    },
+    {
+      "bytes": 67199,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-133.json.gz",
+      "records": 275,
+      "sha256": "579bf1af1085390c1121fb39800cdcc5303969d41aa71b7061faf65d049e2e7f"
+    },
+    {
+      "bytes": 49230,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-134.json.gz",
+      "records": 214,
+      "sha256": "907abffaa62b0856ccc5610b0731ea4768b6331fbf0f067c639e62e490ec3d99"
+    },
+    {
+      "bytes": 10470,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-135.json.gz",
+      "records": 94,
+      "sha256": "fc744c05deef9f960d9cdc19c60dace1f7f4ec2b8650a3e6f5bf981c89617e68"
+    },
+    {
+      "bytes": 11455,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-136.json.gz",
+      "records": 111,
+      "sha256": "c63e32a123eb695afce790780d5b1d5aa84dd6ab4e44135195106d9f1ab8818e"
+    },
+    {
+      "bytes": 14313,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-137.json.gz",
+      "records": 113,
+      "sha256": "22ca302c04b64a33b4ffa6e7a3e7968eda958e1ef76ed7f4129124b7498a45dd"
+    },
+    {
+      "bytes": 32829,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-138.json.gz",
+      "records": 143,
+      "sha256": "4240ce2157ea40838a18b018e4c1d3416433bcee8d7db2cd546ac0cbf583c2c8"
+    },
+    {
+      "bytes": 50164,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-139.json.gz",
+      "records": 252,
+      "sha256": "862ab32135941114aa728b60b526d26b6f86e971fdad428f254d170d881f718a"
+    },
+    {
+      "bytes": 55924,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-140.json.gz",
+      "records": 276,
+      "sha256": "a8085e3daf80243e6bec8797253072742d0698daf63db4dde98c6363d69c2de0"
+    },
+    {
+      "bytes": 12184,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-141.json.gz",
+      "records": 105,
+      "sha256": "c8bf3ac6fb5cc60cf097c44363c045475d4b2476a9c5d675413e8db74e3e9b81"
+    },
+    {
+      "bytes": 12504,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-142.json.gz",
+      "records": 114,
+      "sha256": "a250a329186f957eb30dcb7d587a25af41c7390f775feac3212eafcd6fa68596"
+    },
+    {
+      "bytes": 12743,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-143.json.gz",
+      "records": 102,
+      "sha256": "72b491c4f545205c9fe83788df56ad64ddba517e90605d076e27605e46fa0d97"
+    },
+    {
+      "bytes": 55003,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-144.json.gz",
+      "records": 283,
+      "sha256": "465cd4e4762756c408d95cd9f6c27aba9f113598351b322ebcf0372a46893af4"
+    },
+    {
+      "bytes": 63817,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-145.json.gz",
+      "records": 309,
+      "sha256": "b1519b83d9c03465c70ba0a1edb050949fb493b421e57eec3beefed87850646c"
+    },
+    {
+      "bytes": 50303,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-146.json.gz",
+      "records": 240,
+      "sha256": "0e5713e569a599ff8a0e324db6937791987cce9964eba1e4e6c3d33e07775de3"
+    },
+    {
+      "bytes": 13322,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-147.json.gz",
+      "records": 122,
+      "sha256": "a74bdf8be8c6e70c870256380a54f80f16a5a3285e069b7add2f1510bc7d33c4"
+    },
+    {
+      "bytes": 12639,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-148.json.gz",
+      "records": 115,
+      "sha256": "e7ddf45b8cb9eb61e96527a9f894846c1e8be0bc5f554357660ef887b071e52d"
+    },
+    {
+      "bytes": 23825,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-149.json.gz",
+      "records": 210,
+      "sha256": "8d1814e1b2258caed166e3e414e8e19bfee1de146da10318ff56b5c144d21470"
+    },
+    {
+      "bytes": 40999,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-150.json.gz",
+      "records": 200,
+      "sha256": "08e9c43d1ddc0de36a90ac9da17e8682493c232dfd0d9a414c23dc97d19d1f07"
+    },
+    {
+      "bytes": 45970,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-151.json.gz",
+      "records": 215,
+      "sha256": "d34369be4665ef633b93ce1e73ce08636801dce42cc4c2ab07aed00541ed42bf"
+    },
+    {
+      "bytes": 52977,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-152.json.gz",
+      "records": 253,
+      "sha256": "37c07779dfdd950b62f5a0997ff6a808d20e284a8a828441871bb0ddab2926f2"
+    },
+    {
+      "bytes": 15793,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-153.json.gz",
+      "records": 148,
+      "sha256": "3a192cbc68d8f05fdb4f4b53209d277374d92295a6707f0c29a55028c6827da5"
+    },
+    {
+      "bytes": 18168,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-154.json.gz",
+      "records": 172,
+      "sha256": "5d9dfc54e21781901a8627a2bb99ad61cbb517c1dce63f9a20aa8495f2f829ff"
+    },
+    {
+      "bytes": 19943,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-155.json.gz",
+      "records": 159,
+      "sha256": "c3419ed3acec01fe481f38cff1bc3859a3041497659cae58252b7fd2b0c2e897"
+    },
+    {
+      "bytes": 42644,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-156.json.gz",
+      "records": 193,
+      "sha256": "5e95cb618010f3f2fe3954873a8157f6b22b2d0ca77cb62945fe126be9e1801f"
+    },
+    {
+      "bytes": 52681,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-157.json.gz",
+      "records": 252,
+      "sha256": "064f079709795ee32ecd56a2266f3b89bdb3dbc4136b6e5f7f85dc524e4af35a"
+    },
+    {
+      "bytes": 20260,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-158.json.gz",
+      "records": 123,
+      "sha256": "1193d3886ce45dbc89827cf05939228e94b5ebb59fd43a201fc14a0be4d4b55a"
+    },
+    {
+      "bytes": 9337,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-159.json.gz",
+      "records": 79,
+      "sha256": "aebe1aad3d49e66948ddf06018cd3c292ad155e00ce312fef8355dc4b44ba30c"
+    },
+    {
+      "bytes": 13597,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-160.json.gz",
+      "records": 127,
+      "sha256": "d673d051cf6e938cb63f9101cab891639b4a75136e3324bac98222e8b7b00d44"
+    },
+    {
+      "bytes": 7834,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-161.json.gz",
+      "records": 42,
+      "sha256": "4e6d6bddd34f6aee7ef02a8fa71a80df5a23ec4f1186a3d9f3f2f6cc5d883b63"
+    },
+    {
+      "bytes": 52524,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-162.json.gz",
+      "records": 281,
+      "sha256": "e79567b73bd5db318ef50dc24e7c9c707718300ec7a4bdb5bbb26161f8281ccc"
+    },
+    {
+      "bytes": 46916,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-163.json.gz",
+      "records": 205,
+      "sha256": "0d0687914fbc286b9719240dcca30baa62073fc4cb9f144757255766d5042d77"
+    },
+    {
+      "bytes": 25722,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-164.json.gz",
+      "records": 157,
+      "sha256": "9dcba23258f245ea7006784fbf679ecfff3c6c6bf8c325e67956408ad6c96d9c"
+    },
+    {
+      "bytes": 2923,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-165.json.gz",
+      "records": 12,
+      "sha256": "fe154cdbdef3774d7942abd1e4dc03e280ad0d7ef47c5fe4763ecc811f9dccb0"
+    },
+    {
+      "bytes": 2568,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-166.json.gz",
+      "records": 11,
+      "sha256": "749ca93fd70b56683dcfcc7fcd4477db1c00eacf07a0aa7e1d2d7af65c513066"
+    },
+    {
+      "bytes": 3992,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-167.json.gz",
+      "records": 20,
+      "sha256": "825296610112e4ca0036f9aec786540636807fbd5e93ff8f29370d5691b2efc2"
+    },
+    {
+      "bytes": 13333,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-168.json.gz",
+      "records": 67,
+      "sha256": "ed7fe52a1409bed85b3443d7b303108b2ed3a70f36d60698eddabb222521fa63"
+    },
+    {
+      "bytes": 44001,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-169.json.gz",
+      "records": 202,
+      "sha256": "8c2bfa3a3dab86a821ae66ebbeef54bcec26893a8810db7eaf273bda9c40ed41"
+    },
+    {
+      "bytes": 51708,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-170.json.gz",
+      "records": 234,
+      "sha256": "8c9a7291f2eee6999ed8e353b4f069c4269027c185cc1c0ee3a0778ab2d8e314"
+    },
+    {
+      "bytes": 16427,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-171.json.gz",
+      "records": 109,
+      "sha256": "12ad74859cd37cec846d36e896d73b7362f4e065707777e52ea3dc3929bbcc9f"
+    },
+    {
+      "bytes": 2783,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-172.json.gz",
+      "records": 10,
+      "sha256": "e94ea00a733a0f99f50a7fd817f85e1285a53a93075503ef7918e80a744f957a"
+    },
+    {
+      "bytes": 1727,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-173.json.gz",
+      "records": 5,
+      "sha256": "d528fe62f8def18deccfef0c6f87e299c8dc6eb29d5b54663c476313d6ed37ec"
+    },
+    {
+      "bytes": 3148,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-174.json.gz",
+      "records": 16,
+      "sha256": "bfc7b5925a39e89423bf566dc28121c622bb88152ca0621faca1b3c30293a08f"
+    },
+    {
+      "bytes": 25560,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-175.json.gz",
+      "records": 145,
+      "sha256": "fa0e8253b3a71d3e5f0fcd7b20eb44a181dc11f29d6de146bdb6ca67d235d76b"
+    },
+    {
+      "bytes": 56770,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-176.json.gz",
+      "records": 269,
+      "sha256": "b686c6c4a8c779e0c4384e697061708b54a152cb218b72629e26b304a854d8f9"
+    },
+    {
+      "bytes": 47394,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-177.json.gz",
+      "records": 249,
+      "sha256": "f7928b9cc6447b22f94af5223a2e1684790b0585f5ff94f932b180837675b0c3"
+    },
+    {
+      "bytes": 9423,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-178.json.gz",
+      "records": 53,
+      "sha256": "c9f2b4cfa43556e8d644198fd6bd0b63e07ca2ae290c43611f4d8e0792504ee1"
+    },
+    {
+      "bytes": 3158,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-179.json.gz",
+      "records": 12,
+      "sha256": "83097259c1519a575c6bbd12200d427d31c88c4d113d66e8c508bf11b857f74d"
+    },
+    {
+      "bytes": 2131,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-180.json.gz",
+      "records": 7,
+      "sha256": "7e68cce73de4be00e394a7f0b40136b3e9cf1b9d89fe86c8314ee58e9f3a8b14"
+    },
+    {
+      "bytes": 2318,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-181.json.gz",
+      "records": 9,
+      "sha256": "94ee2d3bedff2035414da9c7b4cca203598209e5d2d393e3bd67f3b8c34ab105"
+    },
+    {
+      "bytes": 19409,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-182.json.gz",
+      "records": 104,
+      "sha256": "f75a1a3fcb17d54ed69bab216b99a18ef0ad3601739487cb5e6da5316ed67826"
+    },
+    {
+      "bytes": 54971,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-183.json.gz",
+      "records": 279,
+      "sha256": "5f81dd4f13002c9ba22c62dad5ff4a5448973b509299e4d253d92b5ae476497e"
+    },
+    {
+      "bytes": 56456,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-184.json.gz",
+      "records": 314,
+      "sha256": "f820fd5c674c139fee73264d5339948f1b007bd65433b7dcd195569bef47be1e"
+    },
+    {
+      "bytes": 3387,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-185.json.gz",
+      "records": 16,
+      "sha256": "06b788897ad6389009675a6b35a878b74645eba3cafad1f80d93d6ee3e24fb79"
+    },
+    {
+      "bytes": 1984,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-186.json.gz",
+      "records": 7,
+      "sha256": "e4878be4dc26ce37450695b9c291c1a3e7938b69c7c793ecde9a36b43e78be52"
+    },
+    {
+      "bytes": 1915,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-187.json.gz",
+      "records": 4,
+      "sha256": "a2d9694df84a363cd69efaeab6d5b62c513956d353eb71431006c29d215d1bbb"
+    },
+    {
+      "bytes": 2656,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-188.json.gz",
+      "records": 12,
+      "sha256": "7472d6145294390300eec5aa5f8447655d0410c6adb045dfe366ee14090e9240"
+    },
+    {
+      "bytes": 42976,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-189.json.gz",
+      "records": 174,
+      "sha256": "a224f49d88f7a0ab8efcae1e40369f5939dcef34a26b528936cbfe189fefbc02"
+    },
+    {
+      "bytes": 64393,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-190.json.gz",
+      "records": 245,
+      "sha256": "d785174e39347f2fda45e6df457d4b0bf5815665e7d5d03adecf0340e914608f"
+    },
+    {
+      "bytes": 31943,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-191.json.gz",
+      "records": 175,
+      "sha256": "e8e92e22b8de20d1aa57d1b348fea50f1216ef15e825544a5efc692d83d44603"
+    },
+    {
+      "bytes": 1931,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-192.json.gz",
+      "records": 6,
+      "sha256": "683e5459973427029d6c91b3109c31dc0a13eb48798413040dae119b351f2c4e"
+    },
+    {
+      "bytes": 1393,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-193.json.gz",
+      "records": 4,
+      "sha256": "062d1c9f6495ea1ac7a5788cc5541a7f37984ff14a1406afecb531f61858f77b"
+    },
+    {
+      "bytes": 1915,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-194.json.gz",
+      "records": 6,
+      "sha256": "388e936a0e7413ed89d4130d8d114a6fe59e7e940698f3e51d390018fdf1a24b"
+    },
+    {
+      "bytes": 4066,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-195.json.gz",
+      "records": 16,
+      "sha256": "19e98f0abe663d53b4f649de7e0bf0f271b63a1fa64d60adbf49d541725ae977"
+    },
+    {
+      "bytes": 71829,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-196.json.gz",
+      "records": 284,
+      "sha256": "a5f496215ba7ebc511973a3251d53bb6c1a62b12b80e2f90bc02130822e3b9b0"
+    },
+    {
+      "bytes": 67327,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-197.json.gz",
+      "records": 294,
+      "sha256": "7c626c6d742d2206ebe93c0cacd515028f5254cc26a8f192ea6f4d43e7e0cecd"
+    },
+    {
+      "bytes": 8870,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-198.json.gz",
+      "records": 53,
+      "sha256": "8c9e07b7d8666e5ba30c2e76a5c6d2d9507bea7436250024ec50cabf39a8b2c9"
+    },
+    {
+      "bytes": 2177,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-199.json.gz",
+      "records": 7,
+      "sha256": "03725e3d586134b7243a28ba8bd7bb19c713bf6c874692b0e8ff1367bb76a36a"
+    },
+    {
+      "bytes": 2213,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-200.json.gz",
+      "records": 7,
+      "sha256": "37b1407df034f3bb62b2c7e50748cc20cc98c4a870cdeb1b56f4c5e56dcd1c0e"
+    },
+    {
+      "bytes": 2072,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-201.json.gz",
+      "records": 8,
+      "sha256": "5d60a316ebf647a7ab9e9e8519e9a0ac67d8a123c8816c9b8175943f5ea4aab3"
+    },
+    {
+      "bytes": 23478,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-202.json.gz",
+      "records": 116,
+      "sha256": "242037b9c6f6dcb559f45527fcaa45f730c78f4a45e659cbdd978977464810b5"
+    },
+    {
+      "bytes": 78066,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-203.json.gz",
+      "records": 312,
+      "sha256": "fea2ece541bc11e5a67a7124286a23486cfac2d9dccd63d4910c55abb5d63e12"
+    },
+    {
+      "bytes": 48148,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-204.json.gz",
+      "records": 233,
+      "sha256": "52665cf5fd65c2b9778c98a8d6d510fcd8fca5fc2ee407809979fecb6993ad0f"
+    },
+    {
+      "bytes": 1873,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-205.json.gz",
+      "records": 6,
+      "sha256": "359d40c7184dc21fce5889503afb5818a98546643413a9b90b2e72541adf78a4"
+    },
+    {
+      "bytes": 1910,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-206.json.gz",
+      "records": 6,
+      "sha256": "4c2369881bd080e49e7acd1721f15f1a361d93fd1c3766acdbc77458100c8726"
+    },
+    {
+      "bytes": 1812,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-207.json.gz",
+      "records": 5,
+      "sha256": "6f905924685b5c6dc5f306f85012d69a7bfa321b61499e18db31fa16b0ad9759"
+    },
+    {
+      "bytes": 1706,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-208.json.gz",
+      "records": 5,
+      "sha256": "979f3d4d057096ae12bab046f85d2482d72d2a10a1bfa4f012bb0771c84941fd"
+    },
+    {
+      "bytes": 33281,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-209.json.gz",
+      "records": 176,
+      "sha256": "06b6c76a7dbda3189aa3852b2dfb999bfea03f3e1eee0bf91f57e87c1b6dbf3a"
+    },
+    {
+      "bytes": 89105,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-210.json.gz",
+      "records": 386,
+      "sha256": "50745ba0da1eefa3cd9bd8748a3648f7e002acf07bad33c143950f2d7314822b"
+    },
+    {
+      "bytes": 18618,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-211.json.gz",
+      "records": 118,
+      "sha256": "b118065893415df77b0e7248ea8da0cdbe5b9a5205ca2a3b156556e2e09ec778"
+    },
+    {
+      "bytes": 1716,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-212.json.gz",
+      "records": 5,
+      "sha256": "feecefe4c4ad5669aca70af53178c9af37409c18b522272a0a51e451fb9e6673"
+    },
+    {
+      "bytes": 2742,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-213.json.gz",
+      "records": 11,
+      "sha256": "babd30316db1467d0b4491e8231b7d94e4fe5db400da2c6facf260909f9dfa2a"
+    },
+    {
+      "bytes": 2134,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-214.json.gz",
+      "records": 7,
+      "sha256": "6a34304c29ddca4e39cfb3e9f12b4f1f5160f35cd201a55c4eb5bd06742889d9"
+    },
+    {
+      "bytes": 2615,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-215.json.gz",
+      "records": 12,
+      "sha256": "2a9d1a5a6e09ed4e8107d1d1ebf37466d5180c9d58025385c7d8c70dd7f234d3"
+    },
+    {
+      "bytes": 37570,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-216.json.gz",
+      "records": 308,
+      "sha256": "e0ee6df76d27cdb43ef02ef90b0cd573423b9761888a0d20e12fd18883f4631a"
+    },
+    {
+      "bytes": 44041,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-217.json.gz",
+      "records": 346,
+      "sha256": "15bfa1f17d5e10455f9eb95f73de6205e8dc93710b6f4008d88ed2c98f0a9d4a"
+    },
+    {
+      "bytes": 11357,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-218.json.gz",
+      "records": 75,
+      "sha256": "d335b6cfdd62db725d21e9a0889ae8a0f473e61d92e0c664d7adda3a9de53af7"
+    },
+    {
+      "bytes": 4386,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-219.json.gz",
+      "records": 20,
+      "sha256": "001742be4f76fcae7d48b24cba288463fd0785574f3d02562c2b06926db251b9"
+    },
+    {
+      "bytes": 1823,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-220.json.gz",
+      "records": 7,
+      "sha256": "f3f7bb5351d802c9cab1f143fe7b2e4ee9b23c98fe231d355a88ba82b6061b4b"
+    },
+    {
+      "bytes": 23701,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-221.json.gz",
+      "records": 201,
+      "sha256": "eef706765c1eb859cf4856904b4d56a79e1862677d36bbf43b006eac657a06e0"
+    },
+    {
+      "bytes": 46461,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-222.json.gz",
+      "records": 397,
+      "sha256": "7b69d540f534fa849dd7192eb5df0b5b0edbaf825a843c98a8a1466a99ab26b7"
+    },
+    {
+      "bytes": 24152,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-223.json.gz",
+      "records": 178,
+      "sha256": "ca7b4b5ce21f7d024a55e5f843f64823d9677697a5769a11bd661eb4239f3f10"
+    },
+    {
+      "bytes": 2331,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-224.json.gz",
+      "records": 8,
+      "sha256": "5d1f0d74fc175b2ca9c3b8bb3e5436e7ae5a20402d6a1ca9d9d2a1a7c65cf745"
+    },
+    {
+      "bytes": 2325,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-225.json.gz",
+      "records": 9,
+      "sha256": "c900ece102bc9112d2d8edca231786173d97c13070ede1857ebda3ea786fc14a"
+    },
+    {
+      "bytes": 2673,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-226.json.gz",
+      "records": 11,
+      "sha256": "2cb585ffbcd7911a511d2173a0ac77cbe545039eabc2256327f61d35dcf7bd1e"
+    },
+    {
+      "bytes": 12378,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-227.json.gz",
+      "records": 94,
+      "sha256": "7a85f7c2092ff1c586b36fceac557509f71f1812074212ad693caceb24d5f514"
+    },
+    {
+      "bytes": 57346,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-228.json.gz",
+      "records": 496,
+      "sha256": "73b8ad5d916b040fe9c8dc91cd47eb23c791b1be68bbee25eb592151f982361a"
+    },
+    {
+      "bytes": 28384,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-229.json.gz",
+      "records": 204,
+      "sha256": "871990a400e9de672f89faad842531712e4e3193d4525ce38fe535eb63cd7243"
+    },
+    {
+      "bytes": 1518,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-230.json.gz",
+      "records": 3,
+      "sha256": "69005ad4215a60af0fdad4e8deb5f989604f5b87848d659113cc3e2ea64ade1b"
+    },
+    {
+      "bytes": 1396,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-231.json.gz",
+      "records": 4,
+      "sha256": "02b2ee81ca9d5224d3ada905b224d4e84e7945ddf22ffc23d819697ff33ce983"
+    },
+    {
+      "bytes": 1854,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-232.json.gz",
+      "records": 6,
+      "sha256": "2701a6bac22a32f8ee706de395f943d5e5e6bd335d16c258a04e2c153f731039"
+    },
+    {
+      "bytes": 11963,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-233.json.gz",
+      "records": 88,
+      "sha256": "dca2e336b78cd71851eba68fb338b9eb8cd1ed96d03720ac9cf0750bf20a099c"
+    },
+    {
+      "bytes": 45201,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-234.json.gz",
+      "records": 355,
+      "sha256": "66740c0f864cac31f64fd5d6e15eaaedaad8f4c924d848020ebbcb1a5a261b22"
+    },
+    {
+      "bytes": 18704,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-235.json.gz",
+      "records": 125,
+      "sha256": "40ac5131612519961e0c7605c6537bef14a1e57114a84be9b984dd7e58941501"
+    },
+    {
+      "bytes": 1986,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-236.json.gz",
+      "records": 7,
+      "sha256": "c61db6128e55d53e5fa5246f1c99a0a98ed4dc29fc114f7ad8f20d65e3aed82a"
+    },
+    {
+      "bytes": 2022,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-237.json.gz",
+      "records": 7,
+      "sha256": "fba062839084f7e23c7e1b51fd7ce12eb6a94a3056f1f6952266804dce6c51d8"
+    },
+    {
+      "bytes": 1977,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-238.json.gz",
+      "records": 7,
+      "sha256": "4f083ee3af1c60f4617e6a7061598318a0c5a50f5a257c20fb0736c8321eadde"
+    },
+    {
+      "bytes": 18798,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-239.json.gz",
+      "records": 137,
+      "sha256": "f5c195968f210343afad9bc4279b22e21483a924dcc5f8300b7c2acdf537f8b3"
+    },
+    {
+      "bytes": 31883,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-240.json.gz",
+      "records": 223,
+      "sha256": "2c683f2d82bec20b6a272addf087e48e400772b94898c703660e84e92a516f1f"
+    },
+    {
+      "bytes": 16824,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-241.json.gz",
+      "records": 121,
+      "sha256": "6a338efb78c8008ad2cac0c059f2a7a2e7226edb5df6fd6772e37fc58864fa09"
+    },
+    {
+      "bytes": 2823,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-242.json.gz",
+      "records": 12,
+      "sha256": "cbeb4dc306f2f0312d1f334f7deac2bc22087923186be39848843e5a3e91a6a3"
+    },
+    {
+      "bytes": 2160,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-243.json.gz",
+      "records": 7,
+      "sha256": "73ad57b3c6b148c43c166403794cb5abf88e10f784ad2271194e74f5f9f1cf0d"
+    },
+    {
+      "bytes": 3937,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-244.json.gz",
+      "records": 18,
+      "sha256": "c5357449002307a7f093b5940f3c736dee6fdf0763f8c62d604a15b5ec0ac637"
+    },
+    {
+      "bytes": 14056,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-245.json.gz",
+      "records": 100,
+      "sha256": "40bdf8774533f42372acfe346915de8b3fc0c24f81b8a958f6313c11a1168e0b"
+    },
+    {
+      "bytes": 32596,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-246.json.gz",
+      "records": 239,
+      "sha256": "9def70c98272b3b80f57dd1a67cfbb573c95f76a0a72109aa329965abda27d01"
+    },
+    {
+      "bytes": 17523,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-247.json.gz",
+      "records": 120,
+      "sha256": "0871900d8a18e9206a5c6221b72b45466d7daa74d5c001e807be981c96aea865"
+    },
+    {
+      "bytes": 3084,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-248.json.gz",
+      "records": 11,
+      "sha256": "7ec6a18c657ef194b38650afe056afe75ec7e91a39fd6616158dc8afff295781"
+    },
+    {
+      "bytes": 1764,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-249.json.gz",
+      "records": 6,
+      "sha256": "bd8b9a7c50716896341b6e6153882a03e0d37750e5e6dd3886cd0cf2ebb55304"
+    },
+    {
+      "bytes": 16652,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-250.json.gz",
+      "records": 121,
+      "sha256": "a8b64b65bc9e825c6d0d33c828f4777445fa413b7949ccd4370d60107d946031"
+    },
+    {
+      "bytes": 33539,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-251.json.gz",
+      "records": 249,
+      "sha256": "543a542c42f59e39b61f84898765630f0303c06aed756c105a2e7ba5d541f9ef"
+    },
+    {
+      "bytes": 31978,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-252.json.gz",
+      "records": 228,
+      "sha256": "22d552e0b4c9ff44e55e2371fd5ec8a98f7fd05908a51e10215d9365f8adfa10"
+    },
+    {
+      "bytes": 1019,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-253.json.gz",
+      "records": 1,
+      "sha256": "fc8c320dbf04030dffd314ca4ceed2b4fb9ea6668185c921a06688c6bfa9924a"
+    },
+    {
+      "bytes": 6293,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-254.json.gz",
+      "records": 33,
+      "sha256": "8cbd3ff7fa62f0de4dfc7ac66bcbada89a3dd6119a173d1e954dbb6c5817da48"
+    },
+    {
+      "bytes": 23940,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-255.json.gz",
+      "records": 170,
+      "sha256": "108b8079ef1d51b3b3a5be2b6282694d97f609e81e1aa275fc22b51ba4796432"
+    },
+    {
+      "bytes": 40809,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-256.json.gz",
+      "records": 285,
+      "sha256": "38b58952cd7c126416eb7a8b04ed5763f76c59207b0516438737ecc2f76560e7"
+    },
+    {
+      "bytes": 6166,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-257.json.gz",
+      "records": 36,
+      "sha256": "15686d10e5d4c149ba5fbe77b7180a9f5661eba96e0a4b3cedba1a514712c03d"
+    },
+    {
+      "bytes": 1096,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-258.json.gz",
+      "records": 2,
+      "sha256": "21a24d8cba940edda0c6380c54388705c8ce4af9977e49f47ac95a5e268a100e"
+    },
+    {
+      "bytes": 1850,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-259.json.gz",
+      "records": 5,
+      "sha256": "f90b082d85ac68015ab724588a56a449676efac55c0267e6514e0a0b4f009f2e"
+    },
+    {
+      "bytes": 8867,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-260.json.gz",
+      "records": 56,
+      "sha256": "aad09bd00d98c09cef94409574a7a94e0ec0186c17037f78a60fb9234fed1fb8"
+    },
+    {
+      "bytes": 29225,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-261.json.gz",
+      "records": 223,
+      "sha256": "949b1c1e634e0ec6c3b23570ac4017bd1a03324ff2bff492de2b78fecc2f1d3d"
+    },
+    {
+      "bytes": 32934,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-262.json.gz",
+      "records": 245,
+      "sha256": "49175e171853a454b6de6c5fb1a5aeed12735e0293d61d0bb6059f3d646e13b4"
+    },
+    {
+      "bytes": 2232,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-263.json.gz",
+      "records": 7,
+      "sha256": "0072a8963352356b3fe064f98726eb8df08d7b08f490e679a1421929695bc506"
+    },
+    {
+      "bytes": 1099,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-264.json.gz",
+      "records": 2,
+      "sha256": "a96a420875fc42a35c6b6e535362796dddffa14ff615fe9901d13d4e128a7db3"
+    },
+    {
+      "bytes": 4892,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-265.json.gz",
+      "records": 29,
+      "sha256": "6eac314a4597d1e53432e1b2d04a6f9d6568cffdf19a19023da8365fe91feba9"
+    },
+    {
+      "bytes": 18949,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-266.json.gz",
+      "records": 137,
+      "sha256": "437c51aa52f69f0be575b25686f12f24e4dbe8065287a16c2833221d41d01417"
+    },
+    {
+      "bytes": 39757,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-267.json.gz",
+      "records": 298,
+      "sha256": "c95571585a8a9d300f038fbd5d58ffc98443bd2844805dc67cafa18fab4f270b"
+    },
+    {
+      "bytes": 15335,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-268.json.gz",
+      "records": 112,
+      "sha256": "b8a476aa3a44b0a35d8a3529e8bcab43029c59087ad64eba55d85c9e3ce050e1"
+    },
+    {
+      "bytes": 1813,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-269.json.gz",
+      "records": 5,
+      "sha256": "2407a220cd95af4e61342dfd947b9e683f2fff979961ae07ce11fb1d606252b0"
+    },
+    {
+      "bytes": 2144,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-270.json.gz",
+      "records": 8,
+      "sha256": "1879a299eb6bce72fe81b40cd33cb4d8bbac31c3f6f3a07f8decfed0dcecdf98"
+    },
+    {
+      "bytes": 9169,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-271.json.gz",
+      "records": 62,
+      "sha256": "7c4c45a71d1b5e78b28559b6fc2fa6ff2b5ac6bc97ee14177626a889ad1aef93"
+    },
+    {
+      "bytes": 41093,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-272.json.gz",
+      "records": 317,
+      "sha256": "89417ca668b1d7020c4e27fd4e870f9811c7d55169dc56d21c4148c4c3e3505d"
+    },
+    {
+      "bytes": 32738,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-273.json.gz",
+      "records": 237,
+      "sha256": "47c538628fbeaa6ff3b623a280d23fd77d4b92907e89f3dbee4491ac80eaae2c"
+    },
+    {
+      "bytes": 1567,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-274.json.gz",
+      "records": 3,
+      "sha256": "8b99ac78754d058022e5ac2772b4356a18471b14cd1fa768f7091882cdbbbec7"
+    },
+    {
+      "bytes": 1620,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-275.json.gz",
+      "records": 4,
+      "sha256": "957a491d99d757ebfea538f1ff18e3fcb3dc4dc8e2b9e7b015a943cf366d0fed"
+    },
+    {
+      "bytes": 1640,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-276.json.gz",
+      "records": 5,
+      "sha256": "223d66ac529fe45a32cc63bfdf7c6549e75cacd4070cb153f7f895852312d99c"
+    },
+    {
+      "bytes": 26517,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-277.json.gz",
+      "records": 201,
+      "sha256": "09e3dbddf29b39756ede2f02ca3b5229e0395508aa9862e1a69b14eacf12a51d"
+    },
+    {
+      "bytes": 47140,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-278.json.gz",
+      "records": 372,
+      "sha256": "6891a258385c36702a8a0a7b47a726977466724470a361578ddd948876cde501"
+    },
+    {
+      "bytes": 28273,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-279.json.gz",
+      "records": 202,
+      "sha256": "f64a60503714ce1e98576db416513dc54546c14eb6c1c0de6dd82a729c5f10f5"
+    },
+    {
+      "bytes": 1347,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-280.json.gz",
+      "records": 3,
+      "sha256": "01085a8da282a998f3d26ba3c316ec51fb52d533fd7602653304495663c8f7ee"
+    },
+    {
+      "bytes": 1906,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-281.json.gz",
+      "records": 7,
+      "sha256": "a0ec567737b51d62d1a3f62d155d248de07d91c10ffe664f82b1c8c97766cf80"
+    },
+    {
+      "bytes": 1416,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-282.json.gz",
+      "records": 3,
+      "sha256": "293dd9f8aa9ac0120497086ea2506634c7b7b388c1945ef18b5a1f57d719bc65"
+    },
+    {
+      "bytes": 28372,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-283.json.gz",
+      "records": 223,
+      "sha256": "1e35377f64ac99c5ec5b222c77172ce2b6ae9991bd4142cd796d814b631048ec"
+    },
+    {
+      "bytes": 47243,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-284.json.gz",
+      "records": 386,
+      "sha256": "bfbf710d08ddbe250b1d000c4d6a6945f3076a7d6dba71b561d654dc06180be4"
+    },
+    {
+      "bytes": 22807,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-285.json.gz",
+      "records": 170,
+      "sha256": "640c7f92d68cecdc32651c976ed3431efb3fecf520ca546a2b968be855daf984"
+    },
+    {
+      "bytes": 1463,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-286.json.gz",
+      "records": 3,
+      "sha256": "b23be4ec1afa56de269825232c8109a2aaf743025bb82515888c3f055c588b0a"
+    },
+    {
+      "bytes": 1565,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-287.json.gz",
+      "records": 6,
+      "sha256": "22214929e81899ddc415d55e958c0ddc2833604957295a6c6b375bdacb3dc61d"
+    },
+    {
+      "bytes": 4056,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-288.json.gz",
+      "records": 23,
+      "sha256": "da9739567ee1b46518de532b5bcf4219f8f7c1e077e4b613a4447e01cd11ea88"
+    },
+    {
+      "bytes": 39255,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-289.json.gz",
+      "records": 321,
+      "sha256": "0e9689e8434f86e98e24573acffcc05281f6b5d04e8dc0c0fe0200baaf9d903b"
+    },
+    {
+      "bytes": 44891,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-290.json.gz",
+      "records": 353,
+      "sha256": "a76a239c5461abe8c532447f20fc329e9d5d22e8375836af9e3e35e55c76b328"
+    },
+    {
+      "bytes": 13741,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-291.json.gz",
+      "records": 105,
+      "sha256": "1fb64ceddd752e246c0d95df4337f868ee75c442c24ae5cfeb99c44d02ece3b8"
+    },
+    {
+      "bytes": 1105,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-292.json.gz",
+      "records": 2,
+      "sha256": "a42edc161ba2de3be98ebda92d310e0925bb558db73b8a92a428a223fb2cf796"
+    },
+    {
+      "bytes": 1623,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-293.json.gz",
+      "records": 5,
+      "sha256": "dc58ea4186d0ccf5f3a0695ccfc5777b64564339738345b997a163dc3b6d7817"
+    },
+    {
+      "bytes": 2480,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-294.json.gz",
+      "records": 8,
+      "sha256": "1fc72c74a235743e70ff514f3c90f91d3f3a5aa43c52f84fd05a279a29f78247"
+    },
+    {
+      "bytes": 46105,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-295.json.gz",
+      "records": 364,
+      "sha256": "13ff58f9cc5e0c036fb833f0edd2c4e98a66218102696ee1ef2cabcf3f53e8bf"
+    },
+    {
+      "bytes": 34216,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-296.json.gz",
+      "records": 250,
+      "sha256": "471cdd79aeef6e3e0bb285a3a0dfb6b65450adc4799cde5dd5cb643878e8953b"
+    },
+    {
+      "bytes": 43418,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-297.json.gz",
+      "records": 343,
+      "sha256": "ce18868d6491841ac601d6680509b95be249440a10ce67fd8792c35f77c62598"
+    },
+    {
+      "bytes": 35999,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-298.json.gz",
+      "records": 277,
+      "sha256": "d4218f47528afacca695b5fd062495d5d60f2c26e5f29170d74f5b0f7128f4cb"
+    },
+    {
+      "bytes": 44055,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-299.json.gz",
+      "records": 350,
+      "sha256": "147dcacab3a5c78f4e6719ae8099bf3afe568c6af4d4172e71152133f90ab078"
+    },
+    {
+      "bytes": 34326,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-300.json.gz",
+      "records": 272,
+      "sha256": "9815d60ebef979db78da9ce1d0d3f9992f9eccfabc1141d50d1dd34f16cb4b4c"
+    },
+    {
+      "bytes": 47617,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-301.json.gz",
+      "records": 396,
+      "sha256": "4f1330d778c5215b0da2174130f3b1cabcf189e3860d260fc273da709cd19cd7"
+    },
+    {
+      "bytes": 42321,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-302.json.gz",
+      "records": 333,
+      "sha256": "93a0d761ff2529d71d9c07aec3906c7a04b12b14d1a48ea7141947b606a892f7"
+    },
+    {
+      "bytes": 47303,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-303.json.gz",
+      "records": 381,
+      "sha256": "630fb143eaff9deac40ed3c5d8f086ab6f6bbd5040ab996cdf365d5aaa947178"
+    },
+    {
+      "bytes": 45106,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-304.json.gz",
+      "records": 368,
+      "sha256": "907978a858e32468bb8ef9eb6602da12d3f7b11bd64125a57fc54b6f7fcc0d96"
+    },
+    {
+      "bytes": 41579,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-305.json.gz",
+      "records": 335,
+      "sha256": "dc95b3b051ad5aa0019a2b41abf10bc704c83b0fbc47f036279753aafe92a5f2"
+    },
+    {
+      "bytes": 41472,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-306.json.gz",
+      "records": 321,
+      "sha256": "346ea9d604abf7d8474767aa36b608ffbb6e0bbe946e3a90370a31f76db1b985"
+    },
+    {
+      "bytes": 49136,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-307.json.gz",
+      "records": 402,
+      "sha256": "fe4e12cf83257989f101337fe51568129775ab5b1a7c996d3e86b6024ddb36cb"
+    },
+    {
+      "bytes": 40244,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-308.json.gz",
+      "records": 316,
+      "sha256": "3b104bc5e4c35aef8ee936ce72c4dcef822e66855cabcd44974a2333361320ee"
+    },
+    {
+      "bytes": 39154,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-309.json.gz",
+      "records": 308,
+      "sha256": "249013b7ee46bf104caaae1ea0a0e98d4d481cdc518da99568652b04c750a7ff"
+    },
+    {
+      "bytes": 38582,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-310.json.gz",
+      "records": 318,
+      "sha256": "38358a574f6e5dec865db0250283a248a52d2741a5fa3de0de490767ad3c3944"
+    },
+    {
+      "bytes": 39332,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-311.json.gz",
+      "records": 321,
+      "sha256": "5e2c55c1bf864b79424e251e99306b663dab255763f4b084bc5c04fa4ce0dec6"
+    },
+    {
+      "bytes": 35694,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-312.json.gz",
+      "records": 297,
+      "sha256": "6de36f2e134e7abbbaf9bba6e0707318c1bc8fabc3f71327c8753e895ebdc405"
+    },
+    {
+      "bytes": 34209,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-313.json.gz",
+      "records": 266,
+      "sha256": "8d840ad02a994287427fc1130ad0ff431ab09cbda379e03bfee3ac1869989405"
+    },
+    {
+      "bytes": 38994,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-314.json.gz",
+      "records": 329,
+      "sha256": "4b49c9d071fe8d11933e90fd9dbad8632eca79f84fac8eaa7ecd20c22bd8b46c"
+    },
+    {
+      "bytes": 48346,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-315.json.gz",
+      "records": 405,
+      "sha256": "1425e989a7f4f75371dbd7da43a9ab6d4f9420b6503b4c2dfb4cdd51a4f16444"
+    },
+    {
+      "bytes": 37185,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-316.json.gz",
+      "records": 313,
+      "sha256": "d77219bb1ad821ac33ff2f0b8c157647e0e2fb5e6763eb6d91ca8d49089b0b8a"
+    },
+    {
+      "bytes": 41323,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-317.json.gz",
+      "records": 332,
+      "sha256": "950e18595fae9d2eb51f877761d58184a5d89307a0aabbb73e7c59e4958582cd"
+    },
+    {
+      "bytes": 42357,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-318.json.gz",
+      "records": 336,
+      "sha256": "d73b6ff167ca532a5154c3756c97a473c25a29fdcde7d8d969bfe24202989c75"
+    },
+    {
+      "bytes": 33192,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-319.json.gz",
+      "records": 275,
+      "sha256": "dc4b1c9d53208c6f8d5dd28199d6cb75bf1bff9b71127a37f8d2ed745da6d3ca"
+    },
+    {
+      "bytes": 43512,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-320.json.gz",
+      "records": 359,
+      "sha256": "2b7fded8e146f5bca5d9926ea08534d5c375e754b5b0ecd4e6a09658a576a3d8"
+    },
+    {
+      "bytes": 43277,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-321.json.gz",
+      "records": 375,
+      "sha256": "1650492855c14169b9b1483dad2bc3a09a09c632eed72b8d30aaacd98eefc049"
+    },
+    {
+      "bytes": 31527,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-322.json.gz",
+      "records": 259,
+      "sha256": "25561c5ee6377391dce6e55926350ff5e76ca1b606b2fc26aa1528fc4a6ea6a8"
+    },
+    {
+      "bytes": 36745,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-323.json.gz",
+      "records": 299,
+      "sha256": "c7c08a57a556282b973cc2858b4b7539adf4ea4db34b507418684373d47ad7b4"
+    },
+    {
+      "bytes": 32352,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-324.json.gz",
+      "records": 266,
+      "sha256": "76981ac10b3e7345452ee0730b1856e0f5306f40742f0cc3d0e5b88f492e3f2f"
+    },
+    {
+      "bytes": 25232,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-325.json.gz",
+      "records": 200,
+      "sha256": "820536931d045790e52ec199b55c5e5c7ca9e4ecb7da3b1e17f909da1fefb5da"
+    },
+    {
+      "bytes": 20901,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-326.json.gz",
+      "records": 160,
+      "sha256": "02f511ae49b60de1dab585a825324b33e9d7bbc22b8c38cd5bf2633a60ba3f25"
+    },
+    {
+      "bytes": 13738,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-327.json.gz",
+      "records": 95,
+      "sha256": "32c66897f611dae9fec49cc1e40eeccc07473bd91a23d4436efa2eabfa8c1f29"
+    },
+    {
+      "bytes": 14414,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-328.json.gz",
+      "records": 108,
+      "sha256": "fc825a7df0e6e7546148b0c7bbc82fbc4a7b98484b19411f662fed9a07d2ea60"
+    },
+    {
+      "bytes": 13119,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-329.json.gz",
+      "records": 87,
+      "sha256": "7006f2b878c3be4a019e52a5b99d78321791cbf22b59537ca04c7c5ea2e19cbc"
+    },
+    {
+      "bytes": 11360,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-330.json.gz",
+      "records": 63,
+      "sha256": "ca90004024996fbdbb0db4fed805c085697ec2307a40e9f724bbf85db32272b1"
+    },
+    {
+      "bytes": 10409,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-331.json.gz",
+      "records": 66,
+      "sha256": "71e25b228c05cc7a35ad6fb53a16fb1d8cbd2612e6ea97203d5b3f9b4b9e6495"
+    },
+    {
+      "bytes": 11619,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-332.json.gz",
+      "records": 83,
+      "sha256": "5e0b89997fb48af2beb48015e278d03267624fcfc2a575e24cbc1dd1f1e42531"
+    },
+    {
+      "bytes": 11118,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-333.json.gz",
+      "records": 76,
+      "sha256": "b8ea729bf3fe422413b4ae16ea9d2d86d80ef25a5a796ddfdc0364aeac94608f"
+    },
+    {
+      "bytes": 4937,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-334.json.gz",
+      "records": 33,
+      "sha256": "7e53ec681a014464b9ffe0cdbae22dba08938d4c3e44bc9337e59ef9b9f0d68c"
+    },
+    {
+      "bytes": 6277,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-335.json.gz",
+      "records": 43,
+      "sha256": "d2ead657095c3ff7177ab71c560860ed6d9bd8da4db28096543e9173dc349bfc"
+    },
+    {
+      "bytes": 2575,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-336.json.gz",
+      "records": 12,
+      "sha256": "96abc95c06e726fc1f53c2b0bb63eab5b059ce04801bdbba4fafa5dabc94d39e"
+    },
+    {
+      "bytes": 3513,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-337.json.gz",
+      "records": 22,
+      "sha256": "93082c69f465fa187609bfc0005e354f8d78759c16863fa2f4874f02a68dacdd"
+    },
+    {
+      "bytes": 3609,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-338.json.gz",
+      "records": 21,
+      "sha256": "eba12052c19e76b3e201431aeb31c3350f269c955f94b21603f8e06f71f92979"
+    },
+    {
+      "bytes": 2987,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-339.json.gz",
+      "records": 18,
+      "sha256": "ebb3e94c2d5d211263bdca856875a3ea8f2cabfce823be6e172256a5d18bdb62"
+    },
+    {
+      "bytes": 4010,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-340.json.gz",
+      "records": 26,
+      "sha256": "e93b9c67fc3b11f6b8562e3d040b5a29fe6715360b01707bc131c1e86bd5b1fa"
+    },
+    {
+      "bytes": 2131,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-341.json.gz",
+      "records": 10,
+      "sha256": "2d9a0a437af17a6ac5381acc423fd084d41cb46d33c5651284d38bf3a29a4fb4"
+    },
+    {
+      "bytes": 2669,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-342.json.gz",
+      "records": 12,
+      "sha256": "206b5801ed379a19054d6709fb35c59de3711414529a53615b2dbf0a63b64d91"
+    },
+    {
+      "bytes": 3713,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-343.json.gz",
+      "records": 25,
+      "sha256": "7c2e17ca5836d919671a48df3c7365e826e4b1c384e540695bbb14c99b472794"
+    },
+    {
+      "bytes": 2943,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-344.json.gz",
+      "records": 16,
+      "sha256": "8709abc87fdd3090275f877259ffed8c21354eb20620f61941bbcb86d1d39c04"
+    },
+    {
+      "bytes": 3041,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-345.json.gz",
+      "records": 14,
+      "sha256": "0fcef0ad0310f9d27e4a2048256576b09efbefd40919443314f67a610d9d5bbf"
+    },
+    {
+      "bytes": 2529,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-346.json.gz",
+      "records": 14,
+      "sha256": "46b00746423eb5623d9d70a228867c55faa3d578d795b2a65f36f0088b83ecc1"
+    },
+    {
+      "bytes": 5218,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-347.json.gz",
+      "records": 26,
+      "sha256": "828bddf6c601933fc88fe56016499e709cfa560b3e48b02b00b236c562d63809"
+    },
+    {
+      "bytes": 3886,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-348.json.gz",
+      "records": 19,
+      "sha256": "6f71b6aa2ce66a041252c8726eb32cccce5f86e6cb554de4e4262bb1bb846675"
+    },
+    {
+      "bytes": 2279,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-349.json.gz",
+      "records": 9,
+      "sha256": "65b62d0f9b9e27fb10c6bdb0cc7fa0e391a789d8a1d7fb14e5c0cdfae185d118"
+    },
+    {
+      "bytes": 1673,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-350.json.gz",
+      "records": 6,
+      "sha256": "464e12612f2120ee6df40464905795f04448f4e32ce3bce6143a3f883bc50059"
+    },
+    {
+      "bytes": 1695,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-351.json.gz",
+      "records": 4,
+      "sha256": "63258ace48712a189d7d728e05ef443b2d96ef5465e226ed75deffaeedfdb3a0"
+    },
+    {
+      "bytes": 1436,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-352.json.gz",
+      "records": 4,
+      "sha256": "5e5d39d00ff8267617dab24f00e52d32c24f00989f3153a7899236b1418b9c77"
+    },
+    {
+      "bytes": 2824,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-353.json.gz",
+      "records": 10,
+      "sha256": "9b9595b6fa83adb1a262022ed02764c325c2c96e5cb41505718bfed1c1c20e0e"
+    },
+    {
+      "bytes": 3476,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-354.json.gz",
+      "records": 16,
+      "sha256": "2509de3e6d52852e4d66a7ec1b3ef1f03b07e7e51538a959a6825d1b80309b94"
+    },
+    {
+      "bytes": 1463,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-355.json.gz",
+      "records": 3,
+      "sha256": "ff42f75145ddb40895d3cba00443b70e445234bc10e5606531d0e9aebf5e75ce"
+    },
+    {
+      "bytes": 2291,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-356.json.gz",
+      "records": 8,
+      "sha256": "956a6c5b6f1402e8a83a8ab5b532c2dc16819da68ad40399d47c7c01c322a9d7"
+    },
+    {
+      "bytes": 4302,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-357.json.gz",
+      "records": 19,
+      "sha256": "7910088fe7c24c70ef0d841c7140b18ec1a0fa4ca9d579fc3ffb8a68f36b4ad1"
+    },
+    {
+      "bytes": 2575,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-358.json.gz",
+      "records": 8,
+      "sha256": "10fa25409fbab227f9d7c63d808a0550fe3195e4d731489fabb190c798b23ff2"
+    },
+    {
+      "bytes": 4572,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-359.json.gz",
+      "records": 20,
+      "sha256": "59d63e2f5116fa110b2aa6655234ff3d207fceae739c039726b1c91eff26695f"
+    },
+    {
+      "bytes": 2784,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-360.json.gz",
+      "records": 10,
+      "sha256": "7fc3ae12a449f05d768d843b65cbd7302cab1f06d800af7cf5d15bb3f5612286"
+    },
+    {
+      "bytes": 3153,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-361.json.gz",
+      "records": 10,
+      "sha256": "126fcaf8e27f2f11aa5e9c3e41ba25a5f99b14c925b1197287e8fd89dcb4e3d4"
+    },
+    {
+      "bytes": 2769,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-362.json.gz",
+      "records": 10,
+      "sha256": "1c39a07537eb6478022a98385e0b916341719bf42aaf7e05999296457ff26a21"
+    },
+    {
+      "bytes": 4283,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-363.json.gz",
+      "records": 18,
+      "sha256": "464fbe0e5aff49463a4ed9402f833b660e61ab704c820356e296ad122b8e5abf"
+    },
+    {
+      "bytes": 2507,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-364.json.gz",
+      "records": 6,
+      "sha256": "bd0cf607f015deaa53012626b6c72095538fdec28477f983108a5d10e9e68477"
+    },
+    {
+      "bytes": 1954,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "bundle/enrichment/codex-assisted-v3/candidates/candidates-365.json.gz",
+      "records": 4,
+      "sha256": "32cbf184f079f736e1d478388443cf6fc7074659457c58fe5db922bfaa87d271"
+    }
+  ],
+  "counts": {
+    "assertions": 56479,
+    "by_kind": {
+      "concept": 31874,
+      "entity": 1136,
+      "topic": 23469
+    },
+    "by_support": {
+      "metadata-only": 0,
+      "multi-field": 13002,
+      "notes-only": 5003,
+      "title-only": 38474
+    },
+    "records_with_candidates": 28635
+  },
+  "generated_at": "2026-07-26T12:00:00Z",
+  "id": "uk-legislation-codex-assisted-v3-candidates",
+  "materials_sha256": "9b1597e158dd4f90bb3fe8c38ce6d10c6d8355e12dd1f44d9d138819cbfad758",
+  "review_status": "candidate-pending-independent-review",
+  "schema": "okf-enrichment-candidate-manifest.v3",
+  "snapshot_id": "legislation-2026-07-11T18:00:00Z"
+}

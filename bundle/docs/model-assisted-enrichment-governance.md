@@ -1,16 +1,56 @@
-# Paid model-assisted enrichment governance
+# Model-assisted enrichment governance
 
-The current 22,299 enrichment assertions are a deterministic application of
-Codex-assisted literal-title rules. They remain useful derived discovery
-metadata, but they do not prove the separate paid-model selection requirement.
-No paid OpenAI request is authorised by this document.
+The current release uses Codex tasks/subagents without direct OpenAI API calls.
+The governed v3 workflow binds fixed generator and reviewer prompts, applies a
+conservative Codex-authored rule system to the complete 365,786-work corpus,
+records one terminal outcome per work, and publishes only independently
+reviewed, deterministically evidence-supported topic, concept or entity-link
+candidates. These relationships are derived discovery metadata, never official
+legal classification or legal advice.
 
-The paid stage remains prohibited until the user explicitly chooses whether to
-reuse the configured API key or create a new project key and a separate
-preflight records a ready result. Credentials and authorization headers must
-never appear in Git, logs, request identities, cache entries or receipts.
+Direct OpenAI API use is exactly zero calls, zero API tokens and **USD 0 /
+GBP 0** incremental spend. The Codex task surface does not expose the exact
+underlying deployment, sampling parameters, subscription or weekly-allowance
+consumption, or billable task-surface tokens. Those fields are explicitly
+unavailable/unmetered; the publication does not claim that total economic cost
+is zero.
 
-## Governed stages
+The comprehensive direct API contracts remain available as an optional future
+profile. They are not a release prerequisite, and this repository must not ask
+for an API key or execute that profile without a new explicit user decision.
+Credentials and authorization headers must never appear in Git, logs, request
+identities, cache entries or receipts.
+
+## Governed Codex workflow
+
+The authored generator and reviewer prompts, deterministic policies, controlled
+targets and calibration cases are content-addressed. The generator evaluates
+the complete canonical input in resumable shards. Each work receives one
+terminal outcome for each attempted semantic kind; lack of frozen supporting
+evidence produces an abstention or deferment rather than an assertion.
+
+The current evidence policy evaluates official title and substantive notes
+independently, preserves both pieces of evidence in source-field order when
+they support the same assertion, and reports `title-only`, `notes-only` and
+`multi-field` populations separately. Category, document type, publisher and
+tags are recorded as considered but do not emit subject or entity candidates.
+No frozen CLML body is available in this snapshot, so CLML is an explicit
+per-work abstention. Entity rules must identify one jurisdictionally
+compatible organisation; a generic name that can refer to different UK bodies
+is removed or narrowed rather than linked to an England-only target.
+
+A separately tasked Codex reviewer assesses the fixed rule/prompt policy and
+its candidate populations. A separately authored deterministic reviewer then
+emits one verdict for every candidate and reconstructs every accepted
+relationship from the bound source evidence. Generator output cannot verify
+itself. The release audit records both boundaries and does not misrepresent
+policy execution as 365,786 individual LLM requests.
+
+The [review history](model-assisted-enrichment-review-history.md)
+records two rejected freezes and the exact cross-jurisdiction, qualified-name
+and compound-name defects they exposed before R3 was accepted.
+
+## Optional direct API stages
 
 Every configured candidate is first tested against the same hash-bound
 calibration population using the strict candidate schema. A candidate
@@ -68,7 +108,7 @@ counts and exact-model role separation after strict parsing. This is not a
 model-availability claim: each exact configured model still needs its own
 append-only capability probe before admission.
 
-## Eligibility and terminal outcomes
+## Optional direct API eligibility and terminal outcomes
 
 The separately generated eligibility receipt inventories the frozen fields
 available for every work. Its input outcomes describe preflight readiness; they
@@ -82,7 +122,8 @@ bind all 365,786 work identities, the canonical model-input projection and the
 fixed calibration population. The policy binds both generated artifacts by
 digest.
 
-The paid ledger records exactly one terminal outcome for every governed
+If a future user authorises the optional profile, its paid ledger records
+exactly one terminal outcome for every governed
 eligible record: accepted, already supported, no supported new assertion,
 insufficient frozen evidence, invalid input, generator schema rejection,
 review rejection, escalation rejection or budget stop. The strict [row
@@ -99,7 +140,7 @@ multi-topic output, low confidence, known collision families, jurisdiction or
 temporal ambiguity, official-looking targets and deterministic disagreement
 are high risk and therefore require strongest-model escalation.
 
-## Content-addressed attempts and resume
+## Optional direct API content-addressed attempts and resume
 
 Each request identity contains only:
 
@@ -133,7 +174,7 @@ ambiguous separators, resolved paths outside the repository and symlinks fail
 before any release validator reads a file; regular-file bytes must match the
 declared digest.
 
-## US$250 hard cap
+## Optional direct API US$250 hard cap
 
 A dated, hash-bound official pricing snapshot supplies the input,
 cached-input and output rates for the exact endpoint and processing route.
@@ -163,25 +204,31 @@ Final reconciliation additionally requires zero active reservations, a zero
 next-request bound and `permitted: false`; it is an accounting closure, not
 permission to schedule another request.
 
-The final report records exact USD and GBP totals, the dated exchange-rate
-source, value and direction, and cost per assertion accepted from the paid run.
-If the paid run accepts no assertions, that ratio is null and explained rather
-than being divided across earlier deterministic output.
+Any future direct API report records exact USD and GBP totals, the dated
+exchange-rate source, value and direction, and cost per assertion accepted from
+that run. If it accepts no assertions, that ratio is null and explained rather
+than being divided across the governed Codex output.
 
 ## Current boundary
 
-The authored policy is
+The selected release evidence is published beneath
+[`bundle/enrichment/codex-assisted-v3/`](../bundle/enrichment/codex-assisted-v3/)
+and is bound to the independent v3 assurance receipt. The v2 datapack remains
+preserved historical evidence.
+
+The optional direct API policy is
 [`model-assisted-paid-governance-v1.json`](../enrichment/model-assisted-paid-governance-v1.json).
-It intentionally contains no assumed model IDs. Candidate availability,
+It intentionally contains no assumed model IDs and has
+`current_release_required: false`. Candidate availability,
 strongest-model identity, pricing, prompts, responses, usage and costs remain
-future observed execution evidence.
+future observed execution evidence unless a new user decision authorises that
+separate profile.
 
 Observed paid evidence has a separate authored root:
 [`enrichment/model-assisted-paid-v2/`](../enrichment/model-assisted-paid-v2/).
-The historical `codex-assisted-v2` publication is never treated as its paid
-run receipt. When `run.json` is absent, the paid public projection must also be
-absent and the release gate remains blocked while ordinary candidate
-validation continues to run.
+The Codex v2/v3 publications are never treated as paid-run receipts. When the
+optional profile's `run.json` is absent, its public projection must also be
+absent; that expected absence does not block the current Codex release.
 
 The network-free paid-publication controller validates the final run schema
 and every referenced regular file without following absolute, traversing or
