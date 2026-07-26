@@ -19721,8 +19721,8 @@
       "sha256": "87e2f3eed85d5f744e55e3802e5d8c14813d3c70ca64d5d3baa551d51b0b93a7"
     },
     "whole-law/assurance/competency-question-results.json": {
-      "bytes": 7544,
-      "sha256": "f09ee2f40a7e53ee63dcef55708192579bcd9ce82eea1f6821b87600598184b2"
+      "bytes": 7541,
+      "sha256": "7a4b01d64aff56777207994cd0614600b5cc240ae838de846aaac62a85d55ab1"
     },
     "whole-law/assurance/enrichment-audit.json": {
       "bytes": 26491,
@@ -20002,7 +20002,7 @@
     },
     "whole-law/integrity.json": {
       "bytes": 51645,
-      "sha256": "713b0f7ff15112b926f5600a49b745eb3a48af39550623b0f2a1c74d76eab3c6"
+      "sha256": "84a9789f2b4843860b4056d263927b78e6156295e3213ea4268d0763a7b72d53"
     },
     "whole-law/log.md": {
       "bytes": 465,
