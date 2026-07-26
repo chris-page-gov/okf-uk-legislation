@@ -8,6 +8,7 @@
     "evidence_archive_receipt": "evidence/source-acquisitions/legislation-effects/archive-receipts/legislation-effects-2026-07-25.json",
     "evidence_publication_projection": "evidence/source-acquisitions/legislation-effects/publication-projections/legislation-effects-2026-07-25.json",
     "kind": "official-atom-feed-frozen-envelope",
+    "live_reconciliation_receipt": "whole-law/assurance/effects-live-reconciliation-20260726.json",
     "reconciliation": "data/effects/reconciliation.json",
     "seed_config": "whole-law/config/effects-seeds.json",
     "source": "https://www.legislation.gov.uk/changes"

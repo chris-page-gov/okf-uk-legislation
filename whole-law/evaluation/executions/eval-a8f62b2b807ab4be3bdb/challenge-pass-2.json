@@ -1,0 +1,5545 @@
+{
+  "adversarial_answers_expected": 564,
+  "adversarial_answers_rejected": 564,
+  "cases": [
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P01",
+      "question_id": "WLR-PT-P01-T10",
+      "task_id": "T10"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P01",
+      "question_id": "WLR-PT-P01-T20",
+      "task_id": "T20"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P02",
+      "question_id": "WLR-PT-P02-T01",
+      "task_id": "T01"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P02",
+      "question_id": "WLR-PT-P02-T02",
+      "task_id": "T02"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P02",
+      "question_id": "WLR-PT-P02-T11",
+      "task_id": "T11"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P03",
+      "question_id": "WLR-PT-P03-T07",
+      "task_id": "T07"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P03",
+      "question_id": "WLR-PT-P03-T18",
+      "task_id": "T18"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P04",
+      "question_id": "WLR-PT-P04-T02",
+      "task_id": "T02"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P04",
+      "question_id": "WLR-PT-P04-T11",
+      "task_id": "T11"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P05",
+      "question_id": "WLR-PT-P05-T02",
+      "task_id": "T02"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P05",
+      "question_id": "WLR-PT-P05-T05",
+      "task_id": "T05"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P06",
+      "question_id": "WLR-PT-P06-T01",
+      "task_id": "T01"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P06",
+      "question_id": "WLR-PT-P06-T02",
+      "task_id": "T02"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P06",
+      "question_id": "WLR-PT-P06-T10",
+      "task_id": "T10"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P06",
+      "question_id": "WLR-PT-P06-T13",
+      "task_id": "T13"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P07",
+      "question_id": "WLR-PT-P07-T11",
+      "task_id": "T11"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P07",
+      "question_id": "WLR-PT-P07-T17",
+      "task_id": "T17"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P07",
+      "question_id": "WLR-PT-P07-T20",
+      "task_id": "T20"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P08",
+      "question_id": "WLR-PT-P08-T01",
+      "task_id": "T01"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P08",
+      "question_id": "WLR-PT-P08-T06",
+      "task_id": "T06"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P08",
+      "question_id": "WLR-PT-P08-T10",
+      "task_id": "T10"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P08",
+      "question_id": "WLR-PT-P08-T17",
+      "task_id": "T17"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P09",
+      "question_id": "WLR-PT-P09-T03",
+      "task_id": "T03"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P10",
+      "question_id": "WLR-PT-P10-T06",
+      "task_id": "T06"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P10",
+      "question_id": "WLR-PT-P10-T09",
+      "task_id": "T09"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P11",
+      "question_id": "WLR-PT-P11-T02",
+      "task_id": "T02"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P12",
+      "question_id": "WLR-PT-P12-T05",
+      "task_id": "T05"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P12",
+      "question_id": "WLR-PT-P12-T12",
+      "task_id": "T12"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P13",
+      "question_id": "WLR-PT-P13-T04",
+      "task_id": "T04"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P13",
+      "question_id": "WLR-PT-P13-T13",
+      "task_id": "T13"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P14",
+      "question_id": "WLR-PT-P14-T01",
+      "task_id": "T01"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P14",
+      "question_id": "WLR-PT-P14-T12",
+      "task_id": "T12"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P14",
+      "question_id": "WLR-PT-P14-T16",
+      "task_id": "T16"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P15",
+      "question_id": "WLR-PT-P15-T08",
+      "task_id": "T08"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P15",
+      "question_id": "WLR-PT-P15-T15",
+      "task_id": "T15"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P16",
+      "question_id": "WLR-PT-P16-T01",
+      "task_id": "T01"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P16",
+      "question_id": "WLR-PT-P16-T05",
+      "task_id": "T05"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P16",
+      "question_id": "WLR-PT-P16-T06",
+      "task_id": "T06"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P16",
+      "question_id": "WLR-PT-P16-T15",
+      "task_id": "T15"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P16",
+      "question_id": "WLR-PT-P16-T18",
+      "task_id": "T18"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P17",
+      "question_id": "WLR-PT-P17-T10",
+      "task_id": "T10"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P18",
+      "question_id": "WLR-PT-P18-T01",
+      "task_id": "T01"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P18",
+      "question_id": "WLR-PT-P18-T04",
+      "task_id": "T04"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P18",
+      "question_id": "WLR-PT-P18-T11",
+      "task_id": "T11"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P18",
+      "question_id": "WLR-PT-P18-T18",
+      "task_id": "T18"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P19",
+      "question_id": "WLR-PT-P19-T01",
+      "task_id": "T01"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P19",
+      "question_id": "WLR-PT-P19-T03",
+      "task_id": "T03"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P19",
+      "question_id": "WLR-PT-P19-T11",
+      "task_id": "T11"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P19",
+      "question_id": "WLR-PT-P19-T15",
+      "task_id": "T15"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P19",
+      "question_id": "WLR-PT-P19-T18",
+      "task_id": "T18"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P20",
+      "question_id": "WLR-PT-P20-T02",
+      "task_id": "T02"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P20",
+      "question_id": "WLR-PT-P20-T10",
+      "task_id": "T10"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P21",
+      "question_id": "WLR-PT-P21-T05",
+      "task_id": "T05"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P21",
+      "question_id": "WLR-PT-P21-T06",
+      "task_id": "T06"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P21",
+      "question_id": "WLR-PT-P21-T13",
+      "task_id": "T13"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P21",
+      "question_id": "WLR-PT-P21-T19",
+      "task_id": "T19"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P22",
+      "question_id": "WLR-PT-P22-T09",
+      "task_id": "T09"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P22",
+      "question_id": "WLR-PT-P22-T19",
+      "task_id": "T19"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P23",
+      "question_id": "WLR-PT-P23-T17",
+      "task_id": "T17"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P24",
+      "question_id": "WLR-PT-P24-T03",
+      "task_id": "T03"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P24",
+      "question_id": "WLR-PT-P24-T04",
+      "task_id": "T04"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P25",
+      "question_id": "WLR-PT-P25-T01",
+      "task_id": "T01"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P25",
+      "question_id": "WLR-PT-P25-T02",
+      "task_id": "T02"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P25",
+      "question_id": "WLR-PT-P25-T09",
+      "task_id": "T09"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P25",
+      "question_id": "WLR-PT-P25-T10",
+      "task_id": "T10"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P26",
+      "question_id": "WLR-PT-P26-T03",
+      "task_id": "T03"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P26",
+      "question_id": "WLR-PT-P26-T11",
+      "task_id": "T11"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P27",
+      "question_id": "WLR-PT-P27-T01",
+      "task_id": "T01"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P27",
+      "question_id": "WLR-PT-P27-T12",
+      "task_id": "T12"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P27",
+      "question_id": "WLR-PT-P27-T14",
+      "task_id": "T14"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P28",
+      "question_id": "WLR-PT-P28-T04",
+      "task_id": "T04"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P28",
+      "question_id": "WLR-PT-P28-T07",
+      "task_id": "T07"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P29",
+      "question_id": "WLR-PT-P29-T20",
+      "task_id": "T20"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P30",
+      "question_id": "WLR-PT-P30-T07",
+      "task_id": "T07"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P30",
+      "question_id": "WLR-PT-P30-T13",
+      "task_id": "T13"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P31",
+      "question_id": "WLR-PT-P31-T06",
+      "task_id": "T06"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P31",
+      "question_id": "WLR-PT-P31-T16",
+      "task_id": "T16"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P32",
+      "question_id": "WLR-PT-P32-T02",
+      "task_id": "T02"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P32",
+      "question_id": "WLR-PT-P32-T04",
+      "task_id": "T04"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P32",
+      "question_id": "WLR-PT-P32-T09",
+      "task_id": "T09"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P32",
+      "question_id": "WLR-PT-P32-T16",
+      "task_id": "T16"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P33",
+      "question_id": "WLR-PT-P33-T02",
+      "task_id": "T02"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P33",
+      "question_id": "WLR-PT-P33-T16",
+      "task_id": "T16"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P34",
+      "question_id": "WLR-PT-P34-T03",
+      "task_id": "T03"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P35",
+      "question_id": "WLR-PT-P35-T04",
+      "task_id": "T04"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P35",
+      "question_id": "WLR-PT-P35-T06",
+      "task_id": "T06"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P35",
+      "question_id": "WLR-PT-P35-T14",
+      "task_id": "T14"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P35",
+      "question_id": "WLR-PT-P35-T17",
+      "task_id": "T17"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P35",
+      "question_id": "WLR-PT-P35-T20",
+      "task_id": "T20"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P36",
+      "question_id": "WLR-PT-P36-T01",
+      "task_id": "T01"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P36",
+      "question_id": "WLR-PT-P36-T05",
+      "task_id": "T05"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P37",
+      "question_id": "WLR-PT-P37-T02",
+      "task_id": "T02"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P37",
+      "question_id": "WLR-PT-P37-T16",
+      "task_id": "T16"
+    },
+    {
+      "correct_answer_status": "passed",
+      "mutations": [
+        {
+          "category": "missing-citation",
+          "detected_failures": [
+            "citation-hashes",
+            "citations-resolve"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-snapshot",
+          "detected_failures": [
+            "corpus-snapshot",
+            "jsonschema:corpus_snapshot:const"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-set",
+          "detected_failures": [
+            "declared-gold-match",
+            "required-source-set"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "wrong-source-metadata",
+          "detected_failures": [
+            "declared-gold-match",
+            "source-metadata"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "concealed-access-state",
+          "detected_failures": [
+            "declared-gold-match",
+            "direct-access-evidence"
+          ],
+          "rejected": true
+        },
+        {
+          "category": "legal-overclaim",
+          "detected_failures": [
+            "jsonschema:underlying_legal_task_status:const",
+            "scope-boundary",
+            "underlying-legal-task-boundary-missing"
+          ],
+          "rejected": true
+        }
+      ],
+      "persona_id": "P38",
+      "question_id": "WLR-PT-P38-T04",
+      "task_id": "T04"
+    }
+  ],
+  "challenge_registry": [
+    "missing-citation",
+    "wrong-snapshot",
+    "wrong-source-set",
+    "wrong-source-metadata",
+    "concealed-access-state",
+    "legal-overclaim"
+  ],
+  "correct_answers_accepted": 94,
+  "correct_answers_expected": 94,
+  "critical_failure_modes": [],
+  "evaluation_scope": "corpus-navigation-metadata",
+  "new_non_critical_categories": [],
+  "new_non_critical_category_rate": 0.0,
+  "pass_id": "held-out-pass-2",
+  "review_boundary": "This is an internal deterministic challenge of corpus-fact answers and the fail-closed verifier. It is not a model-assisted review, human legal challenge, or qualified legal assurance.",
+  "schema": "okf-evaluation-held-out-challenge-pass.v1",
+  "selection": {
+    "method": "seeded hash ranking with greedy complete coverage of all critical persona and task families",
+    "personas": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12",
+      "P13",
+      "P14",
+      "P15",
+      "P16",
+      "P17",
+      "P18",
+      "P19",
+      "P20",
+      "P21",
+      "P22",
+      "P23",
+      "P24",
+      "P25",
+      "P26",
+      "P27",
+      "P28",
+      "P29",
+      "P30",
+      "P31",
+      "P32",
+      "P33",
+      "P34",
+      "P35",
+      "P36",
+      "P37",
+      "P38"
+    ],
+    "question_count": 94,
+    "question_ids": [
+      "WLR-PT-P01-T10",
+      "WLR-PT-P01-T20",
+      "WLR-PT-P02-T01",
+      "WLR-PT-P02-T02",
+      "WLR-PT-P02-T11",
+      "WLR-PT-P03-T07",
+      "WLR-PT-P03-T18",
+      "WLR-PT-P04-T02",
+      "WLR-PT-P04-T11",
+      "WLR-PT-P05-T02",
+      "WLR-PT-P05-T05",
+      "WLR-PT-P06-T01",
+      "WLR-PT-P06-T02",
+      "WLR-PT-P06-T10",
+      "WLR-PT-P06-T13",
+      "WLR-PT-P07-T11",
+      "WLR-PT-P07-T17",
+      "WLR-PT-P07-T20",
+      "WLR-PT-P08-T01",
+      "WLR-PT-P08-T06",
+      "WLR-PT-P08-T10",
+      "WLR-PT-P08-T17",
+      "WLR-PT-P09-T03",
+      "WLR-PT-P10-T06",
+      "WLR-PT-P10-T09",
+      "WLR-PT-P11-T02",
+      "WLR-PT-P12-T05",
+      "WLR-PT-P12-T12",
+      "WLR-PT-P13-T04",
+      "WLR-PT-P13-T13",
+      "WLR-PT-P14-T01",
+      "WLR-PT-P14-T12",
+      "WLR-PT-P14-T16",
+      "WLR-PT-P15-T08",
+      "WLR-PT-P15-T15",
+      "WLR-PT-P16-T01",
+      "WLR-PT-P16-T05",
+      "WLR-PT-P16-T06",
+      "WLR-PT-P16-T15",
+      "WLR-PT-P16-T18",
+      "WLR-PT-P17-T10",
+      "WLR-PT-P18-T01",
+      "WLR-PT-P18-T04",
+      "WLR-PT-P18-T11",
+      "WLR-PT-P18-T18",
+      "WLR-PT-P19-T01",
+      "WLR-PT-P19-T03",
+      "WLR-PT-P19-T11",
+      "WLR-PT-P19-T15",
+      "WLR-PT-P19-T18",
+      "WLR-PT-P20-T02",
+      "WLR-PT-P20-T10",
+      "WLR-PT-P21-T05",
+      "WLR-PT-P21-T06",
+      "WLR-PT-P21-T13",
+      "WLR-PT-P21-T19",
+      "WLR-PT-P22-T09",
+      "WLR-PT-P22-T19",
+      "WLR-PT-P23-T17",
+      "WLR-PT-P24-T03",
+      "WLR-PT-P24-T04",
+      "WLR-PT-P25-T01",
+      "WLR-PT-P25-T02",
+      "WLR-PT-P25-T09",
+      "WLR-PT-P25-T10",
+      "WLR-PT-P26-T03",
+      "WLR-PT-P26-T11",
+      "WLR-PT-P27-T01",
+      "WLR-PT-P27-T12",
+      "WLR-PT-P27-T14",
+      "WLR-PT-P28-T04",
+      "WLR-PT-P28-T07",
+      "WLR-PT-P29-T20",
+      "WLR-PT-P30-T07",
+      "WLR-PT-P30-T13",
+      "WLR-PT-P31-T06",
+      "WLR-PT-P31-T16",
+      "WLR-PT-P32-T02",
+      "WLR-PT-P32-T04",
+      "WLR-PT-P32-T09",
+      "WLR-PT-P32-T16",
+      "WLR-PT-P33-T02",
+      "WLR-PT-P33-T16",
+      "WLR-PT-P34-T03",
+      "WLR-PT-P35-T04",
+      "WLR-PT-P35-T06",
+      "WLR-PT-P35-T14",
+      "WLR-PT-P35-T17",
+      "WLR-PT-P35-T20",
+      "WLR-PT-P36-T01",
+      "WLR-PT-P36-T05",
+      "WLR-PT-P37-T02",
+      "WLR-PT-P37-T16",
+      "WLR-PT-P38-T04"
+    ],
+    "question_ids_sha256": "786ad9ac6e16193db4b49edc917c7b75a2744b83df7fc168f595581583a21427",
+    "tasks": [
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "T05",
+      "T06",
+      "T07",
+      "T08",
+      "T09",
+      "T10",
+      "T11",
+      "T12",
+      "T13",
+      "T14",
+      "T15",
+      "T16",
+      "T17",
+      "T18",
+      "T19",
+      "T20"
+    ]
+  },
+  "status": "passed"
+}

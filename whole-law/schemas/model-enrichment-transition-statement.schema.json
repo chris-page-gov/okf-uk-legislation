@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-transition-statement.schema.json",
+  "title": "OKF model enrichment transition statement v1",
+  "description": "Immutable statement binding the user decision and ready preflight evidence for one bounded paid run.",
+  "type": "object",
+  "required": [
+    "schema",
+    "run_id",
+    "recorded_at",
+    "snapshot_id",
+    "cap_usd",
+    "user_decision",
+    "scope",
+    "policy",
+    "user_decision_evidence",
+    "user_decision_evidence_sha256",
+    "ready_preflight_evidence",
+    "ready_preflight_evidence_sha256",
+    "selected_batch_plan",
+    "projected_total_usd",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-transition-statement.v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "cap_usd": {
+      "const": 250
+    },
+    "user_decision": {
+      "enum": [
+        "reuse-configured-api-key",
+        "create-new-project-api-key"
+      ]
+    },
+    "scope": {
+      "const": "one governed model-assisted-paid-v2 run under the US$250 hard cap"
+    },
+    "policy": {
+      "$ref": "#/$defs/material"
+    },
+    "user_decision_evidence": {
+      "$ref": "#/$defs/material"
+    },
+    "user_decision_evidence_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "ready_preflight_evidence": {
+      "$ref": "#/$defs/material"
+    },
+    "ready_preflight_evidence_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "selected_batch_plan": {
+      "$ref": "#/$defs/material"
+    },
+    "projected_total_usd": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 250
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

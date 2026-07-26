@@ -1,0 +1,448 @@
+{
+  "audited_at": "2026-07-26T02:00:00Z",
+  "bindings": {
+    "data_manifest": {
+      "bytes": 16322,
+      "path": "bundle/data/manifest.json",
+      "sha256": "35d971c619a770e800f3c1b7588ecd46c59aeae1658bfc1574691815af74a4b6"
+    },
+    "effects_evidence_archive": {
+      "bytes": 1385904,
+      "path": "evidence/source-acquisitions/legislation-effects/archives/legislation-effects-2026-07-25.tar.xz",
+      "sha256": "3262cb466cf692278567fcc89acdd0c3f2138b6c07d2e8cc3bff6fa5b75ee631"
+    },
+    "effects_evidence_archive_receipt": {
+      "bytes": 2198,
+      "path": "bundle/evidence/source-acquisitions/legislation-effects/archive-receipts/legislation-effects-2026-07-25.json",
+      "sha256": "e7e764210345afcbc80bf165a51b9654495657bc6ea3b9148eeef55f54ae2a3a"
+    },
+    "effects_live_reconciliation": {
+      "bytes": 16929,
+      "path": "bundle/whole-law/assurance/effects-live-reconciliation-20260726.json",
+      "sha256": "bb86c8955141d73e479e92b7ba7091ac86f9f1f96dba12b10aaa11ff6ddc82da"
+    },
+    "effects_live_reconciliation_archive": {
+      "bytes": 12676,
+      "path": "evidence/source-acquisitions/legislation-effects/live-reconciliation/archives/legislation-effects-2026-07-26.tar.xz",
+      "sha256": "480fdcad678d07ae8f641ae037bc02d836434a60029cae9188f34acfb65caef8"
+    },
+    "effects_manifest": {
+      "bytes": 1691,
+      "path": "bundle/data/effects/manifest.json",
+      "sha256": "cc95a8fde5390ad1c559168e7e48b5b6c0f9dfbfe994f75ef2550f6b6e96a0c9"
+    },
+    "enrichment_attempt_ledger": {
+      "bytes": 131072,
+      "path": "bundle/data/enrichment/attempt-ledger.json",
+      "sha256": "d35e8e1c0fe2533157fc2f2e644237171b825875c37c76d99002eadcc5de97ea"
+    },
+    "enrichment_coverage": {
+      "bytes": 21587,
+      "path": "bundle/data/enrichment/coverage.json",
+      "sha256": "b1d3ddcf49d4574dbc9f9690f411ed8b2f5e2467c1f94d7bbc2604c6616f4c7e"
+    },
+    "enrichment_independent_audit": {
+      "bytes": 10752,
+      "path": "whole-law/assurance/enrichment-v2-independent-audit-20260726.json",
+      "sha256": "141aaa73fa6723b52ee802503319076f60cf927a201378587fa34b6b2de24427"
+    },
+    "enrichment_manifest": {
+      "bytes": 97763,
+      "path": "bundle/data/enrichment/manifest.json",
+      "sha256": "4714cd29c2eeb6173b62515fee1fa41ea0a92372a8fb1ae98ffd56308ee7e1cb"
+    },
+    "enrichment_run": {
+      "bytes": 4766,
+      "path": "bundle/enrichment/codex-assisted-v2.json",
+      "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
+    },
+    "entity_model_assessment": {
+      "bytes": 5400,
+      "path": "whole-law/assurance/entity-model-coverage-assessment-20260726.json",
+      "sha256": "e4e1d508a07602bfa981e6d042d264979f487865efa1821f667658324bb5fe9a"
+    },
+    "explorer_runtime_acceptance": {
+      "bytes": 73331,
+      "path": "../okf-explorer/release-assurance/explorer-runtime-acceptance.json",
+      "sha256": "a7e1da78e852677f0ce94f1108f057536b5c5ecfb43ff8cf40d221594780f365"
+    },
+    "federation_relationship_summary": {
+      "bytes": 74865,
+      "path": "bundle/whole-law/data/relationship-summary.json",
+      "sha256": "647ebc01e31a244259580560e775cac710153bd3555f31a5fd360114dd789c32"
+    },
+    "graph_overview": {
+      "bytes": 1327,
+      "path": "bundle/data/graph.json",
+      "sha256": "934c4d3db757683d144c45b8a4675c59fa07ed1e51a55b43b17cbea728cb1ef1"
+    },
+    "relationship_assertion_schema": {
+      "bytes": 4937,
+      "path": "whole-law/schemas/relationship-assertion.schema.json",
+      "sha256": "1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4"
+    },
+    "relationship_composition": {
+      "bytes": 243985,
+      "path": "bundle/data/relationship-composition.json",
+      "sha256": "baeda4ffcf6ce43938c1bdc89bdd71c922fe1405a7a6c9a61f1a56c93e3c9564"
+    },
+    "root_explorer_descriptor": {
+      "bytes": 6441,
+      "path": "bundle/okf-explorer.json",
+      "sha256": "2d7c18dc4e678d7cde63e1bf1bb1c03ca7232cbcc346b9424a5e10dfacb2c73f"
+    },
+    "root_relationship_summary": {
+      "bytes": 185298,
+      "path": "bundle/data/relationship-summary.json",
+      "sha256": "45f56a1cd76d9cc8d9d807f0b4c525944260760ec73b759d426d3867366470d9"
+    },
+    "whole_law_explorer_descriptor": {
+      "bytes": 109764,
+      "path": "bundle/whole-law/okf-explorer.json",
+      "sha256": "cc110e0dfbee15f25aabd3634744973671f9c7b77f02d028a127d8635e664403"
+    }
+  },
+  "blockers": [],
+  "checks": [
+    {
+      "dimension": "relationship-composition-reconciliation",
+      "evidence": {
+        "breakdown_equal": true,
+        "breakdown_rows": 930,
+        "observed_by_authority": {
+          "derived": 469777,
+          "model-assisted": 22299,
+          "official": 380498
+        },
+        "observed_by_confidence": {
+          "0.96": 2197,
+          "0.97": 2332,
+          "0.98": 6719,
+          "0.99": 11051,
+          "1": 14712,
+          "high": 365786,
+          "low": 469777
+        },
+        "observed_by_datapack": {
+          "codex-assisted-v2": 22299,
+          "core": 835563,
+          "legislation-effects": 14712
+        },
+        "observed_by_freshness": {
+          "current": 872574
+        },
+        "observed_total": 872574,
+        "predicate_maps_equal": true,
+        "published_by_authority": {
+          "derived": 469777,
+          "model-assisted": 22299,
+          "official": 380498
+        },
+        "published_by_confidence": {
+          "0.96": 2197,
+          "0.97": 2332,
+          "0.98": 6719,
+          "0.99": 11051,
+          "1": 14712,
+          "high": 365786,
+          "low": 469777
+        },
+        "published_by_datapack": {
+          "codex-assisted-v2": 22299,
+          "core": 835563,
+          "legislation-effects": 14712
+        },
+        "published_by_freshness": {
+          "current": 872574
+        },
+        "published_total": 872574
+      },
+      "id": "G05-COMPOSITION",
+      "status": "passed"
+    },
+    {
+      "dimension": "core-relationship-integrity",
+      "evidence": {
+        "expected": 835563,
+        "invalid_required_fields": 0,
+        "relationships": 835563
+      },
+      "id": "G05-CORE",
+      "status": "passed"
+    },
+    {
+      "dimension": "descriptor-entrypoints-and-counts",
+      "evidence": {
+        "all_required_entrypoints_resolve_inside_bundle": true,
+        "historical_v1_governed_assertions": 0,
+        "model_assisted_v2": 22299,
+        "official_effects": 14712,
+        "relationships": 872574,
+        "resolved_entrypoints": {
+          "root.data_manifest": "data/manifest.json",
+          "root.model_enrichment_v2": "data/enrichment/manifest.json",
+          "root.official_effects": "data/effects/manifest.json",
+          "root.relationship_adjacency": "data/adjacency/manifest.json",
+          "root.relationship_composition": "data/relationship-composition.json",
+          "root.relationship_summary": "data/relationship-summary.json",
+          "whole_law.model_enrichment": "data/enrichment/manifest.json",
+          "whole_law.official_effects": "data/effects/manifest.json",
+          "whole_law.relationship_summary": "whole-law/data/relationship-summary.json"
+        }
+      },
+      "id": "G05-DESCRIPTORS",
+      "status": "passed"
+    },
+    {
+      "dimension": "official-effects",
+      "evidence": {
+        "assertions": 14712,
+        "authority": "official",
+        "authority_evidence_contract_failures": 0,
+        "coverage_status": "partial",
+        "duplicate_ids": 0,
+        "schema_failures": 0
+      },
+      "id": "G05-EFFECTS",
+      "status": "passed"
+    },
+    {
+      "dimension": "EFFECTS-chunk-integrity",
+      "evidence": {
+        "all_declared_hashes_bytes_and_counts_match": true,
+        "chunks": 1,
+        "records": 14712
+      },
+      "id": "G05-EFFECTS-CHUNKS",
+      "status": "passed"
+    },
+    {
+      "dimension": "immutable-official-evidence",
+      "evidence": {
+        "archive_sha256": "3262cb466cf692278567fcc89acdd0c3f2138b6c07d2e8cc3bff6fa5b75ee631",
+        "immutable_original": true,
+        "source_files_verified": 626
+      },
+      "id": "G05-EFFECTS-EVIDENCE",
+      "status": "passed"
+    },
+    {
+      "dimension": "post-build-live-reconciliation",
+      "evidence": {
+        "agreement": 16,
+        "inaccessible_consistent": 6,
+        "live_additions": 0,
+        "observed_at": "2026-07-26T00:34:00Z",
+        "routes": 22,
+        "scope": "latest-entry probe; not a full live recrawl"
+      },
+      "id": "G05-EFFECTS-LIVE",
+      "status": "passed"
+    },
+    {
+      "dimension": "accepted-model-assisted-assertions",
+      "evidence": {
+        "assertions": 22299,
+        "candidate_contract_failures": 0,
+        "candidate_review_status": "pending-independent-audit",
+        "duplicate_ids": 0,
+        "independent_audit_status": "accepted",
+        "independent_binding_failures": 0,
+        "schema_failures": 0,
+        "v1_contamination": 0
+      },
+      "id": "G05-ENRICHMENT",
+      "status": "passed"
+    },
+    {
+      "dimension": "eligible-record-attempt-outcomes",
+      "evidence": {
+        "attempt_receipts": 366,
+        "attempted_records": 365786,
+        "eligible_records": 365786,
+        "input_work_chunks": 366,
+        "ledger_failures": 0
+      },
+      "id": "G05-ENRICHMENT-ATTEMPTS",
+      "status": "passed"
+    },
+    {
+      "dimension": "ENRICHMENT-chunk-integrity",
+      "evidence": {
+        "all_declared_hashes_bytes_and_counts_match": true,
+        "chunks": 366,
+        "records": 22299
+      },
+      "id": "G05-ENRICHMENT-CHUNKS",
+      "status": "passed"
+    },
+    {
+      "dimension": "model-cost-boundary",
+      "evidence": {
+        "api_calls": 0,
+        "boundary": "Repository metadata supports zero incremental OpenAI API cost only. Codex subscription usage and external billing are not exposed.",
+        "cap_triggered": false,
+        "cap_usd": 250.0,
+        "incremental_openai_api_gbp": 0.0,
+        "incremental_openai_api_usd": 0.0
+      },
+      "id": "G05-ENRICHMENT-COST",
+      "status": "passed"
+    },
+    {
+      "dimension": "explorer-queryability",
+      "evidence": {
+        "expected_legislation_descriptor_sha256": "2d7c18dc4e678d7cde63e1bf1bb1c03ca7232cbcc346b9424a5e10dfacb2c73f",
+        "expected_whole_law_descriptor_sha256": "cc110e0dfbee15f25aabd3634744973671f9c7b77f02d028a127d8635e664403",
+        "federation_and_child": {
+          "status": "passed"
+        },
+        "graph_relationship_rendering": {
+          "status": "passed"
+        },
+        "legislation_descriptor_current": true,
+        "receipt_legislation_descriptor_sha256": "2d7c18dc4e678d7cde63e1bf1bb1c03ca7232cbcc346b9424a5e10dfacb2c73f",
+        "receipt_status": "passed",
+        "receipt_whole_law_descriptor_sha256": "cc110e0dfbee15f25aabd3634744973671f9c7b77f02d028a127d8635e664403",
+        "whole_law_descriptor_current": true
+      },
+      "id": "G05-EXPLORER",
+      "status": "passed"
+    },
+    {
+      "dimension": "federation-relationship-summary-reconciliation",
+      "evidence": {
+        "by_authority_equal": true,
+        "by_datapack_equal": true,
+        "by_freshness_equal": true,
+        "by_predicate_equal": true,
+        "freshness_semantics": "`current` means the frozen datapack is inside its declared refresh window. It does not mean that every legal provision is in force, unamended or suitable for reliance without live verification.",
+        "total": 872574
+      },
+      "id": "G05-FEDERATION-SUMMARY",
+      "status": "passed"
+    },
+    {
+      "dimension": "graph-provider-datapack-discovery",
+      "evidence": {
+        "external_edge_counts": {
+          "model-assisted": 22299,
+          "official-source": 14712
+        }
+      },
+      "id": "G05-GRAPH-INDEX",
+      "status": "passed"
+    },
+    {
+      "dimension": "root-relationship-summary-reconciliation",
+      "evidence": {
+        "combined_total": 872574,
+        "predicate_authority_datapack_rows_equal": true,
+        "summary_rows": 927
+      },
+      "id": "G05-ROOT-SUMMARY",
+      "status": "passed"
+    },
+    {
+      "dimension": "locked-release-totals",
+      "evidence": {
+        "expected": {
+          "combined_relationships": 872574,
+          "core_relationships": 835563,
+          "enrichment_attempts": 365786,
+          "model_assisted_assertions": 22299,
+          "official_effects": 14712,
+          "works": 365786
+        },
+        "observed": {
+          "combined_relationships": 872574,
+          "composition": {
+            "by_authority": {
+              "derived": 469777,
+              "model-assisted": 22299,
+              "official": 380498
+            },
+            "by_confidence": {
+              "0.96": 2197,
+              "0.97": 2332,
+              "0.98": 6719,
+              "0.99": 11051,
+              "1": 14712,
+              "high": 365786,
+              "low": 469777
+            },
+            "by_datapack": {
+              "codex-assisted-v2": 22299,
+              "core": 835563,
+              "legislation-effects": 14712
+            },
+            "by_freshness": {
+              "current": 872574
+            }
+          },
+          "core_relationships": 835563,
+          "enrichment_attempts": 365786,
+          "model_assisted_assertions": 22299,
+          "official_effects": 14712,
+          "predicate_classes": 926,
+          "works": 365786
+        }
+      },
+      "id": "G05-TOTALS",
+      "status": "passed"
+    },
+    {
+      "dimension": "v1-contamination",
+      "evidence": {
+        "active_v1_rows_in_core": 0
+      },
+      "id": "G05-V1-CORE",
+      "status": "passed"
+    }
+  ],
+  "cost_claim_boundary": "USD/GBP 0 is the recorded incremental OpenAI API cost only; Codex subscription usage and external billing are not exposed.",
+  "entity_model_disposition": {
+    "assessment": "whole-law/assurance/entity-model-coverage-assessment-20260726.json",
+    "implementation_scope": "declared-catalogue/schema-grain",
+    "release_claim": "No claim of complete source-native entity inventories or full source-family ingestion.",
+    "requirement": "P04-01",
+    "status": "verified"
+  },
+  "gate": "GATE-05",
+  "metrics": {
+    "combined_relationships": 872574,
+    "composition": {
+      "by_authority": {
+        "derived": 469777,
+        "model-assisted": 22299,
+        "official": 380498
+      },
+      "by_confidence": {
+        "0.96": 2197,
+        "0.97": 2332,
+        "0.98": 6719,
+        "0.99": 11051,
+        "1": 14712,
+        "high": 365786,
+        "low": 469777
+      },
+      "by_datapack": {
+        "codex-assisted-v2": 22299,
+        "core": 835563,
+        "legislation-effects": 14712
+      },
+      "by_freshness": {
+        "current": 872574
+      }
+    },
+    "core_relationships": 835563,
+    "enrichment_attempts": 365786,
+    "model_assisted_assertions": 22299,
+    "official_effects": 14712,
+    "predicate_classes": 926,
+    "works": 365786
+  },
+  "schema": "okf-graph-enrichment-gate-assurance.v1",
+  "scope": "Built UK Legislation graph, official-effects datapack, model-assisted v2 datapack, relationship summaries, descriptors and bound Explorer runtime receipt.",
+  "status": "passed"
+}

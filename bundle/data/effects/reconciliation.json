@@ -136,11 +136,32 @@
   ],
   "method": "The frozen datapack was parsed from the live official route at each envelope's observed retrieval time.",
   "notice": "A scheduled refresh creates a new immutable attempt; it never rewrites this evidence.",
+  "post_build_live": {
+    "live_additions": 0,
+    "live_matches": 16,
+    "observed_at": "2026-07-26T00:34:00Z",
+    "receipt": "whole-law/assurance/effects-live-reconciliation-20260726.json",
+    "release_effect": "passed-with-declared-live-delta",
+    "scope": {
+      "method": "latest-entry probe",
+      "results_per_route": 1,
+      "routes": 22,
+      "seed_works": 11,
+      "statement": "This post-build check compares the current official latest entry with the frozen static snapshot. It is not a full live recrawl and does not imply complete effects coverage."
+    },
+    "states": {
+      "agreement": 16,
+      "inaccessible-consistent": 6
+    }
+  },
   "schema": "okf-official-effects-reconciliation.v1",
   "snapshot_id": "legislation-effects-2026-07-25",
   "states": {
     "agreement_at_acquisition": 16,
     "inaccessible_at_acquisition": 6,
+    "post_build_agreement": 16,
+    "post_build_inaccessible_consistent": 6,
+    "post_build_live_additions": 0,
     "truncated_static_routes": 0
   }
 }

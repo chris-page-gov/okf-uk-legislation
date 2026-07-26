@@ -12,8 +12,8 @@
       ],
       "phase": 1,
       "release_disposition": {
-        "reason": "The immutable research package, Claude DOCX and separate transcript exist; final candidate binding remains a release-time action.",
-        "status": "implemented"
+        "reason": "All 24 research files retain their recorded hashes and 40 successful checks, while the Claude DOCX, normalized transcript and observed-access projection are separately hash-bound and verified by GATE-02.",
+        "status": "verified"
       },
       "requirement": "Freeze the 24 research files and Claude DOCX with SHA-256 manifests; add a normalized Markdown transcript and an observed-access-test record.",
       "source_clause": {
@@ -23,8 +23,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 1",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
+        "bundle/release-assurance/evidence-manifest.json",
+        "bundle/release-assurance/claude-observed-access-test.json",
         "tests/test_release_assurance.py"
       ]
     },
@@ -122,8 +124,8 @@
       ],
       "phase": 2,
       "release_disposition": {
-        "reason": "Authored and generated semantic representations exist, but their final candidate digests are not frozen.",
-        "status": "implemented"
+        "reason": "OKF Markdown plus YAML-LD is the authored semantic source; synchronized JSON-LD, Turtle, Explorer, CSV/CSVW, checksum and release-assurance projections pass the semantic and YAML-LD conformance receipts under GATE-03.",
+        "status": "verified"
       },
       "requirement": "Make OKF Markdown plus YAML-LD the authored semantic source; generate JSON-LD, Turtle, Explorer descriptors, CSV/CSVW mirrors, checksums and release metadata.",
       "source_clause": {
@@ -133,9 +135,11 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 2",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "release-assurance/gap-register.json"
+        "whole-law/assurance/semantic-conformance.json",
+        "whole-law/assurance/yaml-ld-conformance.json",
+        "bundle/checksums.json"
       ]
     },
     {
@@ -144,14 +148,15 @@
         "whole-law/ontology/index.md"
       ],
       "id": "P02-02",
-      "implementation_evidence": [
-        "whole-law/ontology/context.jsonld",
-        "whole-law/ontology/standards.json"
-      ],
+  "implementation_evidence": [
+    "whole-law/ontology/context.jsonld",
+    "whole-law/ontology/standards.json",
+    "whole-law/governance/architecture-decisions/ADR-016-namespace-migration.md"
+  ],
       "phase": 2,
-      "release_disposition": {
-        "reason": "The repository-controlled namespace is implemented; the permanent-domain migration is explicitly deferred.",
-        "status": "implemented"
+  "release_disposition": {
+    "reason": "The repository-controlled namespace is implemented, no unregistered w3id.org identifier is claimed, and ADR-016 governs a later permanent-domain migration while leaving domain selection explicitly deferred.",
+    "status": "verified"
       },
       "requirement": "Use the repo-controlled versioned namespace `https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#`; do not claim an unregistered `w3id.org` namespace. Record a namespace-migration ADR for the later permanent government domain.",
       "source_clause": {
@@ -161,9 +166,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 2",
         "verbatim": true
       },
-      "status": "implemented",
-      "validation_evidence": [
-        "release-assurance/gap-register.json"
+  "status": "verified",
+  "validation_evidence": [
+    "whole-law/governance/architecture-decisions/ADR-016-namespace-migration.md",
+    "tests/test_semantic_conformance.py"
       ]
     },
     {
@@ -179,8 +185,8 @@
       ],
       "phase": 2,
       "release_disposition": {
-        "reason": "Vocabulary, shapes, examples and five passing competency questions exist; complete-graph SHACL remains open.",
-        "status": "implemented"
+        "reason": "The versioned vocabulary and shapes are internally consistent, five executable competency questions pass, and SHACL validates both complete semantic descriptor representations with explicit Federation and SourceRegister focus nodes.",
+        "status": "verified"
       },
       "requirement": "Replace the proposed context and shapes with a defined vocabulary, competency questions and consistent work/expression/manifestation classes. Repair the current `LegalWork`/`LegislationWork`, expression-realisation and temporal-property mismatches.",
       "source_clause": {
@@ -190,9 +196,12 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 2",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "whole-law/assurance/competency-question-results.json"
+        "whole-law/assurance/competency-question-results.json",
+        "whole-law/assurance/semantic-conformance.json",
+        "scripts/run_semantic_conformance.py",
+        "tests/test_semantic_conformance.py"
       ]
     },
     {
@@ -203,12 +212,13 @@
       "id": "P02-04",
       "implementation_evidence": [
         "requirements-validation.txt",
+        "scripts/run_semantic_conformance.py",
         "scripts/check_whole_law_okf.py"
       ],
       "phase": 2,
       "release_disposition": {
-        "reason": "Pinned dependencies and a 53-of-53 normative YAML-LD result exist; complete candidate OKF/JSON-LD/RDF/SHACL assurance is not yet verified.",
-        "status": "implemented"
+        "reason": "Pinned dependencies and all 53 normative YAML-LD tests pass; the deterministic semantic receipt verifies expansion, compaction, flattening, framing, RDF round-trips, canonical equivalence and SHACL over both complete descriptor representations.",
+        "status": "verified"
       },
       "requirement": "Pin [OKF 0.2](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/3fcbb9f828c2f23d109c855ee403c3a4c81f3a96/okf/SPEC.md) and the local `yaml-ld` checkout. Validate YAML-LD against the [23 July 2026 YAML-LD Working Draft](https://www.w3.org/TR/yaml-ld-10/), including semantic round-trip and the applicable JSON-LD API and framing suites.",
       "source_clause": {
@@ -218,9 +228,11 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 2",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
         "whole-law/assurance/yaml-ld-conformance.json",
+        "whole-law/assurance/semantic-conformance.json",
+        "scripts/run_semantic_conformance.py",
         "scripts/check_whole_law_okf.py"
       ]
     },
@@ -236,8 +248,8 @@
       ],
       "phase": 3,
       "release_disposition": {
-        "reason": "Adapter and source metadata cover the researched 72 records and 36 classes; release-wide acquisition coverage is separate.",
-        "status": "implemented"
+        "reason": "The adapter contract covers all 72 source records and 36 legal-source classes with owner, authority, access, jurisdiction, licence, request evidence and exact applicability denominators; GATE-04 verifies the complete declared route set.",
+        "status": "verified"
       },
       "requirement": "Implement the source-adapter contract for all 72 source records and 36 legal-source classes, retaining owner, authority, access state, jurisdiction, licence, request evidence and exact applicability denominators.",
       "source_clause": {
@@ -247,8 +259,9 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 3",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
+        "whole-law/assurance/source-acquisition-gate-20260726.json",
         "scripts/check_whole_law_okf.py"
       ]
     },
@@ -264,8 +277,8 @@
       ],
       "phase": 3,
       "release_disposition": {
-        "reason": "Frozen archive/projection contracts and receipts exist; final evidence binding remains part of candidate freeze.",
-        "status": "implemented"
+        "reason": "The base and three replacement attempts preserve 130 immutable request/response envelopes with retrieval metadata, status, headers, media type, schema fingerprint, body hash and tool identity; byte recovery and frozen-input reconciliation pass under GATE-04.",
+        "status": "verified"
       },
       "requirement": "Store immutable request/response envelopes with retrieval time, status, headers, media type, schema fingerprint, body hash and tool version. Reconciliation operates from frozen envelopes, never directly from mutable live responses.",
       "source_clause": {
@@ -275,8 +288,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 3",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
+        "whole-law/assurance/source-acquisition-gate-20260726.json",
+        "whole-law/acquisition/current/evidence-reference.json",
         "evidence/source-acquisitions/whole-law-access/archive-receipts/20260725T203207Z-dd7315c3.json"
       ]
     },
@@ -287,12 +302,16 @@
       ],
       "id": "P03-03",
       "implementation_evidence": [
-        "whole-law/acquisition/current/observed-access-comparison.json"
+        "whole-law/acquisition/current/observed-access-comparison.json",
+        "whole-law/acquisition/source-route-replacements.v1.json",
+        "whole-law/acquisition/replacements/current/evidence-reference.json",
+        "whole-law/acquisition/replacements/supplements/20260726T010545Z-c0f5a003/evidence-reference.json",
+        "whole-law/assurance/source-acquisition-gate-20260726.json"
       ],
       "phase": 3,
       "release_disposition": {
-        "reason": "Access states are declared, but not every currently public authoritative route has a successful frozen acquisition.",
-        "status": "started"
+        "reason": "The effective 105-route public-GET view has 101 reachable and four declared restricted observations. Every stale or network-failed base route has a lineage-bound reachable replacement; no bypass was attempted. Corpus completeness remains separately limited to five exact official enumerations.",
+        "status": "verified"
       },
       "requirement": "Acquire every currently public authoritative route. Restricted or unavailable routes receive complete adapter and access metadata but no authentication bypass or fabricated content.",
       "source_clause": {
@@ -302,9 +321,12 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 3",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-        "release-assurance/gap-register.json"
+        "release-assurance/gap-register.json",
+        "scripts/audit_source_acquisition_gate.py",
+        "tests/test_source_route_replacements.py",
+        "tests/test_source_acquisition_gate.py"
       ]
     },
     {
@@ -318,8 +340,8 @@
       ],
       "phase": 3,
       "release_disposition": {
-        "reason": "The unified constraint ledger records trigger, effect, owner, mitigation and escalation without authorising bypass.",
-        "status": "implemented"
+        "reason": "The validated unified ledger retains every licence, fair-use, authentication, rate, robots, privacy and availability trigger with effect, owner, mitigation and escalation while preserving prototype scope and prohibiting bypass.",
+        "status": "verified"
       },
       "requirement": "Maintain a unified source-constraint ledger for fair-use, licence, authentication, rate-limit, robots, privacy and availability triggers. These constraints do not silently remove PoC functionality; every constraint receives an owner, mitigation and internal escalation record.",
       "source_clause": {
@@ -329,9 +351,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 3",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "scripts/check_whole_law_okf.py"
+        "whole-law/assurance/source-acquisition-gate-20260726.json",
+        "whole-law/acquisition/current/source-constraint-ledger.json"
       ]
     },
     {
@@ -341,13 +364,19 @@
       ],
       "id": "P04-01",
       "implementation_evidence": [
+        "whole-law/ontology/context.jsonld",
         "whole-law/ontology/vocabulary.ttl",
-        "whole-law/ontology/examples.jsonld"
+        "whole-law/ontology/examples.jsonld",
+        "whole-law/ontology/shapes.ttl",
+        "whole-law/ontology/competency-questions.json",
+        "bundle/data/manifest.json",
+        "bundle/data/effects/manifest.json",
+        "bundle/whole-law/data/source-register.json"
       ],
       "phase": 4,
       "release_disposition": {
-        "reason": "The vocabulary and examples implement part of the entity model; full corpus representation for every named entity class is incomplete.",
-        "status": "started"
+        "reason": "The versioned semantic contract, non-vacuous SHACL shapes, source-grounded fixtures and passing competency questions verify every named class at the federation's explicitly approved catalogue/schema grain. Source families without a child corpus remain visibly partial or planned and are not misrepresented as populated.",
+        "status": "verified"
       },
       "requirement": "Represent legal works, expressions, manifestations, provisions, cases, courts, organisations, publications, source records, jurisdictions and temporal states using source-native identifiers.",
       "source_clause": {
@@ -357,9 +386,14 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 4",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-        "release-assurance/gap-register.json"
+        "release-assurance/gap-register.json",
+        "whole-law/assurance/entity-model-coverage-assessment-20260726.json",
+        "whole-law/assurance/competency-question-results.json",
+        "whole-law/assurance/semantic-conformance.json",
+        "tests/test_semantic_conformance.py",
+        "tests/test_graph_enrichment_gate.py"
       ]
     },
     {
@@ -374,8 +408,8 @@
       ],
       "phase": 4,
       "release_disposition": {
-        "reason": "A non-empty 14,712-assertion official effects datapack and integrity metadata exist.",
-        "status": "implemented"
+        "reason": "The sealed legislation.gov.uk evidence deterministically materialises 14,712 official amendment/effect assertions with direction, provenance, observed time, application state, evidence URI and authority. The graph-enrichment receipt and effects reconciliation directly verify the non-empty queryable datapack; this claim does not depend on the separate paid-enrichment gate.",
+        "status": "verified"
       },
       "requirement": "Materialise legislation.gov.uk amendment/effect data into integrity-bound provider datapacks. Each assertion records direction, source, observed time, applied/unapplied state where supplied, evidence URI and authority.",
       "source_clause": {
@@ -385,8 +419,9 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 4",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
+        "whole-law/assurance/graph-enrichment-gate-20260726.json",
         "bundle/data/effects/reconciliation.json"
       ]
     },
@@ -401,8 +436,8 @@
       ],
       "phase": 4,
       "release_disposition": {
-        "reason": "Acquisition-time agreement/inaccessibility is recorded, but no later live reconciliation is bound to the current candidate.",
-        "status": "started"
+        "reason": "The dated static graph reconciles 22 bounded official live routes as 16 agreements and six inaccessible-consistent checks, and the real-corpus Explorer receipt verifies explicit agreement, live-addition, superseded and inaccessible states including zero-valued states.",
+        "status": "verified"
       },
       "requirement": "Keep static effects as a dated research snapshot and reconcile selected works against the live official service. The UI must distinguish agreement, live additions, superseded assertions and inaccessible live checks.",
       "source_clause": {
@@ -412,9 +447,11 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 4",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-        "release-assurance/gap-register.json"
+        "whole-law/assurance/effects-live-reconciliation-20260726.json",
+        "release-assurance/explorer-runtime-acceptance.json",
+        "scripts/reconcile_legislation_effects_live.py"
       ]
     },
     {
@@ -429,8 +466,8 @@
       ],
       "phase": 4,
       "release_disposition": {
-        "reason": "Deterministic builders and summaries exist; release-time reproducibility remains unverified.",
-        "status": "implemented"
+        "reason": "Deterministic builders generate source coverage, legal-source taxonomy, ontology crosswalks, provenance, rights and dimension-reconciled relationship summaries. The graph-enrichment receipt and Whole-Law checker directly reconcile all 872,574 rows; clean-room byte reproduction remains separately governed by GATE-06.",
+        "status": "verified"
       },
       "requirement": "Generate source coverage, legal-source taxonomy, ontology crosswalks, provenance, rights and relationship summaries deterministically.",
       "source_clause": {
@@ -440,25 +477,28 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 4",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
+        "whole-law/assurance/graph-enrichment-gate-20260726.json",
         "scripts/check_whole_law_okf.py"
       ]
     },
     {
-      "design_evidence": [
-        "docs/effects-and-enrichment.md",
-        "whole-law/schemas/model-enrichment-run.schema.json"
-      ],
+    "design_evidence": [
+      "docs/effects-and-enrichment.md",
+      "whole-law/schemas/model-enrichment-run-v2.schema.json",
+      "enrichment/model-assisted-paid-governance-v1.json"
+    ],
       "id": "P05-01",
       "implementation_evidence": [
-        "bundle/enrichment/codex-assisted-v2.json",
-        "bundle/data/enrichment/manifest.json"
+      "bundle/enrichment/codex-assisted-v2.json",
+      "bundle/data/enrichment/manifest.json",
+      "whole-law/assurance/model-assisted-input-eligibility-20260726.json"
       ],
       "phase": 5,
       "release_disposition": {
-        "reason": "The independent release-gating audit reconstructed all 365,786 attempts and all 22,299 literal-evidence assertions while proving that rejected v1 output remains absent.",
-        "status": "verified"
+        "reason": "Credential-free preflight covers all 365,786 works: 359,140 have local semantic evidence and 6,646 are deferred pending frozen CLML, while zero CLML bodies are currently frozen. The historical Codex-assisted run remains title-rule evidence only and cannot supply the dedicated paid-run terminal outcomes.",
+        "status": "started"
       },
       "requirement": "Attempt enrichment for every eligible work, using official title, long title, source metadata and available CLML annotations; lack of evidence yields no assertion rather than an invented classification.",
       "source_clause": {
@@ -468,26 +508,28 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 5",
         "verbatim": true
       },
-      "status": "verified",
+      "status": "started",
       "validation_evidence": [
-        "whole-law/assurance/enrichment-v2-independent-audit-20260726.json",
-        "tests/test_model_assisted_v2_independent_audit.py"
+      "whole-law/assurance/model-assisted-input-eligibility-20260726.json",
+      "tests/test_model_enrichment_input_evidence.py"
       ]
     },
     {
-      "design_evidence": [
-        "docs/effects-and-enrichment.md",
-        "whole-law/schemas/model-enrichment-run.schema.json"
-      ],
+    "design_evidence": [
+      "docs/effects-and-enrichment.md",
+      "whole-law/schemas/model-enrichment-run-v2.schema.json",
+      "enrichment/model-assisted-paid-governance-v1.json"
+    ],
       "id": "P05-02",
       "implementation_evidence": [
-        "enrichment/codex-assisted-v2-calibration.json",
-        "bundle/data/enrichment/calibration.json"
+      "enrichment/codex-assisted-v2-calibration.json",
+      "enrichment/model-assisted-calibration-manifest-v1.json",
+      "enrichment/model-assisted-paid-governance-v1.json"
       ],
       "phase": 5,
-      "release_disposition": {
-        "reason": "The fixed calibration artefact, thresholds, positive/near-miss pairs and hard negatives pass independently; the Codex task surface still does not expose the exact deployment identifier.",
-        "status": "implemented"
+  "release_disposition": {
+        "reason": "The fixed calibration population and fail-closed selection contracts are authored, but no dedicated paid run has compared available OpenAI structured-output models, selected the lowest-cost qualifier, or exercised the hash-bound strongest-model escalation path. Historical Codex-assisted output cannot satisfy this gate.",
+    "status": "started"
       },
       "requirement": "Use a fixed calibration set to choose the lowest-cost available OpenAI structured-output model that achieves 100% schema validity, at least 95% precision and at least 95% evidence support. Escalate disagreements and high-risk records to the strongest available configured model.",
       "source_clause": {
@@ -497,9 +539,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 5",
         "verbatim": true
       },
-      "status": "implemented",
-      "validation_evidence": [
-        "whole-law/assurance/enrichment-v2-independent-audit-20260726.json"
+  "status": "started",
+  "validation_evidence": [
+      "enrichment/model-assisted-paid-governance-v1.json",
+      "release-assurance/gap-register.json"
       ]
     },
     {
@@ -514,8 +557,8 @@
       ],
       "phase": 5,
       "release_disposition": {
-        "reason": "Documentation and relationship metadata distinguish candidate discovery enrichment from official legal assertions.",
-        "status": "implemented"
+        "reason": "Verified only as an authority-boundary and publication-scope control: assertion contracts and Explorer presentation keep source-derived official effects separate from derived candidate discovery metadata and do not present model output as official legal classification or advice. This does not verify completion of the dedicated paid enrichment run.",
+        "status": "verified"
       },
       "requirement": "Treat topics, concepts and entity links as candidate discovery metadata, never official legal classification or advice. Official amendment/effect assertions remain source-derived only.",
       "source_clause": {
@@ -525,24 +568,28 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 5",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "whole-law/schemas/relationship-assertion.schema.json"
+        "whole-law/schemas/relationship-assertion.schema.json",
+        "whole-law/assurance/graph-enrichment-gate-20260726.json",
+        "release-assurance/explorer-runtime-acceptance.json"
       ]
     },
     {
-      "design_evidence": [
-        "docs/effects-and-enrichment.md",
-        "whole-law/schemas/model-enrichment-run.schema.json"
-      ],
+    "design_evidence": [
+      "docs/effects-and-enrichment.md",
+      "whole-law/schemas/model-enrichment-review.schema.json",
+      "whole-law/schemas/model-enrichment-run-v2.schema.json"
+    ],
       "id": "P05-04",
       "implementation_evidence": [
-        "whole-law/assurance/enrichment-v2-independent-audit-20260726.json"
+      "whole-law/assurance/enrichment-v2-independent-audit-20260726.json",
+      "enrichment/model-assisted-paid-governance-v1.json"
       ],
       "phase": 5,
       "release_disposition": {
-        "reason": "A separately implemented auditor reconstructs the frozen candidate from source records and governed rules without importing or executing the producer, and all evidence, authority and rejection checks pass.",
-        "status": "verified"
+        "reason": "Deterministic audit and strict reviewer contracts exist, but no dedicated paid run has used a separately hashed reviewer prompt and exact reviewer model distinct from the generator over every proposed assertion. Historical deterministic reconstruction is not a substitute.",
+        "status": "started"
       },
       "requirement": "Require independent validation through deterministic evidence checks plus a separate reviewer prompt/model. Generator output cannot verify itself.",
       "source_clause": {
@@ -552,24 +599,25 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 5",
         "verbatim": true
       },
-      "status": "verified",
+      "status": "started",
       "validation_evidence": [
-        "scripts/audit_model_assisted_v2_independent.py",
-        "tests/test_model_assisted_v2_independent_audit.py"
+      "whole-law/schemas/model-enrichment-review.schema.json",
+      "release-assurance/gap-register.json"
       ]
     },
     {
-      "design_evidence": [
-        "docs/effects-and-enrichment.md",
-        "whole-law/schemas/model-enrichment-run.schema.json"
-      ],
+    "design_evidence": [
+      "docs/effects-and-enrichment.md",
+      "whole-law/schemas/model-enrichment-run-v2.schema.json",
+      "enrichment/model-assisted-paid-governance-v1.json"
+    ],
       "id": "P05-05",
       "implementation_evidence": [
         "bundle/enrichment/codex-assisted-v2.json"
       ],
       "phase": 5,
       "release_disposition": {
-        "reason": "All available hashes, attempts, parameters, retries, rejections, usage and cost are independently verified; the Codex task surface does not expose the exact underlying deployment identifier or billable subscription usage.",
+        "reason": "Historical Codex-assisted hashes and zero incremental API spend are recorded, but they are historical-only evidence: the task surface does not expose its exact underlying deployment identifier or billable subscription usage, and no dedicated paid run yet supplies exact model, token, retry, cache and cost receipts.",
         "status": "blocked"
       },
       "requirement": "Record provider, exact model, prompt and schema hashes, parameters, input hashes, tokens, retries, rejected records and cost. Cache by content hash and resume without repeat billing.",
@@ -587,18 +635,20 @@
       ]
     },
     {
-      "design_evidence": [
-        "docs/effects-and-enrichment.md",
-        "whole-law/schemas/model-enrichment-run.schema.json"
-      ],
+    "design_evidence": [
+      "docs/effects-and-enrichment.md",
+      "whole-law/schemas/model-enrichment-cost-cap-receipt.schema.json",
+      "whole-law/schemas/model-enrichment-run-v2.schema.json"
+    ],
       "id": "P05-06",
       "implementation_evidence": [
-        "bundle/enrichment/codex-assisted-v2.json",
-        "release-assurance/release-policy.json"
+      "bundle/enrichment/codex-assisted-v2.json",
+      "release-assurance/release-policy.json",
+      "enrichment/model-assisted-paid-governance-v1.json"
       ],
       "phase": 5,
       "release_disposition": {
-        "reason": "The cap and zero incremental API cost are recorded; the required final USD/GBP report is not final until release completion.",
+        "reason": "The US$250 fail-closed cap contracts are authored, but governed paid-run cost is unavailable because the dedicated run has not occurred. Historical Codex-assisted zero incremental API spend is labelled separately and cannot satisfy the final USD/GBP paid-cost report.",
         "status": "started"
       },
       "requirement": "Apply a US$250 unattended hard cap. A preflight projects total cost; the paid stage halts before exceeding the cap. The final report gives exact USD and GBP totals, exchange-rate source/date and cost per accepted assertion. Secrets remain outside Git and logs.",
@@ -611,7 +661,8 @@
       },
       "status": "started",
       "validation_evidence": [
-        "scripts/build_release_assurance.py"
+      "scripts/build_release_assurance.py",
+      "release-assurance/gap-register.json"
       ]
     },
     {
@@ -626,8 +677,8 @@
       ],
       "phase": 6,
       "release_disposition": {
-        "reason": "The authored/generated directory split is implemented.",
-        "status": "implemented"
+        "reason": "Whole-Law authored knowledge is retained under whole-law/ and its synchronized Pages publication is generated under bundle/whole-law/; the complete Whole-Law validator verifies the split and byte synchronization.",
+        "status": "verified"
       },
       "requirement": "Keep authored Whole-Law content under `whole-law/`; generate public output under `bundle/whole-law/` because Pages deploys `bundle/`.",
       "source_clause": {
@@ -637,8 +688,9 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 6",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
+        "scripts/build_whole_law_okf.py",
         "scripts/check_whole_law_okf.py"
       ]
     },
@@ -654,8 +706,8 @@
       ],
       "phase": 6,
       "release_disposition": {
-        "reason": "Root and Whole-Law descriptors exist with alternate representations.",
-        "status": "implemented"
+        "reason": "The backward-compatible root legislation descriptor and /whole-law/ federation descriptor expose their Markdown, YAML-LD, JSON-LD, vocabulary, shapes, coverage, evaluation and constraint-ledger representations, and synchronized validation passes.",
+        "status": "verified"
       },
       "requirement": "Preserve the existing root legislation descriptor. Publish the federation at `/whole-law/okf-explorer.json`, with links to its Markdown index, YAML-LD, JSON-LD, vocabulary, shapes, coverage, evaluation and constraint ledgers.",
       "source_clause": {
@@ -665,9 +717,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 6",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "scripts/check_whole_law_okf.py"
+        "scripts/check_whole_law_okf.py",
+        "scripts/check_internal_links.py"
       ]
     },
     {
@@ -709,8 +762,8 @@
       ],
       "phase": 6,
       "release_disposition": {
-        "reason": "Source-family availability states are explicit and no planned child is represented as implemented.",
-        "status": "implemented"
+        "reason": "Every source family is published with an explicit available, partial, restricted, unavailable or planned state, and the validated federation never represents a non-existent child bundle as implemented.",
+        "status": "verified"
       },
       "requirement": "A source family is listed as `available`, `partial`, `restricted`, `unavailable` or `planned`; a non-existent child bundle is never represented as implemented.",
       "source_clause": {
@@ -720,8 +773,9 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 6",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
+        "whole-law/assurance/source-acquisition-gate-20260726.json",
         "scripts/check_whole_law_okf.py"
       ]
     },
@@ -736,8 +790,8 @@
       ],
       "phase": 6,
       "release_disposition": {
-        "reason": "The Explorer-side example implementation exists on its implementation branch but is not yet released.",
-        "status": "implemented"
+        "reason": "The exact green Explorer commit registers the Whole-Law bundle as an example while retaining production bundle data outside the Explorer source repository; the digest-bound federation acceptance receipt passes.",
+        "status": "verified"
       },
       "requirement": "Add the Whole-Law bundle to the Explorer example registry while keeping production bundles out of the Explorer source repository.",
       "source_clause": {
@@ -747,9 +801,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 6",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "repo:https://github.com/chris-page-gov/okf-explorer"
+        "release-assurance/explorer-runtime-acceptance.json",
+        "https://github.com/chris-page-gov/okf-explorer/commit/903b38a13c1497fcfc6c519dc764fd0b23ba0572"
       ]
     },
     {
@@ -763,8 +818,8 @@
       ],
       "phase": 7,
       "release_disposition": {
-        "reason": "Federation loader work exists in Explorer, but preservation across all legacy profiles is still under acceptance testing.",
-        "status": "started"
+        "reason": "The digest-bound real-corpus receipt passes federation and child loading in Chrome, Firefox and WebKit, while the exact Explorer commit passes its complete CI suite covering the preserved small-bundle, large-corpus, OKF 0.1 and OKF 0.2 profiles.",
+        "status": "verified"
       },
       "requirement": "Add an additive `okf-explorer-federation.v1` loader while preserving small-bundle, large-corpus, OKF 0.1 and OKF 0.2 behaviour.",
       "source_clause": {
@@ -774,9 +829,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 7",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-        "repo:https://github.com/chris-page-gov/okf-explorer"
+        "release-assurance/explorer-runtime-acceptance.json",
+        "https://github.com/chris-page-gov/okf-explorer/commit/903b38a13c1497fcfc6c519dc764fd0b23ba0572"
       ]
     },
     {
@@ -790,8 +846,8 @@
       ],
       "phase": 7,
       "release_disposition": {
-        "reason": "Overview and hydration work exists, but complete federated UX acceptance evidence is pending.",
-        "status": "started"
+        "reason": "The exact green Explorer commit implements the overview-first, cross-bundle search, facet, graph, timeline, provenance, coverage and provider-hydration surface; the digest-bound real-corpus receipt verifies overview, child hydration, search, facets and graph across all three browsers.",
+        "status": "verified"
       },
       "requirement": "Support overview-first loading, cross-bundle search, source/jurisdiction/type/status/freshness facets, relationship graph, legal timeline, provenance inspection, coverage views and provider-datapack hydration.",
       "source_clause": {
@@ -801,9 +857,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 7",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-        "repo:https://github.com/chris-page-gov/okf-explorer"
+        "release-assurance/explorer-runtime-acceptance.json",
+        "https://github.com/chris-page-gov/okf-explorer/commit/903b38a13c1497fcfc6c519dc764fd0b23ba0572"
       ]
     },
     {
@@ -818,8 +875,8 @@
       ],
       "phase": 7,
       "release_disposition": {
-        "reason": "Relationship composition is published and Explorer presentation work exists; final visual acceptance is pending.",
-        "status": "started"
+        "reason": "The real-corpus cross-browser receipt verifies distinct official, derived and model-assisted labels, colours, line styles and URL-backed filters, plus class-specific relationship composition instead of a single headline total.",
+        "status": "verified"
       },
       "requirement": "Show official, derived and model-assisted relationships with distinct labels and filters. Display relation counts by class rather than a single total.",
       "source_clause": {
@@ -829,9 +886,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 7",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-        "repo:https://github.com/chris-page-gov/okf-explorer"
+        "release-assurance/explorer-runtime-acceptance.json",
+        "https://github.com/chris-page-gov/okf-explorer/commit/903b38a13c1497fcfc6c519dc764fd0b23ba0572"
       ]
     },
     {
@@ -846,8 +904,8 @@
       ],
       "phase": 7,
       "release_disposition": {
-        "reason": "Descriptors expose declared repository, documentation and alternate access routes.",
-        "status": "implemented"
+        "reason": "Descriptors expose declared repository, published descriptor, raw subpath, release archive and documentation routes, and the synchronized publication validator and internal-link crawler verify them without guessed paths.",
+        "status": "verified"
       },
       "requirement": "Add repository, published descriptor, raw subpath, release archive and documentation links to every landing page and descriptor.",
       "source_clause": {
@@ -857,9 +915,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 7",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "scripts/check_whole_law_okf.py"
+        "scripts/check_whole_law_okf.py",
+        "scripts/check_internal_links.py"
       ]
     },
     {
@@ -873,8 +932,8 @@
       ],
       "phase": 7,
       "release_disposition": {
-        "reason": "Fallback logic is implemented in progress; deployed API-exhaustion and raw-mismatch journeys are not frozen.",
-        "status": "started"
+        "reason": "The exact green Explorer commit passes declared Pages, raw-content and archive fallback tests plus subpath-aware raw-404 guidance. Exact-RC public access remains separately governed by P08-06, P09-05 and GATE-09.",
+        "status": "verified"
       },
       "requirement": "When GitHub API access is rate-limited, continue through Pages, raw-content and release/archive routes. A raw-root 404 must prompt use of the descriptor’s declared repository subpath rather than speculative probing.",
       "source_clause": {
@@ -884,9 +943,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 7",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-        "release-assurance/gap-register.json"
+        "https://github.com/chris-page-gov/okf-explorer/commit/903b38a13c1497fcfc6c519dc764fd0b23ba0572",
+        "release-assurance/explorer-runtime-acceptance.json"
       ]
     },
     {
@@ -901,8 +961,8 @@
       ],
       "phase": 7,
       "release_disposition": {
-        "reason": "YAML-LD sniffing/fallback logic is implemented in progress; deployed MIME fallback remains unverified.",
-        "status": "started"
+        "reason": "The exact green Explorer commit safely content-sniffs YAML-LD while preferring declared media types and JSON-LD for strict transport; its CI exercises the octet-stream fallback. Exact-RC public MIME observation remains separately governed by GATE-09.",
+        "status": "verified"
       },
       "requirement": "Content-sniff `.yamlld` safely when GitHub Pages supplies the wrong MIME type, while continuing to prefer declared media types and JSON-LD where strict HTTP conformance is required.",
       "source_clause": {
@@ -912,9 +972,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 7",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-        "release-assurance/gap-register.json"
+        "https://github.com/chris-page-gov/okf-explorer/commit/903b38a13c1497fcfc6c519dc764fd0b23ba0572",
+        "release-assurance/explorer-runtime-acceptance.json"
       ]
     },
     {
@@ -978,13 +1039,17 @@
         "whole-law/schemas/evaluation.schema.json"
       ],
       "id": "P08-03",
-      "implementation_evidence": [
-        "whole-law/evaluation/README.md"
-      ],
+  "implementation_evidence": [
+    "whole-law/evaluation/README.md",
+    "scripts/evaluation_challenge_discovery.py",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/challenge-discovery-calibration.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/challenge-pass-1.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/challenge-pass-2.json"
+  ],
       "phase": 8,
-      "release_disposition": {
-        "reason": "No two successive held-out challenge passes exist; this cannot be satisfied by structural coverage.",
-        "status": "blocked"
+  "release_disposition": {
+    "reason": "The independently seeded corpus-navigation challenge-discovery protocol passed its calibration catalogue and two disjoint persona/task-complete passes with no critical failure mode and a 0% new non-critical-category rate in each pass.",
+    "status": "verified"
       },
       "requirement": "Continue held-out challenge passes until two successive passes introduce no critical failure mode and less than 1% new non-critical categories.",
       "source_clause": {
@@ -994,9 +1059,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 8",
         "verbatim": true
       },
-      "status": "blocked",
-      "validation_evidence": [
-        "release-assurance/gap-register.json"
+  "status": "verified",
+  "validation_evidence": [
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/integrity.json",
+    "tests/test_release_evaluation_runner.py"
       ]
     },
     {
@@ -1005,14 +1071,15 @@
         "whole-law/schemas/evaluation.schema.json"
       ],
       "id": "P08-04",
-      "implementation_evidence": [
-        "whole-law/evaluation/release-questions.json",
-        "whole-law/evaluation/answer-schema.json"
-      ],
+  "implementation_evidence": [
+    "whole-law/evaluation/release-questions.json",
+    "whole-law/evaluation/answer-schema.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/answers.json"
+  ],
       "phase": 8,
-      "release_disposition": {
-        "reason": "The schema requires the fields, but no independently verified gold legal-answer corpus exists.",
-        "status": "started"
+  "release_disposition": {
+    "reason": "All 415 release-gold questions are bound to immutable corpus-navigation evidence, expected propositions, near-miss rules, temporal context, citation expectations, a snapshot identity and separate verification status. The retained broad legal prompts remain non-gold context and no legal-answer assurance is claimed.",
+    "status": "verified"
       },
       "requirement": "Every gold question requires immutable source evidence, expected propositions, near-miss rules, temporal context, citation expectations, corpus snapshot ID and separate verification status.",
       "source_clause": {
@@ -1022,9 +1089,11 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 8",
         "verbatim": true
       },
-      "status": "started",
-      "validation_evidence": [
-        "release-assurance/gap-register.json"
+  "status": "verified",
+  "validation_evidence": [
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/verification.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/integrity.json",
+    "tests/test_release_evaluation_runner.py"
       ]
     },
     {
@@ -1033,13 +1102,17 @@
         "whole-law/schemas/evaluation.schema.json"
       ],
       "id": "P08-05",
-      "implementation_evidence": [
-        "whole-law/evaluation/README.md"
-      ],
+  "implementation_evidence": [
+    "whole-law/evaluation/README.md",
+    "scripts/run_release_evaluation.py",
+    "scripts/verify_release_evaluation_answers.py",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/results.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/direct-source-baseline.json"
+  ],
       "phase": 8,
-      "release_disposition": {
-        "reason": "No executed verified answer corpus demonstrates citations, zero hard failures and the 85/100 critical threshold.",
-        "status": "blocked"
+  "release_disposition": {
+    "reason": "The corpus-navigation release suite executed 415/415 answers through the OKF publication workflow and a separately reconstructed frozen direct-source baseline: all are schema-valid and citation-resolvable, with zero hard failures and a minimum critical persona/task-family score of 100/100. This is not a legal-answer score.",
+    "status": "verified"
       },
       "requirement": "Execute the suite against the Explorer/OKF workflow and a documented direct-source baseline. Release requires zero hard failures, 100% schema-valid answers, 100% resolvable citations and at least 85/100 for every critical persona/task family.",
       "source_clause": {
@@ -1049,9 +1122,12 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 8",
         "verbatim": true
       },
-      "status": "blocked",
-      "validation_evidence": [
-        "release-assurance/gap-register.json"
+  "status": "verified",
+  "validation_evidence": [
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/verification.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/scores.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/integrity.json",
+    "tests/test_release_evaluation_runner.py"
       ]
     },
     {
@@ -1092,8 +1168,8 @@
       ],
       "phase": 8,
       "release_disposition": {
-        "reason": "Internal adversarial work is explicitly labelled as non-external and non-practitioner assurance.",
-        "status": "implemented"
+        "reason": "The immutable internal adversarial audit, evaluation documentation and execution reports explicitly distinguish analytical red-team work from qualified practitioner, accessibility-expert, third-party legal or external assurance.",
+        "status": "verified"
       },
       "requirement": "Keep the internal adversarial audit explicitly separate from qualified practitioner, accessibility-expert or third-party legal assurance.",
       "source_clause": {
@@ -1103,9 +1179,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 8",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "whole-law/evaluation/README.md"
+        "whole-law/evaluation/README.md",
+        "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/report.md"
       ]
     },
     {
@@ -1120,8 +1197,8 @@
       ],
       "phase": 9,
       "release_disposition": {
-        "reason": "The README and guides provide the publication map and official source links; deployed crawl remains separate.",
-        "status": "implemented"
+        "reason": "The README and synchronized guides preserve the existing legislation instructions and direct GOV.UK/legislation.gov.uk links while providing the UK Legislation/Whole-Law publication map; the complete authored link and landing-route policy passes.",
+        "status": "verified"
       },
       "requirement": "Rewrite the repository README as the UK Legislation/Whole-Law publication map while preserving existing legislation instructions and direct GOV.UK/legislation.gov.uk links.",
       "source_clause": {
@@ -1131,9 +1208,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 9",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "scripts/check_internal_links.py"
+        "scripts/check_internal_links.py",
+        "tests/test_internal_links.py"
       ]
     },
     {
@@ -1148,8 +1226,8 @@
       ],
       "phase": 9,
       "release_disposition": {
-        "reason": "Canonical URL repair is in progress and has not yet been validated across every current identifier and target field.",
-        "status": "started"
+        "reason": "All current evaluation $id and target_bundle fields resolve to canonical okf-uk-legislation URLs, while preserved compatibility-document links remain explicitly labelled; the CI link policy now asserts these machine identifiers directly.",
+        "status": "verified"
       },
       "requirement": "Update all current documentation, evaluation `$id` values and `target_bundle` fields from stale `ai-infrastructure-wiki` locations to canonical repo URLs.",
       "source_clause": {
@@ -1159,9 +1237,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 9",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-        "scripts/check_internal_links.py"
+        "scripts/check_internal_links.py",
+        "tests/test_internal_links.py"
       ]
     },
     {
@@ -1175,8 +1254,8 @@
       ],
       "phase": 9,
       "release_disposition": {
-        "reason": "Compatibility redirects and preserved historical content are implemented locally but not yet deployed and smoke-tested.",
-        "status": "implemented"
+        "reason": "The exact compatibility commit preserves the original README, authoring and CKAN documentation while validating 69 critical files, 35 moved descriptors, 16 static redirects, historical evaluation routes and query-safe fallbacks. Deployment remains separately governed by P09-05 and GATE-09.",
+        "status": "verified"
       },
       "requirement": "Extend `ai-infrastructure-wiki-compat` with moved descriptors and redirects for legislation, Whole-Law, evaluation schemas and historical documentation paths. Its preserved original README and OKF bundle-authoring/CKAN documentation remain intact.",
       "source_clause": {
@@ -1186,9 +1265,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 9",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "repo:https://github.com/chris-page-gov/ai-infrastructure-wiki"
+        "https://github.com/chris-page-gov/ai-infrastructure-wiki/commit/93c6169289b66f8d7fec7c2e5732316e05b0f0e2",
+        "release-assurance/deployed-entrypoints-manifest.json"
       ]
     },
     {
@@ -1203,8 +1283,8 @@
       ],
       "phase": 9,
       "release_disposition": {
-        "reason": "Role-specific guides exist, but synchronization with the final candidate and cost/results is incomplete.",
-        "status": "started"
+        "reason": "Synchronized guides for researchers, legal professionals, data engineers, agents and maintainers cover limitations, source coverage, authority, freshness, rights, cost and recovery, and link to generated release reports so final values update without rewriting the guidance contract.",
+        "status": "verified"
       },
       "requirement": "Publish synchronized human guides for researchers, legal professionals, data engineers, agents and maintainers, including limitations, source coverage, authority semantics, freshness, rights, cost and recovery procedures.",
       "source_clause": {
@@ -1214,9 +1294,13 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 9",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-        "scripts/check_internal_links.py"
+        "scripts/check_internal_links.py",
+        "scripts/build_publication_docs.py",
+        "tests/test_internal_links.py",
+        "scripts/build_release_assurance.py",
+        "tests/test_release_assurance.py"
       ]
     },
     {
@@ -1258,8 +1342,8 @@
       ],
       "phase": 10,
       "release_disposition": {
-        "reason": "The fail-closed state machine exists; no RC or promotion is claimed.",
-        "status": "implemented"
+        "reason": "The deterministic release policy and tests enforce the draft-to-candidate-to-validated-to-RC-to-published progression and prohibit rebuild-based promotion; no RC or publication is claimed before its separate evidence exists.",
+        "status": "verified"
       },
       "requirement": "Implement fail-closed release states: `draft → candidate → validated → rc → published`. Build the RC once and promote identical digests without rebuilding.",
       "source_clause": {
@@ -1269,7 +1353,7 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 10",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
         "tests/test_release_assurance.py"
       ]
@@ -1285,7 +1369,7 @@
       ],
       "phase": 10,
       "release_disposition": {
-        "reason": "Rights, SBOM and provenance builders exist, but clean-room reproduction and final multi-repository supply-chain evidence are incomplete.",
+        "reason": "Rights, SBOM, provenance and report builders exist, but the dedicated paid model-cost evidence, clean-room reproduction and final multi-repository supply-chain evidence are incomplete.",
         "status": "started"
       },
       "requirement": "Produce SPDX rights data, a CycloneDX SBOM, provenance attestations, checksums, source inventory, constraint report, model-cost report and clean-room reproduction evidence.",
@@ -1335,12 +1419,13 @@
       ],
       "id": "P10-04",
       "implementation_evidence": [
-        "release-assurance/release-gates.json"
+        "release-assurance/release-gates.json",
+        "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.0"
       ],
       "phase": 10,
       "release_disposition": {
-        "reason": "Explorer has not yet been released and no Legislation RC is frozen, deployed or promoted.",
-        "status": "blocked"
+        "reason": "The prerequisite Explorer v0.5.0 release is published from the exact green and deployed commit. The Legislation RC freeze, public RC smoke test and identical-byte final promotion remain outstanding.",
+        "status": "started"
       },
       "requirement": "Release `okf-explorer v0.5.0` before `okf-uk-legislation v0.3.0-rc.1`; deploy the RC, run public smoke tests, then promote the same artefacts to `v0.3.0`.",
       "source_clause": {
@@ -1350,9 +1435,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 10",
         "verbatim": true
       },
-      "status": "blocked",
+      "status": "started",
       "validation_evidence": [
-        "release-assurance/gap-register.json"
+        "release-assurance/gap-register.json",
+        "https://github.com/chris-page-gov/okf-explorer/actions/runs/30187219574"
       ]
     },
     {
@@ -1361,14 +1447,17 @@
         "release-assurance/release-gates.json"
       ],
       "id": "P10-05",
-      "implementation_evidence": [
-        ".github/workflows/ci.yml",
-        ".github/workflows/pages.yml"
-      ],
+  "implementation_evidence": [
+    ".github/workflows/drift.yml",
+    "release-assurance/refresh-attempt-policy.json",
+    "release-assurance/schemas/refresh-attempt-manifest.schema.json",
+    "release-assurance/schemas/refresh-attempt-datapack.schema.json",
+    "scripts/seal_refresh_attempt.py"
+  ],
       "phase": 10,
       "release_disposition": {
-        "reason": "Drift workflow implementation exists, but scheduled public execution receipts and release validation are pending.",
-        "status": "started"
+        "reason": "The scheduled workflow and tested offline sealer observe source drift, new-work deltas, links, checksums and access, then create bounded content-addressed append-only attempt datapacks that preserve failed or drift observations before failing closed.",
+        "status": "verified"
       },
       "requirement": "Add scheduled source drift, new-work delta, link, checksum and access probes. Refreshes create immutable attempts and datapacks; they do not rewrite historical evidence.",
       "source_clause": {
@@ -1378,9 +1467,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 10",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-        "tests/test_release_drift.py"
+        "tests/test_release_drift.py",
+        "tests/test_refresh_attempt.py"
       ]
     },
     {
@@ -1446,8 +1536,8 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "Repository policy and acquisition handling prohibit authentication bypass.",
-        "status": "implemented"
+        "reason": "Repository policy, bounded public-source acquisition code and GATE-04 evidence enforce public access only and verify that no authentication or access-control bypass was attempted.",
+        "status": "verified"
       },
       "requirement": "no authentication bypass",
       "source_clause": {
@@ -1457,9 +1547,10 @@
         "source": "User-approved plan default",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "AGENTS.md"
+        "AGENTS.md",
+        "whole-law/assurance/source-acquisition-gate-20260726.json"
       ]
     },
     {
@@ -1472,7 +1563,7 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "Model-assisted enrichment was executed for the full corpus, independently reconstructed, and published only as candidate discovery metadata.",
+        "reason": "Verified as a controlling scope decision only: model-assisted semantic enrichment is authorised and governed as derived candidate discovery metadata. This disposition does not claim that the dedicated paid enrichment requirements in P05-01 through P05-06 are complete.",
         "status": "verified"
       },
       "requirement": "Model-assisted semantic enrichment is in scope for this implementation",
@@ -1485,7 +1576,7 @@
       },
       "status": "verified",
       "validation_evidence": [
-        "whole-law/assurance/enrichment-v2-independent-audit-20260726.json"
+      "enrichment/model-assisted-paid-governance-v1.json"
       ]
     },
     {
@@ -1498,7 +1589,7 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "A deterministic cost report exists, but the requested end-of-implementation report cannot be final before release completion.",
+        "reason": "The reporting path exists, but governed paid-run cost is currently unavailable and the requested end-of-implementation USD/GBP report cannot be final before the dedicated run and release completion.",
         "status": "started"
       },
       "requirement": "Yes please, report hte cost at the end",
@@ -1575,12 +1666,13 @@
       ],
       "id": "D-08",
       "implementation_evidence": [
-        "release-assurance/release-gates.json"
+        "release-assurance/release-gates.json",
+        "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.0"
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "The required Explorer-first release order cannot pass until Explorer v0.5.0 is released.",
-        "status": "blocked"
+        "reason": "Explorer v0.5.0 was published on 26 July 2026 from annotated tag 62bd71e2bde0caf039f42475871592198ec252d5, peeling to green and deployed commit 903b38a13c1497fcfc6c519dc764fd0b23ba0572, before any Legislation v0.3.0 release candidate exists.",
+        "status": "verified"
       },
       "requirement": "Release `okf-explorer v0.5.0` before `okf-uk-legislation v0.3.0-rc.1`",
       "source_clause": {
@@ -1590,9 +1682,10 @@
         "source": "User-approved plan release order",
         "verbatim": true
       },
-      "status": "blocked",
+      "status": "verified",
       "validation_evidence": [
-        "release-assurance/gap-register.json"
+        "https://github.com/chris-page-gov/okf-explorer/actions/runs/30187219574",
+        "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.0"
       ]
     },
     {
@@ -1606,8 +1699,8 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "The release workflow records security as a post-freeze gate; it has intentionally not sealed the mutable worktree.",
-        "status": "implemented"
+        "reason": "The release workflow and tested finalizer require an exact frozen commit, tree, package inventory and write-once external security receipt before GATE-10 can pass; the mutable worktree cannot satisfy or seal the gate.",
+        "status": "verified"
       },
       "requirement": "Run security assurance only after the exact release-candidate snapshot is frozen.",
       "source_clause": {
@@ -1617,9 +1710,11 @@
         "source": "Subsequent operational decision recorded in the task handoff",
         "verbatim": false
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "release-assurance/release-gates.json"
+        "release-assurance/release-gates.json",
+        "scripts/finalize_release_candidate.py",
+        "tests/test_release_finalization.py"
       ]
     },
     {
@@ -1628,12 +1723,13 @@
       ],
       "id": "D-10",
       "implementation_evidence": [
-        "AGENTS.md"
+        "AGENTS.md",
+        "release-assurance/helper-crash-stop-receipt.json"
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "AGENTS.md now prohibits LibreOffice, soffice, Quick Look and other GUI-backed document renderers and records the observed failure mode.",
-        "status": "implemented"
+        "reason": "The crash is recorded as a pre-render LibreOffice 26.2.3.2 SIGABRT, its source hash and post-crash process/lock state are verified, and AGENTS.md prohibits this GUI-helper path and repeat-on-crash behaviour.",
+        "status": "verified"
       },
       "requirement": "This always crashes, can't we understand what this is doing and learn not to try this if it is failing as it may have side effects",
       "source_clause": {
@@ -1643,9 +1739,11 @@
         "source": "Subsequent user decision prompted by repeated LibreOffice crashes",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "AGENTS.md"
+        "AGENTS.md",
+        "release-assurance/helper-crash-stop-receipt.json",
+        "bundle/release-assurance/evidence-manifest.json"
       ]
     },
     {
@@ -1654,12 +1752,13 @@
       ],
       "id": "D-11",
       "implementation_evidence": [
-        "evidence/requirements/controlling-requirements.md"
+        "AGENTS.md",
+        "release-assurance/github-operation-environment.json"
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "GitHub operations are required to distinguish sandbox/network failures from authenticated CLI state; this is an operating constraint, not a product gate.",
-        "status": "implemented"
+        "reason": "Repository policy now requires an outside-sandbox read-only authentication check before diagnosing an invalid token, and the credential-safe receipt records the active chris-page-gov login plus a passing Explorer PR check without persisting the token value.",
+        "status": "verified"
       },
       "requirement": "The gh Token issue is a sandbox issue, please remember this, I keep telling you",
       "source_clause": {
@@ -1669,9 +1768,9 @@
         "source": "Subsequent user decision",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "evidence/requirements/controlling-requirements.md"
+        "release-assurance/github-operation-environment.json"
       ]
     },
     {
@@ -1684,8 +1783,8 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "The source-constraint ledger records and escalates fair-use/licence/access concerns without silently narrowing the prototype or bypassing access controls.",
-        "status": "implemented"
+        "reason": "The validated source-constraint ledger records and escalates every triggered fair-use, licence and access concern without silently narrowing prototype functionality or authorising access-control bypass.",
+        "status": "verified"
       },
       "requirement": "Regarding fair use, I work for the government and this is a prototype of augmenting the sources that will be included within gov.uk so don't constrain any functionality by fair use so that the demonstration of this poc is complete and universal. Log any constraints that have been triggered by fair use or license concerns so that they can be escalated internally.",
       "source_clause": {
@@ -1695,9 +1794,10 @@
         "source": "Subsequent user decision",
         "verbatim": true
       },
-      "status": "implemented",
+      "status": "verified",
       "validation_evidence": [
-        "whole-law/acquisition/current/source-constraint-ledger.json"
+        "whole-law/acquisition/current/source-constraint-ledger.json",
+        "whole-law/assurance/source-acquisition-gate-20260726.json"
       ]
     }
   ],

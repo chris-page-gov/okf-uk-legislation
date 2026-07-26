@@ -1,0 +1,319 @@
+{
+  "schema": "okf-model-enrichment-governance.v1",
+  "version": "1.0.0",
+  "authored_at": "2026-07-26T00:00:00Z",
+  "status": "credential-free-contracts-authored-api-execution-prohibited",
+  "authority": "derived-non-official",
+  "scope": "Paid model selection, generation, independent review, strongest-model escalation, deterministic validation, cache/resume and cost control for discovery metadata. It never creates official legal classifications or official amendment/effect assertions.",
+  "execution_authorization": {
+    "api_calls_permitted": false,
+    "required_transition": "An explicit user choice to reuse the configured API key or create a new project key, followed by a separately recorded ready preflight.",
+    "secrets_in_git_or_logs": false
+  },
+  "external_attestation": {
+    "required": true,
+    "status": "blocked-until-trusted-builder-is-pinned",
+    "repository": "chris-page-gov/okf-uk-legislation",
+    "signer_workflow": "chris-page-gov/okf-uk-legislation/.github/workflows/model-enrichment-evidence.yml",
+    "predicate_type": "https://slsa.dev/provenance/v1",
+    "cert_oidc_issuer": "https://token.actions.githubusercontent.com",
+    "deny_self_hosted_runners": true,
+    "offline_bundle_required": true,
+    "gh_cli_version": "2.96.0",
+    "gh_cli_binary_sha256": "02d2d4a85241c6a8c0b77ebb1ec76fc723caf7fb128e00915b306b968847cba1",
+    "verifier": {
+      "path": "scripts/model_enrichment_attestation_guard.py",
+      "sha256": "f8de20b66ebbd6a68d84a148bb58a743fcb5816d4fb9686ff4405b691ce54160"
+    },
+    "trusted_source_digest": null,
+    "trusted_root": null
+  },
+  "input_contract": {
+    "snapshot_id": "legislation-work-index-2026-07-11T18:00:00Z",
+    "source_manifest": {
+      "path": "bundle/data/records/manifest.json",
+      "sha256": "159318b7871956851feffab85bb6538194f119acff97a17f1544d21cb3308bb7"
+    },
+    "source_semantic_root_sha256": "88774344579e6d18572f981a1fc240a6452311e642fcf42fed95eafdfa5bc341",
+    "eligibility_evidence": {
+      "path": "whole-law/assurance/model-assisted-input-eligibility-20260726.json",
+      "sha256": "aa2e783cf0d585ae90817969ef80b38d54788f90f2a522f7eaa18468664a32b6",
+      "ordered_identity_sha256": "8c8d65057485e9e0ebf5426964ae7ee0d72a7acaff93da4de2d660ccfd289332",
+      "ordered_input_projection_sha256": "f68c2130d2019f0958e705afc43a4f358e5da353c6d4e23baf9f9429ed6ef5cf",
+      "binding": "required-before-api-use",
+      "preflight_outcomes_are_not_paid_run_terminal_outcomes": true
+    },
+    "calibration_manifest": {
+      "path": "enrichment/model-assisted-calibration-manifest-v1.json",
+      "sha256": "d34a63f21267aeefef6bd6ddc19c57239e494e5205819ee17f89f8273f39849a",
+      "case_set_sha256": "faba4ac858464f4bb1d86caa4ab7fc74015c1236493ba25e43f9f9858774f315",
+      "binding": "required-before-api-use"
+    }
+  },
+  "schemas": {
+    "candidate": {
+      "path": "whole-law/schemas/model-enrichment-candidate.schema.json",
+      "sha256": "0907a05a55ecf89b3a09d0e5f7647a46859070174180ca7dd5890f6f7b360407"
+    },
+    "review": {
+      "path": "whole-law/schemas/model-enrichment-review.schema.json",
+      "sha256": "7950855f716e52d40fc23f91233aec131f8a77d9eeb78f3bbd520c02de93affa"
+    },
+    "batch_plan": {
+      "path": "whole-law/schemas/model-enrichment-batch-plan.schema.json",
+      "sha256": "8dca9acefa62fa8a534b589c365ee65ca23c04b737d24fc6cdfd9d5633d6a730"
+    },
+    "model_capabilities": {
+      "path": "whole-law/schemas/model-enrichment-model-capabilities.schema.json",
+      "sha256": "b7accaafdb8028fd703d2782d1e9ed29a68d18f991325e1b35558059c1867eb4"
+    },
+    "calibration_result": {
+      "path": "whole-law/schemas/model-enrichment-calibration-result.schema.json",
+      "sha256": "2689003e51f27b42190a24800bc137ea4e5d9860ec095702f4c4fb52abd20a85"
+    },
+    "execution_authorization": {
+      "path": "whole-law/schemas/model-enrichment-execution-authorization.schema.json",
+      "sha256": "44b616b9e7223eb8d4971cf1f62f9c744574ba6ec8e88b85948351b3fc36f3fa"
+    },
+    "external_attestation": {
+      "path": "whole-law/schemas/model-enrichment-external-attestation.schema.json",
+      "sha256": "8e052a47d539768e5e8298428f3233006ccd8d37f62205f68b20d330ba5d4d57"
+    },
+    "transition_statement": {
+      "path": "whole-law/schemas/model-enrichment-transition-statement.schema.json",
+      "sha256": "762f5332ff1cd8d21e44f012dd18bb1efdb4e6e2484506fe826b03ff41c0eb33"
+    },
+    "run": {
+      "path": "whole-law/schemas/model-enrichment-run-v2.schema.json",
+      "sha256": "1a39da388e465a3e23a2c53a4f06de9e1f852a01efb131ee96a3f1531080cf67"
+    },
+    "attempt": {
+      "path": "whole-law/schemas/model-enrichment-attempt.schema.json",
+      "sha256": "95d6de628453f86a1a70f0669f6eb7604b65fff8c34cd9cc05c3761d17cfaefb"
+    },
+    "cache_entry": {
+      "path": "whole-law/schemas/model-enrichment-cache-entry.schema.json",
+      "sha256": "6250dfbe80c91ed0f695207afb57f366e5a8c6fedd07fe805136d9cbf675dc31"
+    },
+    "cost_cap": {
+      "path": "whole-law/schemas/model-enrichment-cost-cap-receipt.schema.json",
+      "sha256": "199d943fffb5e58c311cf0b3636f2312ca7a2a1db7c60f84339738ed6132a1b6"
+    },
+    "pricing_snapshot": {
+      "path": "whole-law/schemas/model-enrichment-pricing-snapshot.schema.json",
+      "sha256": "476019d689224a76f6c82035387a88b1db8a93bdeba1bb457aba2d4972b93962"
+    },
+    "selection_receipt": {
+      "path": "whole-law/schemas/model-enrichment-selection-receipt.schema.json",
+      "sha256": "14dc95380c6818575de51538ae6d5bd4df4a8f88c459139f89929625301e1d32"
+    },
+    "terminal_outcome": {
+      "path": "whole-law/schemas/model-enrichment-terminal-outcome.schema.json",
+      "sha256": "070ee6f85ec60d571b7f70eb8804e54c4e22c4740650e8ba5024c9740203999e"
+    },
+    "terminal_evidence": {
+      "path": "whole-law/schemas/model-enrichment-terminal-evidence.schema.json",
+      "sha256": "bba81ce80c83f7a4365d869887a47ce0754b96620296fa885941edbccd2dc3e8"
+    },
+    "terminal_outcome_manifest": {
+      "path": "whole-law/schemas/model-enrichment-terminal-outcome-manifest.schema.json",
+      "sha256": "96c2f6f0b06cfb6edbfd3909283abbfd89815bd038a4f83b5ad701d7e32f7427"
+    },
+    "attempt_ledger": {
+      "path": "whole-law/schemas/model-enrichment-attempt-ledger.schema.json",
+      "sha256": "ce891816c1b3422738964d8feab014b2ea3e9fa6643780a1e0aea80fb105dd8d"
+    },
+    "cache_manifest": {
+      "path": "whole-law/schemas/model-enrichment-cache-manifest.schema.json",
+      "sha256": "0a27aaf323112a770d6d8c3b33e0348c40867a1c3b74434c00caacd5870c5fed"
+    },
+    "independent_audit": {
+      "path": "whole-law/schemas/model-enrichment-independent-audit.schema.json",
+      "sha256": "33525cf9bf5d3a9e01749de4f488815bd5f32936bf7ac1d3d874b0ec7ace183b"
+    },
+    "relationship_assertion": {
+      "path": "whole-law/schemas/relationship-assertion.schema.json",
+      "sha256": "1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4"
+    },
+    "acceptance_proof": {
+      "path": "whole-law/schemas/model-enrichment-acceptance-proof.schema.json",
+      "sha256": "73ff1021dc308e9b387923e36a90de55b5a72dd957ac31ad927e9073e931c328"
+    },
+    "deterministic_results": {
+      "path": "whole-law/schemas/model-enrichment-deterministic-results.schema.json",
+      "sha256": "53e35c6f120a87c65e4f2b49a8efc06b40ed2e244a2c57a5884efaa91f5eac45"
+    },
+    "accepted_assertion_manifest": {
+      "path": "whole-law/schemas/model-enrichment-accepted-assertion-manifest.schema.json",
+      "sha256": "51385508f01a8b271c83dddb8f14cbfb81587c367da477923d037f9b6050d61e"
+    }
+  },
+  "calibration_thresholds": {
+    "structured_output_schema_validity": 1.0,
+    "precision": 0.95,
+    "evidence_support": 0.95,
+    "selection": "Choose the lowest total measured and projected cost among models that pass every threshold on the same hash-bound calibration population.",
+    "selection_cost_definition": "candidate comparison cost = observed calibration_cost_usd + projected post-calibration execution cost_usd; projected_total_cost_usd explicitly excludes the observed calibration charge",
+    "schema_validity_definition": "Proportion of API responses conforming to the exact candidate response schema; input-fixture shape is not model-output schema validity.",
+    "precision_definition": "Accepted candidate assertions matching independently governed gold assertions divided by all accepted candidate assertions.",
+    "evidence_support_definition": "Accepted candidate assertions with a deterministic exact span in a hash-bound allowed evidence field and an independently accepted semantic entailment divided by all accepted candidate assertions."
+  },
+  "structured_output": {
+    "api": "OpenAI Responses API text.format json_schema with strict true",
+    "official_guidance": {
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs#supported-schemas",
+      "checked_on": "2026-07-26"
+    },
+    "api_facing_schemas": [
+      "whole-law/schemas/model-enrichment-candidate.schema.json",
+      "whole-law/schemas/model-enrichment-review.schema.json"
+    ],
+    "unsupported_composition_keywords_excluded": [
+      "allOf",
+      "not",
+      "dependentRequired",
+      "dependentSchemas",
+      "if",
+      "then",
+      "else"
+    ],
+    "post_parse_validation": "The deterministic helper enforces kind-to-predicate mappings, exact frozen evidence spans and digests, duplicate suppression, canonical candidate binding, complete review index coverage, verdict/support consistency, threshold and cheapest-model selection, hash-bound strongest-model designation, hard-cap arithmetic, exact-model role separation, run count reconciliation and unique full-denominator terminal-outcome roots after strict parsing. An exact model is still admitted only after a successful append-only capability probe."
+  },
+  "model_roles": {
+    "candidate_set": {
+      "model_ids": [],
+      "empty_until_observed_preflight": true,
+      "admission": "An exact model ID is admitted only after the configured account returns a successful strict-structured-output capability probe. Every probe is an append-only paid attempt and counts toward the cap."
+    },
+    "generator": {
+      "selection": "lowest-cost qualifying candidate",
+      "exact_requested_and_returned_model_ids_required": true,
+      "may_verify_own_output": false
+    },
+    "reviewer": {
+      "selection": "separately configured qualifying reviewer",
+      "must_pass_every_calibration_threshold": true,
+      "must_differ_from_generator_exact_model_id": true,
+      "separate_prompt_and_response_schema_required": true,
+      "may_introduce_assertions": false,
+      "reviews": "every proposed assertion"
+    },
+    "strongest": {
+      "model_id": null,
+      "empty_until_observed_preflight": true,
+      "designation": "Before calibration, designate one exact available configured model as strongest using a hash-bound capability-ordering policy and hash-bound official model evidence. The selection receipt must bind both digests and the exact designated model. Never infer strongest from a model name at execution time.",
+      "may_equal_reviewer": true,
+      "may_equal_generator": false
+    },
+    "insufficient_separation": "If no exact reviewer or strongest model distinct from the generator is available, paid execution remains blocked."
+  },
+  "high_risk": {
+    "low_confidence_threshold": 0.95,
+    "flags": [
+      "concept-link",
+      "deterministic-disagreement",
+      "entity-link",
+      "evidence-field-mismatch",
+      "jurisdiction-ambiguity",
+      "known-collision-family",
+      "low-confidence",
+      "multi-topic",
+      "non-title-evidence",
+      "official-looking-target",
+      "temporal-ambiguity",
+      "uri-fallback-title"
+    ],
+    "escalate_when": [
+      "any high-risk flag is present",
+      "generator and reviewer disagree",
+      "reviewer returns uncertainty",
+      "deterministic validation finds a semantic or evidence mismatch"
+    ],
+    "deterministic_veto_is_final": true
+  },
+  "terminal_paid_run_outcomes": [
+    "accepted",
+    "already-supported",
+    "budget-stopped",
+    "escalation-rejected",
+    "generator-schema-rejected",
+    "input-invalid",
+    "insufficient-frozen-evidence",
+    "no-supported-new-assertion",
+    "review-rejected"
+  ],
+  "terminal_outcome_contract": {
+    "row_schema": "whole-law/schemas/model-enrichment-terminal-outcome.schema.json",
+    "manifest_schema": "whole-law/schemas/model-enrichment-terminal-outcome-manifest.schema.json",
+    "one_unique_row_per_governed_eligible_record": true,
+    "ordinal_order": "contiguous from zero in frozen input order",
+    "full_denominator_required": true,
+    "ordered_identity_root_must_match_input": true,
+    "ordered_input_projection_root_must_match_input": true,
+    "canonical_terminal_content_root_required": true,
+    "missing_duplicate_or_extra_record": "fail-closed"
+  },
+  "cache_and_resume": {
+    "identity_fields": [
+      "provider",
+      "endpoint",
+      "requested_model",
+      "prompt_sha256",
+      "response_schema_sha256",
+      "parameters",
+      "input_sha256",
+      "max_output_tokens"
+    ],
+    "canonicalization": "UTF-8 JSON, keys sorted recursively, separators comma and colon, ensure_ascii false, one LF terminator; SHA-256 with sha256: prefix.",
+    "helper": {
+      "path": "scripts/model_enrichment_cost_guard.py",
+      "sha256": "308928d4f2ec8d424bf2349980bcd5eb5f7695c50511f42ee9d029e825216125"
+    },
+    "credentials_or_headers_in_identity": false,
+    "parameter_allowlist": [
+      "reasoning",
+      "seed",
+      "service_tier",
+      "store",
+      "temperature",
+      "top_p",
+      "truncation"
+    ],
+    "unknown_parameters": "fail-closed",
+    "material_paths": "repository-relative only; absolute, traversal, ambiguous separators, escaping resolution and symlinks are rejected before file use",
+    "valid_entry_is_immutable": true,
+    "invalid_attempt_is_never_overwritten": true,
+    "resume_acceptance": "A second execution with identical governed inputs makes zero new API requests, incurs zero incremental cost and emits byte-identical parsed results."
+  },
+  "cost_control": {
+    "cap_usd": 250.0,
+    "pricing_source": "A dated, hash-bound official pricing snapshot is required; no hard-coded or missing rate is accepted.",
+    "request_upper_bound_formula": "(uncached_input_tokens * input_rate + cached_input_tokens * cached_input_rate + max_output_tokens * output_rate) / 1000000",
+    "preflight_total_components": [
+      "already spent",
+      "availability probes",
+      "every candidate calibration",
+      "selected generator production",
+      "review of every possible candidate assertion",
+      "strongest-model escalation upper bound",
+      "retry reserve"
+    ],
+    "atomic_reservation_invariant": "spent_usd + reserved_usd + next_request_upper_bound_usd <= 250.00",
+    "retry_requires_new_reservation": true,
+    "concurrent_inflight_reservations_count_toward_cap": true,
+    "missing_cost_or_model_data": "fail-closed",
+    "final_report": {
+      "usd_total_required": true,
+      "gbp_total_required": true,
+      "dated_fx_source_rate_and_direction_required": true,
+      "paid_run_accepted_assertion_denominator_required": true,
+      "zero_accepted_assertions": "cost per accepted assertion is null with an explanation"
+    }
+  },
+  "publication_boundary": {
+    "candidate_output_is_not_a_relationship_assertion": true,
+    "only_independently_accepted_and_deterministically_validated_candidates_publish": true,
+    "official_effects_are_source_derived_only": true,
+    "model_output_is_candidate_discovery_metadata_not_legal_advice": true
+  }
+}

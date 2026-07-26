@@ -1,8 +1,8 @@
 {
   "counts": {
     "failed": 0,
-    "passed": 5,
-    "questions": 5
+    "passed": 10,
+    "questions": 10
   },
   "processor": {
     "python": "3.12",
@@ -195,28 +195,285 @@
           "term": "testDate"
         }
       ]
+    },
+    {
+      "ask_result": true,
+      "id": "CQ06",
+      "passed": true,
+      "question": "Can a user traverse a legal work through its expression to a source-identified manifestation and media format?",
+      "required_terms": [
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#LegislationWork",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "LegislationWork"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://data.europa.eu/eli/ontology#LegalExpression",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "eli:LegalExpression"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#LegalManifestation",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "LegalManifestation"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://data.europa.eu/eli/ontology#is_realization_of",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "eli:is_realization_of"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://data.europa.eu/eli/ontology#embodies",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "eli:embodies"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://purl.org/dc/terms/format",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "dcterms:format"
+        }
+      ]
+    },
+    {
+      "ask_result": true,
+      "id": "CQ07",
+      "passed": true,
+      "question": "Can a source-native provision be distinguished from a hash-bound evidential passage?",
+      "required_terms": [
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Provision",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "Provision"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#LegalPassage",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "LegalPassage"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://purl.org/dc/terms/isPartOf",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "dcterms:isPartOf"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#sourceRecord",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "sourceRecord"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://www.w3.org/ns/oa#hasSource",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "oa:hasSource"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#sourceHash",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "sourceHash"
+        }
+      ]
+    },
+    {
+      "ask_result": true,
+      "id": "CQ08",
+      "passed": true,
+      "question": "Can a case be connected to its court, governed source record and jurisdiction without inventing a cross-source identity?",
+      "required_terms": [
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Case",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "Case"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Court",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "Court"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#SourceRecord",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "SourceRecord"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Jurisdiction",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "Jurisdiction"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#decidingCourt",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "decidingCourt"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#sourceRecord",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "sourceRecord"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://data.europa.eu/eli/ontology#jurisdiction",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "eli:jurisdiction"
+        }
+      ]
+    },
+    {
+      "ask_result": true,
+      "id": "CQ09",
+      "passed": true,
+      "question": "Can a publication identify its responsible organisation and authoritative catalogue route?",
+      "required_terms": [
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Publication",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "Publication"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Organisation",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "Organisation"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#SourceRecord",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "SourceRecord"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://purl.org/dc/terms/publisher",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "dcterms:publisher"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#sourceRecord",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "sourceRecord"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://www.w3.org/ns/dcat#landingPage",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "dcat:landingPage"
+        }
+      ]
+    },
+    {
+      "ask_result": true,
+      "id": "CQ10",
+      "passed": true,
+      "question": "Can a temporal state be traced to its observation boundary and authoritative source?",
+      "required_terms": [
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#TemporalState",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "TemporalState"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#temporalState",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "temporalState"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#stateType",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "stateType"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://www.w3.org/2006/time#hasBeginning",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "time:hasBeginning"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://www.w3.org/ns/prov#wasDerivedFrom",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "prov:wasDerivedFrom"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#sourceRecord",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "sourceRecord"
+        }
+      ]
     }
   ],
   "schema": "okf-ontology-competency-results.v1",
   "sources": {
     "competency_questions": {
       "path": "whole-law/ontology/competency-questions.json",
-      "sha256": "45233208787665105d2f32d63bbbd5bb8fb88441be59542c305dcca785d99a5a"
+      "sha256": "f24117bf3b42481318988e38b79d598439ec69c06f37fd9466da2d4e9994532f"
     },
     "examples": {
       "path": "whole-law/ontology/examples.jsonld",
-      "sha256": "60c463e014a5447b8eadd871f864e0ced512b91fdaf8a8bd36be3fe85f9a059f",
-      "triples": 35
+      "sha256": "37a6b79ff45984f659bfab0e92013f19edd9091fbfc228fc8317ad771f05d0eb",
+      "triples": 87
     },
     "shapes": {
       "path": "whole-law/ontology/shapes.ttl",
-      "sha256": "8966124578513e45f3fb3f39d0019899d63657c7814446eda2fc4d1b7212127e",
-      "triples": 137
+      "sha256": "5fe646674af3d237049722efcb1750fef1d258464cf6d6cfcb8f32b4855ce6b3",
+      "triples": 416
     },
     "vocabulary": {
       "path": "whole-law/ontology/vocabulary.ttl",
-      "sha256": "da24d9069ef0e458e5e43372989a05e7b2f2fdc0add6d98ff3b1281889127a03",
-      "triples": 76
+      "sha256": "fec52841a2062e2137234b1b4de9ab4be5bbd1677f703fb1d4e05509443df9aa",
+      "triples": 149
     }
   },
   "status": "passed",

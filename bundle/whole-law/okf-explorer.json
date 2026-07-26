@@ -217,6 +217,7 @@
     "official_effects": "../data/effects/manifest.json",
     "ontology": "ontology/index.md",
     "relationship_summary": "data/relationship-summary.json",
+    "semantic_conformance": "assurance/semantic-conformance.json",
     "shapes": "ontology/shapes.ttl",
     "source_classes": "data/legal-source-taxonomy.json",
     "source_register": "data/source-register.json",
@@ -1219,6 +1220,9 @@
     "reconciliation_routes": {
       "agreement_at_acquisition": 16,
       "inaccessible_at_acquisition": 6,
+      "post_build_agreement": 16,
+      "post_build_inaccessible_consistent": 6,
+      "post_build_live_additions": 0,
       "truncated_static_routes": 0
     },
     "scope": "federated-data-plane",

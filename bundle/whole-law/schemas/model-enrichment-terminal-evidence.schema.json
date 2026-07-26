@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-terminal-evidence.schema.json",
+  "title": "OKF model-enrichment terminal evidence receipt v1",
+  "description": "Typed per-record evidence for one terminal paid-run outcome. Attempt materials must join the complete attempt ledger; deterministic-only outcomes must join the exact frozen eligibility projection or a concrete existing assertion.",
+  "type": "object",
+  "required": [
+    "schema",
+    "run_id",
+    "record_id",
+    "input_sha256",
+    "outcome",
+    "basis",
+    "frozen_eligibility_outcome",
+    "attempts",
+    "existing_assertions",
+    "accepted_proof_ids",
+    "counts",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-terminal-evidence.v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "input_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "outcome": {
+      "enum": [
+        "accepted",
+        "already-supported",
+        "budget-stopped",
+        "escalation-rejected",
+        "generator-schema-rejected",
+        "input-invalid",
+        "insufficient-frozen-evidence",
+        "no-supported-new-assertion",
+        "review-rejected"
+      ]
+    },
+    "basis": {
+      "enum": [
+        "accepted-proof",
+        "budget-cap",
+        "existing-assertion",
+        "frozen-input-classification",
+        "generator-output",
+        "independent-review",
+        "strongest-review"
+      ]
+    },
+    "frozen_eligibility_outcome": {
+      "enum": [
+        "candidate-local-semantic-evidence",
+        "deferred-frozen-clml-required",
+        "terminal-insufficient-input-evidence",
+        "terminal-invalid-input-record"
+      ]
+    },
+    "attempts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/attemptBinding"
+      }
+    },
+    "existing_assertions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/existingAssertion"
+      }
+    },
+    "accepted_proof_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^urn:okf:model-acceptance:[0-9a-f]{64}$"
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "candidate_assertions",
+        "accepted_assertions",
+        "review_rejections",
+        "escalations"
+      ],
+      "properties": {
+        "candidate_assertions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "accepted_assertions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "review_rejections": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "escalations": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "attemptBinding": {
+      "type": "object",
+      "required": [
+        "role",
+        "attempt",
+        "output",
+        "batch_id",
+        "batch_member_index",
+        "output_record_index"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "generation",
+            "review",
+            "escalation"
+          ]
+        },
+        "attempt": {
+          "$ref": "#/$defs/material"
+        },
+        "output": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/material"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "batch_id": {
+          "type": "string",
+          "pattern": "^model-batch-[a-z0-9][a-z0-9._-]*$"
+        },
+        "batch_member_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 31
+        },
+        "output_record_index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "existingAssertion": {
+      "type": "object",
+      "required": [
+        "source",
+        "predicate",
+        "target",
+        "evidence"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "predicate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

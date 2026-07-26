@@ -6,7 +6,10 @@ This guide defines how an agent should use the UK Legislation OKF pack without l
 
 ## Progressive discovery algorithm
 
-1. Fetch `legislation/okf-explorer.json`.
+1. Fetch the canonical descriptor:
+   `https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json`.
+   For cross-source discovery, fetch
+   `https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json`.
 2. Read the descriptor, overview, counts, notices and available facets.
 3. Convert the user question into candidate title terms, citation terms, jurisdiction, time and document-type constraints.
 4. Search titles locally; use the official remote full-text search when wording rather than title is needed.
@@ -16,6 +19,11 @@ This guide defines how an agent should use the UK Legislation OKF pack without l
 8. Open selected-passage, work, contents and changes/effects links as required.
 9. Check version, commencement, extent and amendment context.
 10. Write discrete propositions with a citation ledger and explicit uncertainty.
+
+Do not infer a raw repository path from either published URL. Read the
+descriptor's `repository.raw_subpath` (`bundle` for legislation or
+`bundle/whole-law` for the federation) and its declared Pages, raw-content and
+release/archive alternatives.
 
 ## Source hierarchy
 

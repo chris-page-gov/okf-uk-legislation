@@ -20,6 +20,8 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+import build_model_enrichment_paid_publication as paid_publication
+
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "release-assurance"
 OUTPUT = ROOT / "bundle" / "release-assurance"
@@ -28,6 +30,13 @@ CLAUDE = ROOT / "research" / "Legislation-govuk Claude 4.8 run.docx"
 CLAUDE_TRANSCRIPT = ROOT / "research" / "claude-4.8-evaluation-transcript.md"
 POLICY = SOURCE / "release-policy.json"
 GATES = SOURCE / "release-gates.json"
+EXTERNAL_FINALIZATION_CONTRACT = (
+    SOURCE / "external-finalization-contract.json"
+)
+FINALIZER = ROOT / "scripts" / "finalize_release_candidate.py"
+RELEASE_OBSERVATION_CONTROLLER = (
+    ROOT / "scripts" / "capture_github_release_observation.py"
+)
 TRACEABILITY = SOURCE / "implementation-traceability.json"
 TRACEABILITY_SOURCE = (
     ROOT / "evidence" / "requirements" / "controlling-requirements.md"
@@ -35,6 +44,37 @@ TRACEABILITY_SOURCE = (
 TRACEABILITY_SOURCE_DIGEST = TRACEABILITY_SOURCE.with_suffix(".sha256")
 GAP_REGISTER = SOURCE / "gap-register.json"
 AUTHORED_STATUS = SOURCE / "implementation-status.md"
+GITHUB_OPERATION_ENVIRONMENT = SOURCE / "github-operation-environment.json"
+HELPER_CRASH_STOP_RECEIPT = SOURCE / "helper-crash-stop-receipt.json"
+RELATIONSHIP_COMPOSITION = (
+    ROOT / "bundle" / "data" / "relationship-composition.json"
+)
+EFFECTS_COVERAGE = ROOT / "bundle" / "data" / "effects" / "coverage.json"
+ENRICHMENT_COVERAGE = (
+    ROOT / "bundle" / "data" / "enrichment" / "coverage.json"
+)
+WHOLE_LAW_COVERAGE = ROOT / "bundle" / "whole-law" / "data" / "coverage.json"
+SOURCE_ACCESS_SUMMARY = (
+    ROOT
+    / "bundle"
+    / "whole-law"
+    / "acquisition"
+    / "current"
+    / "source-access-summary.json"
+)
+EVALUATION_EXECUTIONS = (
+    ROOT / "bundle" / "whole-law" / "evaluation" / "executions"
+)
+EVALUATION_INDEX = EVALUATION_EXECUTIONS / "index.json"
+PAID_MODEL_RUN = (
+    ROOT / "enrichment" / "model-assisted-paid-v2" / "run.json"
+)
+PAID_MODEL_PUBLICATION = (
+    ROOT / "bundle" / "enrichment" / "model-assisted-paid-v2.json"
+)
+HISTORICAL_MODEL_PUBLICATION = (
+    ROOT / "bundle" / "enrichment" / "codex-assisted-v2.json"
+)
 VALID_STATUSES = {
     "proposed",
     "started",
@@ -44,6 +84,21 @@ VALID_STATUSES = {
     "superseded",
     "deferred",
 }
+
+# Traceability may cite these two projections as validation evidence even when
+# a clean corpus rebuild has just removed ``bundle/``.  They are produced
+# unconditionally by this builder later in the same transaction.  Keep this
+# allow-list exact: all other evidence references must already exist.
+SELF_PROJECTED_EVIDENCE = frozenset(
+    {
+        "bundle/release-assurance/claude-observed-access-test.json",
+        "bundle/release-assurance/evidence-manifest.json",
+    }
+)
+
+
+def evidence_reference_available(reference: str) -> bool:
+    return reference in SELF_PROJECTED_EVIDENCE or (ROOT / reference).exists()
 
 
 def load(path: Path) -> Any:
@@ -70,6 +125,202 @@ def material(path: Path) -> dict[str, Any]:
         "bytes": path.stat().st_size,
         "sha256": digest(path),
     }
+
+
+def projected_material(relative: str, body: bytes) -> dict[str, Any]:
+    return {
+        "path": f"bundle/release-assurance/{relative}",
+        "bytes": len(body),
+        "sha256": digest_bytes(body),
+    }
+
+
+def contract_schema_paths(value: Any) -> list[Path]:
+    """Return safe, unique repository schema paths named by a contract."""
+
+    references: set[str] = set()
+
+    def visit(node: Any) -> None:
+        if isinstance(node, dict):
+            for child in node.values():
+                visit(child)
+        elif isinstance(node, list):
+            for child in node:
+                visit(child)
+        elif isinstance(node, str) and node.endswith(".schema.json"):
+            references.add(node)
+
+    visit(value)
+    paths: list[Path] = []
+    for reference in sorted(references):
+        path = (ROOT / reference).resolve()
+        if not path.is_relative_to(ROOT.resolve()):
+            raise ValueError(
+                f"external finalization schema escapes repository: {reference}"
+            )
+        paths.append(path)
+    return paths
+
+
+def external_finalization_projection(
+    policy: dict[str, Any],
+) -> tuple[dict[str, Any], list[Path], list[str]]:
+    errors: list[str] = []
+    contract = load(EXTERNAL_FINALIZATION_CONTRACT)
+    if policy.get("schema") != "okf-release-state-policy.v2":
+        errors.append("release policy must use okf-release-state-policy.v2")
+    if (
+        policy.get("external_finalization_contract")
+        != EXTERNAL_FINALIZATION_CONTRACT.relative_to(ROOT).as_posix()
+    ):
+        errors.append(
+            "release policy must link the external finalization contract"
+        )
+    if contract.get("schema") != "okf-external-finalization-contract.v2":
+        errors.append(
+            "external finalization contract must use its v2 schema"
+        )
+    if contract.get("evidence_plane") != "external-write-once":
+        errors.append("external finalization evidence plane must be write-once")
+    release_observations = contract.get("release_observations", {})
+    expected_observation_controller = (
+        RELEASE_OBSERVATION_CONTROLLER.relative_to(ROOT).as_posix()
+    )
+    if (
+        not isinstance(release_observations, dict)
+        or release_observations.get("controller")
+        != expected_observation_controller
+    ):
+        errors.append(
+            "external finalization contract must bind the canonical GitHub "
+            "release-observation controller"
+        )
+    for label, rule in (
+        ("pre-RC authorization", contract.get("pre_rc_authorization", {})),
+        (
+            "final-promotion authorization",
+            contract.get("final_promotion_authorization", {}),
+        ),
+        ("finalization", contract.get("finalization", {})),
+    ):
+        if rule.get("write_once") is not True:
+            errors.append(f"{label} output must be write-once")
+
+    try:
+        declared_schemas = contract_schema_paths(contract)
+    except ValueError as exc:
+        declared_schemas = []
+        errors.append(str(exc))
+    support_schemas = [
+        SOURCE / "schemas" / name
+        for name in (
+            "deployed-entrypoint-attempt.schema.json",
+            "deployed-entrypoint-projection.schema.json",
+            "deployed-entrypoints-manifest.schema.json",
+            "provenance-inputs.schema.json",
+        )
+    ]
+    schema_paths = sorted(
+        set(declared_schemas + support_schemas),
+        key=lambda path: path.relative_to(ROOT).as_posix(),
+    )
+    projected_names: set[str] = set()
+    schema_rows: list[dict[str, Any]] = []
+    for path in schema_paths:
+        if not path.is_file():
+            errors.append(
+                "external finalization schema is missing: "
+                f"{path.relative_to(ROOT).as_posix()}"
+            )
+            continue
+        try:
+            projected = path.relative_to(SOURCE).as_posix()
+        except ValueError:
+            errors.append(
+                "external finalization schema is outside release-assurance: "
+                f"{path.relative_to(ROOT).as_posix()}"
+            )
+            continue
+        if projected in projected_names:
+            errors.append(
+                f"duplicate projected external finalization schema: {projected}"
+            )
+            continue
+        projected_names.add(projected)
+        schema_rows.append(
+            {
+                **material(path),
+                "projected_path": projected,
+            }
+        )
+
+    finalizer_text = FINALIZER.read_text(encoding="utf-8")
+    workflow = [
+        {
+            "command": command,
+            "effect": effect,
+        }
+        for command, effect in (
+            (
+                "authorize-rc",
+                "write the immutable pre-RC authorization receipt",
+            ),
+            (
+                "verify-rc",
+                "reconstruct and verify the pre-RC authorization receipt",
+            ),
+            (
+                "authorize-final-promotion",
+                "write immutable authorization to publish the already sealed RC asset as final",
+            ),
+            (
+                "finalize",
+                "write the immutable finalization receipt after identical-byte promotion",
+            ),
+            (
+                "verify-final",
+                "reconstruct and verify the finalization receipt",
+            ),
+        )
+    ]
+    for step in workflow:
+        if step["command"] not in finalizer_text:
+            errors.append(
+                f"finalizer does not expose {step['command']} workflow command"
+            )
+    projection = {
+        "contract": {
+            **material(EXTERNAL_FINALIZATION_CONTRACT),
+            "projected_path": "external-finalization-contract.json",
+        },
+        "evidence_plane": contract.get("evidence_plane"),
+        "finalizer": material(FINALIZER),
+        "release_observation_controller": material(
+            RELEASE_OBSERVATION_CONTROLLER
+        ),
+        "invariants": {
+            "archive_rebuild_prohibited": contract.get(
+                "finalization", {}
+            ).get("archive_rebuild_prohibited"),
+            "frozen_checkout_mutation_prohibited": contract.get(
+                "finalization", {}
+            ).get("frozen_checkout_mutation_prohibited"),
+            "promotion_requires_identical_filename_bytes_and_sha256": (
+                contract.get("finalization", {}).get(
+                    "promotion_requires_identical_filename_bytes_and_sha256"
+                )
+            ),
+            "write_once": contract.get("finalization", {}).get("write_once"),
+        },
+        "policy": {
+            **material(POLICY),
+            "projected_path": "release-policy.json",
+            "schema": policy.get("schema"),
+        },
+        "schemas": schema_rows,
+        "workflow": workflow,
+    }
+    return projection, schema_paths, errors
 
 
 def evidence_manifest(generated_at: str) -> tuple[dict[str, Any], list[str]]:
@@ -301,8 +552,7 @@ def implementation_status(
             for reference in references:
                 if reference.startswith(("repo:", "http://", "https://")):
                     continue
-                path = ROOT / reference
-                if not path.exists():
+                if not evidence_reference_available(reference):
                     errors.append(
                         f"{identifier}: {field} path is missing: {reference}"
                     )
@@ -348,10 +598,323 @@ def implementation_status(
     )
 
 
+def build_release_report(
+    generated_at: str,
+    constraint_report: dict[str, Any],
+    constraint_body: bytes,
+    model_cost: dict[str, Any],
+    model_cost_body: bytes,
+) -> tuple[dict[str, Any], list[Path], list[str]]:
+    """Build the complete embedded GATE-12 report without claiming later gates."""
+
+    errors: list[str] = []
+    source_paths = [
+        RELATIONSHIP_COMPOSITION,
+        EFFECTS_COVERAGE,
+        ENRICHMENT_COVERAGE,
+        WHOLE_LAW_COVERAGE,
+        SOURCE_ACCESS_SUMMARY,
+        EVALUATION_INDEX,
+        GAP_REGISTER,
+    ]
+    missing = [path for path in source_paths if not path.is_file()]
+    if missing:
+        errors.extend(
+            "release report source is missing: "
+            f"{path.relative_to(ROOT).as_posix()}"
+            for path in missing
+        )
+        return (
+            {
+                "gate": "GATE-12",
+                "generated_at": generated_at,
+                "schema": "okf-release-report.v1",
+                "status": "failed",
+            },
+            source_paths,
+            errors,
+        )
+
+    composition = load(RELATIONSHIP_COMPOSITION)
+    effects = load(EFFECTS_COVERAGE)
+    enrichment = load(ENRICHMENT_COVERAGE)
+    whole_law = load(WHOLE_LAW_COVERAGE)
+    access = load(SOURCE_ACCESS_SUMMARY)
+    gaps = load(GAP_REGISTER)
+    evaluation_index = load(EVALUATION_INDEX)
+
+    composition_dimensions = (
+        "by_predicate",
+        "by_authority",
+        "by_confidence",
+        "by_freshness",
+    )
+    for dimension in composition_dimensions:
+        value = composition.get(dimension)
+        if not isinstance(value, dict) or not value:
+            errors.append(
+                f"release report relationship composition lacks {dimension}"
+            )
+
+    latest_run_id = evaluation_index.get("latest_run_id")
+    execution = next(
+        (
+            row
+            for row in evaluation_index.get("executions", [])
+            if row.get("run_id") == latest_run_id
+        ),
+        None,
+    )
+    if not isinstance(latest_run_id, str) or execution is None:
+        errors.append("release report cannot resolve the latest evaluation")
+        evaluation_results_path = EVALUATION_INDEX
+        evaluation_scores_path = EVALUATION_INDEX
+        evaluation_results: dict[str, Any] = {}
+        evaluation_scores: dict[str, Any] = {}
+    else:
+        evaluation_results_path = (
+            EVALUATION_EXECUTIONS / str(execution.get("results", ""))
+        ).resolve()
+        evaluation_scores_path = (
+            EVALUATION_EXECUTIONS / latest_run_id / "scores.json"
+        ).resolve()
+        if (
+            not evaluation_results_path.is_relative_to(
+                EVALUATION_EXECUTIONS.resolve()
+            )
+            or not evaluation_scores_path.is_relative_to(
+                EVALUATION_EXECUTIONS.resolve()
+            )
+        ):
+            errors.append("release report evaluation path escapes executions")
+            evaluation_results = {}
+            evaluation_scores = {}
+        elif (
+            not evaluation_results_path.is_file()
+            or not evaluation_scores_path.is_file()
+        ):
+            errors.append("release report evaluation materials are missing")
+            evaluation_results = {}
+            evaluation_scores = {}
+        else:
+            evaluation_results = load(evaluation_results_path)
+            evaluation_scores = load(evaluation_scores_path)
+            source_paths.extend(
+                [evaluation_results_path, evaluation_scores_path]
+            )
+
+    evaluation_analysis = evaluation_results.get("analysis", {})
+    evaluated_release = evaluation_analysis.get("whole_law_release", {})
+    if not (
+        evaluated_release.get("answers_executed", 0) > 0
+        and evaluation_scores.get("status") == "passed"
+    ):
+        errors.append("release report lacks a passing executed evaluation")
+
+    unresolved = [
+        {
+            key: row.get(key)
+            for key in (
+                "id",
+                "status",
+                "area",
+                "summary",
+                "release_effect",
+                "next_action",
+            )
+        }
+        for row in gaps.get("gaps", [])
+        if row.get("status") != "resolved"
+    ]
+    if len(unresolved) != sum(
+        int(gaps.get("counts", {}).get(status, 0))
+        for status in ("blocked", "deferred", "open")
+    ):
+        errors.append("release report unresolved-gap counts do not reconcile")
+
+    cost = model_cost.get("incremental_cost", {})
+    if not all(key in cost for key in ("usd", "gbp")):
+        errors.append("release report must record model cost in USD and GBP")
+    if not isinstance(constraint_report.get("escalations"), list):
+        errors.append("release report must record licence/access escalations")
+
+    contract = load(EXTERNAL_FINALIZATION_CONTRACT)
+    sections = {
+        "coverage_and_freshness": {
+            "materials": [
+                material(path)
+                for path in (
+                    EFFECTS_COVERAGE,
+                    ENRICHMENT_COVERAGE,
+                    WHOLE_LAW_COVERAGE,
+                    SOURCE_ACCESS_SUMMARY,
+                )
+            ],
+            "model_assisted": {
+                "attempt_coverage": enrichment.get("attempt_coverage"),
+                "counts": enrichment.get("counts"),
+                "generated_at": enrichment.get("generated_at"),
+            },
+            "official_effects": {
+                "generated_at": effects.get("generated_at"),
+                "population": effects.get("population"),
+                "snapshot_id": effects.get("snapshot_id"),
+                "status": effects.get("status"),
+            },
+            "source_access": {
+                "coverage": access.get("coverage"),
+                "evidence_run_id": access.get("evidence_run_id"),
+                "generated_at": access.get("generated_at"),
+                "result_counts": access.get("result_counts"),
+            },
+            "whole_law": {
+                "claim": whole_law.get("claim"),
+                "denominator": whole_law.get("denominator"),
+                "generated_at": whole_law.get("generated_at"),
+                "source_family_status": whole_law.get(
+                    "source_family_status"
+                ),
+            },
+        },
+        "evaluation": {
+            "assurance_boundary": evaluation_analysis.get(
+                "assurance_boundary"
+            ),
+            "answers_executed": evaluated_release.get("answers_executed"),
+            "corpus_navigation_score": evaluated_release.get(
+                "corpus_navigation_score"
+            ),
+            "executed_at": evaluation_results.get("executed_at"),
+            "hard_failures": evaluated_release.get("hard_failures", []),
+            "materials": [
+                material(EVALUATION_INDEX),
+                material(evaluation_results_path),
+                material(evaluation_scores_path),
+            ],
+            "minimum_critical_family_score": evaluation_scores.get(
+                "minimum_family_score"
+            ),
+            "run_id": evaluation_results.get("run_id"),
+            "scope": evaluation_scores.get("evaluation_scope"),
+            "status": evaluation_scores.get("status"),
+        },
+        "gaps": {
+            "counts": gaps.get("counts"),
+            "source": material(GAP_REGISTER),
+            "unresolved": unresolved,
+        },
+        "licence_and_access_escalations": {
+            "counts": constraint_report.get("counts"),
+            "escalations": constraint_report.get("escalations"),
+            "rule": constraint_report.get("licence_and_fair_use_rule"),
+            "source": projected_material(
+                "constraint-report.json", constraint_body
+            ),
+        },
+        "model_cost": {
+            "boundary": model_cost.get(
+                "cost_boundary",
+                (
+                    "Governed paid-run cost is unavailable. Any recorded "
+                    "historical Codex-assisted amount is a separate fallback "
+                    "observation and cannot satisfy the paid-run gate."
+                ),
+            ),
+            "governed_paid_cost": model_cost.get("governed_paid_cost"),
+            "historical_fallback_cost": model_cost.get(
+                "historical_fallback_cost"
+            ),
+            "incremental_cost": cost,
+            "model_deployment_identity_available": model_cost.get(
+                "model_deployment_identity_available"
+            ),
+            "model_identity": model_cost.get("model_identity"),
+            "paid_run_gate": model_cost.get("paid_run_gate"),
+            "release_effect": model_cost.get("release_effect"),
+            "run_id": model_cost.get("run_id"),
+            "source": projected_material(
+                "model-cost-report.json", model_cost_body
+            ),
+            "source_kind": model_cost.get("source_kind"),
+            "usage": model_cost.get("usage"),
+        },
+        "relationship_composition": {
+            "by_authority": composition.get("by_authority"),
+            "by_confidence": composition.get("by_confidence"),
+            "by_datapack": composition.get("by_datapack"),
+            "by_freshness": composition.get("by_freshness"),
+            "by_predicate": composition.get("by_predicate"),
+            "generated_at": composition.get("generated_at"),
+            "notice": composition.get("notice"),
+            "snapshot": composition.get("snapshot"),
+            "source": material(RELATIONSHIP_COMPOSITION),
+            "total": composition.get("total"),
+        },
+        "yaml_ld_mime_exception": {
+            "expected_media_type": "application/ld+yaml",
+            "fallbacks": [
+                "JSON-LD",
+                "the immutable release archive",
+            ],
+            "observed_media_type": "application/octet-stream",
+            "scope": "GitHub Pages .yamlld responses",
+            "status": "declared-hosting-exception",
+        },
+    }
+    expected_sections = {
+        "relationship_composition",
+        "coverage_and_freshness",
+        "gaps",
+        "licence_and_access_escalations",
+        "evaluation",
+        "model_cost",
+        "yaml_ld_mime_exception",
+    }
+    if set(sections) != expected_sections:
+        errors.append("release report section inventory is incomplete")
+
+    report = {
+        "checksum_binding": {
+            "algorithm": "sha256",
+            "manifest": "bundle/release-assurance/checksums.json",
+            "required_paths": [
+                "constraint-report.json",
+                "model-cost-report.json",
+                "release-report.json",
+            ],
+            "rule": (
+                "The deterministic assurance checksum manifest must bind this "
+                "report and both generated supporting reports. Exact source "
+                "materials are transitively bound by their hashes here."
+            ),
+            "status": "bound-by-generated-manifest",
+        },
+        "gate": "GATE-12",
+        "generated_at": generated_at,
+        "limitations": [
+            "Passing GATE-12 means the required release facts and limitations are recorded; it does not pass any external gate.",
+            "No public deployment, release-candidate publication or final promotion is claimed by this embedded report.",
+            "The evaluation covers corpus-navigation metadata, not legal-answer correctness or qualified legal assurance.",
+        ],
+        "release": {
+            "archive": contract.get("archive", {}).get("filename"),
+            "candidate": contract.get("candidate"),
+            "explorer": contract.get("explorer"),
+        },
+        "schema": "okf-release-report.v1",
+        "sections": sections,
+        "status": "passed" if not errors else "failed",
+    }
+    return report, source_paths, errors
+
+
 def release_state(
     generated_at: str,
     evidence_ok: bool,
     traceability_accounted_for: bool,
+    release_report_material: dict[str, Any],
+    release_report_ok: bool,
+    external_finalization: dict[str, Any],
 ) -> tuple[dict[str, Any], list[str]]:
     policy = load(POLICY)
     gates_doc = load(GATES)
@@ -377,6 +940,16 @@ def release_state(
                 if evidence_ok
                 else "Immutable evidence verification failed."
             )
+        if row["id"] == "GATE-12":
+            row["status"] = "passed" if release_report_ok else "failed"
+            row["observed_reason"] = (
+                "The checksum-bound embedded release report records exact "
+                "relationship composition, coverage and snapshot currency, "
+                "unresolved gaps, licence/access escalations, executed "
+                "evaluation, model cost and the YAML-LD MIME exception."
+                if release_report_ok
+                else "The embedded release report is incomplete or invalid."
+            )
         gates.append(row)
     states = policy["transition_order"]
     by_name = {row["name"]: row for row in policy["states"]}
@@ -385,9 +958,21 @@ def release_state(
         gate_groups[gate["group"]].append(gate)
 
     def state_passes(name: str) -> bool:
+        required_groups = by_name[name]["required_gate_groups"]
+        missing_groups = [
+            group for group in required_groups if not gate_groups.get(group)
+        ]
+        if missing_groups:
+            message = (
+                f"release state {name} names empty or absent gate groups: "
+                f"{', '.join(missing_groups)}"
+            )
+            if message not in errors:
+                errors.append(message)
+            return False
         return all(
             gate.get("status") == "passed"
-            for group in by_name[name]["required_gate_groups"]
+            for group in required_groups
             for gate in gate_groups[group]
         )
 
@@ -412,6 +997,23 @@ def release_state(
     return (
         {
             "current_state": current,
+            "embedded_state": {
+                "gates": {
+                    "GATE-12": (
+                        "passed" if release_report_ok else "failed"
+                    ),
+                },
+                "release_report": release_report_material,
+            },
+            "external_finalization": {
+                "contract": external_finalization["contract"],
+                "evidence_plane": external_finalization["evidence_plane"],
+                "finalizer": external_finalization["finalizer"],
+                "release_observation_controller": external_finalization[
+                    "release_observation_controller"
+                ],
+                "workflow": external_finalization["workflow"],
+            },
             "fail_closed": True,
             "gate_counts": dict(
                 sorted(Counter(gate["status"] for gate in gates).items())
@@ -424,6 +1026,7 @@ def release_state(
                 next_state and states.index(next_state) <= states.index(maximum)
             ),
             "policy": POLICY.relative_to(ROOT).as_posix(),
+            "policy_projection": external_finalization["policy"],
             "schema": "okf-release-state.v1",
             "state_consistent": not errors,
         },
@@ -609,59 +1212,408 @@ def build_spdx(generated_at: str, materials_digest: str) -> dict[str, Any]:
 
 
 def build_model_cost(generated_at: str) -> dict[str, Any]:
-    source_path = ROOT / "bundle" / "enrichment" / "codex-assisted-v2.json"
+    authored_entry_present = PAID_MODEL_RUN.exists() or PAID_MODEL_RUN.is_symlink()
+    published_entry_present = (
+        PAID_MODEL_PUBLICATION.exists()
+        or PAID_MODEL_PUBLICATION.is_symlink()
+    )
+    dedicated_authored = (
+        PAID_MODEL_RUN.is_file() and not PAID_MODEL_RUN.is_symlink()
+    )
+    dedicated_published = (
+        PAID_MODEL_PUBLICATION.is_file()
+        and not PAID_MODEL_PUBLICATION.is_symlink()
+    )
+    dedicated_errors: list[str] = []
+    dedicated_materials: list[dict[str, Any]] = []
+    if authored_entry_present and not dedicated_authored:
+        dedicated_errors.append(
+            "dedicated paid-run receipt must be a regular non-symlink file"
+        )
+    if published_entry_present and not dedicated_published:
+        dedicated_errors.append(
+            "dedicated paid-run public projection must be a regular "
+            "non-symlink file"
+        )
+    if dedicated_authored:
+        try:
+            authored = load(PAID_MODEL_RUN)
+        except (OSError, json.JSONDecodeError) as exc:
+            authored = None
+            dedicated_errors.append(
+                f"dedicated paid-run receipt cannot be read: {exc}"
+            )
+        if authored is not None:
+            result = paid_publication.validate_paid_run(authored)
+            dedicated_errors.extend(result.errors)
+            dedicated_materials = [
+                material(path)
+                for path in result.materials
+                if path.is_file() and not path.is_symlink()
+            ]
+        if not dedicated_published:
+            dedicated_errors.append(
+                "dedicated paid-run public projection is missing"
+            )
+        elif PAID_MODEL_PUBLICATION.read_bytes() != PAID_MODEL_RUN.read_bytes():
+            dedicated_errors.append(
+                "dedicated paid-run public projection is not byte-identical "
+                "to the authored receipt"
+            )
+    elif dedicated_published:
+        dedicated_errors.append(
+            "dedicated paid-run public projection exists without an authored "
+            "receipt"
+        )
+
+    source_path = (
+        PAID_MODEL_PUBLICATION
+        if dedicated_published
+        else HISTORICAL_MODEL_PUBLICATION
+    )
     if not source_path.is_file():
         return {
+            "cost_boundary": (
+                "Governed paid-run cost is unavailable because no dedicated "
+                "paid-run receipt exists."
+            ),
             "generated_at": generated_at,
-            "release_effect": "blocked",
+            "governed_paid_cost": {
+                "available": False,
+                "gbp": None,
+                "reason": "missing-dedicated-paid-run",
+                "usd": None,
+            },
+            "release_effect": "blocked-missing-model-run",
+            "paid_run_gate": {
+                "reason": "missing-dedicated-paid-run",
+                "status": "blocked",
+            },
             "schema": "okf-model-cost-report.v1",
             "source_available": False,
+            "source_kind": "missing",
+            "validation_errors": [
+                "model-enrichment run material is missing"
+            ],
         }
     source = load(source_path)
-    cost = source.get("cost", {})
-    usd = float(cost.get("incremental_openai_api_usd", 0))
-    gbp = float(cost.get("incremental_openai_api_gbp", 0))
-    accepted = int(
-        source.get("accepted_assertions")
-        or source.get("counts", {}).get("assertions", {}).get("accepted", 0)
+    errors: list[str] = list(dedicated_errors)
+    source_kind = (
+        "dedicated-paid-run"
+        if dedicated_authored and dedicated_published
+        else "historical-codex-assisted-fallback"
     )
+    source_schema = source.get("schema")
+    provider = source.get("provider")
+    run_id = source.get("run_id")
+    if not isinstance(provider, str) or not provider:
+        errors.append("model provider is missing")
+    if not isinstance(run_id, str) or not run_id:
+        errors.append("model run identifier is missing")
+
+    cost = source.get("cost")
+    usage = source.get("usage")
+    if not isinstance(cost, dict):
+        errors.append("model cost object is missing")
+        cost = {}
+    if not isinstance(usage, dict):
+        errors.append("model usage object is missing")
+        usage = {}
+
+    if source_schema == "okf-model-enrichment-run.v2":
+        roles = source.get("roles")
+        generator = (
+            roles.get("generator")
+            if isinstance(roles, dict)
+            else None
+        )
+        model_identity = (
+            generator.get("returned_model")
+            if isinstance(generator, dict)
+            else None
+        )
+        model_identity_available = bool(
+            isinstance(model_identity, str) and model_identity
+        )
+        accepted_value = (
+            source.get("counts", {}).get("accepted_assertions")
+            if isinstance(source.get("counts"), dict)
+            else None
+        )
+        cost_fields = {
+            "usd": "actual_usd",
+            "gbp": "actual_gbp",
+            "cap": "cap_usd",
+            "cap_triggered": "cap_exceeded",
+        }
+        required_usage = (
+            "api_calls",
+            "input_tokens",
+            "cached_input_tokens",
+            "output_tokens",
+            "retries",
+        )
+    elif source_schema == "okf-model-enrichment-run.v1":
+        model_identity = source.get("model_identity")
+        available_value = source.get(
+            "model_deployment_identity_available"
+        )
+        if not isinstance(available_value, bool):
+            errors.append(
+                "exact model-identity availability flag is missing"
+            )
+        model_identity_available = available_value is True
+        counts = source.get("counts")
+        assertion_counts = (
+            counts.get("assertions")
+            if isinstance(counts, dict)
+            else None
+        )
+        accepted_value = (
+            assertion_counts.get("accepted")
+            if isinstance(assertion_counts, dict)
+            else source.get("accepted_assertions")
+        )
+        cost_fields = {
+            "usd": "incremental_openai_api_usd",
+            "gbp": "incremental_openai_api_gbp",
+            "cap": "cap_usd",
+            "cap_triggered": "cap_triggered",
+        }
+        required_usage = (
+            "api_calls",
+            "api_input_tokens",
+            "api_output_tokens",
+        )
+    else:
+        errors.append(
+            f"unsupported model-enrichment run schema: {source_schema!r}"
+        )
+        model_identity = None
+        model_identity_available = False
+        accepted_value = None
+        cost_fields = {
+            "usd": "incremental_openai_api_usd",
+            "gbp": "incremental_openai_api_gbp",
+            "cap": "cap_usd",
+            "cap_triggered": "cap_triggered",
+        }
+        required_usage = ()
+
+    if not isinstance(model_identity, str) or not model_identity:
+        errors.append("model identity is missing")
+    elif not model_identity_available:
+        errors.append("exact model deployment identity is unavailable")
+
+    missing_cost_fields = [
+        name
+        for name in cost_fields.values()
+        if name not in cost
+    ]
+    if missing_cost_fields:
+        errors.append(
+            "model cost fields are missing: "
+            + ", ".join(sorted(missing_cost_fields))
+        )
+    missing_usage_fields = [
+        name for name in required_usage if name not in usage
+    ]
+    if missing_usage_fields:
+        errors.append(
+            "model usage fields are missing: "
+            + ", ".join(sorted(missing_usage_fields))
+        )
+    if accepted_value is None:
+        errors.append("accepted-assertion denominator is missing")
+
+    numeric: dict[str, float] = {}
+    for label in ("usd", "gbp", "cap"):
+        source_key = cost_fields[label]
+        if source_key not in cost:
+            continue
+        value = cost[source_key]
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            errors.append(f"model {label} value is not numeric")
+            continue
+        converted = float(value)
+        if converted < 0:
+            errors.append(f"model {label} value is negative")
+            continue
+        numeric[label] = converted
+    cap_triggered_value = cost.get(cost_fields["cap_triggered"])
+    if not isinstance(cap_triggered_value, bool):
+        errors.append("model cap-triggered value is not boolean")
+
+    if errors and not all(
+        key in numeric for key in ("usd", "gbp", "cap")
+    ):
+        return {
+            "cost_boundary": (
+                "Governed paid-run cost is unavailable. Historical fallback "
+                "material, when present, is not governed paid-cost evidence."
+            ),
+            "generated_at": generated_at,
+            "governed_paid_cost": {
+                "available": False,
+                "gbp": None,
+                "reason": (
+                    "invalid-dedicated-paid-run"
+                    if dedicated_authored or dedicated_published
+                    else "missing-dedicated-paid-run"
+                ),
+                "usd": None,
+            },
+            "model_deployment_identity_available": (
+                model_identity_available
+            ),
+            "model_identity": model_identity,
+            "provider": provider,
+            "paid_run_gate": {
+                "authored_receipt_available": dedicated_authored,
+                "public_projection_available": dedicated_published,
+                "reason": (
+                    "invalid-dedicated-paid-run"
+                    if dedicated_authored or dedicated_published
+                    else "missing-dedicated-paid-run"
+                ),
+                "status": "blocked",
+            },
+            "paid_run_governance_materials": dedicated_materials,
+            "release_effect": "blocked-missing-model-cost-data",
+            "run_id": run_id,
+            "schema": "okf-model-cost-report.v1",
+            "source": material(source_path),
+            "source_available": True,
+            "source_kind": source_kind,
+            "validation_errors": errors,
+        }
+
+    usd = numeric["usd"]
+    gbp = numeric["gbp"]
+    cap_usd = numeric["cap"]
+    accepted = (
+        int(accepted_value)
+        if isinstance(accepted_value, int)
+        and not isinstance(accepted_value, bool)
+        and accepted_value >= 0
+        else 0
+    )
+    if accepted_value != accepted:
+        errors.append(
+            "accepted-assertion denominator is not a non-negative integer"
+        )
+    if usd > cap_usd:
+        errors.append("recorded model cost exceeds the configured cap")
+    if cap_usd != 250.0:
+        errors.append("model cost cap is not the approved US$250")
+
+    exchange_rate = cost.get("exchange_rate") or cost.get("fx")
+    if usd > 0:
+        if not isinstance(exchange_rate, dict) or not all(
+            exchange_rate.get(key) not in (None, "")
+            for key in ("source", "date", "rate")
+        ):
+            errors.append(
+                "paid model cost lacks dated exchange-rate evidence"
+            )
+
+    if cap_triggered_value is True or usd > cap_usd:
+        release_effect = "blocked-model-cost-cap"
+    elif not model_identity_available:
+        release_effect = "blocked-missing-exact-model-identity"
+    elif errors:
+        release_effect = "blocked-invalid-model-cost-data"
+    elif source_kind != "dedicated-paid-run":
+        release_effect = "blocked-missing-dedicated-paid-run"
+    else:
+        release_effect = "candidate"
+
     return {
         "accepted_assertions": accepted,
         "cap": {
-            "cap_triggered": bool(cost.get("cap_triggered")),
-            "cap_usd": float(cost.get("cap_usd", 250)),
-            "remaining_usd": max(0.0, float(cost.get("cap_usd", 250)) - usd),
+            "cap_triggered": cap_triggered_value,
+            "cap_usd": cap_usd,
+            "remaining_usd": max(0.0, cap_usd - usd),
         },
         "cost_per_accepted_assertion": {
             "gbp": gbp / accepted if accepted else None,
             "usd": usd / accepted if accepted else None,
         },
-        "generated_at": generated_at,
-        "incremental_cost": {"gbp": gbp, "usd": usd},
-        "model_identity": source.get("model_identity", "not recorded"),
-        "model_deployment_identity_available": source.get(
-            "model_deployment_identity_available"
+        "cost_boundary": (
+            "Exact governed paid-run API cost with dated currency evidence."
+            if source_kind == "dedicated-paid-run"
+            else (
+                "Governed paid-run cost is unavailable. The numeric "
+                "incremental_cost field is retained only as the historical "
+                "Codex-assisted fallback observation and cannot satisfy the "
+                "paid-run gate."
+            )
         ),
-        "provider": source.get("provider"),
+        "generated_at": generated_at,
+        "governed_paid_cost": {
+            "available": source_kind == "dedicated-paid-run",
+            "gbp": gbp if source_kind == "dedicated-paid-run" else None,
+            "reason": (
+                None
+                if source_kind == "dedicated-paid-run"
+                else "missing-dedicated-paid-run"
+            ),
+            "usd": usd if source_kind == "dedicated-paid-run" else None,
+        },
+        "historical_fallback_cost": (
+            {
+                "accepted_assertions": accepted,
+                "gbp": gbp,
+                "scope": "historical-codex-assisted-only",
+                "usd": usd,
+            }
+            if source_kind == "historical-codex-assisted-fallback"
+            else None
+        ),
+        "incremental_cost": {"gbp": gbp, "usd": usd},
+        "model_identity": model_identity,
+        "model_deployment_identity_available": model_identity_available,
+        "provider": provider,
+        "paid_run_gate": {
+            "authored_receipt_available": dedicated_authored,
+            "public_projection_available": dedicated_published,
+            "reason": (
+                None
+                if release_effect == "candidate"
+                else (
+                    "invalid-dedicated-paid-run"
+                    if dedicated_authored or dedicated_published
+                    else "missing-dedicated-paid-run"
+                )
+            ),
+            "status": (
+                "passed" if release_effect == "candidate" else "blocked"
+            ),
+        },
+        "paid_run_governance_materials": dedicated_materials,
         "notes": [
             cost.get("note", ""),
             "Codex subscription/task usage and the user's weekly allowance are not exposed as billable token data.",
             (
-                "No currency conversion was required because recorded "
-                "incremental OpenAI API spend is zero."
-                if usd == 0 and gbp == 0
-                else "A dated exchange-rate source is required before release."
+                "Historical Codex-assisted fallback spend is zero; governed "
+                "paid-run USD/GBP cost remains unavailable."
+                if source_kind == "historical-codex-assisted-fallback"
+                else (
+                    "No currency conversion was required because recorded "
+                    "incremental OpenAI API spend is zero."
+                    if usd == 0 and gbp == 0
+                    else "A dated exchange-rate source is required before release."
+                )
             ),
         ],
-        "release_effect": (
-            "candidate"
-            if usd == 0 and gbp == 0
-            else "blocked-pending-exchange-rate-evidence"
-        ),
-        "run_id": source.get("run_id"),
+        "release_effect": release_effect,
+        "run_id": run_id,
         "schema": "okf-model-cost-report.v1",
         "source": material(source_path),
-        "usage": source.get("usage", {}),
+        "source_kind": source_kind,
+        "source_run_schema": source_schema,
+        "usage": usage,
+        "validation_errors": errors,
     }
 
 
@@ -801,8 +1753,8 @@ def build_status_markdown(status: dict[str, Any], state: dict[str, Any]) -> byte
     return "\n".join(lines).encode("utf-8")
 
 
-def build_readme() -> bytes:
-    return b"""# Release assurance
+def build_readme(external_finalization: dict[str, Any]) -> bytes:
+    lines = """# Release assurance
 
 These deterministic candidate artefacts bind the implementation status,
 immutable research evidence, release state, rights, dependencies, provenance,
@@ -814,8 +1766,14 @@ which must still be executed on a frozen release candidate.
 - [Clause-level traceability](implementation-traceability.json)
 - [Implementation gap register](gap-register.json)
 - [Fail-closed release state](release-state.json)
+- [Projected release gates](release-gates.json)
+- [Embedded GATE-12 release report](release-report.json)
+- [Release policy v2](release-policy.json)
+- [External finalization contract](external-finalization-contract.json)
+- [External evidence workflow and finalizer hash](reproduction.json)
 - [Immutable evidence manifest](evidence-manifest.json)
 - [Claude observed-access test](claude-observed-access-test.json)
+- [GUI helper crash stop receipt](helper-crash-stop-receipt.json)
 - [SPDX 2.3 rights inventory](rights.spdx.json)
 - [CycloneDX 1.6 SBOM](sbom.cdx.json)
 - [Provenance](provenance.json)
@@ -823,7 +1781,20 @@ which must still be executed on a frozen release candidate.
 - [Constraint report](constraint-report.json)
 - [Model cost report](model-cost-report.json)
 - [Assurance checksums](checksums.json)
-"""
+""".splitlines()
+    lines.extend(
+        [
+            "",
+            "## External finalization schemas",
+            "",
+        ]
+    )
+    lines.extend(
+        f"- [{Path(row['projected_path']).name}]({row['projected_path']})"
+        for row in external_finalization["schemas"]
+    )
+    lines.append("")
+    return "\n".join(lines).encode("utf-8")
 
 
 def build_files() -> tuple[dict[Path, bytes], list[str]]:
@@ -831,6 +1802,24 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
     generated_at = policy["generated_at"]
     evidence, evidence_errors = evidence_manifest(generated_at)
     status, status_errors = implementation_status(generated_at)
+    external_finalization, schema_paths, external_errors = (
+        external_finalization_projection(policy)
+    )
+    constraint_report = build_constraint_report(generated_at)
+    constraint_body = render(constraint_report)
+    model_cost = build_model_cost(generated_at)
+    model_cost_body = render(model_cost)
+    paid_governance = paid_publication.validate_governance_inputs()
+    release_report, release_report_inputs, release_report_errors = (
+        build_release_report(
+            generated_at,
+            constraint_report,
+            constraint_body,
+            model_cost,
+            model_cost_body,
+        )
+    )
+    release_report_body = render(release_report)
     traceability_accounted_for = (
         bool(status["requirements_accounted_for"]) and not status_errors
     )
@@ -838,12 +1827,27 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
         generated_at,
         evidence_ok=not evidence_errors,
         traceability_accounted_for=traceability_accounted_for,
+        release_report_material=projected_material(
+            "release-report.json", release_report_body
+        ),
+        release_report_ok=not release_report_errors,
+        external_finalization=external_finalization,
     )
-    errors = evidence_errors + status_errors + state_errors
+    errors = (
+        evidence_errors
+        + status_errors
+        + external_errors
+        + list(paid_governance.errors)
+        + release_report_errors
+        + state_errors
+    )
 
     input_paths = [
         POLICY,
         GATES,
+        EXTERNAL_FINALIZATION_CONTRACT,
+        FINALIZER,
+        RELEASE_OBSERVATION_CONTROLLER,
         TRACEABILITY,
         TRACEABILITY_SOURCE,
         TRACEABILITY_SOURCE_DIGEST,
@@ -860,11 +1864,28 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
         / "current"
         / "source-constraint-ledger.json",
         CLAUDE_TRANSCRIPT,
+        *paid_governance.materials,
+        *schema_paths,
+        *release_report_inputs,
     ]
-    enrichment = ROOT / "bundle" / "enrichment" / "codex-assisted-v2.json"
-    if enrichment.is_file():
-        input_paths.append(enrichment)
-    inputs = [material(path) for path in input_paths]
+    for enrichment in (
+        HISTORICAL_MODEL_PUBLICATION,
+        PAID_MODEL_RUN,
+        PAID_MODEL_PUBLICATION,
+    ):
+        if enrichment.is_file() and not enrichment.is_symlink():
+            input_paths.append(enrichment)
+    for row in model_cost.get("paid_run_governance_materials", []):
+        relative = row.get("path")
+        if isinstance(relative, str):
+            path = ROOT / relative
+            if path.is_file() and not path.is_symlink():
+                input_paths.append(path)
+    inputs = [
+        material(path)
+        for path in dict.fromkeys(input_paths)
+        if path.is_file()
+    ]
     materials_digest = digest_bytes(
         "".join(f"{row['path']}:{row['sha256']}\n" for row in inputs).encode(
             "utf-8"
@@ -874,11 +1895,37 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
         "builder": {
             "command": "python3 scripts/build_release_assurance.py",
             "name": "build_release_assurance.py",
-            "version": "1.0.0",
+            "version": "1.1.0",
         },
+        "external_finalization": external_finalization,
         "generated_at": generated_at,
         "materials": inputs,
         "materials_digest": f"sha256:{materials_digest}",
+        "paid_model_governance": {
+            "authored_run": (
+                material(PAID_MODEL_RUN)
+                if PAID_MODEL_RUN.is_file()
+                and not PAID_MODEL_RUN.is_symlink()
+                else None
+            ),
+            "inputs": [
+                material(path)
+                for path in paid_governance.materials
+                if path.is_file() and not path.is_symlink()
+            ],
+            "public_projection": (
+                material(PAID_MODEL_PUBLICATION)
+                if PAID_MODEL_PUBLICATION.is_file()
+                and not PAID_MODEL_PUBLICATION.is_symlink()
+                else None
+            ),
+            "release_gate": model_cost.get("paid_run_gate"),
+            "status": (
+                "validated-observed-run"
+                if model_cost.get("release_effect") == "candidate"
+                else "blocked-awaiting-valid-observed-run"
+            ),
+        },
         "outputs": {
             "checksum_manifest": "checksums.json",
             "deterministic": True,
@@ -905,6 +1952,15 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
             "python": ">=3.12",
             "requirements": material(ROOT / "requirements-validation.txt"),
         },
+        "external_finalization": {
+            **external_finalization,
+            "evidence_storage": (
+                "All authorization, deployed-attempt and finalization receipts "
+                "are regular files outside the frozen repository. Each output "
+                "is write-once; verification reconstructs it from the same "
+                "external evidence without changing the checkout or archive."
+            ),
+        },
         "generated_at": generated_at,
         "inputs": {
             "materials_digest": f"sha256:{materials_digest}",
@@ -921,27 +1977,48 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
         "write_command": "python3 scripts/build_release_assurance.py",
     }
     files: dict[Path, bytes] = {
-        Path("README.md"): build_readme(),
+        Path("README.md"): build_readme(external_finalization),
         Path("controlling-requirements.md"): TRACEABILITY_SOURCE.read_bytes(),
         Path(
             "controlling-requirements.sha256"
         ): TRACEABILITY_SOURCE_DIGEST.read_bytes(),
-        Path("constraint-report.json"): render(build_constraint_report(generated_at)),
+        Path("constraint-report.json"): constraint_body,
         Path("claude-observed-access-test.json"): render(
             build_claude_access_test(generated_at)
         ),
         Path("evidence-manifest.json"): render(evidence),
+        Path(
+            "external-finalization-contract.json"
+        ): EXTERNAL_FINALIZATION_CONTRACT.read_bytes(),
         Path("implementation-status.json"): render(status),
         Path("implementation-status.md"): build_status_markdown(status, state),
         Path("implementation-traceability.json"): TRACEABILITY.read_bytes(),
         Path("gap-register.json"): GAP_REGISTER.read_bytes(),
-        Path("model-cost-report.json"): render(build_model_cost(generated_at)),
+        Path(
+            "github-operation-environment.json"
+        ): GITHUB_OPERATION_ENVIRONMENT.read_bytes(),
+        Path(
+            "helper-crash-stop-receipt.json"
+        ): HELPER_CRASH_STOP_RECEIPT.read_bytes(),
+        Path("model-cost-report.json"): model_cost_body,
         Path("provenance.json"): render(provenance),
+        Path("release-policy.json"): POLICY.read_bytes(),
+        Path("release-report.json"): release_report_body,
+        Path("release-gates.json"): render(
+            {
+                "gates": state["gates"],
+                "generated_at": generated_at,
+                "schema": load(GATES).get("schema"),
+            }
+        ),
         Path("release-state.json"): render(state),
         Path("reproduction.json"): render(reproduction),
         Path("rights.spdx.json"): render(build_spdx(generated_at, materials_digest)),
         Path("sbom.cdx.json"): render(build_sbom(generated_at, materials_digest)),
     }
+    for row in external_finalization["schemas"]:
+        source_path = ROOT / row["path"]
+        files[Path(row["projected_path"])] = source_path.read_bytes()
     checksum_rows = [
         {
             "bytes": len(body),

@@ -1,11 +1,14 @@
 @prefix okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 okflaw: a owl:Ontology ;
@@ -15,6 +18,11 @@ okflaw: a owl:Ontology ;
 
 okflaw:Federation a rdfs:Class ;
   rdfs:label "OKF federation" .
+okflaw:SourceRegister a rdfs:Class ;
+  rdfs:label "governed source register" .
+okflaw:SourceRecord a rdfs:Class ;
+  rdfs:subClassOf dcat:CatalogRecord, prov:Entity ;
+  rdfs:label "governed source record" .
 okflaw:LegalWork a rdfs:Class ;
   rdfs:label "legal work" .
 okflaw:LegislationWork a rdfs:Class ;
@@ -23,8 +31,31 @@ okflaw:LegislationWork a rdfs:Class ;
 okflaw:JudicialDecision a rdfs:Class ;
   rdfs:subClassOf okflaw:LegalWork ;
   rdfs:label "judicial decision" .
+okflaw:Case a rdfs:Class ;
+  rdfs:subClassOf okflaw:LegalWork ;
+  rdfs:label "legal case" .
+okflaw:Court a rdfs:Class ;
+  rdfs:subClassOf okflaw:Organisation, schema:Organization ;
+  rdfs:label "court or tribunal" .
+okflaw:Organisation a rdfs:Class ;
+  rdfs:subClassOf prov:Agent, schema:Organization ;
+  rdfs:label "organisation" .
+okflaw:Publication a rdfs:Class ;
+  rdfs:subClassOf dcat:Resource, prov:Entity ;
+  rdfs:label "published legal resource" .
+okflaw:LegalManifestation a rdfs:Class ;
+  rdfs:subClassOf eli:Format, okflaw:Publication ;
+  rdfs:label "legal manifestation" .
+okflaw:Provision a rdfs:Class ;
+  rdfs:label "source-identified legal provision" .
 okflaw:LegalPassage a rdfs:Class ;
-  rdfs:label "legal passage" .
+  rdfs:label "evidential passage from a legal source" .
+okflaw:Jurisdiction a rdfs:Class ;
+  rdfs:subClassOf dcterms:Jurisdiction, skos:Concept ;
+  rdfs:label "governed jurisdiction concept" .
+okflaw:TemporalState a rdfs:Class ;
+  rdfs:subClassOf time:TemporalEntity ;
+  rdfs:label "source-observed temporal state" .
 okflaw:SynthesisedProposition a rdfs:Class ;
   rdfs:label "synthesised proposition" .
 okflaw:LegislativeEffect a rdfs:Class ;
@@ -36,8 +67,45 @@ okflaw:AccessTest a rdfs:Class ;
 
 okflaw:authorityClass a rdf:Property ;
   rdfs:label "authority class" .
+okflaw:okfVersion a rdf:Property ;
+  rdfs:label "OKF version" .
+okflaw:version a rdf:Property ;
+  rdfs:label "publication version" .
+okflaw:status a rdf:Property ;
+  rdfs:label "publication status" .
+okflaw:descriptor a rdf:Property ;
+  rdfs:label "Explorer descriptor" .
+okflaw:childBundle a rdf:Property ;
+  rdfs:label "child bundle" .
+okflaw:sourceRegister a rdf:Property ;
+  rdfs:range okflaw:SourceRegister ;
+  rdfs:label "source register" .
+okflaw:sourceRecord a rdf:Property ;
+  rdfs:range okflaw:SourceRecord ;
+  rdfs:label "governing source record" .
+okflaw:registerSchema a rdf:Property ;
+  rdfs:label "source-register schema" .
+okflaw:recordCount a rdf:Property ;
+  rdfs:label "source-record count" .
+okflaw:sourceClassCount a rdf:Property ;
+  rdfs:label "source-class count" .
+okflaw:accessMethodCount a rdf:Property ;
+  rdfs:label "access-method count" .
+okflaw:accessTestDate a rdf:Property ;
+  rdfs:label "access-test date" .
 okflaw:legalForce a rdf:Property ;
   rdfs:label "legal force" .
+okflaw:decidingCourt a rdf:Property ;
+  rdfs:domain okflaw:Case ;
+  rdfs:range okflaw:Court ;
+  rdfs:label "deciding court" .
+okflaw:temporalState a rdf:Property ;
+  rdfs:range okflaw:TemporalState ;
+  rdfs:label "temporal state" .
+okflaw:stateType a rdf:Property ;
+  rdfs:domain okflaw:TemporalState ;
+  rdfs:range skos:Concept ;
+  rdfs:label "temporal state type" .
 okflaw:hasPassage a rdf:Property ;
   rdfs:range okflaw:LegalPassage .
 okflaw:supportedBy a rdf:Property ;
@@ -86,3 +154,5 @@ okflaw:OfficialGuidance a skos:Concept ;
   skos:prefLabel "official guidance" .
 okflaw:History a skos:Concept ;
   skos:prefLabel "history and legislative context" .
+okflaw:ConsolidatedPointInTime a skos:Concept ;
+  skos:prefLabel "consolidated point-in-time state" .

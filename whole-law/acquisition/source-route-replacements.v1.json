@@ -1,0 +1,462 @@
+{
+  "created_at": "2026-07-26T00:33:39Z",
+  "overlay_id": "whole-law-route-replacements-20260726",
+  "policy": {
+    "authentication_bypass": false,
+    "credentials": false,
+    "immutable_base": true,
+    "maximum_redirects": 5,
+    "replacement_only": true,
+    "schemes": [
+      "https"
+    ]
+  },
+  "routes": [
+    {
+      "allowed_redirect_hosts": [
+        "justice.gov.uk",
+        "www.justice.gov.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Official table of rules/practice directions plus update instruments; no historical point-in-time denominator identified on the current pages.",
+        "replacement_route_count": 1,
+        "scope_note": "The overlay replaces one stale landing-page route; it does not enumerate historical practice directions."
+      },
+      "officiality": {
+        "basis": "Ministry of Justice Civil Procedure Rules service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/practice-directions",
+      "replacement_id": "SRC018-A02-R01",
+      "replaces_method_id": "SRC018-A02",
+      "source_id": "SRC018",
+      "url": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/raprnotes"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "www.gov.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The Tribunal Procedure Committee states that it keeps nine sets of Tribunal Procedure Rules under review.",
+        "replacement_route_count": 1,
+        "scope_note": "Nine is an exact ruleset count stated by the committee, not a complete count of rules, instruments or historical versions."
+      },
+      "officiality": {
+        "basis": "Official GOV.UK page for the Tribunal Procedure Committee.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.gov.uk/government/collections/tribunal-procedure-rules",
+      "replacement_id": "SRC021-A01-R01",
+      "replaces_method_id": "SRC021-A01",
+      "source_id": "SRC021",
+      "url": "https://www.gov.uk/government/organisations/tribunal-procedure-committee/about"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "sentencingcouncil.org.uk",
+        "www.sentencingcouncil.org.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Official guideline indexes are organised by published guideline and version.",
+        "replacement_route_count": 1,
+        "scope_note": "The landing page does not establish a complete historical guideline/version denominator."
+      },
+      "officiality": {
+        "basis": "Official Sentencing Council for England and Wales service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.sentencingcouncil.org.uk/guidelines/",
+      "replacement_id": "SRC027-A01-R01",
+      "replaces_method_id": "SRC027-A01",
+      "source_id": "SRC027",
+      "url": "https://sentencingcouncil.org.uk/"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "cps.gov.uk",
+        "www.cps.gov.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official prosecution-guidance search is the current public index.",
+        "replacement_route_count": 1,
+        "scope_note": "A dynamic result count is not treated as a complete historical denominator."
+      },
+      "officiality": {
+        "basis": "Official Crown Prosecution Service guidance search.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.cps.gov.uk/legal-guidance",
+      "replacement_id": "SRC028-A01-R01",
+      "replaces_method_id": "SRC028-A01",
+      "source_id": "SRC028",
+      "url": "https://www.cps.gov.uk/prosecution-guidance/prosecution-guidance-search"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "copfs.gov.uk",
+        "www.copfs.gov.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official publication page exposes the current disclosure code.",
+        "replacement_route_count": 1,
+        "scope_note": "The page does not establish a comprehensive historical-publications denominator."
+      },
+      "officiality": {
+        "basis": "Official Crown Office and Procurator Fiscal Service publication.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.copfs.gov.uk/publications/disclosure-code/",
+      "replacement_id": "SRC029-A02-R01",
+      "replaces_method_id": "SRC029-A02",
+      "source_id": "SRC029",
+      "url": "https://www.copfs.gov.uk/publications/code-of-practice-disclosure-of-evidence-in-criminal-proceedings/"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "ppsni.gov.uk",
+        "www.ppsni.gov.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official publication page exposes the current Code for Prosecutors.",
+        "replacement_route_count": 1,
+        "scope_note": "The page does not establish a complete historical-version denominator."
+      },
+      "officiality": {
+        "basis": "Official Public Prosecution Service for Northern Ireland publication.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.ppsni.gov.uk/code-prosecutors",
+      "replacement_id": "SRC030-A01-R01",
+      "replaces_method_id": "SRC030-A01",
+      "source_id": "SRC030",
+      "url": "https://www.ppsni.gov.uk/publications/code-prosecutors"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "fca.org.uk",
+        "www.fca.org.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The complete current denominator is the publisher's Handbook module/provision tree, not a search count.",
+        "replacement_route_count": 1,
+        "scope_note": "This replacement is an explanatory landing page and does not itself enumerate the Handbook."
+      },
+      "officiality": {
+        "basis": "Official Financial Conduct Authority Handbook explanation.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.fca.org.uk/firms/handbook",
+      "replacement_id": "SRC031-A02-R01",
+      "replaces_method_id": "SRC031-A02",
+      "source_id": "SRC031",
+      "url": "https://www.fca.org.uk/about/how-we-regulate/handbook"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "bankofengland.co.uk",
+        "www.bankofengland.co.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official Rulebook hierarchy and instrument register define the current denominator.",
+        "replacement_route_count": 1,
+        "scope_note": "This information page is not itself a complete Rulebook enumeration."
+      },
+      "officiality": {
+        "basis": "Official Bank of England Prudential Regulation Authority page.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.bankofengland.co.uk/prudential-regulation/pra-rulebook",
+      "replacement_id": "SRC033-A02-R01",
+      "replaces_method_id": "SRC033-A02",
+      "source_id": "SRC033",
+      "url": "https://www.bankofengland.co.uk/prudential-regulation/pra-rulebook-website"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "www.gov.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The denominator varies by sanction regime and publication-retention policy.",
+        "replacement_route_count": 1,
+        "scope_note": "The current publication does not establish a universal enforcement denominator."
+      },
+      "officiality": {
+        "basis": "Official GOV.UK Environment Agency publication.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.gov.uk/government/publications/environment-agency-enforcement-undertakings-accepted",
+      "replacement_id": "SRC039-A01-R01",
+      "replaces_method_id": "SRC039-A01",
+      "source_id": "SRC039",
+      "url": "https://www.gov.uk/government/publications/enforcement-undertakings-accepted-by-the-environment-agency"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "lgo.org.uk",
+        "www.lgo.org.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The publisher states that it publishes as many decisions as possible and applies five-year decision-statement and ten-year public-interest-report windows.",
+        "replacement_route_count": 1,
+        "scope_note": "The searchable publication set is expressly not all decisions."
+      },
+      "officiality": {
+        "basis": "Official Local Government and Social Care Ombudsman decisions service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.lgo.org.uk/information-centre/reports/decisions",
+      "replacement_id": "SRC040-A02-R01",
+      "replaces_method_id": "SRC040-A02",
+      "source_id": "SRC040",
+      "url": "https://www.lgo.org.uk/decisions"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "spso.org.uk",
+        "swf.spso.org.uk",
+        "www.spso.org.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official service lists published Scottish Welfare Fund case summaries.",
+        "replacement_route_count": 1,
+        "scope_note": "The page does not establish a denominator for all applications or reviews."
+      },
+      "officiality": {
+        "basis": "Official Scottish Public Services Ombudsman service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.spso.org.uk/scottish-welfare-fund-independent-review-decisions",
+      "replacement_id": "SRC042-A02-R01",
+      "replaces_method_id": "SRC042-A02",
+      "source_id": "SRC042",
+      "url": "https://swf.spso.org.uk/case-summaries"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "nipso.org.uk",
+        "www.nipso.org.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official service publishes searchable findings.",
+        "replacement_route_count": 1,
+        "scope_note": "Published findings are not a denominator for all complaints."
+      },
+      "officiality": {
+        "basis": "Official Northern Ireland Public Services Ombudsman findings service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://nipso.org.uk/nipso/publications",
+      "replacement_id": "SRC043-A01-R01",
+      "replaces_method_id": "SRC043-A01",
+      "source_id": "SRC043",
+      "url": "https://www.nipso.org.uk/our-findings/search-our-findings"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "www.gov.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The collection names six inquiries and is explicitly limited to recommendations and responses published since 2024.",
+        "replacement_route_count": 1,
+        "scope_note": "Six is exact for the inspected collection sections, not a denominator for all UK public inquiries."
+      },
+      "officiality": {
+        "basis": "Official GOV.UK Cabinet Office public-inquiries collection.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.gov.uk/government/publications/public-inquiries-recommendations-dashboard",
+      "replacement_id": "SRC053-A01-R01",
+      "replaces_method_id": "SRC053-A01",
+      "source_id": "SRC053",
+      "url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "www.gov.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The collection names six inquiries and is explicitly limited to recommendations and responses published since 2024.",
+        "replacement_route_count": 1,
+        "scope_note": "Six is exact for the inspected collection sections, not a denominator for all UK public inquiries."
+      },
+      "officiality": {
+        "basis": "Official GOV.UK Cabinet Office public-inquiries collection.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.gov.uk/government/collections/public-inquiries",
+      "replacement_id": "SRC053-A02-R01",
+      "replaces_method_id": "SRC053-A02",
+      "source_id": "SRC053",
+      "url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "data.gov.uk",
+        "www.data.gov.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official UK Treaties Online catalogue and downloadable dataset define the available publication set.",
+        "replacement_route_count": 1,
+        "scope_note": "The dataset page is not treated as proof of current multilateral treaty status or complete historical coverage."
+      },
+      "officiality": {
+        "basis": "Official data.gov.uk catalogue record for the FCDO UK Treaties Database.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.gov.uk/government/publications/uk-treaties-dataset",
+      "replacement_id": "SRC055-A02-R01",
+      "replaces_method_id": "SRC055-A02",
+      "source_id": "SRC055",
+      "url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/uk-treaties-database"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "op.europa.eu"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "CELLAR repository datasets, dumps and identifiers can provide denominators by CELEX or resource class.",
+        "replacement_route_count": 1,
+        "scope_note": "The documentation landing page does not itself provide a complete repository denominator."
+      },
+      "officiality": {
+        "basis": "Official Publications Office of the European Union CELLAR documentation.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://op.europa.eu/en/web/about-us/legal-notices/accessibility",
+      "replacement_id": "SRC057-A01-R01",
+      "replaces_method_id": "SRC057-A01",
+      "source_id": "SRC057",
+      "url": "https://op.europa.eu/en/web/cellar/documentation"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "mygov.scot",
+        "www.mygov.scot"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Platform content inventories, APIs or sitemaps are required for an exact platform denominator.",
+        "replacement_route_count": 1,
+        "scope_note": "The topic landing page is not a whole-law content inventory."
+      },
+      "officiality": {
+        "basis": "Official Scottish Government mygov.scot topic.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.mygov.scot/justice-law-rights",
+      "replacement_id": "SRC064-A02-R01",
+      "replaces_method_id": "SRC064-A02",
+      "source_id": "SRC064",
+      "url": "https://www.mygov.scot/browse/crime-justice-law"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "gov.wales",
+        "www.gov.wales"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Platform content inventories, APIs or sitemaps are required for an exact platform denominator.",
+        "replacement_route_count": 1,
+        "scope_note": "The topic landing page is not a whole-law content inventory."
+      },
+      "officiality": {
+        "basis": "Official Welsh Government justice and law topic.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.gov.wales/law-and-order",
+      "replacement_id": "SRC064-A03-R01",
+      "replaces_method_id": "SRC064-A03",
+      "source_id": "SRC064",
+      "url": "https://www.gov.wales/justice-and-law"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "nidirect.gov.uk",
+        "www.nidirect.gov.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Platform content inventories, APIs or sitemaps are required for an exact platform denominator.",
+        "replacement_route_count": 1,
+        "scope_note": "The topic landing page is not a whole-law content inventory."
+      },
+      "officiality": {
+        "basis": "Official Northern Ireland Executive nidirect topic.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.nidirect.gov.uk/information-and-services/justice-and-law",
+      "replacement_id": "SRC064-A04-R01",
+      "replaces_method_id": "SRC064-A04",
+      "source_id": "SRC064",
+      "url": "https://www.nidirect.gov.uk/information-and-services/crime-justice-and-law"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "lexisnexis.co.uk",
+        "www.lexisnexis.co.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Proprietary catalogue completeness requires the vendor contract and an independent denominator.",
+        "replacement_route_count": 1,
+        "scope_note": "This public product-information route does not grant or prove access to the authenticated legal corpus."
+      },
+      "officiality": {
+        "basis": "Primary product-information page operated by LexisNexis.",
+        "classification": "primary-source-operator",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.lexisnexis.co.uk/legal/lexis-plus.html",
+      "replacement_id": "SRC069-A02-R01",
+      "replaces_method_id": "SRC069-A02",
+      "source_id": "SRC069",
+      "url": "https://www.lexisnexis.co.uk/products/legal-industry"
+    }
+  ],
+  "schema": "okf-source-route-replacement-overlay.v1",
+  "source_register": {
+    "path": "research/whole-law-okf-research/source-register.json",
+    "sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810"
+  },
+  "superseded_observation": {
+    "access_methods_path": "whole-law/acquisition/current/access-methods.json",
+    "access_methods_sha256": "30aaef86282be1ca5058689dcbde571f601114996b4d800d3d926c07a493db40",
+    "evidence_run_id": "20260725T203207Z-dd7315c3"
+  }
+}

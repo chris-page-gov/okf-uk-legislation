@@ -31,6 +31,12 @@ DATA = BUNDLE / "data"
 OUTPUT = DATA / "effects"
 RUN_PATH = BUNDLE / "effects" / "legislation-gov-uk-2026-07-25.json"
 CONFIG_PATH = ROOT / "whole-law" / "config" / "effects-seeds.json"
+LIVE_RECONCILIATION_PATH = (
+    ROOT
+    / "whole-law"
+    / "assurance"
+    / "effects-live-reconciliation-20260726.json"
+)
 EVIDENCE = ROOT / "evidence" / "source-acquisitions" / "legislation-effects"
 GENERATED_AT = "2026-07-25T21:30:00Z"
 OGL = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
@@ -483,6 +489,20 @@ def build(allow_fetch: bool) -> tuple[dict[Path, bytes], dict[str, Any], dict[st
     source_count = len({row["source"] for row in assertions})
     target_count = len({row["target"] for row in assertions})
     body = gzip_json(assertions)
+    live_reconciliation = (
+        load(LIVE_RECONCILIATION_PATH)
+        if LIVE_RECONCILIATION_PATH.is_file()
+        else None
+    )
+    if live_reconciliation is not None:
+        recorded_snapshot = live_reconciliation.get("snapshot", {}).get(
+            "assertions",
+            {},
+        )
+        if recorded_snapshot.get("sha256") != sha256(body):
+            raise ValueError(
+                "Post-build live reconciliation is not bound to this effects chunk"
+            )
     chunk = {
         "path": "data/effects/assertions.json.gz",
         "media_type": "application/json",
@@ -515,6 +535,11 @@ def build(allow_fetch: bool) -> tuple[dict[Path, bytes], dict[str, Any], dict[st
             "attempt_ledger": "data/effects/attempt-ledger.json",
             "coverage": "data/effects/coverage.json",
             "reconciliation": "data/effects/reconciliation.json",
+            "live_reconciliation_receipt": (
+                LIVE_RECONCILIATION_PATH.relative_to(ROOT).as_posix()
+                if live_reconciliation is not None
+                else None
+            ),
             "evidence_archive": acquisition_evidence["archive"],
             "evidence_archive_receipt": (
                 acquisition_evidence["archive_receipt"]
@@ -539,6 +564,11 @@ def build(allow_fetch: bool) -> tuple[dict[Path, bytes], dict[str, Any], dict[st
             ),
             "original_bytes_recoverable": True,
             "projection_contains_response_bodies": False,
+            "post_build_live_reconciliation": (
+                LIVE_RECONCILIATION_PATH.relative_to(ROOT).as_posix()
+                if live_reconciliation is not None
+                else None
+            ),
         },
         "population": {
             "legislation_works_in_bundle": load(DATA / "manifest.json")["counts"]["works"],
@@ -581,6 +611,35 @@ def build(allow_fetch: bool) -> tuple[dict[Path, bytes], dict[str, Any], dict[st
         } for row in attempts],
         "notice": "A scheduled refresh creates a new immutable attempt; it never rewrites this evidence.",
     }
+    if live_reconciliation is not None:
+        reconciliation["post_build_live"] = {
+            "observed_at": live_reconciliation["observed_at"],
+            "receipt": LIVE_RECONCILIATION_PATH.relative_to(ROOT).as_posix(),
+            "release_effect": live_reconciliation["release_effect"],
+            "scope": live_reconciliation["scope"],
+            "states": live_reconciliation["counts"]["by_state"],
+            "live_additions": live_reconciliation["counts"]["live_additions"],
+            "live_matches": live_reconciliation["counts"]["live_matches"],
+        }
+        reconciliation["states"].update(
+            {
+                "post_build_agreement": int(
+                    live_reconciliation["counts"]["by_state"].get(
+                        "agreement",
+                        0,
+                    )
+                ),
+                "post_build_inaccessible_consistent": int(
+                    live_reconciliation["counts"]["by_state"].get(
+                        "inaccessible-consistent",
+                        0,
+                    )
+                ),
+                "post_build_live_additions": int(
+                    live_reconciliation["counts"]["live_additions"]
+                ),
+            }
+        )
     relationship_summary = {
         "schema": "okf-official-effects-relationship-summary.v1",
         "generated_at": GENERATED_AT,

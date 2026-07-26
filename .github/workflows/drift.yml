@@ -1,4 +1,4 @@
-name: Read-only publication drift probe
+name: Immutable publication refresh attempt
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: publication-drift
@@ -28,12 +28,64 @@ jobs:
       - name: Install pinned validation dependencies
         run: python3 -m pip install --disable-pip-version-check --requirement requirements-validation.txt
       - name: Observe source, access, link, checksum and new-work drift
+        id: observe
+        continue-on-error: true
         run: python3 scripts/check_release_drift.py --output "$RUNNER_TEMP/okf-drift-report.json"
-      - name: Retain the immutable observation
+      - name: Seal the immutable refresh-attempt datapack
+        id: seal
         if: ${{ always() }}
+        run: >-
+          python3 scripts/seal_refresh_attempt.py seal
+          --observation "$RUNNER_TEMP/okf-drift-report.json"
+          --output-root "$RUNNER_TEMP/okf-refresh-attempts"
+          --source-commit "$GITHUB_SHA"
+          --github-output "$GITHUB_OUTPUT"
+      - name: Retain a secondary workflow copy
+        if: ${{ always() && steps.seal.outcome == 'success' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: okf-drift-${{ github.run_id }}
-          path: ${{ runner.temp }}/okf-drift-report.json
+          name: refresh-attempt-${{ steps.seal.outputs.attempt_id }}
+          path: ${{ steps.seal.outputs.package_dir }}
           if-no-files-found: error
           retention-days: 90
+      - name: Persist the append-only attempt as a release
+        if: ${{ always() && steps.seal.outcome == 'success' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="${{ steps.seal.outputs.release_tag }}"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists; verifying without editing it."
+          else
+            gh release create "$tag" \
+              "${{ steps.seal.outputs.manifest }}" \
+              "${{ steps.seal.outputs.datapack }}" \
+              "${{ steps.seal.outputs.observation }}" \
+              "${{ steps.seal.outputs.checksums }}" \
+              "${{ steps.seal.outputs.readme }}" \
+              --target "$GITHUB_SHA" \
+              --title "Immutable refresh attempt ${{ steps.seal.outputs.attempt_id }}" \
+              --notes-file "${{ steps.seal.outputs.readme }}" \
+              --prerelease \
+              --latest=false
+          fi
+          expected_assets="$(printf '%s\n' README.md checksums.json datapack.json manifest.json observation.json)"
+          actual_assets="$(gh release view "$tag" --json assets --jq '.assets[].name' | sort)"
+          if [ "$actual_assets" != "$expected_assets" ]; then
+            echo "Release $tag has an unexpected asset set."
+            exit 1
+          fi
+          verify_dir="$RUNNER_TEMP/okf-refresh-release-verification"
+          mkdir -p "$verify_dir"
+          gh release download "$tag" --dir "$verify_dir"
+          cmp "${{ steps.seal.outputs.manifest }}" "$verify_dir/manifest.json"
+          cmp "${{ steps.seal.outputs.datapack }}" "$verify_dir/datapack.json"
+          cmp "${{ steps.seal.outputs.observation }}" "$verify_dir/observation.json"
+          cmp "${{ steps.seal.outputs.checksums }}" "$verify_dir/checksums.json"
+          cmp "${{ steps.seal.outputs.readme }}" "$verify_dir/README.md"
+      - name: Fail closed when the observation found drift
+        if: ${{ always() && steps.observe.outcome != 'success' }}
+        run: |
+          echo "The failed or drift-detected observation was persisted above."
+          exit 1

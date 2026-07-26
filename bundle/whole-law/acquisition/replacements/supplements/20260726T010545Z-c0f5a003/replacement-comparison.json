@@ -1,0 +1,24 @@
+{
+  "counts": {
+    "observed_access_state": {
+      "reachable": 1
+    },
+    "redirects": 0,
+    "replacement_routes": 1
+  },
+  "evidence_run_id": "20260726T010545Z-c0f5a003",
+  "generated_at": "2026-07-26T01:05:57Z",
+  "records": [
+    {
+      "final_url": "https://www.copfs.gov.uk/media/03znmxlq/code-of-practice-disclosure-of-evidence-in-criminal-proceedings.pdf",
+      "http_status": 206,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.copfs.gov.uk/media/03znmxlq/code-of-practice-disclosure-of-evidence-in-criminal-proceedings.pdf",
+      "redirect_chain": [],
+      "replacement_id": "SRC029-A02-R03",
+      "replaces_method_id": "SRC029-A02",
+      "url": "https://www.copfs.gov.uk/media/03znmxlq/code-of-practice-disclosure-of-evidence-in-criminal-proceedings.pdf"
+    }
+  ],
+  "schema": "okf-source-route-replacement-comparison.v1"
+}

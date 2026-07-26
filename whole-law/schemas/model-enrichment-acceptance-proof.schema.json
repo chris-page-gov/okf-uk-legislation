@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-acceptance-proof.schema.json",
+  "title": "OKF paid model-enrichment acceptance proof v1",
+  "description": "One compact proof joining a published model-assisted relationship to frozen input, generator, independent reviewer, strongest-model escalation when required, and assertion-level deterministic validation.",
+  "type": "object",
+  "required": [
+    "schema",
+    "acceptance_id",
+    "run_id",
+    "relationship_id",
+    "relationship_ordinal",
+    "relationship_projection_sha256",
+    "record_id",
+    "input_sha256",
+    "candidate",
+    "reviewer",
+    "strongest",
+    "deterministic",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-acceptance-proof.v1"
+    },
+    "acceptance_id": {
+      "type": "string",
+      "pattern": "^urn:okf:model-acceptance:[0-9a-f]{64}$"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "relationship_id": {
+      "type": "string",
+      "pattern": "^urn:okf:model-relationship:[0-9a-f]{64}$"
+    },
+    "relationship_ordinal": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "relationship_projection_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "input_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "candidate": {
+      "type": "object",
+      "required": [
+        "material_id",
+        "record_index",
+        "assertion_index"
+      ],
+      "properties": {
+        "material_id": {
+          "$ref": "#/$defs/materialId"
+        },
+        "record_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "assertion_index": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "reviewer": {
+      "$ref": "#/$defs/reviewPointer"
+    },
+    "strongest": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/reviewPointer"
+        }
+      ]
+    },
+    "deterministic": {
+      "type": "object",
+      "required": [
+        "material_id",
+        "result_index"
+      ],
+      "properties": {
+        "material_id": {
+          "$ref": "#/$defs/materialId"
+        },
+        "result_index": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "materialId": {
+      "type": "string",
+      "pattern": "^model-material-[a-z0-9][a-z0-9._-]*$"
+    },
+    "reviewPointer": {
+      "type": "object",
+      "required": [
+        "material_id",
+        "record_index",
+        "decision_index"
+      ],
+      "properties": {
+        "material_id": {
+          "$ref": "#/$defs/materialId"
+        },
+        "record_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "decision_index": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

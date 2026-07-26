@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/performance-assurance-receipt.schema.json",
+  "title": "Frozen-candidate Explorer performance assurance receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "gate",
+    "candidate",
+    "archive",
+    "explorer",
+    "measurements",
+    "materials",
+    "assurance_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-performance-assurance-receipt.v2"
+    },
+    "status": {
+      "const": "passed"
+    },
+    "gate": {
+      "const": "GATE-08"
+    },
+    "candidate": {
+      "$ref": "#/$defs/candidate"
+    },
+    "archive": {
+      "$ref": "#/$defs/archive"
+    },
+    "explorer": {
+      "$ref": "#/$defs/explorer"
+    },
+    "measurements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initial_transfer_bytes",
+        "cold_search_ms",
+        "warm_search_ms",
+        "browser_memory_bytes"
+      ],
+      "properties": {
+        "initial_transfer_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1048576
+        },
+        "cold_search_ms": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 3000
+        },
+        "warm_search_ms": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "browser_memory_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 268435456
+        }
+      }
+    },
+    "materials": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "$ref": "#/$defs/roleMaterial"
+      }
+    },
+    "assurance_boundary": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "commit",
+        "tree",
+        "bundle_tree_sha256"
+      ],
+      "properties": {
+        "repository": {
+          "const": "https://github.com/chris-page-gov/okf-uk-legislation"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "tree": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "bundle_tree_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "okf-uk-legislation-v0.3.0.tar.zst"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "explorer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "tag",
+        "commit"
+      ],
+      "properties": {
+        "repository": {
+          "const": "https://github.com/chris-page-gov/okf-explorer"
+        },
+        "tag": {
+          "const": "v0.5.0"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "roleMaterial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "role": {
+          "const": "runtime"
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\\\u0000-\\u001f]+$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

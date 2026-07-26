@@ -29,8 +29,13 @@ documented compatibility decision.
 `okf-bundle.jsonld` from the same governed values. Validation exercises
 YAML-LD expansion, JSON-LD compaction, flattening and framing, RDF conversion,
 RDF-to-JSON-LD-to-RDF round-trip, graph isomorphism and canonical N-Quads
-equivalence. SHACL validates the example/entity contract and JSON Schema
-validates each public extension contract.
+equivalence. SHACL validates both the complete authored/generated semantic
+descriptor graphs and the example/entity contract. The semantic descriptor
+contains the Federation and its hash-bound SourceRegister contract node; it
+does not materialise the 365,786 catalogued legal works as RDF. The
+[deterministic conformance receipt](../assurance/semantic-conformance.json)
+separately records exhaustive JSON Schema validation of every compact core and
+provider relationship row.
 
 These checks establish conformance of this publication to its declared basic
 profile. They do not claim that the selected third-party processor passes

@@ -2,12 +2,17 @@
   "@context": {
     "@vocab": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#",
     "okflaw": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#",
-    "eli": "http://data.europa.eu/eli/ontology#",
+    "dcat": "http://www.w3.org/ns/dcat#",
     "dcterms": "http://purl.org/dc/terms/",
-    "prov": "http://www.w3.org/ns/prov#",
+    "eli": "http://data.europa.eu/eli/ontology#",
     "oa": "http://www.w3.org/ns/oa#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "time": "http://www.w3.org/2006/time#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "title": "dcterms:title",
+    "name": "schema:name",
     "identifier": "dcterms:identifier",
     "issued": {
       "@id": "dcterms:issued",
@@ -24,6 +29,53 @@
     "realizes": {
       "@id": "eli:is_realization_of",
       "@type": "@id"
+    },
+    "embodies": {
+      "@id": "eli:embodies",
+      "@type": "@id"
+    },
+    "format": "dcterms:format",
+    "isPartOf": {
+      "@id": "dcterms:isPartOf",
+      "@type": "@id"
+    },
+    "publisher": {
+      "@id": "dcterms:publisher",
+      "@type": "@id"
+    },
+    "sourceRecord": {
+      "@id": "okflaw:sourceRecord",
+      "@type": "@id"
+    },
+    "sourceURL": {
+      "@id": "dcat:landingPage",
+      "@type": "@id"
+    },
+    "decidingCourt": {
+      "@id": "okflaw:decidingCourt",
+      "@type": "@id"
+    },
+    "temporalState": {
+      "@id": "okflaw:temporalState",
+      "@type": "@id"
+    },
+    "stateType": {
+      "@id": "okflaw:stateType",
+      "@type": "@id"
+    },
+    "hasBeginning": {
+      "@id": "time:hasBeginning",
+      "@type": "@id"
+    },
+    "inXSDDateTime": {
+      "@id": "time:inXSDDateTime",
+      "@type": "xsd:dateTime"
+    },
+    "prefLabel": "skos:prefLabel",
+    "notation": "skos:notation",
+    "validFrom": {
+      "@id": "okflaw:validFrom",
+      "@type": "xsd:date"
     },
     "supportedBy": {
       "@id": "okflaw:supportedBy",
@@ -65,46 +117,132 @@
   },
   "@graph": [
     {
+      "@id": "urn:okf:source-record:SRC001",
+      "@type": "okflaw:SourceRecord",
+      "title": "legislation.gov.uk work catalogue and Atom feeds",
+      "identifier": "SRC001",
+      "sourceURL": "https://www.legislation.gov.uk/all/data.feed?results-count=1",
+      "publisher": "https://www.nationalarchives.gov.uk/"
+    },
+    {
+      "@id": "urn:okf:source-record:SRC016",
+      "@type": "okflaw:SourceRecord",
+      "title": "UK Supreme Court and Judicial Committee websites",
+      "identifier": "SRC016",
+      "sourceURL": "https://www.supremecourt.uk/decided-cases/index.html",
+      "publisher": "https://www.supremecourt.uk/"
+    },
+    {
+      "@id": "https://www.nationalarchives.gov.uk/",
+      "@type": "okflaw:Organisation",
+      "name": "The National Archives",
+      "identifier": "The National Archives",
+      "sourceRecord": "urn:okf:source-record:SRC001"
+    },
+    {
+      "@id": "https://www.supremecourt.uk/",
+      "@type": [
+        "okflaw:Court",
+        "okflaw:Organisation"
+      ],
+      "name": "UK Supreme Court",
+      "identifier": "UKSC",
+      "sourceRecord": "urn:okf:source-record:SRC016"
+    },
+    {
+      "@id": "okflaw:UnitedKingdomJurisdiction",
+      "@type": "okflaw:Jurisdiction",
+      "prefLabel": "United Kingdom",
+      "notation": "GB",
+      "sourceRecord": "urn:okf:source-record:SRC001"
+    },
+    {
       "@id": "https://www.legislation.gov.uk/id/ukpga/1998/42",
       "@type": "okflaw:LegislationWork",
       "title": "Human Rights Act 1998",
       "identifier": "ukpga/1998/42",
       "authorityClass": "okflaw:BindingAuthority",
-      "jurisdiction": "https://www.legislation.gov.uk/ukpga"
+      "jurisdiction": "okflaw:UnitedKingdomJurisdiction",
+      "temporalState": "urn:okf:temporal-state:ukpga-1998-42-2026-04-06"
     },
     {
-      "@id": "https://www.legislation.gov.uk/ukpga/1998/42/2026-07-25",
+      "@id": "https://www.legislation.gov.uk/ukpga/1998/42/2026-04-06",
       "@type": "eli:LegalExpression",
       "realizes": "https://www.legislation.gov.uk/id/ukpga/1998/42",
       "issued": "1998-11-09",
       "validFrom": "1998-11-09"
     },
     {
-      "@id": "urn:okf:passage:hra-1998-s6",
-      "@type": "okflaw:LegalPassage",
-      "hasSource": "https://www.legislation.gov.uk/ukpga/1998/42/section/6",
-      "hasSelector": {
-        "@type": "oa:FragmentSelector",
-        "value": "section-6"
-      },
-      "retrievedAt": "2026-07-25T13:00:00Z",
-      "sourceHash": "sha256:4f5ad00d5b506b375850a6b0185d8f2f74d5c6f3134dc0875ffb16a589bf4c59"
+      "@id": "https://www.legislation.gov.uk/ukpga/1998/42/2026-04-06/data.xml",
+      "@type": [
+        "okflaw:LegalManifestation",
+        "okflaw:Publication"
+      ],
+      "title": "Human Rights Act 1998 — CLML point-in-time manifestation",
+      "identifier": "https://www.legislation.gov.uk/ukpga/1998/42/2026-04-06/data.xml",
+      "embodies": "https://www.legislation.gov.uk/ukpga/1998/42/2026-04-06",
+      "format": "application/xml",
+      "publisher": "https://www.nationalarchives.gov.uk/",
+      "sourceRecord": "urn:okf:source-record:SRC001",
+      "derivedFrom": "https://www.legislation.gov.uk/1998/data.feed"
     },
     {
-      "@id": "urn:okf:proposition:public-authority",
+      "@id": "https://www.legislation.gov.uk/id/ukpga/1998/42/section/6",
+      "@type": "okflaw:Provision",
+      "identifier": "ukpga/1998/42/section/6",
+      "isPartOf": "https://www.legislation.gov.uk/id/ukpga/1998/42",
+      "sourceRecord": "urn:okf:source-record:SRC001",
+      "derivedFrom": "https://www.legislation.gov.uk/ukpga/1998/42/2026-04-06/data.xml"
+    },
+    {
+      "@id": "urn:okf:temporal-state:ukpga-1998-42-2026-04-06",
+      "@type": "okflaw:TemporalState",
+      "stateType": "okflaw:ConsolidatedPointInTime",
+      "hasBeginning": "urn:okf:time:2026-04-06T00:00:00Z",
+      "derivedFrom": "https://www.legislation.gov.uk/ukpga/1998/42/2026-04-06",
+      "sourceRecord": "urn:okf:source-record:SRC001"
+    },
+    {
+      "@id": "urn:okf:time:2026-04-06T00:00:00Z",
+      "@type": "time:Instant",
+      "inXSDDateTime": "2026-04-06T00:00:00Z"
+    },
+    {
+      "@id": "https://www.supremecourt.uk/cases/uksc-2024-0042",
+      "@type": "okflaw:Case",
+      "title": "For Women Scotland Ltd (Appellant) v The Scottish Ministers (Respondent)",
+      "identifier": "UKSC/2024/0042",
+      "authorityClass": "okflaw:BindingAuthority",
+      "jurisdiction": "okflaw:UnitedKingdomJurisdiction",
+      "decidingCourt": "https://www.supremecourt.uk/",
+      "sourceRecord": "urn:okf:source-record:SRC016"
+    },
+    {
+      "@id": "urn:okf:passage:effect-key\u002d0b48ffcc98385930a393268cf0314ffa",
+      "@type": "okflaw:LegalPassage",
+      "hasSource": "https://www.legislation.gov.uk/changes/affected/ukpga/1990/18/affecting/ukpga/2006/48/key\u002d0b48ffcc98385930a393268cf0314ffa/modified/2022-02-28T12:47:01Z",
+      "hasSelector": {
+        "@type": "oa:FragmentSelector",
+        "value": "key\u002d0b48ffcc98385930a393268cf0314ffa"
+      },
+      "retrievedAt": "2026-07-25T20:15:50.450036Z",
+      "sourceHash": "sha256:bb64ea3cac7c04a266367293153137130305471e7b0c4d07f5f5508e30e41087"
+    },
+    {
+      "@id": "urn:okf:proposition:effect-key\u002d0b48ffcc98385930a393268cf0314ffa",
       "@type": "okflaw:SynthesisedProposition",
-      "supportedBy": "urn:okf:passage:hra-1998-s6",
+      "supportedBy": "urn:okf:passage:effect-key\u002d0b48ffcc98385930a393268cf0314ffa",
       "generatedBy": "urn:okf:activity:example",
       "authorityClass": "okflaw:BindingAuthority"
     },
     {
-      "@id": "https://www.legislation.gov.uk/id/effect/key-example",
+      "@id": "https://www.legislation.gov.uk/id/effect/key\u002d0b48ffcc98385930a393268cf0314ffa",
       "@type": "okflaw:LegislativeEffect",
-      "affectingResource": "https://www.legislation.gov.uk/id/ukpga/2025/33",
-      "affectedResource": "https://www.legislation.gov.uk/id/ukpga/1998/42",
-      "effectType": "words inserted",
+      "affectingResource": "https://www.legislation.gov.uk/id/ukpga/2006/48",
+      "affectedResource": "https://www.legislation.gov.uk/id/ukpga/1990/18",
+      "effectType": "inserted",
       "applicationStatus": "applied",
-      "derivedFrom": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42/data.feed"
+      "derivedFrom": "https://www.legislation.gov.uk/changes/affected/ukpga/1990/18/affecting/ukpga/2006/48/key\u002d0b48ffcc98385930a393268cf0314ffa/modified/2022-02-28T12:47:01Z"
     },
     {
       "@id": "urn:okf:coverage:legislation-works",

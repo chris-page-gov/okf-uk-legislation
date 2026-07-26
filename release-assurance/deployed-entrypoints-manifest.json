@@ -1,0 +1,613 @@
+{
+  "allowed_hosts": [
+    "chris-page-gov.github.io",
+    "codeload.github.com",
+    "github.com",
+    "raw.githubusercontent.com",
+    "release-assets.githubusercontent.com"
+  ],
+  "candidate": {
+    "bundle_tree_sha256": "__BUNDLE_TREE_SHA256__",
+    "explorer_release": "v0.5.0",
+    "git_commit": "__CANDIDATE_COMMIT__",
+    "release_tag": "__RC_TAG__",
+    "repository": "https://github.com/chris-page-gov/okf-uk-legislation"
+  },
+  "cross_route_assertions": [
+    {
+      "id": "legislation-pages-raw-equality",
+      "kind": "body-digest-equal",
+      "left_route": "pages-legislation-descriptor",
+      "right_route": "raw-legislation-descriptor"
+    },
+    {
+      "id": "whole-law-pages-raw-equality",
+      "kind": "body-digest-equal",
+      "left_route": "pages-whole-law-descriptor",
+      "right_route": "raw-whole-law-descriptor"
+    },
+    {
+      "id": "legislation-yaml-json-fallback",
+      "json_route": "pages-legislation-jsonld",
+      "kind": "yaml-json-fallback",
+      "yaml_route": "pages-legislation-yamlld"
+    },
+    {
+      "id": "whole-law-yaml-json-fallback",
+      "json_route": "pages-whole-law-jsonld",
+      "kind": "yaml-json-fallback",
+      "yaml_route": "pages-whole-law-yamlld"
+    },
+    {
+      "bundle_route": "pages-legislation-descriptor",
+      "explorer_route": "explorer-load-legislation",
+      "id": "explorer-legislation-bundle-query",
+      "kind": "explorer-bundle-query"
+    },
+    {
+      "bundle_route": "pages-whole-law-descriptor",
+      "explorer_route": "explorer-load-whole-law",
+      "id": "explorer-whole-law-bundle-query",
+      "kind": "explorer-bundle-query"
+    },
+    {
+      "bundle_route": "ckan-canonical-descriptor",
+      "explorer_route": "explorer-load-ckan",
+      "id": "explorer-ckan-bundle-query",
+      "kind": "explorer-bundle-query"
+    }
+  ],
+  "gate": "GATE-09",
+  "policy": {
+    "authentication": "none",
+    "cookies": "never",
+    "dns_timeout_seconds": 5,
+    "maximum_body_bytes": 1048576,
+    "maximum_redirects": 5,
+    "per_request_timeout_seconds": 12,
+    "raw_evidence": "write-once-untrusted-response-bytes",
+    "request_headers": {
+      "Accept": "application/ld+json, application/json, application/ld+yaml, application/yaml, text/yaml, text/html, text/markdown, application/octet-stream;q=0.8, */*;q=0.1",
+      "Accept-Encoding": "identity",
+      "Connection": "close",
+      "User-Agent": "okf-uk-legislation-gate09-probe/1.0 (unauthenticated bounded release-candidate assurance)"
+    },
+    "safe_projection": "selected-headers-status-url-and-body-hash-only",
+    "timeout_seconds": 25
+  },
+  "routes": [
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "pages-descriptor"
+      ],
+      "expected": {
+        "document_kind": "json",
+        "json_fields": {
+          "/repository_subpath": "bundle",
+          "/schema": "okf-explorer-large-corpus.v1"
+        },
+        "media_types": [
+          "application/json",
+          "application/octet-stream"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "pages-legislation-descriptor",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "pages-descriptor"
+      ],
+      "expected": {
+        "document_kind": "json",
+        "json_fields": {
+          "/schema": "okf-explorer-federation.v1"
+        },
+        "media_types": [
+          "application/json",
+          "application/octet-stream"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "pages-whole-law-descriptor",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "pages-documentation"
+      ],
+      "expected": {
+        "document_kind": "html",
+        "media_types": [
+          "text/html"
+        ],
+        "required_text": [
+          "UK Legislation",
+          "Whole-Law"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "pages-legislation-docs",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "pages-documentation"
+      ],
+      "expected": {
+        "document_kind": "html",
+        "media_types": [
+          "text/html"
+        ],
+        "required_text": [
+          "UK Whole-Law OKF documentation"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "pages-whole-law-docs",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/docs/"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "yaml-ld"
+      ],
+      "expected": {
+        "allow_declared_yaml_ld_mime_exception": true,
+        "document_kind": "yaml-ld",
+        "media_types": [
+          "application/ld+yaml",
+          "application/octet-stream",
+          "application/yaml",
+          "text/yaml"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "pages-legislation-yamlld",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.yamlld"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "json-ld-fallback"
+      ],
+      "expected": {
+        "document_kind": "json-ld",
+        "media_types": [
+          "application/json",
+          "application/ld+json"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "pages-legislation-jsonld",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.jsonld"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "yaml-ld"
+      ],
+      "expected": {
+        "allow_declared_yaml_ld_mime_exception": true,
+        "document_kind": "yaml-ld",
+        "media_types": [
+          "application/ld+yaml",
+          "application/octet-stream",
+          "application/yaml",
+          "text/yaml"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "pages-whole-law-yamlld",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.yamlld"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "json-ld-fallback"
+      ],
+      "expected": {
+        "document_kind": "json-ld",
+        "media_types": [
+          "application/json",
+          "application/ld+json"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "pages-whole-law-jsonld",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.jsonld"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "coverage": [
+        "raw-declared-subpath"
+      ],
+      "expected": {
+        "document_kind": "json",
+        "json_fields": {
+          "/repository_subpath": "bundle",
+          "/schema": "okf-explorer-large-corpus.v1"
+        },
+        "media_types": [
+          "application/json",
+          "text/plain"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "raw-legislation-descriptor",
+      "url": "https://raw.githubusercontent.com/chris-page-gov/okf-uk-legislation/__CANDIDATE_COMMIT__/bundle/okf-explorer.json"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "coverage": [
+        "raw-declared-subpath"
+      ],
+      "expected": {
+        "document_kind": "json",
+        "json_fields": {
+          "/schema": "okf-explorer-federation.v1"
+        },
+        "media_types": [
+          "application/json",
+          "text/plain"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "raw-whole-law-descriptor",
+      "url": "https://raw.githubusercontent.com/chris-page-gov/okf-uk-legislation/__CANDIDATE_COMMIT__/bundle/whole-law/okf-explorer.json"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "codeload.github.com",
+        "github.com"
+      ],
+      "coverage": [
+        "github-archive-fallback"
+      ],
+      "expected": {
+        "allow_truncated": true,
+        "document_kind": "gzip-archive",
+        "media_types": [
+          "application/gzip",
+          "application/octet-stream"
+        ],
+        "statuses": [
+          200,
+          206
+        ]
+      },
+      "id": "github-candidate-archive",
+      "maximum_body_bytes": 65536,
+      "url": "https://github.com/chris-page-gov/okf-uk-legislation/archive/__CANDIDATE_COMMIT__.tar.gz"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "github.com"
+      ],
+      "coverage": [
+        "github-release-fallback"
+      ],
+      "expected": {
+        "document_kind": "html",
+        "media_types": [
+          "text/html"
+        ],
+        "required_text": [
+          "__RC_TAG__"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "github-candidate-release-page",
+      "url": "https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/__RC_TAG__"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "coverage": [
+        "github-release-fallback"
+      ],
+      "expected": {
+        "allow_truncated": true,
+        "document_kind": "zstd-archive",
+        "media_types": [
+          "application/octet-stream",
+          "application/zstd"
+        ],
+        "statuses": [
+          200,
+          206
+        ]
+      },
+      "id": "github-candidate-release-asset",
+      "maximum_body_bytes": 65536,
+      "url": "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/__RC_TAG__/okf-uk-legislation-v0.3.0.tar.zst"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "explorer-loading"
+      ],
+      "expected": {
+        "document_kind": "html",
+        "media_types": [
+          "text/html"
+        ],
+        "required_text": [
+          "OKF Explorer"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "explorer-load-legislation",
+      "url": "https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "explorer-loading"
+      ],
+      "expected": {
+        "document_kind": "html",
+        "media_types": [
+          "text/html"
+        ],
+        "required_text": [
+          "OKF Explorer"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "explorer-load-whole-law",
+      "url": "https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fwhole-law%2Fokf-explorer.json&view=reader"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "compatibility-documentation"
+      ],
+      "expected": {
+        "document_kind": "html",
+        "media_types": [
+          "text/html"
+        ],
+        "required_text": [
+          "Preserved OKF documentation",
+          "Create an OKF bundle"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "compatibility-docs-index",
+      "url": "https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "compatibility-documentation"
+      ],
+      "expected": {
+        "document_kind": "markdown",
+        "media_types": [
+          "application/octet-stream",
+          "text/markdown",
+          "text/plain"
+        ],
+        "required_text": [
+          "Create OKF Bundles That Use The Explorer Well"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "compatibility-bundle-authoring",
+      "url": "https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "ckan-documentation",
+        "compatibility-documentation"
+      ],
+      "expected": {
+        "document_kind": "markdown",
+        "media_types": [
+          "application/octet-stream",
+          "text/markdown",
+          "text/plain"
+        ],
+        "required_text": [
+          "Try The Large CKAN Example",
+          "GOV.UK CKAN"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "compatibility-explorer-ckan-guide",
+      "url": "https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/use-okf-explorer.md"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "compatibility-moved-descriptor"
+      ],
+      "expected": {
+        "document_kind": "moved-descriptor",
+        "json_fields": {
+          "/kind": "okf-moved",
+          "/moved_to": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+          "/schema": "okf-moved.v1"
+        },
+        "media_types": [
+          "application/json",
+          "application/octet-stream"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "compatibility-legislation-moved",
+      "url": "https://chris-page-gov.github.io/ai-infrastructure-wiki/legislation/okf-explorer.json"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "compatibility-moved-descriptor"
+      ],
+      "expected": {
+        "document_kind": "moved-descriptor",
+        "json_fields": {
+          "/kind": "okf-moved",
+          "/moved_to": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json",
+          "/schema": "okf-moved.v1"
+        },
+        "media_types": [
+          "application/json",
+          "application/octet-stream"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "compatibility-whole-law-moved",
+      "url": "https://chris-page-gov.github.io/ai-infrastructure-wiki/whole-law/okf-explorer.json"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "ckan-example",
+        "compatibility-moved-descriptor"
+      ],
+      "expected": {
+        "document_kind": "moved-descriptor",
+        "json_fields": {
+          "/kind": "okf-moved",
+          "/moved_to": "https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json",
+          "/schema": "okf-moved.v1"
+        },
+        "media_types": [
+          "application/json",
+          "application/octet-stream"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "compatibility-ckan-moved",
+      "url": "https://chris-page-gov.github.io/ai-infrastructure-wiki/gov-ckan/okf-explorer.json"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "ckan-example"
+      ],
+      "expected": {
+        "document_kind": "json",
+        "media_types": [
+          "application/json",
+          "application/octet-stream"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "ckan-canonical-descriptor",
+      "url": "https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "ckan-example",
+        "explorer-loading"
+      ],
+      "expected": {
+        "document_kind": "html",
+        "media_types": [
+          "text/html"
+        ],
+        "required_text": [
+          "OKF Explorer"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "explorer-load-ckan",
+      "url": "https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fai-engineering-lab-hackathon-london-2026%2Fgov-ckan%2Fokf-explorer.json&view=reader"
+    }
+  ],
+  "schema": "okf-deployed-entrypoint-manifest.v1",
+  "state": "awaiting-exact-rc"
+}

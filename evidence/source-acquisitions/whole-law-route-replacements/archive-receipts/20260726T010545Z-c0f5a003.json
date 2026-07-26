@@ -1,0 +1,49 @@
+{
+  "archive": {
+    "bytes": 38236,
+    "file_count": 8,
+    "media_type": "application/x-xz; profile=application/x-tar",
+    "normalized_tar_metadata": {
+      "format": "ustar",
+      "gid": 0,
+      "mode": "0644",
+      "mtime": 0,
+      "uid": 0
+    },
+    "path": "evidence/source-acquisitions/whole-law-route-replacements/archives/20260726T010545Z-c0f5a003.tar.xz",
+    "safe_extraction_limits": {
+      "max_file_bytes": 8388608,
+      "max_files": 1000,
+      "max_total_bytes": 67108864,
+      "path_traversal_rejected": true,
+      "regular_files_only": true
+    },
+    "sha256": "90104abb441c752a7ec754d78a03e7ab51f4c50763cc2e087e0a07edbebbc088",
+    "tree_sha256": "0f81daa85935eb3ed27d68bea2315ea476c9d1b3caa9e6c3b41f8a4d708af323",
+    "uncompressed_file_bytes": 191112
+  },
+  "archived_at": "2026-07-26T01:05:57Z",
+  "assurance": {
+    "byte_recovery": "Every original run file is recoverable byte-for-byte after bounded safe extraction and is verified by SHA-256.",
+    "immutable_original": true,
+    "publication_projection_is_original": false
+  },
+  "original_integrity": {
+    "all_declared_files_verified": true,
+    "bytes": 1235,
+    "declared_file_count": 7,
+    "declared_total_bytes": 189877,
+    "path": "integrity.json",
+    "sha256": "3c836104add218662a7a6a581dab23f46053c0976df867583583f0041fbb7eb8"
+  },
+  "publication_trigger": null,
+  "run_id": "20260726T010545Z-c0f5a003",
+  "schema": "okf-source-access-archive-receipt.v1",
+  "source_snapshot": {
+    "dependency_after_archiving": false,
+    "kind": "completed-replacement-route-delta",
+    "overlay_path": "whole-law/acquisition/source-route-replacements-copfs-r03.v1.json",
+    "overlay_sha256": "53aec18f04f7dfed8416e8f69f6929de4187abef0a4ed92eacde312410b1c35a",
+    "tree_path": "evidence/source-acquisitions/whole-law-route-replacements/20260726T010545Z-c0f5a003"
+  }
+}

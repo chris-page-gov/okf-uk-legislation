@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-accepted-assertion-manifest.schema.json",
+  "title": "OKF paid model-enrichment accepted-assertion manifest v1",
+  "description": "Complete canonical NDJSON publication inventory for independently accepted non-official model-assisted relationship assertions.",
+  "type": "object",
+  "required": [
+    "schema",
+    "run_id",
+    "authority",
+    "relationship_schema",
+    "provenance_schema",
+    "deterministic_results_schema",
+    "row_format",
+    "chunks",
+    "materials",
+    "provenance_chunks",
+    "counts",
+    "content_root_sha256",
+    "provenance_content_root_sha256",
+    "complete",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-accepted-assertion-manifest.v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "authority": {
+      "const": "model-assisted-derived-non-official"
+    },
+    "relationship_schema": {
+      "$ref": "#/$defs/material"
+    },
+    "provenance_schema": {
+      "$ref": "#/$defs/material"
+    },
+    "deterministic_results_schema": {
+      "$ref": "#/$defs/material"
+    },
+    "row_format": {
+      "const": "application/x-ndjson"
+    },
+    "chunks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/chunk"
+      }
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidenceMaterial"
+      }
+    },
+    "provenance_chunks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/chunk"
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "assertions",
+        "unique_assertions",
+        "provenance_rows",
+        "materials"
+      ],
+      "properties": {
+        "assertions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unique_assertions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "provenance_rows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "materials": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "content_root_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "provenance_content_root_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "complete": {
+      "const": true
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidenceMaterial": {
+      "type": "object",
+      "required": [
+        "material_id",
+        "kind",
+        "path",
+        "sha256",
+        "attempt_id",
+        "attempt"
+      ],
+      "properties": {
+        "material_id": {
+          "type": "string",
+          "pattern": "^model-material-[a-z0-9][a-z0-9._-]*$"
+        },
+        "kind": {
+          "enum": [
+            "candidate-batch",
+            "review-batch",
+            "strongest-review-batch",
+            "deterministic-results"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "attempt_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^model-attempt-[a-z0-9][a-z0-9._-]*$"
+        },
+        "attempt": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/material"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "deterministic-results"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "attempt_id": {
+                "type": "null"
+              },
+              "attempt": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "attempt_id": {
+                "type": "string"
+              },
+              "attempt": {
+                "$ref": "#/$defs/material"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "chunk": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "ordinal_start",
+        "ordinal_end",
+        "records",
+        "content_root_sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "ordinal_start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ordinal_end": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "records": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "content_root_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

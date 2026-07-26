@@ -13,6 +13,7 @@ legislation-specific Explorer behaviour and the additive Whole-Law federation.
 | open the pack and find an Act, instrument or provision | [Getting started](getting-started.md) |
 | learn the interface through worked examples | [Illustrated persona manual](illustrated-manual.md) |
 | understand who the pack serves and what success means | [Personas and user journeys](personas-and-user-journeys.md) |
+| follow guidance tailored to your role | [Role guides](roles/index.md) |
 | design an agent that answers with passage-level provenance | [Agent research guide](agent-research-guide.md) |
 | understand completeness, ontology and official access methods | [Architecture and data model](uk-legislation-okf.md) |
 | understand relationship composition | [Relationships](relationships.md) |
@@ -39,11 +40,23 @@ The spine keeps these concerns separate:
 
 ## Stable public entry points
 
-- Legislation descriptor: `https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json`
-- Whole-Law descriptor: `https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json`
-- Documentation: `https://chris-page-gov.github.io/okf-uk-legislation/docs/`
-- Legislation evaluation: `https://chris-page-gov.github.io/okf-uk-legislation/evaluation/`
-- Whole-Law evaluation: `https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/`
+| Publication | Repository | Canonical descriptor | Declared `raw_subpath` | Release/archive fallback |
+|---|---|---|---|---|
+| UK Legislation | [GitHub](https://github.com/chris-page-gov/okf-uk-legislation) | [root descriptor](https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json) | `bundle` | [releases](https://github.com/chris-page-gov/okf-uk-legislation/releases) |
+| UK Whole-Law | [GitHub](https://github.com/chris-page-gov/okf-uk-legislation) | [federation descriptor](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json) | `bundle/whole-law` | [releases](https://github.com/chris-page-gov/okf-uk-legislation/releases) |
+
+The maintained documentation is published at
+`https://chris-page-gov.github.io/okf-uk-legislation/docs/`. The legislation
+and Whole-Law evaluation routes are `/evaluation/` and
+`/whole-law/evaluation/` beneath the same publication root.
+
+Keep these source and worked-example routes available without path guessing:
+
+- [legislation.gov.uk](https://www.legislation.gov.uk/) and its
+  [official data/API documentation](https://legislation.github.io/data-documentation/);
+- the official [data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/);
+- the [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json);
+- the preserved [OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md).
 
 The original combined repository README and documentation remain at the
 [compatibility site](https://chris-page-gov.github.io/ai-infrastructure-wiki/).

@@ -21,6 +21,20 @@ This pack indexes **365,786 legal works** returned by the official legislation a
 * [Coverage, provenance and limitations](methodology/)
 * [Explorer descriptor](okf-explorer.json)
 
+# Canonical access
+
+| Repository | Canonical descriptor | Declared `raw_subpath` | Release/archive fallback |
+|---|---|---|---|
+| [GitHub](https://github.com/chris-page-gov/okf-uk-legislation) | [published descriptor](https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json) | `bundle` | [immutable releases](https://github.com/chris-page-gov/okf-uk-legislation/releases) |
+
+# Official sources and examples
+
+* [legislation.gov.uk](https://www.legislation.gov.uk/)
+* [Official legislation data/API documentation](https://legislation.github.io/data-documentation/)
+* [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
+* [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
+* [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
+
 # Source notes
 [1] [Legislation.gov.uk data reuse documentation](https://legislation.github.io/data-documentation/)
 [2] [Legislation document data model](https://legislation.github.io/data-documentation/model/legislation.html)

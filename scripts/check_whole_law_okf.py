@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import csv
-import gzip
 import hashlib
 import json
 import re
@@ -14,12 +13,7 @@ from typing import Any
 
 try:
     import jsonschema
-    import rdflib
-    import yaml_ld
-    from pyld import jsonld
-    from pyshacl import validate as shacl_validate
-    from rdflib.compare import isomorphic
-    from yaml_ld.to_rdf import ToRDFOptions
+    from run_semantic_conformance import build_receipt, compare_receipt
 except ImportError as exc:  # pragma: no cover - exercised by CI setup failure
     raise SystemExit(
         "Whole-Law validation dependencies are missing; install requirements-validation.txt"
@@ -156,90 +150,10 @@ def validate_schema(errors: list[str], instance_path: Path, schema_path: Path) -
         errors.append(f"JSON Schema failure for {instance_path.relative_to(ROOT)}: {exc}")
 
 
-def graph_from_document(path: Path) -> rdflib.ConjunctiveGraph:
-    nquads = yaml_ld.to_rdf(
-        path,
-        options=ToRDFOptions(format="application/n-quads"),
-    )
-    graph = rdflib.ConjunctiveGraph()
-    graph.parse(data=nquads, format="nquads")
-    return graph
-
-
 def check_semantics(errors: list[str]) -> None:
-    yaml_path = PACK / "okf-bundle.yamlld"
-    json_path = PACK / "okf-bundle.jsonld"
-    try:
-        yaml_expanded = yaml_ld.expand(yaml_path)
-        json_expanded = yaml_ld.expand(json_path)
-        if not yaml_expanded or not json_expanded:
-            errors.append("YAML-LD or JSON-LD expands to an empty graph")
-        yaml_graph = graph_from_document(yaml_path)
-        json_graph = graph_from_document(json_path)
-        if not isomorphic(yaml_graph, json_graph):
-            errors.append("YAML-LD and JSON-LD semantic graphs are not isomorphic")
-
-        context = load(PACK / "ontology" / "context.jsonld")["@context"]
-        compacted = yaml_ld.compact(yaml_path, context)
-        flattened = yaml_ld.flatten(yaml_path, context)
-        framed = yaml_ld.frame(
-            yaml_path,
-            {"@context": context, "@type": "okflaw:Federation"},
-        )
-        expected_id = "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/"
-        for operation, document in (
-            ("compaction", compacted),
-            ("flattening", flattened),
-            ("framing", framed),
-        ):
-            if not document:
-                errors.append(f"JSON-LD API {operation} produced an empty document")
-        if framed.get("id") != expected_id:
-            errors.append("JSON-LD framing did not retain the Whole-Law federation identity")
-
-        nquads = yaml_ld.to_rdf(
-            yaml_path,
-            options=ToRDFOptions(format="application/n-quads"),
-        )
-        round_trip_document = yaml_ld.from_rdf(nquads)
-        round_trip_nquads = yaml_ld.to_rdf(
-            round_trip_document,
-            options=ToRDFOptions(format="application/n-quads"),
-        )
-        round_trip_graph = rdflib.ConjunctiveGraph()
-        round_trip_graph.parse(data=round_trip_nquads, format="nquads")
-        if not isomorphic(yaml_graph, round_trip_graph):
-            errors.append("YAML-LD RDF round-trip changed the semantic graph")
-
-        canonical_options = {
-            "algorithm": "URDNA2015",
-            "format": "application/n-quads",
-        }
-        yaml_canonical = jsonld.normalize(yaml_expanded, canonical_options)
-        json_canonical = jsonld.normalize(json_expanded, canonical_options)
-        if yaml_canonical != json_canonical:
-            errors.append("RDF Dataset Canonicalization digests differ for YAML-LD/JSON-LD")
-    except Exception as exc:
-        errors.append(f"YAML-LD/JSON-LD API, framing or round-trip validation failed: {exc}")
-
-    data_graph = rdflib.Graph()
-    shapes_graph = rdflib.Graph()
-    vocabulary = rdflib.Graph()
-    try:
-        data_graph.parse(PACK / "ontology" / "examples.jsonld", format="json-ld")
-        shapes_graph.parse(PACK / "ontology" / "shapes.ttl", format="turtle")
-        vocabulary.parse(PACK / "ontology" / "vocabulary.ttl", format="turtle")
-        conforms, _, report = shacl_validate(
-            data_graph,
-            shacl_graph=shapes_graph,
-            ont_graph=vocabulary,
-            inference="rdfs",
-            advanced=True,
-        )
-        if not conforms:
-            errors.append(f"SHACL examples do not conform: {report}")
-    except Exception as exc:
-        errors.append(f"RDF/SHACL validation failed: {exc}")
+    receipt, conformance_errors = build_receipt()
+    errors.extend(conformance_errors)
+    errors.extend(compare_receipt(receipt))
 
     for root in (SOURCE, PACK):
         for path in root.rglob("*"):
@@ -296,45 +210,6 @@ def check_contracts(errors: list[str]) -> None:
     for instance, schema in optional:
         if instance.is_file():
             validate_schema(errors, instance, schema)
-
-    core_schema_path = schemas / "core-relationship-row.schema.json"
-    core_schema = load(core_schema_path)
-    try:
-        jsonschema.Draft202012Validator.check_schema(core_schema)
-        core_validator = jsonschema.Draft202012Validator(
-            core_schema,
-            format_checker=jsonschema.Draft202012Validator.FORMAT_CHECKER,
-        )
-        core_count = 0
-        reported = 0
-        for path in sorted((ROOT / "bundle" / "data").glob("relationships-*.json.gz")):
-            rows = json.loads(gzip.decompress(path.read_bytes()))
-            if not isinstance(rows, list):
-                errors.append(
-                    f"core relationship chunk is not an array: {path.relative_to(ROOT)}"
-                )
-                continue
-            core_count += len(rows)
-            for index, row in enumerate(rows):
-                row_errors = list(core_validator.iter_errors(row))
-                if row_errors and reported < 20:
-                    errors.append(
-                        "core relationship contract failure "
-                        f"{path.relative_to(ROOT)}[{index}]: {row_errors[0].message}"
-                    )
-                    reported += 1
-        expected_core = int(
-            load(ROOT / "bundle" / "data" / "relationship-summary.json")[
-                "core_total"
-            ]
-        )
-        if core_count != expected_core:
-            errors.append(
-                f"core relationship contract count: expected {expected_core}, "
-                f"validated {core_count}"
-            )
-    except Exception as exc:
-        errors.append(f"core relationship contract validation failed: {exc}")
 
     descriptor = load(PACK / "okf-explorer.json")
     federation_schema = load(schemas / "federation.schema.json")
@@ -436,19 +311,38 @@ def check_yaml_ld_conformance(errors: list[str]) -> None:
 
 
 def check_competency_questions(errors: list[str]) -> None:
+    questions_path = SOURCE / "ontology" / "competency-questions.json"
     receipt_path = SOURCE / "assurance" / "competency-question-results.json"
+    if not questions_path.is_file():
+        errors.append("authored ontology competency questions are missing")
+        return
     if not receipt_path.is_file():
         errors.append("ontology competency-question execution receipt is missing")
         return
+    questions = load(questions_path).get("questions", [])
+    question_ids = [question.get("id") for question in questions]
+    expected_count = len(questions)
+    if expected_count == 0:
+        errors.append("authored ontology competency-question suite is empty")
+        return
+    if any(not question_id for question_id in question_ids) or len(set(question_ids)) != expected_count:
+        errors.append("authored ontology competency-question identifiers are missing or duplicated")
+        return
     receipt = load(receipt_path)
     counts = receipt.get("counts", {})
+    result_ids = [result.get("id") for result in receipt.get("results", [])]
     if (
         receipt.get("status") != "passed"
-        or counts.get("questions") != 5
-        or counts.get("passed") != 5
+        or counts.get("questions") != expected_count
+        or counts.get("passed") != expected_count
         or counts.get("failed") != 0
+        or result_ids != question_ids
+        or any(not result.get("passed") for result in receipt.get("results", []))
     ):
-        errors.append("ontology competency questions do not record 5/5 executable passes")
+        errors.append(
+            "ontology competency questions do not record executable passes for "
+            f"all {expected_count} authored questions"
+        )
     for source in receipt.get("sources", {}).values():
         path = ROOT / source.get("path", "")
         if not path.is_file() or sha256(path) != source.get("sha256"):

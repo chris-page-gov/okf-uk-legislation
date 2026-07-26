@@ -3,26 +3,200 @@
   "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/evaluation.schema.json",
   "title": "OKF Whole-Law evaluation v2",
   "type": "object",
-  "required": ["schema", "corpus_snapshot", "questions"],
+  "required": [
+    "schema",
+    "corpus_snapshot",
+    "evaluation_scope",
+    "gold_status",
+    "questions"
+  ],
   "properties": {
-    "schema": {"const": "okf-evaluation.v2"},
-    "corpus_snapshot": {"type": "string", "minLength": 1},
+    "schema": {
+      "const": "okf-evaluation.v2"
+    },
+    "corpus_snapshot": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluation_scope": {
+      "const": "corpus-navigation-metadata"
+    },
+    "gold_status": {
+      "const": "corpus-navigation-gold-candidate"
+    },
     "questions": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "persona_id", "task_id", "source_class_ids", "jurisdiction", "access_state", "authority_class", "gold_status", "expected_propositions", "citation_expectations"],
+        "required": [
+          "id",
+          "prompt",
+          "original_legal_prompt",
+          "persona_id",
+          "task_id",
+          "source_class_ids",
+          "required_source_ids",
+          "jurisdiction",
+          "access_state",
+          "authority_class",
+          "gold_status",
+          "gold_scope",
+          "evaluation_scope",
+          "underlying_legal_task_status",
+          "verification_status",
+          "corpus_snapshot",
+          "temporal_context",
+          "expected_propositions",
+          "near_miss_rules",
+          "citation_expectations",
+          "evidence_binding",
+          "independent_verification"
+        ],
         "properties": {
-          "id": {"type": "string", "minLength": 1},
-          "persona_id": {"type": "string", "minLength": 1},
-          "task_id": {"type": "string", "minLength": 1},
-          "source_class_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
-          "jurisdiction": {"type": "string", "minLength": 1},
-          "access_state": {"type": "string", "minLength": 1},
-          "authority_class": {"type": "string", "minLength": 1},
-          "gold_status": {"enum": ["non-gold-baseline", "provisional-machine-verified", "independently-verified"]},
-          "expected_propositions": {"type": "array"},
-          "citation_expectations": {"type": "array"}
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "original_legal_prompt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "persona_id": {
+            "type": "string",
+            "pattern": "^P[0-9]{2}$"
+          },
+          "task_id": {
+            "type": "string",
+            "pattern": "^T[0-9]{2}$"
+          },
+          "source_class_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^SC[0-9]{2}$"
+            }
+          },
+          "required_source_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^SRC[0-9]{3}$"
+            }
+          },
+          "jurisdiction": {
+            "type": "string",
+            "minLength": 1
+          },
+          "access_state": {
+            "enum": [
+              "available",
+              "partial",
+              "restricted",
+              "unavailable",
+              "planned"
+            ]
+          },
+          "authority_class": {
+            "type": "string",
+            "minLength": 1
+          },
+          "gold_status": {
+            "const": "corpus-navigation-gold-candidate"
+          },
+          "gold_scope": {
+            "const": "corpus-navigation-metadata"
+          },
+          "evaluation_scope": {
+            "const": "corpus-navigation-metadata"
+          },
+          "underlying_legal_task_status": {
+            "const": "not-evaluated-requires-qualified-domain-review"
+          },
+          "verification_status": {
+            "const": "requires-independent-execution-verification"
+          },
+          "corpus_snapshot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "temporal_context": {
+            "type": "object",
+            "required": [
+              "snapshot",
+              "difficulty"
+            ]
+          },
+          "expected_propositions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "kind",
+                "value"
+              ]
+            }
+          },
+          "near_miss_rules": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "citation_expectations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "evidence_binding": {
+            "type": "object",
+            "required": [
+              "corpus_snapshot",
+              "source_register_sha256",
+              "source_record_ids",
+              "frozen_access_evidence"
+            ]
+          },
+          "independent_verification": {
+            "type": "object",
+            "required": [
+              "status",
+              "reviewer_role",
+              "evidence"
+            ],
+            "properties": {
+              "status": {
+                "const": "not-performed"
+              },
+              "reviewer_role": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
         }
       }
     }

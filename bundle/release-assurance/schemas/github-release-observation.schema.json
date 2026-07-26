@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/github-release-observation.schema.json",
+  "title": "Immutable GitHub release and tag observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "observed_at",
+    "repository",
+    "tag",
+    "expected_commit",
+    "release",
+    "tag_resolution",
+    "integrity"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-github-release-observation.v1"
+    },
+    "status": {
+      "const": "verified"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository": {
+      "enum": [
+        "https://github.com/chris-page-gov/okf-explorer",
+        "https://github.com/chris-page-gov/okf-uk-legislation"
+      ]
+    },
+    "tag": {
+      "enum": [
+        "v0.5.0",
+        "v0.3.0-rc.1",
+        "v0.3.0"
+      ]
+    },
+    "expected_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "api_url",
+        "http_status",
+        "release_id",
+        "html_url",
+        "tag_name",
+        "response_headers",
+        "response_body"
+      ],
+      "properties": {
+        "api_url": {
+          "type": "string",
+          "pattern": "^https://api\\.github\\.com/repos/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/releases/tags/(?:v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)$"
+        },
+        "http_status": {
+          "const": 200
+        },
+        "release_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "html_url": {
+          "type": "string",
+          "pattern": "^https://github\\.com/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/releases/tag/(?:v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)$"
+        },
+        "tag_name": {
+          "enum": [
+            "v0.5.0",
+            "v0.3.0-rc.1",
+            "v0.3.0"
+          ]
+        },
+        "response_headers": {
+          "$ref": "#/$defs/material"
+        },
+        "response_body": {
+          "$ref": "#/$defs/material"
+        }
+      }
+    },
+    "tag_resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref_api_url",
+        "http_status",
+        "object_type",
+        "object_sha",
+        "peeled_commit",
+        "response_headers",
+        "response_bodies"
+      ],
+      "properties": {
+        "ref_api_url": {
+          "type": "string",
+          "pattern": "^https://api\\.github\\.com/repos/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/git/ref/tags/(?:v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)$"
+        },
+        "http_status": {
+          "const": 200
+        },
+        "object_type": {
+          "enum": [
+            "commit",
+            "tag"
+          ]
+        },
+        "object_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "peeled_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "response_headers": {
+          "$ref": "#/$defs/material"
+        },
+        "response_bodies": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/material"
+          }
+        }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "asset_id",
+        "download_url",
+        "http_status",
+        "bytes",
+        "sha256",
+        "response_headers",
+        "response_body"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "download_url": {
+          "type": "string",
+          "pattern": "^https://github\\.com/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/releases/download/(?:v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)/[^/]+$"
+        },
+        "http_status": {
+          "const": 200
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "response_headers": {
+          "$ref": "#/$defs/material"
+        },
+        "response_body": {
+          "$ref": "#/$defs/material"
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attempt_manifest",
+        "write_once"
+      ],
+      "properties": {
+        "attempt_manifest": {
+          "$ref": "#/$defs/material"
+        },
+        "write_once": {
+          "const": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\\\u0000-\\u001f]+$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

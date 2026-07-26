@@ -1,0 +1,143 @@
+{
+  "as_of": "2026-07-26",
+  "classes": [
+    {
+      "class": "legal works",
+      "count": 365786,
+      "evidence": [
+        "bundle/data/manifest.json",
+        "bundle/data/works-0.json.gz"
+      ],
+      "identifier_basis": "source-native legislation.gov.uk work URI",
+      "status": "materialised"
+    },
+    {
+      "class": "expressions",
+      "count": null,
+      "evidence": [
+        "whole-law/ontology/examples.jsonld",
+        "bundle/data/works-0.json.gz"
+      ],
+      "identifier_basis": "version/document URIs occur on work records, but there is no complete expression inventory",
+      "status": "partial"
+    },
+    {
+      "class": "manifestations",
+      "count": 1691403,
+      "evidence": [
+        "bundle/data/manifest.json",
+        "bundle/data/works-0.json.gz"
+      ],
+      "identifier_basis": "source-native legislation.gov.uk format URIs embedded on work records",
+      "status": "represented-at-work-record-grain"
+    },
+    {
+      "class": "provisions",
+      "count": null,
+      "evidence": [
+        "bundle/okf-explorer.json",
+        "bundle/data/effects/assertions.json.gz"
+      ],
+      "identifier_basis": "source-native provision URIs occur in official effect evidence and are discoverable on demand through CLML",
+      "status": "partial"
+    },
+    {
+      "class": "cases",
+      "count": 0,
+      "evidence": [
+        "bundle/whole-law/data/legal-source-taxonomy.json",
+        "bundle/whole-law/data/source-register.json"
+      ],
+      "identifier_basis": "catalogued source families only; no case entity corpus has been ingested",
+      "status": "not-materialised"
+    },
+    {
+      "class": "courts",
+      "count": 0,
+      "evidence": [
+        "bundle/whole-law/data/legal-source-taxonomy.json",
+        "bundle/whole-law/data/source-register.json"
+      ],
+      "identifier_basis": "catalogued source families only; no court entity corpus has been ingested",
+      "status": "not-materialised"
+    },
+    {
+      "class": "organisations",
+      "count": null,
+      "evidence": [
+        "bundle/whole-law/data/source-register.json",
+        "bundle/data/categories-0.json"
+      ],
+      "identifier_basis": "publisher and owning-institution labels are present, but there is no complete source-native organisation registry",
+      "status": "partial"
+    },
+    {
+      "class": "publications",
+      "count": null,
+      "evidence": [
+        "bundle/data/works-0.json.gz",
+        "bundle/whole-law/data/source-register.json"
+      ],
+      "identifier_basis": "official work and access URLs are present, but publication events are not independently inventoried",
+      "status": "partial"
+    },
+    {
+      "class": "source records",
+      "count": 72,
+      "evidence": [
+        "bundle/whole-law/data/source-register.json"
+      ],
+      "identifier_basis": "governed local source-record identity plus authoritative official access URLs",
+      "status": "materialised-at-federation-catalogue-grain"
+    },
+    {
+      "class": "jurisdictions",
+      "count": 6,
+      "evidence": [
+        "bundle/data/facets.json",
+        "whole-law/ontology/vocabulary.ttl"
+      ],
+      "identifier_basis": "normalised jurisdiction labels/facets; not a complete source-native jurisdiction entity registry",
+      "status": "partial"
+    },
+    {
+      "class": "temporal states",
+      "count": null,
+      "evidence": [
+        "bundle/data/works-0.json.gz",
+        "bundle/data/effects/assertions.json.gz",
+        "whole-law/ontology/vocabulary.ttl"
+      ],
+      "identifier_basis": "work lifecycle and effect validity/application fields are embedded; temporal states are not independently inventoried",
+      "status": "partial"
+    }
+  ],
+  "decision": {
+    "contract_complete": true,
+    "population_complete": false,
+    "release_claim": "The versioned semantic contract implements every named entity class at declared catalogue/schema grain, with source-grounded fixtures. The federation does not claim complete case, court, provision or other source-family entity ingestion.",
+    "requirement": "P04-01",
+    "status": "verified-at-declared-catalogue/schema-grain",
+    "trace_status": "verified"
+  },
+  "limitations": [
+    "Deterministic projection cannot create source-native identifiers for entities that have not been acquired.",
+    "Cases and courts are source-family catalogue entries, not ingested entity corpora.",
+    "Provision URIs in official effects and on-demand CLML discovery do not constitute a complete frozen provision inventory.",
+    "Embedded expression, manifestation, organisation, publication, jurisdiction and temporal fields must not be described as complete standalone entity inventories."
+  ],
+  "schema": "okf-entity-model-coverage-assessment.v1",
+  "semantic_contract": {
+    "competency_questions": "whole-law/ontology/competency-questions.json",
+    "context": "whole-law/ontology/context.jsonld",
+    "examples": "whole-law/ontology/examples.jsonld",
+    "shapes": "whole-law/ontology/shapes.ttl",
+    "validation": [
+      "whole-law/assurance/competency-question-results.json",
+      "whole-law/assurance/semantic-conformance.json",
+      "tests/test_semantic_conformance.py"
+    ],
+    "vocabulary": "whole-law/ontology/vocabulary.ttl"
+  },
+  "scope": "Evidence-backed assessment of the entity classes named by P04-01 at the federation's declared catalogue and snapshot grain."
+}

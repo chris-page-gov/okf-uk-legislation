@@ -1,0 +1,473 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/explorer-runtime-receipt.schema.json",
+  "title": "Frozen-candidate Explorer runtime acceptance receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "measured_at",
+    "status",
+    "candidate",
+    "explorer",
+    "runtime",
+    "cross_engine",
+    "accessibility",
+    "performance",
+    "integrity",
+    "scope",
+    "runner",
+    "inputs",
+    "outputs",
+    "gates",
+    "browsers",
+    "failures",
+    "limitations"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-explorer-runtime-acceptance.v2"
+    },
+    "measured_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "const": "passed"
+    },
+    "candidate": {
+      "$ref": "#/$defs/candidate"
+    },
+    "explorer": {
+      "$ref": "#/$defs/explorer"
+    },
+    "runtime": {
+      "$ref": "#/$defs/summaryContainer"
+    },
+    "cross_engine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "required",
+        "completed"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "required": {
+          "$ref": "#/$defs/browserSet"
+        },
+        "completed": {
+          "$ref": "#/$defs/browserSet"
+        }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "serious_or_critical_total",
+        "browsers"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "serious_or_critical_total": {
+          "const": 0
+        },
+        "browsers": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "browser",
+              "run_status",
+              "serious_or_critical"
+            ],
+            "properties": {
+              "browser": {
+                "enum": [
+                  "chrome",
+                  "firefox",
+                  "webkit"
+                ]
+              },
+              "run_status": {
+                "const": "passed"
+              },
+              "serious_or_critical": {
+                "const": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "performance": {
+      "$ref": "#/$defs/summaryContainer"
+    },
+    "integrity": {
+      "type": "object",
+      "required": [
+        "status",
+        "summary",
+        "checks"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "summary": {
+          "$ref": "#/$defs/passSummary"
+        },
+        "checks": {
+          "type": "array",
+          "minItems": 2
+        }
+      }
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runner": {
+      "type": "object"
+    },
+    "inputs": {
+      "type": "object",
+      "required": [
+        "bundle_root",
+        "federation_descriptor",
+        "legislation_descriptor",
+        "explorer_build"
+      ]
+    },
+    "outputs": {
+      "type": "object",
+      "required": [
+        "receipt",
+        "screenshots"
+      ]
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "startup_transfer",
+        "cold_search",
+        "warm_search",
+        "browser_memory",
+        "federation_and_child",
+        "graph_relationship_rendering",
+        "model_assisted_styling_and_filtering",
+        "live_reconciliation_states",
+        "facet_count_colour_and_space",
+        "cross_browser",
+        "keyboard",
+        "accessibility"
+      ],
+      "properties": {
+        "startup_transfer": {
+          "$ref": "#/$defs/transferGate"
+        },
+        "cold_search": {
+          "$ref": "#/$defs/coldGate"
+        },
+        "warm_search": {
+          "$ref": "#/$defs/warmGate"
+        },
+        "browser_memory": {
+          "$ref": "#/$defs/memoryGate"
+        },
+        "federation_and_child": {
+          "$ref": "#/$defs/passGate"
+        },
+        "graph_relationship_rendering": {
+          "$ref": "#/$defs/passGate"
+        },
+        "model_assisted_styling_and_filtering": {
+          "$ref": "#/$defs/passGate"
+        },
+        "live_reconciliation_states": {
+          "$ref": "#/$defs/passGate"
+        },
+        "facet_count_colour_and_space": {
+          "$ref": "#/$defs/passGate"
+        },
+        "cross_browser": {
+          "type": "object",
+          "required": [
+            "status",
+            "required",
+            "completed"
+          ],
+          "properties": {
+            "status": {
+              "const": "passed"
+            },
+            "required": {
+              "$ref": "#/$defs/browserSet"
+            },
+            "completed": {
+              "$ref": "#/$defs/browserSet"
+            }
+          }
+        },
+        "keyboard": {
+          "$ref": "#/$defs/passGate"
+        },
+        "accessibility": {
+          "$ref": "#/$defs/passGate"
+        }
+      }
+    },
+    "browsers": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "failures": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "limitations": {
+      "type": "array"
+    }
+  },
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "commit",
+        "tree",
+        "bundle_tree_sha256"
+      ],
+      "properties": {
+        "repository": {
+          "const": "https://github.com/chris-page-gov/okf-uk-legislation"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "tree": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "bundle_tree_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "explorer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "tag",
+        "commit"
+      ],
+      "properties": {
+        "repository": {
+          "const": "https://github.com/chris-page-gov/okf-explorer"
+        },
+        "tag": {
+          "const": "v0.5.0"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "browserSet": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "chrome",
+          "firefox",
+          "webkit"
+        ]
+      }
+    },
+    "passGate": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        }
+      }
+    },
+    "passSummary": {
+      "type": "object",
+      "required": [
+        "checks_total",
+        "checks_passed",
+        "checks_failed",
+        "all_passed"
+      ],
+      "properties": {
+        "checks_total": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "checks_passed": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "checks_failed": {
+          "const": 0
+        },
+        "all_passed": {
+          "const": true
+        }
+      }
+    },
+    "summaryContainer": {
+      "type": "object",
+      "required": [
+        "status",
+        "summary"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "summary": {
+          "$ref": "#/$defs/passSummary"
+        }
+      }
+    },
+    "browserValues": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chrome",
+        "firefox",
+        "webkit"
+      ],
+      "properties": {
+        "chrome": {
+          "type": "number",
+          "minimum": 0
+        },
+        "firefox": {
+          "type": "number",
+          "minimum": 0
+        },
+        "webkit": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "transferGate": {
+      "type": "object",
+      "required": [
+        "status",
+        "limit_bytes",
+        "observed_max_bytes",
+        "browser_values"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "limit_bytes": {
+          "const": 1048576
+        },
+        "observed_max_bytes": {
+          "type": "integer",
+          "maximum": 1048576
+        },
+        "browser_values": {
+          "$ref": "#/$defs/browserValues"
+        }
+      }
+    },
+    "coldGate": {
+      "type": "object",
+      "required": [
+        "status",
+        "limit_ms",
+        "observed_max_ms",
+        "browser_values"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "limit_ms": {
+          "const": 3000
+        },
+        "observed_max_ms": {
+          "type": "number",
+          "maximum": 3000
+        },
+        "browser_values": {
+          "$ref": "#/$defs/browserValues"
+        }
+      }
+    },
+    "warmGate": {
+      "type": "object",
+      "required": [
+        "status",
+        "limit_ms",
+        "observed_max_ms",
+        "browser_values"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "limit_ms": {
+          "const": 1000
+        },
+        "observed_max_ms": {
+          "type": "number",
+          "maximum": 1000
+        },
+        "browser_values": {
+          "$ref": "#/$defs/browserValues"
+        }
+      }
+    },
+    "memoryGate": {
+      "type": "object",
+      "required": [
+        "status",
+        "limit_bytes",
+        "observed_max_bytes"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "limit_bytes": {
+          "const": 268435456
+        },
+        "observed_max_bytes": {
+          "type": "integer",
+          "maximum": 268435456
+        }
+      }
+    }
+  }
+}

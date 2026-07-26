@@ -2,6 +2,14 @@
   "@context": {
     "@version": 1.1,
     "@vocab": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#",
+    "accessMethodCount": {
+      "@id": "okflaw:accessMethodCount",
+      "@type": "xsd:integer"
+    },
+    "accessTestDate": {
+      "@id": "okflaw:accessTestDate",
+      "@type": "xsd:date"
+    },
     "authorityClass": {
       "@id": "okflaw:authorityClass",
       "@type": "@id"
@@ -21,6 +29,14 @@
     },
     "dcat": "http://www.w3.org/ns/dcat#",
     "dcterms": "http://purl.org/dc/terms/",
+    "decidingCourt": {
+      "@id": "okflaw:decidingCourt",
+      "@type": "@id"
+    },
+    "derivedFrom": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id"
+    },
     "description": "dcterms:description",
     "descriptor": {
       "@id": "okflaw:descriptor",
@@ -28,6 +44,10 @@
     },
     "dqv": "http://www.w3.org/ns/dqv#",
     "eli": "http://data.europa.eu/eli/ontology#",
+    "embodies": {
+      "@id": "eli:embodies",
+      "@type": "@id"
+    },
     "expression": {
       "@id": "eli:is_realized_by",
       "@type": "@id"
@@ -36,12 +56,25 @@
       "@id": "okflaw:extent",
       "@type": "@id"
     },
+    "format": "dcterms:format",
     "generatedAt": {
       "@id": "prov:generatedAtTime",
       "@type": "xsd:dateTime"
     },
+    "hasBeginning": {
+      "@id": "time:hasBeginning",
+      "@type": "@id"
+    },
     "id": "@id",
     "identifier": "dcterms:identifier",
+    "inXSDDateTime": {
+      "@id": "time:inXSDDateTime",
+      "@type": "xsd:dateTime"
+    },
+    "isPartOf": {
+      "@id": "dcterms:isPartOf",
+      "@type": "@id"
+    },
     "issued": {
       "@id": "dcterms:issued",
       "@type": "xsd:date"
@@ -71,8 +104,10 @@
       "@id": "dcterms:modified",
       "@type": "xsd:dateTime"
     },
+    "name": "schema:name",
     "oa": "http://www.w3.org/ns/oa#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
+    "okf_version": "okflaw:okfVersion",
     "okflaw": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#",
     "passage": {
       "@id": "okflaw:hasPassage",
@@ -87,23 +122,49 @@
       "@id": "eli:is_realization_of",
       "@type": "@id"
     },
+    "recordCount": {
+      "@id": "okflaw:recordCount",
+      "@type": "xsd:integer"
+    },
+    "registerSchema": "okflaw:registerSchema",
     "retrievedAt": {
       "@id": "okflaw:retrievedAt",
       "@type": "xsd:dateTime"
     },
     "schema": "https://schema.org/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sourceClassCount": {
+      "@id": "okflaw:sourceClassCount",
+      "@type": "xsd:integer"
+    },
     "sourceHash": "okflaw:sourceHash",
+    "sourceRecord": {
+      "@id": "okflaw:sourceRecord",
+      "@type": "@id"
+    },
     "sourceRegister": {
       "@id": "okflaw:sourceRegister",
       "@type": "@id"
     },
+    "sourceURL": {
+      "@id": "dcat:landingPage",
+      "@type": "@id"
+    },
+    "stateType": {
+      "@id": "okflaw:stateType",
+      "@type": "@id"
+    },
+    "status": "okflaw:status",
     "supportedBy": {
       "@id": "okflaw:supportedBy",
       "@type": "@id"
     },
     "supportsProposition": {
       "@id": "okflaw:supportsProposition",
+      "@type": "@id"
+    },
+    "temporalState": {
+      "@id": "okflaw:temporalState",
       "@type": "@id"
     },
     "time": "http://www.w3.org/2006/time#",
@@ -117,6 +178,7 @@
       "@id": "okflaw:validTo",
       "@type": "xsd:date"
     },
+    "version": "okflaw:version",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/",
@@ -137,7 +199,16 @@
   },
   "okf_version": "0.2",
   "sourceRegister": {
-    "@id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json"
+    "@id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json",
+    "@type": "okflaw:SourceRegister",
+    "accessMethodCount": 108,
+    "accessTestDate": "2026-07-25",
+    "identifier": "whole-law-source-register-2026-07-25",
+    "recordCount": 72,
+    "registerSchema": "okf-whole-law-source-register.v1",
+    "sourceClassCount": 36,
+    "sourceHash": "sha256:575c62fab383a2c9444d3480640a086c4970b88c3ecafe9929f401969a84cdfe",
+    "title": "UK Whole-Law governed source register"
   },
   "status": "candidate",
   "title": "UK Whole-Law OKF",

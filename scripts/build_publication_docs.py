@@ -31,12 +31,25 @@ def files() -> dict[Path, bytes]:
 <main><h1>UK Legislation and Whole-Law OKF documentation</h1><ul>
 <li><a href="index.md">Documentation index</a></li>
 <li><a href="getting-started.md">Getting started</a></li>
+<li><a href="roles/">Role guides</a></li>
 <li><a href="relationships.md">Relationships</a></li>
 <li><a href="effects-and-enrichment.md">Effects and enrichment</a></li>
 <li><a href="source-coverage.md">Source coverage</a></li>
 <li><a href="maintenance.md">Maintenance</a></li>
 <li><a href="../whole-law/docs/">Whole-Law guide</a></li>
 <li><a href="../evaluation/">Legislation evaluation</a></li>
+</ul>
+<h2>Canonical access</h2>
+<table><thead><tr><th>Publication</th><th>Repository</th><th>Descriptor</th><th>Raw subpath</th><th>Release/archive</th></tr></thead><tbody>
+<tr><td>UK Legislation</td><td><a href="https://github.com/chris-page-gov/okf-uk-legislation">repository</a></td><td><a href="https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json">descriptor</a></td><td><code>bundle</code></td><td><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">releases</a></td></tr>
+<tr><td>UK Whole-Law</td><td><a href="https://github.com/chris-page-gov/okf-uk-legislation">repository</a></td><td><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">descriptor</a></td><td><code>bundle/whole-law</code></td><td><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">releases</a></td></tr>
+</tbody></table>
+<h2>Official sources and examples</h2><ul>
+<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
+<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
+<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
+<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
+<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
 </ul></main></html>
 """
     return result
@@ -55,6 +68,19 @@ def evaluation_files() -> dict[Path, bytes]:
 <li><a href="README.md">Evaluation guide</a></li>
 <li><a href="questions.json">100-question baseline</a></li>
 <li><a href="answer-schema.json">Answer schema</a></li>
+</ul>
+<h2>Canonical publication access</h2><ul>
+<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
+<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json">Canonical descriptor</a></li>
+<li>Declared raw subpath: <code>bundle</code></li>
+<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
+</ul>
+<h2>Official sources and examples</h2><ul>
+<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
+<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
+<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
+<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
+<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
 </ul></main></html>
 """
     return result

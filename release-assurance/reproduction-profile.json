@@ -1,0 +1,184 @@
+{
+  "schema": "okf-reproduction-profile.v1",
+  "profile_version": "1.1.0",
+  "finalization_controller": "scripts/finalize_release_candidate.py",
+  "finalization_contract": "release-assurance/external-finalization-contract.json",
+  "release_observation_controller": "scripts/capture_github_release_observation.py",
+  "publication_root": "bundle",
+  "dependency_lock": "requirements-validation.txt",
+  "python": {
+    "major": 3,
+    "minor": 12,
+    "micro": 11
+  },
+  "zstandard": {
+    "distribution": "zstandard",
+    "version": "0.23.0",
+    "level": 19,
+    "threads": 0,
+    "write_checksum": true,
+    "write_content_size": true,
+    "write_dict_id": false
+  },
+  "archive": {
+    "prefix": "okf-uk-legislation-v0.3.0",
+    "filename": "okf-uk-legislation-v0.3.0.tar.zst",
+    "max_files": 10000,
+    "max_file_bytes": 134217728,
+    "max_total_file_bytes": 1073741824,
+    "max_tar_bytes": 1207959552,
+    "max_compression_ratio": 200
+  },
+  "promotion": {
+    "candidate_tag": "v0.3.0-rc.1",
+    "final_tag": "v0.3.0",
+    "asset_filename": "okf-uk-legislation-v0.3.0.tar.zst",
+    "asset_name_preserved": true,
+    "archive_bytes_reused": true,
+    "rebuild_prohibited": true,
+    "rename_prohibited": true
+  },
+  "semantic_pairs": [
+    {
+      "id": "uk-legislation",
+      "yaml_ld": "bundle/okf-bundle.yamlld",
+      "json_ld": "bundle/okf-bundle.jsonld"
+    },
+    {
+      "id": "whole-law",
+      "yaml_ld": "bundle/whole-law/okf-bundle.yamlld",
+      "json_ld": "bundle/whole-law/okf-bundle.jsonld"
+    }
+  ],
+  "offline_contexts": [
+    {
+      "url": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/context.jsonld",
+      "path": "release-assurance/contexts/okf-explorer-bundle-wiki-v1.context.jsonld",
+      "sha256": "6a696414a588285bef895abe14879d30e5b611821fe6b1961f2aff186121d785"
+    }
+  ],
+  "build_commands": [
+    ["{python}", "scripts/build_legislation_okf.py", "--from-existing"],
+    ["{python}", "scripts/build_model_enrichment_input_evidence.py"],
+    ["{python}", "scripts/build_codex_semantic_enrichment.py"],
+    ["{python}", "scripts/build_model_enrichment_paid_publication.py"],
+    ["{python}", "scripts/build_legislation_effects.py", "--offline"],
+    ["{python}", "scripts/rebuild_legislation_discovery.py"],
+    ["{python}", "scripts/build_legislation_evaluation.py"],
+    ["{python}", "scripts/build_whole_law_evaluation.py"],
+    ["{python}", "scripts/run_yaml_ld_conformance.py"],
+    ["{python}", "scripts/run_ontology_competency_questions.py"],
+    ["{python}", "scripts/build_publication_docs.py"],
+    ["{python}", "scripts/build_whole_law_okf.py"],
+    ["{python}", "scripts/run_release_evaluation.py", "--check"],
+    ["{python}", "scripts/run_semantic_conformance.py"],
+    ["{python}", "scripts/build_whole_law_okf.py"],
+    ["{python}", "scripts/audit_graph_enrichment_gate.py", "build"],
+    ["{python}", "scripts/build_whole_law_okf.py"],
+    ["{python}", "scripts/build_checksums.py"],
+    ["{python}", "scripts/build_release_assurance.py"],
+    ["{python}", "scripts/build_checksums.py"]
+  ],
+  "validation_commands": [
+    ["{python}", "-m", "unittest", "discover", "-s", "tests", "-v"],
+    ["{python}", "scripts/build_publication_docs.py", "--check"],
+    ["{python}", "scripts/check_internal_links.py"],
+    ["{python}", "scripts/rebuild_legislation_discovery.py", "--check"],
+    ["{python}", "scripts/check_legislation_okf.py"],
+    ["{python}", "scripts/legislation_effects_evidence_archive.py", "check", "--snapshot-id", "legislation-effects-2026-07-25"],
+    ["{python}", "scripts/build_legislation_effects.py", "--check"],
+    ["{python}", "scripts/build_model_enrichment_input_evidence.py", "--check"],
+    ["{python}", "scripts/build_codex_semantic_enrichment.py", "--check"],
+    ["{python}", "scripts/build_model_enrichment_paid_publication.py", "--check"],
+    ["{python}", "scripts/audit_model_assisted_v2_independent.py", "--check"],
+    ["{python}", "scripts/build_whole_law_evaluation.py", "--check"],
+    ["{python}", "scripts/run_release_evaluation.py", "--check"],
+    ["{python}", "scripts/run_yaml_ld_conformance.py", "--check"],
+    ["{python}", "scripts/run_ontology_competency_questions.py", "--check"],
+    ["{python}", "scripts/build_whole_law_okf.py", "--check"],
+    ["{python}", "scripts/run_semantic_conformance.py", "--check"],
+    ["{python}", "scripts/check_whole_law_okf.py"],
+    ["{python}", "scripts/audit_graph_enrichment_gate.py", "check"],
+    ["{python}", "scripts/build_release_assurance.py", "--check"],
+    ["{python}", "scripts/build_checksums.py", "--check"],
+    ["{python}", "scripts/reconcile_legislation_effects_live.py", "check"],
+    ["{python}", "scripts/source_access_evidence_archive.py", "check", "--run-id", "20260725T203207Z-dd7315c3"],
+    ["{python}", "scripts/capture_whole_law_route_replacements.py", "check", "--run", "20260726T005115Z-04a20f01"],
+    ["{python}", "scripts/capture_whole_law_route_replacements.py", "check", "--run", "20260726T005723Z-c0f5a002"],
+    ["{python}", "scripts/capture_whole_law_route_replacements.py", "check", "--run", "20260726T010545Z-c0f5a003"],
+    ["{python}", "scripts/audit_source_acquisition_gate.py", "check"],
+    ["{python}", "scripts/check_implementation_traceability.py", "--check"]
+  ],
+  "explicit_offline_invocations": [
+    {
+      "script": "scripts/reconcile_legislation_effects_live.py",
+      "arguments": ["check"],
+      "reason": "The check subcommand validates the already sealed receipt and archive and never invokes the capture path."
+    },
+    {
+      "script": "scripts/capture_whole_law_route_replacements.py",
+      "arguments": ["check", "--run", "20260726T005115Z-04a20f01"],
+      "reason": "The exact primary replacement archive is validated offline."
+    },
+    {
+      "script": "scripts/capture_whole_law_route_replacements.py",
+      "arguments": ["check", "--run", "20260726T005723Z-c0f5a002"],
+      "reason": "The exact retained R02 failure-evidence supplement is validated offline."
+    },
+    {
+      "script": "scripts/capture_whole_law_route_replacements.py",
+      "arguments": ["check", "--run", "20260726T010545Z-c0f5a003"],
+      "reason": "The exact reachable R03 system-trust supplement is validated offline."
+    }
+  ],
+  "subsumed_checks": [
+    {
+      "capability": "independent-answer-verification",
+      "command": ["{python}", "scripts/run_release_evaluation.py", "--check"],
+      "implementation": "scripts/verify_release_evaluation_answers.py",
+      "reason": "The release evaluation imports and executes the independent answer verifier over the complete bound answer set."
+    },
+    {
+      "capability": "legacy-v1-rejection-and-v2-preservation",
+      "command": ["{python}", "scripts/audit_model_assisted_v2_independent.py", "--check"],
+      "implementation": "scripts/audit_model_assisted_v2_independent.py",
+      "reason": "The current independent audit validates all 22,299 accepted v2 assertions, zero active v1 output and six suppressed v1/v2 overlaps, and explicitly supersedes the historical preservation receipt as the release gate."
+    }
+  ],
+  "excluded_network_checks": [
+    {
+      "script": "scripts/check_release_drift.py",
+      "reason": "This is an intentionally live, bounded post-deployment observation and is outside the network-free byte-reproduction run."
+    }
+  ],
+  "required_receipts": [
+    {
+      "id": "okf-explorer-runtime-v0.5.0",
+      "path": "release-assurance/explorer-runtime-acceptance.json",
+      "schema": "okf-explorer-runtime-acceptance.v1",
+      "assertions": [
+        {"pointer": "/status", "equals": "passed"},
+        {"pointer": "/runtime/status", "equals": "passed"},
+        {"pointer": "/runtime/summary/all_passed", "equals": true},
+        {"pointer": "/runtime/summary/checks_failed", "equals": 0},
+        {"pointer": "/runtime/summary/checks_passed", "equals_pointer": "/runtime/summary/checks_total"},
+        {"pointer": "/cross_engine/status", "equals": "passed"},
+        {"pointer": "/accessibility/status", "equals": "passed"},
+        {"pointer": "/performance/status", "equals": "passed"},
+        {"pointer": "/integrity/status", "equals": "passed"}
+      ]
+    }
+  ],
+  "output_schemas": {
+    "reproduction_receipt": "release-assurance/schemas/reproduction-receipt.schema.json",
+    "release_package_manifest": "release-assurance/schemas/release-package-manifest.schema.json",
+    "provenance_inputs": "release-assurance/schemas/provenance-inputs.schema.json"
+  },
+  "network_policy": {
+    "dependency_installation_during_run": false,
+    "build_commands_are_offline": true,
+    "credentials_inherited": false,
+    "python_socket_guard": true,
+    "network_cli_guard": true
+  }
+}

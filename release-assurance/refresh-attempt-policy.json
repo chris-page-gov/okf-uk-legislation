@@ -1,0 +1,56 @@
+{
+  "schema": "okf-refresh-attempt-policy.v1",
+  "policy_version": "1.0.0",
+  "effective_date": "2026-07-26",
+  "observation_contract": "okf-release-drift-observation.v1",
+  "manifest_schema": "schemas/refresh-attempt-manifest.schema.json",
+  "datapack_schema": "schemas/refresh-attempt-datapack.schema.json",
+  "probes": [
+    "source_drift",
+    "new_work_delta",
+    "link_availability",
+    "checksum_integrity",
+    "source_access"
+  ],
+  "package": {
+    "files": [
+      "manifest.json",
+      "datapack.json",
+      "data/observation.json",
+      "checksums.json",
+      "README.md"
+    ],
+    "content_addressed_attempt_id": true,
+    "bounded_uncompressed_json": true,
+    "maximum_observation_bytes": 4194304,
+    "archives_prohibited": true
+  },
+  "untrusted_content": {
+    "raw_observation_is_data_only": true,
+    "raw_values_must_not_be_interpolated_into_markdown": true,
+    "executable_assets_prohibited": true,
+    "html_assets_prohibited": true,
+    "symbolic_links_prohibited": true
+  },
+  "persistence": {
+    "primary": "unique-github-release",
+    "tag_prefix": "refresh-attempt-",
+    "retention": "release-lifetime",
+    "append_only": true,
+    "overwrite_prohibited": true,
+    "edit_prohibited": true,
+    "delete_prohibited": true,
+    "workflow_artifact_is_secondary_only": true
+  },
+  "lineage": {
+    "attempts_are_observations_not_replacements": true,
+    "historical_attempts_must_not_be_mutated": true,
+    "new_attempt_required_for_every_refresh": true
+  },
+  "failure_policy": {
+    "publish_failed_and_drift_attempts": true,
+    "missing_observation_blocks_publication": true,
+    "schema_or_digest_failure_blocks_publication": true,
+    "existing_different_assets_block_publication": true
+  }
+}

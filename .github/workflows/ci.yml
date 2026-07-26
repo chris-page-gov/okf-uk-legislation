@@ -22,39 +22,5 @@ jobs:
           cache-dependency-path: requirements-validation.txt
       - name: Install pinned validation dependencies
         run: python3 -m pip install --disable-pip-version-check --requirement requirements-validation.txt
-      - name: Run unit tests
-        run: python3 -m unittest discover -s tests -v
-      - name: Check publication documentation
-        run: python3 scripts/build_publication_docs.py --check
-      - name: Check authored internal links
-        run: python3 scripts/check_internal_links.py
-      - name: Check browser-safe Legislation discovery
-        run: python3 scripts/rebuild_legislation_discovery.py --check
-      - name: Validate the Legislation publication
-        run: python3 scripts/check_legislation_okf.py
-      - name: Verify sealed official-effects evidence
-        run: python3 scripts/legislation_effects_evidence_archive.py check --snapshot-id legislation-effects-2026-07-25
-      - name: Check official effects
-        run: python3 scripts/build_legislation_effects.py --check
-      - name: Check model-assisted enrichment
-        run: python3 scripts/build_codex_semantic_enrichment.py --check
-      - name: Check independent model-assisted enrichment audit
-        run: python3 scripts/audit_model_assisted_v2_independent.py --check
-      - name: Check Whole-Law evaluation contracts
-        run: python3 scripts/build_whole_law_evaluation.py --check
-      - name: Check release evaluation execution
-        run: python3 scripts/run_release_evaluation.py --check
-      - name: Run pinned W3C YAML-LD conformance suite
-        run: python3 scripts/run_yaml_ld_conformance.py --check
-      - name: Execute ontology competency questions
-        run: python3 scripts/run_ontology_competency_questions.py --check
-      - name: Check generated Whole-Law publication
-        run: python3 scripts/build_whole_law_okf.py --check
-      - name: Validate Whole-Law standards and semantics
-        run: python3 scripts/check_whole_law_okf.py
-      - name: Check release assurance
-        run: python3 scripts/build_release_assurance.py --check
-      - name: Verify publication checksums
-        run: python3 scripts/build_checksums.py --check
-      - name: Fixture generation
-        run: python3 scripts/build_legislation_okf.py --fixture tests/fixtures/legislation_okf/sample.feed.xml --output "$RUNNER_TEMP/fixture" --generated-at 2026-07-11T00:00:00Z
+      - name: Run complete offline publication validation
+        run: sh scripts/validate_publication.sh

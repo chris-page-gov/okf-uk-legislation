@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-external-attestation.schema.json",
+  "title": "OKF model enrichment external attestation v1",
+  "description": "Immutable external provenance attestation for model-enrichment evidence.",
+  "type": "object",
+  "required": [
+    "schema",
+    "subject",
+    "bundle",
+    "trusted_root",
+    "repository",
+    "signer_workflow",
+    "predicate_type",
+    "cert_oidc_issuer",
+    "source_digest",
+    "deny_self_hosted_runners",
+    "gh_cli_version",
+    "gh_cli_binary_sha256",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-external-attestation.v1"
+    },
+    "subject": {
+      "$ref": "#/$defs/material"
+    },
+    "bundle": {
+      "$ref": "#/$defs/material"
+    },
+    "trusted_root": {
+      "$ref": "#/$defs/material"
+    },
+    "repository": {
+      "const": "chris-page-gov/okf-uk-legislation"
+    },
+    "signer_workflow": {
+      "const": "chris-page-gov/okf-uk-legislation/.github/workflows/model-enrichment-evidence.yml"
+    },
+    "predicate_type": {
+      "const": "https://slsa.dev/provenance/v1"
+    },
+    "cert_oidc_issuer": {
+      "const": "https://token.actions.githubusercontent.com"
+    },
+    "source_digest": {
+      "$ref": "#/$defs/sha256"
+    },
+    "deny_self_hosted_runners": {
+      "const": true
+    },
+    "gh_cli_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "gh_cli_binary_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -3,6 +3,7 @@
     "archive": "evidence/source-acquisitions/legislation-effects/archives/legislation-effects-2026-07-25.tar.xz",
     "archive_receipt": "evidence/source-acquisitions/legislation-effects/archive-receipts/legislation-effects-2026-07-25.json",
     "original_bytes_recoverable": true,
+    "post_build_live_reconciliation": "whole-law/assurance/effects-live-reconciliation-20260726.json",
     "projection_contains_response_bodies": false,
     "publication_projection": "evidence/source-acquisitions/legislation-effects/publication-projections/legislation-effects-2026-07-25.json"
   },

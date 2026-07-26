@@ -1,0 +1,448 @@
+{
+  "archive": {
+    "bytes": 12676,
+    "compressed_blob_plaintext_check_passed": true,
+    "file_count": 44,
+    "path": "evidence/source-acquisitions/legislation-effects/live-reconciliation/archives/legislation-effects-2026-07-26.tar.xz",
+    "response_bodies_published_loose": false,
+    "sha256": "480fdcad678d07ae8f641ae037bc02d836434a60029cae9188f34acfb65caef8",
+    "tree_sha256": "b532a0b885f71ede54d034ca7bae98ad6eb0347b26c5e294dac8ea166562b25f"
+  },
+  "counts": {
+    "by_state": {
+      "agreement": 16,
+      "inaccessible-consistent": 6
+    },
+    "live_additions": 0,
+    "live_matches": 16,
+    "routes": 22
+  },
+  "observed_at": "2026-07-26T00:34:00Z",
+  "release_effect": "passed-with-declared-live-delta",
+  "routes": [
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1972-68/affected/response.xml",
+        "bytes": 4570,
+        "sha256": "7a68e880186b989a2feb22eb32567e6e5834b313f734563a347e033742625555"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affected/ukpga/1972/68/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:42.761834Z",
+      "route": "affected",
+      "seed_work": "ukpga/1972/68",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 109
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1972-68/affecting/response.xml",
+        "bytes": 12238,
+        "sha256": "ee152aaee1000e472f8cf56bb59d0a16cbab04a5d773c1fb3a70ec6bae994011"
+      },
+      "entries_returned": 0,
+      "live_additions": 0,
+      "live_matches": 0,
+      "request_url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1972/68/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:42.832662Z",
+      "route": "affecting",
+      "seed_work": "ukpga/1972/68",
+      "snapshot_route_success": false,
+      "state": "inaccessible-consistent",
+      "status": 404,
+      "total_results": null
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1988-48/affected/response.xml",
+        "bytes": 4494,
+        "sha256": "f6be814e3c624d0b444a66b1ff2a4625bd09831bbbc6e67960c24b0c6de9a140"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affected/ukpga/1988/48/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:42.897206Z",
+      "route": "affected",
+      "seed_work": "ukpga/1988/48",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 1269
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1988-48/affecting/response.xml",
+        "bytes": 12238,
+        "sha256": "ee152aaee1000e472f8cf56bb59d0a16cbab04a5d773c1fb3a70ec6bae994011"
+      },
+      "entries_returned": 0,
+      "live_additions": 0,
+      "live_matches": 0,
+      "request_url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1988/48/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:42.970366Z",
+      "route": "affecting",
+      "seed_work": "ukpga/1988/48",
+      "snapshot_route_success": false,
+      "state": "inaccessible-consistent",
+      "status": 404,
+      "total_results": null
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1990-18/affected/response.xml",
+        "bytes": 4704,
+        "sha256": "4d2bc7fa6df7ccc145642ac9f91bb20ee762bd6b175d0e6100fdd22576d8f9ab"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affected/ukpga/1990/18/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.038614Z",
+      "route": "affected",
+      "seed_work": "ukpga/1990/18",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 113
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1990-18/affecting/response.xml",
+        "bytes": 12238,
+        "sha256": "ee152aaee1000e472f8cf56bb59d0a16cbab04a5d773c1fb3a70ec6bae994011"
+      },
+      "entries_returned": 0,
+      "live_additions": 0,
+      "live_matches": 0,
+      "request_url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1990/18/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.113112Z",
+      "route": "affecting",
+      "seed_work": "ukpga/1990/18",
+      "snapshot_route_success": false,
+      "state": "inaccessible-consistent",
+      "status": 404,
+      "total_results": null
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1998-42/affected/response.xml",
+        "bytes": 4073,
+        "sha256": "cf4a6a0acbec367eb294dd30f8eccd5cc4158dfe824d990d41bd6fa9d4da9c44"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.181923Z",
+      "route": "affected",
+      "seed_work": "ukpga/1998/42",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 85
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1998-42/affecting/response.xml",
+        "bytes": 12238,
+        "sha256": "ee152aaee1000e472f8cf56bb59d0a16cbab04a5d773c1fb3a70ec6bae994011"
+      },
+      "entries_returned": 0,
+      "live_additions": 0,
+      "live_matches": 0,
+      "request_url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1998/42/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.259583Z",
+      "route": "affecting",
+      "seed_work": "ukpga/1998/42",
+      "snapshot_route_success": false,
+      "state": "inaccessible-consistent",
+      "status": 404,
+      "total_results": null
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1998-46/affected/response.xml",
+        "bytes": 3691,
+        "sha256": "c817af227eed867aad65614c196c57bb6c726eb09864716e7f63d9a338ed80cf"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/46/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.322310Z",
+      "route": "affected",
+      "seed_work": "ukpga/1998/46",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 857
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1998-46/affecting/response.xml",
+        "bytes": 12238,
+        "sha256": "ee152aaee1000e472f8cf56bb59d0a16cbab04a5d773c1fb3a70ec6bae994011"
+      },
+      "entries_returned": 0,
+      "live_additions": 0,
+      "live_matches": 0,
+      "request_url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1998/46/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.409500Z",
+      "route": "affecting",
+      "seed_work": "ukpga/1998/46",
+      "snapshot_route_success": false,
+      "state": "inaccessible-consistent",
+      "status": 404,
+      "total_results": null
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1998-47/affected/response.xml",
+        "bytes": 3914,
+        "sha256": "003f242669312c05bf9e79b05805f209ac48272586878ca0fba404661159a83a"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/47/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.479350Z",
+      "route": "affected",
+      "seed_work": "ukpga/1998/47",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 693
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-1998-47/affecting/response.xml",
+        "bytes": 12238,
+        "sha256": "ee152aaee1000e472f8cf56bb59d0a16cbab04a5d773c1fb3a70ec6bae994011"
+      },
+      "entries_returned": 0,
+      "live_additions": 0,
+      "live_matches": 0,
+      "request_url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1998/47/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.554488Z",
+      "route": "affecting",
+      "seed_work": "ukpga/1998/47",
+      "snapshot_route_success": false,
+      "state": "inaccessible-consistent",
+      "status": 404,
+      "total_results": null
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-2006-46/affected/response.xml",
+        "bytes": 4211,
+        "sha256": "6d3de8874f009c3adc0a250155b078f4397f93996b58ea71d25705269c6ea15a"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affected/ukpga/2006/46/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.625207Z",
+      "route": "affected",
+      "seed_work": "ukpga/2006/46",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 5955
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-2006-46/affecting/response.xml",
+        "bytes": 6348,
+        "sha256": "96584888cec7ffd217d75999e46b2e258cf9c87cad2c667003820e1e89acdc2e"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affecting/ukpga/2006/46/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.705032Z",
+      "route": "affecting",
+      "seed_work": "ukpga/2006/46",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 453
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-2010-15/affected/response.xml",
+        "bytes": 4292,
+        "sha256": "3a8db07ca5da4d72b2ca56a841974854c4e5e3c8fa847c4ba69fac673663289c"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affected/ukpga/2010/15/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.801466Z",
+      "route": "affected",
+      "seed_work": "ukpga/2010/15",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 1247
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-2010-15/affecting/response.xml",
+        "bytes": 4843,
+        "sha256": "04e5f3af864ab455011008d82e906d67bb7cd564397343504977d8aa56d6bf1b"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affecting/ukpga/2010/15/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.873055Z",
+      "route": "affecting",
+      "seed_work": "ukpga/2010/15",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 107
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-2018-12/affected/response.xml",
+        "bytes": 4246,
+        "sha256": "a53de6c1c53fbd1e8e1bbb4d9b347d6bfc98968bc2697efbb28de0430d8610fd"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affected/ukpga/2018/12/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:43.963033Z",
+      "route": "affected",
+      "seed_work": "ukpga/2018/12",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 2271
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-2018-12/affecting/response.xml",
+        "bytes": 4671,
+        "sha256": "341e364a5316a26fe019752c012578547d7a904ebc566dc18d4e5a555b97f47c"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affecting/ukpga/2018/12/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:44.037091Z",
+      "route": "affecting",
+      "seed_work": "ukpga/2018/12",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 775
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-2018-16/affected/response.xml",
+        "bytes": 4233,
+        "sha256": "c06ae7a198769e71d33205562d92661c3be8739a63d16282b44e979d2e4f0de0"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affected/ukpga/2018/16/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:44.116546Z",
+      "route": "affected",
+      "seed_work": "ukpga/2018/16",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 611
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-2018-16/affecting/response.xml",
+        "bytes": 5398,
+        "sha256": "74d98c8d89f94672cc156fbada89b8b71599e8a0ffc9615000c7513971d468f2"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affecting/ukpga/2018/16/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:44.189591Z",
+      "route": "affecting",
+      "seed_work": "ukpga/2018/16",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 188
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-2020-27/affected/response.xml",
+        "bytes": 3759,
+        "sha256": "c27aa9df570fd0348a941cbab7ad9c28ad06649a8f0653ea478e49db1a5a5d36"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affected/ukpga/2020/27/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:44.272726Z",
+      "route": "affected",
+      "seed_work": "ukpga/2020/27",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 101
+    },
+    {
+      "body": {
+        "archive_member": "legislation-effects-2026-07-26/ukpga-2020-27/affecting/response.xml",
+        "bytes": 4080,
+        "sha256": "d639e0752a0c73ce5ff8a5fed3a0298e16ef978293869f26c87adc28d3acc7c8"
+      },
+      "entries_returned": 1,
+      "live_additions": 0,
+      "live_matches": 1,
+      "request_url": "https://www.legislation.gov.uk/changes/affecting/ukpga/2020/27/data.feed?results-count=1&sort=modified",
+      "retrieved_at": "2026-07-26T00:33:44.347664Z",
+      "route": "affecting",
+      "seed_work": "ukpga/2020/27",
+      "snapshot_route_success": true,
+      "state": "agreement",
+      "status": 200,
+      "total_results": 40
+    }
+  ],
+  "run_id": "legislation-effects-2026-07-26",
+  "schema": "okf-effects-live-reconciliation.v1",
+  "scope": {
+    "method": "latest-entry probe",
+    "results_per_route": 1,
+    "routes": 22,
+    "seed_works": 11,
+    "statement": "This post-build check compares the current official latest entry with the frozen static snapshot. It is not a full live recrawl and does not imply complete effects coverage."
+  },
+  "snapshot": {
+    "assertions": {
+      "path": "bundle/data/effects/assertions.json.gz",
+      "sha256": "e977ec2e988622d49a759c1b48882dcb3242494fc5463cb03a5692ea91383c99"
+    },
+    "attempt_ledger": {
+      "path": "bundle/data/effects/attempt-ledger.json",
+      "sha256": "06cb6d74844a5f6720d1c55755af95557fb9ca4a6368c1ecefea910c9363b320"
+    },
+    "config": {
+      "path": "whole-law/config/effects-seeds.json",
+      "sha256": "652f90bc5adf482d9285f2e81617d16e15835eb886451c777fe9c2819172a3b3"
+    }
+  },
+  "tool": {
+    "path": "scripts/reconcile_legislation_effects_live.py",
+    "sha256": "a0c5ff6d3995f5520a4ea8e0c1019ee25f4187ba3ebd0818313b69c79ab0445f",
+    "version": "1.0.0"
+  }
+}

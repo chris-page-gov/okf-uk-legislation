@@ -11,6 +11,14 @@
     "derivation"
   ],
   "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^urn:okf:(?:official-effect:sha256|enrichment:sha256|model-relationship):[0-9a-f]{64}$"
+    },
+    "acceptance_id": {
+      "type": "string",
+      "pattern": "^urn:okf:model-acceptance:[0-9a-f]{64}$"
+    },
     "schema": {
       "const": "okf-relationship-assertion.v2"
     },
@@ -130,6 +138,81 @@
     }
   },
   "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "id": {
+            "pattern": "^urn:okf:model-relationship:[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "then": {
+        "required": [
+          "id",
+          "acceptance_id"
+        ],
+        "properties": {
+          "authority": {
+            "properties": {
+              "class": {
+                "const": "model-assisted"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "id": {
+            "pattern": "^urn:okf:official-effect:sha256:[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "authority": {
+            "properties": {
+              "class": {
+                "const": "official"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "id": {
+            "pattern": "^urn:okf:enrichment:sha256:[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "authority": {
+            "properties": {
+              "class": {
+                "const": "model-assisted"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
   "$defs": {
     "httpUrl": {
       "type": "string",

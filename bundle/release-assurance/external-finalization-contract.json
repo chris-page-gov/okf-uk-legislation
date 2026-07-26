@@ -1,0 +1,102 @@
+{
+  "archive": {
+    "filename": "okf-uk-legislation-v0.3.0.tar.zst"
+  },
+  "candidate": {
+    "final_tag": "v0.3.0",
+    "rc_tag": "v0.3.0-rc.1",
+    "repository": "https://github.com/chris-page-gov/okf-uk-legislation"
+  },
+  "evidence_plane": "external-write-once",
+  "explorer": {
+    "repository": "https://github.com/chris-page-gov/okf-explorer",
+    "required_tag": "v0.5.0"
+  },
+  "finalization": {
+    "archive_rebuild_prohibited": true,
+    "frozen_checkout_mutation_prohibited": true,
+    "output_filename": "external-finalization-receipt.json",
+    "promotion_requires_identical_filename_bytes_and_sha256": true,
+    "write_once": true
+  },
+  "final_promotion_authorization": {
+    "output_filename": "final-promotion-authorization-receipt.json",
+    "output_schema": "release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
+    "required_gates": ["GATE-09", "GATE-14"],
+    "state": "final_promotion_eligible",
+    "write_once": true
+  },
+  "gate_bindings": {
+    "GATE-06": "eligible clean-room reproduction receipt and release-package manifest",
+    "GATE-07": "passed browser, keyboard and accessibility receipt targeting the frozen commit",
+    "GATE-08": "passed performance receipt targeting the frozen commit and release limits",
+    "GATE-09": "passed immutable deployed-entrypoint attempt for the RC",
+    "GATE-10": "passed security-assurance receipt targeting the frozen commit",
+    "GATE-13": "locally rehashed RC and final release assets equal the sealed package archive",
+    "GATE-14": "passed final requirement-closure receipt targeting the frozen commit"
+  },
+  "input_schemas": {
+    "accessibility_assurance_receipt": "release-assurance/schemas/accessibility-assurance-receipt.schema.json",
+    "explorer_runtime_receipt": "release-assurance/schemas/explorer-runtime-receipt.schema.json",
+    "explorer_release_receipt": "release-assurance/schemas/explorer-release-receipt.schema.json",
+    "final_promotion_authorization_receipt": "release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
+    "github_release_observation": "release-assurance/schemas/github-release-observation.schema.json",
+    "performance_assurance_receipt": "release-assurance/schemas/performance-assurance-receipt.schema.json",
+    "pre_rc_authorization_receipt": "release-assurance/schemas/pre-rc-authorization-receipt.schema.json",
+    "release_package_manifest": "release-assurance/schemas/release-package-manifest.schema.json",
+    "reproduction_receipt": "release-assurance/schemas/reproduction-receipt.schema.json",
+    "security_assurance_receipt": "release-assurance/schemas/security-assurance-receipt.schema.json",
+    "traceability_closure_receipt": "release-assurance/schemas/traceability-closure-receipt.schema.json"
+  },
+  "pre_rc_authorization": {
+    "output_filename": "pre-rc-authorization-receipt.json",
+    "output_schema": "release-assurance/schemas/pre-rc-authorization-receipt.schema.json",
+    "required_gates": ["GATE-06", "GATE-07", "GATE-08", "GATE-10"],
+    "required_embedded_gates": ["GATE-01", "GATE-02", "GATE-03", "GATE-04", "GATE-05", "GATE-11", "GATE-12"],
+    "required_embedded_state": "validated",
+    "state": "rc_eligible",
+    "write_once": true
+  },
+  "release_observations": {
+    "controller": "scripts/capture_github_release_observation.py",
+    "explorer": "explorer-release-observation.json",
+    "final": "okf-uk-legislation-v0.3.0-release-observation.json",
+    "rc": "okf-uk-legislation-v0.3.0-rc.1-release-observation.json",
+    "schema": "release-assurance/schemas/github-release-observation.schema.json"
+  },
+  "output_schema": "release-assurance/schemas/external-finalization-receipt.schema.json",
+  "required_security_checks": [
+    "secrets",
+    "dependencies",
+    "content-injection",
+    "xml-xxe",
+    "archive-bomb",
+    "ssrf",
+    "privacy",
+    "unsafe-redirects-and-urls",
+    "untrusted-downloaded-content",
+    "immutable-evidence",
+    "supply-chain"
+  ],
+  "traceability": {
+    "frozen_ids": [
+      "P01-01", "P01-02", "P01-03", "P01-04",
+      "P02-01", "P02-02", "P02-03", "P02-04",
+      "P03-01", "P03-02", "P03-03", "P03-04",
+      "P04-01", "P04-02", "P04-03", "P04-04",
+      "P05-01", "P05-02", "P05-03", "P05-04", "P05-05", "P05-06",
+      "P06-01", "P06-02", "P06-03", "P06-04", "P06-05",
+      "P07-01", "P07-02", "P07-03", "P07-04", "P07-05", "P07-06",
+      "P08-01", "P08-02", "P08-03", "P08-04", "P08-05", "P08-06", "P08-07",
+      "P09-01", "P09-02", "P09-03", "P09-04", "P09-05",
+      "P10-01", "P10-02", "P10-03", "P10-04", "P10-05",
+      "D-01", "D-02", "D-03", "D-04", "D-05", "D-06",
+      "D-07", "D-08", "D-09", "D-10", "D-11", "D-12"
+    ],
+    "frozen_ledger_path": "release-assurance/implementation-traceability.json",
+    "frozen_ledger_sha256": "ae26ab80e9a39fa0b76102495db3f545cceefa9ebef6e847fe6996e0e04ad642",
+    "terminal_dispositions": ["passed", "deferred", "blocked", "superseded"]
+  },
+  "schema": "okf-external-finalization-contract.v2",
+  "version": "2.0.0"
+}

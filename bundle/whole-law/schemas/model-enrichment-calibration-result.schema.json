@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-calibration-result.schema.json",
+  "title": "OKF model-enrichment calibration result v1",
+  "description": "Complete per-case calibration evidence whose aggregate metrics are recomputed by the paid-run validator.",
+  "type": "object",
+  "required": [
+    "schema",
+    "requested_model",
+    "returned_model",
+    "availability",
+    "availability_attempt",
+    "calibration_manifest",
+    "cases",
+    "metrics",
+    "cost_usd",
+    "complete",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-calibration-result.v1"
+    },
+    "requested_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "returned_model": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "availability": {
+      "enum": [
+        "available-structured-output",
+        "unavailable",
+        "structured-output-unsupported"
+      ]
+    },
+    "availability_attempt": {
+      "$ref": "#/$defs/material"
+    },
+    "calibration_manifest": {
+      "$ref": "#/$defs/material"
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "structured_output_schema_validity",
+        "precision",
+        "evidence_support"
+      ],
+      "properties": {
+        "structured_output_schema_validity": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "precision": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence_support": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "cost_usd": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 250
+    },
+    "complete": {
+      "const": true
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "case": {
+      "type": "object",
+      "required": [
+        "case_id",
+        "attempt",
+        "schema_valid",
+        "predicted_topics",
+        "expected_topics",
+        "evidence_supported"
+      ],
+      "properties": {
+        "case_id": {
+          "type": "string",
+          "pattern": "^urn:okf:calibration:sha256:[0-9a-f]{64}$"
+        },
+        "attempt": {
+          "$ref": "#/$defs/material"
+        },
+        "schema_valid": {
+          "type": "boolean"
+        },
+        "predicted_topics": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "expected_topics": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidence_supported": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

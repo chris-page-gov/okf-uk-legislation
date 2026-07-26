@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
+  "title": "Authorization to promote an immutable Whole-Law release candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "state",
+    "authorization_id",
+    "pre_rc_authorization",
+    "frozen_candidate",
+    "archive",
+    "rc_release",
+    "public_probe",
+    "traceability",
+    "gates",
+    "invariants"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-final-promotion-authorization-receipt.v1"
+    },
+    "status": {
+      "const": "passed"
+    },
+    "state": {
+      "const": "final_promotion_eligible"
+    },
+    "authorization_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "pre_rc_authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorization_id",
+        "receipt"
+      ],
+      "properties": {
+        "authorization_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        "receipt": {
+          "$ref": "#/$defs/material"
+        }
+      }
+    },
+    "frozen_candidate": {
+      "$ref": "#/$defs/candidate"
+    },
+    "archive": {
+      "$ref": "#/$defs/archive"
+    },
+    "rc_release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "tag",
+        "peeled_commit",
+        "release_id",
+        "asset_id",
+        "observation",
+        "asset"
+      ],
+      "properties": {
+        "repository": {
+          "const": "https://github.com/chris-page-gov/okf-uk-legislation"
+        },
+        "tag": {
+          "const": "v0.3.0-rc.1"
+        },
+        "peeled_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "release_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "asset_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "observation": {
+          "$ref": "#/$defs/material"
+        },
+        "asset": {
+          "$ref": "#/$defs/archive"
+        }
+      }
+    },
+    "public_probe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate",
+        "status",
+        "candidate",
+        "attempt",
+        "projection",
+        "integrity",
+        "route_manifest"
+      ],
+      "properties": {
+        "gate": {
+          "const": "GATE-09"
+        },
+        "status": {
+          "const": "passed"
+        },
+        "candidate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "repository",
+            "git_commit",
+            "bundle_tree_sha256",
+            "release_tag",
+            "explorer_release"
+          ],
+          "properties": {
+            "repository": {
+              "const": "https://github.com/chris-page-gov/okf-uk-legislation"
+            },
+            "git_commit": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "bundle_tree_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "release_tag": {
+              "const": "v0.3.0-rc.1"
+            },
+            "explorer_release": {
+              "const": "v0.5.0"
+            }
+          }
+        },
+        "attempt": {
+          "$ref": "#/$defs/material"
+        },
+        "projection": {
+          "$ref": "#/$defs/material"
+        },
+        "integrity": {
+          "$ref": "#/$defs/material"
+        },
+        "route_manifest": {
+          "$ref": "#/$defs/material"
+        }
+      }
+    },
+    "traceability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirements_total",
+        "requirements_closed",
+        "unresolved_must_haves",
+        "receipt",
+        "source_ledger"
+      ],
+      "properties": {
+        "requirements_total": {
+          "const": 62
+        },
+        "requirements_closed": {
+          "const": 62
+        },
+        "unresolved_must_haves": {
+          "const": 0
+        },
+        "receipt": {
+          "$ref": "#/$defs/material"
+        },
+        "source_ledger": {
+          "$ref": "#/$defs/material"
+        }
+      }
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "GATE-09",
+        "GATE-14"
+      ],
+      "properties": {
+        "GATE-09": {
+          "const": "passed"
+        },
+        "GATE-14": {
+          "const": "passed"
+        }
+      }
+    },
+    "invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frozen_checkout_mutated",
+        "archive_rebuilt",
+        "rc_asset_matches_archive",
+        "evidence_write_once"
+      ],
+      "properties": {
+        "frozen_checkout_mutated": {
+          "const": false
+        },
+        "archive_rebuilt": {
+          "const": false
+        },
+        "rc_asset_matches_archive": {
+          "const": true
+        },
+        "evidence_write_once": {
+          "const": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "commit",
+        "tree"
+      ],
+      "properties": {
+        "repository": {
+          "const": "https://github.com/chris-page-gov/okf-uk-legislation"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "tree": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\\\u0000-\\u001f]+$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "okf-uk-legislation-v0.3.0.tar.zst"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

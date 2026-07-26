@@ -1,0 +1,54 @@
+{
+  "schema": "okf-helper-crash-stop-receipt.v1",
+  "status": "contained",
+  "observed_failure": {
+    "observed_at": "2026-07-25T22:29:08.3368Z",
+    "helper": "soffice",
+    "application": "LibreOffice",
+    "version": "26.2.3.2",
+    "architecture": "ARM-64",
+    "launching_application": "ChatGPT/Codex",
+    "purpose": "Attempted presentation rendering of the preserved Claude DOCX evidence.",
+    "termination": {
+      "exception": "EXC_CRASH (SIGABRT)",
+      "signal": 6,
+      "application_information": "abort() called",
+      "stage": "macOS application registration before document rendering"
+    },
+    "source": "User-supplied macOS Problem Report screenshot"
+  },
+  "stop_rule": {
+    "status": "enforced",
+    "policy": "An application abort or repeatable helper crash is a stop condition and must not be retried.",
+    "policy_path": "AGENTS.md",
+    "prohibited_helpers": [
+      "LibreOffice",
+      "soffice",
+      "Quick Look",
+      "other GUI-backed document renderers"
+    ],
+    "replacement": [
+      "Pandoc direct document extraction",
+      "python-docx direct OOXML extraction"
+    ]
+  },
+  "side_effect_audit": {
+    "audited_at": "2026-07-26T03:39:57Z",
+    "live_helper_processes": 0,
+    "libreoffice_document_lock_files": 0,
+    "normal_environment_locks_excluded": [
+      "okf-uk-legislation/.venv/.lock"
+    ],
+    "source_document": {
+      "path": "research/Legislation-govuk Claude 4.8 run.docx",
+      "sha256": "67849a644ec4b64be8dd4fbe8eb39e2cb35305e003b46d8b328e0b2d08437c12",
+      "matches_frozen_evidence_manifest": true,
+      "modified_by_failed_helper": false
+    },
+    "repository_effect": "No repository mutation or document lock attributable to the failed helper was observed. The worktree already contained intentional implementation changes."
+  },
+  "limitations": [
+    "The receipt records the visible macOS translated crash report and a post-crash process, lock and source-hash audit; it is not a LibreOffice vendor root-cause analysis.",
+    "The source DOCX remains immutable evidence. Direct extraction is permitted, but generated renderings must be separate derived artefacts."
+  ]
+}

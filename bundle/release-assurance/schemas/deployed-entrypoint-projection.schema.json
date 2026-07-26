@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/deployed-entrypoint-projection.schema.json",
+  "title": "GATE-09 safe deployed-entrypoint projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "gate",
+    "executed_at",
+    "candidate",
+    "manifest_sha256",
+    "gate_evidence_status",
+    "policy",
+    "routes",
+    "cross_route_assertions",
+    "summary",
+    "assurance_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-deployed-entrypoint-projection.v1"
+    },
+    "gate": {
+      "const": "GATE-09"
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "candidate": {
+      "type": "object"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "gate_evidence_status": {
+      "enum": [
+        "passed",
+        "failed"
+      ]
+    },
+    "policy": {
+      "type": "object"
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "url",
+          "coverage",
+          "status",
+          "status_code",
+          "final_url",
+          "final_url_query_redacted",
+          "final_url_sha256",
+          "hops",
+          "body_bytes",
+          "body_sha256",
+          "body_hash_scope",
+          "truncated",
+          "elapsed_ms",
+          "media_type",
+          "headers",
+          "omitted_response_header_names",
+          "errors",
+          "declared_yaml_ld_mime_exception_observed",
+          "transport_conformant_yaml_ld"
+        ]
+      }
+    },
+    "cross_route_assertions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "status",
+          "errors"
+        ]
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "routes_total",
+        "routes_passed",
+        "routes_failed",
+        "failed_route_ids",
+        "cross_assertions_total",
+        "cross_assertions_passed",
+        "cross_assertions_failed",
+        "failed_cross_assertion_ids"
+      ]
+    },
+    "assurance_boundary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

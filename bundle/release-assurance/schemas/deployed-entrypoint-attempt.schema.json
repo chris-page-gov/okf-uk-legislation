@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/deployed-entrypoint-attempt.schema.json",
+  "title": "GATE-09 immutable attempt metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "gate",
+    "executed_at",
+    "candidate",
+    "manifest_sha256",
+    "projection_sha256",
+    "network_policy",
+    "raw_evidence",
+    "status",
+    "tool"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-deployed-entrypoint-attempt.v1"
+    },
+    "gate": {
+      "const": "GATE-09"
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "candidate": {
+      "type": "object"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "projection_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "network_policy": {
+      "const": "unauthenticated-bounded-pinned-https"
+    },
+    "raw_evidence": {
+      "type": "object",
+      "required": [
+        "contains_untrusted_response_bytes",
+        "publication_status",
+        "safe_projection"
+      ]
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed"
+      ]
+    },
+    "tool": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "sha256"
+      ]
+    }
+  }
+}

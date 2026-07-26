@@ -1,0 +1,260 @@
+{
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/acquisition/source-route-replacement-overlay.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "created_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "overlay_id": {
+      "pattern": "^[a-z0-9][a-z0-9-]+$",
+      "type": "string"
+    },
+    "policy": {
+      "additionalProperties": false,
+      "properties": {
+        "authentication_bypass": {
+          "const": false
+        },
+        "credentials": {
+          "const": false
+        },
+        "immutable_base": {
+          "const": true
+        },
+        "maximum_redirects": {
+          "maximum": 5,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "replacement_only": {
+          "const": true
+        },
+        "schemes": {
+          "items": {
+            "const": "https"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "authentication_bypass",
+        "credentials",
+        "immutable_base",
+        "maximum_redirects",
+        "replacement_only",
+        "schemes"
+      ],
+      "type": "object"
+    },
+    "routes": {
+      "items": {
+        "$ref": "#/$defs/route"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "schema": {
+      "const": "okf-source-route-replacement-overlay.v1"
+    },
+    "source_register": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "const": "research/whole-law-okf-research/source-register.json"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "supplements": {
+      "additionalProperties": false,
+      "properties": {
+        "archive_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "evidence_run_id": {
+          "pattern": "^[0-9]{8}T[0-9]{6}Z-[a-f0-9]{8}$",
+          "type": "string"
+        },
+        "overlay_path": {
+          "enum": [
+            "whole-law/acquisition/source-route-replacements.v1.json",
+            "whole-law/acquisition/source-route-replacements-copfs-r02.v1.json"
+          ]
+        },
+        "overlay_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "overlay_path",
+        "overlay_sha256",
+        "evidence_run_id",
+        "archive_sha256"
+      ],
+      "type": "object"
+    },
+    "superseded_observation": {
+      "additionalProperties": false,
+      "properties": {
+        "access_methods_path": {
+          "const": "whole-law/acquisition/current/access-methods.json"
+        },
+        "access_methods_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "evidence_run_id": {
+          "pattern": "^[0-9]{8}T[0-9]{6}Z-[a-f0-9]{8}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "access_methods_path",
+        "access_methods_sha256",
+        "evidence_run_id"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema",
+    "overlay_id",
+    "created_at",
+    "source_register",
+    "superseded_observation",
+    "policy",
+    "routes"
+  ],
+  "title": "Whole-Law source-route replacement overlay",
+  "type": "object",
+  "$defs": {
+    "denominator": {
+      "additionalProperties": false,
+      "properties": {
+        "corpus_enumeration_exact": {
+          "type": "boolean"
+        },
+        "official_statement": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "replacement_route_count": {
+          "const": 1
+        },
+        "scope_note": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "replacement_route_count",
+        "corpus_enumeration_exact",
+        "official_statement",
+        "scope_note"
+      ],
+      "type": "object"
+    },
+    "officiality": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "classification": {
+          "enum": [
+            "official-public-body",
+            "primary-source-operator"
+          ]
+        },
+        "reviewed_at": {
+          "format": "date",
+          "type": "string"
+        }
+      },
+      "required": [
+        "classification",
+        "basis",
+        "reviewed_at"
+      ],
+      "type": "object"
+    },
+    "route": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_redirect_hosts": {
+          "items": {
+            "format": "hostname",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "denominator": {
+          "$ref": "#/$defs/denominator"
+        },
+        "officiality": {
+          "$ref": "#/$defs/officiality"
+        },
+        "previous_url": {
+          "format": "uri",
+          "type": "string"
+        },
+        "replacement_id": {
+          "pattern": "^SRC[0-9]{3}-A[0-9]{2}-R[0-9]{2}$",
+          "type": "string"
+        },
+        "replaces_method_id": {
+          "pattern": "^SRC[0-9]{3}-A[0-9]{2}$",
+          "type": "string"
+        },
+        "source_id": {
+          "pattern": "^SRC[0-9]{3}$",
+          "type": "string"
+        },
+        "supplements_replacement_id": {
+          "pattern": "^SRC[0-9]{3}-A[0-9]{2}-R[0-9]{2}$",
+          "type": "string"
+        },
+        "transport": {
+          "enum": [
+            "python-urllib-strict",
+            "system-curl-secure"
+          ]
+        },
+        "url": {
+          "format": "uri",
+          "pattern": "^https://",
+          "type": "string"
+        }
+      },
+      "required": [
+        "replacement_id",
+        "replaces_method_id",
+        "source_id",
+        "previous_url",
+        "url",
+        "allowed_redirect_hosts",
+        "officiality",
+        "denominator"
+      ],
+      "type": "object"
+    },
+    "sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    }
+  }
+}

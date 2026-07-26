@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-review.schema.json",
+  "title": "OKF model enrichment independent review v1",
+  "description": "Strict output from a reviewer model that is separate from the generator. A reviewer can accept, reject or escalate a candidate but cannot introduce an assertion.",
+  "type": "object",
+  "required": [
+    "schema",
+    "batch_id",
+    "input_snapshot",
+    "generator_output_sha256",
+    "records"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-review.v1"
+    },
+    "batch_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "input_snapshot": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "generator_output_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "httpUrl": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "riskFlag": {
+      "enum": [
+        "concept-link",
+        "deterministic-disagreement",
+        "entity-link",
+        "evidence-field-mismatch",
+        "jurisdiction-ambiguity",
+        "known-collision-family",
+        "low-confidence",
+        "multi-topic",
+        "non-title-evidence",
+        "official-looking-target",
+        "reviewer-uncertainty",
+        "semantic-disagreement",
+        "temporal-ambiguity",
+        "uri-fallback-title"
+      ]
+    },
+    "decision": {
+      "type": "object",
+      "required": [
+        "candidate_index",
+        "verdict",
+        "evidence_supported",
+        "semantic_supported",
+        "reason_code",
+        "risk_flags"
+      ],
+      "properties": {
+        "candidate_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "verdict": {
+          "enum": [
+            "accept",
+            "reject",
+            "escalate"
+          ]
+        },
+        "evidence_supported": {
+          "type": "boolean"
+        },
+        "semantic_supported": {
+          "type": "boolean"
+        },
+        "reason_code": {
+          "enum": [
+            "accepted-supported",
+            "candidate-not-in-controlled-vocabulary",
+            "duplicate-existing-assertion",
+            "evidence-does-not-entail-target",
+            "evidence-span-not-found",
+            "high-risk-requires-strongest-model",
+            "insufficient-frozen-evidence",
+            "official-authority-boundary",
+            "reviewer-uncertain"
+          ]
+        },
+        "risk_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/riskFlag"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "record": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "input_sha256",
+        "candidate_record_sha256",
+        "decisions"
+      ],
+      "properties": {
+        "record_id": {
+          "$ref": "#/$defs/httpUrl"
+        },
+        "input_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "candidate_record_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "decisions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/decision"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

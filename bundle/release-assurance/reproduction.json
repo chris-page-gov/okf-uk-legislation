@@ -8,14 +8,167 @@
     "network_required": false,
     "python": ">=3.12",
     "requirements": {
-      "bytes": 91,
+      "bytes": 109,
       "path": "requirements-validation.txt",
-      "sha256": "bcb68145bf1f7fff70724d7ccd8971a4cc1f315bcb790e64e7c2e7ddb4717dc7"
+      "sha256": "9e567daa207af84eaa0cc36347fe7e90affd7652732fb7bef4e13e805678cc56"
     }
+  },
+  "external_finalization": {
+    "contract": {
+      "bytes": 5019,
+      "path": "release-assurance/external-finalization-contract.json",
+      "projected_path": "external-finalization-contract.json",
+      "sha256": "5b423fc7ba13f7d77da463425ed5ad9d2b6b93392b91a97a0c675c61f273a4ad"
+    },
+    "evidence_plane": "external-write-once",
+    "evidence_storage": "All authorization, deployed-attempt and finalization receipts are regular files outside the frozen repository. Each output is write-once; verification reconstructs it from the same external evidence without changing the checkout or archive.",
+    "finalizer": {
+      "bytes": 122711,
+      "path": "scripts/finalize_release_candidate.py",
+      "sha256": "0217a0c2e7e8dcbb92832f9c86deb03740b199f8727a01ac30b95d64f4c676c2"
+    },
+    "invariants": {
+      "archive_rebuild_prohibited": true,
+      "frozen_checkout_mutation_prohibited": true,
+      "promotion_requires_identical_filename_bytes_and_sha256": true,
+      "write_once": true
+    },
+    "policy": {
+      "bytes": 2131,
+      "path": "release-assurance/release-policy.json",
+      "projected_path": "release-policy.json",
+      "schema": "okf-release-state-policy.v2",
+      "sha256": "3b4e6948d7db8ee236051a5895c7a06382b2fa49c2d1a78d25572eead2d5be5e"
+    },
+    "release_observation_controller": {
+      "bytes": 33683,
+      "path": "scripts/capture_github_release_observation.py",
+      "sha256": "dabe0c5c5f8ec0162d046f5a4b045b76006037035a665b25d781912bd20a0383"
+    },
+    "schemas": [
+      {
+        "bytes": 4268,
+        "path": "release-assurance/schemas/accessibility-assurance-receipt.schema.json",
+        "projected_path": "schemas/accessibility-assurance-receipt.schema.json",
+        "sha256": "873fcb1df5c6ea493001accf5631b410b0b5b43b1cd84da61e03ac4e483109ba"
+      },
+      {
+        "bytes": 1422,
+        "path": "release-assurance/schemas/deployed-entrypoint-attempt.schema.json",
+        "projected_path": "schemas/deployed-entrypoint-attempt.schema.json",
+        "sha256": "056654daa710431c88078b59f43c22f9eccc4d6d4bf8cfe66fc3ca578a15d3a2"
+      },
+      {
+        "bytes": 2330,
+        "path": "release-assurance/schemas/deployed-entrypoint-projection.schema.json",
+        "projected_path": "schemas/deployed-entrypoint-projection.schema.json",
+        "sha256": "ff5ab0f822247e7777e3edee99c0b38efa6ed87863d46a4ea412c5e7fcaeaa6e"
+      },
+      {
+        "bytes": 9571,
+        "path": "release-assurance/schemas/deployed-entrypoints-manifest.schema.json",
+        "projected_path": "schemas/deployed-entrypoints-manifest.schema.json",
+        "sha256": "d394d5029f87d5dcb26f090eb8dd8f371cc05d3f5fb99f4503f2faeae53e0a64"
+      },
+      {
+        "bytes": 2346,
+        "path": "release-assurance/schemas/explorer-release-receipt.schema.json",
+        "projected_path": "schemas/explorer-release-receipt.schema.json",
+        "sha256": "058e8fdbe8cbf42e1b0f67ba531fbc5d2036aac3a19723e52acba40f3384e25f"
+      },
+      {
+        "bytes": 10097,
+        "path": "release-assurance/schemas/explorer-runtime-receipt.schema.json",
+        "projected_path": "schemas/explorer-runtime-receipt.schema.json",
+        "sha256": "216bdea8c74811301cc01acf334c22e2974ff1645b7eaeb1a62ab6148c77f6e5"
+      },
+      {
+        "bytes": 9346,
+        "path": "release-assurance/schemas/external-finalization-receipt.schema.json",
+        "projected_path": "schemas/external-finalization-receipt.schema.json",
+        "sha256": "270982cd35a2787e18eeb3d2c22fa789801da51041827a05d4a5f9ed521dc199"
+      },
+      {
+        "bytes": 6765,
+        "path": "release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
+        "projected_path": "schemas/final-promotion-authorization-receipt.schema.json",
+        "sha256": "488beeb058c4e79bcd080a3a43b2350a7620646ed97624a9813425a3ce03c051"
+      },
+      {
+        "bytes": 5419,
+        "path": "release-assurance/schemas/github-release-observation.schema.json",
+        "projected_path": "schemas/github-release-observation.schema.json",
+        "sha256": "9705d601c6b361d19c773e8a4ac95356b06a5284493b8c2e9e689347292b5e65"
+      },
+      {
+        "bytes": 4003,
+        "path": "release-assurance/schemas/performance-assurance-receipt.schema.json",
+        "projected_path": "schemas/performance-assurance-receipt.schema.json",
+        "sha256": "b2ed88635dd63b29fa177bdeb43eda28ab2db921e8efdfa6bdb4325423cd8972"
+      },
+      {
+        "bytes": 5820,
+        "path": "release-assurance/schemas/pre-rc-authorization-receipt.schema.json",
+        "projected_path": "schemas/pre-rc-authorization-receipt.schema.json",
+        "sha256": "094d7199f6daa4c7602fb0464f72a9a277bc4b3789bf5109bc968becece21147"
+      },
+      {
+        "bytes": 9953,
+        "path": "release-assurance/schemas/provenance-inputs.schema.json",
+        "projected_path": "schemas/provenance-inputs.schema.json",
+        "sha256": "3ffc0c12802d2d2a14f021bcc9926643b4091abd262a11982a2e653718503fa3"
+      },
+      {
+        "bytes": 6119,
+        "path": "release-assurance/schemas/release-package-manifest.schema.json",
+        "projected_path": "schemas/release-package-manifest.schema.json",
+        "sha256": "c7accf207cbfd3f8a7b26b455060a36aaf9746db460e11cf448820fe171b3d3f"
+      },
+      {
+        "bytes": 10958,
+        "path": "release-assurance/schemas/reproduction-receipt.schema.json",
+        "projected_path": "schemas/reproduction-receipt.schema.json",
+        "sha256": "66aacf56f57dd443bbc17f7a98c91e5819a416e158d8c28529ddd8b63c1cffa8"
+      },
+      {
+        "bytes": 4806,
+        "path": "release-assurance/schemas/security-assurance-receipt.schema.json",
+        "projected_path": "schemas/security-assurance-receipt.schema.json",
+        "sha256": "b28aa6e232c9c10755db405ae9a9f8ebf94cba197a206c84f4a42b0f9297355e"
+      },
+      {
+        "bytes": 4738,
+        "path": "release-assurance/schemas/traceability-closure-receipt.schema.json",
+        "projected_path": "schemas/traceability-closure-receipt.schema.json",
+        "sha256": "eab54c2fc5349134e1aa62e787cfadfe150a86f061e4b6520e475bc370b734d6"
+      }
+    ],
+    "workflow": [
+      {
+        "command": "authorize-rc",
+        "effect": "write the immutable pre-RC authorization receipt"
+      },
+      {
+        "command": "verify-rc",
+        "effect": "reconstruct and verify the pre-RC authorization receipt"
+      },
+      {
+        "command": "authorize-final-promotion",
+        "effect": "write immutable authorization to publish the already sealed RC asset as final"
+      },
+      {
+        "command": "finalize",
+        "effect": "write the immutable finalization receipt after identical-byte promotion"
+      },
+      {
+        "command": "verify-final",
+        "effect": "reconstruct and verify the finalization receipt"
+      }
+    ]
   },
   "generated_at": "2026-07-25T23:30:00Z",
   "inputs": {
-    "materials_digest": "sha256:6c11bb5e49863158b63195e056c9d6e79e13fd281054f8f53921fdf8662cf34e",
+    "materials_digest": "sha256:176180f92acae3806e39fb4142677746042cad9384a3413d12f8b0c5a8cced3a",
     "research_evidence_verified": true
   },
   "limitations": [

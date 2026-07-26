@@ -1,0 +1,336 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/provenance-inputs.schema.json",
+  "title": "OKF reproduction provenance inputs",
+  "type": "object",
+  "required": [
+    "schema",
+    "commit",
+    "tree",
+    "commit_time",
+    "controller",
+    "finalization_controller",
+    "release_observation_controller",
+    "finalization_contract",
+    "finalization_schemas",
+    "profile",
+    "dependency_lock",
+    "dependencies",
+    "command_scripts",
+    "commands",
+    "environment",
+    "network_policy"
+  ],
+  "properties": {
+    "schema": {"const": "okf-reproduction-provenance-inputs.v1"},
+    "commit": {"$ref": "#/$defs/gitObject"},
+    "tree": {"$ref": "#/$defs/gitObject"},
+    "commit_time": {"type": "string", "format": "date-time"},
+    "controller": {
+      "$ref": "#/$defs/reproductionControllerMaterial"
+    },
+    "finalization_controller": {
+      "$ref": "#/$defs/finalizationControllerMaterial"
+    },
+    "release_observation_controller": {
+      "$ref": "#/$defs/releaseObservationControllerMaterial"
+    },
+    "finalization_contract": {
+      "$ref": "#/$defs/finalizationContractMaterial"
+    },
+    "finalization_schemas": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/finalizationSchemaMaterial"}
+    },
+    "profile": {"$ref": "#/$defs/profileMaterial"},
+    "dependency_lock": {"$ref": "#/$defs/dependencyLockMaterial"},
+    "dependencies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/dependency"}
+    },
+    "command_scripts": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/material"}
+    },
+    "required_receipts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/requiredReceipt"}
+    },
+    "commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/command"}
+    },
+    "environment": {"$ref": "#/$defs/environment"},
+    "network_policy": {"$ref": "#/$defs/networkPolicy"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "gitObject": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "reproductionControllerMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"const": "scripts/reproduce_release_candidate.py"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "finalizationControllerMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"const": "scripts/finalize_release_candidate.py"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "releaseObservationControllerMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "scripts/capture_github_release_observation.py"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "finalizationContractMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "release-assurance/external-finalization-contract.json"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "finalizationSchemaMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^release-assurance/schemas/[^/\\\\]+\\.schema\\.json$"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "profileMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "release-assurance/reproduction-profile.json"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "dependencyLockMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"const": "requirements-validation.txt"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "dependency": {
+      "type": "object",
+      "required": ["name", "required", "installed", "matches"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "required": {"type": "string", "minLength": 1},
+        "installed": {"type": "string", "minLength": 1},
+        "matches": {"const": true}
+      },
+      "additionalProperties": false
+    },
+    "requiredReceipt": {
+      "type": "object",
+      "required": [
+        "id",
+        "schema",
+        "material",
+        "assertions",
+        "status"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "schema": {"type": "string", "minLength": 1},
+        "material": {"$ref": "#/$defs/material"},
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/assertion"}
+        },
+        "status": {"const": "passed"}
+      },
+      "additionalProperties": false
+    },
+    "assertion": {
+      "type": "object",
+      "required": ["pointer", "passed"],
+      "properties": {
+        "pointer": {"type": "string", "pattern": "^/"},
+        "equals": true,
+        "equals_pointer": {"type": "string", "pattern": "^/"},
+        "passed": {"const": true}
+      },
+      "oneOf": [
+        {
+          "required": ["equals"],
+          "not": {"required": ["equals_pointer"]}
+        },
+        {
+          "required": ["equals_pointer"],
+          "not": {"required": ["equals"]}
+        }
+      ],
+      "additionalProperties": false
+    },
+    "command": {
+      "type": "object",
+      "required": [
+        "index",
+        "category",
+        "argv",
+        "exit_code",
+        "log",
+        "log_identity_note"
+      ],
+      "properties": {
+        "index": {"type": "integer", "minimum": 1},
+        "category": {
+          "enum": ["build_commands", "validation_commands"]
+        },
+        "argv": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "exit_code": {"const": 0},
+        "log": {
+          "type": "string",
+          "pattern": "^logs/[0-9]{2,}-[^/\\\\]+\\.log$"
+        },
+        "log_identity_note": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "python",
+        "zstandard",
+        "source_date_epoch",
+        "timezone",
+        "locale",
+        "credentials_inherited",
+        "diagnostic_logs_identity_bearing",
+        "network_guard"
+      ],
+      "properties": {
+        "python": {"$ref": "#/$defs/python"},
+        "zstandard": {"$ref": "#/$defs/zstandardEnvironment"},
+        "source_date_epoch": {"const": 0},
+        "timezone": {"const": "UTC"},
+        "locale": {"const": "C"},
+        "credentials_inherited": {"const": false},
+        "diagnostic_logs_identity_bearing": {"const": false},
+        "network_guard": {
+          "type": "object",
+          "required": ["kind", "sha256"],
+          "properties": {
+            "kind": {
+              "const": "python-sitecustomize-socket-and-cli-guard"
+            },
+            "sha256": {"$ref": "#/$defs/sha256"}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "python": {
+      "type": "object",
+      "required": ["major", "minor", "micro"],
+      "properties": {
+        "major": {"type": "integer", "minimum": 0},
+        "minor": {"type": "integer", "minimum": 0},
+        "micro": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "zstandardEnvironment": {
+      "type": "object",
+      "required": [
+        "distribution",
+        "version",
+        "module_version",
+        "level",
+        "threads"
+      ],
+      "properties": {
+        "distribution": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "module_version": {"type": "string", "minLength": 1},
+        "level": {"type": "integer"},
+        "threads": {"const": 0}
+      },
+      "additionalProperties": false
+    },
+    "networkPolicy": {
+      "type": "object",
+      "required": [
+        "dependency_installation_during_run",
+        "build_commands_are_offline",
+        "credentials_inherited",
+        "python_socket_guard",
+        "network_cli_guard"
+      ],
+      "properties": {
+        "dependency_installation_during_run": {"const": false},
+        "build_commands_are_offline": {"const": true},
+        "credentials_inherited": {"const": false},
+        "python_socket_guard": {"const": true},
+        "network_cli_guard": {"const": true}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-terminal-outcome-manifest.schema.json",
+  "title": "OKF model enrichment terminal-outcome manifest v1",
+  "description": "Fail-closed full-denominator contract for unique, ordinally ordered terminal record outcomes and their content roots.",
+  "type": "object",
+  "required": [
+    "schema",
+    "run_id",
+    "input",
+    "row_schema",
+    "row_format",
+    "ordering",
+    "content_root_algorithm",
+    "chunks",
+    "counts",
+    "roots",
+    "complete_denominator",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-terminal-outcome-manifest.v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "input": {
+      "$ref": "#/$defs/input"
+    },
+    "row_schema": {
+      "$ref": "#/$defs/material"
+    },
+    "row_format": {
+      "const": "application/x-ndjson"
+    },
+    "ordering": {
+      "const": "ordinal ascending from zero; exactly one row per governed eligible record"
+    },
+    "content_root_algorithm": {
+      "const": "sha256(concatenated UTF-8 canonical JSON rows, each with one LF terminator, in ordinal order)"
+    },
+    "chunks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/chunk"
+      }
+    },
+    "counts": {
+      "$ref": "#/$defs/counts"
+    },
+    "roots": {
+      "$ref": "#/$defs/roots"
+    },
+    "complete_denominator": {
+      "const": true
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "input": {
+      "type": "object",
+      "required": [
+        "snapshot_id",
+        "source_manifest_sha256",
+        "source_semantic_root_sha256",
+        "ordered_identity_sha256",
+        "ordered_input_projection_sha256",
+        "eligible_records"
+      ],
+      "properties": {
+        "snapshot_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "source_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_semantic_root_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "ordered_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "ordered_input_projection_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "eligible_records": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "chunk": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "ordinal_start",
+        "ordinal_end",
+        "records",
+        "content_root_sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "ordinal_start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ordinal_end": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "records": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "content_root_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "eligible_records",
+        "terminal_outcomes",
+        "unique_record_ids",
+        "outcome_counts"
+      ],
+      "properties": {
+        "eligible_records": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "terminal_outcomes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "unique_record_ids": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "outcome_counts": {
+          "$ref": "#/$defs/outcomeCounts"
+        }
+      },
+      "additionalProperties": false
+    },
+    "outcomeCounts": {
+      "type": "object",
+      "required": [
+        "accepted",
+        "already-supported",
+        "budget-stopped",
+        "escalation-rejected",
+        "generator-schema-rejected",
+        "input-invalid",
+        "insufficient-frozen-evidence",
+        "no-supported-new-assertion",
+        "review-rejected"
+      ],
+      "properties": {
+        "accepted": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "already-supported": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "budget-stopped": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "escalation-rejected": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "generator-schema-rejected": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "input-invalid": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "insufficient-frozen-evidence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "no-supported-new-assertion": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "review-rejected": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "roots": {
+      "type": "object",
+      "required": [
+        "ordered_identity_sha256",
+        "ordered_input_projection_sha256",
+        "terminal_outcome_content_root_sha256"
+      ],
+      "properties": {
+        "ordered_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "ordered_input_projection_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "terminal_outcome_content_root_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

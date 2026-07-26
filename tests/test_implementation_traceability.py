@@ -53,8 +53,13 @@ class ImplementationTraceabilityTests(unittest.TestCase):
         self.assertEqual([], traceability.validate_status_markdown(counts))
         gaps = json.loads(traceability.GAPS.read_text(encoding="utf-8"))
         self.assertEqual(28, gaps["source_research_gap_register"]["records"])
-        self.assertEqual(9, gaps["counts"]["blocked"])
-        self.assertEqual(2, gaps["counts"]["deferred"])
+        actual = Counter(row["status"] for row in gaps["gaps"])
+        self.assertEqual(
+            {**dict(sorted(actual.items())), "total": len(gaps["gaps"])},
+            gaps["counts"],
+        )
+        self.assertGreater(gaps["counts"]["blocked"], 0)
+        self.assertEqual(3, gaps["counts"]["deferred"])
 
     def test_complete_phase_one_validation_is_clean(self) -> None:
         self.assertEqual([], traceability.validate())

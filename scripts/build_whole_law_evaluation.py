@@ -16,13 +16,23 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from source_access_evidence_archive import validate_archive
+
 ROOT = Path(__file__).resolve().parents[1]
 RESEARCH = ROOT / "research" / "whole-law-okf-research"
 OUTPUT = ROOT / "whole-law" / "evaluation"
+ACQUISITION = ROOT / "whole-law" / "acquisition" / "current"
 GENERATED_AT = "2026-07-25T22:00:00Z"
 CORPUS_SNAPSHOT = "whole-law-2026-07-25+legislation-2026-07-11T18:00:00Z"
 TEMPORAL_TASKS = {"T02", "T03", "T05", "T06", "T07", "T13"}
 ACCESS_STATES = {"available", "partial", "restricted", "unavailable", "planned"}
+EVALUATION_SCOPE = "corpus-navigation-metadata"
+LEGAL_TASK_STATUS = "not-evaluated-requires-qualified-domain-review"
+PUBLIC = "https://chris-page-gov.github.io/okf-uk-legislation"
+LIMITATION_MARKER = (
+    "This answer verifies corpus-navigation metadata only; it does not answer "
+    "the underlying legal task or provide legal advice."
+)
 
 
 def load(path: Path) -> Any:
@@ -71,6 +81,69 @@ def source_url(source: dict[str, Any]) -> str | None:
         return samples[0]
     methods = source.get("access_methods", [])
     return methods[0]["url"] if methods else None
+
+
+def source_fact(source: dict[str, Any]) -> dict[str, Any]:
+    """Exact snapshot facts used by the scoped release evaluation."""
+
+    return {
+        "id": source["id"],
+        "title": source["title"],
+        "owning_institution": source["owning_institution"],
+        "jurisdictions": sorted(source.get("jurisdictions", [])),
+        "authority_classes": sorted(source.get("authority_classes", [])),
+        "source_classes": sorted(source.get("source_classes", [])),
+        "coverage_status": source.get("coverage_status"),
+        "access_test_date": source.get("access_test_date"),
+    }
+
+
+def archived_observations(
+    archived_files: dict[str, bytes],
+) -> dict[str, list[dict[str, Any]]]:
+    """Project immutable envelope facts for gold expectations.
+
+    The release runner independently reconstructs these values through a
+    separate verifier implementation.
+    """
+
+    result: dict[str, list[dict[str, Any]]] = {}
+    for member_path, body in sorted(archived_files.items()):
+        if not (
+            member_path.startswith("methods/")
+            and member_path.endswith("/envelope.json")
+        ):
+            continue
+        envelope = json.loads(body)
+        response = envelope.get("response", {})
+        response_body = response.get("body")
+        response_body = response_body if isinstance(response_body, dict) else {}
+        fingerprint = response.get("schema_fingerprint")
+        fingerprint = fingerprint if isinstance(fingerprint, dict) else {}
+        source_id = envelope["source"]["id"]
+        result.setdefault(source_id, []).append(
+            {
+                "method_id": envelope.get("method_id"),
+                "source_id": source_id,
+                "url": envelope.get("request", {}).get("url"),
+                "final_url": response.get("final_url"),
+                "observed_at": response.get("observed_at"),
+                "observed_access_state": envelope.get(
+                    "access_assessment", {}
+                ).get("observed_access_state"),
+                "http_status": response.get("status"),
+                "media_type": response.get("media_type"),
+                "body_sha256": response_body.get("sha256"),
+                "schema_fingerprint_sha256": fingerprint.get(
+                    "fingerprint_sha256"
+                ),
+                "evidence_member": member_path,
+                "evidence_member_sha256": hashlib.sha256(body).hexdigest(),
+            }
+        )
+    for rows in result.values():
+        rows.sort(key=lambda row: str(row["method_id"]))
+    return dict(sorted(result.items()))
 
 
 def temporal_difficulty(task_id: str) -> str:
@@ -139,6 +212,8 @@ def question(
     sources: list[dict[str, Any]],
     mapping: dict[str, Any] | None,
     kind: str,
+    observations: dict[str, list[dict[str, Any]]],
+    evidence_contract: dict[str, Any],
     access_override: str | None = None,
     sample_override: str | None = None,
 ) -> dict[str, Any]:
@@ -155,36 +230,76 @@ def question(
         if professional_escalation and task["id"] in TEMPORAL_TASKS
         else "pairwise-coverage"
     )
-    prompt = (
+    original_legal_prompt = (
         f"As {persona['label']}, perform “{task['label']}” using the "
         f"{CORPUS_SNAPSHOT} snapshot and source class(es) {class_labels}. "
         f"Start with {primary['title']}"
     )
     if sample:
-        prompt += f" at {sample}"
-    prompt += (
+        original_legal_prompt += f" at {sample}"
+    original_legal_prompt += (
         ". Use source-native identifiers; distinguish binding, persuasive, "
         "derived and model-assisted material; state currency, access and "
         "coverage limitations; and cite every material proposition."
     )
-    expected = [
-        f"The response identifies the relevant {task['label'].lower()} outcome and its limits.",
-        "Every source is identified by its source-native identifier and authority class.",
-        "The answer states jurisdiction, relevant temporal context, access state and corpus snapshot.",
-        "Any missing, restricted, stale or partial evidence is disclosed rather than inferred away.",
+    required_source_ids = sorted(row["id"] for row in sources)
+    source_by_id = {row["id"]: row for row in sources}
+    prompt = (
+        f"For the {CORPUS_SNAPSHOT} snapshot, use the Whole-Law OKF "
+        f"descriptor and its source/access entry points to identify the exact "
+        f"source records required by persona {persona['id']} "
+        f"({persona['label']}) and task {task['id']} ({task['label']}): "
+        f"{', '.join(required_source_ids)}. Report each source's title, owner, "
+        "source classes, authority classes and jurisdictions; report every "
+        "frozen route observation with its method ID, observed access state, "
+        "observation time and evidence hash; disclose coverage/currency "
+        "limits; and do not answer the underlying legal task."
+    )
+    expected: list[dict[str, Any]] = [
+        {
+            "id": "required-source-set",
+            "kind": "exact-source-set",
+            "value": required_source_ids,
+        },
+        *[
+            {
+                "id": f"source-{source_id}",
+                "kind": "source-record",
+                "value": source_fact(source_by_id[source_id]),
+            }
+            for source_id in required_source_ids
+        ],
+        *[
+            {
+                "id": f"access-{source_id}",
+                "kind": "frozen-access-observations",
+                "value": observations.get(source_id, []),
+            }
+            for source_id in required_source_ids
+        ],
+        {
+            "id": "scope-boundary",
+            "kind": "assurance-boundary",
+            "value": {
+                "evaluation_scope": EVALUATION_SCOPE,
+                "underlying_legal_task_status": LEGAL_TASK_STATUS,
+                "limitation": LIMITATION_MARKER,
+            },
+        },
     ]
-    if mapping:
-        expected.append(mapping["definition_of_success"])
     return {
         "id": identifier,
         "kind": kind,
         "prompt": prompt,
+        "original_legal_prompt": original_legal_prompt,
+        "evaluation_scope": EVALUATION_SCOPE,
+        "underlying_legal_task_status": LEGAL_TASK_STATUS,
         "persona_id": persona["id"],
         "persona_label": persona["label"],
         "task_id": task["id"],
         "task_label": task["label"],
         "source_class_ids": sorted(set(source_classes)),
-        "required_source_ids": [row["id"] for row in sources],
+        "required_source_ids": required_source_ids,
         "sample_url": sample,
         "jurisdiction": primary.get("jurisdictions", ["United Kingdom"])[0],
         "access_state": access_override or access_state(primary),
@@ -193,12 +308,19 @@ def question(
             or primary.get("authority_classes", [])
             or ["unknown"]
         )[0],
-        "gold_status": "non-gold-baseline",
-        "verification_status": "requires-independent-domain-review",
+        "gold_status": "corpus-navigation-gold-candidate",
+        "gold_scope": EVALUATION_SCOPE,
+        "verification_status": "requires-independent-execution-verification",
         "independent_verification": {
             "status": "not-performed",
-            "reviewer_role": "qualified domain reviewer independent of suite generation",
-            "evidence": [],
+            "reviewer_role": (
+                "independent deterministic corpus-fact verifier; not a "
+                "qualified legal reviewer"
+            ),
+            "evidence": [
+                "execution/verification.json",
+                "execution/direct-source-baseline.json",
+            ],
         },
         "corpus_snapshot": CORPUS_SNAPSHOT,
         "evidence_binding": {
@@ -206,8 +328,8 @@ def question(
                 "../../research/whole-law-okf-research/source-register.json"
             ),
             "source_register_sha256": digest(RESEARCH / "source-register.json"),
-            "source_record_ids": [row["id"] for row in sources],
-            "frozen_access_evidence": "required-and-bound-by-release-execution",
+            "source_record_ids": required_source_ids,
+            "frozen_access_evidence": evidence_contract,
             "corpus_snapshot": CORPUS_SNAPSHOT,
         },
         "strata": {
@@ -221,10 +343,18 @@ def question(
             "difficulty": difficulty,
         },
         "expected_proposition_status": (
-            "structural-and-disclosure-requirements-only-not-legal-gold"
+            "exact-corpus-navigation-facts-pending-independent-execution"
         ),
         "expected_propositions": expected,
-        "near_miss_rules": (
+        "near_miss_rules": [
+            "required source record omitted or substituted",
+            "source title, owner, class, authority or jurisdiction misstated",
+            "frozen route state, timestamp or evidence hash misstated",
+            "non-reachable or restricted route concealed",
+            "point-in-time reachability presented as continuing availability or completeness",
+            "corpus-navigation result presented as an answer to the underlying legal task",
+        ],
+        "underlying_legal_near_miss_rules": (
             (mapping or {}).get("likely_failure_modes")
             or task.get("failure_modes", [])
         ),
@@ -232,7 +362,7 @@ def question(
             "Direct canonical source or selected-passage URL",
             "Source-native identifier and publisher/owner",
             "Retrieval time and immutable evidence hash where available",
-            "Pinpoint or smallest authoritative passage for each material proposition",
+            "Exact source-register record and frozen envelope member for every proposition",
             "Authority, jurisdiction, version and access/coverage status",
         ],
         "hard_failures": [
@@ -242,6 +372,7 @@ def question(
             "derived/model-assisted assertion presented as official",
             "unsupported completeness claim",
             "concealed inaccessible or stale evidence",
+            "underlying legal task represented as evaluated",
         ],
         "coverage_stratum": risk,
         "high_risk_reason": (
@@ -480,6 +611,26 @@ def build() -> dict[Path, bytes]:
     register = load(RESEARCH / "source-register.json")
     research_questions = load(RESEARCH / "whole-law-evaluation-questions.json")
     legislation_questions = load(ROOT / "evaluation" / "legislation" / "questions.json")
+    evidence_reference = load(ACQUISITION / "evidence-reference.json")
+    archive_path = ROOT / evidence_reference["evidence_archive_path"]
+    archive_receipt_path = ROOT / evidence_reference["archive_receipt_path"]
+    archive_validation, archived_files = validate_archive(
+        archive_path,
+        archive_receipt_path,
+    )
+    observations = archived_observations(archived_files)
+    evidence_contract = {
+        "archive_path": evidence_reference["evidence_archive_path"],
+        "archive_sha256": archive_validation["archive_sha256"],
+        "archive_tree_sha256": archive_validation["tree_sha256"],
+        "original_integrity_sha256": archive_validation[
+            "original_integrity_sha256"
+        ],
+        "evidence_run_id": archive_validation["run_id"],
+        "access_methods_path": "../acquisition/current/access-methods.json",
+        "access_methods_sha256": digest(ACQUISITION / "access-methods.json"),
+        "verification": "required-and-bound-by-release-execution",
+    }
 
     personas = {row["id"]: row for row in matrix["personas"]}
     tasks = {row["id"]: row for row in matrix["tasks"]}
@@ -510,6 +661,8 @@ def build() -> dict[Path, bytes]:
             candidates,
             mapping,
             "persona-task",
+            observations,
+            evidence_contract,
         ))
 
     for class_id in sorted(classes):
@@ -528,6 +681,8 @@ def build() -> dict[Path, bytes]:
             source_rows,
             None,
             "source-class-coverage",
+            observations,
+            evidence_contract,
         ))
 
     status_mapping = {
@@ -551,6 +706,8 @@ def build() -> dict[Path, bytes]:
             [source],
             None,
             "access-state",
+            observations,
+            evidence_contract,
             access_override=access_label,
             sample_override=method["url"],
         ))
@@ -563,6 +720,8 @@ def build() -> dict[Path, bytes]:
         [planned_source],
         None,
         "access-state",
+        observations,
+        evidence_contract,
         access_override="planned",
         sample_override="",
     ))
@@ -602,6 +761,7 @@ def build() -> dict[Path, bytes]:
         "schema": "okf-evaluation-coverage.v2",
         "generated_at": GENERATED_AT,
         "corpus_snapshot": CORPUS_SNAPSHOT,
+        "evaluation_scope": EVALUATION_SCOPE,
         "question_count": len(questions),
         "expected": {
             "personas": len(personas),
@@ -645,19 +805,24 @@ def build() -> dict[Path, bytes]:
             "legal_source_taxonomy_sha256": digest(
                 RESEARCH / "legal-source-taxonomy.json"
             ),
+            "source_access_evidence": evidence_contract,
         },
-        "gold_status": "non-gold-baseline",
+        "evaluation_scope": EVALUATION_SCOPE,
+        "gold_status": "corpus-navigation-gold-candidate",
         "release_gate_status": (
-            "blocked-pending-independent-legal-and-deployed-access-assurance"
+            "pending-independent-execution-and-held-out-challenge-receipts"
         ),
         "assurance_boundary": {
             "expected_propositions": (
-                "structural and disclosure requirements, not verified legal answers"
+                "exact source-register and frozen access-envelope facts"
             ),
-            "independent_domain_review": "not performed",
+            "independent_execution_verification": "required",
+            "underlying_legal_tasks": LEGAL_TASK_STATUS,
             "qualified_practitioner_sign_off": "not performed",
-            "held_out_answer_passes": 0,
-            "legal_answer_score": None,
+            "held_out_challenge_passes_required": 2,
+            "corpus_navigation_score": "measured by release execution",
+            "legal_answer_score": "not-applicable-to-refined-scope",
+            "model_assisted_review": False,
         },
         "questions": questions,
     }
@@ -781,6 +946,8 @@ def build() -> dict[Path, bytes]:
         "type": "object",
         "required": [
             "question_id",
+            "evaluation_scope",
+            "underlying_legal_task_status",
             "corpus_snapshot",
             "propositions",
             "citations",
@@ -791,17 +958,21 @@ def build() -> dict[Path, bytes]:
         "additionalProperties": False,
         "properties": {
             "question_id": {"type": "string", "minLength": 1},
+            "evaluation_scope": {"const": EVALUATION_SCOPE},
+            "underlying_legal_task_status": {"const": LEGAL_TASK_STATUS},
             "corpus_snapshot": {"const": CORPUS_SNAPSHOT},
             "propositions": {
                 "type": "array",
                 "minItems": 1,
                 "items": {
                     "type": "object",
-                    "required": ["id", "text", "citation_ids"],
+                    "required": ["id", "kind", "text", "value", "citation_ids"],
                     "additionalProperties": False,
                     "properties": {
                         "id": {"type": "string", "minLength": 1},
+                        "kind": {"type": "string", "minLength": 1},
                         "text": {"type": "string", "minLength": 1},
+                        "value": {},
                         "citation_ids": {
                             "type": "array",
                             "minItems": 1,
@@ -823,6 +994,8 @@ def build() -> dict[Path, bytes]:
                         "jurisdiction",
                         "version",
                         "retrieved_at",
+                        "evidence_scope",
+                        "evidence_path",
                         "evidence_hash",
                     ],
                     "additionalProperties": False,
@@ -843,6 +1016,24 @@ def build() -> dict[Path, bytes]:
                             "type": "string",
                             "format": "date-time",
                         },
+                        "evidence_scope": {
+                            "enum": ["repository-file", "archive-member"],
+                        },
+                        "evidence_path": {
+                            "type": "string",
+                            "minLength": 1,
+                        },
+                        "evidence_member": {
+                            "type": "string",
+                            "minLength": 1,
+                        },
+                        "observed_access_state": {
+                            "type": ["string", "null"],
+                        },
+                        "pinpoint": {
+                            "type": "string",
+                            "minLength": 1,
+                        },
                         "evidence_hash": {
                             "type": "string",
                             "pattern": "^[0-9a-f]{64}$",
@@ -853,6 +1044,7 @@ def build() -> dict[Path, bytes]:
             "temporal_context": {
                 "type": "object",
                 "required": ["snapshot", "as_of", "currency_limitations"],
+                "additionalProperties": False,
                 "properties": {
                     "snapshot": {"const": CORPUS_SNAPSHOT},
                     "as_of": {"type": "string", "format": "date-time"},
@@ -862,10 +1054,15 @@ def build() -> dict[Path, bytes]:
                     },
                 },
             },
-            "limitations": {"type": "array", "items": {"type": "string"}},
+            "limitations": {
+                "type": "array",
+                "minItems": 2,
+                "items": {"type": "string"},
+            },
             "independent_verification": {
                 "type": "object",
                 "required": ["status", "reviewer", "evidence"],
+                "additionalProperties": False,
                 "properties": {
                     "status": {
                         "enum": [
@@ -887,49 +1084,55 @@ def build() -> dict[Path, bytes]:
     }
     readme = """# Whole-Law release evaluation
 
-This directory contains the corpus-bound `okf-evaluation.v2` release suite.
-It covers all 38 researched personas, 20 task families and 36 legal-source
+This directory contains the corpus-bound `okf-evaluation.v2` release suite. It
+covers all 38 researched personas, 20 task families and 36 legal-source
 classes, every applicable pair derived from the research mappings/source
 register, and every high-risk persona–task–source-class triple. The original
 100 legislation questions and the 360 research questions remain preserved as
 historical non-gold baselines with checked hashes.
 
-Every current question is deliberately labelled `non-gold-baseline`.
-Independent source-evidence and qualified domain review have not yet occurred,
-so its expected propositions are structural/disclosure requirements rather
-than verified legal propositions. Structural completeness must not be
-presented as legal correctness. The release gate remains blocked until
-propositions, near misses, citations and temporal expectations have independent
-evidence verification.
+## Refined, truthful release scope
 
-`claude-access-suite.json` records the adversarial discovery and access journey.
-The local runner executes its deterministic publication contracts. Public HTTP,
-compatibility-host and browser behaviour require separate receipts and remain
-blocked in the local result; neither result may rewrite this suite.
+The research prompts describe broad legal tasks but do not supply enough facts
+for 415 distinct legal answers. Each release item therefore retains its
+`original_legal_prompt` as unevaluated context and supplies a concrete,
+snapshot-bound `prompt` for the capability the OKF can prove: resolve the exact
+source records through the Explorer descriptor, report their source-native
+metadata, join the dated frozen route observations, cite immutable evidence and
+state access/currency limitations.
 
-## Execute the release checks
+Expected propositions are exact structured corpus facts. They are
+`corpus-navigation-gold-candidate` until a release execution independently
+reconstructs them from the research register and sealed acquisition envelopes.
+The result must never be described as legal correctness, legal advice,
+qualified-practitioner review or an answer to the retained legal task.
 
-Run:
+## Execute the release evaluation
+
+Use the pinned validation environment:
 
 ```bash
-python3 scripts/run_release_evaluation.py
-python3 scripts/run_release_evaluation.py --check
+.venv/bin/python scripts/build_whole_law_evaluation.py
+.venv/bin/python scripts/run_release_evaluation.py
+.venv/bin/python scripts/run_release_evaluation.py --check
 ```
 
-The runner checks the retained 100-question legislation suite and the
-Whole-Law release suite against its declared corpus, source
-catalogue and immutable acquisition envelopes. It writes a content-addressed,
-write-once result beneath `executions/`, including exact structural scores,
-pair/high-risk coverage receipts, hard failures, access blocks, timings, input
-hashes, the named Claude local-contract journey and the comparison with the
-frozen direct-source access baseline.
+The content-addressed, write-once execution contains:
 
-This is structural and evidence-path assurance. It does not generate legal
-answers and will not report a legal-answer score, promote a non-gold question,
-claim deployed browser results, or claim the locked 85/100 threshold. Those
-gates remain blocked until a bound answer corpus has independent source
-verification and qualified domain review and separate deployed journey
-receipts exist.
+- `answers.json`: answers actually generated through published
+  OKF/Explorer entry points;
+- `direct-source-baseline.json`: independently reconstructed source facts from
+  sealed route envelopes;
+- `verification.json`: item-level schema, proposition, citation and score
+  receipts from a verifier that does not import the answer generator;
+- two disjoint held-out adversarial challenge-pass receipts;
+- per-persona and per-task scores, hard failures, input hashes and timings.
+
+The locked 85/100 threshold is evaluated for the refined
+`corpus-navigation-metadata` scope. A legal-answer score is not applicable.
+`claude-access-suite.json` remains a separate adversarial discovery/access
+suite; public HTTP, compatibility-host and browser behaviour require their own
+deployed receipts.
 """
     return {
         Path("release-questions.json"): render(release).encode("utf-8"),

@@ -1,0 +1,330 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-attempt.schema.json",
+  "title": "OKF append-only model enrichment attempt v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "attempt_id",
+    "run_id",
+    "ordinal",
+    "stage",
+    "status",
+    "provider",
+    "endpoint",
+    "requested_model",
+    "returned_model",
+    "prompt_sha256",
+    "response_schema_sha256",
+    "parameters",
+    "parameters_sha256",
+    "input_sha256",
+    "estimated_uncached_input_tokens",
+    "estimated_cached_input_tokens",
+    "max_output_tokens",
+    "processing_route",
+    "batch_plan",
+    "batch_id",
+    "batch_payload_sha256",
+    "batch_member_root_sha256",
+    "member_ordinal_start",
+    "member_ordinal_end",
+    "request_cache_key",
+    "request_body",
+    "request_body_sha256",
+    "response_body",
+    "response_body_sha256",
+    "parsed_output",
+    "parsed_output_sha256",
+    "response_id",
+    "started_at",
+    "completed_at",
+    "usage",
+    "cost_usd",
+    "retry_of",
+    "secret_material_recorded",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-attempt.v1"
+    },
+    "attempt_id": {
+      "type": "string",
+      "pattern": "^model-attempt-[a-z0-9][a-z0-9._-]*$"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "ordinal": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stage": {
+      "enum": [
+        "availability",
+        "calibration",
+        "generation",
+        "review",
+        "escalation"
+      ]
+    },
+    "status": {
+      "enum": [
+        "succeeded",
+        "api-rejected",
+        "budget-rejected",
+        "schema-rejected",
+        "transport-failed"
+      ]
+    },
+    "provider": {
+      "const": "OpenAI"
+    },
+    "endpoint": {
+      "type": "string",
+      "pattern": "^https://api\\.openai\\.com/"
+    },
+    "requested_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "returned_model": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "prompt_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "response_schema_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "parameters_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "input_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "estimated_uncached_input_tokens": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "estimated_cached_input_tokens": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "max_output_tokens": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "processing_route": {
+      "enum": [
+        "standard",
+        "batch",
+        "priority",
+        "other-documented"
+      ]
+    },
+    "batch_plan": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/material"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "batch_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^model-batch-[a-z0-9][a-z0-9._-]*$"
+    },
+    "batch_payload_sha256": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "batch_member_root_sha256": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "member_ordinal_start": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "member_ordinal_end": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "request_cache_key": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "request_body_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "request_body": {
+      "$ref": "#/$defs/material"
+    },
+    "response_body": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/material"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "response_body_sha256": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "parsed_output_sha256": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "parsed_output": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/material"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "response_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "usage": {
+      "$ref": "#/$defs/usage"
+    },
+    "cost_usd": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 250
+    },
+    "retry_of": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^model-attempt-[a-z0-9][a-z0-9._-]*$"
+    },
+    "secret_material_recorded": {
+      "const": false
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "usage": {
+      "type": "object",
+      "required": [
+        "input_tokens",
+        "cached_input_tokens",
+        "output_tokens",
+        "total_tokens"
+      ],
+      "properties": {
+        "input_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cached_input_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "output_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_tokens": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

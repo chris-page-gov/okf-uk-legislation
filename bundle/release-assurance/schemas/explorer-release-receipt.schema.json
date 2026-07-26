@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/explorer-release-receipt.schema.json",
+  "title": "Published Explorer prerequisite release receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "repository",
+    "tag",
+    "commit",
+    "release_url",
+    "materials"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-explorer-release-receipt.v2"
+    },
+    "status": {
+      "const": "published"
+    },
+    "repository": {
+      "const": "https://github.com/chris-page-gov/okf-explorer"
+    },
+    "tag": {
+      "const": "v0.5.0"
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "release_url": {
+      "const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.0"
+    },
+    "materials": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/$defs/roleMaterial"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "release_observation"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "runtime"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "roleMaterial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "release_observation",
+            "runtime"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\\\u0000-\\u001f]+$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

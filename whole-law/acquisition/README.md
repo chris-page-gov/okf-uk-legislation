@@ -83,3 +83,47 @@ python3 scripts/source_access_evidence_archive.py extract \
 The access evidence is a point-in-time technical observation. It is not legal
 advice, a licence grant, a claim of complete source coverage, or a guarantee of
 continuing availability.
+
+## Release-gate assessment
+
+The dated [GATE-04 review](../assurance/source-acquisition-gate-20260726.md)
+distinguishes route-level acquisition assurance from complete corpus
+enumeration. Base run `20260725T203207Z-dd7315c3` attempted all 108 registered
+methods and froze an envelope for each one. A versioned replacement-route
+overlay and three immutable delta attempts then covered the 20 stale or
+network-failed base routes. The effective view has 101 reachable and four
+declared restricted public-intended GET routes across the same 105-route
+denominator. Seventy of 72 source records and all 36 source classes have a
+reachable GET observation; `SRC066` and `SRC068` remain restricted-only.
+
+All 72 source records disclose an applicability denominator, but only five are
+complete against an official enumerated source. A denominator statement is not
+therefore represented as an exact, complete corpus enumeration.
+
+The primary replacement run froze 19 reachable observations and one strict
+Python TLS failure. A second strict Python attempt against the official COPFS
+PDF retained the same certificate-verification failure. A separate,
+fail-closed system-trust adapter then captured that PDF with ordinary peer and
+hostname verification, public-DNS pinning and a bounded HTTP 206 response; no
+TLS verification was disabled. All three outcomes remain immutable and
+lineage-bound.
+
+GATE-04 therefore passes with declared constraints. This is an acquisition
+assurance decision, not a claim that all 72 source corpora are complete. The
+five exact official enumerations and 67 partial, conditional, restricted,
+inaccessible, discovery-only or unknown coverage states remain explicit. The
+immutable research register, original sealed run and all licence,
+fair-use/access constraints remain unchanged.
+
+Validate the replacement overlays and their sealed archives without network
+access:
+
+```sh
+python3 scripts/capture_whole_law_route_replacements.py validate-overlay
+python3 scripts/capture_whole_law_route_replacements.py check \
+  --run 20260726T005115Z-04a20f01
+python3 scripts/capture_whole_law_route_replacements.py check \
+  --run 20260726T005723Z-c0f5a002
+python3 scripts/capture_whole_law_route_replacements.py check \
+  --run 20260726T010545Z-c0f5a003
+```

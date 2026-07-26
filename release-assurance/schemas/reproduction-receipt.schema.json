@@ -1,0 +1,366 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/reproduction-receipt.schema.json",
+  "title": "OKF eligible clean-checkout reproduction receipt",
+  "type": "object",
+  "required": [
+    "schema",
+    "status",
+    "run_id",
+    "generated_at",
+    "timestamp_basis",
+    "candidate",
+    "environment",
+    "comparison",
+    "archive",
+    "outputs",
+    "release_gate",
+    "ledger_mutated"
+  ],
+  "properties": {
+    "schema": {"const": "okf-reproduction-receipt.v1"},
+    "status": {"const": "passed"},
+    "run_id": {"type": "string", "pattern": "^[a-f0-9]{24}$"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "timestamp_basis": {"type": "string", "minLength": 1},
+    "candidate": {
+      "type": "object",
+      "required": [
+        "requested_ref",
+        "commit",
+        "tree",
+        "exact_ref",
+        "declared_frozen",
+        "fixture"
+      ],
+      "properties": {
+        "requested_ref": {"$ref": "#/$defs/gitObject"},
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "tree": {"$ref": "#/$defs/gitObject"},
+        "exact_ref": {"const": true},
+        "declared_frozen": {"const": true},
+        "fixture": {"const": false}
+      },
+      "additionalProperties": false
+    },
+    "environment": {"$ref": "#/$defs/environment"},
+    "comparison": {
+      "type": "object",
+      "required": [
+        "byte_identical",
+        "semantic_identical",
+        "candidate_inventory_sha256",
+        "rebuilt_inventory_sha256",
+        "files",
+        "bytes",
+        "semantic_digests"
+      ],
+      "properties": {
+        "byte_identical": {"const": true},
+        "semantic_identical": {"const": true},
+        "candidate_inventory_sha256": {"$ref": "#/$defs/sha256"},
+        "rebuilt_inventory_sha256": {"$ref": "#/$defs/sha256"},
+        "files": {"type": "integer", "minimum": 1},
+        "bytes": {"type": "integer", "minimum": 1},
+        "semantic_digests": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/semanticDigest"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "archive": {"$ref": "#/$defs/archive"},
+    "outputs": {
+      "type": "object",
+      "required": [
+        "archive",
+        "release_package_manifest",
+        "provenance_inputs"
+      ],
+      "properties": {
+        "archive": {
+          "type": "string",
+          "pattern": "^[^/\\\\]+\\.tar\\.zst$"
+        },
+        "release_package_manifest": {
+          "$ref": "#/$defs/releasePackageOutput"
+        },
+        "provenance_inputs": {
+          "$ref": "#/$defs/provenanceOutput"
+        }
+      },
+      "additionalProperties": false
+    },
+    "required_receipts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/requiredReceipt"}
+    },
+    "release_gate": {
+      "type": "object",
+      "required": ["gate", "eligible", "reason"],
+      "properties": {
+        "gate": {"const": "GATE-06"},
+        "eligible": {"const": true},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "ledger_mutated": {"const": false}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "gitObject": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "contextMaterial": {
+      "type": "object",
+      "required": ["url", "path", "bytes", "sha256"],
+      "properties": {
+        "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "outputMaterial": {
+      "type": "object",
+      "required": ["filename", "bytes", "sha256"],
+      "properties": {
+        "filename": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "releasePackageOutput": {
+      "type": "object",
+      "required": ["filename", "bytes", "sha256"],
+      "properties": {
+        "filename": {"const": "release-package-manifest.json"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "provenanceOutput": {
+      "type": "object",
+      "required": ["filename", "bytes", "sha256"],
+      "properties": {
+        "filename": {"const": "provenance-inputs.json"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "semanticDigest": {
+      "type": "object",
+      "required": [
+        "id",
+        "yaml_ld",
+        "json_ld",
+        "canonical_nquads_sha256",
+        "canonical_nquads_bytes",
+        "canonical_nquads_statements",
+        "representations_equivalent"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "yaml_ld": {"$ref": "#/$defs/material"},
+        "json_ld": {"$ref": "#/$defs/material"},
+        "canonical_nquads_sha256": {"$ref": "#/$defs/sha256"},
+        "canonical_nquads_bytes": {"type": "integer", "minimum": 1},
+        "canonical_nquads_statements": {"type": "integer", "minimum": 1},
+        "representations_equivalent": {"const": true},
+        "offline_contexts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/contextMaterial"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "archive": {
+      "type": "object",
+      "required": [
+        "filename",
+        "format",
+        "content_profile",
+        "bytes",
+        "sha256",
+        "normalized_tar_bytes",
+        "normalized_tar_sha256",
+        "compression_ratio",
+        "zstandard",
+        "validation"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "pattern": "^[^/\\\\]+\\.tar\\.zst$"
+        },
+        "format": {"const": "application/zstd"},
+        "content_profile": {"const": "application/x-tar"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "normalized_tar_bytes": {"type": "integer", "minimum": 1},
+        "normalized_tar_sha256": {"$ref": "#/$defs/sha256"},
+        "compression_ratio": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "zstandard": {
+          "type": "object",
+          "required": [
+            "distribution",
+            "version",
+            "level",
+            "threads",
+            "checksum",
+            "content_size",
+            "dictionary_id"
+          ],
+          "properties": {
+            "distribution": {"type": "string", "minLength": 1},
+            "version": {"type": "string", "minLength": 1},
+            "level": {"type": "integer"},
+            "threads": {"const": 0},
+            "checksum": {"const": true},
+            "content_size": {"const": true},
+            "dictionary_id": {"const": false}
+          },
+          "additionalProperties": false
+        },
+        "validation": {
+          "type": "object",
+          "required": [
+            "safe_paths",
+            "regular_files_only",
+            "bounded_members",
+            "bounded_uncompressed_bytes",
+            "all_member_hashes_match"
+          ],
+          "properties": {
+            "safe_paths": {"const": true},
+            "regular_files_only": {"const": true},
+            "bounded_members": {"const": true},
+            "bounded_uncompressed_bytes": {"const": true},
+            "all_member_hashes_match": {"const": true}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "requiredReceipt": {
+      "type": "object",
+      "required": [
+        "id",
+        "schema",
+        "material",
+        "assertions",
+        "status"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "schema": {"type": "string", "minLength": 1},
+        "material": {"$ref": "#/$defs/material"},
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/assertion"}
+        },
+        "status": {"const": "passed"}
+      },
+      "additionalProperties": false
+    },
+    "assertion": {
+      "type": "object",
+      "required": ["pointer", "passed"],
+      "properties": {
+        "pointer": {"type": "string", "pattern": "^/"},
+        "equals": true,
+        "equals_pointer": {"type": "string", "pattern": "^/"},
+        "passed": {"const": true}
+      },
+      "oneOf": [
+        {
+          "required": ["equals"],
+          "not": {"required": ["equals_pointer"]}
+        },
+        {
+          "required": ["equals_pointer"],
+          "not": {"required": ["equals"]}
+        }
+      ],
+      "additionalProperties": false
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "python",
+        "dependencies_exact",
+        "zstandard",
+        "network_access_required",
+        "network_access_guarded",
+        "network_guard_sha256",
+        "credentials_inherited"
+      ],
+      "properties": {
+        "python": {"$ref": "#/$defs/python"},
+        "dependencies_exact": {"const": true},
+        "zstandard": {"$ref": "#/$defs/zstandardEnvironment"},
+        "network_access_required": {"const": false},
+        "network_access_guarded": {"const": true},
+        "network_guard_sha256": {"$ref": "#/$defs/sha256"},
+        "credentials_inherited": {"const": false}
+      },
+      "additionalProperties": false
+    },
+    "python": {
+      "type": "object",
+      "required": ["major", "minor", "micro"],
+      "properties": {
+        "major": {"type": "integer", "minimum": 0},
+        "minor": {"type": "integer", "minimum": 0},
+        "micro": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "zstandardEnvironment": {
+      "type": "object",
+      "required": [
+        "distribution",
+        "version",
+        "module_version",
+        "level",
+        "threads"
+      ],
+      "properties": {
+        "distribution": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "module_version": {"type": "string", "minLength": 1},
+        "level": {"type": "integer"},
+        "threads": {"const": 0}
+      },
+      "additionalProperties": false
+    }
+  }
+}

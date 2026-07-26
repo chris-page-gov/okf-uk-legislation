@@ -1,0 +1,1025 @@
+{
+  "artifact_state": "fixed-pre-model-selection",
+  "canonicalization": {
+    "case_id": "urn:okf:calibration:sha256:<SHA-256 of the canonical case payload>",
+    "json": "UTF-8 JSON, lexicographically sorted object keys, compact comma/colon separators, ensure_ascii=false, allow_nan=false",
+    "text": "Unicode NFC; leading/trailing and repeated Unicode whitespace collapsed to one ASCII space; case preserved",
+    "topic_arrays": "canonicalized, deduplicated and sorted"
+  },
+  "cases": [
+    {
+      "audit_family": null,
+      "canonical_sha256": "82c21a10e42e71bd38bd53f1ce979ce92d042168711b9a87667ffe515e69dbc3",
+      "case_id": "urn:okf:calibration:sha256:82c21a10e42e71bd38bd53f1ce979ce92d042168711b9a87667ffe515e69dbc3",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Transport and infrastructure"
+      ],
+      "source_index": 0,
+      "title": "The Air Navigation (Restriction of Flying) (Manston) Regulations 2025"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "bdd6058306c029b25fbabf80a10f900ea1ad79d0ae6b72595742c57f5d811f76",
+      "case_id": "urn:okf:calibration:sha256:bdd6058306c029b25fbabf80a10f900ea1ad79d0ae6b72595742c57f5d811f76",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Transport and infrastructure"
+      ],
+      "source_index": 1,
+      "title": "The Motor Vehicles (Approval) Regulations 1997"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "098800f4ad535445f0da5b98dd51079d5a5696c62db3c35a381d7ff0ca76595e",
+      "case_id": "urn:okf:calibration:sha256:098800f4ad535445f0da5b98dd51079d5a5696c62db3c35a381d7ff0ca76595e",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Civil justice and procedure"
+      ],
+      "source_index": 2,
+      "title": "The Legal Aid (General) Regulations 1988"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "3ceece61dfec48d5c5ffb2778a839dd8bca0b3b529a1d55ec009878d7dab2fed",
+      "case_id": "urn:okf:calibration:sha256:3ceece61dfec48d5c5ffb2778a839dd8bca0b3b529a1d55ec009878d7dab2fed",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Civil justice and procedure"
+      ],
+      "source_index": 3,
+      "title": "The Advice and Assistance (Assistance by Way of Representation) Regulations 2020"
+    },
+    {
+      "audit_family": "criminal-defence-exclusion",
+      "canonical_sha256": "1962b2d0a30685d617017a47ae0d9f374176b7902773c5a8289ab33f3f8f5142",
+      "case_id": "urn:okf:calibration:sha256:1962b2d0a30685d617017a47ae0d9f374176b7902773c5a8289ab33f3f8f5142",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "source_index": 4,
+      "title": "The Legal Aid (Defence Certificates) Regulations 2025"
+    },
+    {
+      "audit_family": "parent-act-title-collision",
+      "canonical_sha256": "e25b4b7ba7d17c0514f8fa9fa38ca17246df73fb2e05e5ceeede2dab015bbaba",
+      "case_id": "urn:okf:calibration:sha256:e25b4b7ba7d17c0514f8fa9fa38ca17246df73fb2e05e5ceeede2dab015bbaba",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "source_index": 5,
+      "title": "The Legal Aid, Sentencing and Punishment of Offenders Act 2012 (Alcohol Abstinence and Monitoring Requirements) Piloting Order 2017"
+    },
+    {
+      "audit_family": "parent-act-title-collision",
+      "canonical_sha256": "6ae3812de2a9f2ad0e02c2ddf51d8fbb95b9442d72755e72adefd93efe4ba354",
+      "case_id": "urn:okf:calibration:sha256:6ae3812de2a9f2ad0e02c2ddf51d8fbb95b9442d72755e72adefd93efe4ba354",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "source_index": 6,
+      "title": "The Legal Aid, Sentencing and Punishment of Offenders Act 2012 (Fines on Summary Conviction) Regulations 2015"
+    },
+    {
+      "audit_family": "parent-act-title-collision",
+      "canonical_sha256": "897e7321158cc27c08be100efd87be10dab3a2bed4d98ee5a6f8130337b1a29c",
+      "case_id": "urn:okf:calibration:sha256:897e7321158cc27c08be100efd87be10dab3a2bed4d98ee5a6f8130337b1a29c",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "source_index": 7,
+      "title": "The Legal Aid, Sentencing and Punishment of Offenders Act 2012 (Children Act 1989) (Children Remanded to Youth Detention Accommodation) Regulations 2012"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "c8a26c4063a76f2de30df02ee2d1f45f33413ccdaa583e778668457fcdd28dee",
+      "case_id": "urn:okf:calibration:sha256:c8a26c4063a76f2de30df02ee2d1f45f33413ccdaa583e778668457fcdd28dee",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Civil justice and procedure"
+      ],
+      "source_index": 8,
+      "title": "The Magistrates' Courts (Civil Procedure) Rules 2025"
+    },
+    {
+      "audit_family": "token-prefix-collision",
+      "canonical_sha256": "d7dcd92420e2a140423010140958a10dd343740ba6821afd019981250ef045a3",
+      "case_id": "urn:okf:calibration:sha256:d7dcd92420e2a140423010140958a10dd343740ba6821afd019981250ef045a3",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "source_index": 9,
+      "title": "The Magistrates' Courts (Civilian Enforcement Officers) Rules 2001"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "50ddff3f5a4addb3436b4d0e6b1ca24f4a28a770d83ee08899c098ceaf4ed7ef",
+      "case_id": "urn:okf:calibration:sha256:50ddff3f5a4addb3436b4d0e6b1ca24f4a28a770d83ee08899c098ceaf4ed7ef",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Taxation and customs"
+      ],
+      "source_index": 10,
+      "title": "The Import Duties (Temporary Exemptions) Order 1969"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "82bf69c6f1df8c5bddd9f2bfd25f285468d47707983532ad2b8ac714f5f3483b",
+      "case_id": "urn:okf:calibration:sha256:82bf69c6f1df8c5bddd9f2bfd25f285468d47707983532ad2b8ac714f5f3483b",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Taxation and customs"
+      ],
+      "source_index": 11,
+      "title": "The Double Taxation Relief (Taxes on Income) Order 1979"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "0d8669c3da6ac0a969e5272e52f46a8a2b3da42be78e8189b64caa99e28ffd07",
+      "case_id": "urn:okf:calibration:sha256:0d8669c3da6ac0a969e5272e52f46a8a2b3da42be78e8189b64caa99e28ffd07",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Employment and industrial relations"
+      ],
+      "source_index": 12,
+      "title": "The Industrial Training Levy Order 1980"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "39ffea1db96ef8608dc3a1d98fb155a99838cb7db45c5441c54365714a727971",
+      "case_id": "urn:okf:calibration:sha256:39ffea1db96ef8608dc3a1d98fb155a99838cb7db45c5441c54365714a727971",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Employment and industrial relations"
+      ],
+      "source_index": 13,
+      "title": "The Wages Regulation (Retail Furnishing and Allied Trades) Order 1970"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "2810a69e2da3edf23eedfd707259f8492709c73b916a330802ee576f6f5de03a",
+      "case_id": "urn:okf:calibration:sha256:2810a69e2da3edf23eedfd707259f8492709c73b916a330802ee576f6f5de03a",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Companies, insolvency and financial services"
+      ],
+      "source_index": 14,
+      "title": "The Financial Services and Markets Act 2000 Order 2025"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "2857d549d5b6ff85b189ab0bf799c7161db289f021fc6bee9d9b0737e95c6aa9",
+      "case_id": "urn:okf:calibration:sha256:2857d549d5b6ff85b189ab0bf799c7161db289f021fc6bee9d9b0737e95c6aa9",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Companies, insolvency and financial services"
+      ],
+      "source_index": 15,
+      "title": "The Friendly Societies Regulations 1997"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "211fd1c97f679133a020462b71b364c4e9b648de28bb9f92f41d22abe211ce4d",
+      "case_id": "urn:okf:calibration:sha256:211fd1c97f679133a020462b71b364c4e9b648de28bb9f92f41d22abe211ce4d",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "source_index": 16,
+      "title": "The Offshore Installations (Safety Zones) Order 1989"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "44c373e78019d8f427c6239f726732f903c1fcdc642465446594111cd28c99a6",
+      "case_id": "urn:okf:calibration:sha256:44c373e78019d8f427c6239f726732f903c1fcdc642465446594111cd28c99a6",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "source_index": 17,
+      "title": "The Sea Fishing (Enforcement of Community Quota) Order 2000"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "9eff773ed4dd124c1dc3d6ccf7f84825876357902111bcc3ee52e47272ae0d6c",
+      "case_id": "urn:okf:calibration:sha256:9eff773ed4dd124c1dc3d6ccf7f84825876357902111bcc3ee52e47272ae0d6c",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Health and social care"
+      ],
+      "source_index": 18,
+      "title": "The Primary Care Trusts Regulations 2002"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "22350c83139b941d35873bba16a3ca5006cb1c513dd329c2a1b2979375a33360",
+      "case_id": "urn:okf:calibration:sha256:22350c83139b941d35873bba16a3ca5006cb1c513dd329c2a1b2979375a33360",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Health and social care"
+      ],
+      "source_index": 19,
+      "title": "The Medicines Regulations 2025"
+    },
+    {
+      "audit_family": "veterinary-medicines-collision",
+      "canonical_sha256": "2ef0ecb715d8f207c5bf2f29ab61e464932ad70d10de807ef59c116eb3877d7f",
+      "case_id": "urn:okf:calibration:sha256:2ef0ecb715d8f207c5bf2f29ab61e464932ad70d10de807ef59c116eb3877d7f",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "source_index": 20,
+      "title": "The Veterinary Medicines Regulations 2013"
+    },
+    {
+      "audit_family": "animal-use-medicines-collision",
+      "canonical_sha256": "e6816b88f223a3a29242a32b674c332b8b8a9a80aae087305ec3761e94e473a9",
+      "case_id": "urn:okf:calibration:sha256:e6816b88f223a3a29242a32b674c332b8b8a9a80aae087305ec3761e94e473a9",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "source_index": 21,
+      "title": "The Medicines (Products for Animal Use—Fees) Regulations 2004"
+    },
+    {
+      "audit_family": "medicated-animal-feed-collision",
+      "canonical_sha256": "ca07312b1121373e530b0096d7044ae18a7e9ade1138ece957f85191b6c19942",
+      "case_id": "urn:okf:calibration:sha256:ca07312b1121373e530b0096d7044ae18a7e9ade1138ece957f85191b6c19942",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "source_index": 22,
+      "title": "The Medicines (Medicated Animal Feeding Stuffs) (Amendment) Regulations 1997"
+    },
+    {
+      "audit_family": "intermediate-medicated-feed-collision",
+      "canonical_sha256": "55658add40f411dcbc7317a8e933a32f41049bf56a5aceece984acb617dea6e8",
+      "case_id": "urn:okf:calibration:sha256:55658add40f411dcbc7317a8e933a32f41049bf56a5aceece984acb617dea6e8",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "source_index": 23,
+      "title": "The Medicines (Exemptions from Licences) (Intermediate Medicated Feeding Stuffs) (Amendment) Order 1990"
+    },
+    {
+      "audit_family": "intermediate-medicated-feed-collision",
+      "canonical_sha256": "68ce3b52e516ad5dfbf3c01c5dba4c6ca0f4287d861be95bf6e468dab9b5d1b5",
+      "case_id": "urn:okf:calibration:sha256:68ce3b52e516ad5dfbf3c01c5dba4c6ca0f4287d861be95bf6e468dab9b5d1b5",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "source_index": 24,
+      "title": "The Medicines (Intermediate Medicated Feeding Stuffs) Order 1989"
+    },
+    {
+      "audit_family": "intermediate-medicated-feed-collision",
+      "canonical_sha256": "59727e4a6687061b1ce1daab8872a6f230c54102c9d9b4655aae677a25ccb84b",
+      "case_id": "urn:okf:calibration:sha256:59727e4a6687061b1ce1daab8872a6f230c54102c9d9b4655aae677a25ccb84b",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "source_index": 25,
+      "title": "The Medicines (Exemptions from Licences) (Intermediate Medicated Feeding Stuffs) Order 1989"
+    },
+    {
+      "audit_family": "feeding-stuffs-collision",
+      "canonical_sha256": "88c6c290c753710058a7feb711a05723bcff68153749f4226e70fe71490a115a",
+      "case_id": "urn:okf:calibration:sha256:88c6c290c753710058a7feb711a05723bcff68153749f4226e70fe71490a115a",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "source_index": 26,
+      "title": "The Medicines (Feeding Stuffs Limits of Variation) Order 1976"
+    },
+    {
+      "audit_family": "feeding-stuffs-collision",
+      "canonical_sha256": "f95a1585ff7a04e9a2da0d7b1d9972541297bd234ea90e0703dbb0220bfb4d02",
+      "case_id": "urn:okf:calibration:sha256:f95a1585ff7a04e9a2da0d7b1d9972541297bd234ea90e0703dbb0220bfb4d02",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "source_index": 27,
+      "title": "The Medicines (Feeding Stuffs Additives) Order 1975"
+    },
+    {
+      "audit_family": "feeding-stuffs-collision",
+      "canonical_sha256": "044a05e1cc4833357ca54a5a9e0b7528ccc028185f15c47c91bab19ee2633fe5",
+      "case_id": "urn:okf:calibration:sha256:044a05e1cc4833357ca54a5a9e0b7528ccc028185f15c47c91bab19ee2633fe5",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "source_index": 28,
+      "title": "The Medicines (Feeding Stuffs Additives) Order 1973"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "6ffbcbc42d301929da96181ab7702e7dbecd4ee4614aae5a107b1e6d7642d3a8",
+      "case_id": "urn:okf:calibration:sha256:6ffbcbc42d301929da96181ab7702e7dbecd4ee4614aae5a107b1e6d7642d3a8",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Health and social care"
+      ],
+      "source_index": 29,
+      "title": "The Poisons List Order (Northern Ireland) 1972"
+    },
+    {
+      "audit_family": "animal-welfare-poisons-collision",
+      "canonical_sha256": "965b8a29ba328e18055d9b8bb81dbab4efb85f1d421dc023349126fe403b84bb",
+      "case_id": "urn:okf:calibration:sha256:965b8a29ba328e18055d9b8bb81dbab4efb85f1d421dc023349126fe403b84bb",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "source_index": 30,
+      "title": "Animals (Cruel Poisons) Act 1962"
+    },
+    {
+      "audit_family": "animal-welfare-poisons-collision",
+      "canonical_sha256": "b6cce03bbaa6d7ea5e410edd98c3fe54bdb3275fb66945e0a0c3f157d13efc17",
+      "case_id": "urn:okf:calibration:sha256:b6cce03bbaa6d7ea5e410edd98c3fe54bdb3275fb66945e0a0c3f157d13efc17",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "source_index": 31,
+      "title": "The Animals (Cruel Poisons) Regulations 1963"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "3b01eb77dcf9591a76e89d57ed84a2b8f02e831243a8ae16eec9ccfe07489f9a",
+      "case_id": "urn:okf:calibration:sha256:3b01eb77dcf9591a76e89d57ed84a2b8f02e831243a8ae16eec9ccfe07489f9a",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Education and children"
+      ],
+      "source_index": 32,
+      "title": "The Secondary Schools (Grant Conditions) Regulations 1973"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "204bc2f22fd51a1791c1487cd0d3484f998e5d8073e78586aa8a8761ced14b1e",
+      "case_id": "urn:okf:calibration:sha256:204bc2f22fd51a1791c1487cd0d3484f998e5d8073e78586aa8a8761ced14b1e",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Education and children"
+      ],
+      "source_index": 33,
+      "title": "The Student Support Regulations 2011"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "cb98c4c7166fab997526b0daf48fa7aaec44ee43a277528fb1dcb5ac47dbdc15",
+      "case_id": "urn:okf:calibration:sha256:cb98c4c7166fab997526b0daf48fa7aaec44ee43a277528fb1dcb5ac47dbdc15",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Family and succession"
+      ],
+      "source_index": 34,
+      "title": "The Registration of Births, Deaths and Marriages Regulations 1970"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "4871965ca108aaf84227616712f06425838b7d50e0eca5aa93cf1f139903ac0b",
+      "case_id": "urn:okf:calibration:sha256:4871965ca108aaf84227616712f06425838b7d50e0eca5aa93cf1f139903ac0b",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Family and succession"
+      ],
+      "source_index": 35,
+      "title": "Marriages (Validity) Act 1939"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "f56319a5913ba1e905e9367002467830c1597106b22f9cf22ab5f617aa2afe35",
+      "case_id": "urn:okf:calibration:sha256:f56319a5913ba1e905e9367002467830c1597106b22f9cf22ab5f617aa2afe35",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Social security and welfare"
+      ],
+      "source_index": 36,
+      "title": "The National Assistance Regulations 1951"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "bd2c47bd39c343f30a47b060bc24d48d46372c99e8acffafb1e3b76da3cf8fda",
+      "case_id": "urn:okf:calibration:sha256:bd2c47bd39c343f30a47b060bc24d48d46372c99e8acffafb1e3b76da3cf8fda",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Social security and welfare"
+      ],
+      "source_index": 37,
+      "title": "The Social Fund Regulations 1987"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "bc2fa9a3f8c2a9e76a0f3b9ac3abeef5f4725a14c62bd20c3897d03b2b3306d8",
+      "case_id": "urn:okf:calibration:sha256:bc2fa9a3f8c2a9e76a0f3b9ac3abeef5f4725a14c62bd20c3897d03b2b3306d8",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Communications, data and technology"
+      ],
+      "source_index": 38,
+      "title": "The Wireless Telegraphy (Television Licence Fees) Regulations 2003"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "643bb9f7316ed69a374e06edd4e948387a5c5ae791b9246fad10b0cb5ee24dd4",
+      "case_id": "urn:okf:calibration:sha256:643bb9f7316ed69a374e06edd4e948387a5c5ae791b9246fad10b0cb5ee24dd4",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Communications, data and technology"
+      ],
+      "source_index": 39,
+      "title": "The Public Telecommunication System Designation Order 1984"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "97cda45d6bd51079205abba72eff681af4df560d2b305a67493201acbd8b2d30",
+      "case_id": "urn:okf:calibration:sha256:97cda45d6bd51079205abba72eff681af4df560d2b305a67493201acbd8b2d30",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Consumer and commercial law"
+      ],
+      "source_index": 40,
+      "title": "The Weights and Measures Regulations 1988"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "475d2e9616e56d1544f5a6e8971cf0efa49e61c2eff74ac29a61b41b4018f74d",
+      "case_id": "urn:okf:calibration:sha256:475d2e9616e56d1544f5a6e8971cf0efa49e61c2eff74ac29a61b41b4018f74d",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Consumer and commercial law"
+      ],
+      "source_index": 41,
+      "title": "The Product Safety Regulations 2005"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "103ddf5522a255c37068d171cc4bf5690c53aa840aef3687e9e4310d25d55477",
+      "case_id": "urn:okf:calibration:sha256:103ddf5522a255c37068d171cc4bf5690c53aa840aef3687e9e4310d25d55477",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Elections and political parties"
+      ],
+      "source_index": 42,
+      "title": "The Representation of the People (Scotland) Regulations 1954"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "e195171698577745f1a61634e7bda5ebdd6c92339966a3d8519b5c035f412961",
+      "case_id": "urn:okf:calibration:sha256:e195171698577745f1a61634e7bda5ebdd6c92339966a3d8519b5c035f412961",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Criminal law and policing"
+      ],
+      "source_index": 43,
+      "title": "The Firearms (Variation of Fees) Order 1977"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "1576ff6274398bae955b53287b976e288dc44ea56dcc9fb76df74d56676aad53",
+      "case_id": "urn:okf:calibration:sha256:1576ff6274398bae955b53287b976e288dc44ea56dcc9fb76df74d56676aad53",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Criminal law and policing"
+      ],
+      "source_index": 44,
+      "title": "The Misuse of Drugs Regulations 2001"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "75f002eed8523b792616ad21b59824a677e7ebd7e964b79d063bf4a9c3423a75",
+      "case_id": "urn:okf:calibration:sha256:75f002eed8523b792616ad21b59824a677e7ebd7e964b79d063bf4a9c3423a75",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Land, housing and planning"
+      ],
+      "source_index": 45,
+      "title": "The Homelessness (Decisions on Referrals) Order 1998"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "8d4aefd74e85832242f4d6fe8372c7621e48cc213c2a346594048c0c850d05c2",
+      "case_id": "urn:okf:calibration:sha256:8d4aefd74e85832242f4d6fe8372c7621e48cc213c2a346594048c0c850d05c2",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Defence and national security"
+      ],
+      "source_index": 46,
+      "title": "The Naval Discipline Act 1957 Order 1996"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "114a22338d94563c840bf42874c1823ce44e96c1271733f27e25dfc79f2d3a16",
+      "case_id": "urn:okf:calibration:sha256:114a22338d94563c840bf42874c1823ce44e96c1271733f27e25dfc79f2d3a16",
+      "case_kind": "positive",
+      "expected_topics": [
+        "European Union and retained EU law"
+      ],
+      "source_index": 47,
+      "title": "The European Communities (Designation) Order 1982"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "9654612c18fe659d5d4403bc18b9929561123328c7db3552a6a0c2a5fa1c9c3a",
+      "case_id": "urn:okf:calibration:sha256:9654612c18fe659d5d4403bc18b9929561123328c7db3552a6a0c2a5fa1c9c3a",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Human rights and equality"
+      ],
+      "source_index": 48,
+      "title": "The Public Interest Disclosure (Prescribed Persons) Order 2016"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "87df3cb2898c1f820035ef3ef46f7612068c38feb6823ca0e15aba00dab12df7",
+      "case_id": "urn:okf:calibration:sha256:87df3cb2898c1f820035ef3ef46f7612068c38feb6823ca0e15aba00dab12df7",
+      "case_kind": "positive",
+      "expected_topics": [
+        "Professional regulation"
+      ],
+      "source_index": 49,
+      "title": "The Veterinary Surgeons Regulations 1999"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "f22715f309ea9051e362df1b117ca3383fba73b13dbef3c9447c32e7b4ad1c7a",
+      "case_id": "urn:okf:calibration:sha256:f22715f309ea9051e362df1b117ca3383fba73b13dbef3c9447c32e7b4ad1c7a",
+      "case_kind": "negative-no-supported-assertion",
+      "expected_topics": [],
+      "source_index": 50,
+      "title": "The Measuring Instruments (Fees) Regulations 1985"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "4171169d4a3db89b587591e0302909657b5827e6e06ef589ddb085e03d6e6d3a",
+      "case_id": "urn:okf:calibration:sha256:4171169d4a3db89b587591e0302909657b5827e6e06ef589ddb085e03d6e6d3a",
+      "case_kind": "negative-no-supported-assertion",
+      "expected_topics": [],
+      "source_index": 51,
+      "title": "The Transfer of Functions Order 1986"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "42416fb67323a85e431b32c4458b08d6ad229185d376afa2f8f4dc915d3dc2b5",
+      "case_id": "urn:okf:calibration:sha256:42416fb67323a85e431b32c4458b08d6ad229185d376afa2f8f4dc915d3dc2b5",
+      "case_kind": "negative-no-supported-assertion",
+      "expected_topics": [],
+      "source_index": 52,
+      "title": "The General Regulations 1974"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "424cea64bb327f9bacc01172ba8307daf5014107f811ab9c36a7ed6b46e9ae53",
+      "case_id": "urn:okf:calibration:sha256:424cea64bb327f9bacc01172ba8307daf5014107f811ab9c36a7ed6b46e9ae53",
+      "case_kind": "negative-no-supported-assertion",
+      "expected_topics": [],
+      "source_index": 53,
+      "title": "The Fees Order (Northern Ireland) 2020"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "2f48b12b5d470c03ca70329b9c90878b8a8f75904ccc1e26b21fb36b401679a2",
+      "case_id": "urn:okf:calibration:sha256:2f48b12b5d470c03ca70329b9c90878b8a8f75904ccc1e26b21fb36b401679a2",
+      "case_kind": "negative-no-supported-assertion",
+      "expected_topics": [],
+      "source_index": 54,
+      "title": "The Control Order 1956"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "3f38061957eac44c63013f9753513a5954bb471c2fda7dc9afe75fc438911425",
+      "case_id": "urn:okf:calibration:sha256:3f38061957eac44c63013f9753513a5954bb471c2fda7dc9afe75fc438911425",
+      "case_kind": "negative-no-supported-assertion",
+      "expected_topics": [],
+      "source_index": 55,
+      "title": "The Designation Order 1985"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "f1331f7ec3a261df50aaca77d7212225be14f3973483ba406a42795c720d2e12",
+      "case_id": "urn:okf:calibration:sha256:f1331f7ec3a261df50aaca77d7212225be14f3973483ba406a42795c720d2e12",
+      "case_kind": "negative-no-supported-assertion",
+      "expected_topics": [],
+      "source_index": 56,
+      "title": "The Revocation Regulations 2001"
+    },
+    {
+      "audit_family": null,
+      "canonical_sha256": "9d30bf63a62d4bde02f6ca73c508b18fa2df6a6674489e40d0317d651b125890",
+      "case_id": "urn:okf:calibration:sha256:9d30bf63a62d4bde02f6ca73c508b18fa2df6a6674489e40d0317d651b125890",
+      "case_kind": "negative-no-supported-assertion",
+      "expected_topics": [],
+      "source_index": 57,
+      "title": "https://www.legislation.gov.uk/id/wsi/2021/679"
+    }
+  ],
+  "counts": {
+    "cases": 58,
+    "negative_cases": 17,
+    "positive_cases": 41,
+    "rule_tests": 55
+  },
+  "fixed_on": "2026-07-26",
+  "id": "uk-legislation-model-enrichment-calibration-v1",
+  "integrity": {
+    "content_semantic_sha256": "fecea04940a9c3810f237e20a9de4dda7bb997409e766308af66362089232906",
+    "historical_source_bytes_sha256": "f31f3204926927ea49eb839e629987b4a3f5e98e72f85e9a7f0981d794028fb3"
+  },
+  "rule_tests": [
+    {
+      "canonical_sha256": "7776044ea495e27d49d69e0efe394d074ffccbc0c8fe1e222b18467053cc52a4",
+      "near_miss_negative": "The Navigation by Air Order 2025",
+      "positive": "The Air Navigation Order 2025",
+      "rule_id": "R001",
+      "source_index": 0
+    },
+    {
+      "canonical_sha256": "e87f97e7cc9f57d109c439c464ee024b82a0e9c9df4c0a3a373015609dd1f68f",
+      "near_miss_negative": "The Flying Restrictions Regulations 2025",
+      "positive": "The Restriction of Flying Regulations 2025",
+      "rule_id": "R002",
+      "source_index": 1
+    },
+    {
+      "canonical_sha256": "7b73eb5cde2b7f15e6d7d54f35bda8ef9c3a13f6cdf80c819e1e92daed21f163",
+      "near_miss_negative": "The Motorised Vehicle Regulations 2025",
+      "positive": "The Motor Vehicle Regulations 2025",
+      "rule_id": "R003",
+      "source_index": 2
+    },
+    {
+      "canonical_sha256": "bd5fbc9fa5535b02a9ee0a986e919f5ce9c12c7d832db509b49a11669c4bf3ee",
+      "near_miss_negative": "The Parking Zones Order 2025",
+      "positive": "The Parking Places Order 2025",
+      "rule_id": "R004",
+      "source_index": 3
+    },
+    {
+      "canonical_sha256": "b6daa745b742fc44f016fdfdd93fd48dedcc5bac322a3736eb8ae9417805baf4",
+      "near_miss_negative": "The Limiting Speed Order 2025",
+      "positive": "The Speed Limits Order 2025",
+      "rule_id": "R005",
+      "source_index": 4
+    },
+    {
+      "canonical_sha256": "32e586646b262adb9fd6eeb4672213d0fbe30e6f901480021c453c068485bc13",
+      "near_miss_negative": "The Driver Licensing Regulations 2025",
+      "positive": "The Driving Licences Regulations 2025",
+      "rule_id": "R006",
+      "source_index": 5
+    },
+    {
+      "canonical_sha256": "057e78a7c45b03d1db054f8f144631630e9e2e15666e4029a1a6f013ae7d8dce",
+      "near_miss_negative": "The Construction and Use of Vehicles Regulations 2025",
+      "positive": "The Vehicle Construction and Use Regulations 2025",
+      "rule_id": "R007",
+      "source_index": 6
+    },
+    {
+      "canonical_sha256": "37563d3ff277fbc821bbdc69b5a6311d1ea08ea599804d8fa02b15c42d62a379",
+      "near_miss_negative": "The Legal Aid, Sentencing and Punishment of Offenders Act 2012 (Fines on Summary Conviction) Regulations 2015",
+      "positive": "The Legal Aid Regulations 2025",
+      "rule_id": "R008",
+      "source_index": 7
+    },
+    {
+      "canonical_sha256": "d55e6495cd5da4540d7559f5d12877b5cdab98858498b4106e3335e620bf60fa",
+      "near_miss_negative": "The Legal Advice and Assistance at Police Stations Regulations 2025",
+      "positive": "The Advice and Assistance Regulations 2025",
+      "rule_id": "R009",
+      "source_index": 8
+    },
+    {
+      "canonical_sha256": "374ba652d39cf10f1925a5097f7c7419fd44e2b9e8befe3f76ae09582fb63fbc",
+      "near_miss_negative": "The Magistrates' Courts (Civilian Enforcement Officers) Rules 2001",
+      "positive": "The Magistrates' Courts (Civil Procedure) Rules 2025",
+      "rule_id": "R010",
+      "source_index": 9
+    },
+    {
+      "canonical_sha256": "6407da57f99018d8fcca8dec6a6830fa6fc2ebe9cd509dbc740672e793f5d1e6",
+      "near_miss_negative": "The Civil Service Legal Regulations 2025",
+      "positive": "The Civil Legal Services Regulations 2025",
+      "rule_id": "R011",
+      "source_index": 10
+    },
+    {
+      "canonical_sha256": "d90c5946644cb337b015d3d2a36de90e4b8872de5e00afeb024250ad56611751",
+      "near_miss_negative": "The Export Duties Order 2025",
+      "positive": "The Import Duties Order 2025",
+      "rule_id": "R012",
+      "source_index": 11
+    },
+    {
+      "canonical_sha256": "454df94d102bc01eb8561bd9bdb1d0922a212c4361a3ca43f6b8741c3ee6d5f9",
+      "near_miss_negative": "The Single Taxation Relief Order 2025",
+      "positive": "The Double Taxation Relief Order 2025",
+      "rule_id": "R013",
+      "source_index": 12
+    },
+    {
+      "canonical_sha256": "ff94bf8be44f791b32aaa9507a92ed728dd20e60a50f2c63d11bc97f0e93884a",
+      "near_miss_negative": "The Tax Relief Order 2025",
+      "positive": "The Taxation Relief Order 2025",
+      "rule_id": "R014",
+      "source_index": 13
+    },
+    {
+      "canonical_sha256": "b204432867aeb114147f3b0c1ce2de97501b9431e2985b25d6f9d7ebde8732ba",
+      "near_miss_negative": "The Domestic Rating Order 2025",
+      "positive": "The Non-Domestic Rating Order 2025",
+      "rule_id": "R015",
+      "source_index": 14
+    },
+    {
+      "canonical_sha256": "44b90d54d5442271c368ad93318c1ea8b3d3d365dd13a707e2202efdbe8568b2",
+      "near_miss_negative": "The Industry Training Order 2025",
+      "positive": "The Industrial Training Order 2025",
+      "rule_id": "R016",
+      "source_index": 15
+    },
+    {
+      "canonical_sha256": "9f58a0736229bb013fc35cb29b2c89290bc9af3252630945e603bfb2e001cd55",
+      "near_miss_negative": "The Training Fees Order 2025",
+      "positive": "The Training Levy Order 2025",
+      "rule_id": "R017",
+      "source_index": 16
+    },
+    {
+      "canonical_sha256": "c9d377336e423ba59bf035e719a9b9f4891c90026fc3431cf7a3720a60a5ee55",
+      "near_miss_negative": "The Wage Rules Order 2025",
+      "positive": "The Wages Regulation Order 2025",
+      "rule_id": "R018",
+      "source_index": 17
+    },
+    {
+      "canonical_sha256": "f57d3dbf627cfeb5eaec6309013df1c834bef75e1d7f30083e0b9754021c2532",
+      "near_miss_negative": "The Trades Association Regulations 2025",
+      "positive": "The Trade Union Regulations 2025",
+      "rule_id": "R019",
+      "source_index": 18
+    },
+    {
+      "canonical_sha256": "4b268f1c1b321b0463c773abc78b5a28aad78eb76e90e9e18f401357096de928",
+      "near_miss_negative": "The Pension Regulations 2025",
+      "positive": "The Superannuation Regulations 2025",
+      "rule_id": "R020",
+      "source_index": 19
+    },
+    {
+      "canonical_sha256": "68a42d9e34afe4a09605bcaeffbc4a9360bbdce24e10b864fdd7c46641e35982",
+      "near_miss_negative": "The Financing Services Order 2025",
+      "positive": "The Financial Services Order 2025",
+      "rule_id": "R021",
+      "source_index": 20
+    },
+    {
+      "canonical_sha256": "7364180b39c4da31698838ed29646c032cac673a672c4c2b4a19057f6fe09819",
+      "near_miss_negative": "The Societies Building Regulations 2025",
+      "positive": "The Building Societies Regulations 2025",
+      "rule_id": "R022",
+      "source_index": 21
+    },
+    {
+      "canonical_sha256": "4b704aeefb42477bf3beff8da877e99fd41e935daf0dcd0dcd63405d842defd9",
+      "near_miss_negative": "The Friendly Association Regulations 2025",
+      "positive": "The Friendly Societies Regulations 2025",
+      "rule_id": "R023",
+      "source_index": 22
+    },
+    {
+      "canonical_sha256": "8af75d1539fb25cc92c018570e01775bc986ab39ee2d90d3e33a98f34cdebbb1",
+      "near_miss_negative": "The Credit Association Regulations 2025",
+      "positive": "The Credit Union Regulations 2025",
+      "rule_id": "R024",
+      "source_index": 23
+    },
+    {
+      "canonical_sha256": "2a759bf745d646653fad2a9ccf7348da58ec12cf97fa3737be34212b042bfacb",
+      "near_miss_negative": "The Onshore Installations Order 2025",
+      "positive": "The Offshore Installations Order 2025",
+      "rule_id": "R025",
+      "source_index": 24
+    },
+    {
+      "canonical_sha256": "44fbc1aed2bc8f68c9a806e17d09b70e7c35859f78ac30363ad9bc546caad47b",
+      "near_miss_negative": "The Freshwater Fishing Order 2025",
+      "positive": "The Sea Fishing Order 2025",
+      "rule_id": "R026",
+      "source_index": 25
+    },
+    {
+      "canonical_sha256": "7e0e32794ae60cec10311d2204d5374edb6e33a9b40cdacf3e5170b63fe5b5c4",
+      "near_miss_negative": "The Foodstuffs Regulations 2025",
+      "positive": "The Feeding Stuffs Regulations 2025",
+      "rule_id": "R027",
+      "source_index": 26
+    },
+    {
+      "canonical_sha256": "1e10ca254b19c6a1b714fdde11940af2e8132b27a65e86406ae5625789dab363",
+      "near_miss_negative": "The Animal Diseases Order 2025",
+      "positive": "The Diseases of Animals Order 2025",
+      "rule_id": "R028",
+      "source_index": 27
+    },
+    {
+      "canonical_sha256": "e72ee4ed56edc998e8041ef6836a2c497c91d5f3393bad50b0fd6a28375eddf3",
+      "near_miss_negative": "The Environment Sensitive Areas Order 2025",
+      "positive": "The Environmentally Sensitive Areas Order 2025",
+      "rule_id": "R029",
+      "source_index": 28
+    },
+    {
+      "canonical_sha256": "1cbaa7227c578623a27043c8ce07efb2e22dc04a8123a3e33471e3cf880680e4",
+      "near_miss_negative": "The Smoking Control Order 2025",
+      "positive": "The Smoke Control Order 2025",
+      "rule_id": "R030",
+      "source_index": 29
+    },
+    {
+      "canonical_sha256": "adc68951c585a75347f60fcbee7ce92d07467dd6a48ff6d19e95473ee1688b1b",
+      "near_miss_negative": "The Foot and Mouth Disease Order 2025",
+      "positive": "The Foot-and-Mouth Disease Order 2025",
+      "rule_id": "R031",
+      "source_index": 30
+    },
+    {
+      "canonical_sha256": "c90e3905a2136543b69a8514580a788ba22e8a5f467b605f383960bbd7e41922",
+      "near_miss_negative": "The Primary Care Board Regulations 2025",
+      "positive": "The Primary Care Trust Regulations 2025",
+      "rule_id": "R032",
+      "source_index": 31
+    },
+    {
+      "canonical_sha256": "c6d8522a81198d7a7a2a5000292c074c7636a77ac183ab3600c5d5336420f027",
+      "near_miss_negative": "The Veterinary Medicines Regulations 2013",
+      "positive": "The Medicines Regulations 2025",
+      "rule_id": "R033",
+      "source_index": 32
+    },
+    {
+      "canonical_sha256": "052a7c0906bac633400c34e5c3508ab5509bfe2e75ab54549e768576c0e472c2",
+      "near_miss_negative": "Animals (Cruel Poisons) Act 1962",
+      "positive": "The Poisons Order 2025",
+      "rule_id": "R034",
+      "source_index": 33
+    },
+    {
+      "canonical_sha256": "b44ce0ad720fba1b381e719061ae5c69e66aed31ddd349fd65021dd9f7d88d9e",
+      "near_miss_negative": "The Primary Schools Regulations 2025",
+      "positive": "The Secondary Schools Regulations 2025",
+      "rule_id": "R035",
+      "source_index": 34
+    },
+    {
+      "canonical_sha256": "1f8184d2ae83b6516d5ef4985d0f3eb251e46e3ea1a8f637944e5abec56477a3",
+      "near_miss_negative": "The Pupil Support Regulations 2025",
+      "positive": "The Student Support Regulations 2025",
+      "rule_id": "R036",
+      "source_index": 35
+    },
+    {
+      "canonical_sha256": "775b44d28413740e8d39380dbd94503f4d4f2c3db390b424e873d054ff18efbc",
+      "near_miss_negative": "The Teachers' Pay Regulations 2025",
+      "positive": "The Teachers' Salaries Regulations 2025",
+      "rule_id": "R037",
+      "source_index": 36
+    },
+    {
+      "canonical_sha256": "0c10c183fd34c4720231238b9d5537c444b57d039fc0f3e402112e49d7b1830e",
+      "near_miss_negative": "The Births and Marriages Regulations 2025",
+      "positive": "The Births, Deaths and Marriages Regulations 2025",
+      "rule_id": "R038",
+      "source_index": 37
+    },
+    {
+      "canonical_sha256": "fd31a137ee5b44fe6f58efd428d4b577ffd0723e2bc731547473fdbab50a17f7",
+      "near_miss_negative": "The Marriage Validity Act 2025",
+      "positive": "The Marriages (Validity) Act 2025",
+      "rule_id": "R039",
+      "source_index": 38
+    },
+    {
+      "canonical_sha256": "f9598796ab283e817b546713f90a7a14fbeea25021fd90bf7a8c2bd1d61bd7af",
+      "near_miss_negative": "The Local Assistance Regulations 2025",
+      "positive": "The National Assistance Regulations 2025",
+      "rule_id": "R040",
+      "source_index": 39
+    },
+    {
+      "canonical_sha256": "412910c2036f7d8bb716774f903a1e8f4d22e1431f9bb657d7d980fa5a06fc72",
+      "near_miss_negative": "The European Social Fund Regulations 2025",
+      "positive": "The Social Fund Regulations 2025",
+      "rule_id": "R041",
+      "source_index": 40
+    },
+    {
+      "canonical_sha256": "668b85208a0b9032ae24a7dc0456dd7242a25687fef370cb7b37c385e3ff0765",
+      "near_miss_negative": "The Housing Support Regulations 2025",
+      "positive": "The Housing Benefit Regulations 2025",
+      "rule_id": "R042",
+      "source_index": 41
+    },
+    {
+      "canonical_sha256": "b862b2f7b83fd20704be73a5b37f3c1cfee555a7c9140c8a7f618582643ab9d0",
+      "near_miss_negative": "The Wired Telegraphy Regulations 2025",
+      "positive": "The Wireless Telegraphy Regulations 2025",
+      "rule_id": "R043",
+      "source_index": 42
+    },
+    {
+      "canonical_sha256": "6ee4746b19d9cfb861f7aec30b9888ff1ecadc89b0c86de62e9d08df63d8483a",
+      "near_miss_negative": "The Telecom System Order 2025",
+      "positive": "The Telecommunication System Order 2025",
+      "rule_id": "R044",
+      "source_index": 43
+    },
+    {
+      "canonical_sha256": "de0e60196cfb6f1123705039f2c047d12030c35f40a707c9ad2a28a5fa6fca87",
+      "near_miss_negative": "The Television Licensing Fee Regulations 2025",
+      "positive": "The Television Licence Fee Regulations 2025",
+      "rule_id": "R045",
+      "source_index": 44
+    },
+    {
+      "canonical_sha256": "b9b139df2c457fdddb2eb1f2b1f54f2603a4c93e30e063aa1d8cb5e609620124",
+      "near_miss_negative": "The Weights or Measures Regulations 2025",
+      "positive": "The Weights and Measures Regulations 2025",
+      "rule_id": "R046",
+      "source_index": 45
+    },
+    {
+      "canonical_sha256": "83f7a088e3e54911f8f2ad7c89121ad8bea1c17c17a69336dc7934fb919eece7",
+      "near_miss_negative": "The Safe Products Regulations 2025",
+      "positive": "The Product Safety Regulations 2025",
+      "rule_id": "R047",
+      "source_index": 46
+    },
+    {
+      "canonical_sha256": "07e4d61a5e0a487433019da53c8a007ece6a00e0a406bb09b84a105a9088daa2",
+      "near_miss_negative": "The People Representation Regulations 2025",
+      "positive": "The Representation of the People Regulations 2025",
+      "rule_id": "R048",
+      "source_index": 47
+    },
+    {
+      "canonical_sha256": "bf70227f31bec0daa8b24686115d0ba04435919fba2f4c0dd080936ea6e88fb1",
+      "near_miss_negative": "The Fireworks Regulations 2025",
+      "positive": "The Firearms Regulations 2025",
+      "rule_id": "R049",
+      "source_index": 48
+    },
+    {
+      "canonical_sha256": "9341b258a2c77c0deba50d941ff194c2a46dbc7671e2402474ef876b700b688c",
+      "near_miss_negative": "The Use of Drugs Regulations 2025",
+      "positive": "The Misuse of Drugs Regulations 2025",
+      "rule_id": "R050",
+      "source_index": 49
+    },
+    {
+      "canonical_sha256": "fdd5be62a0321245232fa82a31c282b46f2f7b0ad424a4f2dcdc0e220d777e2f",
+      "near_miss_negative": "The Homeless Persons Order 2025",
+      "positive": "The Homelessness Order 2025",
+      "rule_id": "R051",
+      "source_index": 50
+    },
+    {
+      "canonical_sha256": "0c143232330b89fff2b7574a559c91e042f7a79a7daf9d054bbddc5ed14018d0",
+      "near_miss_negative": "The Naval Disciplinary Order 2025",
+      "positive": "The Naval Discipline Order 2025",
+      "rule_id": "R052",
+      "source_index": 51
+    },
+    {
+      "canonical_sha256": "7ebf03c4b5f5da7b3a734f69b7e5a788cf87c71d56d09ae374c61c7316cda0e4",
+      "near_miss_negative": "The European Community Order 2025",
+      "positive": "The European Communities Order 2025",
+      "rule_id": "R053",
+      "source_index": 52
+    },
+    {
+      "canonical_sha256": "349850dcdfae632a7438d14ba679cfe0bb9f0f6bb47e39fc6d1d6b4776b4be29",
+      "near_miss_negative": "The Public Disclosure Order 2025",
+      "positive": "The Public Interest Disclosure Order 2025",
+      "rule_id": "R054",
+      "source_index": 53
+    },
+    {
+      "canonical_sha256": "4673ce451041763704c5299b300d826cf0f59416ee0a5fdf236280a5df4128cc",
+      "near_miss_negative": "The Veterinary Nurses Regulations 2025",
+      "positive": "The Veterinary Surgeons Regulations 2025",
+      "rule_id": "R055",
+      "source_index": 54
+    }
+  ],
+  "schema": "okf-model-calibration-manifest.v1",
+  "source": {
+    "mutation_policy": "immutable historical input; corrections require a separately identified successor",
+    "path": "enrichment/codex-assisted-v2-calibration.json",
+    "sha256": "f31f3204926927ea49eb839e629987b4a3f5e98e72f85e9a7f0981d794028fb3"
+  },
+  "suite_roots": {
+    "case_set_sha256": "faba4ac858464f4bb1d86caa4ab7fc74015c1236493ba25e43f9f9858774f315",
+    "case_source_order_sha256": "411c7079095716a27653af3d4870894a447fc38f4d6aa825b9d2f89f38147ef6",
+    "rule_test_source_order_sha256": "e08db5b5aace7d77c9c385f0209531c4e236c3908a1ad9b221632e43f99be651"
+  }
+}
