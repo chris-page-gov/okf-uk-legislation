@@ -1,0 +1,1432 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "bytes": 3659,
+      "path": "acquisition/README.md",
+      "sha256": "88a91e43b8e9df95fb1f237dcdc5edf6cd79e800084183eefda63feb6af3c15d"
+    },
+    {
+      "bytes": 161421,
+      "path": "acquisition/current/access-methods.json",
+      "sha256": "30aaef86282be1ca5058689dcbde571f601114996b4d800d3d926c07a493db40"
+    },
+    {
+      "bytes": 3071,
+      "path": "acquisition/current/evidence-reference.json",
+      "sha256": "c9e15c74c509b80ce4d11949b6477fe611d4c514397f47300bf2b1b86132dcd4"
+    },
+    {
+      "bytes": 12443,
+      "path": "acquisition/current/observed-access-comparison.json",
+      "sha256": "28d4041d078817457625e4eaa8b4b6d386c8bbd88bc16fc4872ba1aa91aecb3d"
+    },
+    {
+      "bytes": 1965,
+      "path": "acquisition/current/publication-projection.json",
+      "sha256": "d8c1cdd7cc2a4fb73fa179454e2f1831dde4e9be94c98bb4d5583dbe46acae57"
+    },
+    {
+      "bytes": 1647,
+      "path": "acquisition/current/publication-redactions.json",
+      "sha256": "7f7b38c04f71582f04472baa47480cb208d37726ec54adfb92b90182e6de09a5"
+    },
+    {
+      "bytes": 6577,
+      "path": "acquisition/current/source-access-review.md",
+      "sha256": "62889ede2b85708f58610066a47f60cfb9a71b4087fe5e611ffe33c935487607"
+    },
+    {
+      "bytes": 5397,
+      "path": "acquisition/current/source-access-summary.json",
+      "sha256": "e499ea7e57f740a1e2d3f58641c01e837b8d5fcfb41b2abc06c32a80b8e46ef6"
+    },
+    {
+      "bytes": 141234,
+      "path": "acquisition/current/source-constraint-ledger.json",
+      "sha256": "080ea1e74acebe1ceb637e9221649c04be1b6372409f7b4b6597fb065da29ab4"
+    },
+    {
+      "bytes": 5203,
+      "path": "acquisition/source-access-envelope.schema.json",
+      "sha256": "87e2f3eed85d5f744e55e3802e5d8c14813d3c70ca64d5d3baa551d51b0b93a7"
+    },
+    {
+      "bytes": 7544,
+      "path": "assurance/competency-question-results.json",
+      "sha256": "f09ee2f40a7e53ee63dcef55708192579bcd9ce82eea1f6821b87600598184b2"
+    },
+    {
+      "bytes": 26491,
+      "path": "assurance/enrichment-audit.json",
+      "sha256": "e2ce8f3e99adea662f8f86caa8eef704540d496d049d8432844735417bb0a887"
+    },
+    {
+      "bytes": 17596,
+      "path": "assurance/enrichment-audit.md",
+      "sha256": "54a345d85f89a3d4f0c4e5239c6a4943f759fb22e67f737829679cc279b2f565"
+    },
+    {
+      "bytes": 20230,
+      "path": "assurance/enrichment-reaudit-22299.json",
+      "sha256": "31820a7bf80c61159ea3f65efff1439646e0be3c279ec37c4f58616f06c5d59c"
+    },
+    {
+      "bytes": 10435,
+      "path": "assurance/enrichment-reaudit-22299.md",
+      "sha256": "ab975a47b183c75ced03b17ae488089c460c15cbe8d99b5b41a02d897bb24738"
+    },
+    {
+      "bytes": 25673,
+      "path": "assurance/enrichment-reaudit-22483.json",
+      "sha256": "9897cd28e89d521338ed4ee7dadc15db2d60a9247ce1a4a9dd1983130eb73c78"
+    },
+    {
+      "bytes": 14002,
+      "path": "assurance/enrichment-reaudit-22483.md",
+      "sha256": "06eaae6af55c49711d5acd76a68c99595b8232f8ca1cab7b07136d7ff1e73dcc"
+    },
+    {
+      "bytes": 17301,
+      "path": "assurance/enrichment-reaudit-22651.json",
+      "sha256": "373629994005bd3c0f47fecc97893340d0c54c4aabf9c611619b59157ab04189"
+    },
+    {
+      "bytes": 9867,
+      "path": "assurance/enrichment-reaudit-22651.md",
+      "sha256": "8a2f03c17343ad7b78a52ce885d046cc7384c6fd74300ddfbee4ad0c30af6632"
+    },
+    {
+      "bytes": 10752,
+      "path": "assurance/enrichment-v2-independent-audit-20260726.json",
+      "sha256": "96485859df3eb2b85c16b8c2da50884dac6a9497f6708941c761e47f820a9236"
+    },
+    {
+      "bytes": 1877,
+      "path": "assurance/enrichment-v2-independent-audit-20260726.md",
+      "sha256": "14e4d5080a0da32132b641805cb4adad6503212acd91177867c205d260028aeb"
+    },
+    {
+      "bytes": 7806,
+      "path": "assurance/enrichment-v2-v1-rejection-preservation.json",
+      "sha256": "71238aca5e08fa369cc174ad3bbb8a599dffd09a2b4f35cc8173cc34c4b87c1b"
+    },
+    {
+      "bytes": 1915,
+      "path": "assurance/enrichment-v2-v1-rejection-preservation.md",
+      "sha256": "971c074b2646a24ac1da62b76e856b0bcf84d7fff9dad39073dd16d48cb96d48"
+    },
+    {
+      "bytes": 21255,
+      "path": "assurance/yaml-ld-conformance.json",
+      "sha256": "9679d25a363df1490213e35c8533fd11b7a82b1c097dc02f15eea78b9097cda2"
+    },
+    {
+      "bytes": 1425,
+      "path": "config/effects-seeds.json",
+      "sha256": "652f90bc5adf482d9285f2e81617d16e15835eb886451c777fe9c2819172a3b3"
+    },
+    {
+      "bytes": 501,
+      "path": "coverage/index.md",
+      "sha256": "6dea4c91c6f467fc4849687172c180e2436ec14c639c09b005b18810da041d63"
+    },
+    {
+      "bytes": 23446,
+      "path": "data/coverage.json",
+      "sha256": "e705c334a0028a4ee209baf0e20b49fd37c46856218fc67edbd27f0bd55f3795"
+    },
+    {
+      "bytes": 18713,
+      "path": "data/legal-source-taxonomy.json",
+      "sha256": "ee3fdd19ee3373d90b7e53540d9c7a859250637b5a204b4cbfd3e83e492a74b7"
+    },
+    {
+      "bytes": 240710,
+      "path": "data/persona-task-matrix.csv",
+      "sha256": "ace72686c5ff48054b2aacd3d91739359255f57dc54d558c07904ec63a495059"
+    },
+    {
+      "bytes": 1366,
+      "path": "data/persona-task-matrix.csv-metadata.json",
+      "sha256": "16853fdcce0c2fdf58b5d19df77179e24aabd4e1bc9251c443656692af0d7e34"
+    },
+    {
+      "bytes": 516426,
+      "path": "data/persona-task-matrix.json",
+      "sha256": "6a9a58cb71d7e8774307681899bc53dc62468d493120f1a82f36adbba0b9c07f"
+    },
+    {
+      "bytes": 74752,
+      "path": "data/relationship-summary.json",
+      "sha256": "7d9bd9c503a2a8a4a11099d1da7aa0aa12c574095cd7344c95c9361c6ef9731d"
+    },
+    {
+      "bytes": 72830,
+      "path": "data/source-constraint-ledger.json",
+      "sha256": "2007c665ae64a8986da09f62e0ea0535b670f9a9f0aca8049da0ceeb447b0a20"
+    },
+    {
+      "bytes": 48616,
+      "path": "data/source-register.csv",
+      "sha256": "6791aad4f82736efacd9754c085df287a93f16923dc0543f55e5a8768c2922f2"
+    },
+    {
+      "bytes": 1380,
+      "path": "data/source-register.csv-metadata.json",
+      "sha256": "816b337712ff9829c82aec7caf58ff804b8a0c6ecf474c2425d858478f6e74e2"
+    },
+    {
+      "bytes": 219607,
+      "path": "data/source-register.json",
+      "sha256": "575c62fab383a2c9444d3480640a086c4970b88c3ecafe9929f401969a84cdfe"
+    },
+    {
+      "bytes": 450,
+      "path": "docs/authority-and-evidence.md",
+      "sha256": "97d3b1317ace07afc25763f0d8a2dc62d96d961817909051691ff44eb821c7ff"
+    },
+    {
+      "bytes": 347,
+      "path": "docs/getting-started.md",
+      "sha256": "7a6816e3c4ee7f8463cf1247872f88d86aee8a01ba9a2cb510c03d93a01f0687"
+    },
+    {
+      "bytes": 608,
+      "path": "docs/index.html",
+      "sha256": "77dfcf6778ec0992b81cad00512f9059792a612473c483f41704ab94babeca29"
+    },
+    {
+      "bytes": 311,
+      "path": "docs/index.md",
+      "sha256": "34879dc97a74a5016ce0118ec6d2600c4171ad461f8a02e690613bd199f50697"
+    },
+    {
+      "bytes": 383,
+      "path": "docs/maintenance.md",
+      "sha256": "0a85797ac8d7e626cc5d5eb07cb1464be2bcc44a349d09785d8111b2138a0761"
+    },
+    {
+      "bytes": 413,
+      "path": "docs/sources-and-coverage.md",
+      "sha256": "f0a461b5ae82b7fedf4bc7412888c7e2ad9e974d1097c3af4098b203426f112c"
+    },
+    {
+      "bytes": 2663,
+      "path": "docs/standards-and-validation.md",
+      "sha256": "6d1d406f9798c5dbc9825c1492af94f60df9955a1136af05edbe17287958abfa"
+    },
+    {
+      "bytes": 2251,
+      "path": "evaluation/README.md",
+      "sha256": "651ab12704331165485444b9d17b79793475df21f8e13823fa0dde30ce2ed684"
+    },
+    {
+      "bytes": 3681,
+      "path": "evaluation/answer-schema.json",
+      "sha256": "fb35f652309f5bd9dedc29c34d1d196a3413662ae0309ecaf942abbde96540fd"
+    },
+    {
+      "bytes": 3600,
+      "path": "evaluation/claude-access-suite.json",
+      "sha256": "e12d41b59374607396f8db64e32415172dd9590937cfebba004a8e4acd39f029"
+    },
+    {
+      "bytes": 10185,
+      "path": "evaluation/coverage.json",
+      "sha256": "fa997c031b3c5eb1f5e490d004967c0da06365176cdb0f641e0d5142ec855508"
+    },
+    {
+      "bytes": 3609,
+      "path": "evaluation/executions/eval-120b21f028cc516d845b/integrity.json",
+      "sha256": "54e4314675c06f0e82c85d6215f738aec367d5714e832eb9ad33ba576e798f14"
+    },
+    {
+      "bytes": 3473,
+      "path": "evaluation/executions/eval-120b21f028cc516d845b/report.md",
+      "sha256": "8d1a86691b71d50a173ba87475f556642113e4f386a5256b7708a71fbe79f4bd"
+    },
+    {
+      "bytes": 55389,
+      "path": "evaluation/executions/eval-120b21f028cc516d845b/results.json",
+      "sha256": "5035eed279084c2686b6c8c86a9278adac9e2d0636faba05dfc0405b856e962a"
+    },
+    {
+      "bytes": 3609,
+      "path": "evaluation/executions/eval-3618fd20c40e54e9e565/integrity.json",
+      "sha256": "343fe09386e93f883a1ee3809f47b40d2be801c17a61101aea8322f9198d9722"
+    },
+    {
+      "bytes": 3473,
+      "path": "evaluation/executions/eval-3618fd20c40e54e9e565/report.md",
+      "sha256": "7f57fdd3b4ef7364c710e874efa168b2481d62be1af0cfaebf28ef0e5b8a758b"
+    },
+    {
+      "bytes": 55389,
+      "path": "evaluation/executions/eval-3618fd20c40e54e9e565/results.json",
+      "sha256": "3a76764b90e33b82078c894fa4ee7431ff515ec86f35a244d4922000cc3c2be0"
+    },
+    {
+      "bytes": 3609,
+      "path": "evaluation/executions/eval-8f946bb8ae73276a58a7/integrity.json",
+      "sha256": "9cb249f55b8ff109c36288c09c51907eec95019799b04941b932cef5a5d5054e"
+    },
+    {
+      "bytes": 3473,
+      "path": "evaluation/executions/eval-8f946bb8ae73276a58a7/report.md",
+      "sha256": "c05ae7f0e7bc5143c4b0feb0ecb4a636b3c3bb294b7a7f763dcc0b9e1234a9ee"
+    },
+    {
+      "bytes": 55389,
+      "path": "evaluation/executions/eval-8f946bb8ae73276a58a7/results.json",
+      "sha256": "42bab231181c81a678f646b7599ecd1535af1f4f734df364ee4403f03c8d351d"
+    },
+    {
+      "bytes": 7067,
+      "path": "evaluation/executions/eval-a1a482662e93df9a151b/integrity.json",
+      "sha256": "d357ee1c03cf04bcf6d10274c6af27ccb1f65d6fb8332a8b0c16e4e515ac7a2f"
+    },
+    {
+      "bytes": 5274,
+      "path": "evaluation/executions/eval-a1a482662e93df9a151b/report.md",
+      "sha256": "3ff9845de87713b6ea8d1bae595823e5cc0a0cb2c67268f1f419d94c4573ff6d"
+    },
+    {
+      "bytes": 3121127,
+      "path": "evaluation/executions/eval-a1a482662e93df9a151b/results.json",
+      "sha256": "b77389c28cd01535b1655f0e687c61c06036782afb6504a79e067f78bcc20da3"
+    },
+    {
+      "bytes": 3609,
+      "path": "evaluation/executions/eval-adfb4966bc96bcec6503/integrity.json",
+      "sha256": "84a5fb7e86c0a1912a184dc22facaff3aa8336e56f72b1076358113a22d77641"
+    },
+    {
+      "bytes": 3473,
+      "path": "evaluation/executions/eval-adfb4966bc96bcec6503/report.md",
+      "sha256": "1bd14496ad8be5aa6242cb9101b2b050ad05c91e1913151ab4ba990070228cc1"
+    },
+    {
+      "bytes": 55389,
+      "path": "evaluation/executions/eval-adfb4966bc96bcec6503/results.json",
+      "sha256": "a7e82ecbbfc2074b1ac0b5aa517bf722761194abf857cdf31be271841b514cae"
+    },
+    {
+      "bytes": 7067,
+      "path": "evaluation/executions/eval-b1af1bdfdf83d1010d3c/integrity.json",
+      "sha256": "73f42537fb41b24646d4d1f99648a4fcad5af053bc7e2f5dd0dc3162884963a8"
+    },
+    {
+      "bytes": 5274,
+      "path": "evaluation/executions/eval-b1af1bdfdf83d1010d3c/report.md",
+      "sha256": "eff600c1c90095234bb2e6819e60aa3484d7472fffc190a6cfd7f5ca6f421bac"
+    },
+    {
+      "bytes": 3121126,
+      "path": "evaluation/executions/eval-b1af1bdfdf83d1010d3c/results.json",
+      "sha256": "9bc8ce7d4b85a0ac658607a947603cc35e52653ca1d345ea03d84aeea6d542a3"
+    },
+    {
+      "bytes": 3609,
+      "path": "evaluation/executions/eval-d230e81ccf60fa3d0489/integrity.json",
+      "sha256": "815fe417daddbbe212896a517a393eafc8ff9fc643cc1e8c62c31bc54c04badf"
+    },
+    {
+      "bytes": 3473,
+      "path": "evaluation/executions/eval-d230e81ccf60fa3d0489/report.md",
+      "sha256": "26d364bc4cee0869703f9a21037fedb68efbb8da3301de1eda36f3265a1204f1"
+    },
+    {
+      "bytes": 55389,
+      "path": "evaluation/executions/eval-d230e81ccf60fa3d0489/results.json",
+      "sha256": "bededce3e24c25f7ddddbf1154cf2b5ddbf79fd486528990b26c16b61672db96"
+    },
+    {
+      "bytes": 3478,
+      "path": "evaluation/executions/index.json",
+      "sha256": "fbffabc37fb2da5d6612747ecc653461ba60784d8b289cc794c849daf863c96d"
+    },
+    {
+      "bytes": 845,
+      "path": "evaluation/historical-baselines.json",
+      "sha256": "d3418e4873d93c67314fe23ddaab4fda268e0d47af4ecade257a5f2bb495fbb9"
+    },
+    {
+      "bytes": 5585,
+      "path": "evaluation/historical/answer-schema-proposal.json",
+      "sha256": "698a2b10cff309e6224a9794aaa0c21ea123f094acccdc2224587f4c4168bd76"
+    },
+    {
+      "bytes": 649549,
+      "path": "evaluation/historical/research-360-questions.json",
+      "sha256": "ff8e8f8f7ae66c123136041807b9b22ca86d34ef3982a4f60a2c9d4fd10659df"
+    },
+    {
+      "bytes": 656046,
+      "path": "evaluation/historical/research-evaluation-plan.json",
+      "sha256": "089fc1825603cfa0820fd5f684f911f804edf4dd8ce09fc0a2300aec1a1720ba"
+    },
+    {
+      "bytes": 765,
+      "path": "evaluation/index.html",
+      "sha256": "ab6b4efb5061256c14cdd5e3654ffcdf46595901d340aef9fcea1baf66d76ba7"
+    },
+    {
+      "bytes": 684,
+      "path": "evaluation/index.md",
+      "sha256": "387d9b51c2acce7e24ddbc477820ed8418c5f88d7d0c9d156563f6792dcee227"
+    },
+    {
+      "bytes": 2010667,
+      "path": "evaluation/questions.json",
+      "sha256": "03e262c1a8fbd9bb9b96f95d1becd15e9b7c0e6f5ce67392e04babcf03df6d8c"
+    },
+    {
+      "bytes": 2010667,
+      "path": "evaluation/release-questions.json",
+      "sha256": "03e262c1a8fbd9bb9b96f95d1becd15e9b7c0e6f5ce67392e04babcf03df6d8c"
+    },
+    {
+      "bytes": 1182,
+      "path": "governance/index.md",
+      "sha256": "84e5ed9ba68e4541e250701cc30c4242835a135241f038be392c6a30bdad5974"
+    },
+    {
+      "bytes": 765,
+      "path": "index.html",
+      "sha256": "1c0a03a5ea7ebd247737f0d79cf860a7307aceb0f5bab245a0c02e3e194eab7c"
+    },
+    {
+      "bytes": 902,
+      "path": "index.md",
+      "sha256": "d0b0d70e3b039a5c1c076d50b31cf5cc7dd083231c052ff20c6cef8ee16b0de9"
+    },
+    {
+      "bytes": 465,
+      "path": "log.md",
+      "sha256": "7d415dfa5af84b7e71d0fb057c21f74929e9455225f93bd937011c50bd3ca85e"
+    },
+    {
+      "bytes": 3876,
+      "path": "okf-bundle.jsonld",
+      "sha256": "2ae869495187195ddc59dd1bc9aca3326ff6bd85c181bfbf6c105b9a0b5aaabe"
+    },
+    {
+      "bytes": 1435,
+      "path": "okf-bundle.yamlld",
+      "sha256": "e6d178cb9d53c481c3c8717a9c1e8f53d919a3f308ce88c4937e17a379f0f3b7"
+    },
+    {
+      "bytes": 109578,
+      "path": "okf-explorer.json",
+      "sha256": "c50c59a467e123f336e46d6bb71ae593a1edc7a6c330b7faee039e5f4dbaef20"
+    },
+    {
+      "bytes": 2964,
+      "path": "ontology/competency-questions.json",
+      "sha256": "45233208787665105d2f32d63bbbd5bb8fb88441be59542c305dcca785d99a5a"
+    },
+    {
+      "bytes": 3027,
+      "path": "ontology/context.jsonld",
+      "sha256": "368f8a4a8794b90cc667b1503f4b07a5f1ec5a0f478c891b2434d90d9c8ee64e"
+    },
+    {
+      "bytes": 3958,
+      "path": "ontology/examples.jsonld",
+      "sha256": "60c463e014a5447b8eadd871f864e0ced512b91fdaf8a8bd36be3fe85f9a059f"
+    },
+    {
+      "bytes": 1075,
+      "path": "ontology/index.md",
+      "sha256": "bb616d1fa80435c766b1ef86f0073edaecf2bfebe0368ecd59fdca3e30671be3"
+    },
+    {
+      "bytes": 3661,
+      "path": "ontology/shapes.ttl",
+      "sha256": "8966124578513e45f3fb3f39d0019899d63657c7814446eda2fc4d1b7212127e"
+    },
+    {
+      "bytes": 5291,
+      "path": "ontology/standards.json",
+      "sha256": "04aa2b869763f3f974eeccea1e7b5a1991b69e2d47df6e42f71ca3313d072fe1"
+    },
+    {
+      "bytes": 3269,
+      "path": "ontology/vocabulary.ttl",
+      "sha256": "da24d9069ef0e458e5e43372989a05e7b2f2fdc0add6d98ff3b1281889127a03"
+    },
+    {
+      "bytes": 3126,
+      "path": "personas/index.md",
+      "sha256": "bc048705ebe387193b88f42ebc71aa3ae2f412a4056bd47fa777fb0cdf69ab09"
+    },
+    {
+      "bytes": 687,
+      "path": "personas/p01-barrister.md",
+      "sha256": "d69e8d33b83187c24ad5f1f1facf3b6defb9e7b03af35addec08688b2ceeee55"
+    },
+    {
+      "bytes": 641,
+      "path": "personas/p02-pupil-barrister.md",
+      "sha256": "71eeed76e2beec07e82d12e6b7174a6dd2511c4b532f70584d586cee29bc6bc2"
+    },
+    {
+      "bytes": 704,
+      "path": "personas/p03-barristers-clerk.md",
+      "sha256": "f9c9fd7f047df487d5e8752068914a0dd3a719af3db69ffcd01105ee54f0ac0a"
+    },
+    {
+      "bytes": 684,
+      "path": "personas/p04-solicitor.md",
+      "sha256": "439c8518cc2b3b1c3749887de15f1621f5a6689303ffc50ce04ac3e555c7c888"
+    },
+    {
+      "bytes": 647,
+      "path": "personas/p05-trainee-solicitor.md",
+      "sha256": "bd73833d8445295070c7b5e7ae8e4745101b3cd381990d683e7329707300ef76"
+    },
+    {
+      "bytes": 613,
+      "path": "personas/p06-paralegal.md",
+      "sha256": "afd706c1647d22ffd65088a4f80ef1db38d179f94ff1785c2e7c5098856974ff"
+    },
+    {
+      "bytes": 682,
+      "path": "personas/p07-judge.md",
+      "sha256": "fc47dba8f931f982ac241840633d5671e71f813a5c861c94c01adbc1973d3b90"
+    },
+    {
+      "bytes": 651,
+      "path": "personas/p08-tribunal-member.md",
+      "sha256": "a36717bef9e076311187c4e7db10211a6ffdad82981e5de5999159e8c13ca9d7"
+    },
+    {
+      "bytes": 632,
+      "path": "personas/p09-judicial-assistant.md",
+      "sha256": "282e536994c6fa909fe97da3691a573e134b97844b0c189e740cc6bf4c7a6d6e"
+    },
+    {
+      "bytes": 653,
+      "path": "personas/p10-prosecutor.md",
+      "sha256": "b19f529fbc9a4e520d47c1a45560700281e8fb8f18f2638d20f58eb0f9bc1f8e"
+    },
+    {
+      "bytes": 651,
+      "path": "personas/p11-defence-practitioner.md",
+      "sha256": "a32e7310bf3faad109e5bfd56604b1ee21dc34e2f2f9668cd8b6efebb9317fef"
+    },
+    {
+      "bytes": 725,
+      "path": "personas/p12-government-lawyer.md",
+      "sha256": "e5cce02c7b5228aed1e473a38620b291ed4af07242d0b663648e53bf3149bea7"
+    },
+    {
+      "bytes": 716,
+      "path": "personas/p13-parliamentary-counsel.md",
+      "sha256": "ec55c99ecdb2f72aa0cd1f67748d340fc45a412ba6ba07cbdb731abf76753127"
+    },
+    {
+      "bytes": 645,
+      "path": "personas/p14-legislator.md",
+      "sha256": "bcb6f59131f3a74dd2e0adbc893827692413d0f3510f5b8d7af5ac2b39d92190"
+    },
+    {
+      "bytes": 712,
+      "path": "personas/p15-policy-official-or-bill-team.md",
+      "sha256": "f8544e1dad45f28c2c732b90ddadc631da61b77b4d10c2b185506355035da0f0"
+    },
+    {
+      "bytes": 653,
+      "path": "personas/p16-regulator.md",
+      "sha256": "9258577c843a9c92538f01e3dedc24d2191cd680fcb2145dbc51ad569db340f7"
+    },
+    {
+      "bytes": 712,
+      "path": "personas/p17-inspector-or-enforcement-officer.md",
+      "sha256": "a951a4c4164a985b04d730380378ab900a6fb4efe80f9e8b2c13ff4854d736f2"
+    },
+    {
+      "bytes": 675,
+      "path": "personas/p18-police-or-investigator.md",
+      "sha256": "d25e14bf70746f59f88924bca4c8547df545da423c2b5a90bf0e910b0a1a7097"
+    },
+    {
+      "bytes": 713,
+      "path": "personas/p19-local-authority-lawyer.md",
+      "sha256": "f46aedfa62a99a616b23c40c0adad5150bfe52a8a1087f68b074958899d841dd"
+    },
+    {
+      "bytes": 767,
+      "path": "personas/p20-local-authority-operational-officer.md",
+      "sha256": "54043fcc8b7728252ecebe13ff0c7cf50fd6f900d632d443a51dd837ae731167"
+    },
+    {
+      "bytes": 664,
+      "path": "personas/p21-in-house-counsel.md",
+      "sha256": "14f856bc047cf34144123f786be77b702c277ad3839a4b8a7651b04aa3eed0cf"
+    },
+    {
+      "bytes": 751,
+      "path": "personas/p22-compliance-risk-or-governance-professional.md",
+      "sha256": "0d1260cf1a59e1a45fa1645fd89cd881d41cbbcaccdd68b93bd56c176376a3f4"
+    },
+    {
+      "bytes": 666,
+      "path": "personas/p23-legal-aid-or-advice-worker.md",
+      "sha256": "c7390d432dfd1c86e31059c9e9aa2fd3509d5146f83a398596a798f6adbbb2fc"
+    },
+    {
+      "bytes": 738,
+      "path": "personas/p24-civil-society-or-human-rights-advocate.md",
+      "sha256": "cd6ae1e262883a92a67a220394714bb1018ee91d52e0e3a4f2d006c2eff763cc"
+    },
+    {
+      "bytes": 628,
+      "path": "personas/p25-mediator.md",
+      "sha256": "d9814a316d69842a42b30165f3d9930ce69b734b235b9f280f51dd3a9b533aed"
+    },
+    {
+      "bytes": 606,
+      "path": "personas/p26-arbitrator.md",
+      "sha256": "b52e99ee3e50be687f63cc792b5622731bc7c25eef0d444f9a80d9db8eebd95b"
+    },
+    {
+      "bytes": 671,
+      "path": "personas/p27-legal-academic.md",
+      "sha256": "40e856e30dd9e6673f0e36bea21c83ac52b6852d9365a977675485c98b747108"
+    },
+    {
+      "bytes": 699,
+      "path": "personas/p28-empirical-legal-researcher.md",
+      "sha256": "94e65b3b362d10d9f7dade356aef7115575300b5214f54277c7afd4da2413fb4"
+    },
+    {
+      "bytes": 635,
+      "path": "personas/p29-law-student.md",
+      "sha256": "8f38ff5a949262665c9a0d0d98128141e6b02e49f6b676bb9b5a7f950a609f59"
+    },
+    {
+      "bytes": 757,
+      "path": "personas/p30-librarian-archivist-or-knowledge-manager.md",
+      "sha256": "3e97fb4a543e850b7455d25dd445c13712d19a5478cc6586d1617403aa63b8f9"
+    },
+    {
+      "bytes": 724,
+      "path": "personas/p31-journalist-or-fact-checker.md",
+      "sha256": "35c140ad0567b78a1915e5974d20dffc146016896b2dbcdd675ecd82c7de2da2"
+    },
+    {
+      "bytes": 701,
+      "path": "personas/p32-litigant-in-person.md",
+      "sha256": "b9e0b412d94ce9df55a026ad4ff5baf6950d8533d4ffc5cc0b602e0991dc8f0b"
+    },
+    {
+      "bytes": 694,
+      "path": "personas/p33-member-of-the-public.md",
+      "sha256": "1137e99c593198eb2e8b6550bf1d0bd90bc1702e1feaa22434513e3419c8c541"
+    },
+    {
+      "bytes": 699,
+      "path": "personas/p34-legislative-or-legal-data-engineer.md",
+      "sha256": "cbb93cc92ee243bd80fabcb98cef8481b9fe236eddbec875b112e89ce628c49f"
+    },
+    {
+      "bytes": 711,
+      "path": "personas/p35-ontology-or-knowledge-graph-designer.md",
+      "sha256": "2953fbf0378e488203c42a4b6646a32402ad9c04d0e39824fc2d73273ab1dc1b"
+    },
+    {
+      "bytes": 702,
+      "path": "personas/p36-ai-agent-developer-or-operator.md",
+      "sha256": "4794b4f17dd71d6378169d414266ab379c9ec75b2ee72327ed52c529775c08cb"
+    },
+    {
+      "bytes": 698,
+      "path": "personas/p37-ai-auditor-or-evaluator.md",
+      "sha256": "7ee8a58c0e9f5599714fc55b457bc5df49802d8cca03e9308c5860334320c4a1"
+    },
+    {
+      "bytes": 821,
+      "path": "personas/p38-accessibility-translation-or-plain-language-specialist.md",
+      "sha256": "f7aa708f1f54d40e3ed6c6d43a520ff955b1049274f0fae4c9e2322c7540eb84"
+    },
+    {
+      "bytes": 5988,
+      "path": "research/adversarial-audit.json",
+      "sha256": "e6605d606ca31f0a6ae8b697593110c2a8567fdb089cf1a1277a86d0b59ff26b"
+    },
+    {
+      "bytes": 5585,
+      "path": "research/answer-schema-proposal.json",
+      "sha256": "698a2b10cff309e6224a9794aaa0c21ea123f094acccdc2224587f4c4168bd76"
+    },
+    {
+      "bytes": 8312,
+      "path": "research/architecture-adrs.json",
+      "sha256": "eefde445a0f3617e2de0a930a2af7b2e380348b6f43525ee0850b7cc787d62ce"
+    },
+    {
+      "bytes": 4896,
+      "path": "research/coverage-ledger.example.json",
+      "sha256": "4d1fe44bff59402a818c7379fc6a269b19c51567a99bdf2f87c49773776555c2"
+    },
+    {
+      "bytes": 9447,
+      "path": "research/coverage-ledger.schema.json",
+      "sha256": "ec3eb9e2073cd8df59154ddd3a8593a0a0f6dae4961e99193c46d75fed7f19a3"
+    },
+    {
+      "bytes": 10511,
+      "path": "research/gap-register.json",
+      "sha256": "70cd6d804d2242f00d90aae14909f5728a7e3030986c5d37a6d652ebadcdf113"
+    },
+    {
+      "bytes": 8741,
+      "path": "research/integrity.json",
+      "sha256": "3f597c1d749d5f0cfd81dcf35c5c55ead7292e424fb6c2a4f455bbf3671f38af"
+    },
+    {
+      "bytes": 18713,
+      "path": "research/legal-source-taxonomy.json",
+      "sha256": "ceb9b78308b54f925af902bb71dc1ee493801d7f1b5c7a74d32da8d0b9ee5320"
+    },
+    {
+      "bytes": 61936,
+      "path": "research/migration-backlog.json",
+      "sha256": "2c67bca7a61e7d26fbb9fc4d2f5fcf6f2c4e842a15b9d6b87300e816d84f6f35"
+    },
+    {
+      "bytes": 26716,
+      "path": "research/ontology-crosswalk.json",
+      "sha256": "36f569024ef454c639d455b76cdc82c15bdd2bc406fcff5adf8d15d55704f6ae"
+    },
+    {
+      "bytes": 240710,
+      "path": "research/persona-task-matrix.csv",
+      "sha256": "ace72686c5ff48054b2aacd3d91739359255f57dc54d558c07904ec63a495059"
+    },
+    {
+      "bytes": 516426,
+      "path": "research/persona-task-matrix.json",
+      "sha256": "966e5e89ad7dd99ba232364cae4ad50976b9ce1871bb3707d9af3c15992a92e0"
+    },
+    {
+      "bytes": 48616,
+      "path": "research/source-register.csv",
+      "sha256": "6791aad4f82736efacd9754c085df287a93f16923dc0543f55e5a8768c2922f2"
+    },
+    {
+      "bytes": 219607,
+      "path": "research/source-register.json",
+      "sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810"
+    },
+    {
+      "bytes": 9536,
+      "path": "research/traceability.json",
+      "sha256": "0a4181e580d57380c33fd8ee5490852749286e7d25d8ca391bf428a1cc7872db"
+    },
+    {
+      "bytes": 656046,
+      "path": "research/whole-law-evaluation-plan.json",
+      "sha256": "089fc1825603cfa0820fd5f684f911f804edf4dd8ce09fc0a2300aec1a1720ba"
+    },
+    {
+      "bytes": 649549,
+      "path": "research/whole-law-evaluation-questions.json",
+      "sha256": "ff8e8f8f7ae66c123136041807b9b22ca86d34ef3982a4f60a2c9d4fd10659df"
+    },
+    {
+      "bytes": 1345,
+      "path": "schemas/core-relationship-row.schema.json",
+      "sha256": "c81458b9d78607e7adbcb5f4e67b548455a2d94e38a1d5579c5d97e81bb3b995"
+    },
+    {
+      "bytes": 1413,
+      "path": "schemas/evaluation.schema.json",
+      "sha256": "2593e42c26a4c7bf6ba294315572101bda8e862a5ecbd2c179f71f19ca6ebf94"
+    },
+    {
+      "bytes": 11776,
+      "path": "schemas/federation.schema.json",
+      "sha256": "e8e775d80f32770ff6793935e445d0002731e1ef0c76f3874320c2a57cae0c33"
+    },
+    {
+      "bytes": 1982,
+      "path": "schemas/model-enrichment-run.schema.json",
+      "sha256": "c57e8edc91babc948852e94fd6fecbe813f89e26ae00c4bc5bee2fe1a4dd884b"
+    },
+    {
+      "bytes": 1363,
+      "path": "schemas/provider-datapack.schema.json",
+      "sha256": "5710786b90afea23162054ae939960215fa800dd8a2b015d9b9432197580f799"
+    },
+    {
+      "bytes": 3281,
+      "path": "schemas/relationship-assertion.schema.json",
+      "sha256": "4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006"
+    },
+    {
+      "bytes": 1291,
+      "path": "schemas/source-constraint-ledger.schema.json",
+      "sha256": "30a11da054d6bde9e2e5ebf5407ed7b7eb7b5b331e06465d4f847ac83cdcffaa"
+    },
+    {
+      "bytes": 3865,
+      "path": "source-classes/index.md",
+      "sha256": "ea6f9eacbc94e64f4bd6671c970c561a6416252a0c8a8a468ea8c8b9d625c709"
+    },
+    {
+      "bytes": 971,
+      "path": "source-classes/sc01-primary-legislation.md",
+      "sha256": "0d994a2369a4fc16b41d79547bdf5945cf3a307c53c5875b88b2d87bb1dfb0a6"
+    },
+    {
+      "bytes": 982,
+      "path": "source-classes/sc02-secondary-and-delegated-legislation.md",
+      "sha256": "cb4f92f4b3a78c19255f4d14fbc9671885b35695608f0dfb4c86afb1ff27f62b"
+    },
+    {
+      "bytes": 928,
+      "path": "source-classes/sc03-draft-legislation-and-draft-instruments.md",
+      "sha256": "98222ce223a2afd23b21b0d21c4659e3846cdf0cb4dce2f0c48192e3e68ef87c"
+    },
+    {
+      "bytes": 980,
+      "path": "source-classes/sc04-historical-and-revised-legislation-versions.md",
+      "sha256": "7c9d76d51eaa50cf2c259767f013cca976e606a015804e6a5ea307324401ac80"
+    },
+    {
+      "bytes": 992,
+      "path": "source-classes/sc05-amendment-commencement-repeal-and-extent-effects.md",
+      "sha256": "f8a06e03f2ced152fc48e7f4c35e010acad1a4f77d235cd0eb01bdf29d32676a"
+    },
+    {
+      "bytes": 990,
+      "path": "source-classes/sc06-retained-and-assimilated-eu-law.md",
+      "sha256": "1e3f82f91148a7bb5e9bd0f98442a3b287aea0f123284d88a5d359f0ca28d43f"
+    },
+    {
+      "bytes": 924,
+      "path": "source-classes/sc07-local-and-private-legislation.md",
+      "sha256": "1f05257cb58e2c514ca08b66e47d3e70f635c6c1df7b8c154e7bf55c555226f6"
+    },
+    {
+      "bytes": 961,
+      "path": "source-classes/sc08-treaties-and-international-instruments.md",
+      "sha256": "f680b608494b20f9dd581efbc6d5b5b291c0389cba3b4fb76967e48be7441ef4"
+    },
+    {
+      "bytes": 929,
+      "path": "source-classes/sc09-court-judgments.md",
+      "sha256": "e851b3b0977bb823fae00bffb4cf6c04106972765ba8afc2a939147a303ec37f"
+    },
+    {
+      "bytes": 905,
+      "path": "source-classes/sc10-tribunal-decisions.md",
+      "sha256": "3597fc7e9bf672fe283648ee45115149f6e420c5c04f4062dfc9fbf495a4e86c"
+    },
+    {
+      "bytes": 968,
+      "path": "source-classes/sc11-orders-opinions-and-separate-reasons.md",
+      "sha256": "fb913b337a1ee8d251aa918088329dcb5d2401d54ac0315fe874c73565995205"
+    },
+    {
+      "bytes": 911,
+      "path": "source-classes/sc12-neutral-and-report-citations.md",
+      "sha256": "db35b50f20cbdfe941eb7549ca3d9bac84ee050cadbcf39ff88218d98a9fce58"
+    },
+    {
+      "bytes": 1013,
+      "path": "source-classes/sc13-precedent-citation-and-judicial-treatment.md",
+      "sha256": "054fb6616d8c9c0f03465721a83b15d91fc4de333d85a8ed78f3d3fe9c1d412d"
+    },
+    {
+      "bytes": 941,
+      "path": "source-classes/sc14-court-and-tribunal-reference-data.md",
+      "sha256": "5994f05546b32a9d6e8cb821909d31c45701281ac42599cb28f1f03f9efee774"
+    },
+    {
+      "bytes": 872,
+      "path": "source-classes/sc15-court-and-tribunal-rules.md",
+      "sha256": "8ba3b8ad4f68adf21fa8676e60eb55f59aa65bade1d0ed53f33d41d735ed6383"
+    },
+    {
+      "bytes": 946,
+      "path": "source-classes/sc16-practice-directions-and-protocols.md",
+      "sha256": "3ecb518b5c1f5116fe7782f15c030ecc6d2d85af9c717ff4016553b3158672d6"
+    },
+    {
+      "bytes": 941,
+      "path": "source-classes/sc17-forms-fees-deadlines-and-procedural-guidance.md",
+      "sha256": "f100d1f8495d849b667c3a386ae0678923d62788bbe36fe8d3c0f56707518fd5"
+    },
+    {
+      "bytes": 891,
+      "path": "source-classes/sc18-sentencing-guidelines.md",
+      "sha256": "2f69e23c93cf53c75c5ad3302b348f6db53938d4bc1d0a7dbc3ec48656556bc5"
+    },
+    {
+      "bytes": 888,
+      "path": "source-classes/sc19-prosecution-and-enforcement-guidance.md",
+      "sha256": "d08caa729d65579d0376a8bc222c3941dc2dabf5b696dec21afecf7da841bfb0"
+    },
+    {
+      "bytes": 971,
+      "path": "source-classes/sc20-regulatory-handbooks-and-rules.md",
+      "sha256": "e02a0a92b86e49ac4f2d7d7712767a60fcc5920a6128363e0ab1f666d43e416a"
+    },
+    {
+      "bytes": 999,
+      "path": "source-classes/sc21-regulatory-decisions-and-enforcement-notices.md",
+      "sha256": "3160d69804f8011bc9cc997a3fc677f34aafb0840c3595c6f57726f301c11dd2"
+    },
+    {
+      "bytes": 923,
+      "path": "source-classes/sc22-codes-of-practice-and-statutory-guidance.md",
+      "sha256": "e8fba3ee1aedf0552ce593aa0f4202ae2a5a95c9b651fed9e2cfb8bd32ccb6a1"
+    },
+    {
+      "bytes": 937,
+      "path": "source-classes/sc23-ombudsman-and-adjudicator-decisions.md",
+      "sha256": "95b79892b60dd8c4327274004d3e46547ab7d0fe1852ee5a74eb18204c3f2c0a"
+    },
+    {
+      "bytes": 933,
+      "path": "source-classes/sc24-parliamentary-materials-and-hansard.md",
+      "sha256": "1f430c542e88a0109400efe3c02a70c73e4eec7a418d06edb773ef9d167fc329"
+    },
+    {
+      "bytes": 948,
+      "path": "source-classes/sc25-explanatory-notes-and-impact-assessments.md",
+      "sha256": "a69323e0863f5ba6458afda4bda600680e1abce95ce785840384f50de43f8c16"
+    },
+    {
+      "bytes": 936,
+      "path": "source-classes/sc26-law-reform-publications.md",
+      "sha256": "08dc52ea2da2e5affad4b99234653c8cb4460812e4f7634ce7993353eb35dd00"
+    },
+    {
+      "bytes": 971,
+      "path": "source-classes/sc27-public-inquiries-and-official-investigations.md",
+      "sha256": "93f7f2b180b07d4a1ab3439c60c75ad0163c5d1ca7c7c6886136ae39236524a1"
+    },
+    {
+      "bytes": 954,
+      "path": "source-classes/sc28-legal-aid-and-public-legal-assistance.md",
+      "sha256": "e27a8a9b92a446a013b9145e56b7954f5ab4170ee858f11db890fffd56b6dd7d"
+    },
+    {
+      "bytes": 950,
+      "path": "source-classes/sc29-public-notices-and-official-gazettes.md",
+      "sha256": "9429137ba7d36317d809096709dd4b93e904473ba7b215ce6c702cb76c213b56"
+    },
+    {
+      "bytes": 1037,
+      "path": "source-classes/sc30-jurisdiction-institution-and-public-body-reference-data.md",
+      "sha256": "252be8a41cccd641cf300fb90bfb0e1f87286e2ee5fda6617c1cc2c87a67b0ae"
+    },
+    {
+      "bytes": 965,
+      "path": "source-classes/sc31-legal-service-listings-and-hearing-data.md",
+      "sha256": "9bd6c5d10dc1ac16cbea16c5dedc78ee1c00dff24f72ae481406afeb972cc0d1"
+    },
+    {
+      "bytes": 977,
+      "path": "source-classes/sc32-european-union-legal-sources.md",
+      "sha256": "40b6c4446ea1addba88d8e949ef6587ef8d4d901776bbd33f9f59dbf36354d1f"
+    },
+    {
+      "bytes": 996,
+      "path": "source-classes/sc33-european-human-rights-and-international-decisions.md",
+      "sha256": "3cd758d45cbe62d2a9a09499927e96653127b4321c25a9b3c30bc5426eb02802"
+    },
+    {
+      "bytes": 1000,
+      "path": "source-classes/sc34-professional-rules-and-legal-services-regulation.md",
+      "sha256": "fdda091a82a649e37ab14fc89395501e4008ffb18691b81313911f66eb6d025a"
+    },
+    {
+      "bytes": 988,
+      "path": "source-classes/sc35-archival-legal-records-and-web-archives.md",
+      "sha256": "7eb89ab06f9af11cc0fa71dce8d18a4674405f57f9a5beeb30adf048878d0680"
+    },
+    {
+      "bytes": 915,
+      "path": "source-classes/sc36-secondary-reporting-and-commentary.md",
+      "sha256": "0733fb1b58cd15515c181f11d03426519a5aa5c6276929e6e0b576e712c854c2"
+    },
+    {
+      "bytes": 9860,
+      "path": "sources/index.md",
+      "sha256": "4115652cc404c6ce609c0025f87a81b1b199608c98eb8affc59292c1b7b701a6"
+    },
+    {
+      "bytes": 1779,
+      "path": "sources/src001-legislation-gov-uk-work-catalogue-and-atom-feeds.md",
+      "sha256": "06aaaf5c111b5677dfbf2de5649596f7058d4a754578673112aa91a9982a603a"
+    },
+    {
+      "bytes": 1639,
+      "path": "sources/src002-legislation-gov-uk-clml-and-selected-passage-resources.md",
+      "sha256": "1fd2df99de358e6270a62ef797c0544d93f314109f2277a818415cdff1dc19b4"
+    },
+    {
+      "bytes": 1601,
+      "path": "sources/src003-legislation-gov-uk-effects-feeds.md",
+      "sha256": "f44dfd3926c75475db7c8af7f4a37721866d26b3adee5abb9c917bad4adb417d"
+    },
+    {
+      "bytes": 1533,
+      "path": "sources/src004-legislation-gov-uk-publication-log.md",
+      "sha256": "818cc9f9c39528ad030c3636d7acd2d02646e2269dd72e9806fda82bf8561d2e"
+    },
+    {
+      "bytes": 1596,
+      "path": "sources/src005-legislation-gov-uk-associated-documents-and-impact-assessments.md",
+      "sha256": "c880b497039e7b43e95bb3dd943f26d7f48509f9f937af581ec5239e2e5f825e"
+    },
+    {
+      "bytes": 1480,
+      "path": "sources/src006-legislation-gov-uk-draft-legislation-catalogue.md",
+      "sha256": "6e83f93f4abfedb59087fa64398c2a782a0326e20484cea92b0c736756f5453b"
+    },
+    {
+      "bytes": 1566,
+      "path": "sources/src007-legislation-gov-uk-research-bulk-data-and-sparql-surfaces.md",
+      "sha256": "c47cdc3940b35bfd27d6d24561cec813bf2c5e2c59c72af88d97bba82e2d4306"
+    },
+    {
+      "bytes": 1710,
+      "path": "sources/src008-legislation-gov-uk-eu-origin-retained-and-assimilated-law.md",
+      "sha256": "731a2e7a7114fd022422d1ed74e8f9dbed887721521887b451b46d35d47ca572"
+    },
+    {
+      "bytes": 1826,
+      "path": "sources/src009-find-case-law-public-service.md",
+      "sha256": "e0386dda91a2500d7db71e337356fb20d3e8adf0d59c01ad8fb1d895d74747d3"
+    },
+    {
+      "bytes": 1720,
+      "path": "sources/src010-find-case-law-api-and-computational-analysis-licence.md",
+      "sha256": "f31d937127edde338737064dcf7ecf6a3eafa190d92a50cbd99fd7eb001f21b0"
+    },
+    {
+      "bytes": 1524,
+      "path": "sources/src011-find-case-law-supreme-court-collection.md",
+      "sha256": "21683af5901668d7ad7efbc7f52cce807c3fb8b03ebd8e0d9aca40b4c411ad31"
+    },
+    {
+      "bytes": 1465,
+      "path": "sources/src012-find-case-law-lower-court-and-tribunal-collections.md",
+      "sha256": "8298fb8d5d4598bee17ddd8db41f39fd9181e0e60fca233e5b0dd983720ad48d"
+    },
+    {
+      "bytes": 1576,
+      "path": "sources/src013-scottish-courts-and-tribunals-service-judgments.md",
+      "sha256": "d53a8cb1a203c6194b164f219782a85747d1bd26e3a4e61892d4e3cadb3672a3"
+    },
+    {
+      "bytes": 1372,
+      "path": "sources/src014-judiciary-ni-judgments.md",
+      "sha256": "56d034a7de518ec22ef220f072d9218c5251b57bf60953ea4fd8d46ae32292d9"
+    },
+    {
+      "bytes": 1509,
+      "path": "sources/src015-bailii-case-law-database.md",
+      "sha256": "bb2a863ea7a60167605504c77e0dc8cce5b0e1cc3ffdbd577b2db5ca49042d49"
+    },
+    {
+      "bytes": 1687,
+      "path": "sources/src016-uk-supreme-court-and-judicial-committee-websites.md",
+      "sha256": "759a9742580510601b6f64fce4177c17e11db2657617a23ce57cdcc8c8e080be"
+    },
+    {
+      "bytes": 1446,
+      "path": "sources/src017-the-national-archives-discovery-legal-records.md",
+      "sha256": "afe6063d84cbb8ba5d1ca3d1aeadd5659b16de093d71ece0eefe1c0c168939c0"
+    },
+    {
+      "bytes": 1743,
+      "path": "sources/src018-civil-procedure-rules-and-practice-directions.md",
+      "sha256": "8b795cb346d95f850f369d05d82a3136e0a480e5e86d655726db0fc33dc8c4c2"
+    },
+    {
+      "bytes": 1450,
+      "path": "sources/src019-criminal-procedure-rules-and-practice-directions.md",
+      "sha256": "b4da8dbd50afeb06d74382ce6a6852a6f886becb12288f6d245b64d450a25868"
+    },
+    {
+      "bytes": 1332,
+      "path": "sources/src020-family-procedure-rules-and-practice-directions.md",
+      "sha256": "b0ceb4ff0505dcc8f933032035c59d1e821300181095ef584dca069ddc4273e8"
+    },
+    {
+      "bytes": 1498,
+      "path": "sources/src021-tribunal-procedure-rules-and-practice-directions.md",
+      "sha256": "fe694c33053ae8f311a6334291788fadb9b04cd8521b59acc5201a0b78c71755"
+    },
+    {
+      "bytes": 1411,
+      "path": "sources/src022-judiciary-practice-directions-and-guidance.md",
+      "sha256": "6aef9e4c7fe438628323abb246b5979d7f2577c23feb1bb69cb2e818aebf42f5"
+    },
+    {
+      "bytes": 1471,
+      "path": "sources/src023-hmcts-forms.md",
+      "sha256": "f623a9d9078326db093333b6a526500426be40d18bd49bb978db9a8baec52c7e"
+    },
+    {
+      "bytes": 1429,
+      "path": "sources/src024-hmcts-court-and-tribunal-fees.md",
+      "sha256": "33e79b72e85649b3b05dc32d7daae90566202c08be199dd5eccb94e499dfcc92"
+    },
+    {
+      "bytes": 1676,
+      "path": "sources/src025-court-and-tribunal-hearings-service-cath-data.md",
+      "sha256": "37ed91035b7f2eef7aee319c92240f5813ade8495c19db09a0e127091a21c502"
+    },
+    {
+      "bytes": 1329,
+      "path": "sources/src026-find-a-court-or-tribunal-service.md",
+      "sha256": "0c79d5b3738bc17af8d4ca550a54c4c71b13bc8ace4d98565cc498805834c997"
+    },
+    {
+      "bytes": 1397,
+      "path": "sources/src027-sentencing-council-guidelines.md",
+      "sha256": "3b633171d05ecae1916278bd940d23dbf16c65081249ede14bc1cd5b41f76d2f"
+    },
+    {
+      "bytes": 1349,
+      "path": "sources/src028-crown-prosecution-service-legal-guidance.md",
+      "sha256": "13b93087f5db97f3a53230bc0ad38f7a460497864b68683b91ea6d72e64973c4"
+    },
+    {
+      "bytes": 1445,
+      "path": "sources/src029-copfs-prosecution-code-and-guidance.md",
+      "sha256": "e9246c56415930033698b91a7c9d2ab2c170fbb93e55944339d58809963d25c5"
+    },
+    {
+      "bytes": 1383,
+      "path": "sources/src030-public-prosecution-service-ni-code-for-prosecutors.md",
+      "sha256": "9e3eac8b80b7bc349ceab098192f7402dbe80eb2778de15c223634fddafb8ff3"
+    },
+    {
+      "bytes": 1576,
+      "path": "sources/src031-fca-handbook.md",
+      "sha256": "5f57ef0a86c5404dec7dbfa670604b4123a0f75af161fade669e7425b4fe246e"
+    },
+    {
+      "bytes": 1418,
+      "path": "sources/src032-fca-enforcement-and-notices.md",
+      "sha256": "356e5cfd406379511f5c528582797647b1d8b2f8b87a95a9d3bae1361f766315"
+    },
+    {
+      "bytes": 1500,
+      "path": "sources/src033-pra-rulebook.md",
+      "sha256": "b0c3fb41ebde58418f0b5961d2445c530032cc1026791322c2a50c9f4c38057c"
+    },
+    {
+      "bytes": 1516,
+      "path": "sources/src034-ofcom-rules-codes-and-regulatory-statements.md",
+      "sha256": "7a9f1a13e5ad2cd84af5caa5a01193a234d11fb5239d9a7253714cede4127611"
+    },
+    {
+      "bytes": 1285,
+      "path": "sources/src035-ofcom-enforcement-decisions.md",
+      "sha256": "4204ad9702cd83976eca305b9387b58c33825c3611c66817ed6ce5652c396b9c"
+    },
+    {
+      "bytes": 1441,
+      "path": "sources/src036-ico-statutory-guidance-codes-and-regulatory-guidance.md",
+      "sha256": "2aea42fb5e2ced6859710ec996153a7137768aa4027717106e1407c2e414607b"
+    },
+    {
+      "bytes": 1600,
+      "path": "sources/src037-ico-decision-notices-and-enforcement-action.md",
+      "sha256": "6f5696276de2f615e0bb5450774f6241c3d62c7168a6c0dc3043d36bec3ec96b"
+    },
+    {
+      "bytes": 1405,
+      "path": "sources/src038-competition-and-markets-authority-cases-and-decisions.md",
+      "sha256": "94b22c71e205d619d7590f9a7766b32082313eb07ba54479c6145fcd6e26cc62"
+    },
+    {
+      "bytes": 1471,
+      "path": "sources/src039-environment-agency-enforcement-and-sanctions-publications.md",
+      "sha256": "cc338734541385f7b66f03e9056abad9630d03468312b9c845586ff2ad90ca9c"
+    },
+    {
+      "bytes": 1563,
+      "path": "sources/src040-local-government-and-social-care-ombudsman-decisions.md",
+      "sha256": "73502583a8d9817ef6ff9019f1803ee7192413322e87675543487a1c0a9737e4"
+    },
+    {
+      "bytes": 1369,
+      "path": "sources/src041-parliamentary-and-health-service-ombudsman-case-decisions.md",
+      "sha256": "58b68138a44d03f13acb4d66b820b480a594d0c387025f963578e5923ef65eb9"
+    },
+    {
+      "bytes": 1484,
+      "path": "sources/src042-scottish-public-services-ombudsman-decisions-and-reviews.md",
+      "sha256": "d0d348d080019dffd6a3455544bbb3e7fef21d5c7f3cbf126b4ff9e713e36526"
+    },
+    {
+      "bytes": 1336,
+      "path": "sources/src043-northern-ireland-public-services-ombudsman-findings.md",
+      "sha256": "48d3e87630bd58e33f856fe560f7979da4ec39ef7bf10826fabf8613df0e0102"
+    },
+    {
+      "bytes": 1336,
+      "path": "sources/src044-uk-parliament-bills-service.md",
+      "sha256": "e6b7561e42e27c1fa3ebe5870c9cc64fb2f9e3ea5d23a9cc8ade7b18e07aa6e5"
+    },
+    {
+      "bytes": 1322,
+      "path": "sources/src045-hansard-official-report.md",
+      "sha256": "0604d0af6ddb84a34a439a8a8237aefd657d777f9b6f36c0a488a2baff5458a6"
+    },
+    {
+      "bytes": 1305,
+      "path": "sources/src046-uk-parliament-committees-evidence-and-reports.md",
+      "sha256": "3410baf4f864b34c373f2471939ecb4a9a4494b3da8ac2b8189c0505fd1a4f0a"
+    },
+    {
+      "bytes": 1391,
+      "path": "sources/src047-uk-parliament-statutory-instrument-tracker.md",
+      "sha256": "0cc0a5875e47f6180dbed80b3d33b41470957918e709e3395a16e76598e2c4c1"
+    },
+    {
+      "bytes": 1444,
+      "path": "sources/src048-scottish-parliament-bills-and-official-report.md",
+      "sha256": "d56e2f9086ba42363e1b75bc3dcc534e7e94209e7491b09fbba259aeffc0d06f"
+    },
+    {
+      "bytes": 1451,
+      "path": "sources/src049-senedd-cymru-legislation-and-record-of-proceedings.md",
+      "sha256": "03233341ea1aad8fe9329b161927e77dcaf8e811e25a4c18def052259b1a0074"
+    },
+    {
+      "bytes": 1506,
+      "path": "sources/src050-northern-ireland-assembly-bills-and-official-report.md",
+      "sha256": "dd9a1e685e138da77643a4e49d176cd668531f4ec48c2658156604c7fb1d0ccb"
+    },
+    {
+      "bytes": 1333,
+      "path": "sources/src051-law-commission-publications-and-projects.md",
+      "sha256": "05b93463e431c5b1dbdf067fe78a7eda2fb3943d49b5e6fafc9cafa9934c7101"
+    },
+    {
+      "bytes": 1330,
+      "path": "sources/src052-scottish-law-commission-publications.md",
+      "sha256": "a09527bfd702e08c677ef530d86a5589c050acda7154467b576001a5bae88248"
+    },
+    {
+      "bytes": 1764,
+      "path": "sources/src053-public-inquiry-reports-and-recommendation-tracking.md",
+      "sha256": "9fced3692f0beca3fadefdd63455e0273e90bd7b4b2b87dedb38e9f86a857bbc"
+    },
+    {
+      "bytes": 1581,
+      "path": "sources/src054-official-accident-investigation-reports-aaib-raib-maib.md",
+      "sha256": "8ee12c3c8388bfe5ffe1c8ee53f1995f4139296b1c55f19d38fa06b430d03701"
+    },
+    {
+      "bytes": 1619,
+      "path": "sources/src055-uk-treaties-online-and-treaty-dataset.md",
+      "sha256": "0d60a33aea37acc88a249f135301e4d21756c1909f127c09a6b44491655e1d43"
+    },
+    {
+      "bytes": 1668,
+      "path": "sources/src056-eur-lex.md",
+      "sha256": "8f470ec47c6cd8b1c93b24326f600c123a54f6f5e30bb2efa5dadfa2ce265815"
+    },
+    {
+      "bytes": 1515,
+      "path": "sources/src057-cellar-repository-and-apis.md",
+      "sha256": "76063cfeb780f47d14bd50c677f52856889a1aa157ce10e901b00a2e94483334"
+    },
+    {
+      "bytes": 1633,
+      "path": "sources/src058-hudoc-european-court-of-human-rights-database.md",
+      "sha256": "31cd02aa8c0d4bd20fd2e447d80b9645534edd71da27af56961e2b07b9f56371"
+    },
+    {
+      "bytes": 1572,
+      "path": "sources/src059-the-gazette.md",
+      "sha256": "e5765893af6b6240d77ea6c0d8fde0660bc7c512eb74f54c0075bbe9e5e7c12e"
+    },
+    {
+      "bytes": 1666,
+      "path": "sources/src060-local-authority-byelaws-and-local-legal-publications.md",
+      "sha256": "df662830fcf654f36a1aa5cdff99500ecc077c2ed7a5b69129d78629e9fdd368"
+    },
+    {
+      "bytes": 1594,
+      "path": "sources/src061-legal-aid-agency-eligibility-and-service-information.md",
+      "sha256": "b3e26134fbbf764a8e40662226679d8c5469d5b6ed240c52f3a08d8b10f40770"
+    },
+    {
+      "bytes": 1256,
+      "path": "sources/src062-scottish-legal-aid-board-information.md",
+      "sha256": "be3498c556d59bf539dab7a87fdff28fd495093b367e9e16d1ab4084903cfbc7"
+    },
+    {
+      "bytes": 1396,
+      "path": "sources/src063-legal-aid-and-public-legal-assistance-in-northern-ireland.md",
+      "sha256": "bbaa32d8c350ffe7d570cc7eb19ba124191ca78c08122e37f97ad030d29731d4"
+    },
+    {
+      "bytes": 1871,
+      "path": "sources/src064-gov-uk-and-devolved-public-legal-guidance.md",
+      "sha256": "b53991b37d07abab897e371933667fd13f2faf679750e04aceb8c48328942d55"
+    },
+    {
+      "bytes": 1506,
+      "path": "sources/src065-bar-standards-board-handbook-and-decisions.md",
+      "sha256": "b08f8d080d7122fb76852fc1a6f09fe0c64a2f471428629ada1566e5f21fdbf9"
+    },
+    {
+      "bytes": 1583,
+      "path": "sources/src066-sra-standards-and-regulations-and-decisions.md",
+      "sha256": "5759ec84f87a9f0103f8b7ad4357e6a3381feaa2e94f2b487d807b1d08f002d3"
+    },
+    {
+      "bytes": 1550,
+      "path": "sources/src067-judicial-and-tribunal-office-reference-sources.md",
+      "sha256": "3a86a60726893ac39a400d1431ac7107fbf8d9c5d6ea69b278075d19892977f1"
+    },
+    {
+      "bytes": 1541,
+      "path": "sources/src068-official-law-reports-and-iclr-platform.md",
+      "sha256": "828f011979f9408e9826a3e8d43fc712bfecd0c0718f7175b1f839a5c16f6c61"
+    },
+    {
+      "bytes": 1522,
+      "path": "sources/src069-westlaw-uk-and-lexis-legal-research-services.md",
+      "sha256": "f86e6453c4c08b6a8423e684a19dfe8a1958f37887553a31dad8e50128c7cad1"
+    },
+    {
+      "bytes": 1381,
+      "path": "sources/src070-uk-web-archive-legal-and-government-collections.md",
+      "sha256": "d826d20afa8799705b9c910bcc886e228cfec6dc711cb7213b9de8e9bb41b985"
+    },
+    {
+      "bytes": 1791,
+      "path": "sources/src071-devolved-government-statutory-guidance-and-regulatory-publications.md",
+      "sha256": "90bf4856f34458eab8de8280a087f1f06b8e64e192385f88a31594eea56ba554"
+    },
+    {
+      "bytes": 1498,
+      "path": "sources/src072-official-public-body-register-and-organisation-data.md",
+      "sha256": "991396a4d898057196baa934a8e906b3c331d2418211dc3ecc3e0b2253e616ad"
+    },
+    {
+      "bytes": 2850,
+      "path": "tasks/index.md",
+      "sha256": "e2fab619174cd8b0697955451369a62ce5f8fa23bb5aa41dd67e0974c5ecac46"
+    },
+    {
+      "bytes": 1164,
+      "path": "tasks/t01-locate-controlling-authority.md",
+      "sha256": "ecfee3459f125f736b2e92bed81ec059e923b43752acfb10f54559ecf02bc6c8"
+    },
+    {
+      "bytes": 1066,
+      "path": "tasks/t02-determine-whether-law-is-in-force.md",
+      "sha256": "48b1848ddb01ff39d7fc02f586df56a7bdef2e6d78d9af852cbea77090bd008e"
+    },
+    {
+      "bytes": 1024,
+      "path": "tasks/t03-point-in-time-and-historical-research.md",
+      "sha256": "e536477654ca45572fb0d17849e5ddbb60490c899ffe8c12189c15321f47245c"
+    },
+    {
+      "bytes": 1079,
+      "path": "tasks/t04-territorial-extent-and-jurisdiction.md",
+      "sha256": "1d71177578358073f5e03bc533447a2fa444eeaa383fd5c9569dc41e8b88a6d1"
+    },
+    {
+      "bytes": 1062,
+      "path": "tasks/t05-trace-amendments-commencement-and-repeal.md",
+      "sha256": "26af5d02edbc4f8e78e69facd57842ebf91a22eeac3aa3b36d2e4d2103d7cf8c"
+    },
+    {
+      "bytes": 1065,
+      "path": "tasks/t06-identify-judicial-interpretation-and-treatment.md",
+      "sha256": "185d183446bf2405b10d97f3d6ba515f2992f8a855e2d371405a418b4c7fc570"
+    },
+    {
+      "bytes": 1053,
+      "path": "tasks/t07-construct-a-chronology.md",
+      "sha256": "3e678b27ae7e59f90dfccf72d47ffb9b58848d1cb31ef32227c186beda0b545c"
+    },
+    {
+      "bytes": 1068,
+      "path": "tasks/t08-compare-jurisdictions.md",
+      "sha256": "332fded627664cc49664401a1cb510cb616614c5bd01b007443501eeeb91f1f6"
+    },
+    {
+      "bytes": 1004,
+      "path": "tasks/t09-apply-rules-to-facts.md",
+      "sha256": "d0d095e2d3c953186110f5128191755fb30fda8af59527d0f5cb8b869d02b46d"
+    },
+    {
+      "bytes": 1068,
+      "path": "tasks/t10-find-procedural-steps-deadlines-forms-and-fees.md",
+      "sha256": "b6d1b7a1a42b2449a3ba37005d34e9b543fb6e2303c60e5dca3c1c37f94bf801"
+    },
+    {
+      "bytes": 1113,
+      "path": "tasks/t11-prepare-litigation-advice-policy-compliance-or-enforcement-work.md",
+      "sha256": "c83e4961871d88cd9f49778a68cccd085558afc34d0790253ecd90dc08b764dc"
+    },
+    {
+      "bytes": 1037,
+      "path": "tasks/t12-research-legislative-intent.md",
+      "sha256": "42b216e0e9d141a5b9d2fd72e25ee558e781c7ad10d524a6d02abb36e72ee95a"
+    },
+    {
+      "bytes": 1037,
+      "path": "tasks/t13-monitor-legal-change.md",
+      "sha256": "1e1693471b210d65d9eb8202ecab168628edae3d2ad2e263cecf60e6bedee92d"
+    },
+    {
+      "bytes": 995,
+      "path": "tasks/t14-quantitative-or-corpus-analysis.md",
+      "sha256": "2da08522e08d5e7b4905e15f8342b0a8fd13212342fe963818cd01f248bd5740"
+    },
+    {
+      "bytes": 1066,
+      "path": "tasks/t15-draft-or-check-legal-instruments.md",
+      "sha256": "1f7b4255520631ab1f23461ba0dc2df1f9f7e69d9575aa4d851e228cfda50399"
+    },
+    {
+      "bytes": 1093,
+      "path": "tasks/t16-produce-accessible-public-explanation.md",
+      "sha256": "f527be3b884a031b50869c9074eab2b4113824ce61f6ec3276195b384821ac5c"
+    },
+    {
+      "bytes": 1084,
+      "path": "tasks/t17-audit-an-ai-generated-legal-answer.md",
+      "sha256": "35cf4f5939271e91c47effaf3cb714825df8811d0bf447fc7afcf9142377ade5"
+    },
+    {
+      "bytes": 1013,
+      "path": "tasks/t18-identify-institutional-competence.md",
+      "sha256": "a32a5a479a2427c4562d8b30f5ed58c63aa0a9a0f987afa1f143f0bfc9cf2c85"
+    },
+    {
+      "bytes": 1111,
+      "path": "tasks/t19-identify-remedies-and-enforcement-outcomes.md",
+      "sha256": "963e93e75ed83dd51a6ba4276f78863a018896d2c53850f44326115e96bab56b"
+    },
+    {
+      "bytes": 1065,
+      "path": "tasks/t20-verify-citation-and-identity.md",
+      "sha256": "8ae67375396e45a764d19a7b1fba2e3252523daab81fbbc01cdd491801391686"
+    }
+  ],
+  "generated_at": "2026-07-25T22:54:00Z",
+  "schema": "okf-integrity-manifest.v1"
+}

@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_state": "hash-bound-current-candidate",
+  "audit_date": "2026-07-26",
+  "audit_id": "codex-assisted-v2-independent-audit-2026-07-26",
+  "audited_repository": "okf-uk-legislation",
+  "bindings": {
+    "attempt_ledger": {
+      "path": "bundle/data/enrichment/attempt-ledger.json",
+      "sha256": "d35e8e1c0fe2533157fc2f2e644237171b825875c37c76d99002eadcc5de97ea"
+    },
+    "auditor_script": {
+      "path": "scripts/audit_model_assisted_v2_independent.py",
+      "sha256": "419f3ab4e11b2f08feb606b092e708c36f078797ad63084d07a77297a7ccbfa8"
+    },
+    "calibration_result": {
+      "path": "bundle/data/enrichment/calibration.json",
+      "sha256": "d4b65d6449ab4ae50eec7893dcfbf92b6cb94583441e003ff4859bed3ab9f539"
+    },
+    "calibration_set": {
+      "path": "enrichment/codex-assisted-v2-calibration.json",
+      "sha256": "f31f3204926927ea49eb839e629987b4a3f5e98e72f85e9a7f0981d794028fb3"
+    },
+    "coverage": {
+      "path": "bundle/data/enrichment/coverage.json",
+      "sha256": "b1d3ddcf49d4574dbc9f9690f411ed8b2f5e2467c1f94d7bbc2604c6616f4c7e"
+    },
+    "datapack_manifest": {
+      "path": "bundle/data/enrichment/manifest.json",
+      "sha256": "4714cd29c2eeb6173b62515fee1fa41ea0a92372a8fb1ae98ffd56308ee7e1cb"
+    },
+    "datapack_schema": {
+      "path": "whole-law/schemas/provider-datapack.schema.json",
+      "sha256": "5710786b90afea23162054ae939960215fa800dd8a2b015d9b9432197580f799"
+    },
+    "governed_rules": {
+      "path": "enrichment/codex-assisted-v2-rules.json",
+      "sha256": "f936398e3ed9bc59ebca69391a41809b5af8fe4e9f49c16dfee38d984ebb2d8a"
+    },
+    "historical_preservation_receipt": {
+      "path": "whole-law/assurance/enrichment-v2-v1-rejection-preservation.json",
+      "sha256": "71238aca5e08fa369cc174ad3bbb8a599dffd09a2b4f35cc8173cc34c4b87c1b",
+      "status": "historical-evidence-superseded-as-release-gate"
+    },
+    "model_run_schema": {
+      "path": "whole-law/schemas/model-enrichment-run.schema.json",
+      "sha256": "c57e8edc91babc948852e94fd6fecbe813f89e26ae00c4bc5bee2fe1a4dd884b"
+    },
+    "previous_v2_audit": {
+      "path": "whole-law/assurance/enrichment-reaudit-22299.json",
+      "sha256": "31820a7bf80c61159ea3f65efff1439646e0be3c279ec37c4f58616f06c5d59c",
+      "status": "historical-evidence-superseded-as-release-gate"
+    },
+    "producer_script": {
+      "dynamic_execution_calls": [],
+      "execution": "not imported or executed by this auditor",
+      "forbidden_network_imports": [],
+      "imports": [
+        "__future__",
+        "argparse",
+        "collections",
+        "gzip",
+        "hashlib",
+        "io",
+        "json",
+        "pathlib",
+        "re",
+        "typing"
+      ],
+      "parsed": true,
+      "path": "scripts/build_codex_semantic_enrichment.py",
+      "sha256": "2a4c1f4cfc90b37cb552ef4ba8544c207337e43f98c7e74be252c251872a8084"
+    },
+    "rejected_v1": {
+      "audit_path": "enrichment/model-assisted-v1-independent-audit.json",
+      "audit_sha256": "690f70e311d2c2d6942657bf73dd35a4dfe27e34e2feb1b35afdc0f0c66f90eb",
+      "audit_verdict": "rejected-fail-closed",
+      "governed_v1_assertions_permitted": 0,
+      "release_gate_passed": false,
+      "rules_path": "enrichment/model-assisted-v1.json",
+      "rules_sha256": "819030b842a6eedd88ddec35ac526c718689c7cd1a4577a9c64ef802a879d4dc"
+    },
+    "relationship_schema": {
+      "path": "whole-law/schemas/relationship-assertion.schema.json",
+      "sha256": "4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006"
+    },
+    "run_manifest": {
+      "path": "bundle/enrichment/codex-assisted-v2.json",
+      "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
+    }
+  },
+  "checks": [
+    {
+      "dimension": "independence",
+      "evidence": "The auditor parses producer bytes only for hash and static zero-API checks; it does not import or execute the producer.",
+      "id": "V2IA-001",
+      "status": "passed"
+    },
+    {
+      "dimension": "full-corpus-reconstruction",
+      "evidence": "365,786 works attempted; 22,299 assertions independently reconstructed in source/rule order.",
+      "id": "V2IA-002",
+      "status": "passed"
+    },
+    {
+      "dimension": "calibration-and-exclusions",
+      "evidence": "55 positive/near-miss pairs and 58 end-to-end cases replayed, including 16 actual-corpus hard negatives.",
+      "id": "V2IA-003",
+      "status": "passed"
+    },
+    {
+      "dimension": "literal-evidence",
+      "evidence": "All 22,299 published assertions equal the independent literal-match reconstruction.",
+      "id": "V2IA-004",
+      "status": "passed"
+    },
+    {
+      "dimension": "schema-and-joins",
+      "evidence": "22,299 relationship assertions validated; source, rule, target and evidence joins reconstructed exactly.",
+      "id": "V2IA-005",
+      "status": "passed"
+    },
+    {
+      "dimension": "authority-rights-freshness",
+      "evidence": "Every assertion is model-assisted, derived discovery metadata with OGL source rights, observed/stale bounds and no claim of official legal classification.",
+      "id": "V2IA-006",
+      "status": "passed"
+    },
+    {
+      "dimension": "v1-fail-closed-bridge",
+      "evidence": "0 v1 outputs published; 562 historical topic suppressions considered and 6 v2 overlaps suppressed.",
+      "id": "V2IA-007",
+      "status": "passed"
+    },
+    {
+      "dimension": "chunk-and-semantic-integrity",
+      "evidence": "366 assertion chunks and 366 attempt receipts reconciled.",
+      "id": "V2IA-008",
+      "status": "passed"
+    },
+    {
+      "dimension": "model-cost-metadata",
+      "evidence": "Repository run metadata records 0 API calls, 0 API tokens and USD/GBP 0 incremental API cost; static producer review finds no network/process client. Unexposed Codex subscription usage and external billing cannot be independently inspected.",
+      "id": "V2IA-009",
+      "status": "passed"
+    }
+  ],
+  "decision": {
+    "accepted_assertions": 22299,
+    "candidate_modified_by_audit": false,
+    "errors": [],
+    "independent_review_status": "accepted",
+    "release_gate_passed": true
+  },
+  "limitations": [
+    "This is independent analytical and mechanical assurance, not qualified UK legal-practitioner or third-party assurance.",
+    "Literal-title rules are incomplete discovery metadata. No-match is not evidence that a work lacks a topic.",
+    "Calibration and exact rule conformance do not prove exhaustive population-level legal-semantic correctness.",
+    "Exact model deployment identity, sampling parameters, Codex subscription token usage and external billing are not exposed.",
+    "The model-run and candidate rows retain their immutable pending-independent-audit producer state; this separately named, hash-bound receipt records the acceptance decision."
+  ],
+  "metrics": {
+    "attempt_coverage": 1.0,
+    "calibration": {
+      "actual_corpus_hard_negative_cases": 16,
+      "cases": 58,
+      "correct_actual_corpus_hard_negative_cases": 16,
+      "correct_cases": 58,
+      "evidence_support": 1.0,
+      "false_negative_assertions": 0,
+      "false_positive_assertions": 0,
+      "near_miss_failures": 0,
+      "passed": true,
+      "positive_failures": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "rule_tests": 55,
+      "rules": 55,
+      "rules_covered": 55,
+      "topic_slices_passed": true
+    },
+    "cost": {
+      "codex_task_usage": "not exposed as billable token data",
+      "cost_per_accepted_assertion_usd": 0.0,
+      "incremental_openai_api_gbp": 0.0,
+      "incremental_openai_api_usd": 0.0,
+      "openai_api_calls": 0,
+      "openai_api_input_tokens": 0,
+      "openai_api_output_tokens": 0,
+      "verification": "Run metadata plus static producer-source inspection; external billing and unexposed subscription usage are not independently inspectable."
+    },
+    "integrity": {
+      "active_v1_output_records": 0,
+      "attempt_ledger_failures": 0,
+      "authority_rights_contract_failures": 0,
+      "chunk_manifest_failures": 0,
+      "duplicate_assertion_ids": 0,
+      "duplicate_source_ids": 0,
+      "exact_reconstruction_chunk_failures": 0,
+      "freshness_contract_failures": 0,
+      "literal_evidence_failures": 0,
+      "missing_source_joins": 0,
+      "relationship_schema_failures": 0,
+      "unregistered_rule_or_target_joins": 0
+    },
+    "v1_suppression": {
+      "historical_topics_considered": 562,
+      "published_v1_assertions": 0,
+      "v2_overlaps_suppressed": 6
+    }
+  },
+  "reviewer": {
+    "independence": "Separately authored read-only reconstruction. The auditor does not import or execute the production builder and does not edit candidate, source, rule or calibration bytes.",
+    "kind": "independent-codex-subagent",
+    "model_identity": "Exact deployment identifier not exposed"
+  },
+  "roots": {
+    "algorithms": {
+      "assertion_ids": "SHA-256 over sorted UTF-8 assertion IDs, one per line",
+      "assertion_semantic": "SHA-256 over manifest/chunk/assertion-order canonical compact JSON with sorted keys and LF",
+      "candidate_bytes": "SHA-256 over run, datapack metadata and manifest-order assertion artifacts as path NUL sha256 NUL bytes LF",
+      "chunk_root": "SHA-256 over manifest-order path NUL sha256 NUL bytes NUL records LF",
+      "source_input_semantic": "SHA-256 over manifest-order UTF-8 source path followed by ASCII compressed-byte SHA-256, without separators"
+    },
+    "assertion_manifest_chunk_root_sha256": "cbc44653b91230bf7d85f575aac24daceb7da25958d3ea384b3ebf73a72bf087",
+    "candidate_artifact_byte_root_sha256": "1aad90dc1ad828371da6dd975f283b750a1805d08951cf82088af7cd3ae9a882",
+    "current_source_chunk_root_sha256": "0faf9585e6dc0333107dbe30101c3b710ecc26251e406cb589a5df030bd892fa",
+    "current_source_input_semantic_sha256": "88774344579e6d18572f981a1fc240a6452311e642fcf42fed95eafdfa5bc341",
+    "ordered_assertion_semantic_sha256": "777760604da75796402a9f6a8cf5ac28af714116429cfa0fb401bf3763a59c03",
+    "sorted_assertion_id_set_sha256": "90996c49be205c93c0efc82249947894123303961f8982ebf6531212bb22e83c"
+  },
+  "schema": "okf-enrichment-independent-audit.v2",
+  "scope": {
+    "accepted_assertions": 22299,
+    "assertion_chunks": 366,
+    "candidate_artifact_bytes": 2312589,
+    "candidate_artifacts_in_byte_root": 371,
+    "compressed_assertion_bytes": 2022039,
+    "governed_rules": 55,
+    "records_with_accepted_assertions": 22284,
+    "records_without_new_supported_assertions": 343502,
+    "source_chunks": 366,
+    "source_works": 365786,
+    "topics": 19
+  },
+  "supersedes_as_release_gate": [
+    "whole-law/assurance/enrichment-v2-v1-rejection-preservation.json",
+    "whole-law/assurance/enrichment-reaudit-22299.json"
+  ]
+}

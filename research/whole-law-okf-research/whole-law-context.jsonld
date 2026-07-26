@@ -1,0 +1,77 @@
+{
+  "@context": {
+    "okflaw": "https://w3id.org/okf/whole-law#",
+    "eli": "http://data.europa.eu/eli/ontology#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "time": "http://www.w3.org/2006/time#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "cito": "http://purl.org/spar/cito/",
+    "schema": "https://schema.org/",
+    "id": "@id",
+    "type": "@type",
+    "title": "dcterms:title",
+    "identifier": "dcterms:identifier",
+    "publisher": "dcterms:publisher",
+    "language": "dcterms:language",
+    "issued": "dcterms:issued",
+    "modified": "dcterms:modified",
+    "authorityClass": {
+      "@id": "okflaw:authorityClass",
+      "@type": "@id"
+    },
+    "legalForce": {
+      "@id": "okflaw:legalForce",
+      "@type": "@id"
+    },
+    "jurisdiction": {
+      "@id": "eli:jurisdiction",
+      "@type": "@id"
+    },
+    "expression": {
+      "@id": "eli:is_realized_by",
+      "@type": "@id"
+    },
+    "manifestation": {
+      "@id": "eli:is_embodied_by",
+      "@type": "@id"
+    },
+    "passage": {
+      "@id": "okflaw:hasPassage",
+      "@type": "@id"
+    },
+    "supports": {
+      "@id": "okflaw:supportsProposition",
+      "@type": "@id"
+    },
+    "sourceHash": "okflaw:sourceHash",
+    "retrievedAt": {
+      "@id": "okflaw:retrievedAt",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "validFrom": {
+      "@id": "okflaw:validFrom",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "validTo": {
+      "@id": "okflaw:validTo",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "extent": {
+      "@id": "okflaw:extent",
+      "@type": "@id"
+    },
+    "coverageStatus": {
+      "@id": "okflaw:coverageStatus",
+      "@type": "@id"
+    },
+    "confidence": "okflaw:confidence",
+    "mappingRelation": {
+      "@id": "okflaw:mappingRelation",
+      "@type": "@id"
+    }
+  }
+}

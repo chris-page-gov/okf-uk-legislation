@@ -1,0 +1,145 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#",
+    "authorityClass": {
+      "@id": "okflaw:authorityClass",
+      "@type": "@id"
+    },
+    "childBundle": {
+      "@id": "okflaw:childBundle",
+      "@type": "@id"
+    },
+    "cito": "http://purl.org/spar/cito/",
+    "confidence": {
+      "@id": "okflaw:confidence",
+      "@type": "xsd:decimal"
+    },
+    "coverageStatus": {
+      "@id": "okflaw:coverageStatus",
+      "@type": "@id"
+    },
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "description": "dcterms:description",
+    "descriptor": {
+      "@id": "okflaw:descriptor",
+      "@type": "@id"
+    },
+    "dqv": "http://www.w3.org/ns/dqv#",
+    "eli": "http://data.europa.eu/eli/ontology#",
+    "expression": {
+      "@id": "eli:is_realized_by",
+      "@type": "@id"
+    },
+    "extent": {
+      "@id": "okflaw:extent",
+      "@type": "@id"
+    },
+    "generatedAt": {
+      "@id": "prov:generatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "id": "@id",
+    "identifier": "dcterms:identifier",
+    "issued": {
+      "@id": "dcterms:issued",
+      "@type": "xsd:date"
+    },
+    "jurisdiction": {
+      "@id": "eli:jurisdiction",
+      "@type": "@id"
+    },
+    "language": "dcterms:language",
+    "legalForce": {
+      "@id": "okflaw:legalForce",
+      "@type": "@id"
+    },
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "manifestation": {
+      "@id": "eli:is_embodied_by",
+      "@type": "@id"
+    },
+    "mappingRelation": {
+      "@id": "okflaw:mappingRelation",
+      "@type": "@id"
+    },
+    "modified": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:dateTime"
+    },
+    "oa": "http://www.w3.org/ns/oa#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "okflaw": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#",
+    "passage": {
+      "@id": "okflaw:hasPassage",
+      "@type": "@id"
+    },
+    "prov": "http://www.w3.org/ns/prov#",
+    "publisher": {
+      "@id": "dcterms:publisher",
+      "@type": "@id"
+    },
+    "realizes": {
+      "@id": "eli:is_realization_of",
+      "@type": "@id"
+    },
+    "retrievedAt": {
+      "@id": "okflaw:retrievedAt",
+      "@type": "xsd:dateTime"
+    },
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sourceHash": "okflaw:sourceHash",
+    "sourceRegister": {
+      "@id": "okflaw:sourceRegister",
+      "@type": "@id"
+    },
+    "supportedBy": {
+      "@id": "okflaw:supportedBy",
+      "@type": "@id"
+    },
+    "supportsProposition": {
+      "@id": "okflaw:supportsProposition",
+      "@type": "@id"
+    },
+    "time": "http://www.w3.org/2006/time#",
+    "title": "dcterms:title",
+    "type": "@type",
+    "validFrom": {
+      "@id": "okflaw:validFrom",
+      "@type": "xsd:date"
+    },
+    "validTo": {
+      "@id": "okflaw:validTo",
+      "@type": "xsd:date"
+    },
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/",
+  "@type": "okflaw:Federation",
+  "childBundle": [
+    {
+      "@id": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"
+    }
+  ],
+  "description": "A federated, evidence-led map of authoritative and supporting UK legal sources.",
+  "descriptor": {
+    "@id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json"
+  },
+  "generatedAt": "2026-07-25T22:54:00Z",
+  "issued": "2026-07-25",
+  "license": {
+    "@id": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+  },
+  "okf_version": "0.2",
+  "sourceRegister": {
+    "@id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json"
+  },
+  "status": "candidate",
+  "title": "UK Whole-Law OKF",
+  "version": "0.3.0"
+}

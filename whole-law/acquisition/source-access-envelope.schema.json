@@ -1,0 +1,245 @@
+{
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/acquisition/source-access-envelope.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "access_assessment": {
+      "properties": {
+        "comparison": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "conclusion": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "observed_access_state": {
+          "enum": [
+            "reachable",
+            "restricted",
+            "rate-limited",
+            "unavailable",
+            "client-error",
+            "server-error",
+            "network-error",
+            "no-response",
+            "unexpected-response"
+          ]
+        }
+      },
+      "required": [
+        "observed_access_state",
+        "comparison",
+        "conclusion"
+      ],
+      "type": "object"
+    },
+    "access_method": {
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "pattern": "^https?://",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "url"
+      ],
+      "type": "object"
+    },
+    "attempt_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "constraint_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "method_id": {
+      "pattern": "^SRC[0-9]{3}-A[0-9]{2}$",
+      "type": "string"
+    },
+    "request": {
+      "properties": {
+        "body": {
+          "type": "null"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "method": {
+          "enum": [
+            "GET",
+            "HEAD"
+          ]
+        },
+        "scope": {
+          "enum": [
+            "bounded-public-response",
+            "public-metadata-only-no-authentication"
+          ]
+        },
+        "url": {
+          "format": "uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "method",
+        "url",
+        "headers",
+        "body",
+        "scope"
+      ],
+      "type": "object"
+    },
+    "request_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "response": {
+      "properties": {
+        "body": {
+          "properties": {
+            "capture_limit_bytes": {
+              "maximum": 65536,
+              "minimum": 1024,
+              "type": "integer"
+            },
+            "captured_bytes": {
+              "maximum": 65536,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "hash_scope": {
+              "const": "captured-prefix-only"
+            },
+            "sha256": {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            "stored_path": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "truncated": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "captured_bytes",
+            "capture_limit_bytes",
+            "truncated",
+            "sha256",
+            "stored_path",
+            "hash_scope"
+          ],
+          "type": "object"
+        },
+        "error": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "status": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "observed_at",
+        "status",
+        "headers",
+        "body",
+        "error"
+      ],
+      "type": "object"
+    },
+    "run_id": {
+      "pattern": "^[0-9]{8}T[0-9]{6}Z-[a-f0-9]{8}$",
+      "type": "string"
+    },
+    "schema": {
+      "const": "okf-source-access-envelope.v1"
+    },
+    "source": {
+      "properties": {
+        "id": {
+          "pattern": "^SRC[0-9]{3}$",
+          "type": "string"
+        },
+        "owning_institution": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "owning_institution"
+      ],
+      "type": "object"
+    },
+    "tool": {
+      "properties": {
+        "name": {
+          "const": "capture_whole_law_source_access"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema",
+    "attempt_id",
+    "run_id",
+    "method_id",
+    "source",
+    "access_method",
+    "research_claim",
+    "request",
+    "request_sha256",
+    "response",
+    "access_assessment",
+    "constraint_refs",
+    "tool"
+  ],
+  "title": "Whole-Law bounded source-access evidence envelope",
+  "type": "object"
+}

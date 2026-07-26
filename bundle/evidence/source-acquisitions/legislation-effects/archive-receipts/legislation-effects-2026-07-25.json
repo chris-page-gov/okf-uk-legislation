@@ -1,0 +1,59 @@
+{
+  "archive": {
+    "bytes": 1385904,
+    "file_count": 627,
+    "media_type": "application/x-xz; profile=application/x-tar",
+    "normalized_tar_metadata": {
+      "format": "ustar",
+      "gid": 0,
+      "mode": "0644",
+      "mtime": 0,
+      "uid": 0
+    },
+    "path": "evidence/source-acquisitions/legislation-effects/archives/legislation-effects-2026-07-25.tar.xz",
+    "safe_read_limits": {
+      "max_file_bytes": 1048576,
+      "max_files": 1000,
+      "max_total_bytes": 67108864,
+      "path_traversal_rejected": true,
+      "regular_files_only": true
+    },
+    "sha256": "3262cb466cf692278567fcc89acdd0c3f2138b6c07d2e8cc3bff6fa5b75ee631",
+    "tree_sha256": "e14f74777fe86625d918cdc8ce69c90527c5dc0a0b904308aa63781c2bb9ba0f",
+    "uncompressed_file_bytes": 38138961
+  },
+  "archived_at": "2026-07-26T00:30:00Z",
+  "assurance": {
+    "byte_recovery_verified": true,
+    "compressed_blob_exposes_detected_plaintext": false,
+    "immutable_original": true,
+    "publication_projection_is_original": false
+  },
+  "original_integrity": {
+    "all_source_files_verified": true,
+    "bytes": 110499,
+    "file_count": 626,
+    "path": "integrity.json",
+    "sha256": "657502bcbc30037a0e435db128a84250c466e64d24575455cc794e700ee0a43c",
+    "total_bytes": 38028462,
+    "tree_sha256": "b730b953f3ecd810f8096544b961e32af615002da597364ef4e4cc5647734e96"
+  },
+  "publication_projection": {
+    "contains_detector_matched_values": false,
+    "contains_response_bodies": false,
+    "path": "evidence/source-acquisitions/legislation-effects/publication-projections/legislation-effects-2026-07-25.json",
+    "replaceable": true
+  },
+  "publication_trigger": {
+    "classification": "public-legislation-identifiers-misclassified-as-credentials",
+    "detector": "GitHub push protection",
+    "match_occurrence_count": 44344,
+    "matched_file_count": 307,
+    "matched_paths_sha256": "d212cec3648fdd1b3da47bf12bcd287662ff34682fcf3ca58cdc0d0767b3bcc4",
+    "unique_match_count": 15062,
+    "values_are_credentials": false,
+    "values_recorded_in_receipt_or_projection": false
+  },
+  "schema": "okf-legislation-effects-evidence-archive-receipt.v1",
+  "snapshot_id": "legislation-effects-2026-07-25"
+}

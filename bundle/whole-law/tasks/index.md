@@ -1,0 +1,22 @@
+# Whole-Law research tasks
+
+- [T01 — Locate controlling authority](t01-locate-controlling-authority.md) — binding-authority
+- [T02 — Determine whether law is in force](t02-determine-whether-law-is-in-force.md) — binding-authority
+- [T03 — Point-in-time and historical research](t03-point-in-time-and-historical-research.md) — binding-authority, history
+- [T04 — Territorial extent and jurisdiction](t04-territorial-extent-and-jurisdiction.md) — binding-authority, legal-service-information
+- [T05 — Trace amendments, commencement and repeal](t05-trace-amendments-commencement-and-repeal.md) — binding-authority
+- [T06 — Identify judicial interpretation and treatment](t06-identify-judicial-interpretation-and-treatment.md) — binding-authority, persuasive-authority
+- [T07 — Construct a chronology](t07-construct-a-chronology.md) — binding-authority, history, official-guidance
+- [T08 — Compare jurisdictions](t08-compare-jurisdictions.md) — binding-authority, procedural-material
+- [T09 — Apply rules to facts](t09-apply-rules-to-facts.md) — binding-authority, persuasive-authority
+- [T10 — Find procedural steps, deadlines, forms and fees](t10-find-procedural-steps-deadlines-forms-and-fees.md) — procedural-material, binding-authority, legal-service-information
+- [T11 — Prepare litigation, advice, policy, compliance or enforcement work](t11-prepare-litigation-advice-policy-compliance-or-enforcement-work.md) — binding-authority, persuasive-authority, official-guidance
+- [T12 — Research legislative intent](t12-research-legislative-intent.md) — history, binding-authority
+- [T13 — Monitor legal change](t13-monitor-legal-change.md) — binding-authority, procedural-material, delegated-administrative-rules, official-guidance
+- [T14 — Quantitative or corpus analysis](t14-quantitative-or-corpus-analysis.md) — binding-authority, history, contextual-material
+- [T15 — Draft or check legal instruments](t15-draft-or-check-legal-instruments.md) — binding-authority, history, procedural-material
+- [T16 — Produce accessible public explanation](t16-produce-accessible-public-explanation.md) — binding-authority, official-guidance, legal-service-information
+- [T17 — Audit an AI-generated legal answer](t17-audit-an-ai-generated-legal-answer.md) — binding-authority, persuasive-authority, procedural-material
+- [T18 — Identify institutional competence](t18-identify-institutional-competence.md) — binding-authority, legal-service-information
+- [T19 — Identify remedies and enforcement outcomes](t19-identify-remedies-and-enforcement-outcomes.md) — binding-authority, procedural-material, delegated-administrative-rules, persuasive-authority
+- [T20 — Verify citation and identity](t20-verify-citation-and-identity.md) — binding-authority, history, legal-service-information

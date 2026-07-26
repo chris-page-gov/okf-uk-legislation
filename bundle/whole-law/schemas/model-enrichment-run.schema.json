@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-run.schema.json",
+  "title": "OKF model enrichment run v1",
+  "type": "object",
+  "required": ["schema", "run_id", "provider", "assistant_surface", "model_identity", "prompt_basis_hash", "rule_set_hash", "calibration_set_hash", "input_snapshot", "counts", "usage", "cost"],
+  "properties": {
+    "schema": {"const": "okf-model-enrichment-run.v1"},
+    "run_id": {"type": "string", "minLength": 1},
+    "provider": {"type": "string", "minLength": 1},
+    "assistant_surface": {"type": "string", "minLength": 1},
+    "model_identity": {"type": "string", "minLength": 1},
+    "prompt_basis_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "rule_set_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "calibration_set_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "input_snapshot": {"type": "string", "minLength": 1},
+    "counts": {
+      "type": "object",
+      "required": ["records", "assertions"],
+      "properties": {
+        "records": {
+          "type": "object",
+          "required": ["attempted", "with_accepted_assertions", "without_new_supported_assertions"],
+          "properties": {
+            "attempted": {"type": "integer", "minimum": 0},
+            "with_accepted_assertions": {"type": "integer", "minimum": 0},
+            "without_new_supported_assertions": {"type": "integer", "minimum": 0}
+          },
+          "additionalProperties": false
+        },
+        "assertions": {
+          "type": "object",
+          "required": ["accepted"],
+          "properties": {
+            "accepted": {"type": "integer", "minimum": 0}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "usage": {"type": "object"},
+    "cost": {"type": "object"}
+  },
+  "additionalProperties": true
+}

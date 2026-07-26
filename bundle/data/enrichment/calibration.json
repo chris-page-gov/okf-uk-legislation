@@ -1,0 +1,1210 @@
+{
+  "actual_corpus": {
+    "cases": 16,
+    "correct_cases": 16,
+    "false_negative_assertions": 0,
+    "false_positive_assertions": 0,
+    "passed": true,
+    "precision": 1.0,
+    "recall": 1.0
+  },
+  "cases": 58,
+  "correct_cases": 58,
+  "evidence_support": 1.0,
+  "false_negative_assertions": 0,
+  "false_positive_assertions": 0,
+  "generated_at": "2026-07-25T22:20:00Z",
+  "passed": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "results": [
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Transport and infrastructure"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Transport and infrastructure"
+      ],
+      "title": "The Air Navigation (Restriction of Flying) (Manston) Regulations 2025"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Transport and infrastructure"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Transport and infrastructure"
+      ],
+      "title": "The Motor Vehicles (Approval) Regulations 1997"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Civil justice and procedure"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Civil justice and procedure"
+      ],
+      "title": "The Legal Aid (General) Regulations 1988"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Civil justice and procedure"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Civil justice and procedure"
+      ],
+      "title": "The Advice and Assistance (Assistance by Way of Representation) Regulations 2020"
+    },
+    {
+      "audit_family": "criminal-defence-exclusion",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Legal Aid (Defence Certificates) Regulations 2025"
+    },
+    {
+      "audit_family": "parent-act-title-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Legal Aid, Sentencing and Punishment of Offenders Act 2012 (Alcohol Abstinence and Monitoring Requirements) Piloting Order 2017"
+    },
+    {
+      "audit_family": "parent-act-title-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Legal Aid, Sentencing and Punishment of Offenders Act 2012 (Fines on Summary Conviction) Regulations 2015"
+    },
+    {
+      "audit_family": "parent-act-title-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Legal Aid, Sentencing and Punishment of Offenders Act 2012 (Children Act 1989) (Children Remanded to Youth Detention Accommodation) Regulations 2012"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Civil justice and procedure"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Civil justice and procedure"
+      ],
+      "title": "The Magistrates' Courts (Civil Procedure) Rules 2025"
+    },
+    {
+      "audit_family": "token-prefix-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Magistrates' Courts (Civilian Enforcement Officers) Rules 2001"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Taxation and customs"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Taxation and customs"
+      ],
+      "title": "The Import Duties (Temporary Exemptions) Order 1969"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Taxation and customs"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Taxation and customs"
+      ],
+      "title": "The Double Taxation Relief (Taxes on Income) Order 1979"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Employment and industrial relations"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Employment and industrial relations"
+      ],
+      "title": "The Industrial Training Levy Order 1980"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Employment and industrial relations"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Employment and industrial relations"
+      ],
+      "title": "The Wages Regulation (Retail Furnishing and Allied Trades) Order 1970"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Companies, insolvency and financial services"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Companies, insolvency and financial services"
+      ],
+      "title": "The Financial Services and Markets Act 2000 Order 2025"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Companies, insolvency and financial services"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Companies, insolvency and financial services"
+      ],
+      "title": "The Friendly Societies Regulations 1997"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "title": "The Offshore Installations (Safety Zones) Order 1989"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "title": "The Sea Fishing (Enforcement of Community Quota) Order 2000"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Health and social care"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Health and social care"
+      ],
+      "title": "The Primary Care Trusts Regulations 2002"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Health and social care"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Health and social care"
+      ],
+      "title": "The Medicines Regulations 2025"
+    },
+    {
+      "audit_family": "veterinary-medicines-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Veterinary Medicines Regulations 2013"
+    },
+    {
+      "audit_family": "animal-use-medicines-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Medicines (Products for Animal Use—Fees) Regulations 2004"
+    },
+    {
+      "audit_family": "medicated-animal-feed-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "title": "The Medicines (Medicated Animal Feeding Stuffs) (Amendment) Regulations 1997"
+    },
+    {
+      "audit_family": "intermediate-medicated-feed-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "title": "The Medicines (Exemptions from Licences) (Intermediate Medicated Feeding Stuffs) (Amendment) Order 1990"
+    },
+    {
+      "audit_family": "intermediate-medicated-feed-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "title": "The Medicines (Intermediate Medicated Feeding Stuffs) Order 1989"
+    },
+    {
+      "audit_family": "intermediate-medicated-feed-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "title": "The Medicines (Exemptions from Licences) (Intermediate Medicated Feeding Stuffs) Order 1989"
+    },
+    {
+      "audit_family": "feeding-stuffs-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "title": "The Medicines (Feeding Stuffs Limits of Variation) Order 1976"
+    },
+    {
+      "audit_family": "feeding-stuffs-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "title": "The Medicines (Feeding Stuffs Additives) Order 1975"
+    },
+    {
+      "audit_family": "feeding-stuffs-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Environment, energy and agriculture"
+      ],
+      "title": "The Medicines (Feeding Stuffs Additives) Order 1973"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Health and social care"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Health and social care"
+      ],
+      "title": "The Poisons List Order (Northern Ireland) 1972"
+    },
+    {
+      "audit_family": "animal-welfare-poisons-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "Animals (Cruel Poisons) Act 1962"
+    },
+    {
+      "audit_family": "animal-welfare-poisons-collision",
+      "case_kind": "actual-corpus-hard-negative",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Animals (Cruel Poisons) Regulations 1963"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Education and children"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Education and children"
+      ],
+      "title": "The Secondary Schools (Grant Conditions) Regulations 1973"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Education and children"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Education and children"
+      ],
+      "title": "The Student Support Regulations 2011"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Family and succession"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Family and succession"
+      ],
+      "title": "The Registration of Births, Deaths and Marriages Regulations 1970"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Family and succession"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Family and succession"
+      ],
+      "title": "Marriages (Validity) Act 1939"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Social security and welfare"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Social security and welfare"
+      ],
+      "title": "The National Assistance Regulations 1951"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Social security and welfare"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Social security and welfare"
+      ],
+      "title": "The Social Fund Regulations 1987"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Communications, data and technology"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Communications, data and technology"
+      ],
+      "title": "The Wireless Telegraphy (Television Licence Fees) Regulations 2003"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Communications, data and technology"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Communications, data and technology"
+      ],
+      "title": "The Public Telecommunication System Designation Order 1984"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Consumer and commercial law"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Consumer and commercial law"
+      ],
+      "title": "The Weights and Measures Regulations 1988"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Consumer and commercial law"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Consumer and commercial law"
+      ],
+      "title": "The Product Safety Regulations 2005"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Elections and political parties"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Elections and political parties"
+      ],
+      "title": "The Representation of the People (Scotland) Regulations 1954"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Criminal law and policing"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Criminal law and policing"
+      ],
+      "title": "The Firearms (Variation of Fees) Order 1977"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Criminal law and policing"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Criminal law and policing"
+      ],
+      "title": "The Misuse of Drugs Regulations 2001"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Land, housing and planning"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Land, housing and planning"
+      ],
+      "title": "The Homelessness (Decisions on Referrals) Order 1998"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Defence and national security"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Defence and national security"
+      ],
+      "title": "The Naval Discipline Act 1957 Order 1996"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "European Union and retained EU law"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "European Union and retained EU law"
+      ],
+      "title": "The European Communities (Designation) Order 1982"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Human rights and equality"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Human rights and equality"
+      ],
+      "title": "The Public Interest Disclosure (Prescribed Persons) Order 2016"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [
+        "Professional regulation"
+      ],
+      "passed": true,
+      "predicted_topics": [
+        "Professional regulation"
+      ],
+      "title": "The Veterinary Surgeons Regulations 1999"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Measuring Instruments (Fees) Regulations 1985"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Transfer of Functions Order 1986"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The General Regulations 1974"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Fees Order (Northern Ireland) 2020"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Control Order 1956"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Designation Order 1985"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "The Revocation Regulations 2001"
+    },
+    {
+      "case_kind": "designed-calibration",
+      "expected_topics": [],
+      "passed": true,
+      "predicted_topics": [],
+      "title": "https://www.legislation.gov.uk/id/wsi/2021/679"
+    }
+  ],
+  "rule_results": [
+    {
+      "near_miss_negative": "The Navigation by Air Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Air Navigation Order 2025",
+      "positive_passed": true,
+      "rule_id": "R001"
+    },
+    {
+      "near_miss_negative": "The Flying Restrictions Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Restriction of Flying Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R002"
+    },
+    {
+      "near_miss_negative": "The Motorised Vehicle Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Motor Vehicle Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R003"
+    },
+    {
+      "near_miss_negative": "The Parking Zones Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Parking Places Order 2025",
+      "positive_passed": true,
+      "rule_id": "R004"
+    },
+    {
+      "near_miss_negative": "The Limiting Speed Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Speed Limits Order 2025",
+      "positive_passed": true,
+      "rule_id": "R005"
+    },
+    {
+      "near_miss_negative": "The Driver Licensing Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Driving Licences Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R006"
+    },
+    {
+      "near_miss_negative": "The Construction and Use of Vehicles Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Vehicle Construction and Use Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R007"
+    },
+    {
+      "near_miss_negative": "The Legal Aid, Sentencing and Punishment of Offenders Act 2012 (Fines on Summary Conviction) Regulations 2015",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Legal Aid Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R008"
+    },
+    {
+      "near_miss_negative": "The Legal Advice and Assistance at Police Stations Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Advice and Assistance Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R009"
+    },
+    {
+      "near_miss_negative": "The Magistrates' Courts (Civilian Enforcement Officers) Rules 2001",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Magistrates' Courts (Civil Procedure) Rules 2025",
+      "positive_passed": true,
+      "rule_id": "R010"
+    },
+    {
+      "near_miss_negative": "The Civil Service Legal Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Civil Legal Services Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R011"
+    },
+    {
+      "near_miss_negative": "The Export Duties Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Import Duties Order 2025",
+      "positive_passed": true,
+      "rule_id": "R012"
+    },
+    {
+      "near_miss_negative": "The Single Taxation Relief Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Double Taxation Relief Order 2025",
+      "positive_passed": true,
+      "rule_id": "R013"
+    },
+    {
+      "near_miss_negative": "The Tax Relief Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Taxation Relief Order 2025",
+      "positive_passed": true,
+      "rule_id": "R014"
+    },
+    {
+      "near_miss_negative": "The Domestic Rating Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Non-Domestic Rating Order 2025",
+      "positive_passed": true,
+      "rule_id": "R015"
+    },
+    {
+      "near_miss_negative": "The Industry Training Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Industrial Training Order 2025",
+      "positive_passed": true,
+      "rule_id": "R016"
+    },
+    {
+      "near_miss_negative": "The Training Fees Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Training Levy Order 2025",
+      "positive_passed": true,
+      "rule_id": "R017"
+    },
+    {
+      "near_miss_negative": "The Wage Rules Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Wages Regulation Order 2025",
+      "positive_passed": true,
+      "rule_id": "R018"
+    },
+    {
+      "near_miss_negative": "The Trades Association Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Trade Union Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R019"
+    },
+    {
+      "near_miss_negative": "The Pension Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Superannuation Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R020"
+    },
+    {
+      "near_miss_negative": "The Financing Services Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Financial Services Order 2025",
+      "positive_passed": true,
+      "rule_id": "R021"
+    },
+    {
+      "near_miss_negative": "The Societies Building Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Building Societies Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R022"
+    },
+    {
+      "near_miss_negative": "The Friendly Association Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Friendly Societies Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R023"
+    },
+    {
+      "near_miss_negative": "The Credit Association Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Credit Union Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R024"
+    },
+    {
+      "near_miss_negative": "The Onshore Installations Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Offshore Installations Order 2025",
+      "positive_passed": true,
+      "rule_id": "R025"
+    },
+    {
+      "near_miss_negative": "The Freshwater Fishing Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Sea Fishing Order 2025",
+      "positive_passed": true,
+      "rule_id": "R026"
+    },
+    {
+      "near_miss_negative": "The Foodstuffs Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Feeding Stuffs Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R027"
+    },
+    {
+      "near_miss_negative": "The Animal Diseases Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Diseases of Animals Order 2025",
+      "positive_passed": true,
+      "rule_id": "R028"
+    },
+    {
+      "near_miss_negative": "The Environment Sensitive Areas Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Environmentally Sensitive Areas Order 2025",
+      "positive_passed": true,
+      "rule_id": "R029"
+    },
+    {
+      "near_miss_negative": "The Smoking Control Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Smoke Control Order 2025",
+      "positive_passed": true,
+      "rule_id": "R030"
+    },
+    {
+      "near_miss_negative": "The Foot and Mouth Disease Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Foot-and-Mouth Disease Order 2025",
+      "positive_passed": true,
+      "rule_id": "R031"
+    },
+    {
+      "near_miss_negative": "The Primary Care Board Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Primary Care Trust Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R032"
+    },
+    {
+      "near_miss_negative": "The Veterinary Medicines Regulations 2013",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Medicines Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R033"
+    },
+    {
+      "near_miss_negative": "Animals (Cruel Poisons) Act 1962",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Poisons Order 2025",
+      "positive_passed": true,
+      "rule_id": "R034"
+    },
+    {
+      "near_miss_negative": "The Primary Schools Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Secondary Schools Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R035"
+    },
+    {
+      "near_miss_negative": "The Pupil Support Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Student Support Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R036"
+    },
+    {
+      "near_miss_negative": "The Teachers' Pay Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Teachers' Salaries Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R037"
+    },
+    {
+      "near_miss_negative": "The Births and Marriages Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Births, Deaths and Marriages Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R038"
+    },
+    {
+      "near_miss_negative": "The Marriage Validity Act 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Marriages (Validity) Act 2025",
+      "positive_passed": true,
+      "rule_id": "R039"
+    },
+    {
+      "near_miss_negative": "The Local Assistance Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The National Assistance Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R040"
+    },
+    {
+      "near_miss_negative": "The European Social Fund Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Social Fund Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R041"
+    },
+    {
+      "near_miss_negative": "The Housing Support Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Housing Benefit Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R042"
+    },
+    {
+      "near_miss_negative": "The Wired Telegraphy Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Wireless Telegraphy Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R043"
+    },
+    {
+      "near_miss_negative": "The Telecom System Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Telecommunication System Order 2025",
+      "positive_passed": true,
+      "rule_id": "R044"
+    },
+    {
+      "near_miss_negative": "The Television Licensing Fee Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Television Licence Fee Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R045"
+    },
+    {
+      "near_miss_negative": "The Weights or Measures Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Weights and Measures Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R046"
+    },
+    {
+      "near_miss_negative": "The Safe Products Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Product Safety Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R047"
+    },
+    {
+      "near_miss_negative": "The People Representation Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Representation of the People Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R048"
+    },
+    {
+      "near_miss_negative": "The Fireworks Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Firearms Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R049"
+    },
+    {
+      "near_miss_negative": "The Use of Drugs Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Misuse of Drugs Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R050"
+    },
+    {
+      "near_miss_negative": "The Homeless Persons Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Homelessness Order 2025",
+      "positive_passed": true,
+      "rule_id": "R051"
+    },
+    {
+      "near_miss_negative": "The Naval Disciplinary Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Naval Discipline Order 2025",
+      "positive_passed": true,
+      "rule_id": "R052"
+    },
+    {
+      "near_miss_negative": "The European Community Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The European Communities Order 2025",
+      "positive_passed": true,
+      "rule_id": "R053"
+    },
+    {
+      "near_miss_negative": "The Public Disclosure Order 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Public Interest Disclosure Order 2025",
+      "positive_passed": true,
+      "rule_id": "R054"
+    },
+    {
+      "near_miss_negative": "The Veterinary Nurses Regulations 2025",
+      "near_miss_negative_passed": true,
+      "passed": true,
+      "positive": "The Veterinary Surgeons Regulations 2025",
+      "positive_passed": true,
+      "rule_id": "R055"
+    }
+  ],
+  "rule_tests": 55,
+  "rules_covered": 55,
+  "rules_in_rule_set": 55,
+  "schema": "okf-enrichment-calibration-result.v2",
+  "schema_validity": 1.0,
+  "topic_slices": [
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Civil justice and procedure",
+      "true_positive": 3
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Communications, data and technology",
+      "true_positive": 2
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Companies, insolvency and financial services",
+      "true_positive": 2
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Consumer and commercial law",
+      "true_positive": 2
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Criminal law and policing",
+      "true_positive": 2
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Defence and national security",
+      "true_positive": 1
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Education and children",
+      "true_positive": 2
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Elections and political parties",
+      "true_positive": 1
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Employment and industrial relations",
+      "true_positive": 2
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Environment, energy and agriculture",
+      "true_positive": 9
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "European Union and retained EU law",
+      "true_positive": 1
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Family and succession",
+      "true_positive": 2
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Health and social care",
+      "true_positive": 3
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Human rights and equality",
+      "true_positive": 1
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Land, housing and planning",
+      "true_positive": 1
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Professional regulation",
+      "true_positive": 1
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Social security and welfare",
+      "true_positive": 2
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Taxation and customs",
+      "true_positive": 2
+    },
+    {
+      "false_negative": 0,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "topic": "Transport and infrastructure",
+      "true_positive": 2
+    }
+  ],
+  "topic_slices_passed": true
+}

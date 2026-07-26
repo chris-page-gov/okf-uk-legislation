@@ -1,0 +1,2935 @@
+{
+  "chunks": [
+    {
+      "accepted_assertions": 214,
+      "attempted_records": 1000,
+      "input": "data/works-0.json.gz",
+      "input_sha256": "c8f41a4de6b09322d8e98d3b0232774e7a9799e48c59feeb9b54d54d8961b9e6",
+      "output": "data/enrichment/assertions-000.json.gz",
+      "output_sha256": "f9d9ff7c816b2378d8b87e12eb2eccdf44870a5e9a67e6c5f951b4fe302ab4b4"
+    },
+    {
+      "accepted_assertions": 114,
+      "attempted_records": 1000,
+      "input": "data/works-1.json.gz",
+      "input_sha256": "1aa27ad031093d5a7ece538f84844191c0b3c5ca51f26ec3d09ea323e13118c5",
+      "output": "data/enrichment/assertions-001.json.gz",
+      "output_sha256": "962249b2544d76474cdc169eac059e7f92b7aecb8e596abda8b8bd23534d06ee"
+    },
+    {
+      "accepted_assertions": 245,
+      "attempted_records": 1000,
+      "input": "data/works-2.json.gz",
+      "input_sha256": "473c8709f59398c81d634da833cf98cbf6b6bc3981f5d0651ecd8d25dfba7474",
+      "output": "data/enrichment/assertions-002.json.gz",
+      "output_sha256": "53c949cd0453c4bdbfcc40c4fe9887e2f3037a8c45cc2a6d57754527fa28852f"
+    },
+    {
+      "accepted_assertions": 38,
+      "attempted_records": 1000,
+      "input": "data/works-3.json.gz",
+      "input_sha256": "d947e1bf1b23ddd2f838f11d635b2bf62292bb07ac1dbdf1fb94ba76d7e855d5",
+      "output": "data/enrichment/assertions-003.json.gz",
+      "output_sha256": "cad231897a163c499e761688bd6e2fe9a3d2742caefd3f2252708c62c91f2e3c"
+    },
+    {
+      "accepted_assertions": 247,
+      "attempted_records": 1000,
+      "input": "data/works-4.json.gz",
+      "input_sha256": "319d008d75ec25ad154924997336a332a48513f403319eb27742f77797242c90",
+      "output": "data/enrichment/assertions-004.json.gz",
+      "output_sha256": "bd53f7179829b6b858bf51fb9ea7d4de8dcb9ca74c53cc3d579f8cfb61a6193e"
+    },
+    {
+      "accepted_assertions": 73,
+      "attempted_records": 1000,
+      "input": "data/works-5.json.gz",
+      "input_sha256": "52ea2d0accf976be2328ad38877f4122520782945fc61c87656f794abe5d76f7",
+      "output": "data/enrichment/assertions-005.json.gz",
+      "output_sha256": "348c32383107811486c91e8e2db346e04a476b6c932f0c9798a90e519aa154db"
+    },
+    {
+      "accepted_assertions": 178,
+      "attempted_records": 1000,
+      "input": "data/works-6.json.gz",
+      "input_sha256": "963e7a63cb405fc3f724a6ab24ce83f847ac5b6bce91f5c19aa754145d4718c7",
+      "output": "data/enrichment/assertions-006.json.gz",
+      "output_sha256": "a11ec29a443eb1528e77503cadd482075cafd4987895d538ee9869c9cce42b0b"
+    },
+    {
+      "accepted_assertions": 119,
+      "attempted_records": 1000,
+      "input": "data/works-7.json.gz",
+      "input_sha256": "3b742faa64feca6d4a5cad96166f02234994528925ffa4118e23a1e6874bc388",
+      "output": "data/enrichment/assertions-007.json.gz",
+      "output_sha256": "8709619e0f8627b5d1eb1db412893aace461e7a63a4ba66d30512bf9fe793acc"
+    },
+    {
+      "accepted_assertions": 77,
+      "attempted_records": 1000,
+      "input": "data/works-8.json.gz",
+      "input_sha256": "b1a5101363d96fd8154b05641228cfac4d863c5452134f164b99bb76ec62d2c3",
+      "output": "data/enrichment/assertions-008.json.gz",
+      "output_sha256": "ca793a5c1745f47bf229bff018d0ee026e5d947ea0f0824c8cb6d66f7fa9b40f"
+    },
+    {
+      "accepted_assertions": 151,
+      "attempted_records": 1000,
+      "input": "data/works-9.json.gz",
+      "input_sha256": "ff3337840f18843b161c97c78df7dff9f9276cd046cd23984d264fafc3fe0568",
+      "output": "data/enrichment/assertions-009.json.gz",
+      "output_sha256": "607c67c999bda2b1372c99c3f46ca1ebe5b00936ba2907f736409c2e3274d7a2"
+    },
+    {
+      "accepted_assertions": 52,
+      "attempted_records": 1000,
+      "input": "data/works-10.json.gz",
+      "input_sha256": "c60c124c0edc1253660a62c6fc3dda469f4160bef6fa1956ac1f2a01f1104660",
+      "output": "data/enrichment/assertions-010.json.gz",
+      "output_sha256": "a2ed4136a23f0ce7322cfa8df79dc567799bb04efd2449424a84e926b89535ad"
+    },
+    {
+      "accepted_assertions": 97,
+      "attempted_records": 1000,
+      "input": "data/works-11.json.gz",
+      "input_sha256": "8aec8dccdf8dd64137e4896569b12a6298043afd4b9fa2a7a3709013f8afe4e8",
+      "output": "data/enrichment/assertions-011.json.gz",
+      "output_sha256": "d59a3efa8ff542ecb5afdd5617c4ec2a766ec1ca13a677376b41401774d754f7"
+    },
+    {
+      "accepted_assertions": 66,
+      "attempted_records": 1000,
+      "input": "data/works-12.json.gz",
+      "input_sha256": "a7af9ad3692364babea3099202351c75fcb0251bd0e02e3645c4e5c5ebd83f8a",
+      "output": "data/enrichment/assertions-012.json.gz",
+      "output_sha256": "774065b3bf6281edc6897021b88f9675bf7685e54134526217b42b703ea65a10"
+    },
+    {
+      "accepted_assertions": 32,
+      "attempted_records": 1000,
+      "input": "data/works-13.json.gz",
+      "input_sha256": "ac9917661c2b32d9125b2da747fb90081d1dbc81f2563e56263681f36b57fd99",
+      "output": "data/enrichment/assertions-013.json.gz",
+      "output_sha256": "258ce4794449b7a9ba939840937cbffd21e3904a6270da1c3b12fd882a1788b9"
+    },
+    {
+      "accepted_assertions": 79,
+      "attempted_records": 1000,
+      "input": "data/works-14.json.gz",
+      "input_sha256": "77871c8e7a8f86e70e13dd7aba2159833ed523a22fcc470f2b18f34a0b20ffa8",
+      "output": "data/enrichment/assertions-014.json.gz",
+      "output_sha256": "dd4410761e6a462dbbd985c0d7e0697ee5b86fdfec3f1bf73db4d94ed865bc0f"
+    },
+    {
+      "accepted_assertions": 53,
+      "attempted_records": 1000,
+      "input": "data/works-15.json.gz",
+      "input_sha256": "6226332a12c22d2b221b3cea98585a25f4fbf75063236fb3eb6add7a161d96d1",
+      "output": "data/enrichment/assertions-015.json.gz",
+      "output_sha256": "5c996345a35e376f0f3d781bc460ce137ba9a32c030f7f6498dc561f0ee9eb9b"
+    },
+    {
+      "accepted_assertions": 43,
+      "attempted_records": 1000,
+      "input": "data/works-16.json.gz",
+      "input_sha256": "dae883e5640f1af07259bbff5ea2354e518ea005148c0ab66ffcc712339310d4",
+      "output": "data/enrichment/assertions-016.json.gz",
+      "output_sha256": "f8234aa6c122303f5116baf5f40bcf17f1c10dddbf70a03ad583034f8a4f0bcf"
+    },
+    {
+      "accepted_assertions": 11,
+      "attempted_records": 1000,
+      "input": "data/works-17.json.gz",
+      "input_sha256": "d04c636d890b4f0ceb527d42eeaf2e63e3b23e72f3f05d65de8ba5209d914a28",
+      "output": "data/enrichment/assertions-017.json.gz",
+      "output_sha256": "65fb0f622e99b1fccea0c42dbe842ba9957fe2a6f4d768c501d96fdfe3805094"
+    },
+    {
+      "accepted_assertions": 85,
+      "attempted_records": 1000,
+      "input": "data/works-18.json.gz",
+      "input_sha256": "6394b4d90dd82be417d04aaddb8d179285d4c054da245e5193f0927d9772b4d5",
+      "output": "data/enrichment/assertions-018.json.gz",
+      "output_sha256": "7e85c62e3aafc0637a8e8f2918ed71620eb194d389d44b2d34bd31b1e3455433"
+    },
+    {
+      "accepted_assertions": 118,
+      "attempted_records": 1000,
+      "input": "data/works-19.json.gz",
+      "input_sha256": "96a8bcae072313273a23c8de36a2c863082acf0866731a21c38c4c56ca245e05",
+      "output": "data/enrichment/assertions-019.json.gz",
+      "output_sha256": "6b60d64538aae3e8ac16193e07b075a19b38663b02ada10569fe2501cafa10b2"
+    },
+    {
+      "accepted_assertions": 46,
+      "attempted_records": 1000,
+      "input": "data/works-20.json.gz",
+      "input_sha256": "f622626c0d82855388b6a0dfb7e3629b6a987f82539e54434f8cca0ec4fad475",
+      "output": "data/enrichment/assertions-020.json.gz",
+      "output_sha256": "4e477dc400a229c024c34556de43960f0a7aed31be5c2144c02c2e8389ff84ec"
+    },
+    {
+      "accepted_assertions": 9,
+      "attempted_records": 1000,
+      "input": "data/works-21.json.gz",
+      "input_sha256": "ffdc50837eecfcb724cb5512b8e14d5433e9a8a95a61a6996b80ad828d50f48f",
+      "output": "data/enrichment/assertions-021.json.gz",
+      "output_sha256": "01e1544fb02a205d6c7d35d53a3d4182eebd46615b90c98298c3d9cf832dc866"
+    },
+    {
+      "accepted_assertions": 26,
+      "attempted_records": 1000,
+      "input": "data/works-22.json.gz",
+      "input_sha256": "4fab758b80609705144fd5ab1631cc26dbf0d2e25bf1b9cb3f98866d67190114",
+      "output": "data/enrichment/assertions-022.json.gz",
+      "output_sha256": "c8a03d24dc92c913afc13ed94fbfe1259b783ec03ebe7f07f67017f2c4bb4af3"
+    },
+    {
+      "accepted_assertions": 157,
+      "attempted_records": 1000,
+      "input": "data/works-23.json.gz",
+      "input_sha256": "d5bbfd1316cbcf698acbdb853092d2b757371a3fa93fbb506884841bfe580ba1",
+      "output": "data/enrichment/assertions-023.json.gz",
+      "output_sha256": "c3858e60521981f4e38ea98a3960bdf2fbffcf7db60aed5bda2120d28adb3df1"
+    },
+    {
+      "accepted_assertions": 56,
+      "attempted_records": 1000,
+      "input": "data/works-24.json.gz",
+      "input_sha256": "4fa175750c9c09ea55546f8542f2d0ecd8fd5e213b5ff7bc33f105eaf21e61e0",
+      "output": "data/enrichment/assertions-024.json.gz",
+      "output_sha256": "c3d9d3379f8346ce83684cba58f75e65af60b89ef5ba70a779d7380df909ab31"
+    },
+    {
+      "accepted_assertions": 16,
+      "attempted_records": 1000,
+      "input": "data/works-25.json.gz",
+      "input_sha256": "de3c21251e07e87b471953c40a698e21621c14e9461e91329173a6af0cfa684e",
+      "output": "data/enrichment/assertions-025.json.gz",
+      "output_sha256": "26abe32bd85a3832769d82bb784ffba4a570af0b65c3f87ded51239374b74f76"
+    },
+    {
+      "accepted_assertions": 13,
+      "attempted_records": 1000,
+      "input": "data/works-26.json.gz",
+      "input_sha256": "1f9ea8cfbd21108d7e798b330e25737bf577a013f05c3203ef2fe83ded8dfd4c",
+      "output": "data/enrichment/assertions-026.json.gz",
+      "output_sha256": "3ab563db3363a7330dcf92886fc09c1a432cab36adbe9602e25e6b967ac0fd2b"
+    },
+    {
+      "accepted_assertions": 138,
+      "attempted_records": 1000,
+      "input": "data/works-27.json.gz",
+      "input_sha256": "57a5aa9abb776d8ad4a1e28bb4e34a0a8cc091e53ee028d4c8684718c12af18a",
+      "output": "data/enrichment/assertions-027.json.gz",
+      "output_sha256": "afaeaf71c02eb0a64eb912008cf0468cb0f48e41b11da31c81b5914f3a05dd39"
+    },
+    {
+      "accepted_assertions": 49,
+      "attempted_records": 1000,
+      "input": "data/works-28.json.gz",
+      "input_sha256": "bfd8382c64296e69e7b0d0cf8a7e1e2ed2f710f6e707fc6e8964b83ea7fb7887",
+      "output": "data/enrichment/assertions-028.json.gz",
+      "output_sha256": "e92ec27a13ccc144424520ef68a91e2bf11be75392136d61b59304acd0d38d5b"
+    },
+    {
+      "accepted_assertions": 10,
+      "attempted_records": 1000,
+      "input": "data/works-29.json.gz",
+      "input_sha256": "7eccde1fb60bef2ab4c67cb86e102708ec95e6af7b04764f2e3e21615dfaefbf",
+      "output": "data/enrichment/assertions-029.json.gz",
+      "output_sha256": "13c8d7eae8474ba9675eebfb3491226e9018273cefce027cb73e86747fc80b45"
+    },
+    {
+      "accepted_assertions": 4,
+      "attempted_records": 1000,
+      "input": "data/works-30.json.gz",
+      "input_sha256": "df1aae1f4d90bc09f4654faf24a019c8e4d49ab1156bfc52f51b448805734c21",
+      "output": "data/enrichment/assertions-030.json.gz",
+      "output_sha256": "b0e7965fe53bc9370c23fb2845a7fd06565ad355bdfc8dacc64bc2565dca9f9a"
+    },
+    {
+      "accepted_assertions": 124,
+      "attempted_records": 1000,
+      "input": "data/works-31.json.gz",
+      "input_sha256": "50037a45ec5e94d2928e623ea4da1703e1feca98e2b67f29d5ff5b79290e3599",
+      "output": "data/enrichment/assertions-031.json.gz",
+      "output_sha256": "8e0e01b04999f6677051851ad591545fcb3f22fb94f7a3b5e03ed7a8bcf066f7"
+    },
+    {
+      "accepted_assertions": 74,
+      "attempted_records": 1000,
+      "input": "data/works-32.json.gz",
+      "input_sha256": "826a03c5d4e406a3f52991d23ecf38e15411918d74ca74bf0cf0c3ef48eeec86",
+      "output": "data/enrichment/assertions-032.json.gz",
+      "output_sha256": "f4370c83af047752fd0b8a3901eb3b4de30fda328709768fefbc0a749a54ce03"
+    },
+    {
+      "accepted_assertions": 30,
+      "attempted_records": 1000,
+      "input": "data/works-33.json.gz",
+      "input_sha256": "f3f9279f2ea5520c14ffe1cb8d0df28337672d6e681cd547dece5c8c24d9ebf8",
+      "output": "data/enrichment/assertions-033.json.gz",
+      "output_sha256": "7a79b219c736655ab9196435b625f735ebfca6e279aa505e597cf9e92811fc85"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-34.json.gz",
+      "input_sha256": "66c61e88479957f0abf4877c008f6795c07094db2d2f31e666bcbe4677cff76b",
+      "output": "data/enrichment/assertions-034.json.gz",
+      "output_sha256": "664c7545c81404d272b8344bf3077c47cfebaaa53c0217637b60a42d7bf54187"
+    },
+    {
+      "accepted_assertions": 28,
+      "attempted_records": 1000,
+      "input": "data/works-35.json.gz",
+      "input_sha256": "301baff68abe123610796bfce98aeb1b6deee71a974daf4526ce0e484aefe03e",
+      "output": "data/enrichment/assertions-035.json.gz",
+      "output_sha256": "d7691825d79d617c2a5a780b452272744f05c4b90aa26343632442ce0164fd2e"
+    },
+    {
+      "accepted_assertions": 105,
+      "attempted_records": 1000,
+      "input": "data/works-36.json.gz",
+      "input_sha256": "9861213ecb8a0bf68b8b240fa2a6de4fe9e840d7672a27def31b43507d5bc5bb",
+      "output": "data/enrichment/assertions-036.json.gz",
+      "output_sha256": "0d4012dfe2399fcd8cfeeadb7c74a1a5b2214edead229c4a51a70003d48d4e17"
+    },
+    {
+      "accepted_assertions": 88,
+      "attempted_records": 1000,
+      "input": "data/works-37.json.gz",
+      "input_sha256": "58c4a91bab147003e6468d262a3fb3f0537a86d154b34b9e18de1799cc652983",
+      "output": "data/enrichment/assertions-037.json.gz",
+      "output_sha256": "cc583e7c8f426c1a6d23cf61bca7879dac9922d84e4e8da5c6debf951f09415a"
+    },
+    {
+      "accepted_assertions": 65,
+      "attempted_records": 1000,
+      "input": "data/works-38.json.gz",
+      "input_sha256": "ac999dc41d08fd302acd2a372f6751fdb612a1fa8494ccebbf4ae752240514e9",
+      "output": "data/enrichment/assertions-038.json.gz",
+      "output_sha256": "b4a6d87a42db381618ea52efe7ae2232a1227312907be2bdb2a2fd71b4475603"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-39.json.gz",
+      "input_sha256": "23e93b61bcf20637372cf2262634dd118d2ab4e1799ccbc6bd8987d6ed0f73de",
+      "output": "data/enrichment/assertions-039.json.gz",
+      "output_sha256": "40eaed2367cc5e4d1ea2882e26f7ecd7491ad0bfc43e1aeba11208c4a91f341b"
+    },
+    {
+      "accepted_assertions": 5,
+      "attempted_records": 1000,
+      "input": "data/works-40.json.gz",
+      "input_sha256": "b5fb67d1e51fe89f5b2272cea376a29aa7135bda3a431719a05b57cd2baf82dd",
+      "output": "data/enrichment/assertions-040.json.gz",
+      "output_sha256": "94ff1091f880b190fe264862367d58d5962b38ebd285e8606d82187cb97132da"
+    },
+    {
+      "accepted_assertions": 49,
+      "attempted_records": 1000,
+      "input": "data/works-41.json.gz",
+      "input_sha256": "4cefd57fc65bc30696253791be43b04cca68908ce5d17267e5c03f14c93f73c4",
+      "output": "data/enrichment/assertions-041.json.gz",
+      "output_sha256": "b52f585a09a917a46690db0f7d1b802bfd76082ce6de6e1fa702f9a4f152a05d"
+    },
+    {
+      "accepted_assertions": 43,
+      "attempted_records": 1000,
+      "input": "data/works-42.json.gz",
+      "input_sha256": "dd942fcf74e4a7cb769984775a0b0932662103862a5d53ae822e63accef47d8e",
+      "output": "data/enrichment/assertions-042.json.gz",
+      "output_sha256": "82fc9939690ac963b379776d6af9320644e38aefbdaa271f6a912fa1baab2fdd"
+    },
+    {
+      "accepted_assertions": 52,
+      "attempted_records": 1000,
+      "input": "data/works-43.json.gz",
+      "input_sha256": "aad7fee03d6b9306c079a790607ae2cf50a766decfb39b28afd862ccc97a44d8",
+      "output": "data/enrichment/assertions-043.json.gz",
+      "output_sha256": "644df81361b849cc3a129683a4bbb4888a78008ab2f1d87ecc3776dfac7d55dd"
+    },
+    {
+      "accepted_assertions": 72,
+      "attempted_records": 1000,
+      "input": "data/works-44.json.gz",
+      "input_sha256": "7cefafedde20cf5ed6ebc8d31f1ce0d88e944e39943d214a033532eb635c0723",
+      "output": "data/enrichment/assertions-044.json.gz",
+      "output_sha256": "a69612db10018209e4c40a152aeff1fbc236f1ae240172452651ce24446eb26f"
+    },
+    {
+      "accepted_assertions": 53,
+      "attempted_records": 1000,
+      "input": "data/works-45.json.gz",
+      "input_sha256": "c3282b437155b0d095f567f2193fea7ac1308dc19b424a51dfec9aa5b1f2efaf",
+      "output": "data/enrichment/assertions-045.json.gz",
+      "output_sha256": "485c947ea9473e3489b8b29146358c2ab9083bd096def5d193fdb13afc63427b"
+    },
+    {
+      "accepted_assertions": 15,
+      "attempted_records": 1000,
+      "input": "data/works-46.json.gz",
+      "input_sha256": "d846c6351bdec07435acb00fe827f78984e76c4ca6f486a85bbace56fe5efec7",
+      "output": "data/enrichment/assertions-046.json.gz",
+      "output_sha256": "b8846086b30fa6a81f70975554f47595b8558dfb5c61ccede45bbc738e67728e"
+    },
+    {
+      "accepted_assertions": 5,
+      "attempted_records": 1000,
+      "input": "data/works-47.json.gz",
+      "input_sha256": "aead7963a9eee41657220f2dd8232ff7c882ad37614ba4c3350739091441e76d",
+      "output": "data/enrichment/assertions-047.json.gz",
+      "output_sha256": "86a054d271317b386ab0a24ed6cf4021749b7a4c341dc717eb67322f2484b434"
+    },
+    {
+      "accepted_assertions": 90,
+      "attempted_records": 1000,
+      "input": "data/works-48.json.gz",
+      "input_sha256": "56e20b3177f62e3cefa8f3c22f49683d1c9f6934b3110d6aa53e532ac8bc3bab",
+      "output": "data/enrichment/assertions-048.json.gz",
+      "output_sha256": "4918b3b3c17ce641789cfcb66ec07d190520694c00fbc25ccaeca72cdd6771f4"
+    },
+    {
+      "accepted_assertions": 35,
+      "attempted_records": 1000,
+      "input": "data/works-49.json.gz",
+      "input_sha256": "086c56fa08b62b1da422d4240af635a25c439f15ae3ceb97615f855bea58425a",
+      "output": "data/enrichment/assertions-049.json.gz",
+      "output_sha256": "5443788a3e9e783743487f73c662b1a7dfc9ef843062f52ffacedbd32d765c06"
+    },
+    {
+      "accepted_assertions": 50,
+      "attempted_records": 1000,
+      "input": "data/works-50.json.gz",
+      "input_sha256": "2c17cde05ab9d0a3e7ca070d595a366fa8ebb1caba2e8c45bfba84e32c9ccceb",
+      "output": "data/enrichment/assertions-050.json.gz",
+      "output_sha256": "fb637ab44669b0dd7b9676ec1d0f8bcf5c370abe76f17b5461f41559c366ccda"
+    },
+    {
+      "accepted_assertions": 67,
+      "attempted_records": 1000,
+      "input": "data/works-51.json.gz",
+      "input_sha256": "788f0a1460bbf77008e270be5841e474d8efaf5339bfe835408bf83b9eff122c",
+      "output": "data/enrichment/assertions-051.json.gz",
+      "output_sha256": "968e8341b64265bdc58a587cc1c9798b2d6664c756f545f58e3bc3551fe5514f"
+    },
+    {
+      "accepted_assertions": 36,
+      "attempted_records": 1000,
+      "input": "data/works-52.json.gz",
+      "input_sha256": "f75d0038c7ccc36569ca37d6185302e88f34c8afcdc97fbd3362727dfa01c1e6",
+      "output": "data/enrichment/assertions-052.json.gz",
+      "output_sha256": "2e29776f58a8428c7c6e67ec7a7bfce3d222a2f8026570387247e5ce453f0d2a"
+    },
+    {
+      "accepted_assertions": 15,
+      "attempted_records": 1000,
+      "input": "data/works-53.json.gz",
+      "input_sha256": "ce198524760ca42a0fe8bc326e10b2c4e4b94d9fe6204338c91f46aa6573679a",
+      "output": "data/enrichment/assertions-053.json.gz",
+      "output_sha256": "4adb1d33c387c605332714c82f10df67ef3cb7344f9e6841407447208996b42d"
+    },
+    {
+      "accepted_assertions": 45,
+      "attempted_records": 1000,
+      "input": "data/works-54.json.gz",
+      "input_sha256": "1ae2a46d3e9651105ec98fc73dcac9a6020ae8bc3746b70e01bc5c73d2bd2b7f",
+      "output": "data/enrichment/assertions-054.json.gz",
+      "output_sha256": "08c87c1be667bc4716c2c857c33aaa403f56dd1d03688d8c72d403e981a6aba1"
+    },
+    {
+      "accepted_assertions": 39,
+      "attempted_records": 1000,
+      "input": "data/works-55.json.gz",
+      "input_sha256": "13ca80040815d35f475722e334851b0cb6a5a80c08a0d59104335bd6ddbb9457",
+      "output": "data/enrichment/assertions-055.json.gz",
+      "output_sha256": "9a752cbab1b3cce19b12055bb7949f9343ac181ec523786d8b4e31812d4f79cf"
+    },
+    {
+      "accepted_assertions": 47,
+      "attempted_records": 1000,
+      "input": "data/works-56.json.gz",
+      "input_sha256": "e0aae1ec801253ea87994bdb2982c503501a3814abd65ca3c32fbba488a16b12",
+      "output": "data/enrichment/assertions-056.json.gz",
+      "output_sha256": "a61aa3ecfd95024df2ea282f658ae2b02d92f3e4d315844250e6db6b9a1a72aa"
+    },
+    {
+      "accepted_assertions": 80,
+      "attempted_records": 1000,
+      "input": "data/works-57.json.gz",
+      "input_sha256": "d587ade45685683ed9b4a2f14364cf1f93d948fabd4c2818177d22bcdc0adf35",
+      "output": "data/enrichment/assertions-057.json.gz",
+      "output_sha256": "f3201486e71fcd22aedcb55e72c9b91564c8b6c01fc96d6b01274aa44022dca3"
+    },
+    {
+      "accepted_assertions": 83,
+      "attempted_records": 1000,
+      "input": "data/works-58.json.gz",
+      "input_sha256": "7a41e14d5d10e67c1615e20ce6ab1e28bc2dd4851c3c3a68621f57fe81d94825",
+      "output": "data/enrichment/assertions-058.json.gz",
+      "output_sha256": "fe37b9d85a08cfc0536ca345d0686458da9e238328366dc00d7421d831360b60"
+    },
+    {
+      "accepted_assertions": 70,
+      "attempted_records": 1000,
+      "input": "data/works-59.json.gz",
+      "input_sha256": "a6236831a657f2fc76dad4b0e4efd480ce4aae5700e853f7ab8e02c48bba7c4f",
+      "output": "data/enrichment/assertions-059.json.gz",
+      "output_sha256": "e23f1aa3bf45471f1c3f49f9ae925ff2678c02d9cd38d07f67dc9241598986d5"
+    },
+    {
+      "accepted_assertions": 7,
+      "attempted_records": 1000,
+      "input": "data/works-60.json.gz",
+      "input_sha256": "3d00ef236ed596fa1f25dee45298a7c09b0985a477c8d83330e85dc5a8f0a43c",
+      "output": "data/enrichment/assertions-060.json.gz",
+      "output_sha256": "847bf941a540cea5a3c220515492159fa2c2f95d00b2663f4268451f3426c69d"
+    },
+    {
+      "accepted_assertions": 33,
+      "attempted_records": 1000,
+      "input": "data/works-61.json.gz",
+      "input_sha256": "1e386c93ef810a1c7b5221eb48fdefd662de503bf8dede78050dcb706c343d46",
+      "output": "data/enrichment/assertions-061.json.gz",
+      "output_sha256": "a1dd1e022ea0c83e4de65e4ee9a5c5e0c73e2894199915b1ae53f5c32d864768"
+    },
+    {
+      "accepted_assertions": 46,
+      "attempted_records": 1000,
+      "input": "data/works-62.json.gz",
+      "input_sha256": "a5a5a9157772ac08afe64838da9f56355c5f4f3dea57405829a18c6e47ab82ae",
+      "output": "data/enrichment/assertions-062.json.gz",
+      "output_sha256": "bd8f99dc9d4237c5b669016dd3c150e73f71123bf0af0140b4c222dc7c36810a"
+    },
+    {
+      "accepted_assertions": 64,
+      "attempted_records": 1000,
+      "input": "data/works-63.json.gz",
+      "input_sha256": "b410b76e7bad868a9344602d2fcefc2c4dfe66b35e959c193dbe4dc314f810f6",
+      "output": "data/enrichment/assertions-063.json.gz",
+      "output_sha256": "e08390849a83e6367c7ae062b310067932ce3e63cc68d6a6103fc750a078933d"
+    },
+    {
+      "accepted_assertions": 80,
+      "attempted_records": 1000,
+      "input": "data/works-64.json.gz",
+      "input_sha256": "3df7a17b805930233dbb32b5131ce6a01ef0584978f3b474d36ee2485802a6b6",
+      "output": "data/enrichment/assertions-064.json.gz",
+      "output_sha256": "be7964aac2a3acc3dfc16f60a2876e30bd4dbb4ba7cee09f73e8b407f87f2141"
+    },
+    {
+      "accepted_assertions": 110,
+      "attempted_records": 1000,
+      "input": "data/works-65.json.gz",
+      "input_sha256": "b0456ccadbcf2c08a09c58e5815830fff6f8fcfecfac9cf09379bb6b072ad6a0",
+      "output": "data/enrichment/assertions-065.json.gz",
+      "output_sha256": "091e409a77240e3707374917359d2ddd85c8a89c8624fe19db7becb2929ab71c"
+    },
+    {
+      "accepted_assertions": 46,
+      "attempted_records": 1000,
+      "input": "data/works-66.json.gz",
+      "input_sha256": "10769af868e1f4dfce6d99fe0b0106538625ab2db6aaccdabb38567c8b65cbdc",
+      "output": "data/enrichment/assertions-066.json.gz",
+      "output_sha256": "7514d539faa1d53436de40c36238890460445462fba691be2187b6a48bd78048"
+    },
+    {
+      "accepted_assertions": 20,
+      "attempted_records": 1000,
+      "input": "data/works-67.json.gz",
+      "input_sha256": "7c7f656a13c284e95b3cc7df95d83d70b95716c045ddc51d05d4ad7f58bd4f26",
+      "output": "data/enrichment/assertions-067.json.gz",
+      "output_sha256": "c88efbb25784399a016b796ac63b68102b650d1f84a2fbcfb27846eaa7f44863"
+    },
+    {
+      "accepted_assertions": 36,
+      "attempted_records": 1000,
+      "input": "data/works-68.json.gz",
+      "input_sha256": "749adccb37711bc31c36050ee286905feb2e88ad399b62f18d5324a2b8f00eae",
+      "output": "data/enrichment/assertions-068.json.gz",
+      "output_sha256": "174984630c052b4340519f02f6dff2e629d75e351222bb7db0d37ffd10efa8dc"
+    },
+    {
+      "accepted_assertions": 36,
+      "attempted_records": 1000,
+      "input": "data/works-69.json.gz",
+      "input_sha256": "876e4318918580d8a88201de206f57117449b9b87180386999ad22e4ff770fa8",
+      "output": "data/enrichment/assertions-069.json.gz",
+      "output_sha256": "9a66e044bab34666ef7af7e041943e3c0d5ae19a2c157975f393907455b1af71"
+    },
+    {
+      "accepted_assertions": 49,
+      "attempted_records": 1000,
+      "input": "data/works-70.json.gz",
+      "input_sha256": "ed0688d8fc114dd5abe2be37e3c7289c3de978b8ac66fcf0c0fa7286cf0bd5ab",
+      "output": "data/enrichment/assertions-070.json.gz",
+      "output_sha256": "dd860956b42087ccb2fc97067c351b123e8c7fc1125983b7b21d42583cc7be19"
+    },
+    {
+      "accepted_assertions": 120,
+      "attempted_records": 1000,
+      "input": "data/works-71.json.gz",
+      "input_sha256": "db55480a274430bb1a111d80269c473b16653386e83344ad8c3a53968f2f393a",
+      "output": "data/enrichment/assertions-071.json.gz",
+      "output_sha256": "3902a5b6d47ee359156ae37e01d8ab03221f7971a8477aa0976b9bdd41a90516"
+    },
+    {
+      "accepted_assertions": 108,
+      "attempted_records": 1000,
+      "input": "data/works-72.json.gz",
+      "input_sha256": "57adf478060e0fb09b04b9ab9a61abf38a7d21217bc74018a592eff1f369f5e2",
+      "output": "data/enrichment/assertions-072.json.gz",
+      "output_sha256": "62454336bfdf9da477347a7adc1764b6e899cb037050889bc9c48451f2b8c5e4"
+    },
+    {
+      "accepted_assertions": 21,
+      "attempted_records": 1000,
+      "input": "data/works-73.json.gz",
+      "input_sha256": "23fec34b8ab83810038778d70ff6f6aa8b6e943b023d7b52ec8bacc12551613f",
+      "output": "data/enrichment/assertions-073.json.gz",
+      "output_sha256": "9fc4ffad498139dca5137215107d0b6a9e943751537c04937bbb06edbfd36048"
+    },
+    {
+      "accepted_assertions": 41,
+      "attempted_records": 1000,
+      "input": "data/works-74.json.gz",
+      "input_sha256": "556eb3583e6dc22c6d50d287425f9b96e66f86d03fb61db56440b83ae20e5eb4",
+      "output": "data/enrichment/assertions-074.json.gz",
+      "output_sha256": "a49fcb9810112013bd9eca0cee3494fbdaf15a45da3386e9f3fd59ba812c03b9"
+    },
+    {
+      "accepted_assertions": 66,
+      "attempted_records": 1000,
+      "input": "data/works-75.json.gz",
+      "input_sha256": "c8161bbce66bfecc73a665a2bd76e2369df083a15830e4218f989581be7c2bf7",
+      "output": "data/enrichment/assertions-075.json.gz",
+      "output_sha256": "6abeed00d4c7e4f7d3002187208ea7a257d1a30b8afff7a3f219d3867716785e"
+    },
+    {
+      "accepted_assertions": 72,
+      "attempted_records": 1000,
+      "input": "data/works-76.json.gz",
+      "input_sha256": "e041e14e1f7c3d98b09a463206c0566e37417941737e747830480214ecdc22d4",
+      "output": "data/enrichment/assertions-076.json.gz",
+      "output_sha256": "2e5f0b0c9ef569b614c86c8e3f53269e0f063387fa9ef296a95a7bdd779378c2"
+    },
+    {
+      "accepted_assertions": 79,
+      "attempted_records": 1000,
+      "input": "data/works-77.json.gz",
+      "input_sha256": "b765212e5f728259d1df59f9e068293ed26042ac742474600ea2338cb5c4d6c1",
+      "output": "data/enrichment/assertions-077.json.gz",
+      "output_sha256": "ac81cc066ed524bca227521c1c50fc7dfbe09d29081587f454984cd7db049a1d"
+    },
+    {
+      "accepted_assertions": 27,
+      "attempted_records": 1000,
+      "input": "data/works-78.json.gz",
+      "input_sha256": "999fdad78add0a11ad36698171d2c96881798f28b9b2defbf76960f5faaff2a5",
+      "output": "data/enrichment/assertions-078.json.gz",
+      "output_sha256": "49df49edf7edb0e1a0eb61960458c5b93985793cc1a7915dc11516636a1df96f"
+    },
+    {
+      "accepted_assertions": 61,
+      "attempted_records": 1000,
+      "input": "data/works-79.json.gz",
+      "input_sha256": "f0cbc2dc58b7aaa1d0a4be903cf4fa3bfdeab6cdb7085b40afc0ae83f459b4ce",
+      "output": "data/enrichment/assertions-079.json.gz",
+      "output_sha256": "f88b94b84bb27bee91d7a7cff846cc2462d44c024ddc130cfae4965fde8c9b8b"
+    },
+    {
+      "accepted_assertions": 65,
+      "attempted_records": 1000,
+      "input": "data/works-80.json.gz",
+      "input_sha256": "47bd1f4b62cc429722d1890e3a7e65b09f9d33ae9cacc65c4d54164930f0ab66",
+      "output": "data/enrichment/assertions-080.json.gz",
+      "output_sha256": "5b328a4d5276bf9f7b36f2f3d4062caa6a13c2ae55b8cc0cdbae1b78c533436d"
+    },
+    {
+      "accepted_assertions": 67,
+      "attempted_records": 1000,
+      "input": "data/works-81.json.gz",
+      "input_sha256": "106257171e637644095a6cc9d79f22e57b2cbe0a4fb9d19a65f92a303a2fae3c",
+      "output": "data/enrichment/assertions-081.json.gz",
+      "output_sha256": "4861b9b880df9c6c2315bbc44ba95b9b6a47768f302c022fa3ad2f3f7dd7233b"
+    },
+    {
+      "accepted_assertions": 38,
+      "attempted_records": 1000,
+      "input": "data/works-82.json.gz",
+      "input_sha256": "b0e7c32d7dc0938dd6047a9f2eb4c3f67a83aeee8f2144f608e44a5c3a1e0450",
+      "output": "data/enrichment/assertions-082.json.gz",
+      "output_sha256": "c3d5262bc058ce6befd9bf0286b5a6f879663bdaa1885661e8e7af3bbc8898d1"
+    },
+    {
+      "accepted_assertions": 21,
+      "attempted_records": 1000,
+      "input": "data/works-83.json.gz",
+      "input_sha256": "eeb3caec81d0581bc75e083a32eb06a3f4fb206205e4a697999e640bdb6f5dd9",
+      "output": "data/enrichment/assertions-083.json.gz",
+      "output_sha256": "09517e30bb6db8e8a2e55737ddab46453c6e5511e5ab360ffdb4e896357bbe6d"
+    },
+    {
+      "accepted_assertions": 82,
+      "attempted_records": 1000,
+      "input": "data/works-84.json.gz",
+      "input_sha256": "dd863215a590286b5840723e73d37b2adf74697e099865168b0ca0d34dbe624b",
+      "output": "data/enrichment/assertions-084.json.gz",
+      "output_sha256": "366361fff15f5e452b021949ecb36b3e6d54ff3975f7612b86833c966079345c"
+    },
+    {
+      "accepted_assertions": 72,
+      "attempted_records": 1000,
+      "input": "data/works-85.json.gz",
+      "input_sha256": "fd54ee9ac5bc25fef2fc75cdc6a76d21b43e9d78f97a1e91f239b77be2f1ee4d",
+      "output": "data/enrichment/assertions-085.json.gz",
+      "output_sha256": "670cbcc7e022c6baf2b7f4039c24fd954d2446059a5714cdf940569a8bb77f19"
+    },
+    {
+      "accepted_assertions": 75,
+      "attempted_records": 1000,
+      "input": "data/works-86.json.gz",
+      "input_sha256": "393fa527dd3739c740eb2d6f5f5621322169d013329e19d565472d8a00a9e2d1",
+      "output": "data/enrichment/assertions-086.json.gz",
+      "output_sha256": "096f248ed9287133f0be4741a5dcc954a7548c00941691a4e9751d5015701c70"
+    },
+    {
+      "accepted_assertions": 31,
+      "attempted_records": 1000,
+      "input": "data/works-87.json.gz",
+      "input_sha256": "03ad2fff38e5f55177064e9f95d5fdcfe50eb183bf9300a5891a3dc865747001",
+      "output": "data/enrichment/assertions-087.json.gz",
+      "output_sha256": "2891796c89f7db333837f83b1be614c55793b6b7cb67a072ea83c638c9b67c1a"
+    },
+    {
+      "accepted_assertions": 27,
+      "attempted_records": 1000,
+      "input": "data/works-88.json.gz",
+      "input_sha256": "ac66b396132bd215cf522e63e5c553df10443a0201d3f7e22825eeb8c0fb6829",
+      "output": "data/enrichment/assertions-088.json.gz",
+      "output_sha256": "9e82040409d0e9894790d48816e0413ab472b055a55d5f21a6c218479270e6d6"
+    },
+    {
+      "accepted_assertions": 22,
+      "attempted_records": 1000,
+      "input": "data/works-89.json.gz",
+      "input_sha256": "818f3e92c954dc944a68f833341e5401f3c390e5fd72adb62dd834213abe9d64",
+      "output": "data/enrichment/assertions-089.json.gz",
+      "output_sha256": "ee570cefc8a00295de35abc21952e7597831db118088b558d7c1ee8fec2d82c8"
+    },
+    {
+      "accepted_assertions": 86,
+      "attempted_records": 1000,
+      "input": "data/works-90.json.gz",
+      "input_sha256": "1f663c8f33384b8ffd1b7f68f346a24e403289d62aadf94c5e0709b463a42263",
+      "output": "data/enrichment/assertions-090.json.gz",
+      "output_sha256": "8900f81db7220d22a80ea5a74a8e0e050c307ca230712d5b4bf972a3e5fef80a"
+    },
+    {
+      "accepted_assertions": 61,
+      "attempted_records": 1000,
+      "input": "data/works-91.json.gz",
+      "input_sha256": "389b05d044e524a52968126d697d56a6dbccb97fa6171ad3a668047ad9d60328",
+      "output": "data/enrichment/assertions-091.json.gz",
+      "output_sha256": "b65cd57afaaf9eb40b738755952c7598f35daa2222829c9d3a20e6b0c7cd36d1"
+    },
+    {
+      "accepted_assertions": 60,
+      "attempted_records": 1000,
+      "input": "data/works-92.json.gz",
+      "input_sha256": "78d2715fd3384ba4e0540f77602b5e7df8d99e528852131a0b658778a38cdd03",
+      "output": "data/enrichment/assertions-092.json.gz",
+      "output_sha256": "25670be8001ee71dd379e1dc3a76407456eac0ed5d10bae12005be5de6db4967"
+    },
+    {
+      "accepted_assertions": 23,
+      "attempted_records": 1000,
+      "input": "data/works-93.json.gz",
+      "input_sha256": "b9c3a4cbb1ba2184b021fb946dd9a122385c0fa472e5f60dce6c0dc80f2352e4",
+      "output": "data/enrichment/assertions-093.json.gz",
+      "output_sha256": "e5c7762d25355b7402d8de60188886dce78dc2fda8ddc0c1effcf25a7a925cb9"
+    },
+    {
+      "accepted_assertions": 25,
+      "attempted_records": 1000,
+      "input": "data/works-94.json.gz",
+      "input_sha256": "26254fcd4ce4bdf0300335e24d733b205ab2d9fddb0938f7db0e7736cbe87697",
+      "output": "data/enrichment/assertions-094.json.gz",
+      "output_sha256": "0a687ba677e1801161721d06cf362e74ef8a93fb23ecc3895d38189ef741d52f"
+    },
+    {
+      "accepted_assertions": 30,
+      "attempted_records": 1000,
+      "input": "data/works-95.json.gz",
+      "input_sha256": "fb40d7b042a05caa7c296306391f9f55c4c45f2c7f3c5f3f03346bad7ed32d7c",
+      "output": "data/enrichment/assertions-095.json.gz",
+      "output_sha256": "c9dc4cd68ec8c4b4f1a3ccf133ba12b968ae3ed135ea1fb045993ac81c5ffb7d"
+    },
+    {
+      "accepted_assertions": 83,
+      "attempted_records": 1000,
+      "input": "data/works-96.json.gz",
+      "input_sha256": "7322f97b0070b8e31fe42691193fd78d5fcb927054a91f364deba9ad3c98399f",
+      "output": "data/enrichment/assertions-096.json.gz",
+      "output_sha256": "30c0c0fc29d002905ddbf8903af50e2dd8ad1e709d7138bce942dac499ca5049"
+    },
+    {
+      "accepted_assertions": 68,
+      "attempted_records": 1000,
+      "input": "data/works-97.json.gz",
+      "input_sha256": "01d9dc9c4b3d98996dc1b893f5ec6256c88a255150ff0c6c3570390dc52b7ab7",
+      "output": "data/enrichment/assertions-097.json.gz",
+      "output_sha256": "132d801dc61ca73fc81d35b01e8871d46f41263103130845d7c1e1ddad54978a"
+    },
+    {
+      "accepted_assertions": 47,
+      "attempted_records": 1000,
+      "input": "data/works-98.json.gz",
+      "input_sha256": "de3ac59bdcdc3962f4aafce7415ee2d154fc3ad94e3eccc626e18fb4616d7d2d",
+      "output": "data/enrichment/assertions-098.json.gz",
+      "output_sha256": "57c902d9c7f232d11ccf8aa7f794a4a50cfb5d33b97d49bdbee7f0aaf68e2433"
+    },
+    {
+      "accepted_assertions": 34,
+      "attempted_records": 1000,
+      "input": "data/works-99.json.gz",
+      "input_sha256": "99bfc7d13fc128e2b11ca85d67f00b56265bd5aa09aee679c9e925047e57838d",
+      "output": "data/enrichment/assertions-099.json.gz",
+      "output_sha256": "4b410cf8d3f7f375d9f2142bea75d85eab2dca21abceffedb9e4cd737679c114"
+    },
+    {
+      "accepted_assertions": 31,
+      "attempted_records": 1000,
+      "input": "data/works-100.json.gz",
+      "input_sha256": "334dec5823d3b2a5950b464944a862ece589397751d420c18b24c39b39deff95",
+      "output": "data/enrichment/assertions-100.json.gz",
+      "output_sha256": "5a89c121a86fab28730d3c245a0f8cb7fbf52bd752e3a4a44735b5c35d379e71"
+    },
+    {
+      "accepted_assertions": 34,
+      "attempted_records": 1000,
+      "input": "data/works-101.json.gz",
+      "input_sha256": "c4946b3c1d3eb2222f980fb356bad2726673d401eb86757e24b5b1515e2042c8",
+      "output": "data/enrichment/assertions-101.json.gz",
+      "output_sha256": "3fdfb7a416f403ee47174aa368e24051e1b4382a6caa7cedd99f4c760a64651f"
+    },
+    {
+      "accepted_assertions": 76,
+      "attempted_records": 1000,
+      "input": "data/works-102.json.gz",
+      "input_sha256": "1a1cf6d6ea2fbad536b44f382f25dd308c70f14e2f20903e0ffc52149b1854c8",
+      "output": "data/enrichment/assertions-102.json.gz",
+      "output_sha256": "4e9896bfd122521ca561bed5194ea5e462f136a20f34a06c74a56043e0ea859e"
+    },
+    {
+      "accepted_assertions": 72,
+      "attempted_records": 1000,
+      "input": "data/works-103.json.gz",
+      "input_sha256": "6289e696817a2288f979c3dd4349c6ecb44994b543ddf36bb983b35284fd3a05",
+      "output": "data/enrichment/assertions-103.json.gz",
+      "output_sha256": "692623ca726f8a4f497a2fd3233f056cfd405ec788a766638afe53811ca9a30e"
+    },
+    {
+      "accepted_assertions": 52,
+      "attempted_records": 1000,
+      "input": "data/works-104.json.gz",
+      "input_sha256": "cebea1cf204aa974a18fa79ef4a30a3e60e48d84acc99f321206a1373f436a2a",
+      "output": "data/enrichment/assertions-104.json.gz",
+      "output_sha256": "1a753fd888985f94d10be9b80cf63b86cff56e3e2f318633a124a1349c4d93c0"
+    },
+    {
+      "accepted_assertions": 40,
+      "attempted_records": 1000,
+      "input": "data/works-105.json.gz",
+      "input_sha256": "e17711a69b506aae996a2a2911b64bd6245ab23794d45b9674d7c25e88b32763",
+      "output": "data/enrichment/assertions-105.json.gz",
+      "output_sha256": "18ce3bc49ab120362f7bf93ea8ff006d7140663bc03a3a896b54ab16158627dd"
+    },
+    {
+      "accepted_assertions": 36,
+      "attempted_records": 1000,
+      "input": "data/works-106.json.gz",
+      "input_sha256": "2e093bc3b84a10cbba6125758f2daa1be1076068bf817b614589c67ced95b48c",
+      "output": "data/enrichment/assertions-106.json.gz",
+      "output_sha256": "8fb782d942690d56b379afc399bb7ddb394c92d0deb8762fcc897d12416c9613"
+    },
+    {
+      "accepted_assertions": 36,
+      "attempted_records": 1000,
+      "input": "data/works-107.json.gz",
+      "input_sha256": "a8038206ab853cf871962c8546b742969952625f1923a717b5b9abb00a8f2420",
+      "output": "data/enrichment/assertions-107.json.gz",
+      "output_sha256": "fb6da3e993c6a20b0ad275de4166839a6c05e8164f54fb8af0113bf9ec656566"
+    },
+    {
+      "accepted_assertions": 90,
+      "attempted_records": 1000,
+      "input": "data/works-108.json.gz",
+      "input_sha256": "9f51afc30cf87cb55184ac4063bbeceb42a879d1515fc490479fc29042159ae2",
+      "output": "data/enrichment/assertions-108.json.gz",
+      "output_sha256": "378e8ec810c7f06382bc5274dda99ba484edc3e7180429bf9d90ffaf5528396a"
+    },
+    {
+      "accepted_assertions": 89,
+      "attempted_records": 1000,
+      "input": "data/works-109.json.gz",
+      "input_sha256": "3895a11151a44a417c7b134106ea089fba5b85492ec511ff8b897001c077a02d",
+      "output": "data/enrichment/assertions-109.json.gz",
+      "output_sha256": "4b8c535f8000708ee1c3c6baaebc5a36e58301f267396a84baba7d5fe028116b"
+    },
+    {
+      "accepted_assertions": 52,
+      "attempted_records": 1000,
+      "input": "data/works-110.json.gz",
+      "input_sha256": "047092dfb08fa0ff2cf797bf8dd4380861e79756c90a460f5caabe232928f519",
+      "output": "data/enrichment/assertions-110.json.gz",
+      "output_sha256": "4b18abb0ca8c60844ff6ec58766d2df8ed2048de98efbf03ecbcfb71b0648002"
+    },
+    {
+      "accepted_assertions": 49,
+      "attempted_records": 1000,
+      "input": "data/works-111.json.gz",
+      "input_sha256": "2c60ced2d8f6c9fe5e48a47ad60da68b68ee1aa6f40bc6b7876dd56266ec2abc",
+      "output": "data/enrichment/assertions-111.json.gz",
+      "output_sha256": "570e893049ca0f0a5bafe007e7f4a4ef3a1864f1981402feb20002aa1d8d8529"
+    },
+    {
+      "accepted_assertions": 36,
+      "attempted_records": 1000,
+      "input": "data/works-112.json.gz",
+      "input_sha256": "232f790077fe551c4726e3e9ce25e5e5737a51bd4973248763d5a0493c0b2087",
+      "output": "data/enrichment/assertions-112.json.gz",
+      "output_sha256": "1cddbe41ba9780d17b10c4f897eeb9c997e3ef4fde35d84fd4c766d70eb5f1ff"
+    },
+    {
+      "accepted_assertions": 89,
+      "attempted_records": 1000,
+      "input": "data/works-113.json.gz",
+      "input_sha256": "c6d6219b74ffc78c767c498ebda0b172f74e63e315f2ef74be7d8ec21437cae8",
+      "output": "data/enrichment/assertions-113.json.gz",
+      "output_sha256": "9763f6f127ab76cf0f5a2b0775663a3fab3ca6f5cbec7a860bed8e129e76bede"
+    },
+    {
+      "accepted_assertions": 74,
+      "attempted_records": 1000,
+      "input": "data/works-114.json.gz",
+      "input_sha256": "2e0afc3cc9ae0ea62667ae7db4239c7dac386aa62ca0644bcd0d37868b88d118",
+      "output": "data/enrichment/assertions-114.json.gz",
+      "output_sha256": "b51f12805ee334ad2befcbc55b4f365971823b3060772329f0db421ed78bac27"
+    },
+    {
+      "accepted_assertions": 115,
+      "attempted_records": 1000,
+      "input": "data/works-115.json.gz",
+      "input_sha256": "0f4e3aa9c22cda821c16235669451c83e1cac770b434aebb7276aac4d9ec0686",
+      "output": "data/enrichment/assertions-115.json.gz",
+      "output_sha256": "87424db78b92172e7512b2fafd2230b91b9ea54aec519698ffcb1b152187a102"
+    },
+    {
+      "accepted_assertions": 65,
+      "attempted_records": 1000,
+      "input": "data/works-116.json.gz",
+      "input_sha256": "1d96e84482d24ea92a4ce8a4ad7701ce58c3ff7a929bba9a96aff62392d6985b",
+      "output": "data/enrichment/assertions-116.json.gz",
+      "output_sha256": "17e9621373827ea3d6e8030ad2a4956fea26b9061f3f0650b871aa7e095a90f3"
+    },
+    {
+      "accepted_assertions": 52,
+      "attempted_records": 1000,
+      "input": "data/works-117.json.gz",
+      "input_sha256": "dde47fee3028fc13607d9cda12fc9f8b78a4280a36bc9a7a64c2a6b96f7ef53f",
+      "output": "data/enrichment/assertions-117.json.gz",
+      "output_sha256": "a423e4e1850a7b64f3bdb1ebe486d7d51e2471714ad32387e027dfbd361d46cf"
+    },
+    {
+      "accepted_assertions": 42,
+      "attempted_records": 1000,
+      "input": "data/works-118.json.gz",
+      "input_sha256": "e0ea7ec263ce08bfec65d491703d90518d583b17b41228ad3c5449fbf9ba4d56",
+      "output": "data/enrichment/assertions-118.json.gz",
+      "output_sha256": "7012f59c72a319c3bcc9630e626f3f6277d7f2ace9ba36a0586d09f60db7380b"
+    },
+    {
+      "accepted_assertions": 71,
+      "attempted_records": 1000,
+      "input": "data/works-119.json.gz",
+      "input_sha256": "a91205635c0e5b90aee58b55be8399f1ca0aa18c589c1251c836107415b17c03",
+      "output": "data/enrichment/assertions-119.json.gz",
+      "output_sha256": "2e561e4e385bd3b0872a52c21383b4dc6253df90f4ed11c483509e1e3d8b4e68"
+    },
+    {
+      "accepted_assertions": 274,
+      "attempted_records": 1000,
+      "input": "data/works-120.json.gz",
+      "input_sha256": "fd46f8ed30d4fe39b0e3ef15f149220a33e485ba086da9669a8283e7c329cca1",
+      "output": "data/enrichment/assertions-120.json.gz",
+      "output_sha256": "312f55767ea5655768b67008a3c109dd7a1039300e34071a89cdc252a8e6a4a1"
+    },
+    {
+      "accepted_assertions": 196,
+      "attempted_records": 1000,
+      "input": "data/works-121.json.gz",
+      "input_sha256": "e2fceda5cf77b021536e5e78f4accd7f8663f32801da3382a2b8ca9e06ac6c5c",
+      "output": "data/enrichment/assertions-121.json.gz",
+      "output_sha256": "b4588ec70e65feed0c310dee3651560affaf9dad242355b6fdf92e69d13e86b1"
+    },
+    {
+      "accepted_assertions": 163,
+      "attempted_records": 1000,
+      "input": "data/works-122.json.gz",
+      "input_sha256": "a4d65e4a536a6f296d8c0ee29a6aeca6049d6059f68dbd98ac3c2c1d4951a834",
+      "output": "data/enrichment/assertions-122.json.gz",
+      "output_sha256": "8de35b570e481967a046eedb73165ab851f9b46fb3cdfb6a7ae2806695130431"
+    },
+    {
+      "accepted_assertions": 40,
+      "attempted_records": 1000,
+      "input": "data/works-123.json.gz",
+      "input_sha256": "3a7792012c3c6bf9ec3c49b88763d2175e029493810739860e73567538a812c3",
+      "output": "data/enrichment/assertions-123.json.gz",
+      "output_sha256": "7f1441c25e3b3aa47458905ad3f1d9a00318bf4a05e8a39a34b4f76fbf301715"
+    },
+    {
+      "accepted_assertions": 69,
+      "attempted_records": 1000,
+      "input": "data/works-124.json.gz",
+      "input_sha256": "34cd589052e37b6e3b2bb50210e357104f12a8dab826fd0bfcbf8b257d7dbccf",
+      "output": "data/enrichment/assertions-124.json.gz",
+      "output_sha256": "63190e8a25d6b5c3c288e6f4b003d9190c6f6fa97e10aa051e3cf5288630077d"
+    },
+    {
+      "accepted_assertions": 80,
+      "attempted_records": 1000,
+      "input": "data/works-125.json.gz",
+      "input_sha256": "bc07e11023fa96920d2bbc639d8db4d65682bc87e1e1dc49364fcf1515a3df6d",
+      "output": "data/enrichment/assertions-125.json.gz",
+      "output_sha256": "da51083f306e70be6ac8a7ebd9f49af4d9e326c1d1a464535da899d5bfed58d7"
+    },
+    {
+      "accepted_assertions": 80,
+      "attempted_records": 1000,
+      "input": "data/works-126.json.gz",
+      "input_sha256": "1bcbc63dedaffbe7cf64a17139fa01929aee669646bf0a2e149a0d2b6a56d572",
+      "output": "data/enrichment/assertions-126.json.gz",
+      "output_sha256": "54c03985282ec71932b822ac071b579331590a65a8be7e52cf8ee925811930c6"
+    },
+    {
+      "accepted_assertions": 107,
+      "attempted_records": 1000,
+      "input": "data/works-127.json.gz",
+      "input_sha256": "05224355fc411516654ced3339f46a146b2dbada9e725e1d7ea695137bfe5c27",
+      "output": "data/enrichment/assertions-127.json.gz",
+      "output_sha256": "b5b46bb0b8e7ae466177f0aec18a8ca2d4076665c2e01d0598ffa8fa01d411c5"
+    },
+    {
+      "accepted_assertions": 68,
+      "attempted_records": 1000,
+      "input": "data/works-128.json.gz",
+      "input_sha256": "5da62ac783355f93a06d1c4d5f85dea8c3a46823d87c9577818238176551460f",
+      "output": "data/enrichment/assertions-128.json.gz",
+      "output_sha256": "504d51a2cdf688fa9b6e1283067a778be806f3ff80ebc797855c627ab96025b2"
+    },
+    {
+      "accepted_assertions": 49,
+      "attempted_records": 1000,
+      "input": "data/works-129.json.gz",
+      "input_sha256": "00b5aa8dca419fb7e038bbe684005a37c9e7584578df9cc008b6317c49efb30f",
+      "output": "data/enrichment/assertions-129.json.gz",
+      "output_sha256": "c6e87e663fdd4d828ad0712386151040de088d978982b42576d017ec6ed4e08d"
+    },
+    {
+      "accepted_assertions": 59,
+      "attempted_records": 1000,
+      "input": "data/works-130.json.gz",
+      "input_sha256": "82180458bc3a28edf118585390e352c41e0ab3fc485e3d03f54a088d28495468",
+      "output": "data/enrichment/assertions-130.json.gz",
+      "output_sha256": "9360feb7abb1318b22a53804efc1a4cef0595e6287733342bd023123a4b1194c"
+    },
+    {
+      "accepted_assertions": 52,
+      "attempted_records": 1000,
+      "input": "data/works-131.json.gz",
+      "input_sha256": "01969c23fd7e17f8964765b8e8b109e09e200278579d3ee459f2c4fb828d2d4c",
+      "output": "data/enrichment/assertions-131.json.gz",
+      "output_sha256": "639c1a8ddb443fea9fd26552057b3661179ab3ab2fa8bfc249dd03927db80ca6"
+    },
+    {
+      "accepted_assertions": 61,
+      "attempted_records": 1000,
+      "input": "data/works-132.json.gz",
+      "input_sha256": "2bec4cca79b5572aa7b0369af2518780b97efb3f0d507945b2c2259aa94eb571",
+      "output": "data/enrichment/assertions-132.json.gz",
+      "output_sha256": "66402c7962e988960cedb7e6b6896adc1adf460ba57732e5b8325580e931da99"
+    },
+    {
+      "accepted_assertions": 108,
+      "attempted_records": 1000,
+      "input": "data/works-133.json.gz",
+      "input_sha256": "2d1822f39f92da52139d25eca0831c9691cacef7328c1108a8e6e954e19856eb",
+      "output": "data/enrichment/assertions-133.json.gz",
+      "output_sha256": "512ccb540865ef80b6ad93e0a286ee3142086462b782eeea52f1f044492f364f"
+    },
+    {
+      "accepted_assertions": 69,
+      "attempted_records": 1000,
+      "input": "data/works-134.json.gz",
+      "input_sha256": "fe64936aee7ae38e679e4bfa2f81aa6177d66849dc6c7a8c83c263d6ed9cd3c6",
+      "output": "data/enrichment/assertions-134.json.gz",
+      "output_sha256": "8b930168e367d046aea2cc8cb6e6766b426b460ac74a2fbb1f14ecb70613c3e6"
+    },
+    {
+      "accepted_assertions": 45,
+      "attempted_records": 1000,
+      "input": "data/works-135.json.gz",
+      "input_sha256": "b7af24b32ef9cc554a315e89778dfefe384eb24eea3f94b34123a34bf80b1516",
+      "output": "data/enrichment/assertions-135.json.gz",
+      "output_sha256": "5aa33893296806ace5a81f84c5dc0ef990304bbafd74b60744b38350a1e97c9c"
+    },
+    {
+      "accepted_assertions": 55,
+      "attempted_records": 1000,
+      "input": "data/works-136.json.gz",
+      "input_sha256": "bed0ef7bd0ccde4785c8c9ebeb185e5659d2fa1a3676cf7263dabc325287577b",
+      "output": "data/enrichment/assertions-136.json.gz",
+      "output_sha256": "b58e08ee5b35c2ae97ddcc3b8c1b46c9b4193ef559cc111a1e4546b5ad14ae72"
+    },
+    {
+      "accepted_assertions": 51,
+      "attempted_records": 1000,
+      "input": "data/works-137.json.gz",
+      "input_sha256": "c228945baf58ccd675f572d2bc2e7a07a599d1a12a858b8663d293bddf6c9ee5",
+      "output": "data/enrichment/assertions-137.json.gz",
+      "output_sha256": "dab8c5837827edecec579a220d5ac23a2c47351bce9d9b6018e6e65a22f819c8"
+    },
+    {
+      "accepted_assertions": 42,
+      "attempted_records": 1000,
+      "input": "data/works-138.json.gz",
+      "input_sha256": "a6e7352e0ddf9c6e451cbfa4f8e49ca06ebf19a7bac0b58f09c9d9cdbc8261b6",
+      "output": "data/enrichment/assertions-138.json.gz",
+      "output_sha256": "dd1dd17bacac7e78d73d8ae2a9a68218fd583aa968ddf7fa369f83e8a8b05287"
+    },
+    {
+      "accepted_assertions": 108,
+      "attempted_records": 1000,
+      "input": "data/works-139.json.gz",
+      "input_sha256": "96b4d1dc5a7d28251b59c5d942b6b86d60e076a2c1ef49337f09a802365d81f4",
+      "output": "data/enrichment/assertions-139.json.gz",
+      "output_sha256": "e9c3f6ae49057828b0fd25a7a23a70a4de782b4ae23b2f1e51f3123541630699"
+    },
+    {
+      "accepted_assertions": 99,
+      "attempted_records": 1000,
+      "input": "data/works-140.json.gz",
+      "input_sha256": "6c6aa4f8efc6a7441ca97107848263c0a951634caac142cb7bbefe6ffa3183e9",
+      "output": "data/enrichment/assertions-140.json.gz",
+      "output_sha256": "cfbf02b88aae803ac92e68fb8623aa4438d226d814039ec375860a73d0b578a5"
+    },
+    {
+      "accepted_assertions": 48,
+      "attempted_records": 1000,
+      "input": "data/works-141.json.gz",
+      "input_sha256": "f6f0d669260f756f1116d86066fd12e1e7174fa4093494f09a788e5679b1a010",
+      "output": "data/enrichment/assertions-141.json.gz",
+      "output_sha256": "81bf300e1b2f3945bc850e3a299fcf81a2ab15803ebb6e6160ff2a1c8888663e"
+    },
+    {
+      "accepted_assertions": 55,
+      "attempted_records": 1000,
+      "input": "data/works-142.json.gz",
+      "input_sha256": "d67efecb8bb66f18e390091cc0a1bd70711a963805ac1b2a9f775f498af9b2ac",
+      "output": "data/enrichment/assertions-142.json.gz",
+      "output_sha256": "1cc1b626f5f67081ee7580b6ca17092512a8de94fc922777a7e4e5db4c019c97"
+    },
+    {
+      "accepted_assertions": 46,
+      "attempted_records": 1000,
+      "input": "data/works-143.json.gz",
+      "input_sha256": "473794d3a4a7718a9cf54b5b13ffedbba8e70ca3db85a3810ec7ad8b00625189",
+      "output": "data/enrichment/assertions-143.json.gz",
+      "output_sha256": "c070e49a79452bade4799ace8243284950ba14a14c118e47d2ea3d29418d6e7c"
+    },
+    {
+      "accepted_assertions": 118,
+      "attempted_records": 1000,
+      "input": "data/works-144.json.gz",
+      "input_sha256": "177f5e76deca625f05725ef9b4e87ae44d0d8fd80755053564450bb20828fcfc",
+      "output": "data/enrichment/assertions-144.json.gz",
+      "output_sha256": "921c150ccded16f0e7eb2a7315f968fe8a825894ddf844963099dde0cb5908d7"
+    },
+    {
+      "accepted_assertions": 126,
+      "attempted_records": 1000,
+      "input": "data/works-145.json.gz",
+      "input_sha256": "bd65be5e5f1a33a9672ea4037fb108871d0df53d078334ccc4d74eef064b27c6",
+      "output": "data/enrichment/assertions-145.json.gz",
+      "output_sha256": "0626dc9a2ee580e746d20116a0b0985df6cf8ed0673e45c2053c2b32fa827edc"
+    },
+    {
+      "accepted_assertions": 81,
+      "attempted_records": 1000,
+      "input": "data/works-146.json.gz",
+      "input_sha256": "70c64f1a53dbd576842c4473fe828e5d6d1875391710c40abbc4a3e00f813730",
+      "output": "data/enrichment/assertions-146.json.gz",
+      "output_sha256": "dcf068a02b50ba7f104893042070b9c12e21f091f8a0099d29251ee29006cd2b"
+    },
+    {
+      "accepted_assertions": 59,
+      "attempted_records": 1000,
+      "input": "data/works-147.json.gz",
+      "input_sha256": "2f6c6435523aee4aed594813932db0828c0b94bc19b4f327c1ab88610ab63e08",
+      "output": "data/enrichment/assertions-147.json.gz",
+      "output_sha256": "459efbbed3c4f2bf283c6f04297d883aeb15b9846b0d4a904e48b56c718b2ad5"
+    },
+    {
+      "accepted_assertions": 55,
+      "attempted_records": 1000,
+      "input": "data/works-148.json.gz",
+      "input_sha256": "23fa210e3174a067b1505682ffcddb4d8c95fa1db4551025fff507c7031ae71d",
+      "output": "data/enrichment/assertions-148.json.gz",
+      "output_sha256": "e9955ebe9252b8990e7899e20638f877a3329715b0fd2fdcbb9e3a5ce0a98e88"
+    },
+    {
+      "accepted_assertions": 103,
+      "attempted_records": 1000,
+      "input": "data/works-149.json.gz",
+      "input_sha256": "d115230ba13890c8434525dd0d31df038ffd0cfd0fc4743a69b42b0a40565416",
+      "output": "data/enrichment/assertions-149.json.gz",
+      "output_sha256": "dc04095a2d0be7d5fb9eda7fae6b5cda9581497f0c213dd69e4773f106ae7e13"
+    },
+    {
+      "accepted_assertions": 80,
+      "attempted_records": 1000,
+      "input": "data/works-150.json.gz",
+      "input_sha256": "49ee72d46c86255f80dc6a77959ce99bb30c6764e2e1a57cba9e70cce94a0fb2",
+      "output": "data/enrichment/assertions-150.json.gz",
+      "output_sha256": "09774e6ecaf389a51c4c0f6c894e60df4c98439a9af146bbba03735ea89e02be"
+    },
+    {
+      "accepted_assertions": 81,
+      "attempted_records": 1000,
+      "input": "data/works-151.json.gz",
+      "input_sha256": "6a25fc467d79b3d9c8a8e7a6d65ddcf848b42f5981911ecfc70d2a3e551ee84d",
+      "output": "data/enrichment/assertions-151.json.gz",
+      "output_sha256": "6415a017ccd0f419556475b6f0ae224348901ef143c3428446e4f814bc755e38"
+    },
+    {
+      "accepted_assertions": 91,
+      "attempted_records": 1000,
+      "input": "data/works-152.json.gz",
+      "input_sha256": "84739b214784259bc1aec52b194621152efdaab3c448adf06e66d112516c1785",
+      "output": "data/enrichment/assertions-152.json.gz",
+      "output_sha256": "f1423fa47f7dc60001348b638d46635a9f70f501a145e062014e5f781ad613c8"
+    },
+    {
+      "accepted_assertions": 72,
+      "attempted_records": 1000,
+      "input": "data/works-153.json.gz",
+      "input_sha256": "1c3bee74f5341803f63332247cd2e76a168f0bfa9dceebd9471b39769be24c8d",
+      "output": "data/enrichment/assertions-153.json.gz",
+      "output_sha256": "aa7445d4844cf7ae0bcec812fb9a4336c819d9151b75ff6fbbb5f472d6880a5b"
+    },
+    {
+      "accepted_assertions": 84,
+      "attempted_records": 1000,
+      "input": "data/works-154.json.gz",
+      "input_sha256": "d692e764ad4cc64079d101b1fb7d2edc5d038d10108c816df7a8b7036d7a7ef0",
+      "output": "data/enrichment/assertions-154.json.gz",
+      "output_sha256": "9eb1d1aeed0bca66a94c151ae0c805ec3b341f8aac66b7b16b761435bd018bf4"
+    },
+    {
+      "accepted_assertions": 69,
+      "attempted_records": 1000,
+      "input": "data/works-155.json.gz",
+      "input_sha256": "a0ec760e8d42362a47ed60e47879d87d0e00d34c5cf3afb1350917113c98b86c",
+      "output": "data/enrichment/assertions-155.json.gz",
+      "output_sha256": "dcb7dd50a6cadaca24748eacf39cf943eb8d4b91ae0283d0cd64da19a8b3c4b3"
+    },
+    {
+      "accepted_assertions": 72,
+      "attempted_records": 1000,
+      "input": "data/works-156.json.gz",
+      "input_sha256": "ddbdf4d59354620299bc034278a337ab3f3aab3f4c694becd16db1c00b285583",
+      "output": "data/enrichment/assertions-156.json.gz",
+      "output_sha256": "069c610e01e11d35eff9cf4b80c4e2126427e99a465fa67fe90f1c22bee0ddac"
+    },
+    {
+      "accepted_assertions": 98,
+      "attempted_records": 1000,
+      "input": "data/works-157.json.gz",
+      "input_sha256": "3defbc1cd666f45040357f8cc8ecf406c9ee6f2555056520529bee03c2fa7974",
+      "output": "data/enrichment/assertions-157.json.gz",
+      "output_sha256": "c6ef92f6507f167a48ed346b0016d6c241a1a4ef79cb6fd11ab41c8b268bff7d"
+    },
+    {
+      "accepted_assertions": 51,
+      "attempted_records": 1000,
+      "input": "data/works-158.json.gz",
+      "input_sha256": "e5f9bc02ca994f523dcf402b41ec040fee623b1585c6da695a8fe463e0f08d61",
+      "output": "data/enrichment/assertions-158.json.gz",
+      "output_sha256": "03dc1668e50183c6876262f4ee4f33fb59164c6bad661012bec0ff7fe990297e"
+    },
+    {
+      "accepted_assertions": 37,
+      "attempted_records": 1000,
+      "input": "data/works-159.json.gz",
+      "input_sha256": "8f1ee2802c26581f1312cc8c7062e6713d890ea0107817c16021773a2992c595",
+      "output": "data/enrichment/assertions-159.json.gz",
+      "output_sha256": "12f05ed3ab45481d0ac3f01cce7fb794911e672e04fb500cf9145c7ad3babce0"
+    },
+    {
+      "accepted_assertions": 61,
+      "attempted_records": 1000,
+      "input": "data/works-160.json.gz",
+      "input_sha256": "9f8715d48562490e24e47070fad5bceddd0fa8c0f895e80816f003100f53b7ab",
+      "output": "data/enrichment/assertions-160.json.gz",
+      "output_sha256": "840e8ee1ad340fec3a1d4ff999df9c81429a8fbbec84e918112175d42b68e244"
+    },
+    {
+      "accepted_assertions": 13,
+      "attempted_records": 1000,
+      "input": "data/works-161.json.gz",
+      "input_sha256": "a83739be31e79dc28acaa9aad9604c8411703f12ed6d76bd5a7f0b244c83c156",
+      "output": "data/enrichment/assertions-161.json.gz",
+      "output_sha256": "2991d39dd6388878f304992462b80685d9aed2cb739185356a27fd479d5f3416"
+    },
+    {
+      "accepted_assertions": 112,
+      "attempted_records": 1000,
+      "input": "data/works-162.json.gz",
+      "input_sha256": "b1c285ec67f8b08c9e5a97a1490267dc10c82a03eaa66ec76a819b73e25a0217",
+      "output": "data/enrichment/assertions-162.json.gz",
+      "output_sha256": "8c07b14e7827659192fccd41a2e22897960969f9bedaf57ca4f965457a5d1796"
+    },
+    {
+      "accepted_assertions": 84,
+      "attempted_records": 1000,
+      "input": "data/works-163.json.gz",
+      "input_sha256": "d6a73920cfaa05d2c91d81bd778ac7128b83cb8a837fa8515a039183b8318871",
+      "output": "data/enrichment/assertions-163.json.gz",
+      "output_sha256": "6fa40b8fc8dfd634ae70c10ad47176aa6b0c2bb457f61166fe85573ff61ee387"
+    },
+    {
+      "accepted_assertions": 69,
+      "attempted_records": 1000,
+      "input": "data/works-164.json.gz",
+      "input_sha256": "7c57c506280219d76cd2a976bcc687754f35857d4e1903d0edc9d5330a9d3ba8",
+      "output": "data/enrichment/assertions-164.json.gz",
+      "output_sha256": "f1011df629ae63ce656cd01a8697e775b9e94d5129ae56bcfb5b431ecd9105e4"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-165.json.gz",
+      "input_sha256": "0f227ef2ffaf48c767478322fbe167006394a2d5dc3a92a9860868dff98fa89a",
+      "output": "data/enrichment/assertions-165.json.gz",
+      "output_sha256": "9aa47a1640c57227852e1682fe3aed17f0dc2846e2bc98fdbfb9600666ab3cfc"
+    },
+    {
+      "accepted_assertions": 4,
+      "attempted_records": 1000,
+      "input": "data/works-166.json.gz",
+      "input_sha256": "a939b35ce348ad5ff58a07f16fb8470318da27718ced7a10b0dffdeafb2e1262",
+      "output": "data/enrichment/assertions-166.json.gz",
+      "output_sha256": "a2488aa7d37fd22ec3b8e0eece5ece88180beeac6694a24cb5740bd0b8f5ae81"
+    },
+    {
+      "accepted_assertions": 8,
+      "attempted_records": 1000,
+      "input": "data/works-167.json.gz",
+      "input_sha256": "de23d6854b3e5fc12b18171f5cc123a877f6ed3bf341310222548d5b425712b6",
+      "output": "data/enrichment/assertions-167.json.gz",
+      "output_sha256": "068c1d6a8b7cb17087f1f7ab83b882122fd044e7b1b68e77df72630dd57680c3"
+    },
+    {
+      "accepted_assertions": 20,
+      "attempted_records": 1000,
+      "input": "data/works-168.json.gz",
+      "input_sha256": "699121b08d4683a52dfdaf8227217c7cad2ffe92570bc9e1b577518c0cd4e26c",
+      "output": "data/enrichment/assertions-168.json.gz",
+      "output_sha256": "5a8914f768c1834531a8e4b91e8f6ffcce28631ec19a4f0a22671e5be35859d0"
+    },
+    {
+      "accepted_assertions": 87,
+      "attempted_records": 1000,
+      "input": "data/works-169.json.gz",
+      "input_sha256": "3be2f05f75a489b6d2be81578dfd6cb7893da3b0cdd250d54b15bdd52feedf79",
+      "output": "data/enrichment/assertions-169.json.gz",
+      "output_sha256": "a23ac699ab7db504378630359b030215f7280f135d8bd88659b5f288d1ac434b"
+    },
+    {
+      "accepted_assertions": 94,
+      "attempted_records": 1000,
+      "input": "data/works-170.json.gz",
+      "input_sha256": "d4106b124c735f13fc028f4ec6ebd6eaec4d1c47dba0705f0199c53ecf1c4b82",
+      "output": "data/enrichment/assertions-170.json.gz",
+      "output_sha256": "4a0a79cc27ec3107ec52b95c63dd47360c284521242bb49b07fc0c8fe9bd2d73"
+    },
+    {
+      "accepted_assertions": 45,
+      "attempted_records": 1000,
+      "input": "data/works-171.json.gz",
+      "input_sha256": "2ae00860b6955fbb6f24056c628ccef3e68b831ea040eb689e83a02a84099624",
+      "output": "data/enrichment/assertions-171.json.gz",
+      "output_sha256": "60f7fbe55d7bf5f60b5d67217d6b3c032bf2de92bc5dcca12b930d0d6c53dbe8"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-172.json.gz",
+      "input_sha256": "4e8d4a18fbbdddd6636bf048a3839bd0688a386c17a7b4dbece7acecc9f492d5",
+      "output": "data/enrichment/assertions-172.json.gz",
+      "output_sha256": "75873c9d7992f8ce2a5ba6d405a8f6c4a35348c699a48db6736423be97d03f2a"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-173.json.gz",
+      "input_sha256": "b259eeb45a6fb41a8d7b4a160078ad6841ff3ae5e19aa335fed8bbbe8042430b",
+      "output": "data/enrichment/assertions-173.json.gz",
+      "output_sha256": "62661c216f3051d3ead9e7b905450c7417063d25865dec22bc08cf0b7b541c9e"
+    },
+    {
+      "accepted_assertions": 8,
+      "attempted_records": 1000,
+      "input": "data/works-174.json.gz",
+      "input_sha256": "ff1288276351787ef46292611a352206f659ad2e619e414fc6b935c8f820b609",
+      "output": "data/enrichment/assertions-174.json.gz",
+      "output_sha256": "a195ac83bbcd863ad7294fc1bffa5e8648082060d21a2beacbd1488fa9634891"
+    },
+    {
+      "accepted_assertions": 60,
+      "attempted_records": 1000,
+      "input": "data/works-175.json.gz",
+      "input_sha256": "b08771bf0f6ab4e5d6c0b9f036fecb6154ff939b706caeb518d23a52581bb143",
+      "output": "data/enrichment/assertions-175.json.gz",
+      "output_sha256": "5033ded46bcaabd81d3ed2eeec97b0a97c20ec5e0bc7d25c706927f755b98bc9"
+    },
+    {
+      "accepted_assertions": 107,
+      "attempted_records": 1000,
+      "input": "data/works-176.json.gz",
+      "input_sha256": "cd30c7173d7eff1956a902e2518413e37035dac6e23bb66b15838ef8d334e812",
+      "output": "data/enrichment/assertions-176.json.gz",
+      "output_sha256": "5a26c27cbd12d12f9742ddfd3722bdf3b8d67232923cf15ddafb9a01527d6e8e"
+    },
+    {
+      "accepted_assertions": 107,
+      "attempted_records": 1000,
+      "input": "data/works-177.json.gz",
+      "input_sha256": "8bed786d80bf3cd937fbb8c6f675a3dec44f5353e3fa1d68343cda0ab2583ca6",
+      "output": "data/enrichment/assertions-177.json.gz",
+      "output_sha256": "b9259f44e7d525a1251c4604cbb5db6f6e9ab4162f190287b4577e31179205ff"
+    },
+    {
+      "accepted_assertions": 22,
+      "attempted_records": 1000,
+      "input": "data/works-178.json.gz",
+      "input_sha256": "6d0fd6d088ada5a84339e75768f61756b95f9bf9f312e259c4906b40bb74bc36",
+      "output": "data/enrichment/assertions-178.json.gz",
+      "output_sha256": "8251ee410219e02e854e21b911ec452937b147eedb1c55d38932743ac70a2b1b"
+    },
+    {
+      "accepted_assertions": 4,
+      "attempted_records": 1000,
+      "input": "data/works-179.json.gz",
+      "input_sha256": "087c77ff38b2b4556a7d441ba7360c628c607e79bcfe8ab86e8693139083360f",
+      "output": "data/enrichment/assertions-179.json.gz",
+      "output_sha256": "17264932e79f97285b15993eb25137bcff52d85ead56158eab6a7c1dab37bcda"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-180.json.gz",
+      "input_sha256": "ddcf8eaa6850897741cfaab991c1994f87a030a85bf605f4f5f1be21d4367dbf",
+      "output": "data/enrichment/assertions-180.json.gz",
+      "output_sha256": "2eff01681730708c5ddd0311223db05f755f4c6e322bfc4d7f3d1555f36e1d33"
+    },
+    {
+      "accepted_assertions": 4,
+      "attempted_records": 1000,
+      "input": "data/works-181.json.gz",
+      "input_sha256": "3a8930f9a630c27ed22cd502e76368e11c4ee228dd0fb640e8b8c7af51e91ea8",
+      "output": "data/enrichment/assertions-181.json.gz",
+      "output_sha256": "c30978b6221c8bf27f0774ed170cbe95ecd4bed331373a013efc509f838fe457"
+    },
+    {
+      "accepted_assertions": 44,
+      "attempted_records": 1000,
+      "input": "data/works-182.json.gz",
+      "input_sha256": "2254b9283224ed34aeaa8d93aeafca81a0096ba58f3dda9fd73b0dc6696afa64",
+      "output": "data/enrichment/assertions-182.json.gz",
+      "output_sha256": "fcc4983d291d743bf746fb2e21ae749e5d3abcf8613ad2a5cde684ca08a0c95c"
+    },
+    {
+      "accepted_assertions": 114,
+      "attempted_records": 1000,
+      "input": "data/works-183.json.gz",
+      "input_sha256": "4b767d66d1226a6fea4f0df7e7bd826336c6ad19d1ba66dd2c5f40f89978904e",
+      "output": "data/enrichment/assertions-183.json.gz",
+      "output_sha256": "539961c76f5a55320c64f495760690bc5bbea68ace67d7ec174a9f7dd67e91e9"
+    },
+    {
+      "accepted_assertions": 136,
+      "attempted_records": 1000,
+      "input": "data/works-184.json.gz",
+      "input_sha256": "51ccda8fc01690d4135ff59e13a99ea41f214b28159faf0b1cbbc4d2bafa48c4",
+      "output": "data/enrichment/assertions-184.json.gz",
+      "output_sha256": "2dee4e5d8f1b611138fe597b36dfffb7fc4cb2f12660c4d886ebda93729efe4f"
+    },
+    {
+      "accepted_assertions": 5,
+      "attempted_records": 1000,
+      "input": "data/works-185.json.gz",
+      "input_sha256": "2dba2dcbcb485af4a99890f2488c0b1efffc8f4ddd414b3716b25c800a71c89a",
+      "output": "data/enrichment/assertions-185.json.gz",
+      "output_sha256": "4d0095d33e7573d455d2d04484e301d7305503fd666fdf71d702482e4070da38"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-186.json.gz",
+      "input_sha256": "e2560aad4ebda60eec20932f51e9fae29c52b649cbce1cdccab044c68a0e692c",
+      "output": "data/enrichment/assertions-186.json.gz",
+      "output_sha256": "299dfb73a59e2b6f062f05f2f677fb0edf25ac502cea7cebb3e394b8a7d9ef11"
+    },
+    {
+      "accepted_assertions": 0,
+      "attempted_records": 1000,
+      "input": "data/works-187.json.gz",
+      "input_sha256": "83870c94948e6dd6e499298e6eb84f3ac7c574822f4e34996c60170d2a556f8b",
+      "output": "data/enrichment/assertions-187.json.gz",
+      "output_sha256": "029ac1ef2bb96aa9fa0166f8f60604b79b92f7fb5cd41a374f80171306cf1b52"
+    },
+    {
+      "accepted_assertions": 6,
+      "attempted_records": 1000,
+      "input": "data/works-188.json.gz",
+      "input_sha256": "c31204b0da5553cb7c05ae45a9b40c0473bb534934d51c939d4a39413e014bf3",
+      "output": "data/enrichment/assertions-188.json.gz",
+      "output_sha256": "1cea28010fd9ddb0d37010d14d64a81d459ac79a9eb0646576dc549167846606"
+    },
+    {
+      "accepted_assertions": 66,
+      "attempted_records": 1000,
+      "input": "data/works-189.json.gz",
+      "input_sha256": "9d54d76b463b8137e9cd121528f1ac5ad7992421d5d6eeb95763cee73a85f1c4",
+      "output": "data/enrichment/assertions-189.json.gz",
+      "output_sha256": "ef310cc84e800dc7ecdb96b7a2a856a17c6d35bef2748dc7ff2d2e3221a76cf6"
+    },
+    {
+      "accepted_assertions": 103,
+      "attempted_records": 1000,
+      "input": "data/works-190.json.gz",
+      "input_sha256": "33e419a1916ec0d0f53effd19aa7f0c249f9c4f6a41581816dcb01bf43c25ec4",
+      "output": "data/enrichment/assertions-190.json.gz",
+      "output_sha256": "57beb5f624ba1084afc357a3c966976711cbf5bc6e613f0c89e99a9d108701dc"
+    },
+    {
+      "accepted_assertions": 71,
+      "attempted_records": 1000,
+      "input": "data/works-191.json.gz",
+      "input_sha256": "64e599f3265b7e0622fb3893cdd05712b16bdefdf39c632b6388420546d239b2",
+      "output": "data/enrichment/assertions-191.json.gz",
+      "output_sha256": "36f4897533891b627dee5d754bac43803ce621b546929ded99b71347e4bb928a"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-192.json.gz",
+      "input_sha256": "32274aaaa39e3e3d215334e6f4759d49d7eabfe3bf629d07181fd4cd0be25d74",
+      "output": "data/enrichment/assertions-192.json.gz",
+      "output_sha256": "957cc49c85ac6332eb9642b336e39b9b695876c7f7e14ac88d072fb930558cf5"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-193.json.gz",
+      "input_sha256": "f5896408ef266544c232fdd437b8408c6e5ee1de5a9d4f2d31ad99ee661b6942",
+      "output": "data/enrichment/assertions-193.json.gz",
+      "output_sha256": "f02f5ec86f03c1d11f663e02b18ab98d2236f5979baec6b7bc8d4a564924d97f"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-194.json.gz",
+      "input_sha256": "d7ea12de66a64b284ea0014650b8dea55e759c754008bb70198e3e0efdeeac22",
+      "output": "data/enrichment/assertions-194.json.gz",
+      "output_sha256": "5ce06044322b5cc5bf3d499d0a8104cc82d44807f97562a919c5b4791e54b15f"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-195.json.gz",
+      "input_sha256": "2d78260b21b377f3c47512b7d193ce1d075def40b09e99fca0d24646a8f31aad",
+      "output": "data/enrichment/assertions-195.json.gz",
+      "output_sha256": "81f7d4026e99ceb3841ea2e1e42c26aa315cbbea83ec82c9d41d8026bedd2e21"
+    },
+    {
+      "accepted_assertions": 99,
+      "attempted_records": 1000,
+      "input": "data/works-196.json.gz",
+      "input_sha256": "a94af9fba260d46b1395d21feff617e7b06fba09f3d3d45a7801bc3a31bbc39b",
+      "output": "data/enrichment/assertions-196.json.gz",
+      "output_sha256": "0754c77d39f28b791f2c7e19446724972a23b26815dc10c53786074e35fa7432"
+    },
+    {
+      "accepted_assertions": 115,
+      "attempted_records": 1000,
+      "input": "data/works-197.json.gz",
+      "input_sha256": "2d772441f79d0b781c11a29d020b6082401591f90de09c826d1037b9febcb899",
+      "output": "data/enrichment/assertions-197.json.gz",
+      "output_sha256": "d06815463230f72b1e0e20691a2fb295c6fb4f34ce3afa42ac9c761d40d2a7b7"
+    },
+    {
+      "accepted_assertions": 21,
+      "attempted_records": 1000,
+      "input": "data/works-198.json.gz",
+      "input_sha256": "d188d2d9cb2d1f1a1ee957d75c84e9de06b741ad97d6c4eb00caafacb63c9014",
+      "output": "data/enrichment/assertions-198.json.gz",
+      "output_sha256": "c7d56406c7c1ea8a899b1878c7da4fb0aebcc3d709d54c27fb986f23b4e460d0"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-199.json.gz",
+      "input_sha256": "3982df5cbc7755a3966d8f37b363588f89654511aec5481cb35a3548dd5abf0e",
+      "output": "data/enrichment/assertions-199.json.gz",
+      "output_sha256": "890ae535e3598cffaf58eea102385acb4923e36f1bd9d91096618251f1ab6507"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-200.json.gz",
+      "input_sha256": "93d472aa0a35c88218bc0d4fa3e2a11e069217a111f44ea8a9917bec175c7815",
+      "output": "data/enrichment/assertions-200.json.gz",
+      "output_sha256": "7717cb89b80cf30351f2ac164c737eab0b607f1d1abd5ab9e85ca838db0ac5d9"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-201.json.gz",
+      "input_sha256": "e615f50678680f72366c628e37f2b697253f3cdab744af53d1c9b9ce38df0aae",
+      "output": "data/enrichment/assertions-201.json.gz",
+      "output_sha256": "2359f188f3ae34f4b288c2735d56b738a73fe6ed20d2497b2973bd6bc91a3319"
+    },
+    {
+      "accepted_assertions": 30,
+      "attempted_records": 1000,
+      "input": "data/works-202.json.gz",
+      "input_sha256": "c37edc03f8c2e15441cb199616a4545feb5f31991427cf220346aeeeeea818d8",
+      "output": "data/enrichment/assertions-202.json.gz",
+      "output_sha256": "1d569590495130ad289cf664f32ff765c3cf1a3c7d3e8c1131f5cfd2a12f5b56"
+    },
+    {
+      "accepted_assertions": 115,
+      "attempted_records": 1000,
+      "input": "data/works-203.json.gz",
+      "input_sha256": "fa3003c2f9d0dee71cfde04a415b34ce088ede96a8cbdb99a46ebe5219c4aa25",
+      "output": "data/enrichment/assertions-203.json.gz",
+      "output_sha256": "357883a7c79d615e82d4a0998e2d00b0cc4861945fae13bb875f9238d1be2faf"
+    },
+    {
+      "accepted_assertions": 88,
+      "attempted_records": 1000,
+      "input": "data/works-204.json.gz",
+      "input_sha256": "c25ba1c4aedce591802db61ddb997a33903ac07df48bdd474ac0c0b68b54658b",
+      "output": "data/enrichment/assertions-204.json.gz",
+      "output_sha256": "60b211c9f311ca0290251f07bf19a8ebb8fb2d0c26e19a0aa4ca30bea0016774"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-205.json.gz",
+      "input_sha256": "5db7e0b70684f8779d07fcf4bef38b1d7ec2b57ad4cab483a0e7191d094b169e",
+      "output": "data/enrichment/assertions-205.json.gz",
+      "output_sha256": "44013885e9456387988cca181b32d2306a9b042af63a51ad09ee303dedd9b1f7"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-206.json.gz",
+      "input_sha256": "50a87f986228cafbe0bcc6fddf51fe698c840d8515032d9c7f1aa51d391fefb5",
+      "output": "data/enrichment/assertions-206.json.gz",
+      "output_sha256": "48705bd9d149001e21d56c602ad187ce77f3be1cff60c9a503aae7da106a98d9"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-207.json.gz",
+      "input_sha256": "062d8df5e795adb460d6c186c3618e65c423398443a7547506f515f64bf34a7e",
+      "output": "data/enrichment/assertions-207.json.gz",
+      "output_sha256": "7a90ef4fe7bea366023973034debdef520b768226b6bad8d5c461aaa5b748f5d"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-208.json.gz",
+      "input_sha256": "a9e64752322e659041f444f07bf8df7264d3cdc60084bf4cd8ae8ffbc373e65a",
+      "output": "data/enrichment/assertions-208.json.gz",
+      "output_sha256": "4aa2620375078286a20b5d3a3a0dfb2fbd45dede85c7b6656ee26ce025d18351"
+    },
+    {
+      "accepted_assertions": 80,
+      "attempted_records": 1000,
+      "input": "data/works-209.json.gz",
+      "input_sha256": "326b2b208049495ec1e0f4f1ed978d1a4df6f1efc31781a0beb6891a4ab8abfe",
+      "output": "data/enrichment/assertions-209.json.gz",
+      "output_sha256": "bfa1621ddc76fa403896ac2c2ef6a73fb0229532072cf909e60b6fe77233ff5a"
+    },
+    {
+      "accepted_assertions": 151,
+      "attempted_records": 1000,
+      "input": "data/works-210.json.gz",
+      "input_sha256": "df3704dd720ee1e17d9d4e9a666d8441e50e4eea985bb319958070b824bc8346",
+      "output": "data/enrichment/assertions-210.json.gz",
+      "output_sha256": "e947f2278ea408e693043f7c4343c18fbbea0f6181a33fc801b157e2e03bf255"
+    },
+    {
+      "accepted_assertions": 46,
+      "attempted_records": 1000,
+      "input": "data/works-211.json.gz",
+      "input_sha256": "f5adc7721bdb7060dcde3f65af481cecdeabb31ace3377ed7cf76020eeb4688c",
+      "output": "data/enrichment/assertions-211.json.gz",
+      "output_sha256": "98f043b4751e96e6354a888e244711c008b46059f7aeed320980f5692e8d0be1"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-212.json.gz",
+      "input_sha256": "f2ce643513699f26bf0dd61d077622a5b6ce17b4d48d8362a8f327772a662c5b",
+      "output": "data/enrichment/assertions-212.json.gz",
+      "output_sha256": "061419ac50436894e5978c17e069e4702a8c90887fdf77f8ece7f55331e03f5e"
+    },
+    {
+      "accepted_assertions": 4,
+      "attempted_records": 1000,
+      "input": "data/works-213.json.gz",
+      "input_sha256": "621959102ee315409486f78e848db6c08ca27f0046873529a2830b7566b8640a",
+      "output": "data/enrichment/assertions-213.json.gz",
+      "output_sha256": "c50653af513a2a408d447afe345776e2aa7f8eeb59e33eeed4612d00557bcc38"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-214.json.gz",
+      "input_sha256": "84e935489363bc20b026aa4ee18dd70ca3a5f3b714aded3aa9c28958098db7d0",
+      "output": "data/enrichment/assertions-214.json.gz",
+      "output_sha256": "2aa21e83dff6461a809af576fce2746348e4694242a3757abc06b49c82197f9e"
+    },
+    {
+      "accepted_assertions": 6,
+      "attempted_records": 1000,
+      "input": "data/works-215.json.gz",
+      "input_sha256": "5b8bdbf920af5631547284ec8fee697ff979130d06e99e00df47abd1c13a3079",
+      "output": "data/enrichment/assertions-215.json.gz",
+      "output_sha256": "5306ae171037d74f70a0990e288fd602ee5adccd77bf8a1f7680476b93cbb6ab"
+    },
+    {
+      "accepted_assertions": 148,
+      "attempted_records": 1000,
+      "input": "data/works-216.json.gz",
+      "input_sha256": "72566ca62bb5462d3ede6accb15a69c9f8a7e29e81c2f096dd341f5fd57a477c",
+      "output": "data/enrichment/assertions-216.json.gz",
+      "output_sha256": "b39c385d78a29ab90db69247ee3eea7f717273d5440212e3ebb63617dd4d5cb6"
+    },
+    {
+      "accepted_assertions": 168,
+      "attempted_records": 1000,
+      "input": "data/works-217.json.gz",
+      "input_sha256": "c446dd1795f92def34c42dc9a150a8d8db69314c8dd4bd6155f890db7a316c6e",
+      "output": "data/enrichment/assertions-217.json.gz",
+      "output_sha256": "b126e0dc1be4a53ca41296425dd3857aef5e78ac5d25a1f177646c0f14ff901b"
+    },
+    {
+      "accepted_assertions": 26,
+      "attempted_records": 1000,
+      "input": "data/works-218.json.gz",
+      "input_sha256": "b2bf5b7a605418b68494d049fe79a9e9e132492d05c9e15c0f9f6ed924b63867",
+      "output": "data/enrichment/assertions-218.json.gz",
+      "output_sha256": "adf0ff83ec26114334680e9083d8cbd2929530fdb1148e087d96d3b82658b7d8"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-219.json.gz",
+      "input_sha256": "4a51db224ed12cd2a6e9ec0a933489b9efdd8f1bfd59b4b22f351019002c04ae",
+      "output": "data/enrichment/assertions-219.json.gz",
+      "output_sha256": "cb70ac288a20b3527c3000508b307f593f916e0e88e12cea804cdfc21bdcabab"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-220.json.gz",
+      "input_sha256": "4fd0b951e2940d5ddbc86c19dd91c9135f38b061c02de7818aacb02a670769c5",
+      "output": "data/enrichment/assertions-220.json.gz",
+      "output_sha256": "515ef4092e19d3116e560e3ce23dec3a960c466f8cf96dc7d339e8bc3959a55a"
+    },
+    {
+      "accepted_assertions": 97,
+      "attempted_records": 1000,
+      "input": "data/works-221.json.gz",
+      "input_sha256": "243b7fda1df5a0823eb337e99a71dca2456ae5eef28e39c0dda6fe08e0f13118",
+      "output": "data/enrichment/assertions-221.json.gz",
+      "output_sha256": "c015d0eb9222ecac9f0d8652d98cdf5db56c389db2baf45ab3c63eb8679f87d3"
+    },
+    {
+      "accepted_assertions": 193,
+      "attempted_records": 1000,
+      "input": "data/works-222.json.gz",
+      "input_sha256": "0850f13480e25dba88d86d01305c7c747a4b38803331378888bb42904362a34f",
+      "output": "data/enrichment/assertions-222.json.gz",
+      "output_sha256": "c88aa6dc04f06bec1c4d9fdca3af215f0320db0b7b46a3eb8ce41f8bb05a6f5e"
+    },
+    {
+      "accepted_assertions": 77,
+      "attempted_records": 1000,
+      "input": "data/works-223.json.gz",
+      "input_sha256": "8a1ea75c160343dde3c220d75cf30c1f758b2b33e96752f39831f7afad1efe3d",
+      "output": "data/enrichment/assertions-223.json.gz",
+      "output_sha256": "968bc7af63d968513a889325c96b7fe500148deda5e9865d78d2e3f0d7eec791"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-224.json.gz",
+      "input_sha256": "2042befe60a1e4565727bd3ec51957e05fcdb8b10bbe36edcc56a1835c6ea8f6",
+      "output": "data/enrichment/assertions-224.json.gz",
+      "output_sha256": "5718eee45366d31b0b02ac0ed75cffd2f0a213c886c521c1dfd5de1b9fc67da1"
+    },
+    {
+      "accepted_assertions": 4,
+      "attempted_records": 1000,
+      "input": "data/works-225.json.gz",
+      "input_sha256": "88fe38473905bffa5e8396c31db646cdc77f08d340a5e4a0e1ede4967bfcdff3",
+      "output": "data/enrichment/assertions-225.json.gz",
+      "output_sha256": "42abc1f4fd71cf5288d3c1da225d6b7d690e46414d657f7180f5be61650be6eb"
+    },
+    {
+      "accepted_assertions": 4,
+      "attempted_records": 1000,
+      "input": "data/works-226.json.gz",
+      "input_sha256": "6ae76f997d19902898454c4f708a754e38a6e6b5dbd98ea82badafce135e3650",
+      "output": "data/enrichment/assertions-226.json.gz",
+      "output_sha256": "2577d2cf16d523b4fd827e3321556e6e06079ef904320bc08d9db1df62438805"
+    },
+    {
+      "accepted_assertions": 43,
+      "attempted_records": 1000,
+      "input": "data/works-227.json.gz",
+      "input_sha256": "f42d611600b983baf2519b14ca2bc4da08ac4a9c9e33b74b3ed2449c142e266a",
+      "output": "data/enrichment/assertions-227.json.gz",
+      "output_sha256": "5ceed68b0af101f7713faf48c90c213bf1c182b3981129752bc5e1bef7e891e9"
+    },
+    {
+      "accepted_assertions": 234,
+      "attempted_records": 1000,
+      "input": "data/works-228.json.gz",
+      "input_sha256": "83ab574900864c9a93a89843edbfacb825c39e99bfd75605e21e21bc6db54b57",
+      "output": "data/enrichment/assertions-228.json.gz",
+      "output_sha256": "80e82ebbc2d6666acd521a75fb5b6ecbc97e0ef7d2669ccd7e819d3265e26954"
+    },
+    {
+      "accepted_assertions": 86,
+      "attempted_records": 1000,
+      "input": "data/works-229.json.gz",
+      "input_sha256": "e3e0b1cea9bedd8717844b4ea5066dc4d1f541e5216e0e85c1d44d03a61e4ccd",
+      "output": "data/enrichment/assertions-229.json.gz",
+      "output_sha256": "aa39207a74fb0714f793064568ab168cf37959ba6882f744f4b25688632cff46"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-230.json.gz",
+      "input_sha256": "cc1cede79d7dd6feba6085efe0dacbe02c13a4fb9f7d5515495da85c865ad439",
+      "output": "data/enrichment/assertions-230.json.gz",
+      "output_sha256": "f282bd089246f7bb7426a0247822c9a6af7a5740fbbf8c26974aa7ba9c6bf0b6"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-231.json.gz",
+      "input_sha256": "1cb9136ec19f04c9fd3f3524d094af8db86777ff05931e4798a8e6275f67d32a",
+      "output": "data/enrichment/assertions-231.json.gz",
+      "output_sha256": "eeba1abc93aaadd7815803cef5d1ff2b22a864487d2511738c6833834413ca87"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-232.json.gz",
+      "input_sha256": "20d78587f5008c4e3803a9d3ec504c0ffe47d8f20013074dafd2c6ff6b22ba36",
+      "output": "data/enrichment/assertions-232.json.gz",
+      "output_sha256": "6f9cd6393d5a2047b87ab293033ac9b6fdd9669d83295bbfb5e221054d24464b"
+    },
+    {
+      "accepted_assertions": 40,
+      "attempted_records": 1000,
+      "input": "data/works-233.json.gz",
+      "input_sha256": "8b30c1fb177c5050daa8398088491854c74d0e3fdc80c3c51b15770dc5a356dd",
+      "output": "data/enrichment/assertions-233.json.gz",
+      "output_sha256": "1c27280233c8aad82120ea58bac3021ea76c55ffb61ef05324ce18d24589a321"
+    },
+    {
+      "accepted_assertions": 169,
+      "attempted_records": 1000,
+      "input": "data/works-234.json.gz",
+      "input_sha256": "58ef69dcb01d374d7510e1eb9538b58e37c0460c948da0715e6f714bc37bfbe5",
+      "output": "data/enrichment/assertions-234.json.gz",
+      "output_sha256": "2183307374bbb846a312e425490b0867277db0a46aaccc02e543fa4954eeb1bf"
+    },
+    {
+      "accepted_assertions": 53,
+      "attempted_records": 1000,
+      "input": "data/works-235.json.gz",
+      "input_sha256": "adbbe5f00ea32a328f9938e16165d900030824bc9bcf15c4e625fe3021ca1b7a",
+      "output": "data/enrichment/assertions-235.json.gz",
+      "output_sha256": "2084e534ed4da798f09731f63c5de5deab927d75f272cced87225ba8fd05b47d"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-236.json.gz",
+      "input_sha256": "e6c6d8418ad17bb9b29e8e2d4fe199b664a6c0ef193bf38cbad5b45baf350faa",
+      "output": "data/enrichment/assertions-236.json.gz",
+      "output_sha256": "d6f1ff1d25a0959f5cca7809aa469fbd33ec59f7630585d6b7d8a39575a8cf07"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-237.json.gz",
+      "input_sha256": "b73909d6c57bc5aab18c17e62acf0e6a0b1c9e791ffbf3a02eda63eb449177d7",
+      "output": "data/enrichment/assertions-237.json.gz",
+      "output_sha256": "e243383c14fa87adf2fa485ccfde0db158cf7bc47e9b79c829ae9b0bdad42124"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-238.json.gz",
+      "input_sha256": "251637d4f8b8fd3860849580093f163522709077696b08834f5f70aae89daa3e",
+      "output": "data/enrichment/assertions-238.json.gz",
+      "output_sha256": "e20658ff7cd6d2bfbccb976c63d2bbc978de498cf83fc25d2f46c9b482efa918"
+    },
+    {
+      "accepted_assertions": 60,
+      "attempted_records": 1000,
+      "input": "data/works-239.json.gz",
+      "input_sha256": "875164af557cb625e664e20903c94833482b6880e25fed8420e79eac13bbad4e",
+      "output": "data/enrichment/assertions-239.json.gz",
+      "output_sha256": "8d07d18cc6f85dc610ff3780abbe4b618e7182454008db84787c6b8219918311"
+    },
+    {
+      "accepted_assertions": 101,
+      "attempted_records": 1000,
+      "input": "data/works-240.json.gz",
+      "input_sha256": "9140be2818c9b59905f21af4e248f5a7b5e2f8f0b6d6ba0feb146a821976f169",
+      "output": "data/enrichment/assertions-240.json.gz",
+      "output_sha256": "9fc663e45603997bc490857673ae708e269fb6bf49650f24ac07ebbaf81e6fb2"
+    },
+    {
+      "accepted_assertions": 53,
+      "attempted_records": 1000,
+      "input": "data/works-241.json.gz",
+      "input_sha256": "a55b3683edee938d0d434de795acc44d21e149c1b070144fef1fc6edbe3796da",
+      "output": "data/enrichment/assertions-241.json.gz",
+      "output_sha256": "c17992e819ea2ae6926c51f31f113078568b2b0f690095f3ba006718cfef5f49"
+    },
+    {
+      "accepted_assertions": 5,
+      "attempted_records": 1000,
+      "input": "data/works-242.json.gz",
+      "input_sha256": "ab67ef1b75ce089e88db85c605b2d136c405cb217e805abbf09654b485481d38",
+      "output": "data/enrichment/assertions-242.json.gz",
+      "output_sha256": "c2a5829041f19252be2814e3dde6a7f41e26c0e0d78d7c0a20956099d51deb18"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-243.json.gz",
+      "input_sha256": "06228f28fd4350fb143e8d9cb9fc4aa2aa89a8dfcdb6ba301041753c36ed0443",
+      "output": "data/enrichment/assertions-243.json.gz",
+      "output_sha256": "3b0d6510eb78c8edb468fb8625f96b3783749064312a6b8ab3d6b15db8ef3b0c"
+    },
+    {
+      "accepted_assertions": 8,
+      "attempted_records": 1000,
+      "input": "data/works-244.json.gz",
+      "input_sha256": "4cee107b18a7598121812f78fe21bd009990d951199faf458526ac5a607fceb8",
+      "output": "data/enrichment/assertions-244.json.gz",
+      "output_sha256": "6a2bdb9dcf8120aabfc20b522aa83eb6c865cfc2de2cc5949ce746b92aa995f8"
+    },
+    {
+      "accepted_assertions": 41,
+      "attempted_records": 1000,
+      "input": "data/works-245.json.gz",
+      "input_sha256": "f7ad86241f219f1aec7520ef07b3c35b0ad525ea806e0168d8cfb41d7e19e13a",
+      "output": "data/enrichment/assertions-245.json.gz",
+      "output_sha256": "773312e3e901e2eecd2f74057f175fbe1e4d60d342fec7d3d627de630fa4bb78"
+    },
+    {
+      "accepted_assertions": 102,
+      "attempted_records": 1000,
+      "input": "data/works-246.json.gz",
+      "input_sha256": "c88d1517965b00d1964dd8adc29523475f27c0cd1aa25cf8198fd34f11616743",
+      "output": "data/enrichment/assertions-246.json.gz",
+      "output_sha256": "32350305b7ac66c3bc87f9811aa9b622c506e399f1928572617b7e17dd75a1b3"
+    },
+    {
+      "accepted_assertions": 53,
+      "attempted_records": 1000,
+      "input": "data/works-247.json.gz",
+      "input_sha256": "241f83fa5e723924f897ac2e1e4f31e028f476cbf628439c08e458ad689a4cf9",
+      "output": "data/enrichment/assertions-247.json.gz",
+      "output_sha256": "63fd1653f8fbe9a423b89810f28063eaf40b7fee59c92cd38fc3cc78b92b51cd"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-248.json.gz",
+      "input_sha256": "ad0b3bc457120f2471ae5e227a5c2c239b78248b55d33219f1e5c8cd97aa123d",
+      "output": "data/enrichment/assertions-248.json.gz",
+      "output_sha256": "119073b769673829d384751be7ca0fa9fad5ce55b2beaa0b310ef0f46ac31acc"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-249.json.gz",
+      "input_sha256": "e4e9df86296135d664a585e459db5f512c04b736dcb78a97d540993c79b62791",
+      "output": "data/enrichment/assertions-249.json.gz",
+      "output_sha256": "c5f46b76a7d2daf415fbd8208e1fb2a887b11b6225d13b8b30ef3d624161b04d"
+    },
+    {
+      "accepted_assertions": 47,
+      "attempted_records": 1000,
+      "input": "data/works-250.json.gz",
+      "input_sha256": "7a950f725f55c032670e84843bf3291b0427986c62cb2416c2c9a952aa531b76",
+      "output": "data/enrichment/assertions-250.json.gz",
+      "output_sha256": "27dcbe4e763eaf36d01ff814fe30f8b8a39cc1c913088364f7d1ab88ffdd48b7"
+    },
+    {
+      "accepted_assertions": 109,
+      "attempted_records": 1000,
+      "input": "data/works-251.json.gz",
+      "input_sha256": "2cb779c14e2c4e05c6fbd5a2fff48fb6bfa9fac21117d92e82ab3d31e1fa6103",
+      "output": "data/enrichment/assertions-251.json.gz",
+      "output_sha256": "d1d14461cb31ba77ba550a85fbde0b2a30e52da6d588617fcbaddcbb0bfe775a"
+    },
+    {
+      "accepted_assertions": 101,
+      "attempted_records": 1000,
+      "input": "data/works-252.json.gz",
+      "input_sha256": "77cf96b20e261c18e3738e645af42788e69c9d918ee5ea2366b514ec268f85fb",
+      "output": "data/enrichment/assertions-252.json.gz",
+      "output_sha256": "ac6a355c3b66f2b2311c0194c0a72dda2a81840a7d1289909d64b93488cfdc5e"
+    },
+    {
+      "accepted_assertions": 0,
+      "attempted_records": 1000,
+      "input": "data/works-253.json.gz",
+      "input_sha256": "8a2b8e9ad73a606ee462535fc97fc99ad53618968bcadc94b614df52c9670f89",
+      "output": "data/enrichment/assertions-253.json.gz",
+      "output_sha256": "029ac1ef2bb96aa9fa0166f8f60604b79b92f7fb5cd41a374f80171306cf1b52"
+    },
+    {
+      "accepted_assertions": 9,
+      "attempted_records": 1000,
+      "input": "data/works-254.json.gz",
+      "input_sha256": "c3b2a3bd8677d91cf5d5fbd5987d238a12a216fcd18381fb81aa604f2cce7997",
+      "output": "data/enrichment/assertions-254.json.gz",
+      "output_sha256": "92eaa980217a88cc0b72e196b363ca7460642613b19d1b88d31e5d761303cc09"
+    },
+    {
+      "accepted_assertions": 70,
+      "attempted_records": 1000,
+      "input": "data/works-255.json.gz",
+      "input_sha256": "6a5959577b3bafd9d36f3e65678b035a1c5a024dfd479b6a3ec3f42bf0891a3d",
+      "output": "data/enrichment/assertions-255.json.gz",
+      "output_sha256": "0415f2c5a0f5117508ba776fd23bc756a53462549f8828725b6419a2a3091703"
+    },
+    {
+      "accepted_assertions": 129,
+      "attempted_records": 1000,
+      "input": "data/works-256.json.gz",
+      "input_sha256": "c32332257b393dad8e91834ece14bb7db8985deb978741c4c4e1d891f7e1fafc",
+      "output": "data/enrichment/assertions-256.json.gz",
+      "output_sha256": "f5ee6f7ccfa3ff9d0e6614fc62791b36f34acd2a251cf7eed87fe62e6039d9a0"
+    },
+    {
+      "accepted_assertions": 15,
+      "attempted_records": 1000,
+      "input": "data/works-257.json.gz",
+      "input_sha256": "9ac5a9cf6890d029526f7174001046d60e5bc7c3bcd0b9d3d6482b92e2e37eed",
+      "output": "data/enrichment/assertions-257.json.gz",
+      "output_sha256": "0ee805744b1275ad9dec4a0f23fcae957be92242c5ba0c21510a536a8ee03e83"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-258.json.gz",
+      "input_sha256": "eded7f099e48baf787de859606f15a3ca014d534d1ec24b59739be0e27465234",
+      "output": "data/enrichment/assertions-258.json.gz",
+      "output_sha256": "5b08e6c3f93cf05169ff8682d8eff4b0ec75029d62de6b4863577f7a2ac2ad2f"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-259.json.gz",
+      "input_sha256": "2fe8a26f06664887852a706c77f00820681f7d174bc80fba788685e12bb2a5d2",
+      "output": "data/enrichment/assertions-259.json.gz",
+      "output_sha256": "cee21a99eece866b864edc5bcce21987b36a8abf236a8178203b69fb2e2346de"
+    },
+    {
+      "accepted_assertions": 23,
+      "attempted_records": 1000,
+      "input": "data/works-260.json.gz",
+      "input_sha256": "ac2a716763b930539cabc6b8e12cd68ffadb29f34cf6567be24faa3c81226e96",
+      "output": "data/enrichment/assertions-260.json.gz",
+      "output_sha256": "2df24cee85e50cb8481b717e58f91905c73e83dde602e99f322da44a16af826c"
+    },
+    {
+      "accepted_assertions": 99,
+      "attempted_records": 1000,
+      "input": "data/works-261.json.gz",
+      "input_sha256": "21f5a97bcbb590f421c51ce538a542155523b174a006bd073488e741cb52caee",
+      "output": "data/enrichment/assertions-261.json.gz",
+      "output_sha256": "081e36eab090730d0a5204050f124177fe42b2ba77f47710d5df997459d6efe0"
+    },
+    {
+      "accepted_assertions": 108,
+      "attempted_records": 1000,
+      "input": "data/works-262.json.gz",
+      "input_sha256": "b92fdf471ed14bfae8390e76fccbd3ab7926a184926ddec6fe4e463d7c93312a",
+      "output": "data/enrichment/assertions-262.json.gz",
+      "output_sha256": "34efc02d8dcd1ed76f04082d8b08740c68070a0e8402ebd9a77ca8e37e861d0c"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-263.json.gz",
+      "input_sha256": "eb275d9b6b04f2c10f464561a32899be50a48c0fbdc061962457c8e75d106aa0",
+      "output": "data/enrichment/assertions-263.json.gz",
+      "output_sha256": "feb169795bb1412bdcfd7f055e2bc935880e9b653d6c744a5fbeb8a2f6b37143"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-264.json.gz",
+      "input_sha256": "c1b1462574b1c954024732a7e71609bc7f2a1979d69ec885d20b34a7b377340e",
+      "output": "data/enrichment/assertions-264.json.gz",
+      "output_sha256": "1f83a745e6d2c3f1f8c2c29de3e1671d9c0b2cff9bb75be1956d9d44e0f828f8"
+    },
+    {
+      "accepted_assertions": 14,
+      "attempted_records": 1000,
+      "input": "data/works-265.json.gz",
+      "input_sha256": "cf7776cac8973efc9cf54dda06eb09ed00a0f75f7da963ecef27b54e01fcc396",
+      "output": "data/enrichment/assertions-265.json.gz",
+      "output_sha256": "b059865cac344067b89fa5c90aed6bb117331f55f6d4a1c0ba567123e0ac37b9"
+    },
+    {
+      "accepted_assertions": 58,
+      "attempted_records": 1000,
+      "input": "data/works-266.json.gz",
+      "input_sha256": "3e46a8fed44e8f7ac73cc3ecf263c7ae652fccc0e9888cb19bfec8981b991026",
+      "output": "data/enrichment/assertions-266.json.gz",
+      "output_sha256": "f6e55e5f5de7321ae924a0c642b27ca6b1f953bf49f57742dedf888117800863"
+    },
+    {
+      "accepted_assertions": 137,
+      "attempted_records": 1000,
+      "input": "data/works-267.json.gz",
+      "input_sha256": "1c8365e4c770ca0f39b5bf6b79f318d6dea9ef726777ca4f69becac414313657",
+      "output": "data/enrichment/assertions-267.json.gz",
+      "output_sha256": "2f8489ca2c8047a3361c4410ba205137043fd59fc6055893baf076c0c715e394"
+    },
+    {
+      "accepted_assertions": 49,
+      "attempted_records": 1000,
+      "input": "data/works-268.json.gz",
+      "input_sha256": "31e90044b4db67665164a8a5192e2e657aab0a8916a908a76046d024071bf9f5",
+      "output": "data/enrichment/assertions-268.json.gz",
+      "output_sha256": "b948f2ff4c4a7a7534e30667916a69d3079f5cb0e5fe5cb9a199f70f4f0a4952"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-269.json.gz",
+      "input_sha256": "3a78871685960664aab863c9f986466d97eca4d45b5c5cd031b2abe3491a9ee9",
+      "output": "data/enrichment/assertions-269.json.gz",
+      "output_sha256": "1aad2a1c94232b2110fc84ad35a59c206f4c8519f239531bdadef9b21933cf2d"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-270.json.gz",
+      "input_sha256": "e2ce210fbd77d43f49bf67878e34b0917d9b4f2e68cd965e9b125f1ed195dd9a",
+      "output": "data/enrichment/assertions-270.json.gz",
+      "output_sha256": "e37bf3cdea315a8ec143e7e63826a8b7fff56a5b5b249b68e2243b07a6159bcd"
+    },
+    {
+      "accepted_assertions": 28,
+      "attempted_records": 1000,
+      "input": "data/works-271.json.gz",
+      "input_sha256": "633e1d06e4ab617fa3afee9ca9c8272e1313fee2c4517011c478107edcd67801",
+      "output": "data/enrichment/assertions-271.json.gz",
+      "output_sha256": "548b5517de7912cd4c2186860b7868b95b18b257fe46895dd186d4e9e9a40b03"
+    },
+    {
+      "accepted_assertions": 146,
+      "attempted_records": 1000,
+      "input": "data/works-272.json.gz",
+      "input_sha256": "4f82c9033d75d626759f896b7e4225189135283802fcfc75130ac837b315b0c4",
+      "output": "data/enrichment/assertions-272.json.gz",
+      "output_sha256": "d79f792f5f7b004e1b2f993502db6382d1faf0aa5ca2434d3335076aa75edcfd"
+    },
+    {
+      "accepted_assertions": 104,
+      "attempted_records": 1000,
+      "input": "data/works-273.json.gz",
+      "input_sha256": "5c1ea9cefe362e69f251b5d79bbf96a91c3ae3459e8aa19b0e057f795014758a",
+      "output": "data/enrichment/assertions-273.json.gz",
+      "output_sha256": "a5db757ecbc26a2c93ff3a4e6602e0423625154f77824275ce3c4720fcd03340"
+    },
+    {
+      "accepted_assertions": 0,
+      "attempted_records": 1000,
+      "input": "data/works-274.json.gz",
+      "input_sha256": "fb0aa4d11bfbc243a6b2f1c9d50d68dc2ed20acadc74c114a09e4c821ce058ed",
+      "output": "data/enrichment/assertions-274.json.gz",
+      "output_sha256": "029ac1ef2bb96aa9fa0166f8f60604b79b92f7fb5cd41a374f80171306cf1b52"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-275.json.gz",
+      "input_sha256": "4366c1eadf8c3d0cd9859f3bc8fef7923b5005e22a506d22b0466a3c5f9221fc",
+      "output": "data/enrichment/assertions-275.json.gz",
+      "output_sha256": "ede26739f7aa60037d3f4f35701f6967c7dc49c675f351fcb3c0842e510e4af7"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-276.json.gz",
+      "input_sha256": "1da882383d70fde202ccc7b792eff905b42836a0345a164ba02e47d2736da11a",
+      "output": "data/enrichment/assertions-276.json.gz",
+      "output_sha256": "e9dca92738e3bc957a4fb4aa20b82777399a1819880133b787382011ab42f3e4"
+    },
+    {
+      "accepted_assertions": 92,
+      "attempted_records": 1000,
+      "input": "data/works-277.json.gz",
+      "input_sha256": "bb1668be65fdf81561b9753804ec0c3401390a2e82a07cd2317f56def4a7411d",
+      "output": "data/enrichment/assertions-277.json.gz",
+      "output_sha256": "f69dc421becac3c8b033387be5d69c89ed6f19a8bc7aed18ef1a33e01b3b4cc2"
+    },
+    {
+      "accepted_assertions": 176,
+      "attempted_records": 1000,
+      "input": "data/works-278.json.gz",
+      "input_sha256": "ec81a082a84898d6c0d81bde95e8cfbdca06a4ea8b6abf3d6d2e4df5c602ac18",
+      "output": "data/enrichment/assertions-278.json.gz",
+      "output_sha256": "9c7707f79fbd4d00877e245fe8c5d98a71b57eaf0e0ca26c4a5d0a6dea17f7b8"
+    },
+    {
+      "accepted_assertions": 89,
+      "attempted_records": 1000,
+      "input": "data/works-279.json.gz",
+      "input_sha256": "f1ac130074b095f9146efbb792b07a021d09678b04f1a09fa48c0251e16c00f6",
+      "output": "data/enrichment/assertions-279.json.gz",
+      "output_sha256": "10c7ea05a4a4ac7e4b52d2601a64ea7237d947fe0cf5e3534a8e1a08e3e6e255"
+    },
+    {
+      "accepted_assertions": 0,
+      "attempted_records": 1000,
+      "input": "data/works-280.json.gz",
+      "input_sha256": "998a45226911f727c4ec7ae23c49c36c5afabdc8d1605c3dfeab519a18230063",
+      "output": "data/enrichment/assertions-280.json.gz",
+      "output_sha256": "029ac1ef2bb96aa9fa0166f8f60604b79b92f7fb5cd41a374f80171306cf1b52"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-281.json.gz",
+      "input_sha256": "80825591aeaa8089167a048ffd36a360d7ff1380867401a0a527b6b759662f45",
+      "output": "data/enrichment/assertions-281.json.gz",
+      "output_sha256": "7d06656f294351d03d02b584d9bbf3c2f5b8f6cfa1df1e832fede4be2a005007"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-282.json.gz",
+      "input_sha256": "b25a0cabec50032b8bc270d6188385156ced776a0afb1f592fd6e8f01f69974c",
+      "output": "data/enrichment/assertions-282.json.gz",
+      "output_sha256": "f0f58d215c406de26c021c6adc30958770e97037fabe91544462a158c326ae1a"
+    },
+    {
+      "accepted_assertions": 104,
+      "attempted_records": 1000,
+      "input": "data/works-283.json.gz",
+      "input_sha256": "ce153553972dafcde93b845848b97bff8363de4fcb9e4072f42cd658bd44a2c3",
+      "output": "data/enrichment/assertions-283.json.gz",
+      "output_sha256": "7dc3fda3950a4563670a80d4c7aa0545e3af3807cd6d12a9e59877ddab268338"
+    },
+    {
+      "accepted_assertions": 179,
+      "attempted_records": 1000,
+      "input": "data/works-284.json.gz",
+      "input_sha256": "3ce7ab61ac455a88e9a9855fcb549aad42966a10de0daf298145d9f3c7cc2862",
+      "output": "data/enrichment/assertions-284.json.gz",
+      "output_sha256": "cb32df9975c7e8520dcaa475300cdd50e682af84f9646b2c40b8ce4fe0bfb685"
+    },
+    {
+      "accepted_assertions": 77,
+      "attempted_records": 1000,
+      "input": "data/works-285.json.gz",
+      "input_sha256": "1faa0fbcc2a2a04c3568e9b38314acd77d88ec037d3592f9de63b6a37e05624d",
+      "output": "data/enrichment/assertions-285.json.gz",
+      "output_sha256": "71e711fb27f5d15af879b92f511a1d2ea2e7317aa895805559bad7ee55a04b2e"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-286.json.gz",
+      "input_sha256": "22ba8fba9deb59fe0ed29929a46ec2685b342e7f201f00226f0506024a2ed0db",
+      "output": "data/enrichment/assertions-286.json.gz",
+      "output_sha256": "477661976eda03c3b3ed96415c8a6a772828db1af04a5f521d05ed64055b7a81"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-287.json.gz",
+      "input_sha256": "22d42703cc8e9a43540200751f2d50adcb8026312466d12c023e814f306c41a2",
+      "output": "data/enrichment/assertions-287.json.gz",
+      "output_sha256": "94324e61778ee5c1de43668c9b98a8f4c818c40ebbc9c9730aa9610ea81af61c"
+    },
+    {
+      "accepted_assertions": 11,
+      "attempted_records": 1000,
+      "input": "data/works-288.json.gz",
+      "input_sha256": "9518aaaa7bb653834b479787d1a7c9e37e6d3ad9540255f5832ee8b8dd5ee239",
+      "output": "data/enrichment/assertions-288.json.gz",
+      "output_sha256": "f2da1f00af96215f5c01eceae1b078c2c5cc5eaa6e3c4a635ec064cec42f3556"
+    },
+    {
+      "accepted_assertions": 148,
+      "attempted_records": 1000,
+      "input": "data/works-289.json.gz",
+      "input_sha256": "027582081852b4eb61d1a065682351dfc0f550ae8dd9f754138cddb9d9434c9d",
+      "output": "data/enrichment/assertions-289.json.gz",
+      "output_sha256": "34a6f6287530f6423207287aab81edf3b851039766f078654bba025d79958b0a"
+    },
+    {
+      "accepted_assertions": 163,
+      "attempted_records": 1000,
+      "input": "data/works-290.json.gz",
+      "input_sha256": "17645fde5cafabf7b7838d7eb189f40a5358a9cd05097f79bc7a717d5cd572de",
+      "output": "data/enrichment/assertions-290.json.gz",
+      "output_sha256": "6514bf58d8562cd69f5de6c3e1ae0f21e525f3cdab63394d0b7a903dca8eb0c4"
+    },
+    {
+      "accepted_assertions": 47,
+      "attempted_records": 1000,
+      "input": "data/works-291.json.gz",
+      "input_sha256": "3110d1f9aa643c3ddfdcbff62a8059839c3e46f918197eddbc52b29c0b4e3f68",
+      "output": "data/enrichment/assertions-291.json.gz",
+      "output_sha256": "321a4b32db60a3dc70c7491362a1d61de968ad9e871adb1b1dde4bf8b5599417"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-292.json.gz",
+      "input_sha256": "e1b2fd64a384bc866beddc6054577d28184ccbcfef4ad4cbea6463cb3f32d06a",
+      "output": "data/enrichment/assertions-292.json.gz",
+      "output_sha256": "33382b5395236cc1171c9e14cfc701eb43d299c1f8c16b9e1b16c44f75426936"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-293.json.gz",
+      "input_sha256": "7bd6342b1aee8c0925dc80674b2b6ef3d8177ae4945888d7d34ba6c0aabad711",
+      "output": "data/enrichment/assertions-293.json.gz",
+      "output_sha256": "013adaa37d3a011f076939ab2ccedbb1e852e4b6434b791fc93c7528e5f08ade"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-294.json.gz",
+      "input_sha256": "ca135a0abccbfc762bedb95c60d899885a69dcd409e42b5b80b57a6ceadbdf9b",
+      "output": "data/enrichment/assertions-294.json.gz",
+      "output_sha256": "d73c1306a6ccea279ac36f71dad2abdb671c921825b5f27a6718574525d1bd94"
+    },
+    {
+      "accepted_assertions": 166,
+      "attempted_records": 1000,
+      "input": "data/works-295.json.gz",
+      "input_sha256": "44b5bf15147aca5d51c3d0978577f0c3a1b9ff7ca333772edbbc5399f76fa6a3",
+      "output": "data/enrichment/assertions-295.json.gz",
+      "output_sha256": "c702c7eefa4af32ff65503ed69c68392d5bed30dc89d4fd075bb97f2d95f5caf"
+    },
+    {
+      "accepted_assertions": 108,
+      "attempted_records": 1000,
+      "input": "data/works-296.json.gz",
+      "input_sha256": "b528a06bb950181802e394d679eefd4f48819f36b4c6cbd1317b6c77da453d67",
+      "output": "data/enrichment/assertions-296.json.gz",
+      "output_sha256": "d36c240d7c8bd928db3c03d464035f6c28a5f1a836f950515a70dd61800966e5"
+    },
+    {
+      "accepted_assertions": 157,
+      "attempted_records": 1000,
+      "input": "data/works-297.json.gz",
+      "input_sha256": "725cc87d78a395cac8fcb1cf4d16c4757b36088e974544bc6e87662a4f0719bd",
+      "output": "data/enrichment/assertions-297.json.gz",
+      "output_sha256": "a4e2b60888c39df826376e38cc6d628660f7419c203c2cdc9c6abc66e2390c8d"
+    },
+    {
+      "accepted_assertions": 123,
+      "attempted_records": 1000,
+      "input": "data/works-298.json.gz",
+      "input_sha256": "c39ed0341a90e6e944b6dd8fb009fe3c77979cb7536b3176201cf4e4dc598255",
+      "output": "data/enrichment/assertions-298.json.gz",
+      "output_sha256": "e9613f62d21f41a73903cd7b0b4e3fdfb5aa3e1c4ef1613e3b4323fba1587518"
+    },
+    {
+      "accepted_assertions": 159,
+      "attempted_records": 1000,
+      "input": "data/works-299.json.gz",
+      "input_sha256": "df6a690e9a1cf44eae885297e1591e9d8edc33b39ae2f7c84b9bc2d2d0f719c4",
+      "output": "data/enrichment/assertions-299.json.gz",
+      "output_sha256": "8d9cf202b20f773eb38fd34bb950cca5a9bb47129f6aa3889f95ee80ad837885"
+    },
+    {
+      "accepted_assertions": 117,
+      "attempted_records": 1000,
+      "input": "data/works-300.json.gz",
+      "input_sha256": "d6bb6ac2f5377dfc42b7079e0a16ee45cfe77f2a14170617880929f9e7e5acb1",
+      "output": "data/enrichment/assertions-300.json.gz",
+      "output_sha256": "f12cfa1630e4cfbbfa3dd3d26c6128980e084399b278be35f70c565d7502c61a"
+    },
+    {
+      "accepted_assertions": 175,
+      "attempted_records": 1000,
+      "input": "data/works-301.json.gz",
+      "input_sha256": "6a6bbe6be6eb8a9b0bc140fd79dad07f709a0c94bc8255e2e7b8c95f1dde9f2e",
+      "output": "data/enrichment/assertions-301.json.gz",
+      "output_sha256": "6391f2d1fd2390a6cb53923e9aca6c113bdcc51af954a8c1091092005fe0539d"
+    },
+    {
+      "accepted_assertions": 145,
+      "attempted_records": 1000,
+      "input": "data/works-302.json.gz",
+      "input_sha256": "3cc30668c70bd293b9bcba2ae60c3fdf70a864cc4489db01fc01ef2e67a77000",
+      "output": "data/enrichment/assertions-302.json.gz",
+      "output_sha256": "b563770da92003a16502d4b67c677891b9eee6c51f87f92a5478197794ebaf9f"
+    },
+    {
+      "accepted_assertions": 165,
+      "attempted_records": 1000,
+      "input": "data/works-303.json.gz",
+      "input_sha256": "c5f615c4ddd8b96248ef96ee83d5b9c8241a3b694c26576650cc3aac87fe246e",
+      "output": "data/enrichment/assertions-303.json.gz",
+      "output_sha256": "2e9edfcf2101506756ecf991bd74beccc9620ff569d4cfcc0b22b9c787e834cb"
+    },
+    {
+      "accepted_assertions": 166,
+      "attempted_records": 1000,
+      "input": "data/works-304.json.gz",
+      "input_sha256": "d333bb868b289da1d2f5fd3d0d653fe1caecc9c49f21603cb635befc4f72cbb8",
+      "output": "data/enrichment/assertions-304.json.gz",
+      "output_sha256": "0125addb60d1d61331091b62bec17efd30bde91c8076d08d73d4060b542d46b7"
+    },
+    {
+      "accepted_assertions": 156,
+      "attempted_records": 1000,
+      "input": "data/works-305.json.gz",
+      "input_sha256": "ba594bb21ad60a70a895e7f260f0b892c4677636a829445fd8a10e585366221a",
+      "output": "data/enrichment/assertions-305.json.gz",
+      "output_sha256": "90869379fc09377e9b96574ca9c69dc5f46fbb4538cc0bbeea70613d35458a39"
+    },
+    {
+      "accepted_assertions": 148,
+      "attempted_records": 1000,
+      "input": "data/works-306.json.gz",
+      "input_sha256": "940255aaed52271456e4fe987cb89be8ad2aa7a3d8cbdee6f8a5dfe95f2e3831",
+      "output": "data/enrichment/assertions-306.json.gz",
+      "output_sha256": "e8b2a9d4efae2c67a772405eee1a246ed3f6de3dc8de65d83775775267f03751"
+    },
+    {
+      "accepted_assertions": 188,
+      "attempted_records": 1000,
+      "input": "data/works-307.json.gz",
+      "input_sha256": "64fc6f4db12d9fc6f259d42820b848e74640bf24b31657d22c6dd9680d0890c3",
+      "output": "data/enrichment/assertions-307.json.gz",
+      "output_sha256": "f3e47ccf5f807e7146758e0ad5c33a54ee25c17439309c16cbc3f091af142d5b"
+    },
+    {
+      "accepted_assertions": 152,
+      "attempted_records": 1000,
+      "input": "data/works-308.json.gz",
+      "input_sha256": "9a665e067041262bdf2cdb5f83e4eb0a22361c971d8b80811dd170cbef66a2f0",
+      "output": "data/enrichment/assertions-308.json.gz",
+      "output_sha256": "83ddd0b157dd496b0994af892c4a0b0b50c59b054b45b825fa636fc58658381b"
+    },
+    {
+      "accepted_assertions": 145,
+      "attempted_records": 1000,
+      "input": "data/works-309.json.gz",
+      "input_sha256": "cad7164dd6f7d360d9f97f603de16521524247498969688f7c522a880be7d82c",
+      "output": "data/enrichment/assertions-309.json.gz",
+      "output_sha256": "252127b40bb0e1b2d97e6ccdeb2b13b1109439f5bea9e05f6a2e1b1f0c396105"
+    },
+    {
+      "accepted_assertions": 153,
+      "attempted_records": 1000,
+      "input": "data/works-310.json.gz",
+      "input_sha256": "ca4befb1c2fa5574c027d0184307e41e02e8ca3dab34c9e67969c1f5408eac2c",
+      "output": "data/enrichment/assertions-310.json.gz",
+      "output_sha256": "7f51bb12d92251ecee199f5963f77dd8e760c78572641fc4fc1e8748360aefb2"
+    },
+    {
+      "accepted_assertions": 151,
+      "attempted_records": 1000,
+      "input": "data/works-311.json.gz",
+      "input_sha256": "4c881b5ef8729f28161db8757239d4d2a33a90e6acd4aab782baba1f6d4fd80f",
+      "output": "data/enrichment/assertions-311.json.gz",
+      "output_sha256": "9e3193d7dfeb49349aae55e9c138be860ec2de9e5e081d8a7c825de2f369cb4b"
+    },
+    {
+      "accepted_assertions": 144,
+      "attempted_records": 1000,
+      "input": "data/works-312.json.gz",
+      "input_sha256": "d867f49240fe60d46ca9852e599deef3a9403be457a82fd09536f70b75c71a8c",
+      "output": "data/enrichment/assertions-312.json.gz",
+      "output_sha256": "e8de51d1c74fc5ea7904e1efa9dfa2062e29ec5c6535775a9268425377bd0049"
+    },
+    {
+      "accepted_assertions": 129,
+      "attempted_records": 1000,
+      "input": "data/works-313.json.gz",
+      "input_sha256": "9a23f09ca0e036b33d76c566c539146551816970762504f1d8aaee0fff4e1c2b",
+      "output": "data/enrichment/assertions-313.json.gz",
+      "output_sha256": "298bf38fe73c1ac4a7a172a50e525af3bede62acaefd6266fb65db9c4416e2eb"
+    },
+    {
+      "accepted_assertions": 158,
+      "attempted_records": 1000,
+      "input": "data/works-314.json.gz",
+      "input_sha256": "477282fbea789214d002bbd7e7b7a2de0de6b573a53280570ca9d7f2c52194ba",
+      "output": "data/enrichment/assertions-314.json.gz",
+      "output_sha256": "a3987187ef689075a80ed4a602a1244e28eda15184cf3f9ac73784f3a75413d2"
+    },
+    {
+      "accepted_assertions": 191,
+      "attempted_records": 1000,
+      "input": "data/works-315.json.gz",
+      "input_sha256": "26e840729ab0b2a609fd1071da22c31ba9ebc288851276a6682f144758969934",
+      "output": "data/enrichment/assertions-315.json.gz",
+      "output_sha256": "c037ff7e257a359d3234d7945c795a660d468c02ea18baefc954133453fea781"
+    },
+    {
+      "accepted_assertions": 152,
+      "attempted_records": 1000,
+      "input": "data/works-316.json.gz",
+      "input_sha256": "310ba8c018339f1eb99179c9dca896b118b0dfcc98e51cd0810798b2a8fd87e8",
+      "output": "data/enrichment/assertions-316.json.gz",
+      "output_sha256": "836a9066c95ff08835dda4371deaf4805d9e8432da9dacea9a34729605b42457"
+    },
+    {
+      "accepted_assertions": 158,
+      "attempted_records": 1000,
+      "input": "data/works-317.json.gz",
+      "input_sha256": "073b5674aedaa558941e6142e9758ee495e2f251af7214ad30b4c36c80c1cb30",
+      "output": "data/enrichment/assertions-317.json.gz",
+      "output_sha256": "affe2dd83dd72b61510e6be108fb9c85e80518cb750abaee401a1645be869d35"
+    },
+    {
+      "accepted_assertions": 158,
+      "attempted_records": 1000,
+      "input": "data/works-318.json.gz",
+      "input_sha256": "4dca4433a5d990cb9b0a8fd7c6757627506d80a8fbb54294e1428ededea7b750",
+      "output": "data/enrichment/assertions-318.json.gz",
+      "output_sha256": "e488fb7ea2b47f43f707c586b8dc5769e9eec2812a33f2cb467bf9f4b218905c"
+    },
+    {
+      "accepted_assertions": 134,
+      "attempted_records": 1000,
+      "input": "data/works-319.json.gz",
+      "input_sha256": "7aca5e3a5c2ab53f7d09d726797d024ddc29d7ba3db9bb11beae992525d92ce1",
+      "output": "data/enrichment/assertions-319.json.gz",
+      "output_sha256": "9331816f6b15ad8dc13f52631d07c2ceb59c7eefd69306eda5b120da3f756d08"
+    },
+    {
+      "accepted_assertions": 174,
+      "attempted_records": 1000,
+      "input": "data/works-320.json.gz",
+      "input_sha256": "63f474b2b99a74402026a764b57152577fe0abda71e93c578146ae09ea10453b",
+      "output": "data/enrichment/assertions-320.json.gz",
+      "output_sha256": "e44502a5f9c549dfd405c32b1ff821e358cdddfdded6d658cba3dc3280a3661e"
+    },
+    {
+      "accepted_assertions": 185,
+      "attempted_records": 1000,
+      "input": "data/works-321.json.gz",
+      "input_sha256": "26d71e69a6c1f5a879b1c825d788a3205e548d44934e7797ad56d0d4bb4e8b7e",
+      "output": "data/enrichment/assertions-321.json.gz",
+      "output_sha256": "9bf87c2fa87cd5ed2a766b5494643de76a7fdad41cb2d2ff8d4fc47a17ee807a"
+    },
+    {
+      "accepted_assertions": 121,
+      "attempted_records": 1000,
+      "input": "data/works-322.json.gz",
+      "input_sha256": "c4fd42ac997b45b5563af104fe5fd1443dd51ba63a6ee01ed0087f228efdc352",
+      "output": "data/enrichment/assertions-322.json.gz",
+      "output_sha256": "3205b994423ca7e85a30d7f7800d8ac9636059d98171e8f9d8da2c9e8be4ae46"
+    },
+    {
+      "accepted_assertions": 141,
+      "attempted_records": 1000,
+      "input": "data/works-323.json.gz",
+      "input_sha256": "4675c562e2230656443fa24908f89377d0b7a49279b5d93b515a4a8843f00afb",
+      "output": "data/enrichment/assertions-323.json.gz",
+      "output_sha256": "7baf9093c109a6a05d6082c37039209c6a0537418f49c1302eeecb6316ff4750"
+    },
+    {
+      "accepted_assertions": 128,
+      "attempted_records": 1000,
+      "input": "data/works-324.json.gz",
+      "input_sha256": "409b0f37c40a6bcb000f1f2bf7164c06745ed7bd18ad409ef1de7c5eac9db979",
+      "output": "data/enrichment/assertions-324.json.gz",
+      "output_sha256": "e267a91f1ee24e3c35be68bbfbce0aac1829b0e76a3b056b93673e8377c4a61f"
+    },
+    {
+      "accepted_assertions": 97,
+      "attempted_records": 1000,
+      "input": "data/works-325.json.gz",
+      "input_sha256": "a1c86ff36d098914a4bafef6e040ef0eb3b147734ce59479d22524b1ffb99503",
+      "output": "data/enrichment/assertions-325.json.gz",
+      "output_sha256": "b342c019272a5462b09c330d0f9be80ca160e70456a747236f898cd0aada84b1"
+    },
+    {
+      "accepted_assertions": 78,
+      "attempted_records": 1000,
+      "input": "data/works-326.json.gz",
+      "input_sha256": "88aace5c4b2a1432fd09e614f615a464afe7da7f6156b91a9c3d33090370a5eb",
+      "output": "data/enrichment/assertions-326.json.gz",
+      "output_sha256": "ee91ab0371fe1145ff5ed6b9a18eb967404390dbd8d3359d08ef15b3493e7d62"
+    },
+    {
+      "accepted_assertions": 42,
+      "attempted_records": 1000,
+      "input": "data/works-327.json.gz",
+      "input_sha256": "bf9305e0bf7d3af9737856ced2f3e612ff58378dca04e3b2b39ec22d2026e45e",
+      "output": "data/enrichment/assertions-327.json.gz",
+      "output_sha256": "5fde2ba099245e57a260135dbaf022e3a14a11d25b39ad686ce3dfa08c985245"
+    },
+    {
+      "accepted_assertions": 51,
+      "attempted_records": 1000,
+      "input": "data/works-328.json.gz",
+      "input_sha256": "44d4fd38d762b58118cf69f5b89e14ac821090cec2719ae7e6defb9d75f0a7f5",
+      "output": "data/enrichment/assertions-328.json.gz",
+      "output_sha256": "171269dc81d7ba7b56ded04c7a7d284ab356ea64e1b1b27ee13e370b50f0fdf6"
+    },
+    {
+      "accepted_assertions": 38,
+      "attempted_records": 1000,
+      "input": "data/works-329.json.gz",
+      "input_sha256": "a33f0652280cb0de723cdd1063a5e5ea8a1701fc547e5eff07e394d4003df52d",
+      "output": "data/enrichment/assertions-329.json.gz",
+      "output_sha256": "4223d1d0b50d7561c4abf5e7faeacdfe2808f6f7bcf24171e440d67d3cd68de5"
+    },
+    {
+      "accepted_assertions": 23,
+      "attempted_records": 1000,
+      "input": "data/works-330.json.gz",
+      "input_sha256": "f97e6ab922502a2e92aa7f95967f701231633ac1d94882cff4ce088bd7a3bdfa",
+      "output": "data/enrichment/assertions-330.json.gz",
+      "output_sha256": "f878b4823122fbe7c4593416972f9ea7ac644ee1fbf8cbf302807c080bdc5947"
+    },
+    {
+      "accepted_assertions": 31,
+      "attempted_records": 1000,
+      "input": "data/works-331.json.gz",
+      "input_sha256": "4dd485e28563dae543a21f2c01de82c5a4157d1d71642db5fba4e1d2768e3dc7",
+      "output": "data/enrichment/assertions-331.json.gz",
+      "output_sha256": "12b46bffe5b0a6e4d9c327e0e87c01e3f3f8cbd002e096c7ccac7542df277e01"
+    },
+    {
+      "accepted_assertions": 41,
+      "attempted_records": 1000,
+      "input": "data/works-332.json.gz",
+      "input_sha256": "9092d18eaa3a8afe25ecc5fc1fe13d80953eceebe81be415e3a42fabfe348d73",
+      "output": "data/enrichment/assertions-332.json.gz",
+      "output_sha256": "08f9de9d4a7bdb9a1d2a4b9a2fbb541a053eea098b4fee2d19d50fb745d49592"
+    },
+    {
+      "accepted_assertions": 35,
+      "attempted_records": 1000,
+      "input": "data/works-333.json.gz",
+      "input_sha256": "414c01a2c2af00afc2d3462674fffb2dfcd7f8b8e43d181f82f37c5e14b0da97",
+      "output": "data/enrichment/assertions-333.json.gz",
+      "output_sha256": "64233a2411034fbdc406cefd503c6152b5f77ad5dc277f28438822b01a387b51"
+    },
+    {
+      "accepted_assertions": 16,
+      "attempted_records": 1000,
+      "input": "data/works-334.json.gz",
+      "input_sha256": "f965a5bd04595b71cce634e402b848b43ca696b03bdbd81099a9a5f132dd9ed6",
+      "output": "data/enrichment/assertions-334.json.gz",
+      "output_sha256": "befd699ab35b5b591f1bad22f389fdf2dd0ee4c0ff4e34bfd2c3f7107a63fbb7"
+    },
+    {
+      "accepted_assertions": 21,
+      "attempted_records": 1000,
+      "input": "data/works-335.json.gz",
+      "input_sha256": "923d166077b1e51c8f517fa6fb904ebd9d06baa5ec9a8b98935fab72b2d9ac07",
+      "output": "data/enrichment/assertions-335.json.gz",
+      "output_sha256": "4ef908817471ee36a085cfc036d1257cd7c4606979d5d8505186aa93d8665b75"
+    },
+    {
+      "accepted_assertions": 6,
+      "attempted_records": 1000,
+      "input": "data/works-336.json.gz",
+      "input_sha256": "2dc63502344395b5a3a32a203f656c23a72781508e76e3e2dcbb50bbefe92dcf",
+      "output": "data/enrichment/assertions-336.json.gz",
+      "output_sha256": "e2f783fb668fb2ac4401be98179211c6d75115c25daae40cdbfa3d6e0c43315a"
+    },
+    {
+      "accepted_assertions": 11,
+      "attempted_records": 1000,
+      "input": "data/works-337.json.gz",
+      "input_sha256": "1b2037ff265e891371c0604e4d8586233f6800caec4bdabe399a7e20b5b788a0",
+      "output": "data/enrichment/assertions-337.json.gz",
+      "output_sha256": "ee0c97cb5fb1ad1441caebf3e80a19cb99d3022f07401ec00383d75527df0773"
+    },
+    {
+      "accepted_assertions": 10,
+      "attempted_records": 1000,
+      "input": "data/works-338.json.gz",
+      "input_sha256": "3c3ac6b1017ea9985f4e04c9783ec243620bf6c50e751b1db3a73d2c65d2cdd8",
+      "output": "data/enrichment/assertions-338.json.gz",
+      "output_sha256": "eae41746b90c3868fa1046bc2772facf0caa8bb49fb9e5271e62fae19077a68e"
+    },
+    {
+      "accepted_assertions": 9,
+      "attempted_records": 1000,
+      "input": "data/works-339.json.gz",
+      "input_sha256": "acd4196c1583900931202d880fd1d82606be7e7008bb2c97134db4d1ebe9d327",
+      "output": "data/enrichment/assertions-339.json.gz",
+      "output_sha256": "6e2ce80ba86f3f06a2e54ac8710c77cc8e75af2a99c78dc4b4175b510e8bdd4a"
+    },
+    {
+      "accepted_assertions": 13,
+      "attempted_records": 1000,
+      "input": "data/works-340.json.gz",
+      "input_sha256": "7d0cc6f3550d6a7addc9825723af974fb70900864eabad0401c6c517bfe9f768",
+      "output": "data/enrichment/assertions-340.json.gz",
+      "output_sha256": "75a13d7355957e911aa4b5c63b9bd3be19722db1dfeab162125ba3869f05d5a5"
+    },
+    {
+      "accepted_assertions": 5,
+      "attempted_records": 1000,
+      "input": "data/works-341.json.gz",
+      "input_sha256": "44fd8d5351e4f7bc4a35ec3626c2d8c8f697c958f5b0112a045409ebdc85971b",
+      "output": "data/enrichment/assertions-341.json.gz",
+      "output_sha256": "499fb72eab0a747ca33b4fa1393548797dd27711bfa73842626bba4032dca57b"
+    },
+    {
+      "accepted_assertions": 6,
+      "attempted_records": 1000,
+      "input": "data/works-342.json.gz",
+      "input_sha256": "e0e26958de60e75b92d0c2801624877754b548c90bf3b5717bd7e2354852c9ed",
+      "output": "data/enrichment/assertions-342.json.gz",
+      "output_sha256": "caee2809a109a8f44ff8b6b36377295cd95068d96841c3f5c2a2b1a6e753cd44"
+    },
+    {
+      "accepted_assertions": 12,
+      "attempted_records": 1000,
+      "input": "data/works-343.json.gz",
+      "input_sha256": "4062cc2976106c993d16fe676c0a05ea845588caf0c2cf22ee72e238f8699fce",
+      "output": "data/enrichment/assertions-343.json.gz",
+      "output_sha256": "201d713cf6834c15d22b599a7f96ec174a913cad67bf484db835cf0cde2c7200"
+    },
+    {
+      "accepted_assertions": 7,
+      "attempted_records": 1000,
+      "input": "data/works-344.json.gz",
+      "input_sha256": "fb5bf2a49805522b16d1e6552f82fc6c293b5aeac03c8cb94751f4526220c8d0",
+      "output": "data/enrichment/assertions-344.json.gz",
+      "output_sha256": "8d87a7ae26d5cbe5abe2a2277612bcbd82b0e3d9564654f70b6c2b20f0256947"
+    },
+    {
+      "accepted_assertions": 7,
+      "attempted_records": 1000,
+      "input": "data/works-345.json.gz",
+      "input_sha256": "610c5c5b441f20391d09b2a01cd8f33bd48e56604303bfcf372406bed01b580e",
+      "output": "data/enrichment/assertions-345.json.gz",
+      "output_sha256": "5be068f936f3b7cfecf921db599a083cfa4e18dae2db0ad3ca9abfd348c42ee0"
+    },
+    {
+      "accepted_assertions": 7,
+      "attempted_records": 1000,
+      "input": "data/works-346.json.gz",
+      "input_sha256": "8e464eebd48581b2eeee632ced8f1e4fe235b996f5b1465066eede9a45f7b053",
+      "output": "data/enrichment/assertions-346.json.gz",
+      "output_sha256": "050ff5240fb8454e80303534ef132bf459b259389671914be3014204bf2aa360"
+    },
+    {
+      "accepted_assertions": 12,
+      "attempted_records": 1000,
+      "input": "data/works-347.json.gz",
+      "input_sha256": "d3eb7a026ba44c071944eeda1d732de22479a982c8f0f6469a8d08935741f8cb",
+      "output": "data/enrichment/assertions-347.json.gz",
+      "output_sha256": "57f5ccd975035eb74d8c6259013d9d875d89b734d9712142ac6b6540f0b36802"
+    },
+    {
+      "accepted_assertions": 9,
+      "attempted_records": 1000,
+      "input": "data/works-348.json.gz",
+      "input_sha256": "b8f1f02603930532abf2ca9c4e780a1f48e7a75c0e9970ac9aa4eb853e628b75",
+      "output": "data/enrichment/assertions-348.json.gz",
+      "output_sha256": "3b4923e6bc654ce6e44488df67bea947c14cbf7e978186c875957460a565bd26"
+    },
+    {
+      "accepted_assertions": 4,
+      "attempted_records": 1000,
+      "input": "data/works-349.json.gz",
+      "input_sha256": "00feb37c0a533b7e96b861d83ac0296065a3dc7cb0a4803935d9e5870f6dc853",
+      "output": "data/enrichment/assertions-349.json.gz",
+      "output_sha256": "8b880867cd94482349f41eb98d720403ae5625ec0599ee5b7072d851d627e417"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-350.json.gz",
+      "input_sha256": "e5ee5a3c078c3faebe328519088554d3686269b9130baeb3595f12ad1310e303",
+      "output": "data/enrichment/assertions-350.json.gz",
+      "output_sha256": "d520696a52ed866f2c15dba24e6d195300dba758914279456a5cf244972925a8"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-351.json.gz",
+      "input_sha256": "c8ff3739ff3bd58ae03a6deeb3abb935b9a81e009ec7a26418ba33452400b769",
+      "output": "data/enrichment/assertions-351.json.gz",
+      "output_sha256": "a21e09ce22c7b430dacb9d07bd4a206bda5820a48582dcc411ee2feacadcf595"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-352.json.gz",
+      "input_sha256": "8b4b9d2359175ad0e290979ed8b9b1541711707956e1ffe2eb1961b312bd9928",
+      "output": "data/enrichment/assertions-352.json.gz",
+      "output_sha256": "b3acbd82a9595eeb37ab35e4af762383e43635d5af1d7e843e8a5450803f3ce9"
+    },
+    {
+      "accepted_assertions": 4,
+      "attempted_records": 1000,
+      "input": "data/works-353.json.gz",
+      "input_sha256": "730ab7c74248e6eaf6ea96b12779a9039816c45f138aeda04ab70757abd203f5",
+      "output": "data/enrichment/assertions-353.json.gz",
+      "output_sha256": "173914ebbfd4722af9d1322a36f5a2e195789ab39e31cdf203e666f266b4c6a0"
+    },
+    {
+      "accepted_assertions": 7,
+      "attempted_records": 1000,
+      "input": "data/works-354.json.gz",
+      "input_sha256": "7a5eb527c4a0daf9e4dfb0e806f9b613940dbd322187bf8183af1ea086ef032e",
+      "output": "data/enrichment/assertions-354.json.gz",
+      "output_sha256": "10352521527c82f0f976bbae51e892d3ff921a4269c7a63e29d24aa43cb61d98"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-355.json.gz",
+      "input_sha256": "31657492283631464d8084620354ca5342d33d50962be568ceec7e6cfcf1a596",
+      "output": "data/enrichment/assertions-355.json.gz",
+      "output_sha256": "ea1edaad179c9b1e5c99f52ce14f4fdae5f0239e1b97507f33e28c198085268c"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-356.json.gz",
+      "input_sha256": "e5beb668fd4f3fef2749ea14619c4411bc47b826df76472564484f04d3995c5d",
+      "output": "data/enrichment/assertions-356.json.gz",
+      "output_sha256": "2b40186e665a2e009eefbfa08ecaf9cf2c10d80387859091889f5bf153897660"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-357.json.gz",
+      "input_sha256": "da7e7c272c781ac1cd7259f5aeb7bef36228e2031c26838f7159c8cbc27024f5",
+      "output": "data/enrichment/assertions-357.json.gz",
+      "output_sha256": "771565c80583e718925e9d18749995ea20b496c057dd22de576aecf4c0f87d42"
+    },
+    {
+      "accepted_assertions": 0,
+      "attempted_records": 1000,
+      "input": "data/works-358.json.gz",
+      "input_sha256": "12889a7452c9bfd32670a5f4c8aa4000145f265260cb5c9b98db74d82241e757",
+      "output": "data/enrichment/assertions-358.json.gz",
+      "output_sha256": "029ac1ef2bb96aa9fa0166f8f60604b79b92f7fb5cd41a374f80171306cf1b52"
+    },
+    {
+      "accepted_assertions": 6,
+      "attempted_records": 1000,
+      "input": "data/works-359.json.gz",
+      "input_sha256": "6132be78ac09d07f7a220193750e267affdea30ea35639c639a41de59c2f376a",
+      "output": "data/enrichment/assertions-359.json.gz",
+      "output_sha256": "085764a9411e6f61fe468f131b893b0e9d53580525ed0dddf77ce72d1896a622"
+    },
+    {
+      "accepted_assertions": 4,
+      "attempted_records": 1000,
+      "input": "data/works-360.json.gz",
+      "input_sha256": "45f2a1715638fd74215b7ac1c4f9e82015ca163c14968c53bded816083e9c698",
+      "output": "data/enrichment/assertions-360.json.gz",
+      "output_sha256": "96ba519a1648270892cdf88059777eb4310cedbe4f1d9c07d3c106a2d3985846"
+    },
+    {
+      "accepted_assertions": 2,
+      "attempted_records": 1000,
+      "input": "data/works-361.json.gz",
+      "input_sha256": "605af7afed2ffae2464604b3cfeb648a9c642401ddc24d681ab3fe0f69cecc69",
+      "output": "data/enrichment/assertions-361.json.gz",
+      "output_sha256": "a284fc4790a2f498f12f5771fe2b207f74070edd6f92b1e6259fa4481ac1ef9f"
+    },
+    {
+      "accepted_assertions": 1,
+      "attempted_records": 1000,
+      "input": "data/works-362.json.gz",
+      "input_sha256": "a4188b6baa8dfeb78f50201eee82627a7860114512b62cf2ffe22aead54586c3",
+      "output": "data/enrichment/assertions-362.json.gz",
+      "output_sha256": "219ba997fc92982003a2441e7cf8a4db8650485bc0a5b3861efba587609e76ea"
+    },
+    {
+      "accepted_assertions": 3,
+      "attempted_records": 1000,
+      "input": "data/works-363.json.gz",
+      "input_sha256": "ee42b15d40cdfafabc8ca0a02e7b2e00c185d1c689060617a696f0e8688effc2",
+      "output": "data/enrichment/assertions-363.json.gz",
+      "output_sha256": "0b297c9ad81696155edb19b65f6fe99e86edbd7f75f8e88e683b3aeff3ef5894"
+    },
+    {
+      "accepted_assertions": 0,
+      "attempted_records": 1000,
+      "input": "data/works-364.json.gz",
+      "input_sha256": "4d3a8ab4f9478dd9f2d8f8e55e49e37427a751444828b1fb6e07cd739deef4f4",
+      "output": "data/enrichment/assertions-364.json.gz",
+      "output_sha256": "029ac1ef2bb96aa9fa0166f8f60604b79b92f7fb5cd41a374f80171306cf1b52"
+    },
+    {
+      "accepted_assertions": 0,
+      "attempted_records": 786,
+      "input": "data/works-365.json.gz",
+      "input_sha256": "b65f39f216b778561d27883932594c024a006a47ba25597a3cab8ee8046e16e6",
+      "output": "data/enrichment/assertions-365.json.gz",
+      "output_sha256": "029ac1ef2bb96aa9fa0166f8f60604b79b92f7fb5cd41a374f80171306cf1b52"
+    }
+  ],
+  "generated_at": "2026-07-25T22:20:00Z",
+  "input_snapshot": "legislation-2026-07-11T18:00:00Z",
+  "schema": "okf-enrichment-attempt-ledger.v1"
+}

@@ -1,0 +1,39 @@
+{
+  "accepted_assertions": 22299,
+  "cap": {
+    "cap_triggered": false,
+    "cap_usd": 250.0,
+    "remaining_usd": 250.0
+  },
+  "cost_per_accepted_assertion": {
+    "gbp": 0.0,
+    "usd": 0.0
+  },
+  "generated_at": "2026-07-25T23:30:00Z",
+  "incremental_cost": {
+    "gbp": 0.0,
+    "usd": 0.0
+  },
+  "model_deployment_identity_available": false,
+  "model_identity": "Codex task model (exact deployment identifier not exposed)",
+  "notes": [
+    "Implemented using the Codex task surface; no paid OpenAI API request was made.",
+    "Codex subscription/task usage and the user's weekly allowance are not exposed as billable token data.",
+    "No currency conversion was required because recorded incremental OpenAI API spend is zero."
+  ],
+  "provider": "OpenAI",
+  "release_effect": "candidate",
+  "run_id": "codex-assisted-v2-2-2026-07-25",
+  "schema": "okf-model-cost-report.v1",
+  "source": {
+    "bytes": 4766,
+    "path": "bundle/enrichment/codex-assisted-v2.json",
+    "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
+  },
+  "usage": {
+    "api_calls": 0,
+    "api_input_tokens": 0,
+    "api_output_tokens": 0,
+    "codex_task_usage": "not exposed as billable token data"
+  }
+}

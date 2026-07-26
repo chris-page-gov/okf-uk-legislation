@@ -1,0 +1,33 @@
+{
+  "assertions": {
+    "immutable_original_mutated": false,
+    "original_recoverable_byte_for_byte": true,
+    "projection_is_immutable_original": false
+  },
+  "entries": [
+    {
+      "action": "omit-plaintext-body-from-publication-projection",
+      "classification": "public-clml-identifiers-misclassified-as-credentials",
+      "credential_shaped_public_identifier_count": 16,
+      "detector": "GitHub push protection",
+      "method_id": "SRC002-A01",
+      "original_bytes": 32768,
+      "original_path": "methods/SRC002-A01/body.bin",
+      "original_sha256": "8c747d807be81240b515dbc0f459f11ff134bee825a024409265342f4fc1488a",
+      "recovery": "Recover only from the sealed archive using the bounded verifier and explicit extraction acknowledgement.",
+      "source_id": "SRC002",
+      "values_recorded": false
+    }
+  ],
+  "generated_at": "2026-07-25T23:04:37Z",
+  "policy": "Downloaded content remains untrusted even when obtained from an official public source. Detector-matched values are not repeated in Git metadata or documentation.",
+  "projection_id": "pub-20260725T203207Z-dd7315c3-7f118be4f005",
+  "schema": "okf-source-access-publication-redactions.v2",
+  "source_evidence": {
+    "archive_path": "evidence/source-acquisitions/whole-law-access/archives/20260725T203207Z-dd7315c3.tar.xz",
+    "archive_sha256": "7f118be4f00539cc24d6a5f79c7cc47359471b3e1a081f25652399b19c93cfed",
+    "archive_tree_sha256": "e751f1989aeb1c23a9d0cef04e9d366386fde53fa90376992820da812ac857c3",
+    "original_integrity_sha256": "e52b26e7d7f24da7e909427f0ab82f9f7a154e8b99cd362aab2d84254bb6975a",
+    "run_id": "20260725T203207Z-dd7315c3"
+  }
+}

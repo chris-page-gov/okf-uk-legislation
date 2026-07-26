@@ -1,0 +1,748 @@
+{
+  "claim": "The register covers all researched source records/classes; it does not claim complete ingestion of every legal corpus.",
+  "denominator": {
+    "access_methods": 108,
+    "source_classes": 36,
+    "source_records": 72
+  },
+  "families": [
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "available",
+      "definition": "Acts, Measures and equivalent primary enactments, including devolved legislatures.",
+      "id": "SC01",
+      "implemented_bundle": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+      "minimum_provenance": "Work identity, enacted and revised expressions, territorial extent, commencement and point-in-time state.",
+      "related_source_classes": [
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC24"
+      ],
+      "source_count": 3,
+      "source_ids": [
+        "SRC001",
+        "SRC002",
+        "SRC007"
+      ],
+      "title": "Primary legislation"
+    },
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "available",
+      "definition": "Statutory instruments, rules, orders, regulations and other delegated instruments.",
+      "id": "SC02",
+      "implemented_bundle": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+      "minimum_provenance": "Enabling power, making/laying/coming-into-force dates, version and extent.",
+      "related_source_classes": [
+        "SC04",
+        "SC05",
+        "SC16"
+      ],
+      "source_count": 3,
+      "source_ids": [
+        "SRC001",
+        "SRC002",
+        "SRC047"
+      ],
+      "title": "Secondary and delegated legislation"
+    },
+    {
+      "authority_class": "history",
+      "coverage_status": "partial",
+      "definition": "Bills and draft statutory instruments before enactment or making.",
+      "id": "SC03",
+      "implemented_bundle": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+      "minimum_provenance": "Stage, version, sponsor, amendments and explicit non-operative status.",
+      "related_source_classes": [
+        "SC24",
+        "SC25"
+      ],
+      "source_count": 6,
+      "source_ids": [
+        "SRC001",
+        "SRC006",
+        "SRC044",
+        "SRC048",
+        "SRC049",
+        "SRC050"
+      ],
+      "title": "Draft legislation and draft instruments"
+    },
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "partial",
+      "definition": "Original, revised and point-in-time expressions and manifestations.",
+      "id": "SC04",
+      "implemented_bundle": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+      "minimum_provenance": "Exact version date, revision status, source manifestation and unapplied effects.",
+      "related_source_classes": [
+        "SC01",
+        "SC02",
+        "SC05"
+      ],
+      "source_count": 3,
+      "source_ids": [
+        "SRC002",
+        "SRC004",
+        "SRC007"
+      ],
+      "title": "Historical and revised legislation versions"
+    },
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "partial",
+      "definition": "Legal-effect relationships between instruments and provisions.",
+      "id": "SC05",
+      "implemented_bundle": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+      "minimum_provenance": "Affecting/affected identifiers, effect type, date, extent and application status.",
+      "related_source_classes": [
+        "SC01",
+        "SC02",
+        "SC04"
+      ],
+      "source_count": 3,
+      "source_ids": [
+        "SRC003",
+        "SRC004",
+        "SRC007"
+      ],
+      "title": "Amendment, commencement, repeal and extent effects"
+    },
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "partial",
+      "definition": "EU-origin law preserved or transformed in domestic law, plus related withdrawal instruments.",
+      "id": "SC06",
+      "implemented_bundle": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+      "minimum_provenance": "UK status, cut-off date, domestic amendments, EU source identity and dual licence.",
+      "related_source_classes": [
+        "SC32",
+        "SC05"
+      ],
+      "source_count": 3,
+      "source_ids": [
+        "SRC001",
+        "SRC008",
+        "SRC056"
+      ],
+      "title": "Retained and assimilated EU law"
+    },
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "partial",
+      "definition": "Local Acts, private Acts, byelaws and local schemes.",
+      "id": "SC07",
+      "implemented_bundle": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+      "minimum_provenance": "Making body, enabling power, confirmation/local procedure, geographic extent and current status.",
+      "related_source_classes": [
+        "SC01",
+        "SC02",
+        "SC23"
+      ],
+      "source_count": 2,
+      "source_ids": [
+        "SRC001",
+        "SRC060"
+      ],
+      "title": "Local and private legislation"
+    },
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "partial",
+      "definition": "Treaties and instruments creating or evidencing international obligations.",
+      "id": "SC08",
+      "implemented_bundle": null,
+      "minimum_provenance": "Treaty series, parties, signature/ratification/entry into force, reservations and depositary status.",
+      "related_source_classes": [
+        "SC33",
+        "SC24"
+      ],
+      "source_count": 2,
+      "source_ids": [
+        "SRC055",
+        "SRC056"
+      ],
+      "title": "Treaties and international instruments"
+    },
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "partial",
+      "definition": "Published judgments from courts, with binding force determined by court hierarchy and issue.",
+      "id": "SC09",
+      "implemented_bundle": null,
+      "minimum_provenance": "Court, neutral citation, handed-down date, judges, version, appeal status and selected passage.",
+      "related_source_classes": [
+        "SC12",
+        "SC13",
+        "SC14"
+      ],
+      "source_count": 9,
+      "source_ids": [
+        "SRC009",
+        "SRC010",
+        "SRC011",
+        "SRC012",
+        "SRC013",
+        "SRC014",
+        "SRC015",
+        "SRC016",
+        "SRC017"
+      ],
+      "title": "Court judgments"
+    },
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "partial",
+      "definition": "Published tribunal decisions; precedential force varies by chamber and appellate level.",
+      "id": "SC10",
+      "implemented_bundle": null,
+      "minimum_provenance": "Tribunal/chamber, citation, panel, date, appeal status and jurisdiction.",
+      "related_source_classes": [
+        "SC12",
+        "SC13",
+        "SC14"
+      ],
+      "source_count": 6,
+      "source_ids": [
+        "SRC009",
+        "SRC010",
+        "SRC012",
+        "SRC013",
+        "SRC014",
+        "SRC015"
+      ],
+      "title": "Tribunal decisions"
+    },
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "partial",
+      "definition": "Orders, concurrences, dissents and other judicial outputs distinct from the main judgment.",
+      "id": "SC11",
+      "implemented_bundle": null,
+      "minimum_provenance": "Relationship to proceeding and judgment, author, operative status and version.",
+      "related_source_classes": [
+        "SC09",
+        "SC10"
+      ],
+      "source_count": 2,
+      "source_ids": [
+        "SRC009",
+        "SRC016"
+      ],
+      "title": "Orders, opinions and separate reasons"
+    },
+    {
+      "authority_class": "history",
+      "coverage_status": "partial",
+      "definition": "Identifiers linking a decision to official neutral citation and report series.",
+      "id": "SC12",
+      "implemented_bundle": null,
+      "minimum_provenance": "Source-assigned citation, report reference, parallel citations and mapping provenance.",
+      "related_source_classes": [
+        "SC09",
+        "SC10",
+        "SC13"
+      ],
+      "source_count": 7,
+      "source_ids": [
+        "SRC009",
+        "SRC011",
+        "SRC013",
+        "SRC014",
+        "SRC015",
+        "SRC016",
+        "SRC068"
+      ],
+      "title": "Neutral and report citations"
+    },
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "partial",
+      "definition": "Cites, follows, applies, distinguishes, doubts, disapproves, overrules and appeal relationships.",
+      "id": "SC13",
+      "implemented_bundle": null,
+      "minimum_provenance": "Passage-level evidence, source/target identity, treatment verb, direction, court and date.",
+      "related_source_classes": [
+        "SC09",
+        "SC10",
+        "SC12"
+      ],
+      "source_count": 3,
+      "source_ids": [
+        "SRC010",
+        "SRC068",
+        "SRC069"
+      ],
+      "title": "Precedent, citation and judicial treatment"
+    },
+    {
+      "authority_class": "legal-service-information",
+      "coverage_status": "partial",
+      "definition": "Court, tribunal, chamber, judge, jurisdiction and competence records.",
+      "id": "SC14",
+      "implemented_bundle": null,
+      "minimum_provenance": "Stable institutional identity, hierarchy, temporal existence and competence source.",
+      "related_source_classes": [
+        "SC09",
+        "SC10",
+        "SC21"
+      ],
+      "source_count": 7,
+      "source_ids": [
+        "SRC009",
+        "SRC011",
+        "SRC012",
+        "SRC013",
+        "SRC014",
+        "SRC026",
+        "SRC067"
+      ],
+      "title": "Court and tribunal reference data"
+    },
+    {
+      "authority_class": "procedural-material",
+      "coverage_status": "partial",
+      "definition": "Civil, criminal, family and tribunal procedure rules.",
+      "id": "SC15",
+      "implemented_bundle": null,
+      "minimum_provenance": "Rule version, amendment instrument, commencement, applicability and official passage.",
+      "related_source_classes": [
+        "SC16",
+        "SC17",
+        "SC18"
+      ],
+      "source_count": 4,
+      "source_ids": [
+        "SRC018",
+        "SRC019",
+        "SRC020",
+        "SRC021"
+      ],
+      "title": "Court and tribunal rules"
+    },
+    {
+      "authority_class": "procedural-material",
+      "coverage_status": "partial",
+      "definition": "Practice directions, pre-action protocols and judicial procedural instructions.",
+      "id": "SC16",
+      "implemented_bundle": null,
+      "minimum_provenance": "Issuing authority, effective date, amendment history, applicable rules and exceptions.",
+      "related_source_classes": [
+        "SC15",
+        "SC17"
+      ],
+      "source_count": 5,
+      "source_ids": [
+        "SRC018",
+        "SRC019",
+        "SRC020",
+        "SRC021",
+        "SRC022"
+      ],
+      "title": "Practice directions and protocols"
+    },
+    {
+      "authority_class": "procedural-material",
+      "coverage_status": "partial",
+      "definition": "Official forms, fee orders, calculators and process guidance.",
+      "id": "SC17",
+      "implemented_bundle": null,
+      "minimum_provenance": "Form revision, fee date, deadline basis, jurisdiction and accessibility.",
+      "related_source_classes": [
+        "SC15",
+        "SC16",
+        "SC21"
+      ],
+      "source_count": 3,
+      "source_ids": [
+        "SRC023",
+        "SRC024",
+        "SRC026"
+      ],
+      "title": "Forms, fees, deadlines and procedural guidance"
+    },
+    {
+      "authority_class": "procedural-material",
+      "coverage_status": "partial",
+      "definition": "Definitive and consultative sentencing guidelines and ancillary materials.",
+      "id": "SC18",
+      "implemented_bundle": null,
+      "minimum_provenance": "Guideline version, offence, effective date, statutory duty and applicability.",
+      "related_source_classes": [
+        "SC09",
+        "SC17"
+      ],
+      "source_count": 1,
+      "source_ids": [
+        "SRC027"
+      ],
+      "title": "Sentencing guidelines"
+    },
+    {
+      "authority_class": "official-guidance",
+      "coverage_status": "partial",
+      "definition": "CPS, COPFS, PPSNI and regulator enforcement guidance.",
+      "id": "SC19",
+      "implemented_bundle": null,
+      "minimum_provenance": "Issuer, version, legal basis, policy status, effective date and exceptions.",
+      "related_source_classes": [
+        "SC20",
+        "SC30"
+      ],
+      "source_count": 3,
+      "source_ids": [
+        "SRC028",
+        "SRC029",
+        "SRC030"
+      ],
+      "title": "Prosecution and enforcement guidance"
+    },
+    {
+      "authority_class": "delegated-administrative-rules",
+      "coverage_status": "partial",
+      "definition": "Regulator rulebooks, handbooks, standards, directions and binding requirements.",
+      "id": "SC20",
+      "implemented_bundle": null,
+      "minimum_provenance": "Regulator competence, rule version, legal instrument basis, effective dates and territorial scope.",
+      "related_source_classes": [
+        "SC29",
+        "SC30"
+      ],
+      "source_count": 5,
+      "source_ids": [
+        "SRC031",
+        "SRC033",
+        "SRC034",
+        "SRC036",
+        "SRC071"
+      ],
+      "title": "Regulatory handbooks and rules"
+    },
+    {
+      "authority_class": "delegated-administrative-rules",
+      "coverage_status": "partial",
+      "definition": "Final notices, decisions, undertakings, penalties, permissions and appeals.",
+      "id": "SC21",
+      "implemented_bundle": null,
+      "minimum_provenance": "Decision-maker, subject, statutory power, date, outcome, appeal/review state and redactions.",
+      "related_source_classes": [
+        "SC20",
+        "SC30"
+      ],
+      "source_count": 7,
+      "source_ids": [
+        "SRC032",
+        "SRC035",
+        "SRC037",
+        "SRC038",
+        "SRC039",
+        "SRC065",
+        "SRC066"
+      ],
+      "title": "Regulatory decisions and enforcement notices"
+    },
+    {
+      "authority_class": "official-guidance",
+      "coverage_status": "partial",
+      "definition": "Statutory and non-statutory codes, manuals and guidance.",
+      "id": "SC22",
+      "implemented_bundle": null,
+      "minimum_provenance": "Statutory basis, duty to have regard, version, audience and legal-force qualification.",
+      "related_source_classes": [
+        "SC01",
+        "SC02",
+        "SC20"
+      ],
+      "source_count": 7,
+      "source_ids": [
+        "SRC022",
+        "SRC031",
+        "SRC034",
+        "SRC036",
+        "SRC038",
+        "SRC064",
+        "SRC071"
+      ],
+      "title": "Codes of practice and statutory guidance"
+    },
+    {
+      "authority_class": "persuasive-authority",
+      "coverage_status": "partial",
+      "definition": "Published findings, decisions, recommendations and adjudications.",
+      "id": "SC23",
+      "implemented_bundle": null,
+      "minimum_provenance": "Scheme jurisdiction, binding/recommendatory status, retention window, anonymity and review route.",
+      "related_source_classes": [
+        "SC21",
+        "SC30"
+      ],
+      "source_count": 5,
+      "source_ids": [
+        "SRC037",
+        "SRC040",
+        "SRC041",
+        "SRC042",
+        "SRC043"
+      ],
+      "title": "Ombudsman and adjudicator decisions"
+    },
+    {
+      "authority_class": "history",
+      "coverage_status": "partial",
+      "definition": "Bills, amendments, stages, debates, votes, committee material and deposited papers.",
+      "id": "SC24",
+      "implemented_bundle": null,
+      "minimum_provenance": "House, session, stage, date, speaker, bill version and stable passage anchor.",
+      "related_source_classes": [
+        "SC03",
+        "SC25",
+        "SC26"
+      ],
+      "source_count": 8,
+      "source_ids": [
+        "SRC017",
+        "SRC044",
+        "SRC045",
+        "SRC046",
+        "SRC047",
+        "SRC048",
+        "SRC049",
+        "SRC050"
+      ],
+      "title": "Parliamentary materials and Hansard"
+    },
+    {
+      "authority_class": "history",
+      "coverage_status": "partial",
+      "definition": "Official explanatory and impact material associated with legislation or bills.",
+      "id": "SC25",
+      "implemented_bundle": null,
+      "minimum_provenance": "Associated work, publisher, date, version, explicit non-authoritative role and passage.",
+      "related_source_classes": [
+        "SC01",
+        "SC02",
+        "SC03"
+      ],
+      "source_count": 6,
+      "source_ids": [
+        "SRC004",
+        "SRC005",
+        "SRC044",
+        "SRC048",
+        "SRC049",
+        "SRC050"
+      ],
+      "title": "Explanatory notes and impact assessments"
+    },
+    {
+      "authority_class": "history",
+      "coverage_status": "partial",
+      "definition": "Law Commission and equivalent consultation papers, reports, draft Bills and implementation status.",
+      "id": "SC26",
+      "implemented_bundle": null,
+      "minimum_provenance": "Project, report number, date, recommendations, government response and implementation links.",
+      "related_source_classes": [
+        "SC03",
+        "SC24"
+      ],
+      "source_count": 2,
+      "source_ids": [
+        "SRC051",
+        "SRC052"
+      ],
+      "title": "Law-reform publications"
+    },
+    {
+      "authority_class": "history",
+      "coverage_status": "partial",
+      "definition": "Inquiry reports, evidence, rulings and official accident or investigation reports.",
+      "id": "SC27",
+      "implemented_bundle": null,
+      "minimum_provenance": "Statutory basis, chair/body, module, evidence provenance, publication and recommendation status.",
+      "related_source_classes": [
+        "SC21",
+        "SC24"
+      ],
+      "source_count": 2,
+      "source_ids": [
+        "SRC053",
+        "SRC054"
+      ],
+      "title": "Public inquiries and official investigations"
+    },
+    {
+      "authority_class": "legal-service-information",
+      "coverage_status": "partial",
+      "definition": "Eligibility, scope, calculators, provider finding and public advice routes.",
+      "id": "SC28",
+      "implemented_bundle": null,
+      "minimum_provenance": "Jurisdiction, eligibility date, disclaimer, service owner and referral limits.",
+      "related_source_classes": [
+        "SC17",
+        "SC21"
+      ],
+      "source_count": 4,
+      "source_ids": [
+        "SRC061",
+        "SRC062",
+        "SRC063",
+        "SRC064"
+      ],
+      "title": "Legal aid and public legal assistance"
+    },
+    {
+      "authority_class": "history",
+      "coverage_status": "partial",
+      "definition": "Statutory notices, insolvency, planning, appointments and other public legal notices.",
+      "id": "SC29",
+      "implemented_bundle": null,
+      "minimum_provenance": "Notice code, publication date, issuer, geographic scope, permanent URI and digital signature.",
+      "related_source_classes": [
+        "SC07",
+        "SC21"
+      ],
+      "source_count": 1,
+      "source_ids": [
+        "SRC059"
+      ],
+      "title": "Public notices and official gazettes"
+    },
+    {
+      "authority_class": "legal-service-information",
+      "coverage_status": "partial",
+      "definition": "Bodies, offices, powers, competence, geographic remit and organisational lineage.",
+      "id": "SC30",
+      "implemented_bundle": null,
+      "minimum_provenance": "Authoritative source, temporal identity, statutory basis, aliases and successor/predecessor.",
+      "related_source_classes": [
+        "SC14",
+        "SC20"
+      ],
+      "source_count": 2,
+      "source_ids": [
+        "SRC067",
+        "SRC072"
+      ],
+      "title": "Jurisdiction, institution and public-body reference data"
+    },
+    {
+      "authority_class": "legal-service-information",
+      "coverage_status": "partial",
+      "definition": "Court and tribunal listings, venues, hearing times and case references.",
+      "id": "SC31",
+      "implemented_bundle": null,
+      "minimum_provenance": "Licence, time sensitivity, suppression/anonymity, source timestamp and access restrictions.",
+      "related_source_classes": [
+        "SC14",
+        "SC17"
+      ],
+      "source_count": 1,
+      "source_ids": [
+        "SRC025"
+      ],
+      "title": "Legal-service listings and hearing data"
+    },
+    {
+      "authority_class": "binding-authority",
+      "coverage_status": "partial",
+      "definition": "EUR-Lex/CELLAR law, case law and preparatory acts relevant to UK legal interpretation or history.",
+      "id": "SC32",
+      "implemented_bundle": null,
+      "minimum_provenance": "CELEX/ECLI/ELI identity, language, consolidation, corrigenda, version and relevance to UK law.",
+      "related_source_classes": [
+        "SC06",
+        "SC08",
+        "SC13"
+      ],
+      "source_count": 3,
+      "source_ids": [
+        "SRC008",
+        "SRC056",
+        "SRC057"
+      ],
+      "title": "European Union legal sources"
+    },
+    {
+      "authority_class": "persuasive-authority",
+      "coverage_status": "partial",
+      "definition": "HUDOC and other international decisions affecting UK obligations or interpretation.",
+      "id": "SC33",
+      "implemented_bundle": null,
+      "minimum_provenance": "Court/body, application number, date, status, language and UK relevance.",
+      "related_source_classes": [
+        "SC08",
+        "SC09",
+        "SC13"
+      ],
+      "source_count": 1,
+      "source_ids": [
+        "SRC058"
+      ],
+      "title": "European human-rights and international decisions"
+    },
+    {
+      "authority_class": "delegated-administrative-rules",
+      "coverage_status": "partial",
+      "definition": "Rules and decisions of legal-services regulators and professional bodies.",
+      "id": "SC34",
+      "implemented_bundle": null,
+      "minimum_provenance": "Regulator, authorised-person class, rule version, effective date and statutory basis.",
+      "related_source_classes": [
+        "SC20",
+        "SC21"
+      ],
+      "source_count": 2,
+      "source_ids": [
+        "SRC065",
+        "SRC066"
+      ],
+      "title": "Professional rules and legal-services regulation"
+    },
+    {
+      "authority_class": "history",
+      "coverage_status": "partial",
+      "definition": "Historical records, archived websites and digitised material outside current publication systems.",
+      "id": "SC35",
+      "implemented_bundle": null,
+      "minimum_provenance": "Archive reference, series, date range, digitisation status, custody and access restrictions.",
+      "related_source_classes": [
+        "SC04",
+        "SC09",
+        "SC24"
+      ],
+      "source_count": 3,
+      "source_ids": [
+        "SRC015",
+        "SRC017",
+        "SRC070"
+      ],
+      "title": "Archival legal records and web archives"
+    },
+    {
+      "authority_class": "contextual-material",
+      "coverage_status": "partial",
+      "definition": "Law reports, citators, textbooks, practitioner commentary and news.",
+      "id": "SC36",
+      "implemented_bundle": null,
+      "minimum_provenance": "Publisher, edition, licence, editorial method and clear non-official status.",
+      "related_source_classes": [
+        "SC12",
+        "SC13"
+      ],
+      "source_count": 3,
+      "source_ids": [
+        "SRC015",
+        "SRC068",
+        "SRC069"
+      ],
+      "title": "Secondary reporting and commentary"
+    }
+  ],
+  "generated_at": "2026-07-25T22:54:00Z",
+  "schema": "okf-whole-law-coverage.v1",
+  "source_family_status": {
+    "available": 2,
+    "partial": 34
+  }
+}

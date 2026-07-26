@@ -1,0 +1,1506 @@
+{
+  "constraints": [
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-001",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC001",
+      "trigger": "Identify automation, cache, use conservative pacing and remain within the published fair-use ceiling; prefer filtered feeds/bulk for large work."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-002",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC001",
+      "trigger": "Open Government Licence v3.0; additional terms can apply to EU- and Westlaw-derived content."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-003",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC002",
+      "trigger": "Same fair-use controls as legislation.gov.uk; cache immutable or version-addressed resources and record hashes."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-004",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC002",
+      "trigger": "OGL v3.0, subject to item-level additional terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-005",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC003",
+      "trigger": "Use filtered item feeds and cache; preserve source warnings about historical/editorial coverage."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-006",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC003",
+      "trigger": "OGL v3.0, subject to item-level terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-007",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC004",
+      "trigger": "Publisher recommends filtered views rather than the full feed; paginate and checkpoint by event identity/time."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-008",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC004",
+      "trigger": "OGL v3.0, subject to item-level additional terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-009",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC005",
+      "trigger": "Filtered publication feeds and item metadata; do not bulk-fetch PDFs unnecessarily."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-010",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC005",
+      "trigger": "Usually OGL; preserve item-level notices and third-party rights."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-011",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC006",
+      "trigger": "Use feed enumeration; create explicit proposed/superseded/made-as relationships only with evidence."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-012",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC006",
+      "trigger": "OGL v3.0 subject to item terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-013",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC007",
+      "trigger": "Do not claim operational access without credentials; use public Atom/CLML fallback."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-014",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC007",
+      "trigger": "OGL and additional source-specific terms."
+    },
+    {
+      "effect": "The public prototype cannot acquire restricted content without separately supplied authority.",
+      "escalation_state": "escalated",
+      "id": "CON-015",
+      "kind": "authentication",
+      "mitigation": "Publish adapter, coverage and access metadata; do not bypass authentication.",
+      "owner": "Source owner and UK Whole-Law OKF maintainer",
+      "source_id": "SRC007",
+      "trigger": "At least one researched route is authenticated or otherwise restricted."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-016",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC008",
+      "trigger": "Respect both licence layers and preserve source-of-origin metadata."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-017",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC008",
+      "trigger": "OGL v3.0 plus Commission Decision 2011/833/EU or other additional terms for EU-derived material."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-018",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC009",
+      "trigger": "Reasonable requests; obey robots and no external indexing; programmatic bulk searching/enrichment is computational analysis requiring permission."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-019",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC009",
+      "trigger": "Open Justice Licence for ordinary reuse; computational analysis requires an additional licence."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-020",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC010",
+      "trigger": "Reasonable use, robots and external-indexing restrictions; licensed access must follow award terms."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-021",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC010",
+      "trigger": "Open Justice Licence for ordinary use; additional computational-analysis licence required for bulk programmatic search/extraction/enrichment."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-022",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC011",
+      "trigger": "As Find Case Law."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-023",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC011",
+      "trigger": "Open Justice Licence; computational analysis restrictions as above."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-024",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC012",
+      "trigger": "As Find Case Law."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-025",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC012",
+      "trigger": "Open Justice Licence plus computational-analysis restriction."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-026",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC013",
+      "trigger": "Use RSS politely and follow site terms/robots; cache documents and hashes."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-027",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC013",
+      "trigger": "Crown copyright/reuse terms must be checked per site/document."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-028",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC014",
+      "trigger": "Respect robots and avoid bulk download without published permission."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-029",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC014",
+      "trigger": "Crown copyright/site terms; item-level checks required."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-030",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC015",
+      "trigger": "Respect robots/terms; do not use as a silent bulk fallback."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-031",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC015",
+      "trigger": "BAILII terms and document copyright; automated reuse requires specific review."
+    },
+    {
+      "effect": "Live verification and acquisition cannot be asserted for that route.",
+      "escalation_state": "recorded",
+      "id": "CON-032",
+      "kind": "availability",
+      "mitigation": "Retain the dated observation, use documented alternatives and re-test on schedule.",
+      "owner": "UK Whole-Law OKF source monitoring",
+      "source_id": "SRC015",
+      "trigger": "At least one researched route was unavailable on the recorded test date."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-033",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC016",
+      "trigger": "Polite access; video/media terms separate."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-034",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC016",
+      "trigger": "Crown copyright/site terms; Open Justice Licence applies to FCL copies, not assumed for every site asset."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-035",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC017",
+      "trigger": "Use APIs/exports only under documented terms; physical/digitised access restrictions apply."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-036",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC017",
+      "trigger": "Catalogue metadata generally reusable under OGL; record rights vary."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-037",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC018",
+      "trigger": "Public access; crawl politely; capture Last-Modified/ETag where available."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-038",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC018",
+      "trigger": "Crown copyright/OGL unless stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-039",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC019",
+      "trigger": "Public; cache versions and monitor update pages."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-040",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC019",
+      "trigger": "OGL/Crown copyright unless stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-041",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC020",
+      "trigger": "Public; monitor amendment pages and source headers."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-042",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC020",
+      "trigger": "OGL/Crown copyright unless stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-043",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC021",
+      "trigger": "Public; monitor collection and amending instruments."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-044",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC021",
+      "trigger": "OGL/Crown copyright unless stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-045",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC022",
+      "trigger": "Public; monitor pages and document hashes."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-046",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC022",
+      "trigger": "Crown copyright/site terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-047",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC023",
+      "trigger": "Public; avoid caching as “current” without revision/date checks."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-048",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC023",
+      "trigger": "OGL/Crown copyright; third-party marks/contents may vary."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-049",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC024",
+      "trigger": "Public; check live source immediately before action/payment."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-050",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC024",
+      "trigger": "OGL/Crown copyright."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-051",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC025",
+      "trigger": "Authenticated/licensed; strict compatibility/security requirements."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-052",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC025",
+      "trigger": "Third-Party Courts and Tribunals Data Licence; purpose/controls subject to approval."
+    },
+    {
+      "effect": "The public prototype cannot acquire restricted content without separately supplied authority.",
+      "escalation_state": "escalated",
+      "id": "CON-053",
+      "kind": "authentication",
+      "mitigation": "Publish adapter, coverage and access metadata; do not bypass authentication.",
+      "owner": "Source owner and UK Whole-Law OKF maintainer",
+      "source_id": "SRC025",
+      "trigger": "At least one researched route is authenticated or otherwise restricted."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-054",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC026",
+      "trigger": "Public; do not scrape aggressively; live verification recommended."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-055",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC026",
+      "trigger": "Crown copyright/service terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-056",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC027",
+      "trigger": "Public; cache versions and check effective date."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-057",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC027",
+      "trigger": "Crown copyright/site terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-058",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC028",
+      "trigger": "Public; monitor changes and preserve snapshots for audit."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-059",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC028",
+      "trigger": "OGL/Crown copyright unless stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-060",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC029",
+      "trigger": "Public; cache version/hash and monitor."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-061",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC029",
+      "trigger": "Crown copyright/Open Government terms as stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-062",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC030",
+      "trigger": "Public; monitor and hash."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-063",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC030",
+      "trigger": "Crown copyright/site terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-064",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC031",
+      "trigger": "Respect terms/robots; avoid claiming live alignment after a timeout."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-065",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC031",
+      "trigger": "FCA copyright/reuse terms; verify before bulk reproduction."
+    },
+    {
+      "effect": "Live verification and acquisition cannot be asserted for that route.",
+      "escalation_state": "recorded",
+      "id": "CON-066",
+      "kind": "availability",
+      "mitigation": "Retain the dated observation, use documented alternatives and re-test on schedule.",
+      "owner": "UK Whole-Law OKF source monitoring",
+      "source_id": "SRC031",
+      "trigger": "At least one researched route was unavailable on the recorded test date."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-067",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC032",
+      "trigger": "Public; polite crawling and item-level rights checks."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-068",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC032",
+      "trigger": "FCA copyright/reuse terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-069",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC033",
+      "trigger": "Public; respectful access; cache dated versions where permitted."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-070",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC033",
+      "trigger": "Bank of England/PRA terms; verify reuse."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-071",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC034",
+      "trigger": "Public; capture version/date and do not silently overwrite previous code."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-072",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC034",
+      "trigger": "Ofcom terms/OGL where stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-073",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC035",
+      "trigger": "Public; respect personal/confidential redactions."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-074",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC035",
+      "trigger": "Ofcom terms/OGL where stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-075",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC036",
+      "trigger": "Public; monitor and snapshot with version/hash."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-076",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC036",
+      "trigger": "ICO copyright/reuse terms; OGL for some materials."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-077",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC037",
+      "trigger": "Public; respect personal-data redaction and avoid inferring guilt beyond notice."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-078",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC037",
+      "trigger": "ICO copyright/reuse terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-079",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC038",
+      "trigger": "Public; monitor case status and attachment hashes."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-080",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC038",
+      "trigger": "OGL/Crown copyright subject to third-party material."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-081",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC039",
+      "trigger": "Public; respect personal data and retention rules."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-082",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC039",
+      "trigger": "OGL subject to personal/third-party rights."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-083",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC040",
+      "trigger": "Public; retention and robots must be respected."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-084",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC040",
+      "trigger": "Site terms/copyright; personal information redacted."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-085",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC041",
+      "trigger": "Public; personal-data safeguards and retention rules."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-086",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC041",
+      "trigger": "PHSO terms/copyright; redactions apply."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-087",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC042",
+      "trigger": "Public; respect personal data and robots."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-088",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC042",
+      "trigger": "SPSO copyright/terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-089",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC043",
+      "trigger": "Public; privacy and retention controls."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-090",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC043",
+      "trigger": "NIPSO terms/copyright."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-091",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC044",
+      "trigger": "Public; use available feeds/APIs only under published terms."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-092",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC044",
+      "trigger": "Open Parliament Licence for eligible material; document-specific rights may apply."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-093",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC045",
+      "trigger": "Public; respect service terms and caching."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-094",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC045",
+      "trigger": "Open Parliament Licence subject to exceptions."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-095",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC046",
+      "trigger": "Public; respectful access and item-level rights checks."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-096",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC046",
+      "trigger": "Open Parliament Licence subject to evidence/third-party exceptions."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-097",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC047",
+      "trigger": "Public; monitor daily and retain snapshots for chronology."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-098",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC047",
+      "trigger": "Open Parliament Licence where applicable."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-099",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC048",
+      "trigger": "Public; follow terms and cache versions."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-100",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC048",
+      "trigger": "Scottish Parliament copyright/Open Parliament Licence terms as stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-101",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC049",
+      "trigger": "Public; preserve bilingual identity and version links."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-102",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC049",
+      "trigger": "Senedd copyright/Open Parliament Licence terms as stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-103",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC050",
+      "trigger": "Public; cache versions and record institutional status."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-104",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC050",
+      "trigger": "Assembly copyright/Open Parliament Licence terms as stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-105",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC051",
+      "trigger": "Public; crawl politely and preserve document versions."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-106",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC051",
+      "trigger": "OGL/Crown copyright subject to third-party material."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-107",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC052",
+      "trigger": "Public; preserve document hash and project relationships."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-108",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC052",
+      "trigger": "Crown copyright/OGL where stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-109",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC053",
+      "trigger": "Public; personal/sensitive evidence and publication restrictions require care."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-110",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC053",
+      "trigger": "OGL/Crown copyright with witness/third-party exceptions."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-111",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC054",
+      "trigger": "Public; sensitive personal information and causal-language caveats."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-112",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC054",
+      "trigger": "OGL/Crown copyright subject to images/third-party material."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-113",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC055",
+      "trigger": "Public; respectful access; use dataset for bulk metadata."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-114",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC055",
+      "trigger": "OGL for dataset; treaty document rights/third-party text require checking."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-115",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC056",
+      "trigger": "Authenticated webservice limits; use CELLAR/bulk for systematic retrieval."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-116",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC056",
+      "trigger": "EU reuse/copyright notice and Commission reuse policy."
+    },
+    {
+      "effect": "The public prototype cannot acquire restricted content without separately supplied authority.",
+      "escalation_state": "escalated",
+      "id": "CON-117",
+      "kind": "authentication",
+      "mitigation": "Publish adapter, coverage and access metadata; do not bypass authentication.",
+      "owner": "Source owner and UK Whole-Law OKF maintainer",
+      "source_id": "SRC056",
+      "trigger": "At least one researched route is authenticated or otherwise restricted."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-118",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC057",
+      "trigger": "Use official bulk/dump guidance and rate limits; query caps apply."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-119",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC057",
+      "trigger": "EU reuse policy; record per-resource rights."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-120",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC058",
+      "trigger": "Public search; systematic reuse terms and API/bulk access require review."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-121",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC058",
+      "trigger": "Council of Europe copyright/reuse terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-122",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC059",
+      "trigger": "Official fair-use guidance: no more than five requests per ten seconds and bulk activity preferably 9pm–7am; obey robots."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-123",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC059",
+      "trigger": "OGL/open-data terms subject to notice content rights."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-124",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC060",
+      "trigger": "Respect each site; avoid assuming a missing webpage means no byelaw."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-125",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC060",
+      "trigger": "Local authority copyright/OGL varies; item-level terms required."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-126",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC061",
+      "trigger": "Public; live verification for eligibility; personal data should not enter static bundle."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-127",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC061",
+      "trigger": "OGL/Crown copyright."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-128",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC062",
+      "trigger": "Public; do not process personal case data in static OKF."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-129",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC062",
+      "trigger": "SLAB/Crown copyright terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-130",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC063",
+      "trigger": "Public; personal-data protections."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-131",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC063",
+      "trigger": "Crown copyright/OGL where stated."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-132",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC064",
+      "trigger": "Use content APIs/sitemaps where documented; live verification for current obligations."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-133",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC064",
+      "trigger": "OGL/Crown copyright subject to page/attachment terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-134",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC065",
+      "trigger": "Public; item-level terms and personal-data considerations."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-135",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC065",
+      "trigger": "BSB copyright/reuse terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-136",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC066",
+      "trigger": "Public; careful handling of person-level regulatory data and retention."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-137",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC066",
+      "trigger": "SRA copyright/reuse terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-138",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC067",
+      "trigger": "Public; live verification for current office-holder/competence."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-139",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC067",
+      "trigger": "Crown copyright/site terms."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-140",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC068",
+      "trigger": "Authenticated/subscription for much content; no bulk use assumed."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-141",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC068",
+      "trigger": "Copyright/subscription/licence restrictions."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-142",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC069",
+      "trigger": "Authenticated and licensed."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-143",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC069",
+      "trigger": "Commercial contract/copyright; no public reuse assumed."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-144",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC070",
+      "trigger": "Respect archive terms; some content restricted onsite."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-145",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC070",
+      "trigger": "Archived content rights/reuse vary; OGL may apply to original government content."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-146",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC071",
+      "trigger": "Public; use APIs/sitemaps if documented, preserve versions."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-147",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC071",
+      "trigger": "OGL/Crown copyright subject to item rights."
+    },
+    {
+      "effect": "Bulk acquisition must use source-aware pacing, caching and resumable requests; functionality remains represented.",
+      "escalation_state": "mitigated",
+      "id": "CON-148",
+      "kind": "fair-use",
+      "mitigation": "Use frozen envelopes, conditional requests, filtered feeds and source-specific schedules.",
+      "owner": "UK Whole-Law OKF maintainer",
+      "source_id": "SRC072",
+      "trigger": "Public; preserve effective dates and source authority."
+    },
+    {
+      "effect": "Rights and permitted redistribution can vary by item and manifestation.",
+      "escalation_state": "recorded",
+      "id": "CON-149",
+      "kind": "licence",
+      "mitigation": "Retain item-level rights; publish metadata and links when redistribution rights are not established.",
+      "owner": "UK Whole-Law OKF rights review",
+      "source_id": "SRC072",
+      "trigger": "OGL/Crown copyright; Companies House terms for company data."
+    },
+    {
+      "effect": "YAML-LD document conformance is testable, but strict HTTP media-type conformance cannot be claimed.",
+      "escalation_state": "accepted-prototype-risk",
+      "id": "CON-150",
+      "kind": "hosting",
+      "mitigation": "Publish JSON-LD and release downloads; content-sniff .yamlld in Explorer; configure application/ld+yaml on the later permanent host.",
+      "owner": "UK Whole-Law OKF publication",
+      "source_id": "PUBLICATION",
+      "trigger": "GitHub Pages serves .yamlld as application/octet-stream."
+    }
+  ],
+  "generated_at": "2026-07-25T22:54:00Z",
+  "schema": "okf-source-constraint-ledger.v1"
+}

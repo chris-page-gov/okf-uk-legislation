@@ -1,0 +1,337 @@
+{
+  "complete": true,
+  "corpus_snapshot": "whole-law-2026-07-25+legislation-2026-07-11T18:00:00Z",
+  "counts": {
+    "access_states": {
+      "available": 411,
+      "partial": 324,
+      "planned": 1,
+      "restricted": 367,
+      "unavailable": 181
+    },
+    "authority_classes": {
+      "binding-authority": 392,
+      "contextual-material": 94,
+      "delegated-administrative-rules": 182,
+      "history": 392,
+      "legal-service-information": 86,
+      "official-guidance": 190,
+      "persuasive-authority": 339,
+      "procedural-material": 264
+    },
+    "jurisdictions": {
+      "Commonwealth/overseas jurisdictions for JCPC": 3,
+      "Council of Europe": 13,
+      "Devolved jurisdictions": 25,
+      "England": 39,
+      "England and Wales": 404,
+      "England for health service complaints": 31,
+      "European Union": 3,
+      "European Union origin": 2,
+      "European/international collections": 42,
+      "International": 1,
+      "Ireland": 42,
+      "Northern Ireland": 385,
+      "Scotland": 389,
+      "United Kingdom": 408,
+      "United Kingdom for UKSC/JCPC": 299,
+      "United Kingdom for parliamentary complaints": 31,
+      "United Kingdom for some tribunals": 54,
+      "United Kingdom relevance": 16,
+      "Wales": 70,
+      "devolved jurisdictions where applicable": 1,
+      "some UK-wide tribunal services": 47
+    },
+    "personas": {
+      "P01": 19,
+      "P02": 9,
+      "P03": 8,
+      "P04": 14,
+      "P05": 9,
+      "P06": 8,
+      "P07": 12,
+      "P08": 11,
+      "P09": 9,
+      "P10": 11,
+      "P11": 10,
+      "P12": 29,
+      "P13": 14,
+      "P14": 11,
+      "P15": 12,
+      "P16": 12,
+      "P17": 10,
+      "P18": 10,
+      "P19": 15,
+      "P20": 9,
+      "P21": 10,
+      "P22": 11,
+      "P23": 9,
+      "P24": 13,
+      "P25": 7,
+      "P26": 11,
+      "P27": 12,
+      "P28": 8,
+      "P29": 11,
+      "P30": 7,
+      "P31": 12,
+      "P32": 7,
+      "P33": 7,
+      "P34": 9,
+      "P35": 9,
+      "P36": 11,
+      "P37": 12,
+      "P38": 7
+    },
+    "source_classes": {
+      "SC01": 354,
+      "SC02": 77,
+      "SC03": 42,
+      "SC04": 95,
+      "SC05": 83,
+      "SC06": 1,
+      "SC07": 23,
+      "SC08": 1,
+      "SC09": 277,
+      "SC10": 68,
+      "SC11": 1,
+      "SC12": 20,
+      "SC13": 68,
+      "SC14": 69,
+      "SC15": 157,
+      "SC16": 34,
+      "SC17": 76,
+      "SC18": 20,
+      "SC19": 40,
+      "SC20": 103,
+      "SC21": 92,
+      "SC22": 71,
+      "SC23": 49,
+      "SC24": 145,
+      "SC25": 29,
+      "SC26": 49,
+      "SC27": 12,
+      "SC28": 35,
+      "SC29": 1,
+      "SC30": 78,
+      "SC31": 6,
+      "SC32": 1,
+      "SC33": 13,
+      "SC34": 1,
+      "SC35": 41,
+      "SC36": 18
+    },
+    "strata": {
+      "high-risk-three-way": 87,
+      "pairwise-coverage": 328
+    },
+    "tasks": {
+      "T01": 60,
+      "T02": 34,
+      "T03": 20,
+      "T04": 32,
+      "T05": 18,
+      "T06": 21,
+      "T07": 26,
+      "T08": 7,
+      "T09": 15,
+      "T10": 22,
+      "T11": 19,
+      "T12": 7,
+      "T13": 20,
+      "T14": 7,
+      "T15": 6,
+      "T16": 15,
+      "T17": 33,
+      "T18": 14,
+      "T19": 20,
+      "T20": 19
+    },
+    "temporal_difficulties": {
+      "live-reconciliation-or-point-in-time": 139,
+      "snapshot-bounded": 276
+    }
+  },
+  "coverage_contract": {
+    "complete": true,
+    "dimensions": {
+      "access_states": {
+        "covered": 5,
+        "covered_required_sha256": "d9ba94edb9a0346a1d2d201babb9904199830560153c13fda9b0df1c19d44d86",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 5,
+        "required_sha256": "d9ba94edb9a0346a1d2d201babb9904199830560153c13fda9b0df1c19d44d86"
+      },
+      "authority_classes": {
+        "covered": 8,
+        "covered_required_sha256": "01ac0c81473cfb06da96f975e01ae6aaa40887ca245722f296185fd273c7b769",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 8,
+        "required_sha256": "01ac0c81473cfb06da96f975e01ae6aaa40887ca245722f296185fd273c7b769"
+      },
+      "jurisdictions": {
+        "covered": 21,
+        "covered_required_sha256": "92337a3a10a76e2f59ad716e97c4225c513fc63203764904b015893fe3a6007b",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 21,
+        "required_sha256": "92337a3a10a76e2f59ad716e97c4225c513fc63203764904b015893fe3a6007b"
+      },
+      "personas": {
+        "covered": 38,
+        "covered_required_sha256": "c7fa9a55e27917eac7c173daefab82405ffe1085074fba7336afbb7929244719",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 38,
+        "required_sha256": "c7fa9a55e27917eac7c173daefab82405ffe1085074fba7336afbb7929244719"
+      },
+      "source_classes": {
+        "covered": 36,
+        "covered_required_sha256": "c055b3a46d80ce85cc28276ce379887e165cd9a08d8bb6a1ca52bb2812382412",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 36,
+        "required_sha256": "c055b3a46d80ce85cc28276ce379887e165cd9a08d8bb6a1ca52bb2812382412"
+      },
+      "tasks": {
+        "covered": 20,
+        "covered_required_sha256": "0bfdfdd045505d294da5c285334aacecf99081e009fa2a034077d4cf53c96e76",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 20,
+        "required_sha256": "0bfdfdd045505d294da5c285334aacecf99081e009fa2a034077d4cf53c96e76"
+      },
+      "temporal_difficulties": {
+        "covered": 2,
+        "covered_required_sha256": "ce115ae385b3accebfb797870db5bfdce6ec9432f7db1fd4a4f602b5cfe8596d",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 2,
+        "required_sha256": "ce115ae385b3accebfb797870db5bfdce6ec9432f7db1fd4a4f602b5cfe8596d"
+      }
+    },
+    "high_risk_three_way": {
+      "covered": 548,
+      "covered_required_sha256": "c8be1cdaae7819f9bff95462bcd2befca2732ae9306340680903b094fd0c4f5f",
+      "extra": 0,
+      "missing": [],
+      "passed": true,
+      "required": 548,
+      "required_sha256": "c8be1cdaae7819f9bff95462bcd2befca2732ae9306340680903b094fd0c4f5f"
+    },
+    "method": "Applicable pairs are derived independently from the researched persona/task mappings and source-register records. High-risk triples are every professional-escalation temporal mapping crossed with its required source classes.",
+    "pairwise": {
+      "access_state_authority_class": {
+        "covered": 18,
+        "covered_required_sha256": "2cdf9049886dcc4b3b2f4a9d7754854cd5610626554cc9c3b8ae7c695c47b5f4",
+        "extra": 1,
+        "missing": [],
+        "passed": true,
+        "required": 18,
+        "required_sha256": "2cdf9049886dcc4b3b2f4a9d7754854cd5610626554cc9c3b8ae7c695c47b5f4"
+      },
+      "jurisdiction_access_state": {
+        "covered": 38,
+        "covered_required_sha256": "de07eab2d20b2994a8a9efba18cdbbdd4b43b6f80e473282d763a85022ec2d64",
+        "extra": 4,
+        "missing": [],
+        "passed": true,
+        "required": 38,
+        "required_sha256": "de07eab2d20b2994a8a9efba18cdbbdd4b43b6f80e473282d763a85022ec2d64"
+      },
+      "jurisdiction_authority_class": {
+        "covered": 64,
+        "covered_required_sha256": "f84b29bb9b56814ec0b98b07b2d30f66420a677aed07e52cd0bcf586ac9ccba2",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 64,
+        "required_sha256": "f84b29bb9b56814ec0b98b07b2d30f66420a677aed07e52cd0bcf586ac9ccba2"
+      },
+      "persona_source_class": {
+        "covered": 570,
+        "covered_required_sha256": "38735ec7eae9d9eff6052168bd8151be4a7ad8c88f1d3c50a7dbbefbb7518248",
+        "extra": 7,
+        "missing": [],
+        "passed": true,
+        "required": 570,
+        "required_sha256": "38735ec7eae9d9eff6052168bd8151be4a7ad8c88f1d3c50a7dbbefbb7518248"
+      },
+      "persona_task": {
+        "covered": 374,
+        "covered_required_sha256": "13daf5e38fdd2de50765dc21a7afe66a733480ea49fb091720b266f7b0160036",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 374,
+        "required_sha256": "13daf5e38fdd2de50765dc21a7afe66a733480ea49fb091720b266f7b0160036"
+      },
+      "source_class_access_state": {
+        "covered": 60,
+        "covered_required_sha256": "c3c058fe7d242bcd9b5f31c2b7cfa141c5019532c729356d3dee39506402df19",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 60,
+        "required_sha256": "c3c058fe7d242bcd9b5f31c2b7cfa141c5019532c729356d3dee39506402df19"
+      },
+      "source_class_authority_class": {
+        "covered": 79,
+        "covered_required_sha256": "7074012d7199472381d7475a0c38529083d1c726d6bcf1a38a228dcce25da1c3",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 79,
+        "required_sha256": "7074012d7199472381d7475a0c38529083d1c726d6bcf1a38a228dcce25da1c3"
+      },
+      "source_class_jurisdiction": {
+        "covered": 147,
+        "covered_required_sha256": "70f1b2ab3e417a705fb0f91ab0f28e34d759ce79e4367e123b3fef96ce124ff0",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 147,
+        "required_sha256": "70f1b2ab3e417a705fb0f91ab0f28e34d759ce79e4367e123b3fef96ce124ff0"
+      },
+      "task_source_class": {
+        "covered": 416,
+        "covered_required_sha256": "d48c955968a239d2d8fe7274cb302d5191f45ac383defd94d0f8abb8f242b727",
+        "extra": 9,
+        "missing": [],
+        "passed": true,
+        "required": 416,
+        "required_sha256": "d48c955968a239d2d8fe7274cb302d5191f45ac383defd94d0f8abb8f242b727"
+      },
+      "task_temporal_difficulty": {
+        "covered": 20,
+        "covered_required_sha256": "c9b9a4bfa1d9c32f0eabfaa3c3b495eeed8eca491d99d17c2177f0cb34d069a4",
+        "extra": 0,
+        "missing": [],
+        "passed": true,
+        "required": 20,
+        "required_sha256": "c9b9a4bfa1d9c32f0eabfaa3c3b495eeed8eca491d99d17c2177f0cb34d069a4"
+      }
+    }
+  },
+  "expected": {
+    "personas": 38,
+    "source_classes": 36,
+    "tasks": 20
+  },
+  "generated_at": "2026-07-25T22:00:00Z",
+  "question_count": 415,
+  "represented": {
+    "personas": 38,
+    "source_classes": 36,
+    "tasks": 20
+  },
+  "schema": "okf-evaluation-coverage.v2"
+}

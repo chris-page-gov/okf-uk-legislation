@@ -1,0 +1,146 @@
+{
+  "generated_at": "2026-07-25T21:30:00Z",
+  "live_routes": [
+    {
+      "route": "affected",
+      "seed_work": "ukpga/1972/68",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affected/ukpga/1972/68/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affecting",
+      "seed_work": "ukpga/1972/68",
+      "snapshot_state": "inaccessible",
+      "url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1972/68/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affected",
+      "seed_work": "ukpga/1988/48",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affected/ukpga/1988/48/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affecting",
+      "seed_work": "ukpga/1988/48",
+      "snapshot_state": "inaccessible",
+      "url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1988/48/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affected",
+      "seed_work": "ukpga/1990/18",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affected/ukpga/1990/18/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affecting",
+      "seed_work": "ukpga/1990/18",
+      "snapshot_state": "inaccessible",
+      "url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1990/18/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affected",
+      "seed_work": "ukpga/1998/42",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affecting",
+      "seed_work": "ukpga/1998/42",
+      "snapshot_state": "inaccessible",
+      "url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1998/42/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affected",
+      "seed_work": "ukpga/1998/46",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/46/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affecting",
+      "seed_work": "ukpga/1998/46",
+      "snapshot_state": "inaccessible",
+      "url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1998/46/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affected",
+      "seed_work": "ukpga/1998/47",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/47/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affecting",
+      "seed_work": "ukpga/1998/47",
+      "snapshot_state": "inaccessible",
+      "url": "https://www.legislation.gov.uk/changes/affecting/ukpga/1998/47/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affected",
+      "seed_work": "ukpga/2006/46",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affected/ukpga/2006/46/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affecting",
+      "seed_work": "ukpga/2006/46",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affecting/ukpga/2006/46/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affected",
+      "seed_work": "ukpga/2010/15",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affected/ukpga/2010/15/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affecting",
+      "seed_work": "ukpga/2010/15",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affecting/ukpga/2010/15/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affected",
+      "seed_work": "ukpga/2018/12",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affected/ukpga/2018/12/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affecting",
+      "seed_work": "ukpga/2018/12",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affecting/ukpga/2018/12/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affected",
+      "seed_work": "ukpga/2018/16",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affected/ukpga/2018/16/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affecting",
+      "seed_work": "ukpga/2018/16",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affecting/ukpga/2018/16/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affected",
+      "seed_work": "ukpga/2020/27",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affected/ukpga/2020/27/data.feed?results-count=50&sort=modified"
+    },
+    {
+      "route": "affecting",
+      "seed_work": "ukpga/2020/27",
+      "snapshot_state": "agreement-at-acquisition",
+      "url": "https://www.legislation.gov.uk/changes/affecting/ukpga/2020/27/data.feed?results-count=50&sort=modified"
+    }
+  ],
+  "method": "The frozen datapack was parsed from the live official route at each envelope's observed retrieval time.",
+  "notice": "A scheduled refresh creates a new immutable attempt; it never rewrites this evidence.",
+  "schema": "okf-official-effects-reconciliation.v1",
+  "snapshot_id": "legislation-effects-2026-07-25",
+  "states": {
+    "agreement_at_acquisition": 16,
+    "inaccessible_at_acquisition": 6,
+    "truncated_static_routes": 0
+  }
+}

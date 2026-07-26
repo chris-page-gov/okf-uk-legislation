@@ -1,0 +1,383 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema": "okf-enrichment-independent-audit.v1",
+  "audit_id": "codex-assisted-v2-reaudit-22299-2026-07-25",
+  "audited_at": "2026-07-25T23:43:52+01:00",
+  "audited_repository": "okf-uk-legislation",
+  "audited_git_base": "7276a6b0e5427c79801e9ad28d710202eed9b6f5",
+  "artifact_state": "hash-bound-candidate",
+  "reviewer": {
+    "kind": "independent-codex-subagent",
+    "surface": "Codex Ultra task",
+    "model_identity": "Exact deployment identifier not exposed",
+    "independence": "The reviewer did not edit the rules, calibration, production builder, source corpus, descriptor, README or generated datapack. The reviewer used a separately authored read-only reconstruction program and wrote only this audit and its Markdown projection.",
+    "limitations": [
+      "Independent analytical assurance, not third-party assurance or qualified UK legal-practitioner sign-off.",
+      "The semantic review uses title evidence and deterministic corpus scans. It does not claim exhaustive expert legal classification of all 22,299 relationships.",
+      "Exact reviewer and rule-authoring model deployment identifiers and billable Codex task usage are not exposed.",
+      "The candidate files were uncommitted when assessed; hashes, counts and semantic roots bind this decision.",
+      "The authored model-run schema passed. Its generated bundle/whole-law mirror was still the preceding schema at audit time and must be regenerated before release."
+    ]
+  },
+  "scope": {
+    "source_records": 365786,
+    "source_chunks": 366,
+    "records_with_accepted_assertions": 22284,
+    "records_without_new_supported_assertions": 343502,
+    "generated_assertions": 22299,
+    "generated_chunks": 366,
+    "compressed_assertion_bytes": 2022039,
+    "topics": 19,
+    "emitting_rules": 46,
+    "rules": 55,
+    "input_semantic_sha256": "a2f3e65772f33d339825cb2d94923671ce2f1fec87ae4e63647da9ba4b362b36",
+    "ordered_manifest_chunk_root_sha256": "cbc44653b91230bf7d85f575aac24daceb7da25958d3ea384b3ebf73a72bf087",
+    "ordered_manifest_chunk_root_algorithm": "SHA-256 over each manifest chunk in order as UTF-8 path, NUL, sha256, NUL, bytes, NUL, records, LF",
+    "sorted_assertion_id_set_sha256": "90996c49be205c93c0efc82249947894123303961f8982ebf6531212bb22e83c",
+    "sorted_assertion_id_set_algorithm": "SHA-256 over sorted assertion IDs, one UTF-8 ID per line with a final LF",
+    "artifacts": [
+      {
+        "path": "enrichment/codex-assisted-v2-rules.json",
+        "sha256": "f936398e3ed9bc59ebca69391a41809b5af8fe4e9f49c16dfee38d984ebb2d8a"
+      },
+      {
+        "path": "enrichment/codex-assisted-v2-calibration.json",
+        "sha256": "f31f3204926927ea49eb839e629987b4a3f5e98e72f85e9a7f0981d794028fb3"
+      },
+      {
+        "path": "scripts/build_codex_semantic_enrichment.py",
+        "sha256": "a6ee550a2fc4a186e2ace6b4a928688287dc345d06b8be08c58ae38ebfacbec6"
+      },
+      {
+        "path": "bundle/enrichment/codex-assisted-v2.json",
+        "sha256": "14007262b620b95c080228dd1b6d250b0d76f66f876efe131c40dbbf1850dbe4"
+      },
+      {
+        "path": "bundle/data/enrichment/manifest.json",
+        "sha256": "a62ca1a23d06d4d11b688a5e947e1a533e6029e060ff41679194cbbc85730f84"
+      },
+      {
+        "path": "bundle/data/enrichment/coverage.json",
+        "sha256": "67ac8dd487ea7a5b1e61c288f3f1cc9a682efeac7441fb44f9b503f513094da1"
+      },
+      {
+        "path": "bundle/data/enrichment/attempt-ledger.json",
+        "sha256": "124128ce7cbdff1eeb055e9d4cbb534f298426e615f378b280e7b8ce60c8bfc1"
+      },
+      {
+        "path": "bundle/data/enrichment/calibration.json",
+        "sha256": "d4b65d6449ab4ae50eec7893dcfbf92b6cb94583441e003ff4859bed3ab9f539"
+      },
+      {
+        "path": "whole-law/schemas/relationship-assertion.schema.json",
+        "sha256": "4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006"
+      },
+      {
+        "path": "../okf-explorer/profiles/federation/v1/relationship-assertion.schema.json",
+        "sha256": "4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006"
+      },
+      {
+        "path": "whole-law/schemas/model-enrichment-run.schema.json",
+        "sha256": "c57e8edc91babc948852e94fd6fecbe813f89e26ae00c4bc5bee2fe1a4dd884b"
+      }
+    ]
+  },
+  "methodology": {
+    "full_corpus": [
+      "Read all 366 source chunks and all 365,786 source works.",
+      "Recompiled all 55 include and exclusion expressions without importing the production builder.",
+      "Reconstructed the post-exclusion, existing-topic-suppression and same-topic-suppression assertion sequence for every chunk.",
+      "Recomputed source and output hashes, compressed bytes, record counts, semantic input digest and every attempt-ledger entry.",
+      "Compared all 22,299 reconstructed assertion objects and their order with the generated chunks.",
+      "Validated all assertions against the byte-identical legislation and OKF Explorer relationship-assertion.v2 schemas.",
+      "Validated the run against the authored model-enrichment-run.v1 schema.",
+      "Checked identifiers, duplicates, source joins, topic joins, literal evidence, authority, derivation, review status, verification, rights and freshness."
+    ],
+    "calibration": [
+      "Independently replayed all 55 rule positives and all 55 near-miss negatives.",
+      "Independently replayed all 58 end-to-end cases, including all 16 actual-corpus hard negatives.",
+      "Confirmed zero false-positive or false-negative calibration assertions and 100% literal evidence support."
+    ],
+    "semantic_review": {
+      "stratified_sample": {
+        "selection": "For each emitting rule, select the ten lowest SHA-256(source NUL rule_id) assertions, or every assertion if the rule emitted fewer than ten.",
+        "unique_assertions": 451,
+        "topics_covered": 19,
+        "emitting_rules_covered": 46,
+        "clear_false_positives": 0,
+        "observed_precision": 1.0,
+        "qualification": "A deterministic stratified review is evidence across every rule/topic slice, not a binomial random sample or exhaustive legal opinion."
+      },
+      "whole_output_adversarial_scans": [
+        "R008 and R009 criminal, crime, prosecution, police-station, prisoner-defence and defence-certificate contexts",
+        "R008 criminal-subject suffixes inherited from the Legal Aid, Sentencing and Punishment of Offenders Act 2012 parent title",
+        "R010 Civilian prefix collisions, with all 19 emitted R010 titles inspected",
+        "R033 veterinary, animal-use, medicated-feed and every feeding-stuffs context",
+        "R034 Animals (Cruel Poisons) and adjacent animal/agricultural contexts",
+        "R041 European Social Fund and adjacent EU structural, employment, cohesion and regional contexts",
+        "Every output rule/topic slice through deterministic title sampling"
+      ],
+      "adjacent_context_review": {
+        "r008_laspo_parent_title_outputs": 40,
+        "r008_clear_criminal_subject_collisions": 0,
+        "r008_qualification": "Some generic commencement and consequential instruments remain mixed-parent-title cases. They are retained as non-exclusive discovery links to a multi-subject Act, not represented as official classification.",
+        "r033_animal_adjacent_outputs": 10,
+        "r033_clear_animal_only_or_feed_collisions": 0,
+        "r033_qualification": "The ten residual animal-adjacent titles concern animal testing/certificates of otherwise human medicines; all explicit veterinary, animal-use and feeding-stuffs cases are excluded.",
+        "r034_animal_or_agriculture_adjacent_outputs": 2,
+        "r034_clear_collisions": 0,
+        "r034_qualification": "Both are shellfish-poison detection/food-safety measures and support Health and social care discovery.",
+        "r041_eu_structural_adjacent_outputs": 0
+      }
+    }
+  },
+  "intended_use": {
+    "dataset": "Non-official candidate discovery-topic relationships for UK legislation works",
+    "source_grain": "One record per legislation.gov.uk work",
+    "assertion_grain": "One source-work, target-topic and predicate assertion",
+    "release_question": "Is the corrected 22,299-assertion candidate suitable for promotion as independently reviewed discovery metadata?"
+  },
+  "relationship_candidate": {
+    "assertions": 22299,
+    "status": "accepted",
+    "note": "This decision applies only to the 22,299-assertion candidate identified by the hashes and semantic roots in this file. Any rebuild requires a separately named audit."
+  },
+  "metrics": {
+    "corpus": {
+      "attempted_records": 365786,
+      "attempt_coverage": 1.0,
+      "records_with_accepted_assertions": 22284,
+      "accepted_record_rate": 0.060921,
+      "accepted_assertions": 22299,
+      "records_without_new_supported_assertions": 343502,
+      "raw_post_exclusion_match_records": 25402,
+      "multiple_rule_match_records": 3768,
+      "multiple_topic_match_records": 22
+    },
+    "previously_unclassified": {
+      "records": 97899,
+      "newly_asserted_records": 16224,
+      "newly_asserted_rate": 0.165722,
+      "human_title_no_new_match": 74996,
+      "human_title_no_new_match_rate": 0.766055,
+      "url_instead_of_title": 6679,
+      "url_title_rate": 0.068223,
+      "already_classified_newly_asserted_records": 6060
+    },
+    "integrity": {
+      "chunk_failures": 0,
+      "attempt_ledger_failures": 0,
+      "deterministic_reconstruction_failures": 0,
+      "relationship_schema_failures": 0,
+      "authored_model_run_schema_failures": 0,
+      "evidence_failures": 0,
+      "duplicate_ids": 0,
+      "missing_sources": 0,
+      "noncanonical_targets": 0,
+      "unregistered_topic_targets": 0
+    },
+    "calibration": {
+      "rules": 55,
+      "positive_tests": 55,
+      "positive_failures": 0,
+      "near_miss_negative_tests": 55,
+      "near_miss_failures": 0,
+      "end_to_end_cases": 58,
+      "correct_end_to_end_cases": 58,
+      "actual_corpus_hard_negative_cases": 16,
+      "correct_actual_corpus_hard_negative_cases": 16,
+      "precision": 1.0,
+      "recall": 1.0,
+      "evidence_support": 1.0,
+      "topic_slices_passed": true,
+      "reported_metrics_recomputed": true
+    },
+    "remediation_verification": {
+      "r008_prior_parent_act_criminal_subject_emitted": 0,
+      "r008_prior_defence_context_emitted": 0,
+      "r009_prior_defence_context_emitted": 0,
+      "r010_civilian_prefix_emitted": 0,
+      "r033_veterinary_animal_use_or_feeding_stuffs_emitted": 0,
+      "r034_animals_cruel_poisons_emitted": 0,
+      "r041_european_social_fund_emitted": 0,
+      "transient_22305_feeding_stuffs_errors_removed": 6,
+      "corrected_candidate_count": 22299
+    },
+    "semantic_review": {
+      "stratified_assertions_reviewed": 451,
+      "rules_covered": 46,
+      "topics_covered": 19,
+      "clear_false_positives_in_sample": 0,
+      "known_clear_false_positives_after_adversarial_scans": 0,
+      "literal_evidence_support": 1.0,
+      "semantic_precision_assessment": "passes the approved >=95% discovery-metadata gate; not an exhaustive legal-classification claim"
+    },
+    "recall_observations": {
+      "human_title_no_new_match": 74996,
+      "european_social_fund_records_excluded_without_replacement_assertion": 147,
+      "prior_clear_criminal_defence_records_excluded_without_criminal_replacement": 21,
+      "mixed_civil_and_criminal_legal_aid_records_conservatively_excluded": 7,
+      "zero_output_rules": [
+        "R002",
+        "R007",
+        "R014",
+        "R017",
+        "R024",
+        "R036",
+        "R042",
+        "R045",
+        "R047"
+      ]
+    },
+    "cost": {
+      "openai_api_calls": 0,
+      "incremental_openai_api_usd": 0.0,
+      "incremental_openai_api_gbp": 0.0,
+      "cost_per_accepted_assertion_usd": 0.0,
+      "codex_task_usage": "not exposed as billable token data",
+      "fair_use_or_licence_constraints_triggered_by_audit": 0,
+      "verification_limit": "Repository evidence establishes that the deterministic production builder imports no network/API client and declares zero API calls. It cannot independently inspect external billing or unexposed Codex task usage."
+    }
+  },
+  "checks": [
+    {
+      "id": "REA-22299-CHK-001",
+      "dimension": "mechanical-integrity",
+      "status": "passed",
+      "evidence": "All 366 source/output chunks, 365,786 attempts, 22,299 ordered assertion objects, hashes, bytes, counts and attempt-ledger rows reconciled."
+    },
+    {
+      "id": "REA-22299-CHK-002",
+      "dimension": "explorer-contract",
+      "status": "passed",
+      "evidence": "The authored legislation and Explorer relationship-assertion.v2 schemas are byte-identical; all 22,299 assertions validated."
+    },
+    {
+      "id": "REA-22299-CHK-003",
+      "dimension": "model-run-contract",
+      "status": "passed-authored-integration-pending",
+      "evidence": "The run validates against the authored corrected schema. The generated Whole-Law schema mirror was stale at audit time and must be regenerated before release."
+    },
+    {
+      "id": "REA-22299-CHK-004",
+      "dimension": "literal-evidence-support",
+      "status": "passed",
+      "evidence": "Every assertion uses an exact case-insensitive substring of its source title, has a resolvable source identifier and reproduces its rule evidence."
+    },
+    {
+      "id": "REA-22299-CHK-005",
+      "dimension": "calibration",
+      "status": "passed",
+      "evidence": "55/55 positives, 55/55 near-miss negatives, 58/58 end-to-end cases and 16/16 actual-corpus hard negatives passed independently."
+    },
+    {
+      "id": "REA-22299-CHK-006",
+      "dimension": "named-collision-remediation",
+      "status": "passed",
+      "evidence": "No prior R008/R009 defence, R010 Civilian, R033 veterinary/animal-use/feed, R034 Cruel Poisons or R041 European Social Fund collision remains."
+    },
+    {
+      "id": "REA-22299-CHK-007",
+      "dimension": "semantic-precision",
+      "status": "passed-with-disclosed-limit",
+      "evidence": "A 451-assertion deterministic sample covered every emitting rule and topic with zero clear false positives; whole-output adversarial scans found no remaining clear collision. This is discovery-metadata assurance, not exhaustive expert legal classification."
+    },
+    {
+      "id": "REA-22299-CHK-008",
+      "dimension": "authority-rights-freshness",
+      "status": "passed",
+      "evidence": "All assertions remain explicitly model-assisted, derived, non-official discovery metadata with OGL source rights, dated freshness and pending-review provenance."
+    },
+    {
+      "id": "REA-22299-CHK-009",
+      "dimension": "cost",
+      "status": "passed-with-measurement-limit",
+      "evidence": "The deterministic production path has no network client and declares zero API calls and US$0/GBP0 incremental API cost. Codex task usage is not exposed."
+    },
+    {
+      "id": "REA-22299-CHK-010",
+      "dimension": "conservative-recall",
+      "status": "accepted-and-disclosed",
+      "evidence": "No-match and excluded-without-rerouting populations remain visible; no assertion is fabricated to fill a gap."
+    }
+  ],
+  "findings": [
+    {
+      "id": "REA-22299-F001",
+      "severity": "low",
+      "confidence": "high",
+      "title": "Generated model-run schema mirror must be synchronized",
+      "what_failed": "At audit time bundle/whole-law/schemas/model-enrichment-run.schema.json still required the preceding prompt_hash and flat count fields, while the corrected run uses prompt_basis_hash and grain-separated counts.",
+      "why_it_matters": "The authored run and schema agree, but the public generated mirror would reject the run until the Whole-Law publication is rebuilt.",
+      "remediation": [
+        "Regenerate the Whole-Law publication from the authored schema.",
+        "Validate the public run against the regenerated mirror before release."
+      ],
+      "release_effect": "integration gate, not a rejection of the hash-bound enrichment candidate"
+    },
+    {
+      "id": "REA-22299-F002",
+      "severity": "low",
+      "confidence": "high",
+      "title": "Model-authoring provenance remains explicitly partial",
+      "what_failed": "The exact interactive rule-authoring transcript, model deployment, sampling parameters and Codex task usage are unavailable from the task surface.",
+      "why_it_matters": "Rule execution is reproducible and hash-bound, but the earlier model-assisted rule-authoring event is not fully reproducible.",
+      "mitigation": "The run correctly names prompt_basis_hash, preserves the governed basis and rule/calibration hashes, and records explicit unavailable reasons without fabricating values."
+    },
+    {
+      "id": "REA-22299-F003",
+      "severity": "informational",
+      "confidence": "high",
+      "title": "Nine governed rules emit no assertion in this snapshot",
+      "what_failed": "R002, R007, R014, R017, R024, R036, R042, R045 and R047 emit no assertion after matching and suppression; R007 has no corpus include hit.",
+      "why_it_matters": "This does not affect emitted data. Published per-rule counters correctly distinguish synthetic rule coverage, raw corpus matches, suppression and actual output."
+    },
+    {
+      "id": "REA-22299-F004",
+      "severity": "informational",
+      "confidence": "medium",
+      "title": "Mixed-parent-title discovery remains a disclosed ambiguity",
+      "what_failed": "Forty emitted R008 titles cite the multi-subject Legal Aid, Sentencing and Punishment of Offenders Act 2012. Clear criminal-subject suffixes are excluded, but generic commencement/consequential titles do not identify which provisions they operate.",
+      "why_it_matters": "The relationship is useful as a non-exclusive discovery link to a work under the named Act, but title-only evidence cannot prove that each child instrument operates legal-aid provisions.",
+      "mitigation": "Keep the links non-official and non-exclusive, expose the literal evidence, and prefer provision-level/full-text evidence in a future enrichment generation."
+    }
+  ],
+  "decision": {
+    "independent_review_status": "accepted",
+    "release_recommendation": "promote-22299-after-publication-regeneration-and-repository-release-gates",
+    "mechanical_integrity": "passed",
+    "relationship_schema_conformance": "passed",
+    "model_run_schema_conformance": "passed-authored",
+    "literal_evidence_integrity": "passed",
+    "semantic_precision": "passed-with-disclosed-title-only-limit",
+    "authority_rights_freshness": "passed",
+    "cost_accounting": "passed-with-unexposed-codex-usage",
+    "conservative_recall": "accepted-and-disclosed",
+    "required_before_release": [
+      "Regenerate bundle/whole-law so its model-run schema mirror equals the authored schema.",
+      "Run the complete legislation, Whole-Law, checksum and release-assurance validators against the integrated candidate.",
+      "Preserve this exact candidate or obtain a new independent audit after any enrichment rebuild."
+    ]
+  },
+  "commands": [
+    {
+      "command": "python3 -m py_compile scripts/build_codex_semantic_enrichment.py",
+      "status": "passed"
+    },
+    {
+      "command": "python3 scripts/build_codex_semantic_enrichment.py --check",
+      "status": "passed",
+      "result": "Codex enrichment synchronized: 365,786 attempts, 22,299 accepted assertions, $0 API cost"
+    },
+    {
+      "command": ".venv/bin/python /private/tmp/audit_enrichment_22305.py",
+      "status": "passed",
+      "result": "Independent full-corpus reconstruction and validation of the corrected 22,299 candidate; temporary script filename reflects its origin, while its output paths and audited hashes bind only 22,299."
+    }
+  ],
+  "post_audit_note": {
+    "transient_candidate": "A transient 22,305-assertion build was not promoted or published as accepted evidence.",
+    "review_intervention": "The independent review found six additional Medicines/Feeding Stuffs Health collisions. The producer added a fail-closed feeding-stuffs exclusion and six actual-corpus hard negatives, rebuilt to 22,299, and this audit then restarted from the source corpus.",
+    "supersession": "Only the 22,299 candidate is accepted by this artifact."
+  }
+}

@@ -1,0 +1,537 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema": "okf-enrichment-independent-audit.v1",
+  "audit_id": "codex-assisted-v2-independent-audit-2026-07-25",
+  "audited_at": "2026-07-25T22:15:00+01:00",
+  "artifact_state": "historical-pre-remediation-candidate",
+  "post_audit_note": {
+    "status": "remediation-reported-not-assessed",
+    "note": "The implementation was changed after this audit captured its evidence and hashes. This decision remains the historical result for the 23,502-assertion candidate identified in scope.artifacts. A separate re-audit is required for the reported 22,651-assertion remediation."
+  },
+  "audited_repository": "okf-uk-legislation",
+  "audited_git_base": "4110711e96d4f69c0cb1791fce2fee19ab7bec4d",
+  "reviewer": {
+    "kind": "independent-codex-subagent",
+    "surface": "Codex Ultra task",
+    "independence": "Separate task context from the generator implementation; no generator or rule edits were made during this review.",
+    "model_identity": "Exact deployment identifier not exposed",
+    "limitations": [
+      "This is an independent analytical red-team review, not third-party legal assurance.",
+      "The reviewer model may be from the same model family as the authoring task because exact deployment identity is not exposed.",
+      "No qualified UK legal practitioner supplied gold labels."
+    ]
+  },
+  "intended_use": {
+    "dataset": "Candidate discovery-topic relationships for UK legislation works",
+    "source_grain": "One record per legislation.gov.uk work",
+    "assertion_grain": "One source-work, target-topic and predicate assertion",
+    "authority": "derived-non-official",
+    "release_question": "Is the v2 enrichment trustworthy and sufficiently evidenced to be marked governed-accepted-for-discovery?"
+  },
+  "scope": {
+    "artifacts": [
+      {
+        "path": "enrichment/codex-assisted-v2-rules.json",
+        "sha256": "379779d15a155cb554bd4e8d478e91613c830c9836f75b04e5d9eb5437cead33"
+      },
+      {
+        "path": "enrichment/codex-assisted-v2-calibration.json",
+        "sha256": "3e577e26fc2a6c454c3ed856b9204f97507c17ee5d474061b9c009de9370c0d6"
+      },
+      {
+        "path": "scripts/build_codex_semantic_enrichment.py",
+        "sha256": "95c590790ea57121602badaf6f656b2c3b702556a19b9f5a8500723844cbe5b0"
+      },
+      {
+        "path": "bundle/enrichment/codex-assisted-v2.json",
+        "sha256": "2e2be48e4ce0dcf9468d3b9805313bf9481c10bb28ae9a0b18dfa8caf9f57844"
+      },
+      {
+        "path": "bundle/data/enrichment/manifest.json",
+        "sha256": "5a88d57f015e9eb2621f5bb0ba2b16db2a9dfa71c2409a6071a0d523160686f1"
+      },
+      {
+        "path": "bundle/data/enrichment/coverage.json",
+        "sha256": "619b51263e0bd83f7db10a9b3cfd5e3206a7b1c599a40c12dd64580577bca3c0"
+      },
+      {
+        "path": "bundle/data/enrichment/attempt-ledger.json",
+        "sha256": "57f94eb3fd146b1834c06dbf680e0fffad59389687a87d4bdca80d1fcb207b8c"
+      },
+      {
+        "path": "whole-law/schemas/relationship-assertion.schema.json",
+        "sha256": "b0ef39a27ece683bf1e9a4457190a39b6bccf28f2c2476829189b4681ed1a503"
+      },
+      {
+        "path": "whole-law/schemas/model-enrichment-run.schema.json",
+        "sha256": "5d912ffd5d2c6eda81010ca025fe921cb50be388b1f677a5193e1073648c0a7b"
+      }
+    ],
+    "generated_chunks": 366,
+    "source_chunks": 366,
+    "source_records": 365786,
+    "generated_assertions": 23502
+  },
+  "commands": [
+    {
+      "command": "python3 -m py_compile scripts/build_codex_semantic_enrichment.py",
+      "exit_code": 0,
+      "result": "passed"
+    },
+    {
+      "command": "python3 scripts/build_codex_semantic_enrichment.py --check",
+      "exit_code": 0,
+      "result": "Codex enrichment synchronized: 365,786 attempts, 23,502 accepted assertions, $0 API cost"
+    },
+    {
+      "command": ".venv/bin/python scripts/check_whole_law_okf.py",
+      "exit_code": 0,
+      "result": "Whole-Law OKF validation passed: 72 sources, 36 source classes, 38 personas, 20 tasks"
+    },
+    {
+      "command": "shasum -a 256 enrichment/codex-assisted-v2-rules.json enrichment/codex-assisted-v2-calibration.json scripts/build_codex_semantic_enrichment.py bundle/enrichment/codex-assisted-v2.json bundle/data/enrichment/manifest.json bundle/data/enrichment/coverage.json bundle/data/enrichment/attempt-ledger.json whole-law/schemas/relationship-assertion.schema.json whole-law/schemas/model-enrichment-run.schema.json",
+      "exit_code": 0,
+      "result": "Artifact hashes recorded in scope.artifacts"
+    },
+    {
+      "command": ".venv/bin/python -",
+      "exit_code": 0,
+      "result": "Read-only full-corpus reconciliation and deterministic sampling; the algorithm is reproduced in enrichment-audit.md"
+    }
+  ],
+  "methodology": {
+    "full_corpus_reconciliation": [
+      "Read all 366 paths declared by bundle/data/manifest.json and every work in each gzip chunk.",
+      "Read the aligned generated assertion chunk and attempt-ledger row.",
+      "Recompute source and output SHA-256 values, compressed byte counts and record counts.",
+      "Re-run every regular expression against each title and independently reconstruct the expected assertions after existing-topic and same-topic suppression.",
+      "Compare reconstructed and generated assertion multisets exactly.",
+      "Validate every generated assertion with Draft202012Validator and FormatChecker.",
+      "Check assertion identifier uniqueness, source-target-predicate uniqueness, source referential integrity, evidence literal equality, rule identity, topic, confidence and authority.",
+      "Profile match, no-match, suppression, rule-collision, topic, title-shape and prior-classification states."
+    ],
+    "semantic_sampling": {
+      "topic_sample": {
+        "population": 23502,
+        "strata": 19,
+        "selection": "For each emitted topic, sort by SHA-256(topic + NUL + source identifier) and inspect the first five records.",
+        "sample_size": 95,
+        "direct_topic_label_conflicts_found": 2,
+        "note": "Equal-per-topic deterministic red-team sample; not a statistically representative precision estimate."
+      },
+      "rule_sample": {
+        "emitting_rules": 46,
+        "selection": "For each emitting rule, sort by SHA-256(rule identifier + NUL + source identifier) and inspect the first two records.",
+        "sample_size": 92,
+        "note": "Used to expose rule-specific ambiguity and dead or redundant rules."
+      },
+      "no_match_sample": {
+        "population": 74417,
+        "selection": "Previously unclassified, non-URL titles with no v2 rule match; deterministic SHA-256 sample plus corpus-wide term and bigram frequencies.",
+        "sample_size": 20
+      },
+      "adversarial_lexical_scan": {
+        "population": 2056,
+        "stratum": "Civil justice and procedure assertions",
+        "test": "Count emitted titles containing the whole word 'criminal', segmented by R008, R009 and R010.",
+        "matches": 335,
+        "rate": 0.162938
+      }
+    }
+  },
+  "metrics": {
+    "corpus": {
+      "attempted_records": 365786,
+      "attempt_coverage_reported": 1.0,
+      "records_with_accepted_assertions": 23460,
+      "accepted_record_rate": 0.064136,
+      "accepted_assertions": 23502,
+      "records_without_new_supported_assertions": 342326,
+      "raw_rule_match_records": 26610,
+      "records_with_multiple_rule_matches": 3806,
+      "records_with_multiple_topic_matches": 52
+    },
+    "prior_unclassified_population": {
+      "records": 97899,
+      "newly_classified_records": 16803,
+      "newly_classified_rate": 0.171636,
+      "non_url_titles_with_no_v2_match": 74417,
+      "non_url_title_no_match_rate": 0.760141,
+      "url_instead_of_title": 6679,
+      "url_title_rate": 0.068223
+    },
+    "incremental_scope": {
+      "assertions_on_v1_unclassified_records": 16842,
+      "assertions_on_already_classified_records": 6660,
+      "already_classified_records_receiving_a_new_topic": 6657,
+      "share_of_accepted_records_already_classified": 0.28376
+    },
+    "rules": {
+      "declared_rules": 55,
+      "unique_declared_topics": 19,
+      "calibration_rules_exercised": 36,
+      "calibration_rule_coverage": 0.654545,
+      "rules_with_rule-specific_negative_calibration_case": 0,
+      "rules_with_no_emitted_assertion": 9,
+      "rules_with_no_raw_corpus_match": [
+        "R007"
+      ],
+      "rules_with_no_emitted_assertion_ids": [
+        "R002",
+        "R007",
+        "R014",
+        "R017",
+        "R024",
+        "R036",
+        "R042",
+        "R045",
+        "R047"
+      ]
+    },
+    "integrity": {
+      "chunk_hash_or_count_failures": 0,
+      "attempt_ledger_failures": 0,
+      "assertion_schema_failures": 0,
+      "deterministic_output_mismatches": 0,
+      "evidence_literal_mismatches": 0,
+      "unknown_rule_references": 0,
+      "duplicate_assertion_ids": 0,
+      "duplicate_source_target_predicates": 0,
+      "missing_source_records": 0
+    },
+    "identifier_shape": {
+      "targets_using_colon_form_with_spaces": 23502,
+      "targets_using_core_topic_slug_form": 0
+    },
+    "cost": {
+      "openai_api_calls_observed_in_generator": 0,
+      "reported_incremental_openai_api_usd": 0.0,
+      "reported_incremental_openai_api_gbp": 0.0,
+      "codex_task_usage": "not exposed as billable token data"
+    }
+  },
+  "checks": [
+    {
+      "id": "CHK-001",
+      "dimension": "volume-and-integrity",
+      "status": "passed",
+      "evidence": "All 365,786 source records, 366 input chunks, 366 output chunks, hashes, compressed byte counts, attempt counts and 23,502 assertion counts reconcile."
+    },
+    {
+      "id": "CHK-002",
+      "dimension": "deterministic-reproducibility",
+      "status": "passed",
+      "evidence": "Independent reconstruction produced the exact generated assertion multiset and build_codex_semantic_enrichment.py --check passed."
+    },
+    {
+      "id": "CHK-003",
+      "dimension": "schema-validity",
+      "status": "passed-with-contract-gap",
+      "evidence": "All assertions and run/provider manifests validate against the current schemas, but those schemas do not enforce canonical topic identifiers or consistent count grain."
+    },
+    {
+      "id": "CHK-004",
+      "dimension": "literal-evidence-support",
+      "status": "passed",
+      "evidence": "Every emitted evidence literal is an exact regular-expression match in the referenced source title."
+    },
+    {
+      "id": "CHK-005",
+      "dimension": "full-corpus-attempt",
+      "status": "passed-for-title-rule-stage",
+      "evidence": "The code and independent replay evaluate all 365,786 records. This does not establish a full strategy-compliant semantic enrichment attempt because only the title field and topic rules are used."
+    },
+    {
+      "id": "CHK-006",
+      "dimension": "semantic-precision-calibration",
+      "status": "failed",
+      "evidence": "The reported 1.0 precision is based on 40 co-authored cases, exercises only 36 of 55 rules, supplies no rule-specific negative case, and conflicts with corpus evidence in the Civil justice topic."
+    },
+    {
+      "id": "CHK-007",
+      "dimension": "semantic-identifier-integrity",
+      "status": "failed",
+      "evidence": "All 23,502 targets use topic:<label with spaces>, while the core graph and published topic pages use topic/<slug>."
+    },
+    {
+      "id": "CHK-008",
+      "dimension": "independent-verification-provenance",
+      "status": "failed",
+      "evidence": "Assertions already claim independent rule review and the run is governed-accepted even though the authored calibration says independent-review-required and this audit concludes changes-required."
+    },
+    {
+      "id": "CHK-009",
+      "dimension": "cost",
+      "status": "passed-with-limitation",
+      "evidence": "The generator contains no API client or request path and reports zero API calls/cost. Codex task billing and token use are not exposed and therefore cannot be independently costed."
+    }
+  ],
+  "findings": [
+    {
+      "id": "ENR-AUD-001",
+      "severity": "high",
+      "confidence": "high",
+      "title": "The run is full-corpus title-rule application, not the full semantic-enrichment phase",
+      "what_failed": "The implementation traverses every work but uses only record.title and emits only topic assertions from 55 literal patterns. It does not use long titles, source metadata or available CLML; it does not perform new concept discovery or entity linking.",
+      "evidence": {
+        "attempted_records": 365786,
+        "fields_used_for_classification": [
+          "title"
+        ],
+        "assertion_predicates_emitted": [
+          "classified as"
+        ],
+        "unique_topics_emitted": 19,
+        "entity_suffixes_declared_but_unused": true
+      },
+      "why_it_matters": "The locked strategy requires evidence-aware topic, concept and entity candidate discovery using all available official fields. Describing this stage as completed full model-assisted enrichment would overstate coverage.",
+      "remediation": [
+        "Rename this artifact and UI status to 'Codex-assisted deterministic title-topic stage' until the broader phase is implemented.",
+        "Add separately typed candidate assertions for concepts and entities.",
+        "For each eligible work, record which of title, long title, source metadata and CLML were available and assessed.",
+        "Preserve no-evidence outcomes without inventing classifications."
+      ]
+    },
+    {
+      "id": "ENR-AUD-002",
+      "severity": "high",
+      "confidence": "high",
+      "title": "The 100% precision and evidence-support result is not independently calibrated",
+      "what_failed": "The 40-case calibration is authored with the rule set, exercises only 36 of 55 rules, and none of the eight negative cases trigger any rule. evidence_support and schema_validity are assigned as constants rather than calculated in calibration().",
+      "evidence": {
+        "cases": 40,
+        "positive_cases": 32,
+        "negative_cases": 8,
+        "rules_exercised": 36,
+        "rules_declared": 55,
+        "rules_with_rule_specific_negative_case": 0,
+        "reported_precision": 1.0,
+        "reported_recall": 1.0,
+        "reported_evidence_support": 1.0
+      },
+      "why_it_matters": "The release threshold of at least 95% precision and evidence support cannot be inferred from a non-held-out suite that omits 34.5% of rules and lacks hard negatives.",
+      "remediation": [
+        "Freeze independently labelled calibration and held-out sets before scoring.",
+        "Exercise every rule with positive, boundary, collision and hard-negative examples across type, jurisdiction and decade where the corpus permits.",
+        "Report micro and macro precision/recall, per-rule confusion counts and confidence intervals.",
+        "Calculate evidence support and schema validity from validation results instead of assigning 1.0."
+      ]
+    },
+    {
+      "id": "ENR-AUD-003",
+      "severity": "high",
+      "confidence": "high",
+      "title": "Civil justice rules emit materially contradictory criminal-law classifications",
+      "what_failed": "Rules for legal aid, advice and assistance, and magistrates' courts map every match to Civil justice and procedure even when the title explicitly states criminal.",
+      "evidence": {
+        "civil_topic_assertions": 2056,
+        "titles_containing_whole_word_criminal": 335,
+        "rate": 0.162938,
+        "examples": [
+          {
+            "source": "https://www.legislation.gov.uk/id/uksi/2026/106",
+            "title": "The Criminal Legal Aid (Remuneration) (Amendment) Regulations 2026",
+            "rule": "R008"
+          },
+          {
+            "source": "https://www.legislation.gov.uk/id/ssi/2022/292",
+            "title": "The Advice and Assistance (Summary Criminal Proceedings) (Miscellaneous Amendment) (Scotland) Regulations 2022",
+            "rule": "R009"
+          },
+          {
+            "source": "https://www.legislation.gov.uk/id/nisr/2012/430",
+            "title": "The Magistrates’ Courts (Costs in Criminal Cases) (Amendment) Rules (Northern Ireland) 2012",
+            "rule": "R010"
+          }
+        ]
+      },
+      "why_it_matters": "This directly contradicts the controlled topic label and disproves the claimed 0.98-0.99 semantic confidence for a material subset.",
+      "remediation": [
+        "Split civil, criminal and mixed legal-aid/procedure rules, or rename the controlled topic to an honestly broader justice topic.",
+        "Add explicit criminal and mixed-context branches before generic legal-aid and magistrates'-court rules.",
+        "Rebuild and independently re-score all affected assertions."
+      ]
+    },
+    {
+      "id": "ENR-AUD-004",
+      "severity": "high",
+      "confidence": "high",
+      "title": "All generated topic targets are noncanonical and do not join the core topic graph",
+      "what_failed": "Generated targets use strings such as 'topic:Civil justice and procedure'. Core relationships and topic pages use 'topic/civil-justice-and-procedure'. The colon form also contains unescaped spaces and has no declared compact-IRI context.",
+      "evidence": {
+        "affected_assertions": 23502,
+        "affected_rate": 1.0,
+        "generated_example": "topic:Civil justice and procedure",
+        "canonical_core_example": "topic/civil-justice-and-procedure"
+      },
+      "why_it_matters": "Explorer graph hydration, topic aggregation, RDF projection and cross-datapack joins can create duplicate or unresolved topic nodes.",
+      "remediation": [
+        "Emit the canonical core target 'topic/<slug>' or a declared absolute topic IRI.",
+        "Add schema patterns and referential-integrity tests against the published topic registry.",
+        "Regenerate assertion identifiers after the target correction if target identity participates in the assertion identity contract."
+      ]
+    },
+    {
+      "id": "ENR-AUD-005",
+      "severity": "high",
+      "confidence": "high",
+      "title": "Independent verification is asserted before an independent review has passed",
+      "what_failed": "Every assertion carries a verified entry whose method says 'deterministic calibration and independent rule review', and the run status is governed-accepted-for-discovery. The source calibration says independent-review-required, and this independent audit concludes changes-required.",
+      "evidence": {
+        "assertions_with_premature_verified_claim": 23502,
+        "run_review_status": "governed-accepted-for-discovery",
+        "calibration_review_status": "independent-review-required",
+        "audit_review_status": "changes-required"
+      },
+      "why_it_matters": "Consumers cannot distinguish generator self-attestation from completed independent assurance.",
+      "remediation": [
+        "Set the run and assertion set to pending-independent-review or changes-required.",
+        "Do not put a verified record on individual assertions until the reviewed artifact digest and audit decision are linked.",
+        "After remediation, record this audit as superseded and run a fresh independent held-out review."
+      ]
+    },
+    {
+      "id": "ENR-AUD-006",
+      "severity": "high",
+      "confidence": "high",
+      "title": "Prompt and model provenance do not meet the locked reproducibility contract",
+      "what_failed": "prompt_hash is calculated from a synthetic prompt_basis assembled by the generator, not from the actual Codex conversation or exact authoring prompt. Exact model identity, parameters, schema hash and interactive task usage are absent or unavailable.",
+      "evidence": {
+        "model_identity": "Codex task model (exact deployment identifier not exposed)",
+        "prompt_hash_basis": [
+          "one task summary",
+          "design strings",
+          "controlled topic names"
+        ],
+        "schema_hash_recorded_in_run": false,
+        "model_parameters_recorded": false,
+        "codex_task_tokens_recorded": false
+      },
+      "why_it_matters": "The rule-authorship step cannot be reproduced or independently attributed from the run manifest, even though deterministic rule execution is reproducible.",
+      "remediation": [
+        "Rename the current field prompt_basis_hash.",
+        "Hash and link the immutable task transcript or exact authoring prompt when available.",
+        "Record schema hashes, unavailable-field reasons and all exposed model parameters.",
+        "State explicitly that only rule execution, not model authorship, is byte-reproducible."
+      ]
+    },
+    {
+      "id": "ENR-AUD-007",
+      "severity": "medium",
+      "confidence": "high",
+      "title": "Attempt coverage conflates traversal with semantically usable evidence",
+      "what_failed": "attempt_coverage is 1.0 because every record passed through the loop, but 6,679 source titles are URLs rather than titles. Within the 97,899 previously unclassified records, 74,417 additional records have usable text titles but no v2 match.",
+      "evidence": {
+        "previously_unclassified_records": 97899,
+        "newly_classified_records": 16803,
+        "url_titles": 6679,
+        "usable_titles_with_no_v2_match": 74417,
+        "frequent_unmatched_phrases": {
+          "pensions": 1662,
+          "roads": 1426,
+          "companies": 854,
+          "courts": 678,
+          "local authorities": 662,
+          "children": 654,
+          "schools": 623,
+          "railways": 472,
+          "fisheries": 446,
+          "agriculture": 421,
+          "goods vehicles": 374,
+          "public service vehicles": 288,
+          "patents": 240
+        }
+      },
+      "why_it_matters": "A reader can misinterpret 100% attempt coverage as 100% evidence availability or completed semantic coverage. The unchanged false-negative population remains large and includes obvious domain phrases.",
+      "remediation": [
+        "Report traversal coverage, evidence-availability coverage, new-assertion coverage and unresolved-title coverage separately.",
+        "Repair or enrich URL-only title records from authoritative localized metadata.",
+        "Use the frequent unmatched strata to build the next independently labelled discovery set without lowering precision controls."
+      ]
+    },
+    {
+      "id": "ENR-AUD-008",
+      "severity": "medium",
+      "confidence": "high",
+      "title": "Run-level accepted and rejected counts mix assertion and record grains",
+      "what_failed": "accepted_assertions counts assertions while rejected_records counts records with no new assertion. Their sum exceeds attempted_records and can be mistaken for a partition.",
+      "evidence": {
+        "attempted_records": 365786,
+        "accepted_assertions": 23502,
+        "records_with_accepted_assertions": 23460,
+        "rejected_records": 342326,
+        "accepted_assertions_plus_rejected_records": 365828
+      },
+      "why_it_matters": "Acceptance-rate calculations and downstream metrics can silently use incompatible denominators.",
+      "remediation": [
+        "Add records_with_accepted_assertions to the run contract.",
+        "Rename rejected_records to records_without_new_supported_assertions.",
+        "Keep assertion and record metrics in explicitly named groups and enforce reconciliation in JSON Schema tests."
+      ]
+    },
+    {
+      "id": "ENR-AUD-009",
+      "severity": "medium",
+      "confidence": "high",
+      "title": "Current schemas pass structurally invalid semantic identifiers and weak assurance fields",
+      "what_failed": "relationship-assertion.schema.json requires only non-empty source and target strings. model-enrichment-run.schema.json permits unconstrained usage, cost and calibration objects and does not enforce grain reconciliation.",
+      "evidence": {
+        "schema_validation_failures": 0,
+        "noncanonical_targets_that_still_validate": 23502
+      },
+      "why_it_matters": "A green schema result is currently weaker than the public semantic contract and can give false assurance.",
+      "remediation": [
+        "Require canonical absolute IRIs or declared bundle-route identifier patterns.",
+        "Constrain authority, verification state, cost currency, hashes, unavailable reasons and count grain.",
+        "Add cross-file referential-integrity and controlled-topic registry validation."
+      ]
+    },
+    {
+      "id": "ENR-AUD-010",
+      "severity": "low",
+      "confidence": "high",
+      "title": "Nine rules emit nothing and one rule never matches the corpus",
+      "what_failed": "Nine of 55 rules produce no assertion after suppression; R007 has no raw corpus match. Several other zero-output rules are wholly redundant with earlier same-topic rules or pre-existing topics.",
+      "evidence": {
+        "zero_output_rules": [
+          "R002",
+          "R007",
+          "R014",
+          "R017",
+          "R024",
+          "R036",
+          "R042",
+          "R045",
+          "R047"
+        ],
+        "no_raw_match_rules": [
+          "R007"
+        ]
+      },
+      "why_it_matters": "Dead and redundant rules inflate the apparent calibration surface and obscure which evidence paths actually contribute.",
+      "remediation": [
+        "Declare redundant rules as aliases or remove them.",
+        "Correct R007 to the corpus phrase actually intended, then add positive and hard-negative calibration cases.",
+        "Publish raw-match, suppression and emitted counts for every rule, including zeros."
+      ]
+    }
+  ],
+  "decision": {
+    "independent_review_status": "changes-required",
+    "release_recommendation": "block-governed-acceptance-and-release-promotion",
+    "mechanical_integrity": "passed",
+    "literal_evidence_integrity": "passed",
+    "semantic_precision_assurance": "failed",
+    "strategy_completion": "failed",
+    "cost_assurance": "zero-api-cost-confirmed-codex-task-cost-unavailable",
+    "required_before_reaudit": [
+      "Resolve all high-severity findings.",
+      "Regenerate the datapack with canonical topic identifiers.",
+      "Replace the self-authored calibration result with independent, rule-complete held-out evidence.",
+      "Correct or redefine the Civil justice topic rules and re-score affected assertions.",
+      "Remove premature verified and governed-accepted claims.",
+      "Make the title-only stage distinct from full semantic-enrichment completion.",
+      "Strengthen schema and count-grain validation."
+    ]
+  }
+}

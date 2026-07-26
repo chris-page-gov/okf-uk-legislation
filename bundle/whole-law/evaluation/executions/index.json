@@ -1,0 +1,71 @@
+{
+  "execution_count": 7,
+  "executions": [
+    {
+      "corpus_binding_sha256": "ba98e7c72ccbc67697890227c1e738eb8a9f9005ea76ace4f319603bd5c9495a",
+      "decision": "blocked-pending-qualified-domain-review-and-executed-answer-evaluation",
+      "executed_at": "2026-07-25T22:50:12Z",
+      "integrity": "eval-d230e81ccf60fa3d0489/integrity.json",
+      "report": "eval-d230e81ccf60fa3d0489/report.md",
+      "results": "eval-d230e81ccf60fa3d0489/results.json",
+      "run_id": "eval-d230e81ccf60fa3d0489"
+    },
+    {
+      "corpus_binding_sha256": "17fc5bc56b7a1f90cdce364e7494a8e6356b076bdca55ed6d6fc72f5ba078a3b",
+      "decision": "blocked-pending-qualified-domain-review-and-executed-answer-evaluation",
+      "executed_at": "2026-07-25T22:51:31Z",
+      "integrity": "eval-adfb4966bc96bcec6503/integrity.json",
+      "report": "eval-adfb4966bc96bcec6503/report.md",
+      "results": "eval-adfb4966bc96bcec6503/results.json",
+      "run_id": "eval-adfb4966bc96bcec6503"
+    },
+    {
+      "corpus_binding_sha256": "26e5a9b30344b80d1f4c714c223b55f60b1f145e593f6a9b0194d453e97241b1",
+      "decision": "blocked-pending-qualified-domain-review-and-executed-answer-evaluation",
+      "executed_at": "2026-07-25T22:54:34Z",
+      "integrity": "eval-8f946bb8ae73276a58a7/integrity.json",
+      "report": "eval-8f946bb8ae73276a58a7/report.md",
+      "results": "eval-8f946bb8ae73276a58a7/results.json",
+      "run_id": "eval-8f946bb8ae73276a58a7"
+    },
+    {
+      "corpus_binding_sha256": "620a5792657d3767e00909c6bbe9e884ee5a18bd3fe8425f89b521ede6160723",
+      "decision": "blocked-pending-qualified-domain-review-and-executed-answer-evaluation",
+      "executed_at": "2026-07-25T23:05:00Z",
+      "integrity": "eval-3618fd20c40e54e9e565/integrity.json",
+      "report": "eval-3618fd20c40e54e9e565/report.md",
+      "results": "eval-3618fd20c40e54e9e565/results.json",
+      "run_id": "eval-3618fd20c40e54e9e565"
+    },
+    {
+      "corpus_binding_sha256": "d27f14616a6b248a85d670ca0135d110a3def02eb3382c456cac2875f68cbbd9",
+      "decision": "blocked-pending-qualified-domain-review-and-executed-answer-evaluation",
+      "executed_at": "2026-07-25T23:07:40Z",
+      "integrity": "eval-120b21f028cc516d845b/integrity.json",
+      "report": "eval-120b21f028cc516d845b/report.md",
+      "results": "eval-120b21f028cc516d845b/results.json",
+      "run_id": "eval-120b21f028cc516d845b"
+    },
+    {
+      "corpus_binding_sha256": "0805cd408ce5282f32ddfa99484df59b9ca7b3f566421a99e1d338c4c8631e4f",
+      "decision": "blocked-pending-qualified-domain-review-and-executed-answer-evaluation",
+      "executed_at": "2026-07-26T00:01:57Z",
+      "integrity": "eval-a1a482662e93df9a151b/integrity.json",
+      "report": "eval-a1a482662e93df9a151b/report.md",
+      "results": "eval-a1a482662e93df9a151b/results.json",
+      "run_id": "eval-a1a482662e93df9a151b"
+    },
+    {
+      "corpus_binding_sha256": "161204dc3c146e7b19219a7587bb7fc6cef19c1fcd596c97788af456020e829d",
+      "decision": "blocked-pending-qualified-domain-review-and-executed-answer-evaluation",
+      "executed_at": "2026-07-26T00:08:49Z",
+      "integrity": "eval-b1af1bdfdf83d1010d3c/integrity.json",
+      "report": "eval-b1af1bdfdf83d1010d3c/report.md",
+      "results": "eval-b1af1bdfdf83d1010d3c/results.json",
+      "run_id": "eval-b1af1bdfdf83d1010d3c"
+    }
+  ],
+  "generated_at": "2026-07-25T22:54:00Z",
+  "latest_run_id": "eval-b1af1bdfdf83d1010d3c",
+  "schema": "okf-evaluation-execution-index.v1"
+}

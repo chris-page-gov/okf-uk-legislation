@@ -1,7 +1,7 @@
 ---
 type: "Derived Legal Topic"
 title: "Companies, insolvency and financial services"
-description: "Title-derived discovery grouping containing 4,697 works."
+description: "Title-derived discovery grouping containing 4,218 works."
 resource: "https://www.legislation.gov.uk/all/data.feed?title=companies-insolvency-and-financial-services"
 tags: ["topic", "derived", "companies-insolvency-and-financial-services"]
 generated: {"by": "process:legislation-okf-builder", "at": "2026-07-11T18:00:00Z"}
@@ -11,7 +11,7 @@ sources: [{"id": "official-source", "resource": "https://www.legislation.gov.uk/
 
 # Classification
 
-* Indexed works: **4,697**
+* Indexed works: **4,218**
 * Rule: `\b(compan|insolvenc|bankrupt|financial service|banking|insurance|securities|credit)\b`
 * Evidence basis: legislation title only
 * Authority: derived and non-official

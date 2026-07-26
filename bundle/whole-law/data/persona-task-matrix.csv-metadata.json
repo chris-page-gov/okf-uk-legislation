@@ -1,0 +1,64 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "tableSchema": {
+    "columns": [
+      {
+        "name": "id",
+        "titles": "id"
+      },
+      {
+        "name": "persona_id",
+        "titles": "persona_id"
+      },
+      {
+        "name": "persona",
+        "titles": "persona"
+      },
+      {
+        "name": "persona_group",
+        "titles": "persona_group"
+      },
+      {
+        "name": "task_id",
+        "titles": "task_id"
+      },
+      {
+        "name": "task",
+        "titles": "task"
+      },
+      {
+        "name": "required_authority_classes",
+        "titles": "required_authority_classes"
+      },
+      {
+        "name": "required_source_classes",
+        "titles": "required_source_classes"
+      },
+      {
+        "name": "candidate_source_ids",
+        "titles": "candidate_source_ids"
+      },
+      {
+        "name": "acceptable_evidence",
+        "titles": "acceptable_evidence"
+      },
+      {
+        "name": "currency_tolerance",
+        "titles": "currency_tolerance"
+      },
+      {
+        "name": "likely_failure_modes",
+        "titles": "likely_failure_modes"
+      },
+      {
+        "name": "definition_of_success",
+        "titles": "definition_of_success"
+      },
+      {
+        "name": "professional_escalation",
+        "titles": "professional_escalation"
+      }
+    ]
+  },
+  "url": "persona-task-matrix.csv"
+}

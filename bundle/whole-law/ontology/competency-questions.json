@@ -1,0 +1,61 @@
+{
+  "schema": "okf-whole-law-competency-questions.v1",
+  "questions": [
+    {
+      "id": "CQ01",
+      "question": "Which source is controlling for a proposition in a stated jurisdiction and date?",
+      "required_terms": [
+        "authorityClass",
+        "eli:jurisdiction",
+        "validFrom",
+        "supportedBy"
+      ],
+      "ask": "PREFIX okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#>\nPREFIX eli: <http://data.europa.eu/eli/ontology#>\nASK {\n  ?work a okflaw:LegislationWork ; okflaw:authorityClass ?authority ; eli:jurisdiction ?jurisdiction .\n  ?expression a eli:LegalExpression ; eli:is_realization_of ?work ; okflaw:validFrom ?date .\n  ?proposition a okflaw:SynthesisedProposition ; okflaw:supportedBy ?passage .\n}"
+    },
+    {
+      "id": "CQ02",
+      "question": "Which official effect changed a selected work or provision and has it been applied?",
+      "required_terms": [
+        "LegislativeEffect",
+        "affectingResource",
+        "affectedResource",
+        "effectType",
+        "applicationStatus"
+      ],
+      "ask": "PREFIX okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#>\nASK {\n  ?effect a okflaw:LegislativeEffect ; okflaw:affectingResource ?affecting ; okflaw:affectedResource ?affected ; okflaw:effectType ?type ; okflaw:applicationStatus ?status .\n}"
+    },
+    {
+      "id": "CQ03",
+      "question": "What denominator supports a claim of source-family coverage?",
+      "required_terms": [
+        "CoverageAssertion",
+        "coverageStatus",
+        "denominatorBasis",
+        "retrievedAt"
+      ],
+      "ask": "PREFIX okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#>\nASK {\n  ?coverage a okflaw:CoverageAssertion ; okflaw:coverageStatus ?status ; okflaw:denominatorBasis ?basis ; okflaw:retrievedAt ?retrieved .\n}"
+    },
+    {
+      "id": "CQ04",
+      "question": "Can an agent distinguish source evidence from a synthesised proposition?",
+      "required_terms": [
+        "LegalPassage",
+        "SynthesisedProposition",
+        "supportedBy",
+        "prov:wasGeneratedBy"
+      ],
+      "ask": "PREFIX okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#>\nPREFIX prov: <http://www.w3.org/ns/prov#>\nASK {\n  ?passage a okflaw:LegalPassage .\n  ?proposition a okflaw:SynthesisedProposition ; okflaw:supportedBy ?passage ; prov:wasGeneratedBy ?activity .\n}"
+    },
+    {
+      "id": "CQ05",
+      "question": "Can a user tell whether an access route is public, restricted, stale or unavailable?",
+      "required_terms": [
+        "AccessTest",
+        "accessStatus",
+        "testedURL",
+        "testDate"
+      ],
+      "ask": "PREFIX okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#>\nASK {\n  ?test a okflaw:AccessTest ; okflaw:accessStatus ?status ; okflaw:testedURL ?url ; okflaw:testDate ?date .\n}"
+    }
+  ]
+}

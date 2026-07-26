@@ -1,0 +1,166 @@
+{
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/answer-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "citations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "authority": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "evidence_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "jurisdiction": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "retrieved_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "source_native_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "url": {
+            "pattern": "^https://",
+            "type": "string"
+          },
+          "version": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "url",
+          "source_native_id",
+          "authority",
+          "jurisdiction",
+          "version",
+          "retrieved_at",
+          "evidence_hash"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "corpus_snapshot": {
+      "const": "whole-law-2026-07-25+legislation-2026-07-11T18:00:00Z"
+    },
+    "independent_verification": {
+      "properties": {
+        "evidence": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "reviewer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "not-performed",
+            "independently-verified",
+            "rejected"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "reviewer",
+        "evidence"
+      ],
+      "type": "object"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "propositions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "citation_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "text": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "citation_ids"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "question_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "temporal_context": {
+      "properties": {
+        "as_of": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "currency_limitations": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "snapshot": {
+          "const": "whole-law-2026-07-25+legislation-2026-07-11T18:00:00Z"
+        }
+      },
+      "required": [
+        "snapshot",
+        "as_of",
+        "currency_limitations"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "question_id",
+    "corpus_snapshot",
+    "propositions",
+    "citations",
+    "temporal_context",
+    "limitations",
+    "independent_verification"
+  ],
+  "title": "Whole-Law OKF evaluation answer v2",
+  "type": "object"
+}

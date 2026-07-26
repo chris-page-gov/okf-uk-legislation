@@ -1,0 +1,87 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "bytes": 1000,
+      "path": "README.md",
+      "sha256": "6de7aacda3c51dde6464de3a4d98780446366a55335e4990490e44e470ffdd57"
+    },
+    {
+      "bytes": 2251,
+      "path": "claude-observed-access-test.json",
+      "sha256": "18e3cec5538b93f170db30842182e1c25684e00faa1b80b69d9afd2bc342d5ac"
+    },
+    {
+      "bytes": 45109,
+      "path": "constraint-report.json",
+      "sha256": "b2c65174da65d6b6dc6d5a1b6a5b1202f1476be7d2794cb60273bc432f41db15"
+    },
+    {
+      "bytes": 17578,
+      "path": "controlling-requirements.md",
+      "sha256": "391519df744ab429325838e74ff019067808f239497193873e259fff602246af"
+    },
+    {
+      "bytes": 94,
+      "path": "controlling-requirements.sha256",
+      "sha256": "a2ddcc4bca147aa4ec9c69fe7ca5a6d1ed95011ef99b208b92c627e753fdedff"
+    },
+    {
+      "bytes": 9649,
+      "path": "evidence-manifest.json",
+      "sha256": "d267a77e617d19791fd5f0a3241a6f4bfa2d86a4ea3a97ad0b5dc6424347c94b"
+    },
+    {
+      "bytes": 12068,
+      "path": "gap-register.json",
+      "sha256": "c9af42b974439814c88adb4b3b31c0427a1025a3d1dbf4117283ba4c56d7a685"
+    },
+    {
+      "bytes": 73207,
+      "path": "implementation-status.json",
+      "sha256": "49ff52ef5a051589404c21e5bb79d5b44245ca81cd3aebacaf04cf32318851c0"
+    },
+    {
+      "bytes": 1084,
+      "path": "implementation-status.md",
+      "sha256": "a388be396e1cf6826b8c990deb2c32fbffd864093f383f32887d8883afff8300"
+    },
+    {
+      "bytes": 72533,
+      "path": "implementation-traceability.json",
+      "sha256": "ccbfef4db7e5850786cb5aed078da0eb744f6f289f3e2125a121cc654afc3ea3"
+    },
+    {
+      "bytes": 1213,
+      "path": "model-cost-report.json",
+      "sha256": "278fd0e3cd0eb2c5343c0f5c84c0995238a9e7176dc6ba59c7efa809bdb452fe"
+    },
+    {
+      "bytes": 3302,
+      "path": "provenance.json",
+      "sha256": "7f4bfa1521aea48200aaf9dacd4caafb19f6dc97eba9b14968e2bf96ff24464f"
+    },
+    {
+      "bytes": 3997,
+      "path": "release-state.json",
+      "sha256": "93ad9a0aba99c9f187088ae57eda4954e1f6592bc6eece6c2df3b3baa90c5693"
+    },
+    {
+      "bytes": 1183,
+      "path": "reproduction.json",
+      "sha256": "f669cced4cd69663bd055c3dddae545ecf630c94ccb137d8aa5ca4ca1b1a2d79"
+    },
+    {
+      "bytes": 2378,
+      "path": "rights.spdx.json",
+      "sha256": "0d5a0786e00a3394da78efce9ff188d759c2f13d179c013937f4907a00bc749f"
+    },
+    {
+      "bytes": 6004,
+      "path": "sbom.cdx.json",
+      "sha256": "8e3cb62d3b77ddc9d0a1a15f40cd8d0f233a69427dfe0da4a083219958771f55"
+    }
+  ],
+  "generated_at": "2026-07-25T23:30:00Z",
+  "schema": "okf-release-assurance-checksums.v1"
+}

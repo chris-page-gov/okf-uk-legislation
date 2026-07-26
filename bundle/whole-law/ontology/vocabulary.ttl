@@ -1,0 +1,88 @@
+@prefix okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+okflaw: a owl:Ontology ;
+  dcterms:title "UK Whole-Law OKF vocabulary" ;
+  dcterms:issued "2026-07-25"^^xsd:date ;
+  owl:versionInfo "v1" .
+
+okflaw:Federation a rdfs:Class ;
+  rdfs:label "OKF federation" .
+okflaw:LegalWork a rdfs:Class ;
+  rdfs:label "legal work" .
+okflaw:LegislationWork a rdfs:Class ;
+  rdfs:subClassOf okflaw:LegalWork, eli:LegalResource ;
+  rdfs:label "legislation work" .
+okflaw:JudicialDecision a rdfs:Class ;
+  rdfs:subClassOf okflaw:LegalWork ;
+  rdfs:label "judicial decision" .
+okflaw:LegalPassage a rdfs:Class ;
+  rdfs:label "legal passage" .
+okflaw:SynthesisedProposition a rdfs:Class ;
+  rdfs:label "synthesised proposition" .
+okflaw:LegislativeEffect a rdfs:Class ;
+  rdfs:label "legislative effect" .
+okflaw:CoverageAssertion a rdfs:Class ;
+  rdfs:label "coverage assertion" .
+okflaw:AccessTest a rdfs:Class ;
+  rdfs:label "access test" .
+
+okflaw:authorityClass a rdf:Property ;
+  rdfs:label "authority class" .
+okflaw:legalForce a rdf:Property ;
+  rdfs:label "legal force" .
+okflaw:hasPassage a rdf:Property ;
+  rdfs:range okflaw:LegalPassage .
+okflaw:supportedBy a rdf:Property ;
+  rdfs:domain okflaw:SynthesisedProposition ;
+  rdfs:range okflaw:LegalPassage .
+okflaw:supportsProposition a rdf:Property ;
+  owl:inverseOf okflaw:supportedBy .
+okflaw:affectingResource a rdf:Property .
+okflaw:affectedResource a rdf:Property .
+okflaw:effectType a rdf:Property .
+okflaw:applicationStatus a rdf:Property .
+okflaw:coverageStatus a rdf:Property .
+okflaw:denominatorBasis a rdf:Property .
+okflaw:retrievedAt a rdf:Property .
+okflaw:sourceHash a rdf:Property .
+okflaw:confidence a rdf:Property .
+okflaw:validFrom a rdf:Property ;
+  rdfs:label "valid from" .
+okflaw:validTo a rdf:Property ;
+  rdfs:label "valid to" .
+okflaw:versionState a rdf:Property ;
+  rdfs:label "version state" .
+okflaw:extent a rdf:Property ;
+  rdfs:label "territorial extent" .
+okflaw:testedURL a rdf:Property ;
+  rdfs:label "tested URL" .
+okflaw:accessStatus a rdf:Property ;
+  rdfs:label "access status" .
+okflaw:testDate a rdf:Property ;
+  rdfs:label "access test date" .
+okflaw:mappingRelation a rdf:Property ;
+  rdfs:label "mapping relation" .
+okflaw:identityDecision a rdf:Property ;
+  rdfs:label "identity decision" .
+okflaw:evidencePassage a rdf:Property ;
+  rdfs:range okflaw:LegalPassage ;
+  rdfs:label "identity evidence passage" .
+
+okflaw:BindingAuthority a skos:Concept ;
+  skos:prefLabel "binding authority" .
+okflaw:PersuasiveAuthority a skos:Concept ;
+  skos:prefLabel "persuasive authority" .
+okflaw:ProceduralMaterial a skos:Concept ;
+  skos:prefLabel "procedural material" .
+okflaw:OfficialGuidance a skos:Concept ;
+  skos:prefLabel "official guidance" .
+okflaw:History a skos:Concept ;
+  skos:prefLabel "history and legislative context" .

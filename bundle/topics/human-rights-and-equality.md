@@ -1,7 +1,7 @@
 ---
 type: "Derived Legal Topic"
 title: "Human rights and equality"
-description: "Title-derived discovery grouping containing 815 works."
+description: "Title-derived discovery grouping containing 793 works."
 resource: "https://www.legislation.gov.uk/all/data.feed?title=human-rights-and-equality"
 tags: ["topic", "derived", "human-rights-and-equality"]
 generated: {"by": "process:legislation-okf-builder", "at": "2026-07-11T18:00:00Z"}
@@ -11,7 +11,7 @@ sources: [{"id": "official-source", "resource": "https://www.legislation.gov.uk/
 
 # Classification
 
-* Indexed works: **815**
+* Indexed works: **793**
 * Rule: `\b(human rights|equalit|discrimination|disability|freedom|rights act)\b`
 * Evidence basis: legislation title only
 * Authority: derived and non-official

@@ -1,0 +1,264 @@
+{
+  "schema": "okf-whole-law-file-change-map.v1",
+  "generated_at": "2026-07-25T14:00:00+01:00",
+  "records": [
+    {
+      "repo": "okf-uk-legislation",
+      "path": "bundle/okf-explorer.json",
+      "action": "reuse and preserve",
+      "change": "Keep the current legislation descriptor and public URL stable as the legislation source-family pack. Add a federation relationship from the new Whole-Law root; do not repurpose this URL to mean all law."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "bundle/data/manifest.json",
+      "action": "extend compatibly",
+      "change": "Retain existing datasets/resources/relationships. Add optional source-family, temporal-index and coverage-ledger entrypoints only under a versioned Whole-Law extension."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "scripts/build_legislation_okf.py",
+      "action": "refactor without behaviour change",
+      "change": "Extract common deterministic shard, integrity, adjacency, analysis and request-ledger utilities into scripts/okf_build/. Keep legislation parser/output parity tests before adding other adapters."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "scripts/check_legislation_okf.py",
+      "action": "extend",
+      "change": "Keep existing 300,000-work/type/integrity checks; add coverage-ledger consistency, source-class and access-status validation. Do not replace exact official-ID checks."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "scripts/build_legislation_evaluation.py",
+      "action": "retain and supplement",
+      "change": "Keep the 100-question statute benchmark as a regression stratum; add a separate whole-law benchmark generator rather than changing its meaning."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/okf-explorer.json",
+      "action": "add",
+      "change": "New federation-root descriptor with overview-first entrypoints, source-family catalogue, coverage ledger, entity/citation/temporal indexes and live-verification policy."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/data/source-register.json",
+      "action": "add",
+      "change": "Publish the authoritative source register with access tests, licences, denominators, omissions and adapters."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/data/coverage-ledger.json",
+      "action": "add",
+      "change": "Publish per-source/per-dimension coverage assertions; prohibit global “all law” counts without aggregation rules."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/data/source-families/*.json",
+      "action": "add",
+      "change": "One manifest per source family: legislation, case-law, procedure, regulation, parliamentary/history, international, public guidance and services."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/indexes/entity-identities/",
+      "action": "add",
+      "change": "Exact/source-native identity tables and reviewable mapping decisions. Similarity candidates remain separate and cannot create owl:sameAs."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/indexes/citations/",
+      "action": "add",
+      "change": "Citation occurrence index separated from reviewed legal-treatment edges, both route-addressable and passage-evidenced."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/indexes/temporal/",
+      "action": "add",
+      "change": "Work/version/effect/event interval indexes and point-in-time query manifests."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/ontology/context.jsonld",
+      "action": "add",
+      "change": "Minimal composable JSON-LD context importing ELI, PROV-O, DCAT, SKOS, OWL-Time, Web Annotation, ODRL and selected CiTO terms."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/ontology/shapes.ttl",
+      "action": "add",
+      "change": "SHACL shapes for legal resources, expressions, passages, treatments, effects, coverage assertions and access tests."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/schemas/*.schema.json",
+      "action": "add",
+      "change": "JSON Schemas for source register, coverage ledger, entity index, treatment edges, passage evidence and evaluation answers."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/adapters/legislation_gov_uk.py",
+      "action": "add via extraction",
+      "change": "Wrap existing proven parser with unchanged output contract and explicit source-family metadata."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/adapters/find_case_law.py",
+      "action": "add",
+      "change": "Public metadata mode and separately enabled licensed computational-analysis mode. Per-court denominator ingestion is mandatory."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/adapters/scts_judgments.py",
+      "action": "add",
+      "change": "Search/RSS metadata, selected document hydration and explicit non-exhaustive coverage."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/adapters/judiciary_ni.py",
+      "action": "add",
+      "change": "Metadata/PDF adapter with unknown/partial denominator until official enumeration is established."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/adapters/procedure_rules.py",
+      "action": "add",
+      "change": "Source-specific parsers for CPR/FPR/CrimPR/tribunal rules; retain native hierarchy and amendment links."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/adapters/regulators/*.py",
+      "action": "add",
+      "change": "Regulator-specific adapters sharing typed provision/decision interfaces; no generic “regulatory document” flattening."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/adapters/parliament/*.py",
+      "action": "add",
+      "change": "Bill, stage, document, speech and committee evidence adapters with explicit non-operative/history roles."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/adapters/international/*.py",
+      "action": "add",
+      "change": "UKTO CSV, EUR-Lex/CELLAR and HUDOC metadata adapters with non-UK dependencies and licence terms."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/evaluation/questions.json",
+      "action": "add",
+      "change": "At least 250 stratified questions; proposal supplies 360. Preserve the existing 100 statute questions unchanged as a named regression subset."
+    },
+    {
+      "repo": "okf-uk-legislation",
+      "path": "whole-law/evaluation/answer-schema.json",
+      "action": "add",
+      "change": "Extend proposition-level provenance with authority class, version, jurisdiction, passage selector, retrieval, coverage status and escalation."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/types.ts",
+      "action": "extend compatibly",
+      "change": "Add optional Whole-Law types and union records: LegalEntity, AuthorityClass, LegalForce, VersionContext, PassageEvidence, CoverageEntry, AccessTest and SourceConflict. Preserve current LargeDataset fields."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/sources/largeCorpus.ts",
+      "action": "extend",
+      "change": "Load optional source-register, coverage-ledger, entity, citation and temporal manifests lazily, with existing snapshot/integrity checks."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/search/largeSearchClient.ts",
+      "action": "extend",
+      "change": "Support federated query plans, per-source result budgets and authority-/jurisdiction-aware ranking while exposing truncation and unsearched sources."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/workers/largeSearch.worker.ts",
+      "action": "extend",
+      "change": "Add source-family, authority class, jurisdiction, legal-force, date-state and availability filters; exact identifiers outrank semantic similarity."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/legal/authority.ts",
+      "action": "add",
+      "change": "Central force/authority presentation and ordering rules; no ranking rule may convert guidance into binding authority."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/legal/temporal.ts",
+      "action": "add",
+      "change": "Point-in-time selection, multiple legal date types and warning logic for current/latest/effective ambiguity."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/legal/provenance.ts",
+      "action": "add",
+      "change": "Render and validate source text, normalised metadata, extracted facts, inferences, synthesis and review as separate layers."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/legal/coverage.ts",
+      "action": "add",
+      "change": "Calculate only denominator-supported percentages and render “published-set completeness” separately from “real-world corpus completeness”."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/viewer/AuthorityBadge.svelte",
+      "action": "add",
+      "change": "Persistent authority class and legal-force label in every result/detail/passage."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/viewer/VersionContext.svelte",
+      "action": "add",
+      "change": "Show point-in-time, validity, publication, commencement, extent and unapplied-effect status."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/viewer/PassageEvidence.svelte",
+      "action": "add",
+      "change": "Smallest authoritative passage, selector, retrieved text/hash, retrieval time and transformation trail."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/viewer/CoveragePanel.svelte",
+      "action": "add",
+      "change": "Coverage ledger, denominator, known gaps, access/licence and next review."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/viewer/SourceConflictPanel.svelte",
+      "action": "add",
+      "change": "Expose source disagreements and unresolved mappings; never silently choose one."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/lib/viewer/CitationTreatment.svelte",
+      "action": "add",
+      "change": "Separate citation occurrences from reviewed treatment with source/target passages and confidence."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/src/routes/+page.svelte",
+      "action": "extend",
+      "change": "Add whole-law browse hierarchy, multi-source query state, live-verification action and professional-judgment escalation banner."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "profiles/bundle-wiki/v1/*.schema.json",
+      "action": "extend/additive",
+      "change": "Version optional entrypoints and schemas; old v0.1/v0.2 and small bundles remain loadable."
+    },
+    {
+      "repo": "okf-explorer",
+      "path": "apps/okf-explorer/tests/ and tests/ui/",
+      "action": "extend",
+      "change": "Fixtures and tests for authority separation, point-in-time, source truncation, conflicts, coverage honesty, keyboard/accessibility and degraded operation."
+    },
+    {
+      "repo": "ai-infrastructure-wiki",
+      "path": "legacy descriptors and documentation",
+      "action": "compatibility only",
+      "change": "Publish moved descriptors/redirects to canonical Explorer and legislation pack; no new implementation logic or generated whole-law data."
+    }
+  ]
+}

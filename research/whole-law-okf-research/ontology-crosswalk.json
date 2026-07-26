@@ -1,0 +1,786 @@
+{
+  "schema": "okf-whole-law-ontology-crosswalk.v1",
+  "generated_at": "2026-07-25T14:00:00+01:00",
+  "selected_stack": [
+    {
+      "id": "eli",
+      "name": "European Legislation Identifier (ELI)",
+      "decision": "core",
+      "role": "Legislation work/expression/manifestation, legal resource, version and change properties; preserve legislation.gov.uk native URI model.",
+      "strengths": [
+        "Official European standard",
+        "FRBR-influenced legislation model",
+        "RDF/JSON-LD compatible"
+      ],
+      "limits": [
+        "Not a complete case-law, procedure or enforcement ontology",
+        "UK source fields remain necessary"
+      ]
+    },
+    {
+      "id": "eli-i",
+      "name": "ELI extension for legislative processes (ELI-DL/ELI-I)",
+      "decision": "adopt selectively",
+      "role": "Bills, stages, amendments and process events where mappings are supportable.",
+      "strengths": [
+        "Links legislative process to resulting law"
+      ],
+      "limits": [
+        "Source coverage and adoption are uneven"
+      ]
+    },
+    {
+      "id": "ecli",
+      "name": "European Case Law Identifier (ECLI)",
+      "decision": "preserve when source-assigned",
+      "role": "Case-law identifier and metadata alignment.",
+      "strengths": [
+        "Cross-border case identity"
+      ],
+      "limits": [
+        "Not assigned to all UK decisions; must never be minted speculatively"
+      ]
+    },
+    {
+      "id": "akn",
+      "name": "Akoma Ntoso / LegalDocML",
+      "decision": "core representation alignment",
+      "role": "Hierarchical legal-document structure and source manifestations.",
+      "strengths": [
+        "OASIS standard",
+        "Legislation.gov.uk publishes AKN"
+      ],
+      "limits": [
+        "Not a complete authority/citator/provenance model"
+      ]
+    },
+    {
+      "id": "legalruleml",
+      "name": "LegalRuleML",
+      "decision": "optional later profile",
+      "role": "Machine-interpretable norms/rules where a governed, reviewed extraction exists.",
+      "strengths": [
+        "Rule/deontic semantics"
+      ],
+      "limits": [
+        "High modelling cost and risk of false precision; not suitable as minimum core"
+      ]
+    },
+    {
+      "id": "lkif",
+      "name": "LKIF-Core",
+      "decision": "reference only",
+      "role": "Vocabulary comparison for legal roles/processes.",
+      "strengths": [
+        "Broad legal concepts"
+      ],
+      "limits": [
+        "Oversized/academic for the minimum interoperable implementation; adoption limited"
+      ]
+    },
+    {
+      "id": "schema",
+      "name": "Schema.org Legislation and CreativeWork",
+      "decision": "discovery projection",
+      "role": "Web discovery and lightweight export.",
+      "strengths": [
+        "Widely understood web vocabulary"
+      ],
+      "limits": [
+        "Too coarse for legal force, temporal validity and passage provenance"
+      ]
+    },
+    {
+      "id": "lrm",
+      "name": "IFLA-LRM / FRBR-style WEMI distinctions",
+      "decision": "conceptual core",
+      "role": "Work, expression/version, manifestation and item distinctions across legislation, judgments and guidance.",
+      "strengths": [
+        "Prevents version/file conflation"
+      ],
+      "limits": [
+        "Legal sources need specialised subclasses and event semantics"
+      ]
+    },
+    {
+      "id": "prov",
+      "name": "W3C PROV-O",
+      "decision": "core",
+      "role": "Source, retrieval, transformation, extraction, inference, synthesis and review provenance.",
+      "strengths": [
+        "W3C Recommendation",
+        "Activity/Entity/Agent model"
+      ],
+      "limits": [
+        "Does not itself express legal authority or passage support"
+      ]
+    },
+    {
+      "id": "dcterms",
+      "name": "Dublin Core Terms",
+      "decision": "core metadata",
+      "role": "Titles, identifiers, dates, publishers, language, format and relations.",
+      "strengths": [
+        "Stable general metadata"
+      ],
+      "limits": [
+        "Generic relation semantics require specialised terms"
+      ]
+    },
+    {
+      "id": "dcat",
+      "name": "DCAT 3 / DCAT-AP",
+      "decision": "catalogue projection",
+      "role": "Datasets, distributions, services, access URLs and catalogue federation.",
+      "strengths": [
+        "Public-sector catalogue alignment"
+      ],
+      "limits": [
+        "Not a legal document or proposition model"
+      ]
+    },
+    {
+      "id": "skos",
+      "name": "SKOS",
+      "decision": "core vocabularies",
+      "role": "Authority classes, legal-force concepts, court hierarchies, source classes and mapping relations.",
+      "strengths": [
+        "Exact/broad/narrow/related mapping semantics"
+      ],
+      "limits": [
+        "Does not enforce data constraints"
+      ]
+    },
+    {
+      "id": "time",
+      "name": "OWL-Time",
+      "decision": "core temporal model",
+      "role": "Intervals/instants for validity, effect, publication, retrieval and institution existence.",
+      "strengths": [
+        "Separates temporal predicates"
+      ],
+      "limits": [
+        "Legal temporal rules still need domain-specific properties"
+      ]
+    },
+    {
+      "id": "cito",
+      "name": "CiTO (Citation Typing Ontology)",
+      "decision": "selective",
+      "role": "General citation relationships and typed citation intent.",
+      "strengths": [
+        "Rich citation vocabulary"
+      ],
+      "limits": [
+        "Legal treatment requires a constrained UK legal vocabulary and passage evidence"
+      ]
+    },
+    {
+      "id": "wa",
+      "name": "W3C Web Annotation Data Model",
+      "decision": "core passage anchoring",
+      "role": "Selectors for exact text, fragments, positions and PDF/page targets.",
+      "strengths": [
+        "Web-standard target/selector model"
+      ],
+      "limits": [
+        "Source-specific stable anchors still preferred"
+      ]
+    },
+    {
+      "id": "odrl",
+      "name": "ODRL Information Model",
+      "decision": "selective",
+      "role": "Licences, prohibitions, duties and purpose restrictions for corpus/source access.",
+      "strengths": [
+        "Machine-readable policy expression"
+      ],
+      "limits": [
+        "Contract/legal interpretation cannot be automated solely from ODRL"
+      ]
+    },
+    {
+      "id": "shacl",
+      "name": "SHACL",
+      "decision": "core validation",
+      "role": "Graph constraints for identifiers, authority, versions, passages, provenance and relationships.",
+      "strengths": [
+        "RDF validation and severity reporting"
+      ],
+      "limits": [
+        "Requires JSON Schema companion for non-RDF consumers"
+      ]
+    },
+    {
+      "id": "jsonschema",
+      "name": "JSON Schema 2020-12",
+      "decision": "core validation",
+      "role": "Descriptor, source register, ledger, evaluation and API payload validation.",
+      "strengths": [
+        "Strong tooling and developer adoption"
+      ],
+      "limits": [
+        "Semantic entailment/mapping outside scope"
+      ]
+    },
+    {
+      "id": "clml",
+      "name": "Crown Legislation Markup Language (CLML)",
+      "decision": "source-native core for UK legislation",
+      "role": "Authoritative structural and metadata representation for legislation.gov.uk.",
+      "strengths": [
+        "Official source schema",
+        "Stable subdivision IDs"
+      ],
+      "limits": [
+        "Legislation-specific and source-specific"
+      ]
+    },
+    {
+      "id": "fclnative",
+      "name": "Find Case Law source-native metadata",
+      "decision": "preserve",
+      "role": "Official court/citation/date/judgment identity and source publication fields.",
+      "strengths": [
+        "Official publication semantics"
+      ],
+      "limits": [
+        "API/licensing and coverage constraints; not UK-wide"
+      ]
+    },
+    {
+      "id": "okflaw",
+      "name": "OKF Whole-Law extension vocabulary",
+      "decision": "minimal new vocabulary",
+      "role": "Authority class, legal force, selected-passage support, coverage status, treatment evidence, task/evidence requirements and escalation.",
+      "strengths": [
+        "Fills only evidenced cross-source gaps"
+      ],
+      "limits": [
+        "Must remain versioned, documented and no broader than required"
+      ]
+    }
+  ],
+  "crosswalk": [
+    {
+      "concept": "Legal work",
+      "owning_standard_or_source": "ELI / LRM",
+      "okf_normalised_term": "eli:LegalResource / okflaw:LegalWork",
+      "mapping_relation": "exact-or-narrower by source class",
+      "source_native_fields_to_retain": [
+        "legislation ID URI",
+        "neutral citation/case URI",
+        "publisher work ID"
+      ],
+      "unresolved_conflict_or_note": "Judgments and regulatory decisions are not legislation and use subclasses."
+    },
+    {
+      "concept": "Expression/version",
+      "owning_standard_or_source": "ELI / LRM",
+      "okf_normalised_term": "eli:LegalExpression / okflaw:LegalExpression",
+      "mapping_relation": "exact for legislation; related for other sources",
+      "source_native_fields_to_retain": [
+        "version URI",
+        "date",
+        "language",
+        "status"
+      ],
+      "unresolved_conflict_or_note": "“Current” and “published” are not validity states."
+    },
+    {
+      "concept": "Manifestation/file",
+      "owning_standard_or_source": "ELI / LRM",
+      "okf_normalised_term": "eli:Format / okflaw:Manifestation",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "media type",
+        "URL",
+        "hash",
+        "signature"
+      ],
+      "unresolved_conflict_or_note": "Dynamic PDFs may be generated after request; manifestation time differs from work date."
+    },
+    {
+      "concept": "Provision/subdivision",
+      "owning_standard_or_source": "Akoma Ntoso / CLML",
+      "okf_normalised_term": "okflaw:LegalPassage",
+      "mapping_relation": "normalised broader class",
+      "source_native_fields_to_retain": [
+        "CLML IDs",
+        "AKN eId",
+        "source fragment URI"
+      ],
+      "unresolved_conflict_or_note": "Arbitrary source nesting must be retained; section/article labels are not universal."
+    },
+    {
+      "concept": "Judgment",
+      "owning_standard_or_source": "Find Case Law / ECLI",
+      "okf_normalised_term": "okflaw:Judgment",
+      "mapping_relation": "narrow mapping",
+      "source_native_fields_to_retain": [
+        "neutral citation",
+        "court code",
+        "handed-down date",
+        "judgment URI"
+      ],
+      "unresolved_conflict_or_note": "Not every decision has neutral citation or ECLI."
+    },
+    {
+      "concept": "Tribunal decision",
+      "owning_standard_or_source": "Source-native tribunal schemas",
+      "okf_normalised_term": "okflaw:TribunalDecision",
+      "mapping_relation": "narrow mapping",
+      "source_native_fields_to_retain": [
+        "tribunal/chamber",
+        "case reference",
+        "date"
+      ],
+      "unresolved_conflict_or_note": "Precedential force varies within and between chambers."
+    },
+    {
+      "concept": "Order/opinion",
+      "owning_standard_or_source": "Akoma Ntoso / source-native",
+      "okf_normalised_term": "okflaw:JudicialDocumentPart",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "document type",
+        "author",
+        "relationship to case"
+      ],
+      "unresolved_conflict_or_note": "Separate reasons can be embedded or separate files."
+    },
+    {
+      "concept": "Court/tribunal",
+      "owning_standard_or_source": "Source-native / SKOS",
+      "okf_normalised_term": "okflaw:AdjudicativeBody",
+      "mapping_relation": "normalised",
+      "source_native_fields_to_retain": [
+        "official name/code",
+        "jurisdiction",
+        "dates"
+      ],
+      "unresolved_conflict_or_note": "Institutional reorganisations require temporal identity, not static sameAs."
+    },
+    {
+      "concept": "Judge/panel",
+      "owning_standard_or_source": "PROV / source-native",
+      "okf_normalised_term": "okflaw:JudicialActor",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "source name/style",
+        "role",
+        "appointment context"
+      ],
+      "unresolved_conflict_or_note": "Names alone are insufficient identifiers; privacy/publication policy applies."
+    },
+    {
+      "concept": "Party/representative",
+      "owning_standard_or_source": "Source-native",
+      "okf_normalised_term": "okflaw:CaseParticipant",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "party label",
+        "role",
+        "anonymised name",
+        "representative"
+      ],
+      "unresolved_conflict_or_note": "Identity reconciliation can undermine anonymisation; do not enrich persons by default."
+    },
+    {
+      "concept": "Issue",
+      "owning_standard_or_source": "LegalRuleML / custom",
+      "okf_normalised_term": "okflaw:Issue",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "source heading/paragraphs"
+      ],
+      "unresolved_conflict_or_note": "Often inferred and therefore must carry method/confidence/review."
+    },
+    {
+      "concept": "Holding",
+      "owning_standard_or_source": "Custom / LegalRuleML reference",
+      "okf_normalised_term": "okflaw:Holding",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "supporting paragraphs"
+      ],
+      "unresolved_conflict_or_note": "Extraction is interpretive; never assert as source text unless expressly stated."
+    },
+    {
+      "concept": "Reasoning",
+      "owning_standard_or_source": "Akoma Ntoso / custom",
+      "okf_normalised_term": "okflaw:ReasoningPassage",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "paragraph IDs",
+        "judge/opinion"
+      ],
+      "unresolved_conflict_or_note": "Reasoning/holding boundaries can be disputed."
+    },
+    {
+      "concept": "Remedy/outcome",
+      "owning_standard_or_source": "Custom / source-native",
+      "okf_normalised_term": "okflaw:Remedy",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "order/disposition text",
+        "decision notice outcome"
+      ],
+      "unresolved_conflict_or_note": "Press summaries may not faithfully capture operative order."
+    },
+    {
+      "concept": "Citation",
+      "owning_standard_or_source": "CiTO / source-native",
+      "okf_normalised_term": "cito:cites / okflaw:LegalCitation",
+      "mapping_relation": "exact-or-narrower",
+      "source_native_fields_to_retain": [
+        "citation string",
+        "passage",
+        "target ID"
+      ],
+      "unresolved_conflict_or_note": "Textual citation is not necessarily substantive treatment."
+    },
+    {
+      "concept": "Follows/applies",
+      "owning_standard_or_source": "CiTO + okflaw vocabulary",
+      "okf_normalised_term": "okflaw:follows / okflaw:applies",
+      "mapping_relation": "narrower",
+      "source_native_fields_to_retain": [
+        "source and target passages"
+      ],
+      "unresolved_conflict_or_note": "Requires passage evidence and court/jurisdiction context."
+    },
+    {
+      "concept": "Distinguishes/doubts/disapproves/overrules",
+      "owning_standard_or_source": "okflaw legal-treatment scheme",
+      "okf_normalised_term": "okflaw:distinguishes etc.",
+      "mapping_relation": "new constrained terms",
+      "source_native_fields_to_retain": [
+        "source/target passages",
+        "court/date"
+      ],
+      "unresolved_conflict_or_note": "Editorial classification requires expert review; treatment can be proposition-specific."
+    },
+    {
+      "concept": "Appeal relationship",
+      "owning_standard_or_source": "Source-native / custom",
+      "okf_normalised_term": "okflaw:appealOf / okflaw:appealedBy",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "case numbers",
+        "orders",
+        "dates"
+      ],
+      "unresolved_conflict_or_note": "Same parties/title is not proof of appeal identity."
+    },
+    {
+      "concept": "Amends/repeals",
+      "owning_standard_or_source": "ELI / legislation effects",
+      "okf_normalised_term": "eli:changes / okflaw:amends / okflaw:repeals",
+      "mapping_relation": "narrower",
+      "source_native_fields_to_retain": [
+        "effect type",
+        "provisions",
+        "date",
+        "status"
+      ],
+      "unresolved_conflict_or_note": "Recorded effects are historically partial."
+    },
+    {
+      "concept": "Commencement",
+      "owning_standard_or_source": "ELI / legislation effects",
+      "okf_normalised_term": "okflaw:commences",
+      "mapping_relation": "new constrained term",
+      "source_native_fields_to_retain": [
+        "commencing provision",
+        "target",
+        "date",
+        "extent"
+      ],
+      "unresolved_conflict_or_note": "Commencement may be conditional, partial or subject to savings."
+    },
+    {
+      "concept": "Territorial extent",
+      "owning_standard_or_source": "ELI / source-native",
+      "okf_normalised_term": "eli:jurisdiction / okflaw:extent",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "extent codes/notes",
+        "provision extent"
+      ],
+      "unresolved_conflict_or_note": "Extent and application are distinct concepts."
+    },
+    {
+      "concept": "Validity interval",
+      "owning_standard_or_source": "OWL-Time / custom",
+      "okf_normalised_term": "okflaw:validDuring",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "effective from/to",
+        "status"
+      ],
+      "unresolved_conflict_or_note": "Legal validity can depend on facts, savings and transitional provisions."
+    },
+    {
+      "concept": "Publication event",
+      "owning_standard_or_source": "PROV-O / Publication Log",
+      "okf_normalised_term": "prov:Activity / okflaw:PublicationEvent",
+      "mapping_relation": "narrow",
+      "source_native_fields_to_retain": [
+        "event ID",
+        "published/withdrawn",
+        "timestamp"
+      ],
+      "unresolved_conflict_or_note": "Publication time is not enactment, commencement or validity time."
+    },
+    {
+      "concept": "Retrieval event",
+      "owning_standard_or_source": "PROV-O",
+      "okf_normalised_term": "okflaw:RetrievalActivity",
+      "mapping_relation": "narrow",
+      "source_native_fields_to_retain": [
+        "URL",
+        "HTTP result",
+        "retrieved_at",
+        "hash"
+      ],
+      "unresolved_conflict_or_note": "Dynamic sources require response headers and cache key."
+    },
+    {
+      "concept": "Transformation",
+      "owning_standard_or_source": "PROV-O",
+      "okf_normalised_term": "okflaw:TransformationActivity",
+      "mapping_relation": "narrow",
+      "source_native_fields_to_retain": [
+        "software/version",
+        "parameters",
+        "input/output hashes"
+      ],
+      "unresolved_conflict_or_note": "Normalisation must not overwrite source-native values."
+    },
+    {
+      "concept": "Extracted fact",
+      "owning_standard_or_source": "PROV-O / RDF-star pattern",
+      "okf_normalised_term": "okflaw:ExtractedAssertion",
+      "mapping_relation": "new",
+      "source_native_fields_to_retain": [
+        "extractor",
+        "confidence",
+        "support passage"
+      ],
+      "unresolved_conflict_or_note": "Extraction is not source text and must be separately queryable."
+    },
+    {
+      "concept": "Inference",
+      "owning_standard_or_source": "PROV-O",
+      "okf_normalised_term": "okflaw:InferredAssertion",
+      "mapping_relation": "new",
+      "source_native_fields_to_retain": [
+        "method/model",
+        "confidence",
+        "evidence set"
+      ],
+      "unresolved_conflict_or_note": "No inference should be published as official fact."
+    },
+    {
+      "concept": "Synthesis",
+      "owning_standard_or_source": "PROV-O",
+      "okf_normalised_term": "okflaw:SynthesisedProposition",
+      "mapping_relation": "new",
+      "source_native_fields_to_retain": [
+        "agent/model",
+        "prompt/policy",
+        "citations"
+      ],
+      "unresolved_conflict_or_note": "Every material proposition must map to evidence."
+    },
+    {
+      "concept": "Expert review",
+      "owning_standard_or_source": "PROV-O",
+      "okf_normalised_term": "okflaw:ReviewActivity",
+      "mapping_relation": "new",
+      "source_native_fields_to_retain": [
+        "reviewer role",
+        "time",
+        "scope",
+        "decision"
+      ],
+      "unresolved_conflict_or_note": "Review does not confer legal correctness beyond stated scope."
+    },
+    {
+      "concept": "Authority class",
+      "owning_standard_or_source": "SKOS + okflaw",
+      "okf_normalised_term": "okflaw:authorityClass",
+      "mapping_relation": "new controlled scheme",
+      "source_native_fields_to_retain": [
+        "publisher/source classification"
+      ],
+      "unresolved_conflict_or_note": "One document can contain parts with different force; classify at passage when necessary."
+    },
+    {
+      "concept": "Legal force",
+      "owning_standard_or_source": "SKOS + source-native",
+      "okf_normalised_term": "okflaw:legalForce",
+      "mapping_relation": "new controlled scheme",
+      "source_native_fields_to_retain": [
+        "rule/guidance/evidential labels",
+        "court hierarchy"
+      ],
+      "unresolved_conflict_or_note": "Force is contextual and temporal, not a single global rank."
+    },
+    {
+      "concept": "Confidence",
+      "owning_standard_or_source": "PROV-O / DQV",
+      "okf_normalised_term": "okflaw:confidence",
+      "mapping_relation": "related",
+      "source_native_fields_to_retain": [
+        "source confidence",
+        "mapping confidence"
+      ],
+      "unresolved_conflict_or_note": "Confidence cannot replace an explicit unknown/conflict state."
+    },
+    {
+      "concept": "Dataset/catalogue",
+      "owning_standard_or_source": "DCAT 3",
+      "okf_normalised_term": "dcat:Dataset",
+      "mapping_relation": "exact",
+      "source_native_fields_to_retain": [
+        "dataset title",
+        "publisher",
+        "distribution"
+      ],
+      "unresolved_conflict_or_note": "Do not model a legal work as merely a dataset."
+    },
+    {
+      "concept": "Distribution/service",
+      "owning_standard_or_source": "DCAT 3",
+      "okf_normalised_term": "dcat:Distribution / dcat:DataService",
+      "mapping_relation": "exact",
+      "source_native_fields_to_retain": [
+        "URL",
+        "format",
+        "access service"
+      ],
+      "unresolved_conflict_or_note": "Licence and authentication apply per distribution."
+    },
+    {
+      "concept": "Licence/policy",
+      "owning_standard_or_source": "DCTERMS / ODRL",
+      "okf_normalised_term": "dcterms:license / odrl:Policy",
+      "mapping_relation": "exact-or-related",
+      "source_native_fields_to_retain": [
+        "licence URL",
+        "purpose restrictions",
+        "attribution"
+      ],
+      "unresolved_conflict_or_note": "Contract/legal interpretation remains human-reviewed."
+    },
+    {
+      "concept": "Concept scheme",
+      "owning_standard_or_source": "SKOS",
+      "okf_normalised_term": "skos:ConceptScheme",
+      "mapping_relation": "exact",
+      "source_native_fields_to_retain": [
+        "native code/label"
+      ],
+      "unresolved_conflict_or_note": "Crosswalk relation must be exact/broad/narrow/related, never hidden."
+    },
+    {
+      "concept": "Passage selector",
+      "owning_standard_or_source": "Web Annotation",
+      "okf_normalised_term": "oa:SpecificResource + selector",
+      "mapping_relation": "exact",
+      "source_native_fields_to_retain": [
+        "fragment URI",
+        "text quote",
+        "position",
+        "page"
+      ],
+      "unresolved_conflict_or_note": "PDF coordinates/OCR are fragile; prefer source anchors."
+    },
+    {
+      "concept": "Persona",
+      "owning_standard_or_source": "OKF whole-law extension",
+      "okf_normalised_term": "okflaw:Persona",
+      "mapping_relation": "new",
+      "source_native_fields_to_retain": [
+        "role definition",
+        "risk profile"
+      ],
+      "unresolved_conflict_or_note": "Personas are design artefacts, not user identity claims."
+    },
+    {
+      "concept": "Task/evidence requirement",
+      "owning_standard_or_source": "OKF whole-law extension",
+      "okf_normalised_term": "okflaw:Task / okflaw:EvidenceRequirement",
+      "mapping_relation": "new",
+      "source_native_fields_to_retain": [
+        "task family",
+        "authority/source requirements"
+      ],
+      "unresolved_conflict_or_note": "Requirements vary by jurisdiction and consequence."
+    },
+    {
+      "concept": "Coverage ledger entry",
+      "owning_standard_or_source": "DCAT/DQV + okflaw",
+      "okf_normalised_term": "okflaw:CoverageAssertion",
+      "mapping_relation": "new",
+      "source_native_fields_to_retain": [
+        "dimension",
+        "denominator",
+        "numerator",
+        "status"
+      ],
+      "unresolved_conflict_or_note": "A record count without an official denominator is not completeness."
+    },
+    {
+      "concept": "Access test",
+      "owning_standard_or_source": "PROV-O + okflaw",
+      "okf_normalised_term": "okflaw:AccessTest",
+      "mapping_relation": "new",
+      "source_native_fields_to_retain": [
+        "URL",
+        "method",
+        "status",
+        "date",
+        "response evidence"
+      ],
+      "unresolved_conflict_or_note": "Search-engine discovery is not equivalent to endpoint operation."
+    },
+    {
+      "concept": "Source conflict",
+      "owning_standard_or_source": "PROV-O + okflaw",
+      "okf_normalised_term": "okflaw:SourceConflict",
+      "mapping_relation": "new",
+      "source_native_fields_to_retain": [
+        "sources",
+        "issue",
+        "status",
+        "resolution"
+      ],
+      "unresolved_conflict_or_note": "Conflicts must remain visible and may require expert decision."
+    },
+    {
+      "concept": "Escalation",
+      "owning_standard_or_source": "OKF whole-law extension",
+      "okf_normalised_term": "okflaw:EscalationRequirement",
+      "mapping_relation": "new",
+      "source_native_fields_to_retain": [
+        "trigger",
+        "reason",
+        "required reviewer"
+      ],
+      "unresolved_conflict_or_note": "A system cannot automate professional judgment merely by attaching citations."
+    }
+  ],
+  "mapping_policy": {
+    "allowed": [
+      "exact",
+      "narrower",
+      "broader",
+      "related",
+      "unresolved"
+    ],
+    "owl_same_as": "Only with explicit identity decision and evidence; never from similarity alone."
+  }
+}

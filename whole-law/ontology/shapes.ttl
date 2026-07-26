@@ -1,0 +1,76 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#> .
+
+okflaw:LegalWorkShape a sh:NodeShape ;
+  sh:targetClass okflaw:LegalWork ;
+  sh:targetClass okflaw:LegislationWork ;
+  sh:property [ sh:path dcterms:title ; sh:minCount 1 ] ;
+  sh:property [ sh:path dcterms:identifier ; sh:minCount 1 ] ;
+  sh:property [ sh:path okflaw:authorityClass ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path eli:jurisdiction ; sh:minCount 1 ] .
+
+okflaw:LegalExpressionShape a sh:NodeShape ;
+  sh:targetClass eli:LegalExpression ;
+  sh:property [ sh:path eli:is_realization_of ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:or (
+    [ sh:property [ sh:path okflaw:validFrom ; sh:minCount 1 ; sh:datatype xsd:date ] ]
+    [ sh:property [ sh:path dcterms:issued ; sh:minCount 1 ] ]
+    [ sh:property [ sh:path okflaw:versionState ; sh:minCount 1 ] ]
+  ) .
+
+okflaw:PassageShape a sh:NodeShape ;
+  sh:targetClass okflaw:LegalPassage ;
+  sh:property [ sh:path oa:hasSource ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path oa:hasSelector ; sh:minCount 1 ] ;
+  sh:property [ sh:path okflaw:retrievedAt ; sh:minCount 1 ; sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path okflaw:sourceHash ; sh:minCount 1 ; sh:pattern "^sha256:" ] .
+
+okflaw:PropositionShape a sh:NodeShape ;
+  sh:targetClass okflaw:SynthesisedProposition ;
+  sh:property [ sh:path okflaw:supportedBy ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path prov:wasGeneratedBy ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path okflaw:authorityClass ; sh:minCount 1 ] .
+
+okflaw:EffectShape a sh:NodeShape ;
+  sh:targetClass okflaw:LegislativeEffect ;
+  sh:property [ sh:path okflaw:affectingResource ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path okflaw:affectedResource ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path okflaw:effectType ; sh:minCount 1 ] ;
+  sh:property [ sh:path okflaw:applicationStatus ; sh:minCount 1 ] ;
+  sh:property [ sh:path prov:wasDerivedFrom ; sh:minCount 1 ; sh:nodeKind sh:IRI ] .
+
+okflaw:CoverageShape a sh:NodeShape ;
+  sh:targetClass okflaw:CoverageAssertion ;
+  sh:property [ sh:path okflaw:coverageStatus ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path okflaw:denominatorBasis ; sh:minCount 1 ] ;
+  sh:property [ sh:path prov:wasDerivedFrom ; sh:minCount 1 ] ;
+  sh:property [ sh:path okflaw:retrievedAt ; sh:minCount 1 ; sh:datatype xsd:dateTime ] .
+
+okflaw:AccessTestShape a sh:NodeShape ;
+  sh:targetClass okflaw:AccessTest ;
+  sh:property [ sh:path okflaw:testedURL ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [
+    sh:path okflaw:accessStatus ;
+    sh:minCount 1 ;
+    sh:in ("verified working" "documented but not tested" "authenticated or restricted" "deprecated" "unavailable" "inferred")
+  ] ;
+  sh:property [ sh:path okflaw:testDate ; sh:minCount 1 ; sh:datatype xsd:date ] .
+
+okflaw:NoUnsupportedSameAsShape a sh:NodeShape ;
+  sh:targetSubjectsOf <http://www.w3.org/2002/07/owl#sameAs> ;
+  sh:sparql [
+    sh:message "owl:sameAs requires an identity decision with evidence." ;
+    sh:select """SELECT $this WHERE {
+      $this <http://www.w3.org/2002/07/owl#sameAs> ?other .
+      FILTER NOT EXISTS {
+        $this okflaw:identityDecision ?decision .
+        ?decision okflaw:evidencePassage ?evidence
+      }
+    }"""
+  ] .
+

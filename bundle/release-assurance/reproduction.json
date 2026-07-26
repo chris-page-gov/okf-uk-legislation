@@ -1,0 +1,30 @@
+{
+  "check_command": "python3 scripts/build_release_assurance.py --check",
+  "clean_room_execution": {
+    "evidence": null,
+    "status": "not-executed"
+  },
+  "environment": {
+    "network_required": false,
+    "python": ">=3.12",
+    "requirements": {
+      "bytes": 91,
+      "path": "requirements-validation.txt",
+      "sha256": "bcb68145bf1f7fff70724d7ccd8971a4cc1f315bcb790e64e7c2e7ddb4717dc7"
+    }
+  },
+  "generated_at": "2026-07-25T23:30:00Z",
+  "inputs": {
+    "materials_digest": "sha256:6c11bb5e49863158b63195e056c9d6e79e13fd281054f8f53921fdf8662cf34e",
+    "research_evidence_verified": true
+  },
+  "limitations": [
+    "This builder verifies only the release-assurance projection.",
+    "Clean-clone reproduction of every corpus and semantic byte digest remains a separate release gate.",
+    "The candidate is not a frozen release candidate and no external assurance is claimed.",
+    "GUI-backed LibreOffice rendering aborts under Codex/macOS; DOCX transcript extraction uses Pandoc or python-docx."
+  ],
+  "output_directory": "bundle/release-assurance",
+  "schema": "okf-reproduction-contract.v1",
+  "write_command": "python3 scripts/build_release_assurance.py"
+}

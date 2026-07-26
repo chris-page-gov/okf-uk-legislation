@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/okf/whole-law/source-register.schema.json",
+  "title": "Whole-Law OKF source register",
+  "type": "object",
+  "required": [
+    "schema",
+    "generated_at",
+    "access_test_date",
+    "records"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-whole-law-source-register.v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "access_test_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "authority_classes": {
+      "type": "array"
+    },
+    "coverage_status_vocabulary": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "complete against official enumerated source",
+          "partially complete",
+          "discovery-only",
+          "metadata-only",
+          "progressively resolved",
+          "documented but inaccessible",
+          "access-restricted",
+          "licence-restricted",
+          "unavailable digitally",
+          "unknown or not yet researched"
+        ]
+      }
+    },
+    "access_status_vocabulary": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "verified working",
+          "documented but not tested",
+          "authenticated or restricted",
+          "deprecated",
+          "unavailable",
+          "inferred"
+        ]
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "owning_institution",
+          "jurisdictions",
+          "authority_classes",
+          "source_classes",
+          "corpus_boundary",
+          "access_methods",
+          "coverage_status"
+        ],
+        "properties": {
+          "id": {
+            "pattern": "^SRC[0-9]{3}$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "owning_institution": {
+            "type": "string"
+          },
+          "jurisdictions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "authority_classes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "enum": [
+                "binding-authority",
+                "persuasive-authority",
+                "procedural-material",
+                "delegated-administrative-rules",
+                "official-guidance",
+                "history",
+                "legal-service-information",
+                "contextual-material"
+              ]
+            }
+          },
+          "source_classes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "pattern": "^SC[0-9]{2}$"
+            }
+          },
+          "access_methods": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "kind",
+                "url",
+                "status",
+                "test_method"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "verified working",
+                    "documented but not tested",
+                    "authenticated or restricted",
+                    "deprecated",
+                    "unavailable",
+                    "inferred"
+                  ]
+                }
+              }
+            }
+          },
+          "coverage_status": {
+            "enum": [
+              "complete against official enumerated source",
+              "partially complete",
+              "discovery-only",
+              "metadata-only",
+              "progressively resolved",
+              "documented but inaccessible",
+              "access-restricted",
+              "licence-restricted",
+              "unavailable digitally",
+              "unknown or not yet researched"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,673 @@
+{
+  "affected_outputs": {
+    "audited_v2_unchanged": true,
+    "entity_assertions_rejected": 18135,
+    "governed_v1_assertions_permitted": 0,
+    "topic_assertions_rejected": 562,
+    "total_v1_assertions_rejected": 18697
+  },
+  "decision": {
+    "reason": "Even granting every unproven row as correct, precision can be no higher than 94.7836%, below the 95% release threshold.",
+    "release_gate_passed": false,
+    "required_policy": [
+      "retain the original v1 rule artifact as historical evidence",
+      "publish this hash-bound independent audit beside it",
+      "apply none of the v1 entity-suffix or topic-keyword rules",
+      "exclude all v1 assertions from core graph and governed-model totals",
+      "do not change or reclassify independently audited v2 assertions"
+    ],
+    "verdict": "rejected-fail-closed"
+  },
+  "evidence_validity": {
+    "checks": [
+      "source route is present",
+      "entity label is an exact case-sensitive source-title substring",
+      "entity label ends with one of the declared suffixes",
+      "canonical reconstructed relationship population matches the historical publication"
+    ],
+    "interpretation": "Literal support is complete, but literal occurrence does not establish that the extracted phrase denotes a named entity.",
+    "passed": true,
+    "population": 18135,
+    "rate": 1.0,
+    "supported": 18135,
+    "threshold": 0.95
+  },
+  "generated_at": "2026-07-25T23:25:42Z",
+  "population_profile": {
+    "by_suffix": {
+      "Agency": {
+        "assertions": 610,
+        "unique_labels": 129
+      },
+      "Authority": {
+        "assertions": 2307,
+        "unique_labels": 428
+      },
+      "Board": {
+        "assertions": 2368,
+        "unique_labels": 599
+      },
+      "Commission": {
+        "assertions": 885,
+        "unique_labels": 233
+      },
+      "Council": {
+        "assertions": 4240,
+        "unique_labels": 888
+      },
+      "Office": {
+        "assertions": 526,
+        "unique_labels": 101
+      },
+      "Service": {
+        "assertions": 6379,
+        "unique_labels": 1089
+      },
+      "Tribunal": {
+        "assertions": 820,
+        "unique_labels": 98
+      }
+    },
+    "dominant_and_tail_stratified_review": {
+      "reviewed": 40,
+      "rows": [
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-2026-299",
+            "title": "The Council Tax and Non-Domestic Rating (Demand Notices) (England) (Amendment) Regulations 2026"
+          },
+          "label": "The Council",
+          "population_count": 345,
+          "rationale": "Generic/truncated prefix, chiefly Council Tax.",
+          "suffix": "Council",
+          "verdict": "false"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/ukla-1970-55",
+            "title": "London County Council (Money) Act 1970"
+          },
+          "label": "London County Council",
+          "population_count": 141,
+          "rationale": "Complete named local authority.",
+          "suffix": "Council",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-2024-1352",
+            "title": "The General Medical Council (Applications for General Practice and Specialist Registration) (Amendment) Regulations Order of Council 2024"
+          },
+          "label": "The General Medical Council",
+          "population_count": 122,
+          "rationale": "Complete named regulator.",
+          "suffix": "Council",
+          "verdict": "true"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/ukla-edw7-3-229",
+            "title": "Auchterarder Town Council Order Confirmation Act 1903"
+          },
+          "label": "Auchterarder Town Council",
+          "population_count": 1,
+          "rationale": "Complete named local authority.",
+          "suffix": "Council",
+          "verdict": "true"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/uksi-2013-810",
+            "title": "The Traffic Management (Salford City Council) Permit Scheme Order 2013"
+          },
+          "label": "Salford City Council",
+          "population_count": 1,
+          "rationale": "Complete named local authority.",
+          "suffix": "Council",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-1989-716",
+            "title": "The Anglian Water Authority (West Drain Discharge) Order 1989"
+          },
+          "label": "The Anglian Water Authority",
+          "population_count": 115,
+          "rationale": "Complete named authority.",
+          "suffix": "Authority",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/eudn-1995-325",
+            "title": "95/325/ECSC: Commission Decision of 26 July 1995 derogating from High Authority recommendation No 1/64 concerning an increase in the protective duty on iron and steel products at the external frontiers of the Community (160th derogation)"
+          },
+          "label": "High Authority",
+          "population_count": 110,
+          "rationale": "Historical ECSC institution named in context.",
+          "suffix": "Authority",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-2026-450",
+            "title": "The Greater London Authority Elections (Amendment) Rules 2026"
+          },
+          "label": "The Greater London Authority",
+          "population_count": 82,
+          "rationale": "Complete named authority.",
+          "suffix": "Authority",
+          "verdict": "true"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/uksi-1980-609",
+            "title": "The Lancaster Port Health Authority Order 1980"
+          },
+          "label": "The Lancaster Port Health Authority",
+          "population_count": 1,
+          "rationale": "Complete named authority.",
+          "suffix": "Authority",
+          "verdict": "true"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/uksi-2002-587",
+            "title": "The Southampton and South West Hampshire Health Authority (Transfer of Trust Property) Order 2002"
+          },
+          "label": "South West Hampshire Health Authority",
+          "population_count": 1,
+          "rationale": "Complete named authority.",
+          "suffix": "Authority",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/eur-2020-857",
+            "title": "Commission Implementing Regulation (EU) 2020/857 of 17 June 2020 laying down the principles to be included in the contract between the European Commission and the .eu top-level domain Registry in accordance with Regulation (EU) 2019/517 of the European Parliament and of the Council (Text with EEA relevance)"
+          },
+          "label": "European Commission",
+          "population_count": 68,
+          "rationale": "Complete named institution.",
+          "suffix": "Commission",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/eudn-2020-848",
+            "title": "Council Decision (EU) 2020/848 of 16 June 2020 on the position to be taken on behalf of the European Union in the World Forum for Harmonisation of Vehicle Regulations of the United Nations Economic Commission for Europe as regards the proposals for modifications to UN Regulations Nos 13, 14, 16, 22, 30, 41, 78, 79, 83, 94, 95, 101, 108, 109, 117, 129, 137, 138, 140 and 152, as regards the proposals for modifications to Global Technical Regulations Nos 3, 6, 7, 16 and 19, as regards the proposal for amendments to Consolidated Resolution R.E.3. and as regards the proposals for five new UN Regulations in relation to safety, emissions and automation in the area of motor vehicles"
+          },
+          "label": "United Nations Economic Commission",
+          "population_count": 49,
+          "rationale": "Truncated before 'for Europe'; target does not identify the full body.",
+          "suffix": "Commission",
+          "verdict": "false"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-2012-147",
+            "title": "The Commission for Architecture and the Built Environment (Dissolution) Order 2012"
+          },
+          "label": "The Commission",
+          "population_count": 45,
+          "rationale": "Generic/truncated prefix.",
+          "suffix": "Commission",
+          "verdict": "false"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/eudr-1978-743",
+            "title": "Twenty-Fourth Commission Directive 78/743/EEC of 28 July 1978 amending the Annexes to Council Directive 70/524/EEC concerning additives in feedingstuffs"
+          },
+          "label": "Twenty-Fourth Commission",
+          "population_count": 1,
+          "rationale": "Ordinal modifier of a Commission Directive, not an organisation name.",
+          "suffix": "Commission",
+          "verdict": "false"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/nisro-1969-24",
+            "title": "The Londonderry Development Commission Order (Northern Ireland) 1969"
+          },
+          "label": "The Londonderry Development Commission",
+          "population_count": 1,
+          "rationale": "Complete named commission.",
+          "suffix": "Commission",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/ukla-geo5-10-11-101",
+            "title": "Local Government Board (Ireland) Provisional Orders Confirmation (No. 2) Act 1920"
+          },
+          "label": "Local Government Board",
+          "population_count": 743,
+          "rationale": "Complete historical named board.",
+          "suffix": "Board",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/nisr-2010-233",
+            "title": "The Industrial Training (Construction Board) (Amendment) Order (Northern Ireland) 2010"
+          },
+          "label": "Construction Board",
+          "population_count": 63,
+          "rationale": "May abbreviate a statutory training board; excluded from scoring.",
+          "suffix": "Board",
+          "verdict": "ambiguous"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/eudn-2019-963",
+            "title": "Council Decision (EU) 2019/963 of 6 June 2019 appointing one alternate member of the Management Board of the European Agency for Safety and Health at Work for France"
+          },
+          "label": "Management Board",
+          "population_count": 45,
+          "rationale": "Generic board class or truncated phrase.",
+          "suffix": "Board",
+          "verdict": "false"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/uksi-1951-1993",
+            "title": "The Welland River Board Constitution Order 1951"
+          },
+          "label": "The Welland River Board",
+          "population_count": 1,
+          "rationale": "Complete named board.",
+          "suffix": "Board",
+          "verdict": "true"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/ukla-vict-52-53-9",
+            "title": "Wood Green Local Board Act 1889"
+          },
+          "label": "Wood Green Local Board",
+          "population_count": 1,
+          "rationale": "Complete named local board.",
+          "suffix": "Board",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/eudn-2002-817",
+            "title": "2002/817/EC: Council Decision of 23 September 2002 on the conclusion of the Convention between the European Community and the United Nations Relief and Works Agency for Palestine Refugees in the Near East (UNRWA) concerning aid to refugees in the countries in the Near East (2002 to 2005)"
+          },
+          "label": "Works Agency",
+          "population_count": 68,
+          "rationale": "Truncated from United Nations Relief and Works Agency.",
+          "suffix": "Agency",
+          "verdict": "false"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/eur-2019-126",
+            "title": "Regulation (EU) 2019/126 of the European Parliament and of the Council of 16 January 2019 establishing the European Agency for Safety and Health at Work (EU-OSHA), and repealing Council Regulation (EC) No 2062/94"
+          },
+          "label": "European Agency",
+          "population_count": 36,
+          "rationale": "Truncated before the agency's functional name.",
+          "suffix": "Agency",
+          "verdict": "false"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/eudn-2008-114",
+            "title": "Council Decision of 12 February 2008 establishing Statutes for the Euratom Supply Agency (2008/114/EC, Euratom) (revoked)"
+          },
+          "label": "Euratom Supply Agency",
+          "population_count": 35,
+          "rationale": "Complete named agency.",
+          "suffix": "Agency",
+          "verdict": "true"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/eur-2008-1335",
+            "title": "Regulation (EC) No 1335/2008 of the European Parliament and of the Council of 16 December 2008 amending Regulation (EC) No 881/2004 establishing a European Railway Agency (Agency Regulation) (Text with EEA relevance) (repealed)"
+          },
+          "label": "European Railway Agency",
+          "population_count": 1,
+          "rationale": "Complete named agency.",
+          "suffix": "Agency",
+          "verdict": "true"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/ssi-2005-264",
+            "title": "The Additional Support for Learning (Appropriate Agency Request Period and Exceptions) (Scotland) Regulations 2005"
+          },
+          "label": "Appropriate Agency",
+          "population_count": 1,
+          "rationale": "Generic statutory role, not a named agency.",
+          "suffix": "Agency",
+          "verdict": "false"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/ukpga-2024-14",
+            "title": "Post Office (Horizon System) Offences Act 2024"
+          },
+          "label": "Post Office",
+          "population_count": 103,
+          "rationale": "Complete named institution.",
+          "suffix": "Office",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-2025-1130",
+            "title": "The Post Office Capture Redress Scheme (Tax Exemptions and Relief) Regulations 2025"
+          },
+          "label": "The Post Office",
+          "population_count": 76,
+          "rationale": "Complete named institution.",
+          "suffix": "Office",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-2022-1033",
+            "title": "The Office of Communications (Membership) (Modification) Order 2022"
+          },
+          "label": "The Office",
+          "population_count": 38,
+          "rationale": "Truncated prefix, for example Office of Communications.",
+          "suffix": "Office",
+          "verdict": "false"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/eudn-1984-563",
+            "title": "84/563/EEC: Commission Decision of 30 May 1984 concerning the aids provided for in Law No 105 of 5 August 1982 of the Region of Sicily amending the regional budget and the budget of the State Forests Office of the Region of Sicily for 1982 (Only the Italian text is authentic)"
+          },
+          "label": "State Forests Office",
+          "population_count": 1,
+          "rationale": "Named office in the source-title context.",
+          "suffix": "Office",
+          "verdict": "true"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/ukpga-geo3-44-82",
+            "title": "An Act to obviate certain Inconveniencies which have been experienced in the Accountant General's Office in the Court of Chancery, in the Execution of an Act made in the last Session of Parliament, for granting a Contribution on the Profits arising from Property, Professions, Trades and Offices."
+          },
+          "label": "Accountant General's Office",
+          "population_count": 1,
+          "rationale": "Complete named office.",
+          "suffix": "Office",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-2026-702",
+            "title": "The National Health Service (Pharmaceutical and Local Pharmaceutical Services) (Amendment) Regulations 2026"
+          },
+          "label": "The National Health Service",
+          "population_count": 2288,
+          "rationale": "Named public service/institution.",
+          "suffix": "Service",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-2026-673",
+            "title": "The Public Service Pension Schemes (Rectification of Unlawful Discrimination) (Tax) Regulations 2026"
+          },
+          "label": "The Public Service",
+          "population_count": 378,
+          "rationale": "Generic or truncated service phrase.",
+          "suffix": "Service",
+          "verdict": "false"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-2014-3282",
+            "title": "The Data Protection (Assessment Notices) (Designation of National Health Service Bodies) Order 2014 (revoked)"
+          },
+          "label": "National Health Service",
+          "population_count": 161,
+          "rationale": "Named public service/institution.",
+          "suffix": "Service",
+          "verdict": "true"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/uksi-1997-598",
+            "title": "The Local Government Pension Scheme (Transfers from the Nationalealth Service Pension Scheme for England and Wales) Regulations 1997"
+          },
+          "label": "Nationalealth Service",
+          "population_count": 1,
+          "rationale": "Malformed source-title token; not a valid entity label.",
+          "suffix": "Service",
+          "verdict": "false"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/uksi-1993-2926",
+            "title": "The Dundee Healthcare National Health Service Trust (Establishment) Order 1993"
+          },
+          "label": "The Dundee Healthcare National Health Service",
+          "population_count": 1,
+          "rationale": "Truncated before 'Trust'; not the complete organisation name.",
+          "suffix": "Service",
+          "verdict": "false"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-2026-771",
+            "title": "The First-tier Tribunal and Upper Tribunal (Chambers) (Amendment) Order 2026"
+          },
+          "label": "The First-tier Tribunal",
+          "population_count": 134,
+          "rationale": "Complete named tribunal.",
+          "suffix": "Tribunal",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/ssi-2021-386",
+            "title": "The Lands Tribunal for Scotland (Miscellaneous Amendments) Amendment Rules 2021"
+          },
+          "label": "The Lands Tribunal",
+          "population_count": 102,
+          "rationale": "Complete named tribunal.",
+          "suffix": "Tribunal",
+          "verdict": "true"
+        },
+        {
+          "band": "dominant",
+          "example": {
+            "route": "dataset/uksi-2026-771",
+            "title": "The First-tier Tribunal and Upper Tribunal (Chambers) (Amendment) Order 2026"
+          },
+          "label": "Upper Tribunal",
+          "population_count": 70,
+          "rationale": "Complete named tribunal.",
+          "suffix": "Tribunal",
+          "verdict": "true"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/uksi-1987-333",
+            "title": "The Scottish Solicitors' Discipline Tribunal (Increase of Maximum Fine) Order 1987"
+          },
+          "label": "The Scottish Solicitors' Discipline Tribunal",
+          "population_count": 1,
+          "rationale": "Complete named tribunal.",
+          "suffix": "Tribunal",
+          "verdict": "true"
+        },
+        {
+          "band": "tail-singleton",
+          "example": {
+            "route": "dataset/uksi-2008-668",
+            "title": "The Consumer Credit Appeals Tribunal Rules 2008"
+          },
+          "label": "The Consumer Credit Appeals Tribunal",
+          "population_count": 1,
+          "rationale": "Complete named tribunal.",
+          "suffix": "Tribunal",
+          "verdict": "true"
+        }
+      ],
+      "selection": "For each suffix: three highest-frequency labels plus two SHA-256-selected singleton labels.",
+      "use_in_threshold": "Corroborative only; no extrapolation. The exhaustive precision ceiling determines the release decision.",
+      "verdict_counts": {
+        "ambiguous": 1,
+        "false": 12,
+        "true": 27
+      }
+    },
+    "unique_labels": 3565
+  },
+  "precision_assessment": {
+    "false_populations": [
+      {
+        "count": 378,
+        "example": {
+          "route": "dataset/uksi-2026-673",
+          "title": "The Public Service Pension Schemes (Rectification of Unlawful Discrimination) (Tax) Regulations 2026"
+        },
+        "label": "The Public Service",
+        "reason": "Generic prefix in titles such as Public Service Pensions and Public Service Vehicles; it does not name a public body or office."
+      },
+      {
+        "count": 345,
+        "example": {
+          "route": "dataset/uksi-2026-299",
+          "title": "The Council Tax and Non-Domestic Rating (Demand Notices) (England) (Amendment) Regulations 2026"
+        },
+        "label": "The Council",
+        "reason": "Truncated or generic prefix, predominantly from Council Tax titles; it does not identify a named council."
+      },
+      {
+        "count": 71,
+        "example": {
+          "route": "dataset/ukpga-2022-7",
+          "title": "Public Service Pensions and Judicial Offices Act 2022"
+        },
+        "label": "Public Service",
+        "reason": "Generic description of public service or a modifier of vehicles and pensions, not a named body or office."
+      },
+      {
+        "count": 54,
+        "example": {
+          "route": "dataset/nisr-1988-378",
+          "title": "The Royal Ulster Constabulary Pensions (War Service) (Transferees) (Amendment) Regulations (Northern Ireland) 1988"
+        },
+        "label": "War Service",
+        "reason": "A type or period of service used in pension and superannuation titles, not an organisation."
+      },
+      {
+        "count": 35,
+        "example": {
+          "route": "dataset/uksi-2024-235",
+          "title": "The Service Address (Rectification of Register) Regulations 2024"
+        },
+        "label": "The Service",
+        "reason": "Truncated prefix in Service Police, Service Address and similar titles, not an identified organisation."
+      },
+      {
+        "count": 34,
+        "example": {
+          "route": "dataset/nisr-2026-99",
+          "title": "The Public Service (Civil Servants and Others) Pensions (Remediable Service) (Amendment) Regulations (Northern Ireland) 2026"
+        },
+        "label": "Remediable Service",
+        "reason": "A pension-remedy service-period concept, not an organisation."
+      },
+      {
+        "count": 29,
+        "example": {
+          "route": "dataset/uksi-1964-935",
+          "title": "The Teachers Superannuation (National Service) Amending Rules 1964"
+        },
+        "label": "National Service",
+        "reason": "A statutory service obligation or service period, not a named public body or office."
+      }
+    ],
+    "maximum_possible_true": 17189,
+    "method": "Exhaustive conservative upper bound. Seven indisputable false-positive label populations were reviewed in every occurrence. Every other assertion, including ambiguous rows, is assumed true to maximize v1's possible precision.",
+    "passed": false,
+    "population": 18135,
+    "precision_ceiling": 0.947835677,
+    "proven_false": 946,
+    "threshold": 0.95
+  },
+  "reconstruction": {
+    "entity_assertions": 18135,
+    "entity_population_sha256": "d01009ea8e100a67d859c734e1a63f2586831592aa2367364699528b9156933e",
+    "exact_historical_relationship_match": true,
+    "method": "Re-executed the literal title regex and topic-keyword sequence from source titles; compared canonical route/label and route/topic populations with the pre-rejection publication.",
+    "relationship_population_sha256": "c453f2318238e8cb9743cedae3cbec5e4eec36ff9ef7756e083f524fa49758af",
+    "topic_assertions": 562,
+    "topic_population_sha256": "15d974945b43e1646ab3edfee042e3e1ff54841e21e44e9465b0d5631bbca4be"
+  },
+  "schema": "okf-independent-enrichment-audit.v1",
+  "scope": {
+    "evidence_support_threshold": 0.95,
+    "historical_entity_assertions": 18135,
+    "historical_topic_assertions": 562,
+    "precision_threshold": 0.95,
+    "rule_suffixes": [
+      "Council",
+      "Authority",
+      "Commission",
+      "Board",
+      "Agency",
+      "Office",
+      "Service",
+      "Tribunal"
+    ],
+    "source": "published legislation work titles"
+  },
+  "subject": {
+    "claimed_review_status": "governed-accepted",
+    "path": "enrichment/model-assisted-v1.json",
+    "preservation": "immutable-historical-evidence",
+    "schema": "okf-model-assisted-enrichment.v1",
+    "sha256": "819030b842a6eedd88ddec35ac526c718689c7cd1a4577a9c64ef802a879d4dc"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/provider-datapack.schema.json",
+  "title": "OKF provider datapack v1",
+  "type": "object",
+  "required": ["schema", "id", "source_id", "snapshot_id", "generated_at", "counts", "chunks", "acquisition"],
+  "properties": {
+    "schema": {"const": "okf-provider-datapack.v1"},
+    "id": {"type": "string", "minLength": 1},
+    "source_id": {"type": "string", "minLength": 1},
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "counts": {"type": "object"},
+    "chunks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "media_type", "compression", "bytes", "sha256", "records"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "media_type": {"type": "string", "minLength": 1},
+          "compression": {"enum": ["gzip", "zstd", "none"]},
+          "bytes": {"type": "integer", "minimum": 0},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "records": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "acquisition": {"type": "object"},
+    "replaces": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}
+

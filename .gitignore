@@ -6,3 +6,5 @@ __pycache__/
 *.pyc
 tmp/
 _site/
+evidence/source-acquisitions/whole-law-access/.partial-*/
+evidence/source-acquisitions/legislation-effects/legislation-effects-*/

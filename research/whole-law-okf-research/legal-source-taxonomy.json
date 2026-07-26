@@ -1,0 +1,463 @@
+{
+  "schema": "okf-whole-law-source-taxonomy.v1",
+  "generated_at": "2026-07-25T14:00:00+01:00",
+  "authority_classes": [
+    {
+      "id": "binding-authority",
+      "label": "Binding legal authority",
+      "definition": "Primary or delegated law, binding precedent, or other source whose legal effect binds within a stated jurisdiction and temporal context."
+    },
+    {
+      "id": "persuasive-authority",
+      "label": "Persuasive authority",
+      "definition": "Legal reasoning or decisions that may influence but do not bind the deciding body in the matter."
+    },
+    {
+      "id": "procedural-material",
+      "label": "Procedural material",
+      "definition": "Rules, practice directions, forms, fees and operational requirements governing legal process."
+    },
+    {
+      "id": "delegated-administrative-rules",
+      "label": "Delegated administrative rules",
+      "definition": "Regulatory rulebooks, directions, determinations and schemes made under delegated competence."
+    },
+    {
+      "id": "official-guidance",
+      "label": "Official interpretation or guidance",
+      "definition": "Official statements explaining policy, interpretation, enforcement or compliance; force depends on statutory basis and context."
+    },
+    {
+      "id": "history",
+      "label": "Legislative and judicial history",
+      "definition": "Bills, debates, explanatory material, law-reform work, inquiry material and records evidencing development or intent."
+    },
+    {
+      "id": "legal-service-information",
+      "label": "Legal-service information",
+      "definition": "Official information helping users access courts, tribunals, legal aid, forms, listings and public legal assistance."
+    },
+    {
+      "id": "contextual-material",
+      "label": "Commentary or contextual material",
+      "definition": "Non-authoritative or contextual information, including secondary databases and professional commentary."
+    }
+  ],
+  "classes": [
+    {
+      "id": "SC01",
+      "label": "Primary legislation",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "Acts, Measures and equivalent primary enactments, including devolved legislatures.",
+      "minimum_provenance": "Work identity, enacted and revised expressions, territorial extent, commencement and point-in-time state.",
+      "relationships_to_other_classes": [
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC24"
+      ]
+    },
+    {
+      "id": "SC02",
+      "label": "Secondary and delegated legislation",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "Statutory instruments, rules, orders, regulations and other delegated instruments.",
+      "minimum_provenance": "Enabling power, making/laying/coming-into-force dates, version and extent.",
+      "relationships_to_other_classes": [
+        "SC04",
+        "SC05",
+        "SC16"
+      ]
+    },
+    {
+      "id": "SC03",
+      "label": "Draft legislation and draft instruments",
+      "primary_authority_class": "history",
+      "definition_and_legal_force": "Bills and draft statutory instruments before enactment or making.",
+      "minimum_provenance": "Stage, version, sponsor, amendments and explicit non-operative status.",
+      "relationships_to_other_classes": [
+        "SC24",
+        "SC25"
+      ]
+    },
+    {
+      "id": "SC04",
+      "label": "Historical and revised legislation versions",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "Original, revised and point-in-time expressions and manifestations.",
+      "minimum_provenance": "Exact version date, revision status, source manifestation and unapplied effects.",
+      "relationships_to_other_classes": [
+        "SC01",
+        "SC02",
+        "SC05"
+      ]
+    },
+    {
+      "id": "SC05",
+      "label": "Amendment, commencement, repeal and extent effects",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "Legal-effect relationships between instruments and provisions.",
+      "minimum_provenance": "Affecting/affected identifiers, effect type, date, extent and application status.",
+      "relationships_to_other_classes": [
+        "SC01",
+        "SC02",
+        "SC04"
+      ]
+    },
+    {
+      "id": "SC06",
+      "label": "Retained and assimilated EU law",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "EU-origin law preserved or transformed in domestic law, plus related withdrawal instruments.",
+      "minimum_provenance": "UK status, cut-off date, domestic amendments, EU source identity and dual licence.",
+      "relationships_to_other_classes": [
+        "SC32",
+        "SC05"
+      ]
+    },
+    {
+      "id": "SC07",
+      "label": "Local and private legislation",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "Local Acts, private Acts, byelaws and local schemes.",
+      "minimum_provenance": "Making body, enabling power, confirmation/local procedure, geographic extent and current status.",
+      "relationships_to_other_classes": [
+        "SC01",
+        "SC02",
+        "SC23"
+      ]
+    },
+    {
+      "id": "SC08",
+      "label": "Treaties and international instruments",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "Treaties and instruments creating or evidencing international obligations.",
+      "minimum_provenance": "Treaty series, parties, signature/ratification/entry into force, reservations and depositary status.",
+      "relationships_to_other_classes": [
+        "SC33",
+        "SC24"
+      ]
+    },
+    {
+      "id": "SC09",
+      "label": "Court judgments",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "Published judgments from courts, with binding force determined by court hierarchy and issue.",
+      "minimum_provenance": "Court, neutral citation, handed-down date, judges, version, appeal status and selected passage.",
+      "relationships_to_other_classes": [
+        "SC12",
+        "SC13",
+        "SC14"
+      ]
+    },
+    {
+      "id": "SC10",
+      "label": "Tribunal decisions",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "Published tribunal decisions; precedential force varies by chamber and appellate level.",
+      "minimum_provenance": "Tribunal/chamber, citation, panel, date, appeal status and jurisdiction.",
+      "relationships_to_other_classes": [
+        "SC12",
+        "SC13",
+        "SC14"
+      ]
+    },
+    {
+      "id": "SC11",
+      "label": "Orders, opinions and separate reasons",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "Orders, concurrences, dissents and other judicial outputs distinct from the main judgment.",
+      "minimum_provenance": "Relationship to proceeding and judgment, author, operative status and version.",
+      "relationships_to_other_classes": [
+        "SC09",
+        "SC10"
+      ]
+    },
+    {
+      "id": "SC12",
+      "label": "Neutral and report citations",
+      "primary_authority_class": "history",
+      "definition_and_legal_force": "Identifiers linking a decision to official neutral citation and report series.",
+      "minimum_provenance": "Source-assigned citation, report reference, parallel citations and mapping provenance.",
+      "relationships_to_other_classes": [
+        "SC09",
+        "SC10",
+        "SC13"
+      ]
+    },
+    {
+      "id": "SC13",
+      "label": "Precedent, citation and judicial treatment",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "Cites, follows, applies, distinguishes, doubts, disapproves, overrules and appeal relationships.",
+      "minimum_provenance": "Passage-level evidence, source/target identity, treatment verb, direction, court and date.",
+      "relationships_to_other_classes": [
+        "SC09",
+        "SC10",
+        "SC12"
+      ]
+    },
+    {
+      "id": "SC14",
+      "label": "Court and tribunal reference data",
+      "primary_authority_class": "legal-service-information",
+      "definition_and_legal_force": "Court, tribunal, chamber, judge, jurisdiction and competence records.",
+      "minimum_provenance": "Stable institutional identity, hierarchy, temporal existence and competence source.",
+      "relationships_to_other_classes": [
+        "SC09",
+        "SC10",
+        "SC21"
+      ]
+    },
+    {
+      "id": "SC15",
+      "label": "Court and tribunal rules",
+      "primary_authority_class": "procedural-material",
+      "definition_and_legal_force": "Civil, criminal, family and tribunal procedure rules.",
+      "minimum_provenance": "Rule version, amendment instrument, commencement, applicability and official passage.",
+      "relationships_to_other_classes": [
+        "SC16",
+        "SC17",
+        "SC18"
+      ]
+    },
+    {
+      "id": "SC16",
+      "label": "Practice directions and protocols",
+      "primary_authority_class": "procedural-material",
+      "definition_and_legal_force": "Practice directions, pre-action protocols and judicial procedural instructions.",
+      "minimum_provenance": "Issuing authority, effective date, amendment history, applicable rules and exceptions.",
+      "relationships_to_other_classes": [
+        "SC15",
+        "SC17"
+      ]
+    },
+    {
+      "id": "SC17",
+      "label": "Forms, fees, deadlines and procedural guidance",
+      "primary_authority_class": "procedural-material",
+      "definition_and_legal_force": "Official forms, fee orders, calculators and process guidance.",
+      "minimum_provenance": "Form revision, fee date, deadline basis, jurisdiction and accessibility.",
+      "relationships_to_other_classes": [
+        "SC15",
+        "SC16",
+        "SC21"
+      ]
+    },
+    {
+      "id": "SC18",
+      "label": "Sentencing guidelines",
+      "primary_authority_class": "procedural-material",
+      "definition_and_legal_force": "Definitive and consultative sentencing guidelines and ancillary materials.",
+      "minimum_provenance": "Guideline version, offence, effective date, statutory duty and applicability.",
+      "relationships_to_other_classes": [
+        "SC09",
+        "SC17"
+      ]
+    },
+    {
+      "id": "SC19",
+      "label": "Prosecution and enforcement guidance",
+      "primary_authority_class": "official-guidance",
+      "definition_and_legal_force": "CPS, COPFS, PPSNI and regulator enforcement guidance.",
+      "minimum_provenance": "Issuer, version, legal basis, policy status, effective date and exceptions.",
+      "relationships_to_other_classes": [
+        "SC20",
+        "SC30"
+      ]
+    },
+    {
+      "id": "SC20",
+      "label": "Regulatory handbooks and rules",
+      "primary_authority_class": "delegated-administrative-rules",
+      "definition_and_legal_force": "Regulator rulebooks, handbooks, standards, directions and binding requirements.",
+      "minimum_provenance": "Regulator competence, rule version, legal instrument basis, effective dates and territorial scope.",
+      "relationships_to_other_classes": [
+        "SC29",
+        "SC30"
+      ]
+    },
+    {
+      "id": "SC21",
+      "label": "Regulatory decisions and enforcement notices",
+      "primary_authority_class": "delegated-administrative-rules",
+      "definition_and_legal_force": "Final notices, decisions, undertakings, penalties, permissions and appeals.",
+      "minimum_provenance": "Decision-maker, subject, statutory power, date, outcome, appeal/review state and redactions.",
+      "relationships_to_other_classes": [
+        "SC20",
+        "SC30"
+      ]
+    },
+    {
+      "id": "SC22",
+      "label": "Codes of practice and statutory guidance",
+      "primary_authority_class": "official-guidance",
+      "definition_and_legal_force": "Statutory and non-statutory codes, manuals and guidance.",
+      "minimum_provenance": "Statutory basis, duty to have regard, version, audience and legal-force qualification.",
+      "relationships_to_other_classes": [
+        "SC01",
+        "SC02",
+        "SC20"
+      ]
+    },
+    {
+      "id": "SC23",
+      "label": "Ombudsman and adjudicator decisions",
+      "primary_authority_class": "persuasive-authority",
+      "definition_and_legal_force": "Published findings, decisions, recommendations and adjudications.",
+      "minimum_provenance": "Scheme jurisdiction, binding/recommendatory status, retention window, anonymity and review route.",
+      "relationships_to_other_classes": [
+        "SC21",
+        "SC30"
+      ]
+    },
+    {
+      "id": "SC24",
+      "label": "Parliamentary materials and Hansard",
+      "primary_authority_class": "history",
+      "definition_and_legal_force": "Bills, amendments, stages, debates, votes, committee material and deposited papers.",
+      "minimum_provenance": "House, session, stage, date, speaker, bill version and stable passage anchor.",
+      "relationships_to_other_classes": [
+        "SC03",
+        "SC25",
+        "SC26"
+      ]
+    },
+    {
+      "id": "SC25",
+      "label": "Explanatory notes and impact assessments",
+      "primary_authority_class": "history",
+      "definition_and_legal_force": "Official explanatory and impact material associated with legislation or bills.",
+      "minimum_provenance": "Associated work, publisher, date, version, explicit non-authoritative role and passage.",
+      "relationships_to_other_classes": [
+        "SC01",
+        "SC02",
+        "SC03"
+      ]
+    },
+    {
+      "id": "SC26",
+      "label": "Law-reform publications",
+      "primary_authority_class": "history",
+      "definition_and_legal_force": "Law Commission and equivalent consultation papers, reports, draft Bills and implementation status.",
+      "minimum_provenance": "Project, report number, date, recommendations, government response and implementation links.",
+      "relationships_to_other_classes": [
+        "SC03",
+        "SC24"
+      ]
+    },
+    {
+      "id": "SC27",
+      "label": "Public inquiries and official investigations",
+      "primary_authority_class": "history",
+      "definition_and_legal_force": "Inquiry reports, evidence, rulings and official accident or investigation reports.",
+      "minimum_provenance": "Statutory basis, chair/body, module, evidence provenance, publication and recommendation status.",
+      "relationships_to_other_classes": [
+        "SC21",
+        "SC24"
+      ]
+    },
+    {
+      "id": "SC28",
+      "label": "Legal aid and public legal assistance",
+      "primary_authority_class": "legal-service-information",
+      "definition_and_legal_force": "Eligibility, scope, calculators, provider finding and public advice routes.",
+      "minimum_provenance": "Jurisdiction, eligibility date, disclaimer, service owner and referral limits.",
+      "relationships_to_other_classes": [
+        "SC17",
+        "SC21"
+      ]
+    },
+    {
+      "id": "SC29",
+      "label": "Public notices and official gazettes",
+      "primary_authority_class": "history",
+      "definition_and_legal_force": "Statutory notices, insolvency, planning, appointments and other public legal notices.",
+      "minimum_provenance": "Notice code, publication date, issuer, geographic scope, permanent URI and digital signature.",
+      "relationships_to_other_classes": [
+        "SC07",
+        "SC21"
+      ]
+    },
+    {
+      "id": "SC30",
+      "label": "Jurisdiction, institution and public-body reference data",
+      "primary_authority_class": "legal-service-information",
+      "definition_and_legal_force": "Bodies, offices, powers, competence, geographic remit and organisational lineage.",
+      "minimum_provenance": "Authoritative source, temporal identity, statutory basis, aliases and successor/predecessor.",
+      "relationships_to_other_classes": [
+        "SC14",
+        "SC20"
+      ]
+    },
+    {
+      "id": "SC31",
+      "label": "Legal-service listings and hearing data",
+      "primary_authority_class": "legal-service-information",
+      "definition_and_legal_force": "Court and tribunal listings, venues, hearing times and case references.",
+      "minimum_provenance": "Licence, time sensitivity, suppression/anonymity, source timestamp and access restrictions.",
+      "relationships_to_other_classes": [
+        "SC14",
+        "SC17"
+      ]
+    },
+    {
+      "id": "SC32",
+      "label": "European Union legal sources",
+      "primary_authority_class": "binding-authority",
+      "definition_and_legal_force": "EUR-Lex/CELLAR law, case law and preparatory acts relevant to UK legal interpretation or history.",
+      "minimum_provenance": "CELEX/ECLI/ELI identity, language, consolidation, corrigenda, version and relevance to UK law.",
+      "relationships_to_other_classes": [
+        "SC06",
+        "SC08",
+        "SC13"
+      ]
+    },
+    {
+      "id": "SC33",
+      "label": "European human-rights and international decisions",
+      "primary_authority_class": "persuasive-authority",
+      "definition_and_legal_force": "HUDOC and other international decisions affecting UK obligations or interpretation.",
+      "minimum_provenance": "Court/body, application number, date, status, language and UK relevance.",
+      "relationships_to_other_classes": [
+        "SC08",
+        "SC09",
+        "SC13"
+      ]
+    },
+    {
+      "id": "SC34",
+      "label": "Professional rules and legal-services regulation",
+      "primary_authority_class": "delegated-administrative-rules",
+      "definition_and_legal_force": "Rules and decisions of legal-services regulators and professional bodies.",
+      "minimum_provenance": "Regulator, authorised-person class, rule version, effective date and statutory basis.",
+      "relationships_to_other_classes": [
+        "SC20",
+        "SC21"
+      ]
+    },
+    {
+      "id": "SC35",
+      "label": "Archival legal records and web archives",
+      "primary_authority_class": "history",
+      "definition_and_legal_force": "Historical records, archived websites and digitised material outside current publication systems.",
+      "minimum_provenance": "Archive reference, series, date range, digitisation status, custody and access restrictions.",
+      "relationships_to_other_classes": [
+        "SC04",
+        "SC09",
+        "SC24"
+      ]
+    },
+    {
+      "id": "SC36",
+      "label": "Secondary reporting and commentary",
+      "primary_authority_class": "contextual-material",
+      "definition_and_legal_force": "Law reports, citators, textbooks, practitioner commentary and news.",
+      "minimum_provenance": "Publisher, edition, licence, editorial method and clear non-official status.",
+      "relationships_to_other_classes": [
+        "SC12",
+        "SC13"
+      ]
+    }
+  ]
+}

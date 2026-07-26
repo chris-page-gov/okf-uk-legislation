@@ -1,0 +1,122 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#",
+    "okflaw": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#",
+    "eli": "http://data.europa.eu/eli/ontology#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dqv": "http://www.w3.org/ns/dqv#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "time": "http://www.w3.org/2006/time#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "cito": "http://purl.org/spar/cito/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "id": "@id",
+    "type": "@type",
+    "title": "dcterms:title",
+    "description": "dcterms:description",
+    "identifier": "dcterms:identifier",
+    "publisher": {
+      "@id": "dcterms:publisher",
+      "@type": "@id"
+    },
+    "language": "dcterms:language",
+    "issued": {
+      "@id": "dcterms:issued",
+      "@type": "xsd:date"
+    },
+    "modified": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:dateTime"
+    },
+    "descriptor": {
+      "@id": "okflaw:descriptor",
+      "@type": "@id"
+    },
+    "childBundle": {
+      "@id": "okflaw:childBundle",
+      "@type": "@id"
+    },
+    "sourceRegister": {
+      "@id": "okflaw:sourceRegister",
+      "@type": "@id"
+    },
+    "generatedAt": {
+      "@id": "prov:generatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "authorityClass": {
+      "@id": "okflaw:authorityClass",
+      "@type": "@id"
+    },
+    "legalForce": {
+      "@id": "okflaw:legalForce",
+      "@type": "@id"
+    },
+    "jurisdiction": {
+      "@id": "eli:jurisdiction",
+      "@type": "@id"
+    },
+    "expression": {
+      "@id": "eli:is_realized_by",
+      "@type": "@id"
+    },
+    "realizes": {
+      "@id": "eli:is_realization_of",
+      "@type": "@id"
+    },
+    "manifestation": {
+      "@id": "eli:is_embodied_by",
+      "@type": "@id"
+    },
+    "passage": {
+      "@id": "okflaw:hasPassage",
+      "@type": "@id"
+    },
+    "supportedBy": {
+      "@id": "okflaw:supportedBy",
+      "@type": "@id"
+    },
+    "supportsProposition": {
+      "@id": "okflaw:supportsProposition",
+      "@type": "@id"
+    },
+    "sourceHash": "okflaw:sourceHash",
+    "retrievedAt": {
+      "@id": "okflaw:retrievedAt",
+      "@type": "xsd:dateTime"
+    },
+    "validFrom": {
+      "@id": "okflaw:validFrom",
+      "@type": "xsd:date"
+    },
+    "validTo": {
+      "@id": "okflaw:validTo",
+      "@type": "xsd:date"
+    },
+    "extent": {
+      "@id": "okflaw:extent",
+      "@type": "@id"
+    },
+    "coverageStatus": {
+      "@id": "okflaw:coverageStatus",
+      "@type": "@id"
+    },
+    "confidence": {
+      "@id": "okflaw:confidence",
+      "@type": "xsd:decimal"
+    },
+    "mappingRelation": {
+      "@id": "okflaw:mappingRelation",
+      "@type": "@id"
+    }
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "schema": "okf-whole-law-traceability.v1",
+  "generated_at": "2026-07-25T14:00:00+01:00",
+  "records": [
+    {
+      "kind": "requirement",
+      "id": "RQ1",
+      "item": "Research requirement 1 — map the whole legal-information domain",
+      "report_location": "Sections 3–5",
+      "artifacts": "legal-source-taxonomy.json; source-register.json"
+    },
+    {
+      "kind": "requirement",
+      "id": "RQ2",
+      "item": "Research requirement 2 — authoritative source register and access tests",
+      "report_location": "Section 5",
+      "artifacts": "source-register.json; source-register.csv"
+    },
+    {
+      "kind": "requirement",
+      "id": "RQ3",
+      "item": "Research requirement 3 — personas and task families",
+      "report_location": "Section 6",
+      "artifacts": "persona-task-matrix.json; persona-task-matrix.csv"
+    },
+    {
+      "kind": "requirement",
+      "id": "RQ4",
+      "item": "Research requirement 4 — ontology selection and design",
+      "report_location": "Sections 7–9",
+      "artifacts": "ontology-crosswalk.json; whole-law-context.jsonld; whole-law-shapes.ttl"
+    },
+    {
+      "kind": "requirement",
+      "id": "RQ5",
+      "item": "Research requirement 5 — progressive discovery",
+      "report_location": "Section 10",
+      "artifacts": "file-change-map.json; architecture-adrs.json"
+    },
+    {
+      "kind": "requirement",
+      "id": "RQ6",
+      "item": "Research requirement 6 — trust, provenance and currency",
+      "report_location": "Sections 11–13",
+      "artifacts": "coverage schema; context/shapes; source register"
+    },
+    {
+      "kind": "requirement",
+      "id": "RQ7",
+      "item": "Research requirement 7 — evaluation programme",
+      "report_location": "Section 15",
+      "artifacts": "whole-law-evaluation-plan.json; whole-law-evaluation-questions.json"
+    },
+    {
+      "kind": "requirement",
+      "id": "RQ8",
+      "item": "Research requirement 8 — migration plan",
+      "report_location": "Section 16",
+      "artifacts": "migration-backlog.json"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D01",
+      "item": "Executive decision brief",
+      "report_location": "Section 1",
+      "artifacts": "report"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D02",
+      "item": "Baseline assessment",
+      "report_location": "Section 2",
+      "artifacts": "report"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D03",
+      "item": "Definition and boundary",
+      "report_location": "Section 3",
+      "artifacts": "report"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D04",
+      "item": "Legal source-class taxonomy",
+      "report_location": "Section 4",
+      "artifacts": "legal-source-taxonomy.json"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D05",
+      "item": "Authoritative source register",
+      "report_location": "Section 5",
+      "artifacts": "source-register.json"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D06",
+      "item": "Persona–task–source–evidence matrix",
+      "report_location": "Section 6",
+      "artifacts": "persona-task-matrix.json"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D07",
+      "item": "Ontology evaluation and selected stack",
+      "report_location": "Section 7",
+      "artifacts": "ontology-crosswalk.json"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D08",
+      "item": "Entity and relationship model",
+      "report_location": "Section 8",
+      "artifacts": "whole-law-context.jsonld"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D09",
+      "item": "JSON-LD examples and validation shapes",
+      "report_location": "Section 9",
+      "artifacts": "jsonld-examples.json; whole-law-shapes.ttl"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D10",
+      "item": "Progressive-discovery architecture",
+      "report_location": "Section 10",
+      "artifacts": "file-change-map.json"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D11",
+      "item": "Provenance, authority and currency model",
+      "report_location": "Section 11",
+      "artifacts": "report; shapes"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D12",
+      "item": "Coverage-ledger schema/dashboard",
+      "report_location": "Section 12",
+      "artifacts": "coverage-ledger.schema.json; example"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D13",
+      "item": "Ingestion, refresh and monitoring",
+      "report_location": "Section 13",
+      "artifacts": "report"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D14",
+      "item": "Explorer and agent interaction requirements",
+      "report_location": "Section 14",
+      "artifacts": "file-change-map.json"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D15",
+      "item": "Whole-law evaluation-suite design",
+      "report_location": "Section 15",
+      "artifacts": "whole-law-evaluation-plan.json; questions"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D16",
+      "item": "Phased migration roadmap",
+      "report_location": "Section 16",
+      "artifacts": "migration-backlog.json"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D17",
+      "item": "Risk, licensing, privacy, accessibility and sustainability",
+      "report_location": "Section 17",
+      "artifacts": "report; gap register"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D18",
+      "item": "ADR-style architectural choices",
+      "report_location": "Section 18",
+      "artifacts": "architecture-adrs.json"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D19",
+      "item": "Gap and unresolved-question register",
+      "report_location": "Section 19",
+      "artifacts": "gap-register.json"
+    },
+    {
+      "kind": "deliverable",
+      "id": "D20",
+      "item": "Independent adversarial audit",
+      "report_location": "Section 20",
+      "artifacts": "adversarial-audit.json"
+    },
+    {
+      "kind": "completion-gate",
+      "id": "CG01",
+      "item": "Every discovered legal source family has an owner, authority class and coverage status",
+      "report_location": "Sections 4–5; source-register.json; legal-source-taxonomy.json",
+      "artifacts": "36 source classes and 72 source records; each record has owner, authority, boundary, access and coverage state."
+    },
+    {
+      "kind": "completion-gate",
+      "id": "CG02",
+      "item": "Every persona has mapped task families and evidence requirements",
+      "report_location": "Section 6; persona-task-matrix.json",
+      "artifacts": "38 personas and 20 task families produce 300+ row-level mappings with authority, sources, evidence, currency, failure and success."
+    },
+    {
+      "kind": "completion-gate",
+      "id": "CG03",
+      "item": "Every task family maps to required sources and Explorer/agent capabilities",
+      "report_location": "Sections 6, 10, 14",
+      "artifacts": "Task definitions and matrix contain source classes/IDs; Sections 10 and 14 define required interaction capabilities."
+    },
+    {
+      "kind": "completion-gate",
+      "id": "CG04",
+      "item": "Ontology covers legislation, case law, procedure, regulation and provenance without flattening distinctions",
+      "report_location": "Sections 7–9; ontology-crosswalk.json; context/shapes",
+      "artifacts": "Composable stack, subclasses, assertion layers and crosswalk; generic-document flattening is explicitly prohibited."
+    },
+    {
+      "kind": "completion-gate",
+      "id": "CG05",
+      "item": "Public access methods tested or explicitly marked untested",
+      "report_location": "Section 5; source-register.json",
+      "artifacts": "Every method carries a permitted status and test date/method; restricted and failed routes remain visible."
+    },
+    {
+      "kind": "completion-gate",
+      "id": "CG06",
+      "item": "Completeness expressed through auditable coverage ledgers",
+      "report_location": "Section 12; coverage-ledger.schema.json; example",
+      "artifacts": "JSON Schema, example, dashboard and aggregation rules supplied."
+    },
+    {
+      "kind": "completion-gate",
+      "id": "CG07",
+      "item": "Migration plan has measurable acceptance criteria",
+      "report_location": "Section 16; migration-backlog.json",
+      "artifacts": "Ten phases each contain scope, value, architecture, ontology, ingestion, Explorer, docs, evaluation, dependencies, risks, complexity, acceptance and rollback."
+    },
+    {
+      "kind": "completion-gate",
+      "id": "CG08",
+      "item": "Evaluation covers all persona, task, source and jurisdiction strata",
+      "report_location": "Section 15; whole-law-evaluation-plan.json; questions",
+      "artifacts": "360 questions plus existing 100; all 20 task families occur in the matrix, while benchmark seeds cover the major source/jurisdiction strata. Long-tail sources are added as phases onboard."
+    },
+    {
+      "kind": "completion-gate",
+      "id": "CG09",
+      "item": "Gaps, inaccessible material and unresolved legal judgments remain explicit",
+      "report_location": "Sections 5, 19; gap-register.json",
+      "artifacts": "28 open gaps, source access states and conflicts are preserved; no absence inference."
+    },
+    {
+      "kind": "completion-gate",
+      "id": "CG10",
+      "item": "Adversarial review identifies dangerous incomplete or misleading answers",
+      "report_location": "Section 20; adversarial-audit.json",
+      "artifacts": "20 attacks plus residual failure modes and release gates."
+    }
+  ]
+}

@@ -1,1 +1,61 @@
-{"edge_counts":[{"count":469962,"kind":"classified as"},{"count":365786,"kind":"has document type"},{"count":18135,"kind":"mentions entity"}],"node_counts":{"category":4,"manifestation":1691403,"work":365786},"relationship_adjacency":"data/adjacency/manifest.json","relationship_index":"data/relationships-0.json.gz","top_publishers":[{"dataset_count":159773,"name":"eu-origin","resource_count":0,"title":"Eu Origin"},{"dataset_count":155712,"name":"secondary","resource_count":0,"title":"Secondary"},{"dataset_count":43170,"name":"primary","resource_count":0,"title":"Primary"},{"dataset_count":7131,"name":"draft","resource_count":0,"title":"Draft"}]}
+{
+  "edge_counts": [
+    {
+      "count": 469777,
+      "kind": "classified as"
+    },
+    {
+      "count": 365786,
+      "kind": "has document type"
+    }
+  ],
+  "external_edge_counts": [
+    {
+      "authority": "official-source",
+      "count": 14712,
+      "coverage_status": "partial",
+      "datapack": "data/effects/manifest.json",
+      "kind": "official legislation effect"
+    },
+    {
+      "authority": "model-assisted",
+      "count": 22299,
+      "datapack": "data/enrichment/manifest.json",
+      "kind": "classified as"
+    }
+  ],
+  "node_counts": {
+    "category": 4,
+    "manifestation": 1691403,
+    "work": 365786
+  },
+  "relationship_adjacency": "data/adjacency/manifest.json",
+  "relationship_index": "data/relationships-0.json.gz",
+  "relationship_summary": "data/relationship-summary.json",
+  "top_publishers": [
+    {
+      "dataset_count": 159773,
+      "name": "eu-origin",
+      "resource_count": 0,
+      "title": "Eu Origin"
+    },
+    {
+      "dataset_count": 155712,
+      "name": "secondary",
+      "resource_count": 0,
+      "title": "Secondary"
+    },
+    {
+      "dataset_count": 43170,
+      "name": "primary",
+      "resource_count": 0,
+      "title": "Primary"
+    },
+    {
+      "dataset_count": 7131,
+      "name": "draft",
+      "resource_count": 0,
+      "title": "Draft"
+    }
+  ]
+}

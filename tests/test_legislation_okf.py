@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import gzip
+import hashlib
 import json
 import sys
 import tempfile
@@ -47,6 +49,10 @@ class LegislationOkfTests(unittest.TestCase):
         self.assertIn(Path("okf-bundle.yamlld"), files)
         self.assertIn(Path("okf-bundle.jsonld"), files)
         self.assertIn(Path("data/adjacency/manifest.json"), files)
+        self.assertIn(Path("data/presentation.json"), files)
+        self.assertIn(Path("data/records/manifest.json"), files)
+        self.assertIn(Path("data/search/shards.json"), files)
+        self.assertIn(Path("data/relationship-composition.json"), files)
         self.assertIn(Path("enrichment/model-assisted-v1.json"), files)
         self.assertIn(Path("ontology/normalized-vocabulary.md"), files)
         self.assertIn(Path("access/search-lists-feeds.md"), files)
@@ -70,6 +76,134 @@ class LegislationOkfTests(unittest.TestCase):
             output = Path(temp)
             legislation.large_corpus.write_files(output, files)
             self.assertEqual([], legislation.large_corpus.check_files(output, files))
+
+    def test_v2_search_is_bounded_complete_and_deterministic(self) -> None:
+        rows, _ = legislation.load_fixture(self.fixture)
+        missing = dict(rows[0])
+        missing["jurisdiction"] = []
+        records = [missing, rows[1]]
+        first = legislation.build_legislation_search(records, "fixture-snapshot")
+        second = legislation.build_legislation_search(records, "fixture-snapshot")
+        first_files = legislation.search_publication_files(
+            first,
+            "fixture-snapshot",
+        )
+        second_files = legislation.search_publication_files(
+            second,
+            "fixture-snapshot",
+        )
+        self.assertEqual(first_files, second_files)
+        manifest = first["manifest"]
+        self.assertEqual("okf-static-search.v2", manifest["schema"])
+        self.assertEqual(
+            set(legislation.SEARCH_FILTER_FIELDS),
+            set(manifest["entrypoints"]["filter_postings"]),
+        )
+        self.assertEqual(
+            "data/search/sort-values.json.gz",
+            manifest["entrypoints"]["sort_values"],
+        )
+        jurisdiction_path = Path(
+            manifest["entrypoints"]["filter_postings"]["jurisdiction"]
+        )
+        jurisdiction = json.loads(gzip.decompress(first_files[jurisdiction_path]))
+        self.assertEqual([0], jurisdiction["values"][legislation.MISSING_FILTER_VALUE])
+        shard_document = json.loads(first_files[Path("data/search/shards.json")])
+        for group in shard_document["shards"].values():
+            for row in group:
+                body = first_files[Path(row["path"])]
+                self.assertEqual(
+                    row["sha256"],
+                    hashlib.sha256(body).hexdigest(),
+                )
+                if row["compression"] == "gzip":
+                    json.loads(gzip.decompress(body))
+
+    def test_record_locator_resolves_routes_and_binds_work_chunks(self) -> None:
+        rows, meta = legislation.load_fixture(self.fixture)
+        corpus = legislation.build_corpus(rows, meta, "2026-07-10T00:00:00Z")
+        files = legislation.output_files(corpus, meta)
+        locator = json.loads(files[Path("data/records/manifest.json")])
+        self.assertEqual("fnv1a32-prefix-2", locator["algorithm"])
+        self.assertEqual(len(rows), locator["records"])
+        self.assertEqual(len(corpus["record_chunks"]), len(locator["record_chunks"]))
+        for row in locator["record_chunks"]:
+            body = files[Path(row["path"])]
+            self.assertEqual(row["sha256"], hashlib.sha256(body).hexdigest())
+            self.assertEqual(row["compressed_bytes"], len(body))
+        for ordinal, record in enumerate(rows):
+            route = record["route"]
+            bucket = legislation.large_corpus.relationship_bucket(route)
+            bucket_row = locator["buckets"][bucket]
+            bucket_body = files[Path(bucket_row["path"])]
+            self.assertEqual(
+                bucket_row["sha256"],
+                hashlib.sha256(bucket_body).hexdigest(),
+            )
+            routes = json.loads(gzip.decompress(bucket_body))
+            chunk, offset = routes[route]
+            self.assertEqual(ordinal, chunk * locator["chunk_size"] + offset)
+
+    def test_discovery_route_collision_uses_a_declared_stable_alias(self) -> None:
+        rows, _ = legislation.load_fixture(self.fixture)
+        first = dict(rows[0])
+        second = dict(rows[0])
+        second["id"] = f"{first['id']}?case-distinct-source-id"
+        second["legislation_id_uri"] = second["id"]
+        original = [first, second]
+        discovery, aliases, collisions = (
+            legislation.disambiguate_discovery_routes(original)
+        )
+        self.assertEqual(first["route"], discovery[0]["route"])
+        self.assertNotEqual(first["route"], discovery[1]["route"])
+        self.assertEqual(
+            first["route"],
+            aliases[discovery[1]["route"]],
+        )
+        self.assertEqual([0, 1], collisions[0]["ordinals"])
+        again, again_aliases, again_collisions = (
+            legislation.disambiguate_discovery_routes(original)
+        )
+        self.assertEqual(discovery, again)
+        self.assertEqual(aliases, again_aliases)
+        self.assertEqual(collisions, again_collisions)
+        chunks = [(Path("data/works-0.json.gz"), original)]
+        locator = legislation.build_record_locator(
+            discovery,
+            chunks,
+            "fixture-snapshot",
+        )
+        locator["manifest"]["route_aliases"] = aliases
+        files = legislation.record_locator_publication_files(locator)
+        alias = discovery[1]["route"]
+        bucket = legislation.large_corpus.relationship_bucket(alias)
+        payload = json.loads(
+            gzip.decompress(
+                files[Path(locator["manifest"]["buckets"][bucket]["path"])]
+            )
+        )
+        self.assertEqual([0, 1], payload[alias])
+
+    def test_relationship_composition_reconciles_every_dimension(self) -> None:
+        rows, meta = legislation.load_fixture(self.fixture)
+        corpus = legislation.build_corpus(rows, meta, "2026-07-10T00:00:00Z")
+        composition = corpus["relationship_composition"]
+        self.assertGreater(composition["total"], 0)
+        for dimension in (
+            "by_datapack",
+            "by_predicate",
+            "by_authority",
+            "by_confidence",
+            "by_freshness",
+        ):
+            self.assertEqual(
+                composition["total"],
+                sum(composition[dimension].values()),
+            )
+        self.assertEqual(
+            composition["total"],
+            sum(row["count"] for row in composition["breakdown"]),
+        )
 
     def test_v02_actor_and_date_validation(self) -> None:
         self.assertTrue(checker.valid_actor("human:reviewer"))
