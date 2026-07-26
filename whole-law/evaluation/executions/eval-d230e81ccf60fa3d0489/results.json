@@ -1,0 +1,1879 @@
+{
+  "analysis": {
+    "assurance_boundary": [
+      "No legal answer was generated or scored by this run.",
+      "No generic or non-gold question was promoted to independently verified gold.",
+      "No live source request was made; direct-source results come from immutable frozen envelopes.",
+      "Structural assurance scores must not be presented as legal-answer scores."
+    ],
+    "evidence_integrity": {
+      "bytes_verified": 3935608,
+      "evidence_root": "evidence/source-acquisitions/whole-law-access/20260725T203207Z-dd7315c3",
+      "failures": [],
+      "integrity_manifest_sha256": "e52b26e7d7f24da7e909427f0ab82f9f7a154e8b99cd362aab2d84254bb6975a",
+      "receipts_declared": 215,
+      "receipts_verified": 215,
+      "status": "passed"
+    },
+    "legislation_100": {
+      "answers_executed": 0,
+      "checks": {
+        "citation_contract": {
+          "failed_question_ids": [],
+          "passed": 100,
+          "score": 100.0,
+          "total": 100
+        },
+        "corpus_binding": {
+          "failed_question_ids": [],
+          "passed": 100,
+          "score": 100.0,
+          "total": 100
+        },
+        "evidence_contract": {
+          "failed_question_ids": [],
+          "passed": 100,
+          "score": 100.0,
+          "total": 100
+        },
+        "structural": {
+          "failed_question_ids": [],
+          "passed": 100,
+          "score": 100.0,
+          "total": 100
+        }
+      },
+      "gold_status": "non-gold-baseline",
+      "hard_failures": [],
+      "interpretation": "The score covers question structure, citation contracts, work discoverability and evidence requirements. It is not a score for legal correctness or answer quality.",
+      "legal_answer_score": null,
+      "questions": 100,
+      "status": "passed-structural-only",
+      "structural_assurance_score": 100.0,
+      "suite_schema": "okf-legislation-answer-evaluation.v1",
+      "unique_expected_citation_urls": 25,
+      "unique_expected_works": 25,
+      "unique_question_ids": 100
+    },
+    "release_decision": "blocked-pending-qualified-domain-review-and-executed-answer-evaluation",
+    "release_gates": [
+      {
+        "evidence": "100 legislation and 415 Whole-Law questions checked; 0 structural hard failures.",
+        "id": "phase8-structural-and-corpus-binding",
+        "status": "met"
+      },
+      {
+        "evidence": "38 personas, 20 tasks, 36 source classes and all five declared access states represented.",
+        "id": "phase8-persona-task-source-access-coverage",
+        "status": "met"
+      },
+      {
+        "blocked_by": "Independent source-evidence verification and qualified domain review.",
+        "evidence": "0 questions independently verified as gold; the retained and release suites are explicitly non-gold baselines.",
+        "id": "phase8-independent-gold-evidence",
+        "status": "blocked"
+      },
+      {
+        "blocked_by": "A bound answer corpus conforming to the answer schemas, with immutable citations and separate review.",
+        "evidence": "0 legal answers supplied or executed; no answer score is reported.",
+        "id": "phase8-executed-answer-schema-and-citations",
+        "status": "blocked"
+      },
+      {
+        "blocked_by": "Qualified scoring of executed answers for every critical persona/task family.",
+        "evidence": "No 85/100 claim is made because legal-answer correctness was not evaluated.",
+        "id": "phase8-critical-persona-task-minimum-85",
+        "status": "blocked"
+      },
+      {
+        "blocked_by": "Two independently reviewed successive challenge passes.",
+        "evidence": "No held-out legal-answer challenge pass has been executed.",
+        "id": "phase8-two-successive-held-out-challenge-passes",
+        "status": "blocked"
+      },
+      {
+        "evidence": "72/72 source records have frozen route envelopes; 215/215 integrity receipts verified.",
+        "id": "phase8-frozen-direct-source-baseline",
+        "status": "met"
+      }
+    ],
+    "whole_law_415": {
+      "access_state_cases": {
+        "blocked_or_non_available": [
+          {
+            "access_state": "unavailable",
+            "question_id": "WLR-SC-SC35",
+            "required_source_ids": [
+              "SRC015",
+              "SRC017",
+              "SRC070"
+            ]
+          },
+          {
+            "access_state": "unavailable",
+            "question_id": "WLR-SC-SC36",
+            "required_source_ids": [
+              "SRC015",
+              "SRC068",
+              "SRC069"
+            ]
+          },
+          {
+            "access_state": "partial",
+            "question_id": "WLR-ACCESS-PARTIAL",
+            "required_source_ids": [
+              "SRC005"
+            ]
+          },
+          {
+            "access_state": "restricted",
+            "question_id": "WLR-ACCESS-RESTRICTED",
+            "required_source_ids": [
+              "SRC007"
+            ]
+          },
+          {
+            "access_state": "unavailable",
+            "question_id": "WLR-ACCESS-UNAVAILABLE",
+            "required_source_ids": [
+              "SRC015"
+            ]
+          },
+          {
+            "access_state": "planned",
+            "question_id": "WLR-ACCESS-PLANNED",
+            "required_source_ids": [
+              "SRC001"
+            ]
+          }
+        ],
+        "declared_counts": {
+          "available": 409,
+          "partial": 1,
+          "planned": 1,
+          "restricted": 1,
+          "unavailable": 3
+        },
+        "restricted_question_ids": [
+          "WLR-ACCESS-RESTRICTED"
+        ]
+      },
+      "answers_executed": 0,
+      "checks": {
+        "citation_contract": {
+          "failed_question_ids": [],
+          "passed": 415,
+          "score": 100.0,
+          "total": 415
+        },
+        "corpus_binding": {
+          "failed_question_ids": [],
+          "passed": 415,
+          "score": 100.0,
+          "total": 415
+        },
+        "executable": {
+          "failed_question_ids": [],
+          "passed": 415,
+          "score": 100.0,
+          "total": 415
+        },
+        "frozen_evidence": {
+          "failed_question_ids": [],
+          "passed": 415,
+          "score": 100.0,
+          "total": 415
+        },
+        "source_discovery": {
+          "failed_question_ids": [],
+          "passed": 415,
+          "score": 100.0,
+          "total": 415
+        },
+        "structural": {
+          "failed_question_ids": [],
+          "passed": 415,
+          "score": 100.0,
+          "total": 415
+        }
+      },
+      "coverage_checks": {
+        "access_states": {
+          "expected": 5,
+          "missing": [],
+          "passed": true,
+          "represented": 5
+        },
+        "personas": {
+          "expected": 38,
+          "missing": [],
+          "passed": true,
+          "represented": 38
+        },
+        "source_classes": {
+          "expected": 36,
+          "missing": [],
+          "passed": true,
+          "represented": 36
+        },
+        "tasks": {
+          "expected": 20,
+          "missing": [],
+          "passed": true,
+          "represented": 20
+        }
+      },
+      "declared_gold_status": "non-gold-baseline",
+      "declared_release_gate_status": "blocked-pending-independent-evidence-verification",
+      "direct_source_frozen_baseline": {
+        "access_methods": 108,
+        "interpretation": "Reachability is the recorded point-in-time observation for the frozen route envelope. It is not a current live check, proof of corpus completeness, or legal-answer evidence.",
+        "network_error_source_ids": [
+          "SRC043"
+        ],
+        "observed_method_states": {
+          "network-error": 1,
+          "reachable": 83,
+          "restricted": 5,
+          "unavailable": 19
+        },
+        "questions_total": 415,
+        "questions_with_all_required_sources_observed_reachable": 397,
+        "questions_with_any_required_source_observed_reachable": 414,
+        "questions_without_all_required_sources_reachable": [
+          {
+            "question_id": "WLR-PT-P17-T01",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T02",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T04",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T07",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T09",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T10",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T11",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T13",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T18",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T19",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC13",
+            "required_source_ids": [
+              "SRC010",
+              "SRC068",
+              "SRC069"
+            ],
+            "source_observations": {
+              "SRC010": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC068": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "restricted"
+                ]
+              },
+              "SRC069": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC15",
+            "required_source_ids": [
+              "SRC018",
+              "SRC019",
+              "SRC020",
+              "SRC021"
+            ],
+            "source_observations": {
+              "SRC018": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              },
+              "SRC019": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC020": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC021": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC16",
+            "required_source_ids": [
+              "SRC018",
+              "SRC019",
+              "SRC020",
+              "SRC021"
+            ],
+            "source_observations": {
+              "SRC018": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              },
+              "SRC019": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC020": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC021": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC18",
+            "required_source_ids": [
+              "SRC027"
+            ],
+            "source_observations": {
+              "SRC027": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC19",
+            "required_source_ids": [
+              "SRC028",
+              "SRC029",
+              "SRC030"
+            ],
+            "source_observations": {
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              },
+              "SRC029": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              },
+              "SRC030": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC27",
+            "required_source_ids": [
+              "SRC053",
+              "SRC054"
+            ],
+            "source_observations": {
+              "SRC053": {
+                "envelopes": 2,
+                "has_reachable_method": false,
+                "methods": 2,
+                "observed_states": [
+                  "unavailable"
+                ]
+              },
+              "SRC054": {
+                "envelopes": 3,
+                "has_reachable_method": true,
+                "methods": 3,
+                "observed_states": [
+                  "reachable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC34",
+            "required_source_ids": [
+              "SRC065",
+              "SRC066"
+            ],
+            "source_observations": {
+              "SRC065": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC066": {
+                "envelopes": 2,
+                "has_reachable_method": false,
+                "methods": 2,
+                "observed_states": [
+                  "restricted"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC36",
+            "required_source_ids": [
+              "SRC015",
+              "SRC068",
+              "SRC069"
+            ],
+            "source_observations": {
+              "SRC015": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC068": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "restricted"
+                ]
+              },
+              "SRC069": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              }
+            }
+          }
+        ],
+        "questions_without_any_required_source_reachable": [
+          {
+            "question_id": "WLR-SC-SC18",
+            "required_source_ids": [
+              "SRC027"
+            ],
+            "source_observations": {
+              "SRC027": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          }
+        ],
+        "restricted_source_ids": [
+          "SRC007",
+          "SRC058",
+          "SRC066",
+          "SRC068"
+        ],
+        "source_records": 72,
+        "source_records_with_envelopes": 72,
+        "unavailable_source_ids": [
+          "SRC018",
+          "SRC021",
+          "SRC027",
+          "SRC028",
+          "SRC029",
+          "SRC030",
+          "SRC031",
+          "SRC033",
+          "SRC039",
+          "SRC040",
+          "SRC042",
+          "SRC053",
+          "SRC055",
+          "SRC057",
+          "SRC064",
+          "SRC069"
+        ]
+      },
+      "hard_failures": [],
+      "independently_verified_gold_questions": 0,
+      "interpretation": "The score covers executability, coverage, access-state disclosure, corpus binding, source discovery and frozen evidence. It does not measure the legal correctness of answers.",
+      "legal_answer_score": null,
+      "questions": 415,
+      "status": "passed-structural-only",
+      "structural_assurance_score": 100.0,
+      "suite_schema": "okf-evaluation.v2",
+      "unique_question_ids": 415
+    },
+    "workflow_vs_direct_source_baseline": {
+      "conclusion": "The OKF workflow provides deterministic work/source discovery and retains frozen acquisition evidence. The direct-source baseline shows point-in-time route availability, including explicit access failures and restrictions. Neither path has yet executed or independently verified legal answers.",
+      "direct_source_frozen_envelope_baseline": {
+        "access_methods": 108,
+        "interpretation": "Reachability is the recorded point-in-time observation for the frozen route envelope. It is not a current live check, proof of corpus completeness, or legal-answer evidence.",
+        "network_error_source_ids": [
+          "SRC043"
+        ],
+        "observed_method_states": {
+          "network-error": 1,
+          "reachable": 83,
+          "restricted": 5,
+          "unavailable": 19
+        },
+        "questions_total": 415,
+        "questions_with_all_required_sources_observed_reachable": 397,
+        "questions_with_any_required_source_observed_reachable": 414,
+        "questions_without_all_required_sources_reachable": [
+          {
+            "question_id": "WLR-PT-P17-T01",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T02",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T04",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T07",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T09",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T10",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T11",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T13",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T18",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-PT-P17-T19",
+            "required_source_ids": [
+              "SRC001",
+              "SRC002",
+              "SRC007",
+              "SRC028"
+            ],
+            "source_observations": {
+              "SRC001": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC002": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC007": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "restricted"
+                ]
+              },
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC13",
+            "required_source_ids": [
+              "SRC010",
+              "SRC068",
+              "SRC069"
+            ],
+            "source_observations": {
+              "SRC010": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC068": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "restricted"
+                ]
+              },
+              "SRC069": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC15",
+            "required_source_ids": [
+              "SRC018",
+              "SRC019",
+              "SRC020",
+              "SRC021"
+            ],
+            "source_observations": {
+              "SRC018": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              },
+              "SRC019": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC020": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC021": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC16",
+            "required_source_ids": [
+              "SRC018",
+              "SRC019",
+              "SRC020",
+              "SRC021"
+            ],
+            "source_observations": {
+              "SRC018": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              },
+              "SRC019": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC020": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC021": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC18",
+            "required_source_ids": [
+              "SRC027"
+            ],
+            "source_observations": {
+              "SRC027": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC19",
+            "required_source_ids": [
+              "SRC028",
+              "SRC029",
+              "SRC030"
+            ],
+            "source_observations": {
+              "SRC028": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              },
+              "SRC029": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              },
+              "SRC030": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC27",
+            "required_source_ids": [
+              "SRC053",
+              "SRC054"
+            ],
+            "source_observations": {
+              "SRC053": {
+                "envelopes": 2,
+                "has_reachable_method": false,
+                "methods": 2,
+                "observed_states": [
+                  "unavailable"
+                ]
+              },
+              "SRC054": {
+                "envelopes": 3,
+                "has_reachable_method": true,
+                "methods": 3,
+                "observed_states": [
+                  "reachable"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC34",
+            "required_source_ids": [
+              "SRC065",
+              "SRC066"
+            ],
+            "source_observations": {
+              "SRC065": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC066": {
+                "envelopes": 2,
+                "has_reachable_method": false,
+                "methods": 2,
+                "observed_states": [
+                  "restricted"
+                ]
+              }
+            }
+          },
+          {
+            "question_id": "WLR-SC-SC36",
+            "required_source_ids": [
+              "SRC015",
+              "SRC068",
+              "SRC069"
+            ],
+            "source_observations": {
+              "SRC015": {
+                "envelopes": 1,
+                "has_reachable_method": true,
+                "methods": 1,
+                "observed_states": [
+                  "reachable"
+                ]
+              },
+              "SRC068": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "restricted"
+                ]
+              },
+              "SRC069": {
+                "envelopes": 2,
+                "has_reachable_method": true,
+                "methods": 2,
+                "observed_states": [
+                  "reachable",
+                  "unavailable"
+                ]
+              }
+            }
+          }
+        ],
+        "questions_without_any_required_source_reachable": [
+          {
+            "question_id": "WLR-SC-SC18",
+            "required_source_ids": [
+              "SRC027"
+            ],
+            "source_observations": {
+              "SRC027": {
+                "envelopes": 1,
+                "has_reachable_method": false,
+                "methods": 1,
+                "observed_states": [
+                  "unavailable"
+                ]
+              }
+            }
+          }
+        ],
+        "restricted_source_ids": [
+          "SRC007",
+          "SRC058",
+          "SRC066",
+          "SRC068"
+        ],
+        "source_records": 72,
+        "source_records_with_envelopes": 72,
+        "unavailable_source_ids": [
+          "SRC018",
+          "SRC021",
+          "SRC027",
+          "SRC028",
+          "SRC029",
+          "SRC030",
+          "SRC031",
+          "SRC033",
+          "SRC039",
+          "SRC040",
+          "SRC042",
+          "SRC053",
+          "SRC055",
+          "SRC057",
+          "SRC064",
+          "SRC069"
+        ]
+      },
+      "okf_workflow": {
+        "legislation_questions_total": 100,
+        "legislation_questions_with_discoverable_work": 100,
+        "whole_law_questions_total": 415,
+        "whole_law_questions_with_catalogued_sources": 415,
+        "whole_law_questions_with_frozen_source_evidence": 415
+      }
+    }
+  },
+  "corpus_binding_sha256": "ba98e7c72ccbc67697890227c1e738eb8a9f9005ea76ace4f319603bd5c9495a",
+  "executed_at": "2026-07-25T22:50:12Z",
+  "input_fingerprint_sha256": "d230e81ccf60fa3d04891cb811b7c92b688feac6734c819543eec79ad715fa01",
+  "inputs": [
+    {
+      "bytes": 16421,
+      "path": "bundle/data/manifest.json",
+      "sha256": "c6095f3300e80a525e1fa242cce69efd8eab6cef560e36fb8dc86d028ed72e8c"
+    },
+    {
+      "bytes": 1874431,
+      "path": "bundle/data/search/doc-map.json.gz",
+      "sha256": "e01aa9574f357ad845d8a411e4f35ecb695b6a2148d838822752f3b33aa5d4db"
+    },
+    {
+      "bytes": 122728,
+      "path": "bundle/data/search/manifest.json",
+      "sha256": "f850ae9dfadc2341e4e7ad2bea69dd99eca7a193b38c66ffd6c80643e42e25af"
+    },
+    {
+      "bytes": 5938,
+      "path": "bundle/okf-explorer.json",
+      "sha256": "174057687744c1fcc5cc19b648fd0ac0b9fcce08908fd7bc816cd82d99947791"
+    },
+    {
+      "bytes": 107682,
+      "path": "bundle/whole-law/okf-explorer.json",
+      "sha256": "a73e30e85bf5d9d8da3de11f2ad0e325ce18c3c3676cd580c63e866a94947ce8"
+    },
+    {
+      "bytes": 2072,
+      "path": "evaluation/legislation/answer-schema.json",
+      "sha256": "ea8be0282e0454553ed37541012cbca2976f21929619a2e4de398673d4526ad8"
+    },
+    {
+      "bytes": 93669,
+      "path": "evaluation/legislation/questions.json",
+      "sha256": "da1e5d1266861299f93fbf14da7bc0e2d9ae5a36318d1849369959fb2a7fd317"
+    },
+    {
+      "bytes": 35556,
+      "path": "evidence/source-acquisitions/whole-law-access/20260725T203207Z-dd7315c3/integrity.json",
+      "sha256": "e52b26e7d7f24da7e909427f0ab82f9f7a154e8b99cd362aab2d84254bb6975a"
+    },
+    {
+      "bytes": 18713,
+      "path": "research/whole-law-okf-research/legal-source-taxonomy.json",
+      "sha256": "ceb9b78308b54f925af902bb71dc1ee493801d7f1b5c7a74d32da8d0b9ee5320"
+    },
+    {
+      "bytes": 516426,
+      "path": "research/whole-law-okf-research/persona-task-matrix.json",
+      "sha256": "966e5e89ad7dd99ba232364cae4ad50976b9ce1871bb3707d9af3c15992a92e0"
+    },
+    {
+      "bytes": 219607,
+      "path": "research/whole-law-okf-research/source-register.json",
+      "sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810"
+    },
+    {
+      "bytes": 48055,
+      "path": "scripts/run_release_evaluation.py",
+      "sha256": "9a195d7fd6f2426e9a882dcc83f629e113b4f865ef46de122dc1ec175e94de76"
+    },
+    {
+      "bytes": 161421,
+      "path": "whole-law/acquisition/current/access-methods.json",
+      "sha256": "30aaef86282be1ca5058689dcbde571f601114996b4d800d3d926c07a493db40"
+    },
+    {
+      "bytes": 1744,
+      "path": "whole-law/acquisition/current/evidence-reference.json",
+      "sha256": "a8b4f47e4a268b12a1bb1d0f270b293e4f196aec6906a47e31c46a7ef2c17320"
+    },
+    {
+      "bytes": 1525,
+      "path": "whole-law/evaluation/answer-schema.json",
+      "sha256": "115b72006f43c8197e1757f9e0cb4d1af1f16d364dd0fbca4dd54673b0209edf"
+    },
+    {
+      "bytes": 2714,
+      "path": "whole-law/evaluation/coverage.json",
+      "sha256": "7cd550e080cbb9e9749c3766cad644d973fbab3b4ecaace5b47c809ed1fc4dbc"
+    },
+    {
+      "bytes": 1282077,
+      "path": "whole-law/evaluation/release-questions.json",
+      "sha256": "7f43208be7497713e7fa2de7bf0cece559b2cb6fe982d37b7823fa5d1820ec03"
+    }
+  ],
+  "run_id": "eval-d230e81ccf60fa3d0489",
+  "runner": {
+    "name": "run_release_evaluation.py",
+    "version": "1.0.0"
+  },
+  "schema": "okf-release-evaluation-execution.v1",
+  "timings": {
+    "clock": "time.perf_counter_ns",
+    "identity_note": "Timing is evidence only and is excluded from the deterministic run identity.",
+    "phases": {
+      "legislation_suite_ms": 92.563,
+      "verify_frozen_evidence_ms": 10.736,
+      "whole_law_suite_ms": 20.156
+    },
+    "total_ms": 134.005
+  }
+}

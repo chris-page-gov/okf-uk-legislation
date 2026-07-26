@@ -1,0 +1,175 @@
+{
+  "comparison": {
+    "assertion_files_byte_identical": true,
+    "explanation": "Those two audited fields intentionally retain the original hash-bound input snapshot. This receipt binds and validates the current core separately; no audited v2 file is rewritten.",
+    "normalized_lineage_only_exceptions": [
+      "bundle/data/enrichment/manifest.json acquisition.input_semantic_sha256",
+      "bundle/data/enrichment/attempt-ledger.json attempts[*].input_sha256"
+    ],
+    "run_manifest_byte_identical": true
+  },
+  "current_core": {
+    "ordered_work_chunk_root_sha256": "0faf9585e6dc0333107dbe30101c3b710ecc26251e406cb589a5df030bd892fa",
+    "relationships": 835563,
+    "v1_entity_assertions": 0,
+    "v1_topic_assertions": 0,
+    "work_chunks": 366,
+    "works": 365786
+  },
+  "decision": {
+    "audited_v2_changed": false,
+    "errors": [],
+    "new_v2_candidate_created": false,
+    "preexisting_audit_mismatches": [
+      {
+        "actual_sha256": "ed3d366623215ad964404b4643c6cdaff6928544e187916f4fb80fc8ce0e4d3e",
+        "expected_sha256": "a6ee550a2fc4a186e2ace6b4a928688287dc345d06b8be08c58ae38ebfacbec6",
+        "passed": false,
+        "path": "scripts/build_codex_semantic_enrichment.py"
+      }
+    ],
+    "preservation_passed": true,
+    "release_assurance_passed": false,
+    "required_follow_up": [
+      "Run a new, separately named independent v2 audit that binds the committed producer script, or explicitly defer the release gate."
+    ],
+    "verdict": "preserved-with-preexisting-audit-gap"
+  },
+  "generated_at": "2026-07-25T23:45:00Z",
+  "historical_suppression_bridge": {
+    "added_to_v2": 0,
+    "count": 6,
+    "overlaps": [
+      {
+        "evidence": "Building Societies",
+        "route": "dataset/ukdsi-2010-9780111492437",
+        "rule_id": "R022",
+        "source": "https://www.legislation.gov.uk/id/ukdsi/2010/9780111492437",
+        "topic": "Companies, insolvency and financial services"
+      },
+      {
+        "evidence": "Financial Services",
+        "route": "dataset/uksi-2001-2634",
+        "rule_id": "R021",
+        "source": "https://www.legislation.gov.uk/id/uksi/2001/2634",
+        "topic": "Companies, insolvency and financial services"
+      },
+      {
+        "evidence": "Building Societies",
+        "route": "dataset/uksi-2009-805",
+        "rule_id": "R022",
+        "source": "https://www.legislation.gov.uk/id/uksi/2009/805",
+        "topic": "Companies, insolvency and financial services"
+      },
+      {
+        "evidence": "Building Societies",
+        "route": "dataset/uksi-2010-1189",
+        "rule_id": "R022",
+        "source": "https://www.legislation.gov.uk/id/uksi/2010/1189",
+        "topic": "Companies, insolvency and financial services"
+      },
+      {
+        "evidence": "Building Societies",
+        "route": "dataset/uksi-2018-1244",
+        "rule_id": "R022",
+        "source": "https://www.legislation.gov.uk/id/uksi/2018/1244",
+        "topic": "Companies, insolvency and financial services"
+      },
+      {
+        "evidence": "Financial Services",
+        "route": "dataset/uksi-2019-755",
+        "rule_id": "R021",
+        "source": "https://www.legislation.gov.uk/id/uksi/2019/755",
+        "topic": "Companies, insolvency and financial services"
+      }
+    ],
+    "published_as_v1": 0,
+    "purpose": "Use rejected v1 topics only as non-published suppression inputs so removal cannot create a different v2 candidate."
+  },
+  "purpose": "Preserve and revalidate the independently accepted v2 candidate after fail-closed removal of rejected v1 core assertions.",
+  "schema": "okf-enrichment-preservation-receipt.v1",
+  "v1_rejection": {
+    "audit": "enrichment/model-assisted-v1-independent-audit.json",
+    "audit_sha256": "690f70e311d2c2d6942657bf73dd35a4dfe27e34e2feb1b35afdc0f0c66f90eb",
+    "published_v1_assertions": 0,
+    "verdict": "rejected-fail-closed"
+  },
+  "v2_candidate": {
+    "artifact_hash_checks": [
+      {
+        "actual_sha256": "f936398e3ed9bc59ebca69391a41809b5af8fe4e9f49c16dfee38d984ebb2d8a",
+        "expected_sha256": "f936398e3ed9bc59ebca69391a41809b5af8fe4e9f49c16dfee38d984ebb2d8a",
+        "passed": true,
+        "path": "enrichment/codex-assisted-v2-rules.json"
+      },
+      {
+        "actual_sha256": "f31f3204926927ea49eb839e629987b4a3f5e98e72f85e9a7f0981d794028fb3",
+        "expected_sha256": "f31f3204926927ea49eb839e629987b4a3f5e98e72f85e9a7f0981d794028fb3",
+        "passed": true,
+        "path": "enrichment/codex-assisted-v2-calibration.json"
+      },
+      {
+        "actual_sha256": "ed3d366623215ad964404b4643c6cdaff6928544e187916f4fb80fc8ce0e4d3e",
+        "expected_sha256": "a6ee550a2fc4a186e2ace6b4a928688287dc345d06b8be08c58ae38ebfacbec6",
+        "passed": false,
+        "path": "scripts/build_codex_semantic_enrichment.py"
+      },
+      {
+        "actual_sha256": "14007262b620b95c080228dd1b6d250b0d76f66f876efe131c40dbbf1850dbe4",
+        "expected_sha256": "14007262b620b95c080228dd1b6d250b0d76f66f876efe131c40dbbf1850dbe4",
+        "passed": true,
+        "path": "bundle/enrichment/codex-assisted-v2.json"
+      },
+      {
+        "actual_sha256": "a62ca1a23d06d4d11b688a5e947e1a533e6029e060ff41679194cbbc85730f84",
+        "expected_sha256": "a62ca1a23d06d4d11b688a5e947e1a533e6029e060ff41679194cbbc85730f84",
+        "passed": true,
+        "path": "bundle/data/enrichment/manifest.json"
+      },
+      {
+        "actual_sha256": "67ac8dd487ea7a5b1e61c288f3f1cc9a682efeac7441fb44f9b503f513094da1",
+        "expected_sha256": "67ac8dd487ea7a5b1e61c288f3f1cc9a682efeac7441fb44f9b503f513094da1",
+        "passed": true,
+        "path": "bundle/data/enrichment/coverage.json"
+      },
+      {
+        "actual_sha256": "124128ce7cbdff1eeb055e9d4cbb534f298426e615f378b280e7b8ce60c8bfc1",
+        "expected_sha256": "124128ce7cbdff1eeb055e9d4cbb534f298426e615f378b280e7b8ce60c8bfc1",
+        "passed": true,
+        "path": "bundle/data/enrichment/attempt-ledger.json"
+      },
+      {
+        "actual_sha256": "d4b65d6449ab4ae50eec7893dcfbf92b6cb94583441e003ff4859bed3ab9f539",
+        "expected_sha256": "d4b65d6449ab4ae50eec7893dcfbf92b6cb94583441e003ff4859bed3ab9f539",
+        "passed": true,
+        "path": "bundle/data/enrichment/calibration.json"
+      },
+      {
+        "actual_sha256": "4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006",
+        "expected_sha256": "4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006",
+        "passed": true,
+        "path": "whole-law/schemas/relationship-assertion.schema.json"
+      },
+      {
+        "actual_sha256": "4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006",
+        "expected_sha256": "4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006",
+        "passed": true,
+        "path": "../okf-explorer/profiles/federation/v1/relationship-assertion.schema.json"
+      },
+      {
+        "actual_sha256": "c57e8edc91babc948852e94fd6fecbe813f89e26ae00c4bc5bee2fe1a4dd884b",
+        "expected_sha256": "c57e8edc91babc948852e94fd6fecbe813f89e26ae00c4bc5bee2fe1a4dd884b",
+        "passed": true,
+        "path": "whole-law/schemas/model-enrichment-run.schema.json"
+      }
+    ],
+    "assertion_chunk_root_sha256": "cbc44653b91230bf7d85f575aac24daceb7da25958d3ea384b3ebf73a72bf087",
+    "assertion_id_root_sha256": "90996c49be205c93c0efc82249947894123303961f8982ebf6531212bb22e83c",
+    "assertions": 22299,
+    "audit": "whole-law/assurance/enrichment-reaudit-22299.json",
+    "audit_sha256": "31820a7bf80c61159ea3f65efff1439646e0be3c279ec37c4f58616f06c5d59c",
+    "audited_input_semantic_sha256": "a2f3e65772f33d339825cb2d94923671ce2f1fec87ae4e63647da9ba4b362b36",
+    "current_compatibility_input_semantic_sha256": "88774344579e6d18572f981a1fc240a6452311e642fcf42fed95eafdfa5bc341",
+    "independent_review_status": "accepted"
+  }
+}

@@ -1,0 +1,1850 @@
+{
+  "schema": "okf-whole-law-migration-backlog.v1",
+  "generated_at": "2026-07-25T14:00:00+01:00",
+  "phases": [
+    {
+      "id": "M0",
+      "title": "Governance, source register and completeness controls",
+      "order": 0,
+      "scope": [
+        "source register",
+        "coverage ledger",
+        "authority taxonomy",
+        "licence/access policies",
+        "federation descriptor skeleton"
+      ],
+      "user_value": "Makes every later claim bounded, auditable and lawful.",
+      "architecture_changes": [
+        "Whole-Law root descriptor",
+        "source-family manifests",
+        "coverage/access schemas"
+      ],
+      "ontology_changes": [
+        "authority classes",
+        "legal-force scheme",
+        "coverage/access/provenance terms"
+      ],
+      "ingestion_update": [
+        "No new corpus text; register and access tests"
+      ],
+      "explorer_changes": [
+        "Source catalogue",
+        "coverage panel",
+        "access/licence badges"
+      ],
+      "documentation": [
+        "Whole-Law scope, evidence rules, source onboarding runbook"
+      ],
+      "evaluation": [
+        "Coverage-honesty and authority-separation tests"
+      ],
+      "dependencies": [
+        "Named service owner",
+        "legal/licensing review"
+      ],
+      "risks": [
+        "False confidence if governance is treated as paperwork"
+      ],
+      "complexity": "medium",
+      "acceptance": [
+        "All 72 researched source records validate",
+        "Every source class has owner/authority/coverage",
+        "No global all-law claim"
+      ],
+      "rollback": "Whole-Law root remains draft; existing legislation pack unchanged."
+    },
+    {
+      "id": "M1",
+      "title": "Harden and federate the existing legislation baseline",
+      "order": 1,
+      "scope": [
+        "current legislation work catalogue",
+        "CLML hydration",
+        "effects/publication log",
+        "associated documents",
+        "retained/assimilated EU links"
+      ],
+      "user_value": "Preserves proven discovery while making temporal and coverage limits explicit.",
+      "architecture_changes": [
+        "Refactor shared build utilities",
+        "Publish legislation as source-family member",
+        "Add version/effect/coverage indexes"
+      ],
+      "ontology_changes": [
+        "ELI/AKN/PROV alignment",
+        "commencement/extent/application separation"
+      ],
+      "ingestion_update": [
+        "Publication-log incremental refresh",
+        "effect coverage rows",
+        "deterministic version cache"
+      ],
+      "explorer_changes": [
+        "Version context",
+        "unapplied-effects warning",
+        "live verification"
+      ],
+      "documentation": [
+        "Baseline boundary and point-in-time guide"
+      ],
+      "evaluation": [
+        "Retain 100 questions; add historical/effects/adversarial strata"
+      ],
+      "dependencies": [
+        "legislation.gov.uk fair use and public API"
+      ],
+      "risks": [
+        "Regression in current 365,786-work pack"
+      ],
+      "complexity": "medium",
+      "acceptance": [
+        "Existing checker passes unchanged",
+        "Counts and public URLs preserved",
+        "Point-in-time/extent warnings tested"
+      ],
+      "rollback": "Use prior descriptor/release and disable Whole-Law extension entrypoints."
+    },
+    {
+      "id": "M2",
+      "title": "Case-law discovery and court coverage federation",
+      "order": 2,
+      "scope": [
+        "Find Case Law metadata",
+        "UKSC/JCPC reconciliation",
+        "SCTS judgments/RSS",
+        "Judiciary NI metadata",
+        "BAILII discovery-only"
+      ],
+      "user_value": "Users can locate official judgments across UK jurisdictions without implying completeness.",
+      "architecture_changes": [
+        "Case-law entity model",
+        "per-court manifests",
+        "exact citation index"
+      ],
+      "ontology_changes": [
+        "Judgment/decision/court/citation/WEMI classes"
+      ],
+      "ingestion_update": [
+        "Metadata harvest under permitted use",
+        "per-court denominator updates"
+      ],
+      "explorer_changes": [
+        "Court/jurisdiction facets",
+        "case detail",
+        "coverage caveats"
+      ],
+      "documentation": [
+        "Case-law source hierarchy and licence boundary"
+      ],
+      "evaluation": [
+        "Cross-jurisdiction case retrieval and absence tests"
+      ],
+      "dependencies": [
+        "Official source availability",
+        "FCL ordinary reuse terms"
+      ],
+      "risks": [
+        "Coverage gaps and duplicate records"
+      ],
+      "complexity": "high",
+      "acceptance": [
+        "England/Wales, Scotland and NI all represented",
+        "Every court row exposes coverage status",
+        "No case holding generated from metadata only"
+      ],
+      "rollback": "Disable affected source adapter; retain source register/live links."
+    },
+    {
+      "id": "M3",
+      "title": "Licensed case text, citation graph and reviewed treatment pilot",
+      "order": 3,
+      "scope": [
+        "FCL computational-analysis licence",
+        "selected case text",
+        "citation occurrences",
+        "appeals",
+        "reviewed treatment for UKSC/EWCA pilot"
+      ],
+      "user_value": "Passage-supported interpretation and a defensible first public citator layer.",
+      "architecture_changes": [
+        "Licence-aware ingestion",
+        "passage index",
+        "citation/treatment adjacency",
+        "review workflow"
+      ],
+      "ontology_changes": [
+        "Citation occurrence vs treatment",
+        "holding/reasoning as reviewed assertions"
+      ],
+      "ingestion_update": [
+        "Licensed text snapshot or approved live processing",
+        "correction/deletion events"
+      ],
+      "explorer_changes": [
+        "Selected judgment passage",
+        "treatment evidence",
+        "appeal unknown warning"
+      ],
+      "documentation": [
+        "Licence controls and editorial policy"
+      ],
+      "evaluation": [
+        "Treatment precision/recall sample and hard-failure tests"
+      ],
+      "dependencies": [
+        "FCL licence",
+        "qualified reviewers"
+      ],
+      "risks": [
+        "Licensing breach",
+        "incorrect negative treatment",
+        "privacy/re-identification"
+      ],
+      "complexity": "very high",
+      "acceptance": [
+        "Licence and purpose controls enforced",
+        "Treatment edge has source and target passages",
+        "Expert precision threshold >=0.98 on pilot sample"
+      ],
+      "rollback": "Remove text/treatment pack; retain public metadata and citation occurrences only."
+    },
+    {
+      "id": "M4",
+      "title": "Procedure, forms, fees and court-service information",
+      "order": 4,
+      "scope": [
+        "CPR/FPR/CrimPR/tribunal rules",
+        "practice directions",
+        "forms",
+        "fees",
+        "Find a Court",
+        "optional CaTH design only"
+      ],
+      "user_value": "Actionable procedural research with currentness safeguards.",
+      "architecture_changes": [
+        "Procedure hierarchy",
+        "deadline/form/fee resources",
+        "high-volatility live-provider lane"
+      ],
+      "ontology_changes": [
+        "Rule/PD/protocol/form/fee/deadline/service classes"
+      ],
+      "ingestion_update": [
+        "HTML/PDF parsers",
+        "amending-instrument graph",
+        "daily monitors"
+      ],
+      "explorer_changes": [
+        "Procedure checklist",
+        "form revision/fee date",
+        "same-day verification action"
+      ],
+      "documentation": [
+        "No-action-without-live-check policy"
+      ],
+      "evaluation": [
+        "Deadline, forum, form and fee journeys across jurisdictions"
+      ],
+      "dependencies": [
+        "Rules publishers",
+        "CaTH licence if later enabled"
+      ],
+      "risks": [
+        "Stale deadline/form/fee"
+      ],
+      "complexity": "high",
+      "acceptance": [
+        "Every action-critical answer links operative rule and live service artefact",
+        "Stale cache cannot claim current"
+      ],
+      "rollback": "Disable cached currentness and show live links only."
+    },
+    {
+      "id": "M5",
+      "title": "Regulatory rules, guidance and enforcement",
+      "order": 5,
+      "scope": [
+        "PRA/FCA/Ofcom/ICO/CMA/EA",
+        "professional regulators",
+        "formal decisions/notices"
+      ],
+      "user_value": "Separates binding rules, guidance and outcomes across regulated sectors.",
+      "architecture_changes": [
+        "Regulator adapters",
+        "decision lifecycle",
+        "rule-instrument version graph"
+      ],
+      "ontology_changes": [
+        "Regulated activity/body/rule/guidance/notice/sanction/appeal"
+      ],
+      "ingestion_update": [
+        "Terms-aware metadata and permitted snapshots",
+        "source monitors"
+      ],
+      "explorer_changes": [
+        "Provision-type badges",
+        "decision timeline",
+        "appeal status"
+      ],
+      "documentation": [
+        "Per-regulator rights and force profiles"
+      ],
+      "evaluation": [
+        "Rule-versus-guidance and notice-versus-press-release tests"
+      ],
+      "dependencies": [
+        "Reuse reviews",
+        "publisher access stability"
+      ],
+      "risks": [
+        "Copyright/terms",
+        "authority flattening"
+      ],
+      "complexity": "very high",
+      "acceptance": [
+        "No regulator document lacks force type",
+        "Formal decision is primary display for outcomes",
+        "FCA failure state remains visible until resolved"
+      ],
+      "rollback": "Metadata/live-link only per regulator."
+    },
+    {
+      "id": "M6",
+      "title": "Treaties, EU and ECHR federation",
+      "order": 6,
+      "scope": [
+        "UK Treaties Online CSV",
+        "EUR-Lex/CELLAR",
+        "HUDOC",
+        "domestic implementation links"
+      ],
+      "user_value": "Tracks external legal sources and UK obligations without conflating international and domestic effect.",
+      "architecture_changes": [
+        "External-source federation",
+        "multilingual manifestations",
+        "treaty-status graph"
+      ],
+      "ontology_changes": [
+        "Treaty/status/party/depositary",
+        "CELEX/ELI/ECLI",
+        "international decision status"
+      ],
+      "ingestion_update": [
+        "UKTO dataset",
+        "selected CELLAR metadata",
+        "HUDOC metadata under terms"
+      ],
+      "explorer_changes": [
+        "UK relevance and domestic-effect panel",
+        "language/status selector"
+      ],
+      "documentation": [
+        "Non-UK dependency and force guide"
+      ],
+      "evaluation": [
+        "Treaty in-force/domestic effect and EU-version tasks"
+      ],
+      "dependencies": [
+        "EU/Council of Europe access terms"
+      ],
+      "risks": [
+        "Direct-effect overstatement",
+        "multilingual mismatch"
+      ],
+      "complexity": "high",
+      "acceptance": [
+        "International status and domestic effect shown separately",
+        "Source-native identifiers preserved",
+        "No translation treated as authentic without source flag"
+      ],
+      "rollback": "Keep UK metadata and external live links only."
+    },
+    {
+      "id": "M7",
+      "title": "Legislative history, law reform and inquiries",
+      "order": 7,
+      "scope": [
+        "UK/devolved Bills and proceedings",
+        "Hansard",
+        "committees",
+        "SI tracker",
+        "Law Commissions",
+        "public inquiries",
+        "accident investigations"
+      ],
+      "user_value": "Reconstructs development, intent, scrutiny and recommendations.",
+      "architecture_changes": [
+        "Process/event graph",
+        "document-role taxonomy",
+        "inquiry module/recommendation model"
+      ],
+      "ontology_changes": [
+        "Bill/stage/amendment/speech/evidence/report/recommendation"
+      ],
+      "ingestion_update": [
+        "Official catalogues and documents",
+        "archive links"
+      ],
+      "explorer_changes": [
+        "Chronology and legislative lineage",
+        "history-vs-law badge"
+      ],
+      "documentation": [
+        "Interpretive-weight cautions"
+      ],
+      "evaluation": [
+        "Wrong Bill version, selective quote and implementation tests"
+      ],
+      "dependencies": [
+        "Parliament/devolved site stability"
+      ],
+      "risks": [
+        "History presented as operative law"
+      ],
+      "complexity": "high",
+      "acceptance": [
+        "Every historical document has non-operative role",
+        "Enacted links evidenced",
+        "Hansard gap visible"
+      ],
+      "rollback": "Discovery metadata with no automated intent synthesis."
+    },
+    {
+      "id": "M8",
+      "title": "Public guidance, ombudsmen, legal aid and distributed local law",
+      "order": 8,
+      "scope": [
+        "ombudsman decisions",
+        "legal aid/public assistance",
+        "GOV.UK/devolved guidance",
+        "local byelaw discovery"
+      ],
+      "user_value": "Supports public and operational users while preserving authority boundaries.",
+      "architecture_changes": [
+        "Retention-aware indexes",
+        "plain-language/service layer",
+        "distributed-source ledger"
+      ],
+      "ontology_changes": [
+        "Ombudsman scheme/finding/remedy",
+        "service eligibility",
+        "local extent/body"
+      ],
+      "ingestion_update": [
+        "Source-specific metadata",
+        "retention/deletion monitors",
+        "authority-by-authority byelaw discovery"
+      ],
+      "explorer_changes": [
+        "Plain-language view",
+        "retention/unknown warnings",
+        "referral/escalation"
+      ],
+      "documentation": [
+        "Public-advice safety and absence rules"
+      ],
+      "evaluation": [
+        "Accessible explanations, vulnerable-user and no-record attacks"
+      ],
+      "dependencies": [
+        "Publisher consent/retention policies",
+        "local authority cooperation"
+      ],
+      "risks": [
+        "Privacy",
+        "old guidance",
+        "false absence"
+      ],
+      "complexity": "very high",
+      "acceptance": [
+        "No ombudsman absence inference",
+        "Local byelaw coverage remains unknown unless denominated",
+        "Public explanation links controlling law"
+      ],
+      "rollback": "Live links and source register only."
+    },
+    {
+      "id": "M9",
+      "title": "Scale, advanced semantics and sustainable service operation",
+      "order": 9,
+      "scope": [
+        "cross-source semantic search",
+        "large temporal/citation graph",
+        "monitoring/incident response",
+        "external assurance",
+        "governance/funding"
+      ],
+      "user_value": "Reliable national-scale service rather than a one-off research artefact.",
+      "architecture_changes": [
+        "Server-side query/ingestion services where required",
+        "policy gateway",
+        "observability",
+        "signed releases"
+      ],
+      "ontology_changes": [
+        "Governed reviewed rule/holding assertions only"
+      ],
+      "ingestion_update": [
+        "Incremental pipelines",
+        "deletion/correction response",
+        "SLO monitoring"
+      ],
+      "explorer_changes": [
+        "Degraded-mode states",
+        "query-plan/source coverage report",
+        "audit export"
+      ],
+      "documentation": [
+        "Operations, incident, stewardship and succession"
+      ],
+      "evaluation": [
+        "Load, resilience, drift, security, accessibility and expert audit"
+      ],
+      "dependencies": [
+        "Service owner/funding",
+        "security and legal assurance"
+      ],
+      "risks": [
+        "Unsustainable maintenance",
+        "semantic overreach"
+      ],
+      "complexity": "very high",
+      "acceptance": [
+        "Named owner and SLOs",
+        "External legal/licensing/accessibility review",
+        "Hard-failure rate zero in release gate sample"
+      ],
+      "rollback": "Freeze latest signed snapshot and disable live/synthesis claims."
+    }
+  ],
+  "items": [
+    {
+      "id": "M0-01",
+      "phase": "M0",
+      "kind": "governance",
+      "title": "Confirm scope, owner, evidence rule and acceptance test for Governance, source register and completeness controls",
+      "priority": "P0",
+      "dependencies": [
+        "Named service owner",
+        "legal/licensing review"
+      ],
+      "acceptance_reference": [
+        "All 72 researched source records validate",
+        "Every source class has owner/authority/coverage",
+        "No global all-law claim"
+      ],
+      "rollback_reference": "Whole-Law root remains draft; existing legislation pack unchanged."
+    },
+    {
+      "id": "M0-02",
+      "phase": "M0",
+      "kind": "schema",
+      "title": "Implement and validate required schemas/controlled vocabularies",
+      "priority": "P0",
+      "dependencies": [
+        "Named service owner",
+        "legal/licensing review"
+      ],
+      "acceptance_reference": [
+        "All 72 researched source records validate",
+        "Every source class has owner/authority/coverage",
+        "No global all-law claim"
+      ],
+      "rollback_reference": "Whole-Law root remains draft; existing legislation pack unchanged."
+    },
+    {
+      "id": "M0-03",
+      "phase": "M0",
+      "kind": "adapter",
+      "title": "Build source adapter(s) with request/access ledger and deterministic fixture",
+      "priority": "P1",
+      "dependencies": [
+        "Named service owner",
+        "legal/licensing review"
+      ],
+      "acceptance_reference": [
+        "All 72 researched source records validate",
+        "Every source class has owner/authority/coverage",
+        "No global all-law claim"
+      ],
+      "rollback_reference": "Whole-Law root remains draft; existing legislation pack unchanged."
+    },
+    {
+      "id": "M0-04",
+      "phase": "M0",
+      "kind": "coverage",
+      "title": "Populate denominator-based coverage rows and known-gap assertions",
+      "priority": "P0",
+      "dependencies": [
+        "Named service owner",
+        "legal/licensing review"
+      ],
+      "acceptance_reference": [
+        "All 72 researched source records validate",
+        "Every source class has owner/authority/coverage",
+        "No global all-law claim"
+      ],
+      "rollback_reference": "Whole-Law root remains draft; existing legislation pack unchanged."
+    },
+    {
+      "id": "M0-05",
+      "phase": "M0",
+      "kind": "identity",
+      "title": "Implement source-native identity and reviewable mapping rules",
+      "priority": "P1",
+      "dependencies": [
+        "Named service owner",
+        "legal/licensing review"
+      ],
+      "acceptance_reference": [
+        "All 72 researched source records validate",
+        "Every source class has owner/authority/coverage",
+        "No global all-law claim"
+      ],
+      "rollback_reference": "Whole-Law root remains draft; existing legislation pack unchanged."
+    },
+    {
+      "id": "M0-06",
+      "phase": "M0",
+      "kind": "explorer",
+      "title": "Add or extend progressive-discovery UI and route-addressable evidence",
+      "priority": "P1",
+      "dependencies": [
+        "Named service owner",
+        "legal/licensing review"
+      ],
+      "acceptance_reference": [
+        "All 72 researched source records validate",
+        "Every source class has owner/authority/coverage",
+        "No global all-law claim"
+      ],
+      "rollback_reference": "Whole-Law root remains draft; existing legislation pack unchanged."
+    },
+    {
+      "id": "M0-07",
+      "phase": "M0",
+      "kind": "evaluation",
+      "title": "Add stratified questions, hard-failure tests and expert sample",
+      "priority": "P0",
+      "dependencies": [
+        "Named service owner",
+        "legal/licensing review"
+      ],
+      "acceptance_reference": [
+        "All 72 researched source records validate",
+        "Every source class has owner/authority/coverage",
+        "No global all-law claim"
+      ],
+      "rollback_reference": "Whole-Law root remains draft; existing legislation pack unchanged."
+    },
+    {
+      "id": "M0-08",
+      "phase": "M0",
+      "kind": "operations",
+      "title": "Add refresh, drift, deletion/correction and degraded-mode monitoring",
+      "priority": "P1",
+      "dependencies": [
+        "Named service owner",
+        "legal/licensing review"
+      ],
+      "acceptance_reference": [
+        "All 72 researched source records validate",
+        "Every source class has owner/authority/coverage",
+        "No global all-law claim"
+      ],
+      "rollback_reference": "Whole-Law root remains draft; existing legislation pack unchanged."
+    },
+    {
+      "id": "M1-01",
+      "phase": "M1",
+      "kind": "governance",
+      "title": "Confirm scope, owner, evidence rule and acceptance test for Harden and federate the existing legislation baseline",
+      "priority": "P0",
+      "dependencies": [
+        "legislation.gov.uk fair use and public API"
+      ],
+      "acceptance_reference": [
+        "Existing checker passes unchanged",
+        "Counts and public URLs preserved",
+        "Point-in-time/extent warnings tested"
+      ],
+      "rollback_reference": "Use prior descriptor/release and disable Whole-Law extension entrypoints."
+    },
+    {
+      "id": "M1-02",
+      "phase": "M1",
+      "kind": "schema",
+      "title": "Implement and validate required schemas/controlled vocabularies",
+      "priority": "P0",
+      "dependencies": [
+        "legislation.gov.uk fair use and public API"
+      ],
+      "acceptance_reference": [
+        "Existing checker passes unchanged",
+        "Counts and public URLs preserved",
+        "Point-in-time/extent warnings tested"
+      ],
+      "rollback_reference": "Use prior descriptor/release and disable Whole-Law extension entrypoints."
+    },
+    {
+      "id": "M1-03",
+      "phase": "M1",
+      "kind": "adapter",
+      "title": "Build source adapter(s) with request/access ledger and deterministic fixture",
+      "priority": "P1",
+      "dependencies": [
+        "legislation.gov.uk fair use and public API"
+      ],
+      "acceptance_reference": [
+        "Existing checker passes unchanged",
+        "Counts and public URLs preserved",
+        "Point-in-time/extent warnings tested"
+      ],
+      "rollback_reference": "Use prior descriptor/release and disable Whole-Law extension entrypoints."
+    },
+    {
+      "id": "M1-04",
+      "phase": "M1",
+      "kind": "coverage",
+      "title": "Populate denominator-based coverage rows and known-gap assertions",
+      "priority": "P0",
+      "dependencies": [
+        "legislation.gov.uk fair use and public API"
+      ],
+      "acceptance_reference": [
+        "Existing checker passes unchanged",
+        "Counts and public URLs preserved",
+        "Point-in-time/extent warnings tested"
+      ],
+      "rollback_reference": "Use prior descriptor/release and disable Whole-Law extension entrypoints."
+    },
+    {
+      "id": "M1-05",
+      "phase": "M1",
+      "kind": "identity",
+      "title": "Implement source-native identity and reviewable mapping rules",
+      "priority": "P1",
+      "dependencies": [
+        "legislation.gov.uk fair use and public API"
+      ],
+      "acceptance_reference": [
+        "Existing checker passes unchanged",
+        "Counts and public URLs preserved",
+        "Point-in-time/extent warnings tested"
+      ],
+      "rollback_reference": "Use prior descriptor/release and disable Whole-Law extension entrypoints."
+    },
+    {
+      "id": "M1-06",
+      "phase": "M1",
+      "kind": "explorer",
+      "title": "Add or extend progressive-discovery UI and route-addressable evidence",
+      "priority": "P1",
+      "dependencies": [
+        "legislation.gov.uk fair use and public API"
+      ],
+      "acceptance_reference": [
+        "Existing checker passes unchanged",
+        "Counts and public URLs preserved",
+        "Point-in-time/extent warnings tested"
+      ],
+      "rollback_reference": "Use prior descriptor/release and disable Whole-Law extension entrypoints."
+    },
+    {
+      "id": "M1-07",
+      "phase": "M1",
+      "kind": "evaluation",
+      "title": "Add stratified questions, hard-failure tests and expert sample",
+      "priority": "P0",
+      "dependencies": [
+        "legislation.gov.uk fair use and public API"
+      ],
+      "acceptance_reference": [
+        "Existing checker passes unchanged",
+        "Counts and public URLs preserved",
+        "Point-in-time/extent warnings tested"
+      ],
+      "rollback_reference": "Use prior descriptor/release and disable Whole-Law extension entrypoints."
+    },
+    {
+      "id": "M1-08",
+      "phase": "M1",
+      "kind": "operations",
+      "title": "Add refresh, drift, deletion/correction and degraded-mode monitoring",
+      "priority": "P1",
+      "dependencies": [
+        "legislation.gov.uk fair use and public API"
+      ],
+      "acceptance_reference": [
+        "Existing checker passes unchanged",
+        "Counts and public URLs preserved",
+        "Point-in-time/extent warnings tested"
+      ],
+      "rollback_reference": "Use prior descriptor/release and disable Whole-Law extension entrypoints."
+    },
+    {
+      "id": "M2-01",
+      "phase": "M2",
+      "kind": "governance",
+      "title": "Confirm scope, owner, evidence rule and acceptance test for Case-law discovery and court coverage federation",
+      "priority": "P0",
+      "dependencies": [
+        "Official source availability",
+        "FCL ordinary reuse terms"
+      ],
+      "acceptance_reference": [
+        "England/Wales, Scotland and NI all represented",
+        "Every court row exposes coverage status",
+        "No case holding generated from metadata only"
+      ],
+      "rollback_reference": "Disable affected source adapter; retain source register/live links."
+    },
+    {
+      "id": "M2-02",
+      "phase": "M2",
+      "kind": "schema",
+      "title": "Implement and validate required schemas/controlled vocabularies",
+      "priority": "P0",
+      "dependencies": [
+        "Official source availability",
+        "FCL ordinary reuse terms"
+      ],
+      "acceptance_reference": [
+        "England/Wales, Scotland and NI all represented",
+        "Every court row exposes coverage status",
+        "No case holding generated from metadata only"
+      ],
+      "rollback_reference": "Disable affected source adapter; retain source register/live links."
+    },
+    {
+      "id": "M2-03",
+      "phase": "M2",
+      "kind": "adapter",
+      "title": "Build source adapter(s) with request/access ledger and deterministic fixture",
+      "priority": "P1",
+      "dependencies": [
+        "Official source availability",
+        "FCL ordinary reuse terms"
+      ],
+      "acceptance_reference": [
+        "England/Wales, Scotland and NI all represented",
+        "Every court row exposes coverage status",
+        "No case holding generated from metadata only"
+      ],
+      "rollback_reference": "Disable affected source adapter; retain source register/live links."
+    },
+    {
+      "id": "M2-04",
+      "phase": "M2",
+      "kind": "coverage",
+      "title": "Populate denominator-based coverage rows and known-gap assertions",
+      "priority": "P0",
+      "dependencies": [
+        "Official source availability",
+        "FCL ordinary reuse terms"
+      ],
+      "acceptance_reference": [
+        "England/Wales, Scotland and NI all represented",
+        "Every court row exposes coverage status",
+        "No case holding generated from metadata only"
+      ],
+      "rollback_reference": "Disable affected source adapter; retain source register/live links."
+    },
+    {
+      "id": "M2-05",
+      "phase": "M2",
+      "kind": "identity",
+      "title": "Implement source-native identity and reviewable mapping rules",
+      "priority": "P1",
+      "dependencies": [
+        "Official source availability",
+        "FCL ordinary reuse terms"
+      ],
+      "acceptance_reference": [
+        "England/Wales, Scotland and NI all represented",
+        "Every court row exposes coverage status",
+        "No case holding generated from metadata only"
+      ],
+      "rollback_reference": "Disable affected source adapter; retain source register/live links."
+    },
+    {
+      "id": "M2-06",
+      "phase": "M2",
+      "kind": "explorer",
+      "title": "Add or extend progressive-discovery UI and route-addressable evidence",
+      "priority": "P1",
+      "dependencies": [
+        "Official source availability",
+        "FCL ordinary reuse terms"
+      ],
+      "acceptance_reference": [
+        "England/Wales, Scotland and NI all represented",
+        "Every court row exposes coverage status",
+        "No case holding generated from metadata only"
+      ],
+      "rollback_reference": "Disable affected source adapter; retain source register/live links."
+    },
+    {
+      "id": "M2-07",
+      "phase": "M2",
+      "kind": "evaluation",
+      "title": "Add stratified questions, hard-failure tests and expert sample",
+      "priority": "P0",
+      "dependencies": [
+        "Official source availability",
+        "FCL ordinary reuse terms"
+      ],
+      "acceptance_reference": [
+        "England/Wales, Scotland and NI all represented",
+        "Every court row exposes coverage status",
+        "No case holding generated from metadata only"
+      ],
+      "rollback_reference": "Disable affected source adapter; retain source register/live links."
+    },
+    {
+      "id": "M2-08",
+      "phase": "M2",
+      "kind": "operations",
+      "title": "Add refresh, drift, deletion/correction and degraded-mode monitoring",
+      "priority": "P1",
+      "dependencies": [
+        "Official source availability",
+        "FCL ordinary reuse terms"
+      ],
+      "acceptance_reference": [
+        "England/Wales, Scotland and NI all represented",
+        "Every court row exposes coverage status",
+        "No case holding generated from metadata only"
+      ],
+      "rollback_reference": "Disable affected source adapter; retain source register/live links."
+    },
+    {
+      "id": "M3-01",
+      "phase": "M3",
+      "kind": "governance",
+      "title": "Confirm scope, owner, evidence rule and acceptance test for Licensed case text, citation graph and reviewed treatment pilot",
+      "priority": "P1",
+      "dependencies": [
+        "FCL licence",
+        "qualified reviewers"
+      ],
+      "acceptance_reference": [
+        "Licence and purpose controls enforced",
+        "Treatment edge has source and target passages",
+        "Expert precision threshold >=0.98 on pilot sample"
+      ],
+      "rollback_reference": "Remove text/treatment pack; retain public metadata and citation occurrences only."
+    },
+    {
+      "id": "M3-02",
+      "phase": "M3",
+      "kind": "schema",
+      "title": "Implement and validate required schemas/controlled vocabularies",
+      "priority": "P1",
+      "dependencies": [
+        "FCL licence",
+        "qualified reviewers"
+      ],
+      "acceptance_reference": [
+        "Licence and purpose controls enforced",
+        "Treatment edge has source and target passages",
+        "Expert precision threshold >=0.98 on pilot sample"
+      ],
+      "rollback_reference": "Remove text/treatment pack; retain public metadata and citation occurrences only."
+    },
+    {
+      "id": "M3-03",
+      "phase": "M3",
+      "kind": "adapter",
+      "title": "Build source adapter(s) with request/access ledger and deterministic fixture",
+      "priority": "P1",
+      "dependencies": [
+        "FCL licence",
+        "qualified reviewers"
+      ],
+      "acceptance_reference": [
+        "Licence and purpose controls enforced",
+        "Treatment edge has source and target passages",
+        "Expert precision threshold >=0.98 on pilot sample"
+      ],
+      "rollback_reference": "Remove text/treatment pack; retain public metadata and citation occurrences only."
+    },
+    {
+      "id": "M3-04",
+      "phase": "M3",
+      "kind": "coverage",
+      "title": "Populate denominator-based coverage rows and known-gap assertions",
+      "priority": "P1",
+      "dependencies": [
+        "FCL licence",
+        "qualified reviewers"
+      ],
+      "acceptance_reference": [
+        "Licence and purpose controls enforced",
+        "Treatment edge has source and target passages",
+        "Expert precision threshold >=0.98 on pilot sample"
+      ],
+      "rollback_reference": "Remove text/treatment pack; retain public metadata and citation occurrences only."
+    },
+    {
+      "id": "M3-05",
+      "phase": "M3",
+      "kind": "identity",
+      "title": "Implement source-native identity and reviewable mapping rules",
+      "priority": "P1",
+      "dependencies": [
+        "FCL licence",
+        "qualified reviewers"
+      ],
+      "acceptance_reference": [
+        "Licence and purpose controls enforced",
+        "Treatment edge has source and target passages",
+        "Expert precision threshold >=0.98 on pilot sample"
+      ],
+      "rollback_reference": "Remove text/treatment pack; retain public metadata and citation occurrences only."
+    },
+    {
+      "id": "M3-06",
+      "phase": "M3",
+      "kind": "explorer",
+      "title": "Add or extend progressive-discovery UI and route-addressable evidence",
+      "priority": "P1",
+      "dependencies": [
+        "FCL licence",
+        "qualified reviewers"
+      ],
+      "acceptance_reference": [
+        "Licence and purpose controls enforced",
+        "Treatment edge has source and target passages",
+        "Expert precision threshold >=0.98 on pilot sample"
+      ],
+      "rollback_reference": "Remove text/treatment pack; retain public metadata and citation occurrences only."
+    },
+    {
+      "id": "M3-07",
+      "phase": "M3",
+      "kind": "evaluation",
+      "title": "Add stratified questions, hard-failure tests and expert sample",
+      "priority": "P1",
+      "dependencies": [
+        "FCL licence",
+        "qualified reviewers"
+      ],
+      "acceptance_reference": [
+        "Licence and purpose controls enforced",
+        "Treatment edge has source and target passages",
+        "Expert precision threshold >=0.98 on pilot sample"
+      ],
+      "rollback_reference": "Remove text/treatment pack; retain public metadata and citation occurrences only."
+    },
+    {
+      "id": "M3-08",
+      "phase": "M3",
+      "kind": "operations",
+      "title": "Add refresh, drift, deletion/correction and degraded-mode monitoring",
+      "priority": "P1",
+      "dependencies": [
+        "FCL licence",
+        "qualified reviewers"
+      ],
+      "acceptance_reference": [
+        "Licence and purpose controls enforced",
+        "Treatment edge has source and target passages",
+        "Expert precision threshold >=0.98 on pilot sample"
+      ],
+      "rollback_reference": "Remove text/treatment pack; retain public metadata and citation occurrences only."
+    },
+    {
+      "id": "M4-01",
+      "phase": "M4",
+      "kind": "governance",
+      "title": "Confirm scope, owner, evidence rule and acceptance test for Procedure, forms, fees and court-service information",
+      "priority": "P1",
+      "dependencies": [
+        "Rules publishers",
+        "CaTH licence if later enabled"
+      ],
+      "acceptance_reference": [
+        "Every action-critical answer links operative rule and live service artefact",
+        "Stale cache cannot claim current"
+      ],
+      "rollback_reference": "Disable cached currentness and show live links only."
+    },
+    {
+      "id": "M4-02",
+      "phase": "M4",
+      "kind": "schema",
+      "title": "Implement and validate required schemas/controlled vocabularies",
+      "priority": "P1",
+      "dependencies": [
+        "Rules publishers",
+        "CaTH licence if later enabled"
+      ],
+      "acceptance_reference": [
+        "Every action-critical answer links operative rule and live service artefact",
+        "Stale cache cannot claim current"
+      ],
+      "rollback_reference": "Disable cached currentness and show live links only."
+    },
+    {
+      "id": "M4-03",
+      "phase": "M4",
+      "kind": "adapter",
+      "title": "Build source adapter(s) with request/access ledger and deterministic fixture",
+      "priority": "P1",
+      "dependencies": [
+        "Rules publishers",
+        "CaTH licence if later enabled"
+      ],
+      "acceptance_reference": [
+        "Every action-critical answer links operative rule and live service artefact",
+        "Stale cache cannot claim current"
+      ],
+      "rollback_reference": "Disable cached currentness and show live links only."
+    },
+    {
+      "id": "M4-04",
+      "phase": "M4",
+      "kind": "coverage",
+      "title": "Populate denominator-based coverage rows and known-gap assertions",
+      "priority": "P1",
+      "dependencies": [
+        "Rules publishers",
+        "CaTH licence if later enabled"
+      ],
+      "acceptance_reference": [
+        "Every action-critical answer links operative rule and live service artefact",
+        "Stale cache cannot claim current"
+      ],
+      "rollback_reference": "Disable cached currentness and show live links only."
+    },
+    {
+      "id": "M4-05",
+      "phase": "M4",
+      "kind": "identity",
+      "title": "Implement source-native identity and reviewable mapping rules",
+      "priority": "P1",
+      "dependencies": [
+        "Rules publishers",
+        "CaTH licence if later enabled"
+      ],
+      "acceptance_reference": [
+        "Every action-critical answer links operative rule and live service artefact",
+        "Stale cache cannot claim current"
+      ],
+      "rollback_reference": "Disable cached currentness and show live links only."
+    },
+    {
+      "id": "M4-06",
+      "phase": "M4",
+      "kind": "explorer",
+      "title": "Add or extend progressive-discovery UI and route-addressable evidence",
+      "priority": "P1",
+      "dependencies": [
+        "Rules publishers",
+        "CaTH licence if later enabled"
+      ],
+      "acceptance_reference": [
+        "Every action-critical answer links operative rule and live service artefact",
+        "Stale cache cannot claim current"
+      ],
+      "rollback_reference": "Disable cached currentness and show live links only."
+    },
+    {
+      "id": "M4-07",
+      "phase": "M4",
+      "kind": "evaluation",
+      "title": "Add stratified questions, hard-failure tests and expert sample",
+      "priority": "P1",
+      "dependencies": [
+        "Rules publishers",
+        "CaTH licence if later enabled"
+      ],
+      "acceptance_reference": [
+        "Every action-critical answer links operative rule and live service artefact",
+        "Stale cache cannot claim current"
+      ],
+      "rollback_reference": "Disable cached currentness and show live links only."
+    },
+    {
+      "id": "M4-08",
+      "phase": "M4",
+      "kind": "operations",
+      "title": "Add refresh, drift, deletion/correction and degraded-mode monitoring",
+      "priority": "P1",
+      "dependencies": [
+        "Rules publishers",
+        "CaTH licence if later enabled"
+      ],
+      "acceptance_reference": [
+        "Every action-critical answer links operative rule and live service artefact",
+        "Stale cache cannot claim current"
+      ],
+      "rollback_reference": "Disable cached currentness and show live links only."
+    },
+    {
+      "id": "M5-01",
+      "phase": "M5",
+      "kind": "governance",
+      "title": "Confirm scope, owner, evidence rule and acceptance test for Regulatory rules, guidance and enforcement",
+      "priority": "P1",
+      "dependencies": [
+        "Reuse reviews",
+        "publisher access stability"
+      ],
+      "acceptance_reference": [
+        "No regulator document lacks force type",
+        "Formal decision is primary display for outcomes",
+        "FCA failure state remains visible until resolved"
+      ],
+      "rollback_reference": "Metadata/live-link only per regulator."
+    },
+    {
+      "id": "M5-02",
+      "phase": "M5",
+      "kind": "schema",
+      "title": "Implement and validate required schemas/controlled vocabularies",
+      "priority": "P1",
+      "dependencies": [
+        "Reuse reviews",
+        "publisher access stability"
+      ],
+      "acceptance_reference": [
+        "No regulator document lacks force type",
+        "Formal decision is primary display for outcomes",
+        "FCA failure state remains visible until resolved"
+      ],
+      "rollback_reference": "Metadata/live-link only per regulator."
+    },
+    {
+      "id": "M5-03",
+      "phase": "M5",
+      "kind": "adapter",
+      "title": "Build source adapter(s) with request/access ledger and deterministic fixture",
+      "priority": "P1",
+      "dependencies": [
+        "Reuse reviews",
+        "publisher access stability"
+      ],
+      "acceptance_reference": [
+        "No regulator document lacks force type",
+        "Formal decision is primary display for outcomes",
+        "FCA failure state remains visible until resolved"
+      ],
+      "rollback_reference": "Metadata/live-link only per regulator."
+    },
+    {
+      "id": "M5-04",
+      "phase": "M5",
+      "kind": "coverage",
+      "title": "Populate denominator-based coverage rows and known-gap assertions",
+      "priority": "P1",
+      "dependencies": [
+        "Reuse reviews",
+        "publisher access stability"
+      ],
+      "acceptance_reference": [
+        "No regulator document lacks force type",
+        "Formal decision is primary display for outcomes",
+        "FCA failure state remains visible until resolved"
+      ],
+      "rollback_reference": "Metadata/live-link only per regulator."
+    },
+    {
+      "id": "M5-05",
+      "phase": "M5",
+      "kind": "identity",
+      "title": "Implement source-native identity and reviewable mapping rules",
+      "priority": "P1",
+      "dependencies": [
+        "Reuse reviews",
+        "publisher access stability"
+      ],
+      "acceptance_reference": [
+        "No regulator document lacks force type",
+        "Formal decision is primary display for outcomes",
+        "FCA failure state remains visible until resolved"
+      ],
+      "rollback_reference": "Metadata/live-link only per regulator."
+    },
+    {
+      "id": "M5-06",
+      "phase": "M5",
+      "kind": "explorer",
+      "title": "Add or extend progressive-discovery UI and route-addressable evidence",
+      "priority": "P1",
+      "dependencies": [
+        "Reuse reviews",
+        "publisher access stability"
+      ],
+      "acceptance_reference": [
+        "No regulator document lacks force type",
+        "Formal decision is primary display for outcomes",
+        "FCA failure state remains visible until resolved"
+      ],
+      "rollback_reference": "Metadata/live-link only per regulator."
+    },
+    {
+      "id": "M5-07",
+      "phase": "M5",
+      "kind": "evaluation",
+      "title": "Add stratified questions, hard-failure tests and expert sample",
+      "priority": "P1",
+      "dependencies": [
+        "Reuse reviews",
+        "publisher access stability"
+      ],
+      "acceptance_reference": [
+        "No regulator document lacks force type",
+        "Formal decision is primary display for outcomes",
+        "FCA failure state remains visible until resolved"
+      ],
+      "rollback_reference": "Metadata/live-link only per regulator."
+    },
+    {
+      "id": "M5-08",
+      "phase": "M5",
+      "kind": "operations",
+      "title": "Add refresh, drift, deletion/correction and degraded-mode monitoring",
+      "priority": "P1",
+      "dependencies": [
+        "Reuse reviews",
+        "publisher access stability"
+      ],
+      "acceptance_reference": [
+        "No regulator document lacks force type",
+        "Formal decision is primary display for outcomes",
+        "FCA failure state remains visible until resolved"
+      ],
+      "rollback_reference": "Metadata/live-link only per regulator."
+    },
+    {
+      "id": "M6-01",
+      "phase": "M6",
+      "kind": "governance",
+      "title": "Confirm scope, owner, evidence rule and acceptance test for Treaties, EU and ECHR federation",
+      "priority": "P1",
+      "dependencies": [
+        "EU/Council of Europe access terms"
+      ],
+      "acceptance_reference": [
+        "International status and domestic effect shown separately",
+        "Source-native identifiers preserved",
+        "No translation treated as authentic without source flag"
+      ],
+      "rollback_reference": "Keep UK metadata and external live links only."
+    },
+    {
+      "id": "M6-02",
+      "phase": "M6",
+      "kind": "schema",
+      "title": "Implement and validate required schemas/controlled vocabularies",
+      "priority": "P1",
+      "dependencies": [
+        "EU/Council of Europe access terms"
+      ],
+      "acceptance_reference": [
+        "International status and domestic effect shown separately",
+        "Source-native identifiers preserved",
+        "No translation treated as authentic without source flag"
+      ],
+      "rollback_reference": "Keep UK metadata and external live links only."
+    },
+    {
+      "id": "M6-03",
+      "phase": "M6",
+      "kind": "adapter",
+      "title": "Build source adapter(s) with request/access ledger and deterministic fixture",
+      "priority": "P1",
+      "dependencies": [
+        "EU/Council of Europe access terms"
+      ],
+      "acceptance_reference": [
+        "International status and domestic effect shown separately",
+        "Source-native identifiers preserved",
+        "No translation treated as authentic without source flag"
+      ],
+      "rollback_reference": "Keep UK metadata and external live links only."
+    },
+    {
+      "id": "M6-04",
+      "phase": "M6",
+      "kind": "coverage",
+      "title": "Populate denominator-based coverage rows and known-gap assertions",
+      "priority": "P1",
+      "dependencies": [
+        "EU/Council of Europe access terms"
+      ],
+      "acceptance_reference": [
+        "International status and domestic effect shown separately",
+        "Source-native identifiers preserved",
+        "No translation treated as authentic without source flag"
+      ],
+      "rollback_reference": "Keep UK metadata and external live links only."
+    },
+    {
+      "id": "M6-05",
+      "phase": "M6",
+      "kind": "identity",
+      "title": "Implement source-native identity and reviewable mapping rules",
+      "priority": "P1",
+      "dependencies": [
+        "EU/Council of Europe access terms"
+      ],
+      "acceptance_reference": [
+        "International status and domestic effect shown separately",
+        "Source-native identifiers preserved",
+        "No translation treated as authentic without source flag"
+      ],
+      "rollback_reference": "Keep UK metadata and external live links only."
+    },
+    {
+      "id": "M6-06",
+      "phase": "M6",
+      "kind": "explorer",
+      "title": "Add or extend progressive-discovery UI and route-addressable evidence",
+      "priority": "P1",
+      "dependencies": [
+        "EU/Council of Europe access terms"
+      ],
+      "acceptance_reference": [
+        "International status and domestic effect shown separately",
+        "Source-native identifiers preserved",
+        "No translation treated as authentic without source flag"
+      ],
+      "rollback_reference": "Keep UK metadata and external live links only."
+    },
+    {
+      "id": "M6-07",
+      "phase": "M6",
+      "kind": "evaluation",
+      "title": "Add stratified questions, hard-failure tests and expert sample",
+      "priority": "P1",
+      "dependencies": [
+        "EU/Council of Europe access terms"
+      ],
+      "acceptance_reference": [
+        "International status and domestic effect shown separately",
+        "Source-native identifiers preserved",
+        "No translation treated as authentic without source flag"
+      ],
+      "rollback_reference": "Keep UK metadata and external live links only."
+    },
+    {
+      "id": "M6-08",
+      "phase": "M6",
+      "kind": "operations",
+      "title": "Add refresh, drift, deletion/correction and degraded-mode monitoring",
+      "priority": "P1",
+      "dependencies": [
+        "EU/Council of Europe access terms"
+      ],
+      "acceptance_reference": [
+        "International status and domestic effect shown separately",
+        "Source-native identifiers preserved",
+        "No translation treated as authentic without source flag"
+      ],
+      "rollback_reference": "Keep UK metadata and external live links only."
+    },
+    {
+      "id": "M7-01",
+      "phase": "M7",
+      "kind": "governance",
+      "title": "Confirm scope, owner, evidence rule and acceptance test for Legislative history, law reform and inquiries",
+      "priority": "P2",
+      "dependencies": [
+        "Parliament/devolved site stability"
+      ],
+      "acceptance_reference": [
+        "Every historical document has non-operative role",
+        "Enacted links evidenced",
+        "Hansard gap visible"
+      ],
+      "rollback_reference": "Discovery metadata with no automated intent synthesis."
+    },
+    {
+      "id": "M7-02",
+      "phase": "M7",
+      "kind": "schema",
+      "title": "Implement and validate required schemas/controlled vocabularies",
+      "priority": "P2",
+      "dependencies": [
+        "Parliament/devolved site stability"
+      ],
+      "acceptance_reference": [
+        "Every historical document has non-operative role",
+        "Enacted links evidenced",
+        "Hansard gap visible"
+      ],
+      "rollback_reference": "Discovery metadata with no automated intent synthesis."
+    },
+    {
+      "id": "M7-03",
+      "phase": "M7",
+      "kind": "adapter",
+      "title": "Build source adapter(s) with request/access ledger and deterministic fixture",
+      "priority": "P2",
+      "dependencies": [
+        "Parliament/devolved site stability"
+      ],
+      "acceptance_reference": [
+        "Every historical document has non-operative role",
+        "Enacted links evidenced",
+        "Hansard gap visible"
+      ],
+      "rollback_reference": "Discovery metadata with no automated intent synthesis."
+    },
+    {
+      "id": "M7-04",
+      "phase": "M7",
+      "kind": "coverage",
+      "title": "Populate denominator-based coverage rows and known-gap assertions",
+      "priority": "P2",
+      "dependencies": [
+        "Parliament/devolved site stability"
+      ],
+      "acceptance_reference": [
+        "Every historical document has non-operative role",
+        "Enacted links evidenced",
+        "Hansard gap visible"
+      ],
+      "rollback_reference": "Discovery metadata with no automated intent synthesis."
+    },
+    {
+      "id": "M7-05",
+      "phase": "M7",
+      "kind": "identity",
+      "title": "Implement source-native identity and reviewable mapping rules",
+      "priority": "P2",
+      "dependencies": [
+        "Parliament/devolved site stability"
+      ],
+      "acceptance_reference": [
+        "Every historical document has non-operative role",
+        "Enacted links evidenced",
+        "Hansard gap visible"
+      ],
+      "rollback_reference": "Discovery metadata with no automated intent synthesis."
+    },
+    {
+      "id": "M7-06",
+      "phase": "M7",
+      "kind": "explorer",
+      "title": "Add or extend progressive-discovery UI and route-addressable evidence",
+      "priority": "P2",
+      "dependencies": [
+        "Parliament/devolved site stability"
+      ],
+      "acceptance_reference": [
+        "Every historical document has non-operative role",
+        "Enacted links evidenced",
+        "Hansard gap visible"
+      ],
+      "rollback_reference": "Discovery metadata with no automated intent synthesis."
+    },
+    {
+      "id": "M7-07",
+      "phase": "M7",
+      "kind": "evaluation",
+      "title": "Add stratified questions, hard-failure tests and expert sample",
+      "priority": "P2",
+      "dependencies": [
+        "Parliament/devolved site stability"
+      ],
+      "acceptance_reference": [
+        "Every historical document has non-operative role",
+        "Enacted links evidenced",
+        "Hansard gap visible"
+      ],
+      "rollback_reference": "Discovery metadata with no automated intent synthesis."
+    },
+    {
+      "id": "M7-08",
+      "phase": "M7",
+      "kind": "operations",
+      "title": "Add refresh, drift, deletion/correction and degraded-mode monitoring",
+      "priority": "P2",
+      "dependencies": [
+        "Parliament/devolved site stability"
+      ],
+      "acceptance_reference": [
+        "Every historical document has non-operative role",
+        "Enacted links evidenced",
+        "Hansard gap visible"
+      ],
+      "rollback_reference": "Discovery metadata with no automated intent synthesis."
+    },
+    {
+      "id": "M8-01",
+      "phase": "M8",
+      "kind": "governance",
+      "title": "Confirm scope, owner, evidence rule and acceptance test for Public guidance, ombudsmen, legal aid and distributed local law",
+      "priority": "P2",
+      "dependencies": [
+        "Publisher consent/retention policies",
+        "local authority cooperation"
+      ],
+      "acceptance_reference": [
+        "No ombudsman absence inference",
+        "Local byelaw coverage remains unknown unless denominated",
+        "Public explanation links controlling law"
+      ],
+      "rollback_reference": "Live links and source register only."
+    },
+    {
+      "id": "M8-02",
+      "phase": "M8",
+      "kind": "schema",
+      "title": "Implement and validate required schemas/controlled vocabularies",
+      "priority": "P2",
+      "dependencies": [
+        "Publisher consent/retention policies",
+        "local authority cooperation"
+      ],
+      "acceptance_reference": [
+        "No ombudsman absence inference",
+        "Local byelaw coverage remains unknown unless denominated",
+        "Public explanation links controlling law"
+      ],
+      "rollback_reference": "Live links and source register only."
+    },
+    {
+      "id": "M8-03",
+      "phase": "M8",
+      "kind": "adapter",
+      "title": "Build source adapter(s) with request/access ledger and deterministic fixture",
+      "priority": "P2",
+      "dependencies": [
+        "Publisher consent/retention policies",
+        "local authority cooperation"
+      ],
+      "acceptance_reference": [
+        "No ombudsman absence inference",
+        "Local byelaw coverage remains unknown unless denominated",
+        "Public explanation links controlling law"
+      ],
+      "rollback_reference": "Live links and source register only."
+    },
+    {
+      "id": "M8-04",
+      "phase": "M8",
+      "kind": "coverage",
+      "title": "Populate denominator-based coverage rows and known-gap assertions",
+      "priority": "P2",
+      "dependencies": [
+        "Publisher consent/retention policies",
+        "local authority cooperation"
+      ],
+      "acceptance_reference": [
+        "No ombudsman absence inference",
+        "Local byelaw coverage remains unknown unless denominated",
+        "Public explanation links controlling law"
+      ],
+      "rollback_reference": "Live links and source register only."
+    },
+    {
+      "id": "M8-05",
+      "phase": "M8",
+      "kind": "identity",
+      "title": "Implement source-native identity and reviewable mapping rules",
+      "priority": "P2",
+      "dependencies": [
+        "Publisher consent/retention policies",
+        "local authority cooperation"
+      ],
+      "acceptance_reference": [
+        "No ombudsman absence inference",
+        "Local byelaw coverage remains unknown unless denominated",
+        "Public explanation links controlling law"
+      ],
+      "rollback_reference": "Live links and source register only."
+    },
+    {
+      "id": "M8-06",
+      "phase": "M8",
+      "kind": "explorer",
+      "title": "Add or extend progressive-discovery UI and route-addressable evidence",
+      "priority": "P2",
+      "dependencies": [
+        "Publisher consent/retention policies",
+        "local authority cooperation"
+      ],
+      "acceptance_reference": [
+        "No ombudsman absence inference",
+        "Local byelaw coverage remains unknown unless denominated",
+        "Public explanation links controlling law"
+      ],
+      "rollback_reference": "Live links and source register only."
+    },
+    {
+      "id": "M8-07",
+      "phase": "M8",
+      "kind": "evaluation",
+      "title": "Add stratified questions, hard-failure tests and expert sample",
+      "priority": "P2",
+      "dependencies": [
+        "Publisher consent/retention policies",
+        "local authority cooperation"
+      ],
+      "acceptance_reference": [
+        "No ombudsman absence inference",
+        "Local byelaw coverage remains unknown unless denominated",
+        "Public explanation links controlling law"
+      ],
+      "rollback_reference": "Live links and source register only."
+    },
+    {
+      "id": "M8-08",
+      "phase": "M8",
+      "kind": "operations",
+      "title": "Add refresh, drift, deletion/correction and degraded-mode monitoring",
+      "priority": "P2",
+      "dependencies": [
+        "Publisher consent/retention policies",
+        "local authority cooperation"
+      ],
+      "acceptance_reference": [
+        "No ombudsman absence inference",
+        "Local byelaw coverage remains unknown unless denominated",
+        "Public explanation links controlling law"
+      ],
+      "rollback_reference": "Live links and source register only."
+    },
+    {
+      "id": "M9-01",
+      "phase": "M9",
+      "kind": "governance",
+      "title": "Confirm scope, owner, evidence rule and acceptance test for Scale, advanced semantics and sustainable service operation",
+      "priority": "P2",
+      "dependencies": [
+        "Service owner/funding",
+        "security and legal assurance"
+      ],
+      "acceptance_reference": [
+        "Named owner and SLOs",
+        "External legal/licensing/accessibility review",
+        "Hard-failure rate zero in release gate sample"
+      ],
+      "rollback_reference": "Freeze latest signed snapshot and disable live/synthesis claims."
+    },
+    {
+      "id": "M9-02",
+      "phase": "M9",
+      "kind": "schema",
+      "title": "Implement and validate required schemas/controlled vocabularies",
+      "priority": "P2",
+      "dependencies": [
+        "Service owner/funding",
+        "security and legal assurance"
+      ],
+      "acceptance_reference": [
+        "Named owner and SLOs",
+        "External legal/licensing/accessibility review",
+        "Hard-failure rate zero in release gate sample"
+      ],
+      "rollback_reference": "Freeze latest signed snapshot and disable live/synthesis claims."
+    },
+    {
+      "id": "M9-03",
+      "phase": "M9",
+      "kind": "adapter",
+      "title": "Build source adapter(s) with request/access ledger and deterministic fixture",
+      "priority": "P2",
+      "dependencies": [
+        "Service owner/funding",
+        "security and legal assurance"
+      ],
+      "acceptance_reference": [
+        "Named owner and SLOs",
+        "External legal/licensing/accessibility review",
+        "Hard-failure rate zero in release gate sample"
+      ],
+      "rollback_reference": "Freeze latest signed snapshot and disable live/synthesis claims."
+    },
+    {
+      "id": "M9-04",
+      "phase": "M9",
+      "kind": "coverage",
+      "title": "Populate denominator-based coverage rows and known-gap assertions",
+      "priority": "P2",
+      "dependencies": [
+        "Service owner/funding",
+        "security and legal assurance"
+      ],
+      "acceptance_reference": [
+        "Named owner and SLOs",
+        "External legal/licensing/accessibility review",
+        "Hard-failure rate zero in release gate sample"
+      ],
+      "rollback_reference": "Freeze latest signed snapshot and disable live/synthesis claims."
+    },
+    {
+      "id": "M9-05",
+      "phase": "M9",
+      "kind": "identity",
+      "title": "Implement source-native identity and reviewable mapping rules",
+      "priority": "P2",
+      "dependencies": [
+        "Service owner/funding",
+        "security and legal assurance"
+      ],
+      "acceptance_reference": [
+        "Named owner and SLOs",
+        "External legal/licensing/accessibility review",
+        "Hard-failure rate zero in release gate sample"
+      ],
+      "rollback_reference": "Freeze latest signed snapshot and disable live/synthesis claims."
+    },
+    {
+      "id": "M9-06",
+      "phase": "M9",
+      "kind": "explorer",
+      "title": "Add or extend progressive-discovery UI and route-addressable evidence",
+      "priority": "P2",
+      "dependencies": [
+        "Service owner/funding",
+        "security and legal assurance"
+      ],
+      "acceptance_reference": [
+        "Named owner and SLOs",
+        "External legal/licensing/accessibility review",
+        "Hard-failure rate zero in release gate sample"
+      ],
+      "rollback_reference": "Freeze latest signed snapshot and disable live/synthesis claims."
+    },
+    {
+      "id": "M9-07",
+      "phase": "M9",
+      "kind": "evaluation",
+      "title": "Add stratified questions, hard-failure tests and expert sample",
+      "priority": "P2",
+      "dependencies": [
+        "Service owner/funding",
+        "security and legal assurance"
+      ],
+      "acceptance_reference": [
+        "Named owner and SLOs",
+        "External legal/licensing/accessibility review",
+        "Hard-failure rate zero in release gate sample"
+      ],
+      "rollback_reference": "Freeze latest signed snapshot and disable live/synthesis claims."
+    },
+    {
+      "id": "M9-08",
+      "phase": "M9",
+      "kind": "operations",
+      "title": "Add refresh, drift, deletion/correction and degraded-mode monitoring",
+      "priority": "P2",
+      "dependencies": [
+        "Service owner/funding",
+        "security and legal assurance"
+      ],
+      "acceptance_reference": [
+        "Named owner and SLOs",
+        "External legal/licensing/accessibility review",
+        "Hard-failure rate zero in release gate sample"
+      ],
+      "rollback_reference": "Freeze latest signed snapshot and disable live/synthesis claims."
+    }
+  ]
+}

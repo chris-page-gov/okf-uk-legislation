@@ -1,0 +1,144 @@
+{
+  "constraints": {
+    "by_escalation_state": {
+      "escalated": 111,
+      "mitigated": 55,
+      "recorded": 51
+    },
+    "by_kind": {
+      "authentication": 5,
+      "availability": 21,
+      "fair-use": 72,
+      "hosting": 1,
+      "licence": 72,
+      "privacy": 14,
+      "rate-limit": 23,
+      "robots": 9
+    },
+    "total": 217,
+    "triggered_during_capture": 164
+  },
+  "coverage": {
+    "access_methods_attempted": 108,
+    "access_methods_in_register": 108,
+    "complete_register_attempt": true,
+    "source_records_attempted": 72,
+    "source_records_in_register": 72
+  },
+  "evidence_run_id": "20260725T203207Z-dd7315c3",
+  "generated_at": "2026-07-25T23:04:37Z",
+  "immutable_evidence": {
+    "archive_receipt_path": "evidence/source-acquisitions/whole-law-access/archive-receipts/20260725T203207Z-dd7315c3.json",
+    "coverage": {
+      "access_methods_attempted": 108,
+      "access_methods_in_register": 108,
+      "complete_register_attempt": true,
+      "source_records_attempted": 72,
+      "source_records_in_register": 72
+    },
+    "evidence_archive_path": "evidence/source-acquisitions/whole-law-access/archives/20260725T203207Z-dd7315c3.tar.xz",
+    "evidence_archive_sha256": "7f118be4f00539cc24d6a5f79c7cc47359471b3e1a081f25652399b19c93cfed",
+    "evidence_archive_tree_sha256": "e751f1989aeb1c23a9d0cef04e9d366386fde53fa90376992820da812ac857c3",
+    "evidence_run_id": "20260725T203207Z-dd7315c3",
+    "generated_at": "2026-07-25T23:04:37Z",
+    "original_integrity_sha256": "e52b26e7d7f24da7e909427f0ab82f9f7a154e8b99cd362aab2d84254bb6975a",
+    "publication_projection": {
+      "id": "pub-20260725T203207Z-dd7315c3-7f118be4f005",
+      "is_immutable_original": false,
+      "kind": "replaceable-sanitized-publication-projection",
+      "manifest": "publication-projection.json",
+      "redaction_receipt": "publication-redactions.json"
+    },
+    "schema": "okf-source-access-evidence-reference.v2",
+    "source_register_sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810",
+    "tool": {
+      "name": "capture_whole_law_source_access",
+      "python": "3.14.5",
+      "version": "1.0.0"
+    },
+    "validation": {
+      "access_methods": 108,
+      "archive_bytes": 361672,
+      "archive_sha256": "7f118be4f00539cc24d6a5f79c7cc47359471b3e1a081f25652399b19c93cfed",
+      "byte_recovery_verified": true,
+      "comparison": {
+        "claim-confirmed": 73,
+        "claim-not-reproduced": 20,
+        "public-access-regression-observed": 4,
+        "public-surface-reachable-restriction-not-bypassed": 2,
+        "restriction-confirmed": 1,
+        "route-now-observed-reachable": 8
+      },
+      "compressed_blob_plaintext_check_passed": true,
+      "constraints": {
+        "by_escalation_state": {
+          "escalated": 111,
+          "mitigated": 54,
+          "recorded": 51
+        },
+        "by_kind": {
+          "authentication": 5,
+          "availability": 21,
+          "fair-use": 72,
+          "licence": 72,
+          "privacy": 14,
+          "rate-limit": 23,
+          "robots": 9
+        },
+        "total": 216,
+        "triggered_during_capture": 164
+      },
+      "file_count": 216,
+      "flagged_public_payload_bytes": 32768,
+      "flagged_public_payload_sha256": "8c747d807be81240b515dbc0f459f11ff134bee825a024409265342f4fc1488a",
+      "observed_access_state": {
+        "network-error": 1,
+        "reachable": 83,
+        "restricted": 5,
+        "unavailable": 19
+      },
+      "original_integrity_file_count": 215,
+      "original_integrity_sha256": "e52b26e7d7f24da7e909427f0ab82f9f7a154e8b99cd362aab2d84254bb6975a",
+      "original_integrity_total_bytes": 3935608,
+      "run_id": "20260725T203207Z-dd7315c3",
+      "schema": "okf-source-access-archive-validation.v1",
+      "source_records": 72,
+      "tree_sha256": "e751f1989aeb1c23a9d0cef04e9d366386fde53fa90376992820da812ac857c3",
+      "uncompressed_file_bytes": 3971164
+    }
+  },
+  "limitations": [
+    "A successful probe proves only point-in-time route reachability.",
+    "No observation proves corpus completeness or continuing availability.",
+    "Restricted routes received HEAD metadata probes only; no authentication was attempted.",
+    "Stored body hashes cover the bounded captured prefix, not the complete remote representation when truncated.",
+    "Rights and fair-use constraints remain source- and item-specific and are escalated in the constraint ledger.",
+    "The current files are a replaceable metadata projection, not the immutable original acquisition attempt.",
+    "Original response prefixes require explicit, bounded extraction from the sealed archive."
+  ],
+  "publication_projection_id": "pub-20260725T203207Z-dd7315c3-7f118be4f005",
+  "result_counts": {
+    "access_methods": 108,
+    "comparison": {
+      "claim-confirmed": 73,
+      "claim-not-reproduced": 20,
+      "public-access-regression-observed": 4,
+      "public-surface-reachable-restriction-not-bypassed": 2,
+      "restriction-confirmed": 1,
+      "route-now-observed-reachable": 8
+    },
+    "observed_access_state": {
+      "network-error": 1,
+      "reachable": 83,
+      "restricted": 5,
+      "unavailable": 19
+    },
+    "research_claim_status": {
+      "authenticated or restricted": 3,
+      "documented but not tested": 6,
+      "unavailable": 2,
+      "verified working": 97
+    }
+  },
+  "schema": "okf-source-access-summary.v1"
+}

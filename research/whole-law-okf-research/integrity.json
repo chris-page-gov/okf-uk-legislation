@@ -1,0 +1,338 @@
+{
+  "schema": "okf-whole-law-research-integrity.v1",
+  "generated_at": "2026-07-25T14:00:00+01:00",
+  "counts": {
+    "sources": 72,
+    "source_classes": 36,
+    "personas": 38,
+    "tasks": 20,
+    "persona_task_mappings": 374,
+    "ontology_crosswalk_rows": 43,
+    "evaluation_questions": 360,
+    "migration_phases": 10,
+    "migration_backlog_items": 80,
+    "adrs": 15,
+    "gaps": 28,
+    "adversarial_tests": 20,
+    "report_words": 21560
+  },
+  "validation": [
+    {
+      "name": "source_count",
+      "passed": true,
+      "detail": "72 sources"
+    },
+    {
+      "name": "source_ids_unique",
+      "passed": true,
+      "detail": "unique source IDs"
+    },
+    {
+      "name": "source_class_references",
+      "passed": true,
+      "detail": "all source classes defined"
+    },
+    {
+      "name": "all_source_classes_owned",
+      "passed": true,
+      "detail": "each taxonomy class has at least one source record"
+    },
+    {
+      "name": "coverage_statuses",
+      "passed": true,
+      "detail": "allowed coverage states only"
+    },
+    {
+      "name": "access_statuses",
+      "passed": true,
+      "detail": "allowed access states only"
+    },
+    {
+      "name": "access_method_evidence",
+      "passed": true,
+      "detail": "every method has URL/method"
+    },
+    {
+      "name": "persona_count",
+      "passed": true,
+      "detail": "38 personas"
+    },
+    {
+      "name": "task_count",
+      "passed": true,
+      "detail": "20 tasks"
+    },
+    {
+      "name": "mapping_count",
+      "passed": true,
+      "detail": "374 mappings"
+    },
+    {
+      "name": "all_tasks_mapped",
+      "passed": true,
+      "detail": "all tasks represented"
+    },
+    {
+      "name": "evaluation_count",
+      "passed": true,
+      "detail": "360 questions"
+    },
+    {
+      "name": "evaluation_personas",
+      "passed": true,
+      "detail": "all 38 personas represented in benchmark"
+    },
+    {
+      "name": "migration_phases",
+      "passed": true,
+      "detail": "10 phases"
+    },
+    {
+      "name": "backlog_count",
+      "passed": true,
+      "detail": "80 backlog items"
+    },
+    {
+      "name": "deliverables",
+      "passed": true,
+      "detail": "all 20 deliverables traced"
+    },
+    {
+      "name": "requirements",
+      "passed": true,
+      "detail": "all 8 requirements traced"
+    },
+    {
+      "name": "completion_gate",
+      "passed": true,
+      "detail": "all completion gate items traced"
+    },
+    {
+      "name": "report_deliverable_heading_1",
+      "passed": true,
+      "detail": "heading 1 present"
+    },
+    {
+      "name": "report_deliverable_heading_2",
+      "passed": true,
+      "detail": "heading 2 present"
+    },
+    {
+      "name": "report_deliverable_heading_3",
+      "passed": true,
+      "detail": "heading 3 present"
+    },
+    {
+      "name": "report_deliverable_heading_4",
+      "passed": true,
+      "detail": "heading 4 present"
+    },
+    {
+      "name": "report_deliverable_heading_5",
+      "passed": true,
+      "detail": "heading 5 present"
+    },
+    {
+      "name": "report_deliverable_heading_6",
+      "passed": true,
+      "detail": "heading 6 present"
+    },
+    {
+      "name": "report_deliverable_heading_7",
+      "passed": true,
+      "detail": "heading 7 present"
+    },
+    {
+      "name": "report_deliverable_heading_8",
+      "passed": true,
+      "detail": "heading 8 present"
+    },
+    {
+      "name": "report_deliverable_heading_9",
+      "passed": true,
+      "detail": "heading 9 present"
+    },
+    {
+      "name": "report_deliverable_heading_10",
+      "passed": true,
+      "detail": "heading 10 present"
+    },
+    {
+      "name": "report_deliverable_heading_11",
+      "passed": true,
+      "detail": "heading 11 present"
+    },
+    {
+      "name": "report_deliverable_heading_12",
+      "passed": true,
+      "detail": "heading 12 present"
+    },
+    {
+      "name": "report_deliverable_heading_13",
+      "passed": true,
+      "detail": "heading 13 present"
+    },
+    {
+      "name": "report_deliverable_heading_14",
+      "passed": true,
+      "detail": "heading 14 present"
+    },
+    {
+      "name": "report_deliverable_heading_15",
+      "passed": true,
+      "detail": "heading 15 present"
+    },
+    {
+      "name": "report_deliverable_heading_16",
+      "passed": true,
+      "detail": "heading 16 present"
+    },
+    {
+      "name": "report_deliverable_heading_17",
+      "passed": true,
+      "detail": "heading 17 present"
+    },
+    {
+      "name": "report_deliverable_heading_18",
+      "passed": true,
+      "detail": "heading 18 present"
+    },
+    {
+      "name": "report_deliverable_heading_19",
+      "passed": true,
+      "detail": "heading 19 present"
+    },
+    {
+      "name": "report_deliverable_heading_20",
+      "passed": true,
+      "detail": "heading 20 present"
+    },
+    {
+      "name": "json_parse",
+      "passed": true,
+      "detail": "17 JSON files parsed"
+    },
+    {
+      "name": "json_schema_validation",
+      "passed": true,
+      "detail": "schemas and sample instances validated with jsonschema"
+    }
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1157,
+      "sha256": "069047c98a520b84062b06665e4e21848230387c0aee9a6772f205e91d39a5ac"
+    },
+    {
+      "path": "adversarial-audit.json",
+      "bytes": 5988,
+      "sha256": "e6605d606ca31f0a6ae8b697593110c2a8567fdb089cf1a1277a86d0b59ff26b"
+    },
+    {
+      "path": "answer-schema-proposal.json",
+      "bytes": 5585,
+      "sha256": "698a2b10cff309e6224a9794aaa0c21ea123f094acccdc2224587f4c4168bd76"
+    },
+    {
+      "path": "architecture-adrs.json",
+      "bytes": 8312,
+      "sha256": "eefde445a0f3617e2de0a930a2af7b2e380348b6f43525ee0850b7cc787d62ce"
+    },
+    {
+      "path": "coverage-ledger.example.json",
+      "bytes": 4896,
+      "sha256": "4d1fe44bff59402a818c7379fc6a269b19c51567a99bdf2f87c49773776555c2"
+    },
+    {
+      "path": "coverage-ledger.schema.json",
+      "bytes": 9447,
+      "sha256": "ec3eb9e2073cd8df59154ddd3a8593a0a0f6dae4961e99193c46d75fed7f19a3"
+    },
+    {
+      "path": "file-change-map.json",
+      "bytes": 11908,
+      "sha256": "88b7b83e606b5f9c79062f7ce0fdc3b60cd4b6a67b0fe0a32e5609274ad8e85c"
+    },
+    {
+      "path": "gap-register.json",
+      "bytes": 10511,
+      "sha256": "70cd6d804d2242f00d90aae14909f5728a7e3030986c5d37a6d652ebadcdf113"
+    },
+    {
+      "path": "jsonld-examples.json",
+      "bytes": 12312,
+      "sha256": "b3613e5a6cbc79e5f1225f680367df6b03d2a18a47a0a6de2040a903327f6b4f"
+    },
+    {
+      "path": "legal-source-taxonomy.json",
+      "bytes": 18713,
+      "sha256": "ceb9b78308b54f925af902bb71dc1ee493801d7f1b5c7a74d32da8d0b9ee5320"
+    },
+    {
+      "path": "migration-backlog.json",
+      "bytes": 61936,
+      "sha256": "2c67bca7a61e7d26fbb9fc4d2f5fcf6f2c4e842a15b9d6b87300e816d84f6f35"
+    },
+    {
+      "path": "ontology-crosswalk.json",
+      "bytes": 26716,
+      "sha256": "36f569024ef454c639d455b76cdc82c15bdd2bc406fcff5adf8d15d55704f6ae"
+    },
+    {
+      "path": "persona-task-matrix.csv",
+      "bytes": 240710,
+      "sha256": "ace72686c5ff48054b2aacd3d91739359255f57dc54d558c07904ec63a495059"
+    },
+    {
+      "path": "persona-task-matrix.json",
+      "bytes": 516426,
+      "sha256": "966e5e89ad7dd99ba232364cae4ad50976b9ce1871bb3707d9af3c15992a92e0"
+    },
+    {
+      "path": "source-register.csv",
+      "bytes": 48616,
+      "sha256": "6791aad4f82736efacd9754c085df287a93f16923dc0543f55e5a8768c2922f2"
+    },
+    {
+      "path": "source-register.json",
+      "bytes": 219607,
+      "sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810"
+    },
+    {
+      "path": "source-register.schema.json",
+      "bytes": 4074,
+      "sha256": "625ce0d1ff8489749980230f334ec184f080862a0a915aa31dc8f612c198cb82"
+    },
+    {
+      "path": "traceability.json",
+      "bytes": 9536,
+      "sha256": "0a4181e580d57380c33fd8ee5490852749286e7d25d8ca391bf428a1cc7872db"
+    },
+    {
+      "path": "whole-law-context.jsonld",
+      "bytes": 2029,
+      "sha256": "640e28d6704d583d1a942bc64dcb0ba9542d75944bd7f5d8932012eb6275474e"
+    },
+    {
+      "path": "whole-law-evaluation-plan.json",
+      "bytes": 656046,
+      "sha256": "089fc1825603cfa0820fd5f684f911f804edf4dd8ce09fc0a2300aec1a1720ba"
+    },
+    {
+      "path": "whole-law-evaluation-questions.json",
+      "bytes": 649549,
+      "sha256": "ff8e8f8f7ae66c123136041807b9b22ca86d34ef3982a4f60a2c9d4fd10659df"
+    },
+    {
+      "path": "whole-law-okf-research-report.md",
+      "bytes": 181799,
+      "sha256": "b6b2837aadf288512ad6ac13f98c8d902c2b60f7a272976eca168cee229961e5"
+    },
+    {
+      "path": "whole-law-shapes.ttl",
+      "bytes": 4134,
+      "sha256": "50d5a91db565483d61ea0524a49db97d50db4cad707883a85f0f4d7667f1b156"
+    }
+  ]
+}

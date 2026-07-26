@@ -1,0 +1,57 @@
+{
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1/core-relationship-row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OKF compact core relationship row v1",
+  "description": "A versioned compact projection used only by the bounded legislation core graph. Rich effects and enrichment datapacks use okf-relationship-assertion.v2.",
+  "type": "object",
+  "required": [
+    "authority",
+    "confidence",
+    "evidence_type",
+    "kind",
+    "observed_at",
+    "source",
+    "target"
+  ],
+  "properties": {
+    "authority": {
+      "enum": [
+        "derived-non-official",
+        "official-source"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "high",
+        "low",
+        "medium",
+        "unknown"
+      ]
+    },
+    "evidence_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string",
+      "pattern": "^dataset/[a-z0-9][a-z0-9-]*$"
+    },
+    "target": {
+      "type": "string",
+      "pattern": "^(topic|legislation-type|entity)/[a-z0-9][a-z0-9-]*$"
+    }
+  },
+  "additionalProperties": false
+}

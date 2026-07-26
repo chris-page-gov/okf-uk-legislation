@@ -1,0 +1,77 @@
+{
+  "assurance_boundary": "The deterministic runner verifies local publication contracts and frozen evidence only. Public HTTP behaviour, compatibility-host redirects and Explorer browser behaviour require separate deployed journey receipts and remain blocked here.",
+  "corpus_snapshot": "whole-law-2026-07-25+legislation-2026-07-11T18:00:00Z",
+  "generated_at": "2026-07-25T22:00:00Z",
+  "origin": "Claude 4.8 access journey, normalized into executable release requirements",
+  "origin_evidence": [
+    {
+      "path": "../../research/Legislation-govuk Claude 4.8 run.docx",
+      "role": "immutable original evaluation",
+      "sha256": "67849a644ec4b64be8dd4fbe8eb39e2cb35305e003b46d8b328e0b2d08437c12"
+    },
+    {
+      "path": "../../research/claude-4.8-evaluation-transcript.md",
+      "role": "normalized text projection",
+      "sha256": "55309248b57c3988c2298b110b94e35a92471fa956820080d750cfeb621d5b85"
+    }
+  ],
+  "scenarios": [
+    {
+      "expected": "Landing metadata declares repository, repository_subpath, descriptor, docs and alternate routes.",
+      "external_receipt_required": "public-landing-and-descriptor-journey",
+      "id": "CLAUDE-ACCESS-01",
+      "local_contract": "descriptor-discovery",
+      "name": "Repository and canonical descriptor discovery"
+    },
+    {
+      "expected": "Pages, raw-content and archive/release routes remain usable without GitHub API access.",
+      "external_receipt_required": "api-exhaustion-public-fallback-journey",
+      "id": "CLAUDE-ACCESS-02",
+      "local_contract": "non-api-alternate-routes",
+      "name": "GitHub API exhaustion"
+    },
+    {
+      "expected": "A raw 404 directs the client to repository_subpath; the client does not guess paths.",
+      "external_receipt_required": "explorer-raw-404-behaviour",
+      "id": "CLAUDE-ACCESS-03",
+      "local_contract": "declared-raw-subpaths",
+      "name": "Raw-root path mismatch"
+    },
+    {
+      "expected": "Public Pages descriptor and documentation resolve without authentication.",
+      "external_receipt_required": "unauthenticated-public-http-smoke",
+      "id": "CLAUDE-ACCESS-04",
+      "local_contract": "pages-routes-declared",
+      "name": "Pages access"
+    },
+    {
+      "expected": "Octet-stream YAML-LD is safely content-sniffed; JSON-LD is the strict transport fallback.",
+      "external_receipt_required": "explorer-mime-fallback-browser-journey",
+      "id": "CLAUDE-ACCESS-05",
+      "local_contract": "yaml-ld-json-ld-fallback-declared",
+      "name": "YAML-LD MIME fallback"
+    },
+    {
+      "expected": "Official frozen effects and live reconciliation routes are distinct and expose coverage.",
+      "external_receipt_required": "post-snapshot-live-reconciliation",
+      "id": "CLAUDE-ACCESS-06",
+      "local_contract": "effects-and-reconciliation-entrypoints",
+      "name": "Static and live effect graph"
+    },
+    {
+      "expected": "Historical legislation, evaluation and documentation URLs resolve through moved descriptors or redirects.",
+      "external_receipt_required": "compatibility-host-link-and-redirect-crawl",
+      "id": "CLAUDE-ACCESS-07",
+      "local_contract": null,
+      "name": "Stale compatibility URL"
+    },
+    {
+      "expected": "Snapshot, observation date, route state, truncation and inaccessible checks are visible.",
+      "external_receipt_required": "explorer-visible-freshness-browser-journey",
+      "id": "CLAUDE-ACCESS-08",
+      "local_contract": "freshness-and-access-cliff-metadata",
+      "name": "Freshness and source-access cliff"
+    }
+  ],
+  "schema": "okf-adversarial-access-suite.v2"
+}

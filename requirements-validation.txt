@@ -1,0 +1,6 @@
+jsonschema==4.25.1
+PyLD==2.0.4
+pyshacl==0.30.1
+PyYAML==6.0.2
+rdflib==7.6.0
+yaml-ld==1.1.22

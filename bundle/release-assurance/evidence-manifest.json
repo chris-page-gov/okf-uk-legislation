@@ -1,0 +1,231 @@
+{
+  "algorithm": "sha256",
+  "controlling_research_integrity": {
+    "bytes": 8741,
+    "path": "research/whole-law-okf-research/integrity.json",
+    "sha256": "3f597c1d749d5f0cfd81dcf35c5c55ead7292e424fb6c2a4f455bbf3671f38af"
+  },
+  "counts": {
+    "claude_evaluations": 1,
+    "derived_projections": 1,
+    "evidence_items": 26,
+    "research_artefacts": 24,
+    "research_content_artefacts": 23,
+    "research_integrity_manifests": 1,
+    "research_validations_passed": 40
+  },
+  "generated_at": "2026-07-25T23:30:00Z",
+  "immutability_rule": "The 24-file research package (23 content artefacts plus its integrity manifest) and Claude DOCX are read-only evidence. Corrections, transcripts and reviews must be separate artefacts.",
+  "items": [
+    {
+      "bytes": 8741,
+      "kind": "research-integrity-manifest",
+      "path": "research/whole-law-okf-research/integrity.json",
+      "sha256": "3f597c1d749d5f0cfd81dcf35c5c55ead7292e424fb6c2a4f455bbf3671f38af",
+      "verified": true
+    },
+    {
+      "bytes": 1157,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/README.md",
+      "recorded_sha256": "069047c98a520b84062b06665e4e21848230387c0aee9a6772f205e91d39a5ac",
+      "sha256": "069047c98a520b84062b06665e4e21848230387c0aee9a6772f205e91d39a5ac",
+      "verified": true
+    },
+    {
+      "bytes": 5988,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/adversarial-audit.json",
+      "recorded_sha256": "e6605d606ca31f0a6ae8b697593110c2a8567fdb089cf1a1277a86d0b59ff26b",
+      "sha256": "e6605d606ca31f0a6ae8b697593110c2a8567fdb089cf1a1277a86d0b59ff26b",
+      "verified": true
+    },
+    {
+      "bytes": 5585,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/answer-schema-proposal.json",
+      "recorded_sha256": "698a2b10cff309e6224a9794aaa0c21ea123f094acccdc2224587f4c4168bd76",
+      "sha256": "698a2b10cff309e6224a9794aaa0c21ea123f094acccdc2224587f4c4168bd76",
+      "verified": true
+    },
+    {
+      "bytes": 8312,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/architecture-adrs.json",
+      "recorded_sha256": "eefde445a0f3617e2de0a930a2af7b2e380348b6f43525ee0850b7cc787d62ce",
+      "sha256": "eefde445a0f3617e2de0a930a2af7b2e380348b6f43525ee0850b7cc787d62ce",
+      "verified": true
+    },
+    {
+      "bytes": 4896,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/coverage-ledger.example.json",
+      "recorded_sha256": "4d1fe44bff59402a818c7379fc6a269b19c51567a99bdf2f87c49773776555c2",
+      "sha256": "4d1fe44bff59402a818c7379fc6a269b19c51567a99bdf2f87c49773776555c2",
+      "verified": true
+    },
+    {
+      "bytes": 9447,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/coverage-ledger.schema.json",
+      "recorded_sha256": "ec3eb9e2073cd8df59154ddd3a8593a0a0f6dae4961e99193c46d75fed7f19a3",
+      "sha256": "ec3eb9e2073cd8df59154ddd3a8593a0a0f6dae4961e99193c46d75fed7f19a3",
+      "verified": true
+    },
+    {
+      "bytes": 11908,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/file-change-map.json",
+      "recorded_sha256": "88b7b83e606b5f9c79062f7ce0fdc3b60cd4b6a67b0fe0a32e5609274ad8e85c",
+      "sha256": "88b7b83e606b5f9c79062f7ce0fdc3b60cd4b6a67b0fe0a32e5609274ad8e85c",
+      "verified": true
+    },
+    {
+      "bytes": 10511,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/gap-register.json",
+      "recorded_sha256": "70cd6d804d2242f00d90aae14909f5728a7e3030986c5d37a6d652ebadcdf113",
+      "sha256": "70cd6d804d2242f00d90aae14909f5728a7e3030986c5d37a6d652ebadcdf113",
+      "verified": true
+    },
+    {
+      "bytes": 12312,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/jsonld-examples.json",
+      "recorded_sha256": "b3613e5a6cbc79e5f1225f680367df6b03d2a18a47a0a6de2040a903327f6b4f",
+      "sha256": "b3613e5a6cbc79e5f1225f680367df6b03d2a18a47a0a6de2040a903327f6b4f",
+      "verified": true
+    },
+    {
+      "bytes": 18713,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/legal-source-taxonomy.json",
+      "recorded_sha256": "ceb9b78308b54f925af902bb71dc1ee493801d7f1b5c7a74d32da8d0b9ee5320",
+      "sha256": "ceb9b78308b54f925af902bb71dc1ee493801d7f1b5c7a74d32da8d0b9ee5320",
+      "verified": true
+    },
+    {
+      "bytes": 61936,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/migration-backlog.json",
+      "recorded_sha256": "2c67bca7a61e7d26fbb9fc4d2f5fcf6f2c4e842a15b9d6b87300e816d84f6f35",
+      "sha256": "2c67bca7a61e7d26fbb9fc4d2f5fcf6f2c4e842a15b9d6b87300e816d84f6f35",
+      "verified": true
+    },
+    {
+      "bytes": 26716,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/ontology-crosswalk.json",
+      "recorded_sha256": "36f569024ef454c639d455b76cdc82c15bdd2bc406fcff5adf8d15d55704f6ae",
+      "sha256": "36f569024ef454c639d455b76cdc82c15bdd2bc406fcff5adf8d15d55704f6ae",
+      "verified": true
+    },
+    {
+      "bytes": 240710,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/persona-task-matrix.csv",
+      "recorded_sha256": "ace72686c5ff48054b2aacd3d91739359255f57dc54d558c07904ec63a495059",
+      "sha256": "ace72686c5ff48054b2aacd3d91739359255f57dc54d558c07904ec63a495059",
+      "verified": true
+    },
+    {
+      "bytes": 516426,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/persona-task-matrix.json",
+      "recorded_sha256": "966e5e89ad7dd99ba232364cae4ad50976b9ce1871bb3707d9af3c15992a92e0",
+      "sha256": "966e5e89ad7dd99ba232364cae4ad50976b9ce1871bb3707d9af3c15992a92e0",
+      "verified": true
+    },
+    {
+      "bytes": 48616,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/source-register.csv",
+      "recorded_sha256": "6791aad4f82736efacd9754c085df287a93f16923dc0543f55e5a8768c2922f2",
+      "sha256": "6791aad4f82736efacd9754c085df287a93f16923dc0543f55e5a8768c2922f2",
+      "verified": true
+    },
+    {
+      "bytes": 219607,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/source-register.json",
+      "recorded_sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810",
+      "sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810",
+      "verified": true
+    },
+    {
+      "bytes": 4074,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/source-register.schema.json",
+      "recorded_sha256": "625ce0d1ff8489749980230f334ec184f080862a0a915aa31dc8f612c198cb82",
+      "sha256": "625ce0d1ff8489749980230f334ec184f080862a0a915aa31dc8f612c198cb82",
+      "verified": true
+    },
+    {
+      "bytes": 9536,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/traceability.json",
+      "recorded_sha256": "0a4181e580d57380c33fd8ee5490852749286e7d25d8ca391bf428a1cc7872db",
+      "sha256": "0a4181e580d57380c33fd8ee5490852749286e7d25d8ca391bf428a1cc7872db",
+      "verified": true
+    },
+    {
+      "bytes": 2029,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/whole-law-context.jsonld",
+      "recorded_sha256": "640e28d6704d583d1a942bc64dcb0ba9542d75944bd7f5d8932012eb6275474e",
+      "sha256": "640e28d6704d583d1a942bc64dcb0ba9542d75944bd7f5d8932012eb6275474e",
+      "verified": true
+    },
+    {
+      "bytes": 656046,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/whole-law-evaluation-plan.json",
+      "recorded_sha256": "089fc1825603cfa0820fd5f684f911f804edf4dd8ce09fc0a2300aec1a1720ba",
+      "sha256": "089fc1825603cfa0820fd5f684f911f804edf4dd8ce09fc0a2300aec1a1720ba",
+      "verified": true
+    },
+    {
+      "bytes": 649549,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/whole-law-evaluation-questions.json",
+      "recorded_sha256": "ff8e8f8f7ae66c123136041807b9b22ca86d34ef3982a4f60a2c9d4fd10659df",
+      "sha256": "ff8e8f8f7ae66c123136041807b9b22ca86d34ef3982a4f60a2c9d4fd10659df",
+      "verified": true
+    },
+    {
+      "bytes": 181799,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/whole-law-okf-research-report.md",
+      "recorded_sha256": "b6b2837aadf288512ad6ac13f98c8d902c2b60f7a272976eca168cee229961e5",
+      "sha256": "b6b2837aadf288512ad6ac13f98c8d902c2b60f7a272976eca168cee229961e5",
+      "verified": true
+    },
+    {
+      "bytes": 4134,
+      "kind": "research-artefact",
+      "path": "research/whole-law-okf-research/whole-law-shapes.ttl",
+      "recorded_sha256": "50d5a91db565483d61ea0524a49db97d50db4cad707883a85f0f4d7667f1b156",
+      "sha256": "50d5a91db565483d61ea0524a49db97d50db4cad707883a85f0f4d7667f1b156",
+      "verified": true
+    },
+    {
+      "bytes": 28207,
+      "kind": "adversarial-access-evaluation",
+      "path": "research/Legislation-govuk Claude 4.8 run.docx",
+      "sha256": "67849a644ec4b64be8dd4fbe8eb39e2cb35305e003b46d8b328e0b2d08437c12",
+      "verified": true
+    },
+    {
+      "bytes": 22732,
+      "derived_from": "research/Legislation-govuk Claude 4.8 run.docx",
+      "derived_from_sha256": "67849a644ec4b64be8dd4fbe8eb39e2cb35305e003b46d8b328e0b2d08437c12",
+      "kind": "normalized-derived-projection",
+      "path": "research/claude-4.8-evaluation-transcript.md",
+      "sha256": "55309248b57c3988c2298b110b94e35a92471fa956820080d750cfeb621d5b85",
+      "tool": "Pandoc",
+      "verified": true
+    }
+  ],
+  "schema": "okf-evidence-manifest.v1",
+  "verified": true
+}

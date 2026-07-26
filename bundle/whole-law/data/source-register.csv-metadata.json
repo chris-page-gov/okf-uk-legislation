@@ -1,0 +1,64 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "tableSchema": {
+    "columns": [
+      {
+        "name": "id",
+        "titles": "id"
+      },
+      {
+        "name": "title",
+        "titles": "title"
+      },
+      {
+        "name": "owning_institution",
+        "titles": "owning_institution"
+      },
+      {
+        "name": "jurisdictions",
+        "titles": "jurisdictions"
+      },
+      {
+        "name": "authority_classes",
+        "titles": "authority_classes"
+      },
+      {
+        "name": "source_classes",
+        "titles": "source_classes"
+      },
+      {
+        "name": "legal_force_or_role",
+        "titles": "legal_force_or_role"
+      },
+      {
+        "name": "corpus_boundary",
+        "titles": "corpus_boundary"
+      },
+      {
+        "name": "coverage_status",
+        "titles": "coverage_status"
+      },
+      {
+        "name": "access_statuses",
+        "titles": "access_statuses"
+      },
+      {
+        "name": "access_test_date",
+        "titles": "access_test_date"
+      },
+      {
+        "name": "recommended_ingestion_method",
+        "titles": "recommended_ingestion_method"
+      },
+      {
+        "name": "known_omissions_or_inconsistencies",
+        "titles": "known_omissions_or_inconsistencies"
+      },
+      {
+        "name": "primary_url",
+        "titles": "primary_url"
+      }
+    ]
+  },
+  "url": "source-register.csv"
+}

@@ -1,0 +1,230 @@
+{
+  "schema": "okf-whole-law-gap-register.v1",
+  "generated_at": "2026-07-25T14:00:00+01:00",
+  "records": [
+    {
+      "id": "GAP-001",
+      "area": "Case-law public completeness",
+      "severity": "critical",
+      "question": "What court-by-court official denominator is available beyond published counts, especially lower courts and tribunals?",
+      "impact": "Cannot claim complete case-law coverage.",
+      "next_action": "Negotiate denominator metadata with TNA/HMCTS/Judicial Office; retain partial status."
+    },
+    {
+      "id": "GAP-002",
+      "area": "Scotland/NI case law",
+      "severity": "critical",
+      "question": "Are machine-readable bulk interfaces/licences available for SCTS and Judiciary NI?",
+      "impact": "Federated search may be metadata/PDF-only and slower.",
+      "next_action": "Formal publisher enquiries and access tests."
+    },
+    {
+      "id": "GAP-003",
+      "area": "Public citator",
+      "severity": "critical",
+      "question": "Can a passage-evidenced open treatment graph be built lawfully and with acceptable expert precision?",
+      "impact": "Current public sources do not provide comprehensive positive/negative treatment.",
+      "next_action": "Pilot UKSC/EWCA sample; publish reviewed subset only."
+    },
+    {
+      "id": "GAP-004",
+      "area": "FCL licence",
+      "severity": "critical",
+      "question": "Will the project obtain a computational-analysis licence and under what deployment/purpose restrictions?",
+      "impact": "Bulk case text extraction/indexing cannot proceed lawfully without it.",
+      "next_action": "Prepare R&D application and DPIA/algorithmic transparency material."
+    },
+    {
+      "id": "GAP-005",
+      "area": "CaTH licence/privacy",
+      "severity": "critical",
+      "question": "Is hearing data necessary for Whole-Law scope and can risks/retention be justified?",
+      "impact": "Listings capability may be excluded or live-only.",
+      "next_action": "Treat as optional later connector; conduct DPIA and licence application only with defined use case."
+    },
+    {
+      "id": "GAP-006",
+      "area": "Local byelaws",
+      "severity": "critical",
+      "question": "How can authority-by-authority denominators and revocation state be established without a central record?",
+      "impact": "No defensible UK completeness claim.",
+      "next_action": "Pilot local-authority register profile; crowd/authority verification workflow."
+    },
+    {
+      "id": "GAP-007",
+      "area": "Historical legislation text",
+      "severity": "high",
+      "question": "What digitisation/licensing path covers PDF-only and missing text classes?",
+      "impact": "Passage-level answers unavailable for some historic law.",
+      "next_action": "Metadata/discovery state, OCR only as derived non-authoritative text, link archive/publisher."
+    },
+    {
+      "id": "GAP-008",
+      "area": "Effects completeness",
+      "severity": "critical",
+      "question": "Which legislation types/periods have incomplete amendment/effect records?",
+      "impact": "“In force” answers can be wrong.",
+      "next_action": "Type-period coverage ledger derived from official what-we-have tables."
+    },
+    {
+      "id": "GAP-009",
+      "area": "Commencement/savings semantics",
+      "severity": "critical",
+      "question": "How should conditional, partial and transitional commencement be modelled and reviewed?",
+      "impact": "False temporal certainty.",
+      "next_action": "Expert-designed effect vocabulary and benchmark."
+    },
+    {
+      "id": "GAP-010",
+      "area": "Extent versus application",
+      "severity": "critical",
+      "question": "How can source-specific extent metadata be distinguished from practical/person application?",
+      "impact": "Wrong-jurisdiction advice.",
+      "next_action": "Separate properties and require fact/application review."
+    },
+    {
+      "id": "GAP-011",
+      "area": "Regulator reuse terms",
+      "severity": "high",
+      "question": "Which handbooks/notices permit bulk redistribution and derived indexes?",
+      "impact": "Some packs may remain links/metadata only.",
+      "next_action": "Per-regulator rights assessment and written permission where needed."
+    },
+    {
+      "id": "GAP-012",
+      "area": "FCA access stability",
+      "severity": "high",
+      "question": "Why did Handbook access time out and what supported machine interface exists?",
+      "impact": "No reliable ingestion claim.",
+      "next_action": "Retry from deployment, inspect terms/API, keep inaccessible state meanwhile."
+    },
+    {
+      "id": "GAP-013",
+      "area": "Ombudsman retention",
+      "severity": "high",
+      "question": "Can historical decisions be lawfully preserved when publisher retention windows expire?",
+      "impact": "Coverage shrinks over time or preservation conflicts with policy/privacy.",
+      "next_action": "Seek publisher guidance; default to metadata/tombstones and no unauthorised republishing."
+    },
+    {
+      "id": "GAP-014",
+      "area": "Person identity/anonymisation",
+      "severity": "critical",
+      "question": "How to prevent cross-source entity resolution from re-identifying anonymised parties?",
+      "impact": "Privacy/open-justice harm.",
+      "next_action": "No person reconciliation by default; high-risk review and suppression rules."
+    },
+    {
+      "id": "GAP-015",
+      "area": "Appeal status",
+      "severity": "critical",
+      "question": "How reliably can appeal relationships/outcomes be discovered across sources?",
+      "impact": "Reliance on reversed/appealed decisions.",
+      "next_action": "Exact citation/case-number rules plus expert-reviewed mappings; show unknown prominently."
+    },
+    {
+      "id": "GAP-016",
+      "area": "Devolved guidance taxonomy",
+      "severity": "high",
+      "question": "How to distinguish statutory guidance, directions, circulars and policy across departments?",
+      "impact": "Authority flattening.",
+      "next_action": "Source-classifier with statutory-basis requirement and human review."
+    },
+    {
+      "id": "GAP-017",
+      "area": "Treaty domestic effect",
+      "severity": "critical",
+      "question": "How to connect treaty status to domestic implementation and justiciability?",
+      "impact": "International obligation misrepresented as directly enforceable domestic rule.",
+      "next_action": "Separate international status from domestic effect; expert-reviewed implementation links."
+    },
+    {
+      "id": "GAP-018",
+      "area": "HUDOC coverage/API",
+      "severity": "high",
+      "question": "What permitted machine-access route and historical omission profile applies?",
+      "impact": "Incomplete ECHR analysis.",
+      "next_action": "Review Council of Europe reuse/API terms and encode collection/status boundaries."
+    },
+    {
+      "id": "GAP-019",
+      "area": "Multilingual equivalence",
+      "severity": "high",
+      "question": "How to represent authoritative bilingual/multilingual expressions and translation status?",
+      "impact": "Meaning drift and wrong-language authority.",
+      "next_action": "Language-tagged expressions and source-declared authenticity/translation role."
+    },
+    {
+      "id": "GAP-020",
+      "area": "Procedural historical versions",
+      "severity": "critical",
+      "question": "Can rules/practice directions be reconstructed reliably at past dates?",
+      "impact": "Historical procedure answers unsafe.",
+      "next_action": "Amendment-instrument graph and archived snapshot programme."
+    },
+    {
+      "id": "GAP-021",
+      "area": "Forms/fees currentness",
+      "severity": "critical",
+      "question": "What refresh SLO and cache policy is safe for action-critical forms/fees?",
+      "impact": "Missed deadline, rejected filing or wrong payment.",
+      "next_action": "Live verification mandatory; daily monitor and stale-after hours/days."
+    },
+    {
+      "id": "GAP-022",
+      "area": "Source deletion/correction",
+      "severity": "high",
+      "question": "What content may be retained after lawful withdrawal/redaction?",
+      "impact": "Privacy/licensing conflict versus reproducibility.",
+      "next_action": "Per-source deletion policy and evidence-only tombstones."
+    },
+    {
+      "id": "GAP-023",
+      "area": "Expert review capacity",
+      "severity": "high",
+      "question": "Who reviews treatment, controlling authority and benchmark answers at scale?",
+      "impact": "Unreviewed semantic graph may look authoritative.",
+      "next_action": "Qualified reviewer panel, sampling plan and explicit unreviewed state."
+    },
+    {
+      "id": "GAP-024",
+      "area": "Sustainability",
+      "severity": "high",
+      "question": "What institution owns source monitoring, releases, incident response and long-term funding?",
+      "impact": "Stale legal infrastructure.",
+      "next_action": "Service owner, release SLOs, stewardship board and succession plan before stable status."
+    },
+    {
+      "id": "GAP-025",
+      "area": "Security",
+      "severity": "high",
+      "question": "How are malicious PDFs/HTML, prompt injection and supply-chain compromise contained?",
+      "impact": "Agent/tool compromise and false evidence.",
+      "next_action": "Content sandboxing, no source instructions, signed releases, dependency scanning."
+    },
+    {
+      "id": "GAP-026",
+      "area": "Official versus authoritative",
+      "severity": "high",
+      "question": "How should official summaries/guidance be ranked against primary sources and formal decisions?",
+      "impact": "Official but non-binding material can displace law.",
+      "next_action": "Persistent authority class and task-specific source hierarchy."
+    },
+    {
+      "id": "GAP-027",
+      "area": "Offline/degraded operation",
+      "severity": "medium",
+      "question": "What minimum evidence can be served when live verification fails?",
+      "impact": "Users may mistake snapshot for current law.",
+      "next_action": "Serve last governed snapshot with conspicuous stale/degraded state and disable current-law assurance."
+    },
+    {
+      "id": "GAP-028",
+      "area": "External assurance",
+      "severity": "high",
+      "question": "Who independently validates legal architecture, licensing and accessibility?",
+      "impact": "Internal confidence may mask blind spots.",
+      "next_action": "External legal-information, licensing and accessibility review before public stable release."
+    }
+  ]
+}

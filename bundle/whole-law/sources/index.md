@@ -1,0 +1,74 @@
+# Whole-Law source catalogue
+
+- [SRC001 — legislation.gov.uk work catalogue and Atom feeds](src001-legislation-gov-uk-work-catalogue-and-atom-feeds.md) — complete against official enumerated source
+- [SRC002 — legislation.gov.uk CLML and selected-passage resources](src002-legislation-gov-uk-clml-and-selected-passage-resources.md) — progressively resolved
+- [SRC003 — legislation.gov.uk effects feeds](src003-legislation-gov-uk-effects-feeds.md) — partially complete
+- [SRC004 — legislation.gov.uk Publication Log](src004-legislation-gov-uk-publication-log.md) — partially complete
+- [SRC005 — legislation.gov.uk associated documents and impact assessments](src005-legislation-gov-uk-associated-documents-and-impact-assessments.md) — partially complete
+- [SRC006 — legislation.gov.uk draft legislation catalogue](src006-legislation-gov-uk-draft-legislation-catalogue.md) — complete against official enumerated source
+- [SRC007 — legislation.gov.uk research bulk data and SPARQL surfaces](src007-legislation-gov-uk-research-bulk-data-and-sparql-surfaces.md) — access-restricted
+- [SRC008 — legislation.gov.uk EU-origin, retained and assimilated law](src008-legislation-gov-uk-eu-origin-retained-and-assimilated-law.md) — partially complete
+- [SRC009 — Find Case Law public service](src009-find-case-law-public-service.md) — partially complete
+- [SRC010 — Find Case Law API and computational-analysis licence](src010-find-case-law-api-and-computational-analysis-licence.md) — licence-restricted
+- [SRC011 — Find Case Law Supreme Court collection](src011-find-case-law-supreme-court-collection.md) — complete against official enumerated source
+- [SRC012 — Find Case Law lower-court and tribunal collections](src012-find-case-law-lower-court-and-tribunal-collections.md) — partially complete
+- [SRC013 — Scottish Courts and Tribunals Service judgments](src013-scottish-courts-and-tribunals-service-judgments.md) — partially complete
+- [SRC014 — Judiciary NI judgments](src014-judiciary-ni-judgments.md) — partially complete
+- [SRC015 — BAILII case-law database](src015-bailii-case-law-database.md) — documented but inaccessible
+- [SRC016 — UK Supreme Court and Judicial Committee websites](src016-uk-supreme-court-and-judicial-committee-websites.md) — partially complete
+- [SRC017 — The National Archives Discovery legal records](src017-the-national-archives-discovery-legal-records.md) — discovery-only
+- [SRC018 — Civil Procedure Rules and practice directions](src018-civil-procedure-rules-and-practice-directions.md) — partially complete
+- [SRC019 — Criminal Procedure Rules and practice directions](src019-criminal-procedure-rules-and-practice-directions.md) — partially complete
+- [SRC020 — Family Procedure Rules and practice directions](src020-family-procedure-rules-and-practice-directions.md) — partially complete
+- [SRC021 — Tribunal Procedure Rules and practice directions](src021-tribunal-procedure-rules-and-practice-directions.md) — partially complete
+- [SRC022 — Judiciary practice directions and guidance](src022-judiciary-practice-directions-and-guidance.md) — partially complete
+- [SRC023 — HMCTS forms](src023-hmcts-forms.md) — partially complete
+- [SRC024 — HMCTS court and tribunal fees](src024-hmcts-court-and-tribunal-fees.md) — progressively resolved
+- [SRC025 — Court and Tribunal Hearings Service (CaTH) data](src025-court-and-tribunal-hearings-service-cath-data.md) — access-restricted
+- [SRC026 — Find a Court or Tribunal service](src026-find-a-court-or-tribunal-service.md) — discovery-only
+- [SRC027 — Sentencing Council guidelines](src027-sentencing-council-guidelines.md) — partially complete
+- [SRC028 — Crown Prosecution Service legal guidance](src028-crown-prosecution-service-legal-guidance.md) — partially complete
+- [SRC029 — COPFS Prosecution Code and guidance](src029-copfs-prosecution-code-and-guidance.md) — partially complete
+- [SRC030 — Public Prosecution Service NI Code for Prosecutors](src030-public-prosecution-service-ni-code-for-prosecutors.md) — partially complete
+- [SRC031 — FCA Handbook](src031-fca-handbook.md) — documented but inaccessible
+- [SRC032 — FCA enforcement and notices](src032-fca-enforcement-and-notices.md) — partially complete
+- [SRC033 — PRA Rulebook](src033-pra-rulebook.md) — partially complete
+- [SRC034 — Ofcom rules, codes and regulatory statements](src034-ofcom-rules-codes-and-regulatory-statements.md) — partially complete
+- [SRC035 — Ofcom enforcement decisions](src035-ofcom-enforcement-decisions.md) — partially complete
+- [SRC036 — ICO statutory guidance, codes and regulatory guidance](src036-ico-statutory-guidance-codes-and-regulatory-guidance.md) — partially complete
+- [SRC037 — ICO decision notices and enforcement action](src037-ico-decision-notices-and-enforcement-action.md) — partially complete
+- [SRC038 — Competition and Markets Authority cases and decisions](src038-competition-and-markets-authority-cases-and-decisions.md) — partially complete
+- [SRC039 — Environment Agency enforcement and sanctions publications](src039-environment-agency-enforcement-and-sanctions-publications.md) — partially complete
+- [SRC040 — Local Government and Social Care Ombudsman decisions](src040-local-government-and-social-care-ombudsman-decisions.md) — partially complete
+- [SRC041 — Parliamentary and Health Service Ombudsman case decisions](src041-parliamentary-and-health-service-ombudsman-case-decisions.md) — partially complete
+- [SRC042 — Scottish Public Services Ombudsman decisions and reviews](src042-scottish-public-services-ombudsman-decisions-and-reviews.md) — partially complete
+- [SRC043 — Northern Ireland Public Services Ombudsman findings](src043-northern-ireland-public-services-ombudsman-findings.md) — partially complete
+- [SRC044 — UK Parliament Bills service](src044-uk-parliament-bills-service.md) — complete against official enumerated source
+- [SRC045 — Hansard official report](src045-hansard-official-report.md) — partially complete
+- [SRC046 — UK Parliament committees, evidence and reports](src046-uk-parliament-committees-evidence-and-reports.md) — partially complete
+- [SRC047 — UK Parliament Statutory Instrument tracker](src047-uk-parliament-statutory-instrument-tracker.md) — partially complete
+- [SRC048 — Scottish Parliament Bills and Official Report](src048-scottish-parliament-bills-and-official-report.md) — partially complete
+- [SRC049 — Senedd Cymru legislation and Record of Proceedings](src049-senedd-cymru-legislation-and-record-of-proceedings.md) — partially complete
+- [SRC050 — Northern Ireland Assembly Bills and Official Report](src050-northern-ireland-assembly-bills-and-official-report.md) — partially complete
+- [SRC051 — Law Commission publications and projects](src051-law-commission-publications-and-projects.md) — partially complete
+- [SRC052 — Scottish Law Commission publications](src052-scottish-law-commission-publications.md) — partially complete
+- [SRC053 — Public inquiry reports and recommendation tracking](src053-public-inquiry-reports-and-recommendation-tracking.md) — partially complete
+- [SRC054 — Official accident investigation reports (AAIB, RAIB, MAIB)](src054-official-accident-investigation-reports-aaib-raib-maib.md) — partially complete
+- [SRC055 — UK Treaties Online and treaty dataset](src055-uk-treaties-online-and-treaty-dataset.md) — partially complete
+- [SRC056 — EUR-Lex](src056-eur-lex.md) — partially complete
+- [SRC057 — CELLAR repository and APIs](src057-cellar-repository-and-apis.md) — unknown or not yet researched
+- [SRC058 — HUDOC European Court of Human Rights database](src058-hudoc-european-court-of-human-rights-database.md) — partially complete
+- [SRC059 — The Gazette](src059-the-gazette.md) — complete against official enumerated source
+- [SRC060 — Local authority byelaws and local legal publications](src060-local-authority-byelaws-and-local-legal-publications.md) — unknown or not yet researched
+- [SRC061 — Legal Aid Agency eligibility and service information](src061-legal-aid-agency-eligibility-and-service-information.md) — progressively resolved
+- [SRC062 — Scottish Legal Aid Board information](src062-scottish-legal-aid-board-information.md) — partially complete
+- [SRC063 — Legal aid and public legal assistance in Northern Ireland](src063-legal-aid-and-public-legal-assistance-in-northern-ireland.md) — partially complete
+- [SRC064 — GOV.UK and devolved public legal guidance](src064-gov-uk-and-devolved-public-legal-guidance.md) — partially complete
+- [SRC065 — Bar Standards Board Handbook and decisions](src065-bar-standards-board-handbook-and-decisions.md) — partially complete
+- [SRC066 — SRA Standards and Regulations and decisions](src066-sra-standards-and-regulations-and-decisions.md) — partially complete
+- [SRC067 — Judicial and tribunal office reference sources](src067-judicial-and-tribunal-office-reference-sources.md) — partially complete
+- [SRC068 — Official law reports and ICLR platform](src068-official-law-reports-and-iclr-platform.md) — licence-restricted
+- [SRC069 — Westlaw UK and Lexis+ legal research services](src069-westlaw-uk-and-lexis-legal-research-services.md) — licence-restricted
+- [SRC070 — UK Web Archive legal and government collections](src070-uk-web-archive-legal-and-government-collections.md) — partially complete
+- [SRC071 — Devolved government statutory guidance and regulatory publications](src071-devolved-government-statutory-guidance-and-regulatory-publications.md) — partially complete
+- [SRC072 — Official public-body register and organisation data](src072-official-public-body-register-and-organisation-data.md) — partially complete

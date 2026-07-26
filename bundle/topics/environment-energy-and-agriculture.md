@@ -1,7 +1,7 @@
 ---
 type: "Derived Legal Topic"
 title: "Environment, energy and agriculture"
-description: "Title-derived discovery grouping containing 16,254 works."
+description: "Title-derived discovery grouping containing 16,211 works."
 resource: "https://www.legislation.gov.uk/all/data.feed?title=environment-energy-and-agriculture"
 tags: ["topic", "derived", "environment-energy-and-agriculture"]
 generated: {"by": "process:legislation-okf-builder", "at": "2026-07-11T18:00:00Z"}
@@ -11,7 +11,7 @@ sources: [{"id": "official-source", "resource": "https://www.legislation.gov.uk/
 
 # Classification
 
-* Indexed works: **16,254**
+* Indexed works: **16,211**
 * Rule: `\b(environment|pollution|climate|energy|electricity|gas|agricultur|food|fisher|water|waste)\b`
 * Evidence basis: legislation title only
 * Authority: derived and non-official

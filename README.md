@@ -1,70 +1,162 @@
-# UK Legislation OKF Bundle Wiki
+# UK Legislation and Whole-Law OKF
 
-An independently versioned OKF Bundle Wiki containing the complete
-legislation.gov.uk work catalogue at its generation checkpoint, with official
-Atom/CLML provenance, ELI and Schema.org mappings, static search, governed
-model-assisted enrichment, and route-scoped relationship adjacency.
+This repository publishes two compatible Open Knowledge Format (OKF) 0.2
+publications:
 
-The Markdown tree is the canonical OKF v0.2 layer. The root index declares
-`okf_version: "0.2"`; non-reserved concepts carry structured `generated` and
-`sources` metadata, while directory indexes and the update log remain reserved
-frontmatter-free files. The publication is still a preview, so concepts are
-`draft` and no `verified` event is asserted without evidence.
+1. **UK Legislation OKF** preserves its established root URLs and contains the
+   complete legislation.gov.uk work catalogue at the recorded snapshot.
+2. **UK Whole-Law OKF** is the federation under `whole-law/`. It adds the
+   governed map of 72 researched source records and 36 legal-source classes
+   while loading only real child bundles. The UK Legislation publication is
+   currently its one implemented child.
 
-The frozen publication time in `generated.at` is distinct from official work
-and feed dates. Source dates and item-level official identifiers remain in the
-large-corpus records and provenance extensions.
+The repository retains the `okf-uk-legislation` name because changing it would
+break published identifiers, bookmarks and downstream users. Whole-Law is an
+additive publication, not a claim that every catalogued legal source has
+already been ingested.
 
-The checked publication contains **365,786 legal works** and **853,883 typed
-relationships**. It does not reproduce authoritative legal text: the Explorer
-resolves the selected work's current CLML structure and passage links directly
-from legislation.gov.uk.
+## Open the publications
 
-## Publication contract
+| Publication | Explorer | Descriptor | Documentation |
+|---|---|---|---|
+| UK Legislation | [Open in OKF Explorer][legislation-explorer] | [Published JSON descriptor][legislation-descriptor] | [Legislation guide][legislation-guide] |
+| UK Whole-Law | [Open in OKF Explorer][whole-law-explorer] | [Published federation descriptor][whole-law-descriptor] | [Whole-Law guide][whole-law-guide] |
+| GOV.UK CKAN example | [Open in OKF Explorer][ckan-example] | [Published CKAN descriptor][ckan-descriptor] | [Preserved CKAN/Explorer documentation][compat-docs] |
 
-- `bundle/okf-bundle.yamlld` — canonical YAML-LD descriptor;
-- `bundle/okf-bundle.jsonld` — JSON-LD projection;
-- `bundle/okf-explorer.json` — Explorer runtime descriptor;
-- `bundle/data/manifest.json` — counts, chunks and indexes;
-- `bundle/data/adjacency/manifest.json` — route-scoped relationship lookup;
-- `bundle/enrichment/model-assisted-v1.json` — governed enrichment provenance;
-- `bundle/evaluation/` — legal-research evaluation contract.
+The original combined repository README and documentation remain available in
+the [AI Infrastructure Wiki compatibility repository][compat-repository].
+That snapshot preserves the original text and links, including:
 
-Open the published bundle through OKF Explorer using the descriptor URL. The
-permanent government domain remains intentionally unresolved; repository Pages
-URLs are the current preview identifiers.
+- [the complete documentation index][compat-docs];
+- [how to create and publish an OKF Bundle Wiki][bundle-authoring];
+- [how to use and publish OKF Explorer][use-explorer];
+- [how an AI should use an OKF bundle][ai-okf-usage];
+- [the UK Legislation documentation spine][legislation-guide];
+- [the GOV.UK CKAN example][ckan-example].
 
-## Validate
+Former machine paths are represented by moved descriptors and browser
+redirects instead of silently disappearing. Clients should follow each
+descriptor’s declared repository, `raw_subpath`, documentation and alternate
+routes; they should not guess raw paths.
 
-Refresh the checked v0.2 projection and integrity manifest with:
+## Current candidate
+
+The checked candidate contains:
+
+- **365,786** legislation works;
+- **835,563** core relationships after fail-closed removal of the rejected
+  legacy v1 title rules;
+- **14,712** official legislation.gov.uk amendment/effect assertions from a
+  dated, complete-for-successful-routes 11-work seed snapshot;
+- **22,299** governed Codex-assisted topic assertions produced by attempting
+  every work, labelled model-assisted and non-official;
+- **872,574** relationships including external datapacks;
+- **72** legal-source records, **36** source classes, **38** personas and
+  **20** task families;
+- a **415-question** corpus-bound release suite covering every researched
+  persona, task, source class and access state.
+
+Relationship counts are published by predicate, authority, freshness and
+datapack. The official effects snapshot is explicitly partial at whole-corpus
+level. Model-assisted topics are discovery metadata—not official legal
+classification, legal advice or qualified practitioner assurance.
+
+The original `model-assisted-v1` rule file is retained unchanged as historical
+evidence, but its self-labelled acceptance is not trusted. An
+[independent hash-bound audit](enrichment/model-assisted-v1-independent-audit.md)
+reconstructed all 18,135 entity and 562 topic assertions. Literal title
+evidence was complete, but seven exhaustively reviewed false-positive
+populations cap possible entity precision at 94.7836%, below the 95% release
+gate. All 18,697 v1 assertions are therefore excluded from governed output;
+the separately audited v2 datapack is unchanged.
+
+## Publication layout
+
+The Markdown tree is the authored OKF layer. Generated files in `bundle/` are
+the GitHub Pages publication:
+
+- `bundle/okf-bundle.yamlld` and `bundle/okf-bundle.jsonld` — legislation
+  YAML-LD and JSON-LD;
+- `bundle/okf-explorer.json` — legislation Explorer descriptor;
+- `bundle/data/enrichment/` — Codex-assisted enrichment datapack and coverage;
+- `bundle/data/effects/` — frozen official effect assertions, route coverage
+  and live-reconciliation metadata;
+- `bundle/whole-law/okf-explorer.json` — Explorer federation v1 control plane;
+- `bundle/whole-law/okf-bundle.yamlld` and `okf-bundle.jsonld` — authored
+  YAML-LD and generated JSON-LD Whole-Law semantics;
+- `bundle/whole-law/data/` — source, coverage, constraints and relationship
+  ledgers;
+- `bundle/whole-law/evaluation/` — release questions, historical baselines,
+  immutable execution receipts and the Claude adversarial access suite;
+- `bundle/whole-law/integrity.json` and `bundle/checksums.json` — integrity
+  manifests.
+
+GitHub Pages currently serves `.yamlld` as
+`application/octet-stream`. The YAML-LD document remains semantically
+validated; JSON-LD and release downloads are the universal fallbacks until a
+permanent host can serve `application/ld+yaml`.
+
+## Authoritative sources and reuse
+
+Start with the official [legislation.gov.uk service][legislation-service] and
+[legislation data/API documentation][legislation-data-docs]. Official material
+is generally reusable under the [Open Government Licence v3.0][ogl], subject
+to item-level terms. Source authority, licence, access, fair-use/rate,
+authentication and availability triggers are retained in machine-readable
+ledgers. Constraints are logged for internal escalation; they do not silently
+remove prototype functionality or authorise authentication bypass.
+
+## Build and validate
+
+Create the deterministic authored and generated layers with:
 
 ```sh
-python3 scripts/upgrade_okf_v02.py
+python3 scripts/build_codex_semantic_enrichment.py
+python3 scripts/build_legislation_effects.py --offline
+python3 scripts/rebuild_legislation_discovery.py
+python3 scripts/capture_whole_law_source_access.py publish
+python3 scripts/build_whole_law_evaluation.py
+python3 scripts/build_whole_law_okf.py
+python3 scripts/run_release_evaluation.py
+python3 scripts/build_whole_law_okf.py
+python3 scripts/build_release_assurance.py
 python3 scripts/build_checksums.py
 ```
 
-Validate without changing the publication with:
+Validate without changing the publication:
 
 ```sh
 python3 -m unittest discover -s tests -v
 python3 scripts/check_legislation_okf.py
+python3 scripts/build_codex_semantic_enrichment.py --check
+python3 scripts/build_legislation_effects.py --check
+python3 scripts/rebuild_legislation_discovery.py --check
+python3 scripts/capture_whole_law_source_access.py check
+python3 scripts/build_whole_law_evaluation.py --check
+python3 scripts/build_whole_law_okf.py --check
+python3 scripts/run_release_evaluation.py --check
+.venv/bin/python scripts/check_whole_law_okf.py
+python3 scripts/build_release_assurance.py --check
 python3 scripts/build_checksums.py --check
 ```
 
-The cached full rebuild is deliberately separate from routine CI because it
-reconstructs hundreds of thousands of records. Fixture generation runs in CI;
-the complete checked publication is validated structurally on every change.
+Source refreshes create immutable attempts and datapacks; they do not rewrite
+historical evidence. The release sequence is fail-closed:
+`draft → candidate → validated → rc → published`.
 
-`main` is protected by the checked-in `.github/branch-protection.json`
-contract: pull requests, current CI, resolved conversations, linear history,
-administrator enforcement, no force pushes or deletion, and explicit
-maintainer self-review. A separate approving reviewer is not required because
-this is a solo-maintained repository.
-
-## Source and reuse constraints
-
-Official material is generally available under the Open Government Licence
-v3.0, with additional terms possible for particular material. Licence,
-authority and derivation remain item-level. Fair-use, bulk-access, licensing and
-model-quota constraints are documented without silently removing prototype
-functionality.
+[legislation-explorer]: https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview
+[whole-law-explorer]: https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fwhole-law%2Fokf-explorer.json&view=reader#overview
+[legislation-descriptor]: https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json
+[whole-law-descriptor]: https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json
+[whole-law-guide]: https://chris-page-gov.github.io/okf-uk-legislation/whole-law/docs/
+[compat-repository]: https://github.com/chris-page-gov/ai-infrastructure-wiki
+[compat-docs]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/
+[bundle-authoring]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md
+[use-explorer]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/use-okf-explorer.md
+[ai-okf-usage]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/ai-okf-usage.md
+[legislation-guide]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/uk-legislation/index.md
+[ckan-example]: https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fai-engineering-lab-hackathon-london-2026%2Fgov-ckan%2Fokf-explorer.json&view=reader#overview
+[ckan-descriptor]: https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json
+[legislation-service]: https://www.legislation.gov.uk/
+[legislation-data-docs]: https://legislation.github.io/data-documentation/
+[ogl]: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/

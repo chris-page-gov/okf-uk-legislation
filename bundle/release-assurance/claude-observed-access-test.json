@@ -1,0 +1,59 @@
+{
+  "evidence": {
+    "immutable_source": {
+      "bytes": 28207,
+      "path": "research/Legislation-govuk Claude 4.8 run.docx",
+      "sha256": "67849a644ec4b64be8dd4fbe8eb39e2cb35305e003b46d8b328e0b2d08437c12"
+    },
+    "normalized_projection": {
+      "bytes": 22732,
+      "path": "research/claude-4.8-evaluation-transcript.md",
+      "sha256": "55309248b57c3988c2298b110b94e35a92471fa956820080d750cfeb621d5b85"
+    },
+    "projection_binding_verified": true
+  },
+  "generated_at": "2026-07-25T23:30:00Z",
+  "observations": [
+    {
+      "id": "CLAUDE-ACCESS-01",
+      "observation": "The repository URL was available but was not selected on the first access attempt.",
+      "outcome": "initial-discovery-miss"
+    },
+    {
+      "id": "CLAUDE-ACCESS-02",
+      "observation": "The unauthenticated shared-sandbox GitHub API quota was reported exhausted.",
+      "outcome": "rate-limited"
+    },
+    {
+      "id": "CLAUDE-ACCESS-03",
+      "observation": "A guessed raw repository-root descriptor path returned 404 because the declared publication subpath is bundle/.",
+      "outcome": "raw-root-path-mismatch"
+    },
+    {
+      "id": "CLAUDE-ACCESS-04",
+      "observation": "The codeload archive route remained available and exposed the version-controlled bundle/ subtree.",
+      "outcome": "archive-fallback-succeeded"
+    },
+    {
+      "id": "CLAUDE-ACCESS-05",
+      "observation": "The transcript records successful execution of the then-current structural and checksum validators.",
+      "outcome": "historical-validation-observation"
+    },
+    {
+      "id": "CLAUDE-ACCESS-06",
+      "observation": "YAML was observed as served with an octet-stream media type.",
+      "outcome": "declared-hosting-exception"
+    }
+  ],
+  "observed_on": "2026-07-25",
+  "schema": "okf-observed-access-test.v1",
+  "scope_note": "This record is a machine-readable projection of the immutable evaluation transcript, not a fresh live access test and not independent legal or security assurance.",
+  "tooling_constraint": {
+    "constraint": "GUI-backed LibreOffice rendering aborts under the Codex/macOS execution environment.",
+    "future_extraction": [
+      "Pandoc",
+      "python-docx"
+    ],
+    "release_effect": "recorded-non-blocking"
+  }
+}

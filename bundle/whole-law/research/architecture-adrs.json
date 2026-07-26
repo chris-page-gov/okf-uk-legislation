@@ -1,0 +1,224 @@
+{
+  "schema": "okf-whole-law-adrs.v1",
+  "generated_at": "2026-07-25T14:00:00+01:00",
+  "records": [
+    {
+      "id": "ADR-001",
+      "title": "Keep the legislation pack stable and add a federation root",
+      "status": "recommended",
+      "context": "Existing public descriptor is a strong, bounded legislation work catalogue.",
+      "decision": "Preserve it as one source-family pack and publish a Whole-Law root that references it.",
+      "consequences": [
+        "No legacy URL break",
+        "Coverage remains intelligible",
+        "Requires Explorer federation support"
+      ],
+      "rejected": [
+        "Replace descriptor in place",
+        "Copy legislation records into every new pack"
+      ]
+    },
+    {
+      "id": "ADR-002",
+      "title": "Hybrid federation rather than universal harvest",
+      "status": "recommended",
+      "context": "Sources differ in licence, scale, volatility, structure and public access.",
+      "decision": "Ship governed metadata/indexes locally; hydrate authoritative text live or from licensed snapshots.",
+      "consequences": [
+        "Smaller/browser-compatible control plane",
+        "Source availability remains a runtime dependency",
+        "Must expose degraded state"
+      ],
+      "rejected": [
+        "One giant static corpus",
+        "Live-only metasearch with no audit snapshot"
+      ]
+    },
+    {
+      "id": "ADR-003",
+      "title": "Composable ontology stack",
+      "status": "recommended",
+      "context": "No single ontology adequately models legislation, case law, procedure, regulation and provenance.",
+      "decision": "Use ELI/AKN/LRM/PROV/DCAT/SKOS/OWL-Time/Web Annotation/ODRL/SHACL with minimal okflaw terms.",
+      "consequences": [
+        "Interoperable and incremental",
+        "Crosswalk governance required"
+      ],
+      "rejected": [
+        "Single oversized legal ontology",
+        "Schema.org-only model"
+      ]
+    },
+    {
+      "id": "ADR-004",
+      "title": "Source-native identifiers are immutable evidence",
+      "status": "recommended",
+      "context": "Cross-source titles/citations are ambiguous.",
+      "decision": "Retain native IDs and map through reviewed identity decisions; similarity never creates owl:sameAs.",
+      "consequences": [
+        "More duplicate candidates visible",
+        "Safer reconciliation"
+      ],
+      "rejected": [
+        "Canonicalise by title",
+        "Mint ECLI when absent"
+      ]
+    },
+    {
+      "id": "ADR-005",
+      "title": "Separate citation occurrence from legal treatment",
+      "status": "recommended",
+      "context": "A citation does not prove following, approval or negative treatment.",
+      "decision": "Store occurrences automatically; publish treatment edges only with passage evidence, confidence and review state.",
+      "consequences": [
+        "Citator growth is slower",
+        "Misleading polarity reduced"
+      ],
+      "rejected": [
+        "Sentiment model as treatment truth"
+      ]
+    },
+    {
+      "id": "ADR-006",
+      "title": "Temporal context is mandatory, not optional metadata",
+      "status": "recommended",
+      "context": "Current/latest/published/effective are different.",
+      "decision": "Every consequential proposition carries version, point-in-time, jurisdiction, extent and retrieval context.",
+      "consequences": [
+        "Some answers remain unanswerable",
+        "Higher evidence cost"
+      ],
+      "rejected": [
+        "Default to latest page"
+      ]
+    },
+    {
+      "id": "ADR-007",
+      "title": "Coverage claims require denominators",
+      "status": "recommended",
+      "context": "Record counts invite unjustified “all law” claims.",
+      "decision": "Only denominator-supported coverage percentages are displayed; other states are qualitative and gap-visible.",
+      "consequences": [
+        "No single marketing count",
+        "Auditable completeness"
+      ],
+      "rejected": [
+        "Total records as completeness proxy"
+      ]
+    },
+    {
+      "id": "ADR-008",
+      "title": "Licence/purpose controls are executable policy inputs",
+      "status": "recommended",
+      "context": "FCL and CaTH computational analysis is licensed/restricted.",
+      "decision": "Source adapters and query plans check policy/purpose before access; restricted sources can remain metadata-only.",
+      "consequences": [
+        "Some capabilities need deployment-specific credentials",
+        "Open core remains lawful"
+      ],
+      "rejected": [
+        "Assume public web equals bulk-reuse permission"
+      ]
+    },
+    {
+      "id": "ADR-009",
+      "title": "Passage-first provenance",
+      "status": "recommended",
+      "context": "Homepage/document citations are inadequate for legal propositions.",
+      "decision": "Material propositions point to the smallest authoritative passage with selector, extract, hash and retrieval event.",
+      "consequences": [
+        "More storage/validation",
+        "Auditable answers"
+      ],
+      "rejected": [
+        "Document-level bibliography only"
+      ]
+    },
+    {
+      "id": "ADR-010",
+      "title": "No automated professional legal judgment",
+      "status": "recommended",
+      "context": "Source retrieval does not resolve fact disputes, discretion or professional duties.",
+      "decision": "Mandatory escalation for missing facts, conflicts, high consequences, non-public material and uncertain controlling authority.",
+      "consequences": [
+        "System may refuse/qualify",
+        "Reduces unsafe automation"
+      ],
+      "rejected": [
+        "Confidence threshold alone"
+      ]
+    },
+    {
+      "id": "ADR-011",
+      "title": "Browser-first control plane; server when unavoidable",
+      "status": "recommended",
+      "context": "Explorer is static/GitHub Pages but whole-law search can exceed browser constraints.",
+      "decision": "Keep descriptors, ledgers, static indexes and route hydration browser-capable; use server services for large/licensed/semantic/temporal workloads.",
+      "consequences": [
+        "Progressive capability tiers",
+        "Requires clear network/policy boundaries"
+      ],
+      "rejected": [
+        "Force all functions into browser",
+        "Make basic discovery server-dependent"
+      ]
+    },
+    {
+      "id": "ADR-012",
+      "title": "Deterministic immutable snapshots",
+      "status": "recommended",
+      "context": "Legal answers must be reproducible after source change.",
+      "decision": "Bind every local shard and index to snapshot IDs and SHA-256 roots, reusing Explorer release data-plane controls.",
+      "consequences": [
+        "Storage/release discipline",
+        "Correction events need supersession links"
+      ],
+      "rejected": [
+        "Mutable latest JSON files without hashes"
+      ]
+    },
+    {
+      "id": "ADR-013",
+      "title": "Delete/correction events remain first-class",
+      "status": "recommended",
+      "context": "Sources withdraw, correct and redact records.",
+      "decision": "Tombstone/supersede local indexes; retain audit metadata where lawful and never serve withdrawn text as current.",
+      "consequences": [
+        "More complex state model",
+        "Better compliance and audit"
+      ],
+      "rejected": [
+        "Silent deletion",
+        "Permanent unauthorised mirror"
+      ]
+    },
+    {
+      "id": "ADR-014",
+      "title": "Existing 100-question benchmark remains a regression stratum",
+      "status": "recommended",
+      "context": "It is statute/barrister focused but valuable.",
+      "decision": "Do not overwrite it; add 360 whole-law questions and report both scores.",
+      "consequences": [
+        "Comparability preserved",
+        "Two-level evaluation reporting"
+      ],
+      "rejected": [
+        "Replace old benchmark"
+      ]
+    },
+    {
+      "id": "ADR-015",
+      "title": "Independent red-team gate before source-family promotion",
+      "status": "recommended",
+      "context": "A plausible corpus can still be dangerously incomplete.",
+      "decision": "Every phase requires a separately run adversarial checklist and expert sampling before “stable”.",
+      "consequences": [
+        "Slower release",
+        "Explicit residual risk"
+      ],
+      "rejected": [
+        "Builder tests alone"
+      ]
+    }
+  ]
+}

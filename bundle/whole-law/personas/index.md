@@ -1,0 +1,40 @@
+# Whole-Law research personas
+
+- [P01 — Barrister](p01-barrister.md) — legal-practice
+- [P02 — Pupil barrister](p02-pupil-barrister.md) — legal-practice
+- [P03 — Barristers’ clerk](p03-barristers-clerk.md) — legal-practice
+- [P04 — Solicitor](p04-solicitor.md) — legal-practice
+- [P05 — Trainee solicitor](p05-trainee-solicitor.md) — legal-practice
+- [P06 — Paralegal](p06-paralegal.md) — legal-practice
+- [P07 — Judge](p07-judge.md) — judiciary
+- [P08 — Tribunal member](p08-tribunal-member.md) — judiciary
+- [P09 — Judicial assistant](p09-judicial-assistant.md) — judiciary
+- [P10 — Prosecutor](p10-prosecutor.md) — criminal-justice
+- [P11 — Defence practitioner](p11-defence-practitioner.md) — criminal-justice
+- [P12 — Government lawyer](p12-government-lawyer.md) — government
+- [P13 — Parliamentary counsel](p13-parliamentary-counsel.md) — government
+- [P14 — Legislator](p14-legislator.md) — legislature
+- [P15 — Policy official or Bill team](p15-policy-official-or-bill-team.md) — government
+- [P16 — Regulator](p16-regulator.md) — regulation
+- [P17 — Inspector or enforcement officer](p17-inspector-or-enforcement-officer.md) — regulation
+- [P18 — Police or investigator](p18-police-or-investigator.md) — criminal-justice
+- [P19 — Local-authority lawyer](p19-local-authority-lawyer.md) — local-government
+- [P20 — Local-authority operational officer](p20-local-authority-operational-officer.md) — local-government
+- [P21 — In-house counsel](p21-in-house-counsel.md) — legal-practice
+- [P22 — Compliance, risk or governance professional](p22-compliance-risk-or-governance-professional.md) — business
+- [P23 — Legal-aid or advice worker](p23-legal-aid-or-advice-worker.md) — public-advice
+- [P24 — Civil-society or human-rights advocate](p24-civil-society-or-human-rights-advocate.md) — civil-society
+- [P25 — Mediator](p25-mediator.md) — dispute-resolution
+- [P26 — Arbitrator](p26-arbitrator.md) — dispute-resolution
+- [P27 — Legal academic](p27-legal-academic.md) — research
+- [P28 — Empirical legal researcher](p28-empirical-legal-researcher.md) — research
+- [P29 — Law student](p29-law-student.md) — education
+- [P30 — Librarian, archivist or knowledge manager](p30-librarian-archivist-or-knowledge-manager.md) — information
+- [P31 — Journalist or fact-checker](p31-journalist-or-fact-checker.md) — media
+- [P32 — Litigant in person](p32-litigant-in-person.md) — public
+- [P33 — Member of the public](p33-member-of-the-public.md) — public
+- [P34 — Legislative or legal-data engineer](p34-legislative-or-legal-data-engineer.md) — technology
+- [P35 — Ontology or knowledge-graph designer](p35-ontology-or-knowledge-graph-designer.md) — technology
+- [P36 — AI-agent developer or operator](p36-ai-agent-developer-or-operator.md) — technology
+- [P37 — AI auditor or evaluator](p37-ai-auditor-or-evaluator.md) — assurance
+- [P38 — Accessibility, translation or plain-language specialist](p38-accessibility-translation-or-plain-language-specialist.md) — accessibility

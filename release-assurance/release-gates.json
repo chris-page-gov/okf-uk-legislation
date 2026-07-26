@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-07-25T23:30:00Z",
+  "gates": [
+    {
+      "group": "candidate",
+      "id": "GATE-01",
+      "requirement": "Every originating requirement has evidence-backed passed, explicitly accepted deferred, or externally blocked status; acceptance alone is not passage.",
+      "status": "pending"
+    },
+    {
+      "group": "candidate",
+      "id": "GATE-02",
+      "requirement": "The 24-file research package (23 content artefacts plus its integrity manifest) retains its recorded hashes and 40 successful checks, and the Claude evaluation is separately integrity-bound.",
+      "status": "passed"
+    },
+    {
+      "group": "validation",
+      "id": "GATE-03",
+      "requirement": "OKF 0.2, YAML-LD semantic round-trip, JSON-LD/RDF equivalence, SHACL, JSON Schema and vocabulary competency checks pass.",
+      "status": "pending"
+    },
+    {
+      "group": "validation",
+      "id": "GATE-04",
+      "requirement": "All publicly accessible in-scope source routes have frozen acquisition evidence and exact denominators; restricted routes are declared.",
+      "status": "pending"
+    },
+    {
+      "group": "validation",
+      "id": "GATE-05",
+      "requirement": "The official effects graph is non-empty and queryable, live reconciliation is evidenced, and every eligible record has a recorded enrichment outcome.",
+      "status": "pending"
+    },
+    {
+      "group": "validation",
+      "id": "GATE-06",
+      "requirement": "A clean clone reproduces identical semantic and byte digests with pinned dependencies.",
+      "status": "pending"
+    },
+    {
+      "group": "validation",
+      "id": "GATE-07",
+      "requirement": "Chrome, Firefox and WebKit journeys pass, keyboard operation is verified, and automated WCAG checks have no serious or critical violations.",
+      "status": "pending"
+    },
+    {
+      "group": "validation",
+      "id": "GATE-08",
+      "requirement": "Initial transfer, cold and warm search latency, and browser-memory limits pass on the frozen candidate.",
+      "status": "pending"
+    },
+    {
+      "group": "validation",
+      "id": "GATE-09",
+      "requirement": "Pages, raw, archive and compatibility entry points pass unauthenticated smoke tests; the YAML-LD MIME exception remains explicit.",
+      "status": "pending"
+    },
+    {
+      "group": "validation",
+      "id": "GATE-10",
+      "requirement": "Secret, dependency, content-injection, XML/XXE, archive-bomb, SSRF and privacy checks pass on the frozen candidate.",
+      "status": "pending"
+    },
+    {
+      "group": "validation",
+      "id": "GATE-11",
+      "requirement": "The corpus-bound release suite has independently verified gold evidence, citation-bearing executed answers, zero hard failures, at least 85/100 for every critical persona/task family, and two successful held-out challenge passes.",
+      "status": "pending"
+    },
+    {
+      "group": "release-candidate",
+      "id": "GATE-12",
+      "requirement": "The final release report records relationship composition, coverage, freshness, gaps, licence/access escalations, evaluation results and model cost.",
+      "status": "pending"
+    },
+    {
+      "group": "publication",
+      "id": "GATE-13",
+      "requirement": "The release candidate is promoted without rebuilding and its public artefact digests equal the validated candidate digests.",
+      "status": "pending"
+    }
+  ],
+  "schema": "okf-release-gates.v1"
+}

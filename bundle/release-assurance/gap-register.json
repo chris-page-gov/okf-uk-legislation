@@ -1,0 +1,263 @@
+{
+  "as_of": "2026-07-26",
+  "counts": {
+    "blocked": 9,
+    "deferred": 2,
+    "open": 5,
+    "resolved": 5,
+    "total": 21
+  },
+  "gaps": [
+    {
+      "area": "originating requirements",
+      "evidence": [
+        "evidence/requirements/controlling-requirements.md",
+        "evidence/requirements/controlling-requirements.sha256",
+        "release-assurance/implementation-traceability.json"
+      ],
+      "id": "IMP-GAP-001",
+      "next_action": "Freeze these hashes with the release-candidate commit and do not rewrite the source record.",
+      "release_effect": "none-before-freeze",
+      "status": "resolved",
+      "summary": "The originating implementation clauses and subsequent decisions previously existed only as paraphrases."
+    },
+    {
+      "area": "research evidence",
+      "evidence": [
+        "research/whole-law-okf-research/integrity.json",
+        "research/Legislation-govuk Claude 4.8 run.docx",
+        "research/claude-4.8-evaluation-transcript.md"
+      ],
+      "id": "IMP-GAP-002",
+      "next_action": "Retain original hashes and bind the exact candidate in the final evidence manifest.",
+      "release_effect": "none-before-freeze",
+      "status": "resolved",
+      "summary": "The 24-file research package and Claude evaluation are present as immutable evidence with a separate normalized transcript."
+    },
+    {
+      "area": "YAML-LD conformance",
+      "evidence": [
+        "whole-law/assurance/yaml-ld-conformance.json"
+      ],
+      "id": "IMP-GAP-003",
+      "next_action": "Retain the three unsupported Extended Profile cases as informative limitations unless the implementation elects to support that optional profile.",
+      "release_effect": "none-for-core-profile",
+      "status": "resolved",
+      "summary": "All 53 normative tests pass; three of five informative Extended Profile tests remain unsupported and are not represented as normative failures."
+    },
+    {
+      "area": "ontology competency",
+      "evidence": [
+        "whole-law/assurance/competency-question-results.json"
+      ],
+      "id": "IMP-GAP-004",
+      "next_action": "Bind the five passing ASK results to the frozen candidate.",
+      "release_effect": "none-before-freeze",
+      "status": "resolved",
+      "summary": "Five executable ontology competency questions pass against the authored examples."
+    },
+    {
+      "area": "semantic validation",
+      "evidence": [
+        "whole-law/ontology/shapes.ttl",
+        "scripts/check_whole_law_okf.py"
+      ],
+      "id": "IMP-GAP-005",
+      "next_action": "Execute SHACL and JSON-LD/RDF equivalence over the complete generated candidate graph, not only examples and contract samples.",
+      "release_effect": "blocks-GATE-03",
+      "status": "blocked",
+      "summary": "Authored shapes exist, but current evidence does not demonstrate complete-graph SHACL and RDF-equivalence execution on a frozen candidate."
+    },
+    {
+      "area": "namespace",
+      "evidence": [
+        "whole-law/ontology/context.jsonld",
+        "whole-law/ontology/standards.json"
+      ],
+      "id": "IMP-GAP-006",
+      "next_action": "Create a namespace-migration release only after a suitable government domain is selected.",
+      "release_effect": "explicitly-accepted-deferment",
+      "status": "deferred",
+      "summary": "The repository-controlled namespace is in use; migration to a permanent government domain was explicitly deferred."
+    },
+    {
+      "area": "source acquisition",
+      "evidence": [
+        "whole-law/acquisition/current/observed-access-comparison.json",
+        "whole-law/acquisition/current/source-constraint-ledger.json"
+      ],
+      "id": "IMP-GAP-007",
+      "next_action": "Close every publicly accessible in-scope route with a frozen envelope or record the exact access blocker and denominator.",
+      "release_effect": "blocks-GATE-04",
+      "status": "blocked",
+      "summary": "Adapters and constraint metadata exist for 72 records and 36 source classes, but not every public authoritative route has a successful frozen acquisition."
+    },
+    {
+      "area": "official effects reconciliation",
+      "evidence": [
+        "bundle/data/effects/reconciliation.json"
+      ],
+      "id": "IMP-GAP-008",
+      "next_action": "Run and freeze a post-build live reconciliation for the selected works; retain inaccessible checks as inaccessible.",
+      "release_effect": "blocks-GATE-05",
+      "status": "blocked",
+      "summary": "The current receipt records agreement or inaccessibility at acquisition time, not a later live reconciliation against the candidate."
+    },
+    {
+      "area": "model-assisted enrichment",
+      "evidence": [
+        "enrichment/model-assisted-v1-independent-audit.json",
+        "whole-law/assurance/enrichment-v2-independent-audit-20260726.json"
+      ],
+      "id": "IMP-GAP-009",
+      "next_action": "Retain the independent audit and its producer, candidate, semantic, assertion-ID and chunk-root bindings through release promotion.",
+      "release_effect": "none-before-freeze",
+      "status": "resolved",
+      "summary": "Historical v1 output is rejected and the independently implemented v2 audit reconstructs the current 22,299-assertion candidate with no v1 output."
+    },
+    {
+      "area": "evaluation gold evidence",
+      "evidence": [
+        "whole-law/evaluation/README.md",
+        "whole-law/evaluation/release-questions.json"
+      ],
+      "id": "IMP-GAP-010",
+      "next_action": "Add independently verified source evidence, legal propositions, near-miss rules, citations and temporal expectations before promoting any question to gold.",
+      "release_effect": "blocks-GATE-11",
+      "status": "blocked",
+      "summary": "The release suite is structurally complete but intentionally non-gold; no legal-answer correctness claim is available."
+    },
+    {
+      "area": "evaluation execution",
+      "evidence": [
+        "whole-law/evaluation/README.md"
+      ],
+      "id": "IMP-GAP-011",
+      "next_action": "Execute verified answers through Explorer and direct-source baselines, then complete two held-out challenge passes.",
+      "release_effect": "blocks-GATE-11",
+      "status": "blocked",
+      "summary": "The required zero-hard-failure, citation-resolution, 85/100 critical-score and held-out-challenge evidence does not exist."
+    },
+    {
+      "area": "browser, accessibility and performance",
+      "evidence": [
+        "release-assurance/release-gates.json"
+      ],
+      "id": "IMP-GAP-012",
+      "next_action": "Run Chrome, Firefox and WebKit journeys, keyboard and automated WCAG checks, transfer/latency measurements and browser-memory measurement on the frozen candidate.",
+      "release_effect": "blocks-GATE-07-and-GATE-08",
+      "status": "blocked",
+      "summary": "Local Explorer work is in progress; complete cross-browser, accessibility and performance receipts are not yet frozen."
+    },
+    {
+      "area": "public access and links",
+      "evidence": [
+        "scripts/check_internal_links.py",
+        "release-assurance/release-gates.json"
+      ],
+      "id": "IMP-GAP-013",
+      "next_action": "After deployment, crawl Pages, raw, archive and compatibility routes unauthenticated and bind the results.",
+      "release_effect": "blocks-GATE-09",
+      "status": "blocked",
+      "summary": "Local link validation exists, but deployed public entry-point validation cannot precede deployment."
+    },
+    {
+      "area": "YAML-LD HTTP media type",
+      "evidence": [
+        "docs/effects-and-enrichment.md",
+        "whole-law/ontology/standards.json"
+      ],
+      "id": "IMP-GAP-014",
+      "next_action": "Serve application/ld+yaml after migration to a suitable host; retain JSON-LD and download fallbacks.",
+      "release_effect": "declared-hosting-exception",
+      "status": "deferred",
+      "summary": "GitHub Pages serves YAML-LD as application/octet-stream and must not be described as transport-conformant."
+    },
+    {
+      "area": "clean-room reproduction",
+      "evidence": [
+        "release-assurance/release-policy.json"
+      ],
+      "id": "IMP-GAP-015",
+      "next_action": "Run clean-clone generation with pinned dependencies and compare semantic and byte digests.",
+      "release_effect": "blocks-GATE-06",
+      "status": "blocked",
+      "summary": "A reproduction contract exists, but clean-room execution evidence does not."
+    },
+    {
+      "area": "security assurance",
+      "evidence": [
+        "release-assurance/release-gates.json"
+      ],
+      "id": "IMP-GAP-016",
+      "next_action": "Run the security scan only after the exact release candidate is frozen.",
+      "release_effect": "blocks-GATE-10-after-freeze",
+      "status": "open",
+      "summary": "The earlier security scan targeted a mutable, incomplete implementation and cannot seal the final candidate."
+    },
+    {
+      "area": "release and promotion",
+      "evidence": [
+        "release-assurance/release-policy.json",
+        "release-assurance/release-gates.json"
+      ],
+      "id": "IMP-GAP-017",
+      "next_action": "Release Explorer first, freeze and validate the Legislation RC once, deploy it, then promote identical digests.",
+      "release_effect": "blocks-GATE-12-and-GATE-13",
+      "status": "open",
+      "summary": "No exact release candidate has been frozen, deployed or promoted."
+    },
+    {
+      "area": "external assurance",
+      "evidence": [
+        "research/whole-law-okf-research/adversarial-audit.json",
+        "whole-law/evaluation/README.md"
+      ],
+      "id": "IMP-GAP-018",
+      "next_action": "Commission qualified legal-practitioner, accessibility-expert or third-party assurance separately if required.",
+      "release_effect": "must-remain-explicit",
+      "status": "open",
+      "summary": "No internal result is represented as qualified practitioner, accessibility-expert or third-party legal assurance."
+    },
+    {
+      "area": "licence and access escalation",
+      "evidence": [
+        "whole-law/acquisition/current/source-constraint-ledger.json"
+      ],
+      "id": "IMP-GAP-019",
+      "next_action": "Carry every triggered constraint, owner, mitigation and escalation state into the final report.",
+      "release_effect": "internal-escalation-required",
+      "status": "open",
+      "summary": "Fair-use, licence, authentication, availability and related constraints remain visible rather than silently reducing prototype scope."
+    },
+    {
+      "area": "GitHub operation",
+      "evidence": [
+        "evidence/requirements/controlling-requirements.md"
+      ],
+      "id": "IMP-GAP-020",
+      "next_action": "Run authenticated GitHub operations outside the restricted sandbox and distinguish network/sandbox failures from authentication state.",
+      "release_effect": "procedural",
+      "status": "open",
+      "summary": "A local sandbox failure must not be reclassified as an invalid GitHub token without an authenticated external check."
+    },
+    {
+      "area": "model execution metadata",
+      "evidence": [
+        "bundle/enrichment/codex-assisted-v2.json",
+        "whole-law/assurance/enrichment-v2-independent-audit-20260726.json"
+      ],
+      "id": "IMP-GAP-021",
+      "next_action": "Record the exact deployment identifier and billable subscription usage if the Codex task surface exposes them in a future execution environment.",
+      "release_effect": "externally-blocked-metadata",
+      "status": "blocked",
+      "summary": "The provider and Codex task model are recorded, but the task surface does not expose its exact underlying deployment identifier or billable subscription-token usage."
+    }
+  ],
+  "scope_note": "This implementation gap register supplements, but does not modify, the immutable 28-record research gap register. Resolved means the named implementation omission has evidence; it does not mean the release is complete.",
+  "schema": "okf-implementation-gap-register.v1",
+  "source_research_gap_register": {
+    "path": "research/whole-law-okf-research/gap-register.json",
+    "records": 28
+  }
+}

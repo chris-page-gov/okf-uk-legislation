@@ -1,0 +1,389 @@
+{
+  "schema": "okf-whole-law-jsonld-examples.v1",
+  "examples": [
+    {
+      "@context": {
+        "okflaw": "https://w3id.org/okf/whole-law#",
+        "eli": "http://data.europa.eu/eli/ontology#",
+        "prov": "http://www.w3.org/ns/prov#",
+        "dcterms": "http://purl.org/dc/terms/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "time": "http://www.w3.org/2006/time#",
+        "oa": "http://www.w3.org/ns/oa#",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "cito": "http://purl.org/spar/cito/",
+        "schema": "https://schema.org/",
+        "id": "@id",
+        "type": "@type",
+        "title": "dcterms:title",
+        "identifier": "dcterms:identifier",
+        "publisher": "dcterms:publisher",
+        "language": "dcterms:language",
+        "issued": "dcterms:issued",
+        "modified": "dcterms:modified",
+        "authorityClass": {
+          "@id": "okflaw:authorityClass",
+          "@type": "@id"
+        },
+        "legalForce": {
+          "@id": "okflaw:legalForce",
+          "@type": "@id"
+        },
+        "jurisdiction": {
+          "@id": "eli:jurisdiction",
+          "@type": "@id"
+        },
+        "expression": {
+          "@id": "eli:is_realized_by",
+          "@type": "@id"
+        },
+        "manifestation": {
+          "@id": "eli:is_embodied_by",
+          "@type": "@id"
+        },
+        "passage": {
+          "@id": "okflaw:hasPassage",
+          "@type": "@id"
+        },
+        "supports": {
+          "@id": "okflaw:supportsProposition",
+          "@type": "@id"
+        },
+        "sourceHash": "okflaw:sourceHash",
+        "retrievedAt": {
+          "@id": "okflaw:retrievedAt",
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "validFrom": {
+          "@id": "okflaw:validFrom",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "validTo": {
+          "@id": "okflaw:validTo",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "extent": {
+          "@id": "okflaw:extent",
+          "@type": "@id"
+        },
+        "coverageStatus": {
+          "@id": "okflaw:coverageStatus",
+          "@type": "@id"
+        },
+        "confidence": "okflaw:confidence",
+        "mappingRelation": {
+          "@id": "okflaw:mappingRelation",
+          "@type": "@id"
+        }
+      },
+      "id": "https://www.legislation.gov.uk/id/ukpga/1998/42",
+      "type": [
+        "eli:LegalResource",
+        "okflaw:LegislationWork"
+      ],
+      "title": "Human Rights Act 1998",
+      "identifier": [
+        "1998 c. 42",
+        "https://www.legislation.gov.uk/id/ukpga/1998/42"
+      ],
+      "authorityClass": "okflaw:binding-authority",
+      "legalForce": "okflaw:primary-legislation",
+      "jurisdiction": [
+        "okflaw:UnitedKingdom"
+      ],
+      "expression": [
+        {
+          "id": "https://www.legislation.gov.uk/ukpga/1998/42",
+          "type": "eli:LegalExpression",
+          "modified": "2026-07-25",
+          "passage": [
+            "https://www.legislation.gov.uk/ukpga/1998/42/section/6"
+          ]
+        }
+      ]
+    },
+    {
+      "@context": {
+        "okflaw": "https://w3id.org/okf/whole-law#",
+        "eli": "http://data.europa.eu/eli/ontology#",
+        "prov": "http://www.w3.org/ns/prov#",
+        "dcterms": "http://purl.org/dc/terms/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "time": "http://www.w3.org/2006/time#",
+        "oa": "http://www.w3.org/ns/oa#",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "cito": "http://purl.org/spar/cito/",
+        "schema": "https://schema.org/",
+        "id": "@id",
+        "type": "@type",
+        "title": "dcterms:title",
+        "identifier": "dcterms:identifier",
+        "publisher": "dcterms:publisher",
+        "language": "dcterms:language",
+        "issued": "dcterms:issued",
+        "modified": "dcterms:modified",
+        "authorityClass": {
+          "@id": "okflaw:authorityClass",
+          "@type": "@id"
+        },
+        "legalForce": {
+          "@id": "okflaw:legalForce",
+          "@type": "@id"
+        },
+        "jurisdiction": {
+          "@id": "eli:jurisdiction",
+          "@type": "@id"
+        },
+        "expression": {
+          "@id": "eli:is_realized_by",
+          "@type": "@id"
+        },
+        "manifestation": {
+          "@id": "eli:is_embodied_by",
+          "@type": "@id"
+        },
+        "passage": {
+          "@id": "okflaw:hasPassage",
+          "@type": "@id"
+        },
+        "supports": {
+          "@id": "okflaw:supportsProposition",
+          "@type": "@id"
+        },
+        "sourceHash": "okflaw:sourceHash",
+        "retrievedAt": {
+          "@id": "okflaw:retrievedAt",
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "validFrom": {
+          "@id": "okflaw:validFrom",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "validTo": {
+          "@id": "okflaw:validTo",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "extent": {
+          "@id": "okflaw:extent",
+          "@type": "@id"
+        },
+        "coverageStatus": {
+          "@id": "okflaw:coverageStatus",
+          "@type": "@id"
+        },
+        "confidence": "okflaw:confidence",
+        "mappingRelation": {
+          "@id": "okflaw:mappingRelation",
+          "@type": "@id"
+        }
+      },
+      "id": "urn:okflaw:judgment:sample",
+      "type": "okflaw:Judgment",
+      "title": "Sample judgment record",
+      "identifier": "[2026] UKSC 21",
+      "publisher": {
+        "id": "https://www.supremecourt.uk/",
+        "type": "okflaw:AdjudicativeBody"
+      },
+      "authorityClass": "okflaw:binding-authority",
+      "legalForce": "okflaw:supreme-court-precedent",
+      "issued": "2026-07-14",
+      "jurisdiction": "okflaw:UnitedKingdom",
+      "passage": [
+        {
+          "id": "urn:okflaw:passage:sample-p42",
+          "type": "okflaw:LegalPassage",
+          "oa:hasSource": "urn:okflaw:judgment:sample",
+          "oa:hasSelector": {
+            "type": "oa:TextPositionSelector",
+            "oa:start": 12034,
+            "oa:end": 12891
+          },
+          "retrievedAt": "2026-07-25T12:00:00Z",
+          "sourceHash": "sha256:example-not-a-real-hash"
+        }
+      ]
+    },
+    {
+      "@context": {
+        "okflaw": "https://w3id.org/okf/whole-law#",
+        "eli": "http://data.europa.eu/eli/ontology#",
+        "prov": "http://www.w3.org/ns/prov#",
+        "dcterms": "http://purl.org/dc/terms/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "time": "http://www.w3.org/2006/time#",
+        "oa": "http://www.w3.org/ns/oa#",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "cito": "http://purl.org/spar/cito/",
+        "schema": "https://schema.org/",
+        "id": "@id",
+        "type": "@type",
+        "title": "dcterms:title",
+        "identifier": "dcterms:identifier",
+        "publisher": "dcterms:publisher",
+        "language": "dcterms:language",
+        "issued": "dcterms:issued",
+        "modified": "dcterms:modified",
+        "authorityClass": {
+          "@id": "okflaw:authorityClass",
+          "@type": "@id"
+        },
+        "legalForce": {
+          "@id": "okflaw:legalForce",
+          "@type": "@id"
+        },
+        "jurisdiction": {
+          "@id": "eli:jurisdiction",
+          "@type": "@id"
+        },
+        "expression": {
+          "@id": "eli:is_realized_by",
+          "@type": "@id"
+        },
+        "manifestation": {
+          "@id": "eli:is_embodied_by",
+          "@type": "@id"
+        },
+        "passage": {
+          "@id": "okflaw:hasPassage",
+          "@type": "@id"
+        },
+        "supports": {
+          "@id": "okflaw:supportsProposition",
+          "@type": "@id"
+        },
+        "sourceHash": "okflaw:sourceHash",
+        "retrievedAt": {
+          "@id": "okflaw:retrievedAt",
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "validFrom": {
+          "@id": "okflaw:validFrom",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "validTo": {
+          "@id": "okflaw:validTo",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "extent": {
+          "@id": "okflaw:extent",
+          "@type": "@id"
+        },
+        "coverageStatus": {
+          "@id": "okflaw:coverageStatus",
+          "@type": "@id"
+        },
+        "confidence": "okflaw:confidence",
+        "mappingRelation": {
+          "@id": "okflaw:mappingRelation",
+          "@type": "@id"
+        }
+      },
+      "id": "urn:okflaw:assertion:a1",
+      "type": "okflaw:SynthesisedProposition",
+      "schema:text": "The proposition stated here is supported by the selected official passage, subject to the stated version and jurisdiction.",
+      "supports": "urn:okflaw:passage:sample-p42",
+      "prov:wasGeneratedBy": {
+        "id": "urn:okflaw:activity:answer-1",
+        "type": "okflaw:SynthesisActivity",
+        "prov:endedAtTime": "2026-07-25T12:05:00Z"
+      },
+      "authorityClass": "okflaw:binding-authority",
+      "confidence": 0.88
+    },
+    {
+      "@context": {
+        "okflaw": "https://w3id.org/okf/whole-law#",
+        "eli": "http://data.europa.eu/eli/ontology#",
+        "prov": "http://www.w3.org/ns/prov#",
+        "dcterms": "http://purl.org/dc/terms/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "time": "http://www.w3.org/2006/time#",
+        "oa": "http://www.w3.org/ns/oa#",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "cito": "http://purl.org/spar/cito/",
+        "schema": "https://schema.org/",
+        "id": "@id",
+        "type": "@type",
+        "title": "dcterms:title",
+        "identifier": "dcterms:identifier",
+        "publisher": "dcterms:publisher",
+        "language": "dcterms:language",
+        "issued": "dcterms:issued",
+        "modified": "dcterms:modified",
+        "authorityClass": {
+          "@id": "okflaw:authorityClass",
+          "@type": "@id"
+        },
+        "legalForce": {
+          "@id": "okflaw:legalForce",
+          "@type": "@id"
+        },
+        "jurisdiction": {
+          "@id": "eli:jurisdiction",
+          "@type": "@id"
+        },
+        "expression": {
+          "@id": "eli:is_realized_by",
+          "@type": "@id"
+        },
+        "manifestation": {
+          "@id": "eli:is_embodied_by",
+          "@type": "@id"
+        },
+        "passage": {
+          "@id": "okflaw:hasPassage",
+          "@type": "@id"
+        },
+        "supports": {
+          "@id": "okflaw:supportsProposition",
+          "@type": "@id"
+        },
+        "sourceHash": "okflaw:sourceHash",
+        "retrievedAt": {
+          "@id": "okflaw:retrievedAt",
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "validFrom": {
+          "@id": "okflaw:validFrom",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "validTo": {
+          "@id": "okflaw:validTo",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "extent": {
+          "@id": "okflaw:extent",
+          "@type": "@id"
+        },
+        "coverageStatus": {
+          "@id": "okflaw:coverageStatus",
+          "@type": "@id"
+        },
+        "confidence": "okflaw:confidence",
+        "mappingRelation": {
+          "@id": "okflaw:mappingRelation",
+          "@type": "@id"
+        }
+      },
+      "id": "urn:okflaw:coverage:fcl-ewcr-2020-2026",
+      "type": "okflaw:CoverageAssertion",
+      "title": "Find Case Law Crown Court published coverage",
+      "coverageStatus": "okflaw:partially-complete",
+      "okflaw:dimension": {
+        "jurisdiction": "England and Wales",
+        "sourceClass": "SC09",
+        "institution": "Crown Court",
+        "timePeriod": "2020/2026"
+      },
+      "okflaw:numerator": 22,
+      "okflaw:denominatorBasis": "official-published-record-count; not all judgments are routinely received",
+      "prov:wasDerivedFrom": "https://caselaw.nationalarchives.gov.uk/courts-and-tribunals/ewcr",
+      "retrievedAt": "2026-07-25T12:00:00Z"
+    }
+  ]
+}

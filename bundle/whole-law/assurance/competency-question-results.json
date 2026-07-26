@@ -1,0 +1,224 @@
+{
+  "counts": {
+    "failed": 0,
+    "passed": 5,
+    "questions": 5
+  },
+  "processor": {
+    "python": "3.12.11",
+    "rdflib": "7.6.0"
+  },
+  "results": [
+    {
+      "ask_result": true,
+      "id": "CQ01",
+      "passed": true,
+      "question": "Which source is controlling for a proposition in a stated jurisdiction and date?",
+      "required_terms": [
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#authorityClass",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "authorityClass"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://data.europa.eu/eli/ontology#jurisdiction",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "eli:jurisdiction"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#validFrom",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "validFrom"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#supportedBy",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "supportedBy"
+        }
+      ]
+    },
+    {
+      "ask_result": true,
+      "id": "CQ02",
+      "passed": true,
+      "question": "Which official effect changed a selected work or provision and has it been applied?",
+      "required_terms": [
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#LegislativeEffect",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "LegislativeEffect"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#affectingResource",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "affectingResource"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#affectedResource",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "affectedResource"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#effectType",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "effectType"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#applicationStatus",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "applicationStatus"
+        }
+      ]
+    },
+    {
+      "ask_result": true,
+      "id": "CQ03",
+      "passed": true,
+      "question": "What denominator supports a claim of source-family coverage?",
+      "required_terms": [
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#CoverageAssertion",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "CoverageAssertion"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#coverageStatus",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "coverageStatus"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#denominatorBasis",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "denominatorBasis"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#retrievedAt",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "retrievedAt"
+        }
+      ]
+    },
+    {
+      "ask_result": true,
+      "id": "CQ04",
+      "passed": true,
+      "question": "Can an agent distinguish source evidence from a synthesised proposition?",
+      "required_terms": [
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#LegalPassage",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "LegalPassage"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#SynthesisedProposition",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "SynthesisedProposition"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#supportedBy",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "supportedBy"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "http://www.w3.org/ns/prov#wasGeneratedBy",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "prov:wasGeneratedBy"
+        }
+      ]
+    },
+    {
+      "ask_result": true,
+      "id": "CQ05",
+      "passed": true,
+      "question": "Can a user tell whether an access route is public, restricted, stale or unavailable?",
+      "required_terms": [
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#AccessTest",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "AccessTest"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#accessStatus",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "accessStatus"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#testedURL",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "testedURL"
+        },
+        {
+          "declared_or_used": true,
+          "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#testDate",
+          "passed": true,
+          "referenced_by_query": true,
+          "term": "testDate"
+        }
+      ]
+    }
+  ],
+  "schema": "okf-ontology-competency-results.v1",
+  "sources": {
+    "competency_questions": {
+      "path": "whole-law/ontology/competency-questions.json",
+      "sha256": "45233208787665105d2f32d63bbbd5bb8fb88441be59542c305dcca785d99a5a"
+    },
+    "examples": {
+      "path": "whole-law/ontology/examples.jsonld",
+      "sha256": "60c463e014a5447b8eadd871f864e0ced512b91fdaf8a8bd36be3fe85f9a059f",
+      "triples": 35
+    },
+    "shapes": {
+      "path": "whole-law/ontology/shapes.ttl",
+      "sha256": "8966124578513e45f3fb3f39d0019899d63657c7814446eda2fc4d1b7212127e",
+      "triples": 137
+    },
+    "vocabulary": {
+      "path": "whole-law/ontology/vocabulary.ttl",
+      "sha256": "da24d9069ef0e458e5e43372989a05e7b2f2fdc0add6d98ff3b1281889127a03",
+      "triples": 76
+    }
+  },
+  "status": "passed",
+  "suite": "okf-whole-law-competency-questions.v1"
+}

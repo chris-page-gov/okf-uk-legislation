@@ -1,0 +1,24 @@
+{
+  "baselines": [
+    {
+      "gold_status": "non-gold-baseline",
+      "id": "legislation-100",
+      "immutable_source": true,
+      "path": "../../evaluation/legislation/questions.json",
+      "questions": 100,
+      "sha256": "da1e5d1266861299f93fbf14da7bc0e2d9ae5a36318d1849369959fb2a7fd317",
+      "verification_status": "historical-structure-only"
+    },
+    {
+      "gold_status": "non-gold-baseline",
+      "id": "whole-law-research-360",
+      "immutable_source": true,
+      "path": "../../research/whole-law-okf-research/whole-law-evaluation-questions.json",
+      "questions": 360,
+      "sha256": "ff8e8f8f7ae66c123136041807b9b22ca86d34ef3982a4f60a2c9d4fd10659df",
+      "verification_status": "historical-structure-only"
+    }
+  ],
+  "generated_at": "2026-07-25T22:00:00Z",
+  "schema": "okf-evaluation-historical-baselines.v1"
+}

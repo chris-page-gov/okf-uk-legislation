@@ -1,0 +1,139 @@
+{
+  "schema": "okf-whole-law-coverage-ledger.v1",
+  "generated_at": "2026-07-25T14:00:00+01:00",
+  "entries": [
+    {
+      "id": "COV-LEGISLATION-WORKS",
+      "source_id": "SRC001",
+      "dimensions": {
+        "jurisdiction": [
+          "United Kingdom",
+          "England and Wales",
+          "Scotland",
+          "Northern Ireland"
+        ],
+        "source_class": [
+          "SC01",
+          "SC02",
+          "SC03",
+          "SC06",
+          "SC07"
+        ],
+        "issuing_institution": "Multiple legislatures / King’s Printer",
+        "court_or_tribunal": null,
+        "document_type": "Legislation work metadata",
+        "time_period": {
+          "from": "1235",
+          "to": "2026-07-25"
+        },
+        "version_state": "all-published",
+        "update_frequency": "periodic full build plus publication-log increment",
+        "availability": {
+          "machine_readable": "partial",
+          "human_readable": "partial"
+        }
+      },
+      "coverage_status": "complete against official enumerated source",
+      "denominator": {
+        "basis": "official-enumeration",
+        "value": 365786,
+        "unit": "work records",
+        "official": true,
+        "source_url": "https://www.legislation.gov.uk/all/data.feed?results-count=1",
+        "as_of": "2026-07-25",
+        "notes": "Count validated by year/type facets in baseline build; says nothing about text/revision completeness."
+      },
+      "numerator": {
+        "value": 365786,
+        "unit": "unique work records",
+        "calculation": "Unique official ID URI across generated shards",
+        "deduplication_rule": "Exact official legislation ID URI"
+      },
+      "percentage": 100.0,
+      "access": {
+        "status": "verified working",
+        "tested_at": "2026-07-25",
+        "method": "Official Atom API and baseline build request ledger",
+        "http_status": 200,
+        "notes": "Public catalogue route."
+      },
+      "evidence": [
+        {
+          "url": "https://github.com/chris-page-gov/okf-uk-legislation/blob/main/bundle/data/manifest.json",
+          "claim": "Baseline manifest count and source request ledger.",
+          "retrieved_at": "2026-07-25T12:00:00Z",
+          "sha256": null
+        }
+      ],
+      "known_gaps": [
+        "Text, revisions and effects are not complete merely because work metadata is enumerated."
+      ],
+      "conflicts": [],
+      "assessed_at": "2026-07-25T14:00:00+01:00",
+      "assessed_by": "Whole-Law OKF research audit",
+      "next_review_at": "2026-08-01T00:00:00Z",
+      "notes": "Use narrower ledger entries for each text/version/effect class."
+    },
+    {
+      "id": "COV-FCL-CROWN-COURT",
+      "source_id": "SRC012",
+      "dimensions": {
+        "jurisdiction": "England and Wales",
+        "source_class": "SC09",
+        "issuing_institution": "Crown Court / The National Archives",
+        "court_or_tribunal": "Crown Court",
+        "document_type": "Published judgment",
+        "time_period": {
+          "from": "2020",
+          "to": "2026-07-25"
+        },
+        "version_state": "all-published",
+        "update_frequency": "continuous",
+        "availability": {
+          "machine_readable": "restricted",
+          "human_readable": "partial"
+        }
+      },
+      "coverage_status": "partially complete",
+      "denominator": {
+        "basis": "official-published-count",
+        "value": 22,
+        "unit": "documents published on Find Case Law",
+        "official": true,
+        "source_url": "https://caselaw.nationalarchives.gov.uk/courts-and-tribunals/ewcr",
+        "as_of": "2026-07-25",
+        "notes": "This is a publication denominator, not the number of all Crown Court decisions."
+      },
+      "numerator": {
+        "value": 22,
+        "unit": "published documents",
+        "calculation": "Official court page count",
+        "deduplication_rule": "Find Case Law record identity"
+      },
+      "percentage": 100.0,
+      "access": {
+        "status": "verified working",
+        "tested_at": "2026-07-25",
+        "method": "Official court coverage page",
+        "http_status": 200,
+        "notes": "Coverage explicitly selective."
+      },
+      "evidence": [
+        {
+          "url": "https://caselaw.nationalarchives.gov.uk/courts-and-tribunals/ewcr",
+          "claim": "Official page reports 22 documents and selected transfers.",
+          "retrieved_at": "2026-07-25T12:00:00Z",
+          "sha256": null
+        }
+      ],
+      "known_gaps": [
+        "Most Crown Court judgments are not routinely received or transcribed."
+      ],
+      "conflicts": [],
+      "assessed_at": "2026-07-25T14:00:00+01:00",
+      "assessed_by": "Whole-Law OKF research audit",
+      "next_review_at": "2026-08-25T00:00:00Z",
+      "notes": "Dashboard must show 100% of published set and simultaneously “partial real-world court coverage”."
+    }
+  ]
+}

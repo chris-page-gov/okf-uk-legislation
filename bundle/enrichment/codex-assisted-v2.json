@@ -1,0 +1,125 @@
+{
+  "artefacts": {
+    "calibration": "data/enrichment/calibration.json",
+    "coverage": "data/enrichment/coverage.json",
+    "datapack": "data/enrichment/manifest.json",
+    "rejected_v1_audit": "enrichment/model-assisted-v1-independent-audit.json",
+    "rules": "enrichment/codex-assisted-v2-rules.json"
+  },
+  "assistant_surface": "Codex Ultra task",
+  "authority": "derived-non-official",
+  "calibration": {
+    "actual_corpus": {
+      "cases": 16,
+      "correct_cases": 16,
+      "false_negative_assertions": 0,
+      "false_positive_assertions": 0,
+      "passed": true,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "cases": 58,
+    "evidence_support": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "rule_tests": 55,
+    "rules_covered": 55,
+    "schema_validity": 1.0,
+    "topic_slices_passed": true
+  },
+  "calibration_set_hash": "sha256:f31f3204926927ea49eb839e629987b4a3f5e98e72f85e9a7f0981d794028fb3",
+  "cost": {
+    "cap_triggered": false,
+    "cap_usd": 250.0,
+    "cost_per_accepted_assertion_usd": 0.0,
+    "exchange_rate": {
+      "date": null,
+      "rate": null,
+      "source": "not applicable: zero incremental API spend"
+    },
+    "incremental_openai_api_gbp": 0.0,
+    "incremental_openai_api_usd": 0.0,
+    "note": "Implemented using the Codex task surface; no paid OpenAI API request was made."
+  },
+  "cost_preflight": {
+    "basis": "The production pass is deterministic and makes no API requests.",
+    "cap_usd": 250.0,
+    "permitted": true,
+    "projected_openai_api_usd": 0.0
+  },
+  "counts": {
+    "assertions": {
+      "accepted": 22299
+    },
+    "records": {
+      "attempted": 365786,
+      "with_accepted_assertions": 22284,
+      "without_new_supported_assertions": 343502
+    }
+  },
+  "input_snapshot": "legislation-2026-07-11T18:00:00Z",
+  "model_deployment_identity_available": false,
+  "model_identity": "Codex task model (exact deployment identifier not exposed)",
+  "model_parameters": {
+    "available": false,
+    "reason": "The Codex task surface did not expose sampling or deployment parameters."
+  },
+  "prompt_basis": {
+    "constraints": [
+      "Rules were proposed after corpus-wide analysis of the 97,899 records left unclassified by v1.",
+      "A literal match is evidence only that the title contains the named domain phrase.",
+      "Generic legal words and ambiguous institution names are intentionally omitted.",
+      "Every eligible record is evaluated; no-match is an explicit rejected outcome, not a fabricated assertion.",
+      "Actual-corpus collision families identified by independent audit are fail-closed calibration cases."
+    ],
+    "controlled_topics": [
+      "Civil justice and procedure",
+      "Communications, data and technology",
+      "Companies, insolvency and financial services",
+      "Consumer and commercial law",
+      "Criminal law and policing",
+      "Defence and national security",
+      "Education and children",
+      "Elections and political parties",
+      "Employment and industrial relations",
+      "Environment, energy and agriculture",
+      "European Union and retained EU law",
+      "Family and succession",
+      "Health and social care",
+      "Human rights and equality",
+      "Land, housing and planning",
+      "Professional regulation",
+      "Social security and welfare",
+      "Taxation and customs",
+      "Transport and infrastructure"
+    ],
+    "task": "Propose conservative high-precision literal rules for titles left unclassified by v1."
+  },
+  "prompt_basis_hash": "sha256:d4739861cd120d89ccffeb16f36fd820fc0e0f738e1060c87c48e91cd2671dc2",
+  "prompt_transcript": {
+    "available": false,
+    "reason": "The originating interactive model transcript is not exported by the Codex task surface; the governed prompt basis and resulting rule artefacts are preserved instead."
+  },
+  "provider": "OpenAI",
+  "rejected_v1_suppression_bridge": {
+    "audit": "enrichment/model-assisted-v1-independent-audit.json",
+    "audit_sha256": "690f70e311d2c2d6942657bf73dd35a4dfe27e34e2feb1b35afdc0f0c66f90eb",
+    "audit_verdict": "rejected-fail-closed",
+    "historical_topics_considered": 562,
+    "mode": "suppression-only-not-published",
+    "published_v1_assertions": 0,
+    "rules": "enrichment/model-assisted-v1.json",
+    "rules_sha256": "819030b842a6eedd88ddec35ac526c718689c7cd1a4577a9c64ef802a879d4dc",
+    "v2_overlaps_suppressed": 6
+  },
+  "review_status": "pending-independent-audit",
+  "rule_set_hash": "sha256:f936398e3ed9bc59ebca69391a41809b5af8fe4e9f49c16dfee38d984ebb2d8a",
+  "run_id": "codex-assisted-v2-2-2026-07-25",
+  "schema": "okf-model-enrichment-run.v1",
+  "usage": {
+    "api_calls": 0,
+    "api_input_tokens": 0,
+    "api_output_tokens": 0,
+    "codex_task_usage": "not exposed as billable token data"
+  }
+}

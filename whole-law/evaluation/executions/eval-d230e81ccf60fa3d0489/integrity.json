@@ -1,0 +1,105 @@
+{
+  "executed_at": "2026-07-25T22:50:12Z",
+  "input_fingerprint_sha256": "d230e81ccf60fa3d04891cb811b7c92b688feac6734c819543eec79ad715fa01",
+  "inputs": [
+    {
+      "bytes": 16421,
+      "path": "bundle/data/manifest.json",
+      "sha256": "c6095f3300e80a525e1fa242cce69efd8eab6cef560e36fb8dc86d028ed72e8c"
+    },
+    {
+      "bytes": 1874431,
+      "path": "bundle/data/search/doc-map.json.gz",
+      "sha256": "e01aa9574f357ad845d8a411e4f35ecb695b6a2148d838822752f3b33aa5d4db"
+    },
+    {
+      "bytes": 122728,
+      "path": "bundle/data/search/manifest.json",
+      "sha256": "f850ae9dfadc2341e4e7ad2bea69dd99eca7a193b38c66ffd6c80643e42e25af"
+    },
+    {
+      "bytes": 5938,
+      "path": "bundle/okf-explorer.json",
+      "sha256": "174057687744c1fcc5cc19b648fd0ac0b9fcce08908fd7bc816cd82d99947791"
+    },
+    {
+      "bytes": 107682,
+      "path": "bundle/whole-law/okf-explorer.json",
+      "sha256": "a73e30e85bf5d9d8da3de11f2ad0e325ce18c3c3676cd580c63e866a94947ce8"
+    },
+    {
+      "bytes": 2072,
+      "path": "evaluation/legislation/answer-schema.json",
+      "sha256": "ea8be0282e0454553ed37541012cbca2976f21929619a2e4de398673d4526ad8"
+    },
+    {
+      "bytes": 93669,
+      "path": "evaluation/legislation/questions.json",
+      "sha256": "da1e5d1266861299f93fbf14da7bc0e2d9ae5a36318d1849369959fb2a7fd317"
+    },
+    {
+      "bytes": 35556,
+      "path": "evidence/source-acquisitions/whole-law-access/20260725T203207Z-dd7315c3/integrity.json",
+      "sha256": "e52b26e7d7f24da7e909427f0ab82f9f7a154e8b99cd362aab2d84254bb6975a"
+    },
+    {
+      "bytes": 18713,
+      "path": "research/whole-law-okf-research/legal-source-taxonomy.json",
+      "sha256": "ceb9b78308b54f925af902bb71dc1ee493801d7f1b5c7a74d32da8d0b9ee5320"
+    },
+    {
+      "bytes": 516426,
+      "path": "research/whole-law-okf-research/persona-task-matrix.json",
+      "sha256": "966e5e89ad7dd99ba232364cae4ad50976b9ce1871bb3707d9af3c15992a92e0"
+    },
+    {
+      "bytes": 219607,
+      "path": "research/whole-law-okf-research/source-register.json",
+      "sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810"
+    },
+    {
+      "bytes": 48055,
+      "path": "scripts/run_release_evaluation.py",
+      "sha256": "9a195d7fd6f2426e9a882dcc83f629e113b4f865ef46de122dc1ec175e94de76"
+    },
+    {
+      "bytes": 161421,
+      "path": "whole-law/acquisition/current/access-methods.json",
+      "sha256": "30aaef86282be1ca5058689dcbde571f601114996b4d800d3d926c07a493db40"
+    },
+    {
+      "bytes": 1744,
+      "path": "whole-law/acquisition/current/evidence-reference.json",
+      "sha256": "a8b4f47e4a268b12a1bb1d0f270b293e4f196aec6906a47e31c46a7ef2c17320"
+    },
+    {
+      "bytes": 1525,
+      "path": "whole-law/evaluation/answer-schema.json",
+      "sha256": "115b72006f43c8197e1757f9e0cb4d1af1f16d364dd0fbca4dd54673b0209edf"
+    },
+    {
+      "bytes": 2714,
+      "path": "whole-law/evaluation/coverage.json",
+      "sha256": "7cd550e080cbb9e9749c3766cad644d973fbab3b4ecaace5b47c809ed1fc4dbc"
+    },
+    {
+      "bytes": 1282077,
+      "path": "whole-law/evaluation/release-questions.json",
+      "sha256": "7f43208be7497713e7fa2de7bf0cece559b2cb6fe982d37b7823fa5d1820ec03"
+    }
+  ],
+  "outputs": [
+    {
+      "bytes": 3473,
+      "path": "report.md",
+      "sha256": "26d364bc4cee0869703f9a21037fedb68efbb8da3301de1eda36f3265a1204f1"
+    },
+    {
+      "bytes": 55389,
+      "path": "results.json",
+      "sha256": "bededce3e24c25f7ddddbf1154cf2b5ddbf79fd486528990b26c16b61672db96"
+    }
+  ],
+  "run_id": "eval-d230e81ccf60fa3d0489",
+  "schema": "okf-release-evaluation-integrity.v1"
+}

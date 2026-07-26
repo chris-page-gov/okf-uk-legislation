@@ -1,0 +1,374 @@
+{
+  "changes_requiring_review": [
+    {
+      "comparison": "route-now-observed-reachable",
+      "error": null,
+      "http_status": 200,
+      "method_id": "SRC005-A01",
+      "observed_access_state": "reachable",
+      "research_status": "documented but not tested",
+      "source_id": "SRC005",
+      "url": "https://www.legislation.gov.uk/update/associated-documents/data.feed"
+    },
+    {
+      "comparison": "route-now-observed-reachable",
+      "error": null,
+      "http_status": 200,
+      "method_id": "SRC006-A01",
+      "observed_access_state": "reachable",
+      "research_status": "documented but not tested",
+      "source_id": "SRC006",
+      "url": "https://www.legislation.gov.uk/draft/data.feed?results-count=20"
+    },
+    {
+      "comparison": "route-now-observed-reachable",
+      "error": null,
+      "http_status": 206,
+      "method_id": "SRC010-A01",
+      "observed_access_state": "reachable",
+      "research_status": "documented but not tested",
+      "source_id": "SRC010",
+      "url": "https://caselaw.nationalarchives.gov.uk/terms-of-use"
+    },
+    {
+      "comparison": "route-now-observed-reachable",
+      "error": null,
+      "http_status": 206,
+      "method_id": "SRC015-A01",
+      "observed_access_state": "reachable",
+      "research_status": "unavailable",
+      "source_id": "SRC015",
+      "url": "https://www.bailii.org/bailii/"
+    },
+    {
+      "comparison": "route-now-observed-reachable",
+      "error": null,
+      "http_status": 206,
+      "method_id": "SRC016-A02",
+      "observed_access_state": "reachable",
+      "research_status": "documented but not tested",
+      "source_id": "SRC016",
+      "url": "https://www.jcpc.uk/decided-cases/index.html"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC018-A02",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC018",
+      "url": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/practice-directions"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC021-A01",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC021",
+      "url": "https://www.gov.uk/government/collections/tribunal-procedure-rules"
+    },
+    {
+      "comparison": "public-surface-reachable-restriction-not-bypassed",
+      "error": null,
+      "http_status": 200,
+      "method_id": "SRC025-A02",
+      "observed_access_state": "reachable",
+      "research_status": "authenticated or restricted",
+      "source_id": "SRC025",
+      "url": "https://www.gov.uk/government/publications/hmcts-third-party-courts-and-tribunals-data-licence"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC027-A01",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC027",
+      "url": "https://www.sentencingcouncil.org.uk/guidelines/"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC028-A01",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC028",
+      "url": "https://www.cps.gov.uk/legal-guidance"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC029-A02",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC029",
+      "url": "https://www.copfs.gov.uk/publications/disclosure-code/"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC030-A01",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC030",
+      "url": "https://www.ppsni.gov.uk/code-prosecutors"
+    },
+    {
+      "comparison": "route-now-observed-reachable",
+      "error": null,
+      "http_status": 200,
+      "method_id": "SRC031-A01",
+      "observed_access_state": "reachable",
+      "research_status": "unavailable",
+      "source_id": "SRC031",
+      "url": "https://handbook.fca.org.uk/"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC031-A02",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC031",
+      "url": "https://www.fca.org.uk/firms/handbook"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC033-A02",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC033",
+      "url": "https://www.bankofengland.co.uk/prudential-regulation/pra-rulebook"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC039-A01",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC039",
+      "url": "https://www.gov.uk/government/publications/environment-agency-enforcement-undertakings-accepted"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC040-A02",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC040",
+      "url": "https://www.lgo.org.uk/information-centre/reports/decisions"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC042-A02",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC042",
+      "url": "https://www.spso.org.uk/scottish-welfare-fund-independent-review-decisions"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": {
+        "message": "[Errno 61] Connection refused",
+        "type": "URLError"
+      },
+      "http_status": null,
+      "method_id": "SRC043-A01",
+      "observed_access_state": "network-error",
+      "research_status": "verified working",
+      "source_id": "SRC043",
+      "url": "https://nipso.org.uk/nipso/publications"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC053-A01",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC053",
+      "url": "https://www.gov.uk/government/publications/public-inquiries-recommendations-dashboard"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC053-A02",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC053",
+      "url": "https://www.gov.uk/government/collections/public-inquiries"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC055-A02",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC055",
+      "url": "https://www.gov.uk/government/publications/uk-treaties-dataset"
+    },
+    {
+      "comparison": "public-surface-reachable-restriction-not-bypassed",
+      "error": null,
+      "http_status": 202,
+      "method_id": "SRC056-A02",
+      "observed_access_state": "reachable",
+      "research_status": "authenticated or restricted",
+      "source_id": "SRC056",
+      "url": "https://eur-lex.europa.eu/content/help/data-reuse/webservice.html"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC057-A01",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC057",
+      "url": "https://op.europa.eu/en/web/about-us/legal-notices/accessibility"
+    },
+    {
+      "comparison": "route-now-observed-reachable",
+      "error": null,
+      "http_status": 200,
+      "method_id": "SRC057-A02",
+      "observed_access_state": "reachable",
+      "research_status": "documented but not tested",
+      "source_id": "SRC057",
+      "url": "https://publications.europa.eu/webapi/rdf/sparql"
+    },
+    {
+      "comparison": "public-access-regression-observed",
+      "error": null,
+      "http_status": 403,
+      "method_id": "SRC058-A02",
+      "observed_access_state": "restricted",
+      "research_status": "verified working",
+      "source_id": "SRC058",
+      "url": "https://www.echr.coe.int/hudoc-database"
+    },
+    {
+      "comparison": "route-now-observed-reachable",
+      "error": null,
+      "http_status": 206,
+      "method_id": "SRC060-A02",
+      "observed_access_state": "reachable",
+      "research_status": "documented but not tested",
+      "source_id": "SRC060",
+      "url": "https://www.gov.uk/find-local-council"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC064-A02",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC064",
+      "url": "https://www.mygov.scot/justice-law-rights"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC064-A03",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC064",
+      "url": "https://www.gov.wales/law-and-order"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC064-A04",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC064",
+      "url": "https://www.nidirect.gov.uk/information-and-services/justice-and-law"
+    },
+    {
+      "comparison": "public-access-regression-observed",
+      "error": null,
+      "http_status": 403,
+      "method_id": "SRC066-A01",
+      "observed_access_state": "restricted",
+      "research_status": "verified working",
+      "source_id": "SRC066",
+      "url": "https://www.sra.org.uk/solicitors/standards-regulations/"
+    },
+    {
+      "comparison": "public-access-regression-observed",
+      "error": null,
+      "http_status": 403,
+      "method_id": "SRC066-A02",
+      "observed_access_state": "restricted",
+      "research_status": "verified working",
+      "source_id": "SRC066",
+      "url": "https://www.sra.org.uk/consumers/solicitor-check/"
+    },
+    {
+      "comparison": "public-access-regression-observed",
+      "error": null,
+      "http_status": 403,
+      "method_id": "SRC068-A01",
+      "observed_access_state": "restricted",
+      "research_status": "verified working",
+      "source_id": "SRC068",
+      "url": "https://www.iclr.co.uk/"
+    },
+    {
+      "comparison": "claim-not-reproduced",
+      "error": null,
+      "http_status": 404,
+      "method_id": "SRC069-A02",
+      "observed_access_state": "unavailable",
+      "research_status": "verified working",
+      "source_id": "SRC069",
+      "url": "https://www.lexisnexis.co.uk/legal/lexis-plus.html"
+    }
+  ],
+  "counts": {
+    "access_methods": 108,
+    "comparison": {
+      "claim-confirmed": 73,
+      "claim-not-reproduced": 20,
+      "public-access-regression-observed": 4,
+      "public-surface-reachable-restriction-not-bypassed": 2,
+      "restriction-confirmed": 1,
+      "route-now-observed-reachable": 8
+    },
+    "observed_access_state": {
+      "network-error": 1,
+      "reachable": 83,
+      "restricted": 5,
+      "unavailable": 19
+    },
+    "research_claim_status": {
+      "authenticated or restricted": 3,
+      "documented but not tested": 6,
+      "unavailable": 2,
+      "verified working": 97
+    }
+  },
+  "evidence_run_id": "20260725T203207Z-dd7315c3",
+  "generated_at": "2026-07-25T20:32:16Z",
+  "interpretation": "Research claims are retained verbatim. Observations are bounded point-in-time probes and do not establish continuing availability, complete corpus access, or bulk-reuse permission.",
+  "schema": "okf-source-access-comparison.v1"
+}

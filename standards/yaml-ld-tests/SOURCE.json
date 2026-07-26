@@ -1,0 +1,20 @@
+{
+  "source_repository": "https://github.com/chris-page-gov/yaml-ld",
+  "upstream_specification_repository": "https://github.com/w3c/yaml-ld",
+  "revision": "c3849526aa62324d1bc24ee0e03afb09ed6c5282",
+  "working_draft": "https://www.w3.org/TR/2026/WD-yaml-ld-10-20260723/",
+  "copied_at": "2026-07-25T23:21:42Z",
+  "manifest_sha256": "93e7208b8e697c587c97e8cd410b5f33b0fa2b9b05aa4cd8fa8b27f640382f72",
+  "readme_sha256": "cd9a4379b70e03495eabedc3f5565e75e3a562473974cf6e9b1d84028d3a9f4a",
+  "license_sha256": "6ae1e7ce99f991dfec6de1cd7c64b18c6ab4ec44f49d86ac73d699c63dac6ca9",
+  "offline_contexts": [
+    {
+      "source": "https://json-ld.org/contexts/person.jsonld",
+      "path": "contexts/person.jsonld",
+      "retrieved_at": "2026-07-25T23:21:42Z",
+      "sha256": "167af36db30e5d29d6c44387c6f22f24ffe75aae2ce219e79a7a38e76d2d0eb7"
+    }
+  ],
+  "licence": "W3C Test Suite License",
+  "notice": "The vendored test suite is immutable release evidence. Update it only by copying a reviewed pinned revision and refreshing this receipt."
+}

@@ -1,0 +1,38 @@
+# Legal-source classes
+
+- [SC01 — Primary legislation](sc01-primary-legislation.md) — available
+- [SC02 — Secondary and delegated legislation](sc02-secondary-and-delegated-legislation.md) — available
+- [SC03 — Draft legislation and draft instruments](sc03-draft-legislation-and-draft-instruments.md) — partial
+- [SC04 — Historical and revised legislation versions](sc04-historical-and-revised-legislation-versions.md) — partial
+- [SC05 — Amendment, commencement, repeal and extent effects](sc05-amendment-commencement-repeal-and-extent-effects.md) — partial
+- [SC06 — Retained and assimilated EU law](sc06-retained-and-assimilated-eu-law.md) — partial
+- [SC07 — Local and private legislation](sc07-local-and-private-legislation.md) — partial
+- [SC08 — Treaties and international instruments](sc08-treaties-and-international-instruments.md) — partial
+- [SC09 — Court judgments](sc09-court-judgments.md) — partial
+- [SC10 — Tribunal decisions](sc10-tribunal-decisions.md) — partial
+- [SC11 — Orders, opinions and separate reasons](sc11-orders-opinions-and-separate-reasons.md) — partial
+- [SC12 — Neutral and report citations](sc12-neutral-and-report-citations.md) — partial
+- [SC13 — Precedent, citation and judicial treatment](sc13-precedent-citation-and-judicial-treatment.md) — partial
+- [SC14 — Court and tribunal reference data](sc14-court-and-tribunal-reference-data.md) — partial
+- [SC15 — Court and tribunal rules](sc15-court-and-tribunal-rules.md) — partial
+- [SC16 — Practice directions and protocols](sc16-practice-directions-and-protocols.md) — partial
+- [SC17 — Forms, fees, deadlines and procedural guidance](sc17-forms-fees-deadlines-and-procedural-guidance.md) — partial
+- [SC18 — Sentencing guidelines](sc18-sentencing-guidelines.md) — partial
+- [SC19 — Prosecution and enforcement guidance](sc19-prosecution-and-enforcement-guidance.md) — partial
+- [SC20 — Regulatory handbooks and rules](sc20-regulatory-handbooks-and-rules.md) — partial
+- [SC21 — Regulatory decisions and enforcement notices](sc21-regulatory-decisions-and-enforcement-notices.md) — partial
+- [SC22 — Codes of practice and statutory guidance](sc22-codes-of-practice-and-statutory-guidance.md) — partial
+- [SC23 — Ombudsman and adjudicator decisions](sc23-ombudsman-and-adjudicator-decisions.md) — partial
+- [SC24 — Parliamentary materials and Hansard](sc24-parliamentary-materials-and-hansard.md) — partial
+- [SC25 — Explanatory notes and impact assessments](sc25-explanatory-notes-and-impact-assessments.md) — partial
+- [SC26 — Law-reform publications](sc26-law-reform-publications.md) — partial
+- [SC27 — Public inquiries and official investigations](sc27-public-inquiries-and-official-investigations.md) — partial
+- [SC28 — Legal aid and public legal assistance](sc28-legal-aid-and-public-legal-assistance.md) — partial
+- [SC29 — Public notices and official gazettes](sc29-public-notices-and-official-gazettes.md) — partial
+- [SC30 — Jurisdiction, institution and public-body reference data](sc30-jurisdiction-institution-and-public-body-reference-data.md) — partial
+- [SC31 — Legal-service listings and hearing data](sc31-legal-service-listings-and-hearing-data.md) — partial
+- [SC32 — European Union legal sources](sc32-european-union-legal-sources.md) — partial
+- [SC33 — European human-rights and international decisions](sc33-european-human-rights-and-international-decisions.md) — partial
+- [SC34 — Professional rules and legal-services regulation](sc34-professional-rules-and-legal-services-regulation.md) — partial
+- [SC35 — Archival legal records and web archives](sc35-archival-legal-records-and-web-archives.md) — partial
+- [SC36 — Secondary reporting and commentary](sc36-secondary-reporting-and-commentary.md) — partial

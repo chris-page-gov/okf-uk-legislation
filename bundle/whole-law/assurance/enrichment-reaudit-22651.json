@@ -1,0 +1,373 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema": "okf-enrichment-independent-audit.v1",
+  "audit_id": "codex-assisted-v2-reaudit-22651-2026-07-25",
+  "audited_at": "2026-07-25T22:45:00+01:00",
+  "artifact_state": "historical-superseded-candidate",
+  "audited_repository": "okf-uk-legislation",
+  "audited_git_base": "52b05ec11ee7a866617a58e16e1b14b9cda483bf",
+  "post_audit_note": {
+    "status": "remediated-after-assessment",
+    "note": "This decision is immutable evidence for the 22,651-assertion candidate identified by the hashes below. The implementation was subsequently changed and rebuilt. Later candidates require separately named independent audits."
+  },
+  "reviewer": {
+    "kind": "independent-codex-subagent",
+    "surface": "Codex Ultra task",
+    "independence": "Separate task context from implementation. No generator, rule, schema or generated-data file was edited by this reviewer.",
+    "model_identity": "Exact deployment identifier not exposed",
+    "limitations": [
+      "Independent analytical review, not third-party or qualified UK legal-practitioner assurance.",
+      "Exact reviewer and authoring model deployment identities are not exposed.",
+      "The candidate files were uncommitted when assessed; the captured hashes, counts and chunk-root hash bind this historical decision."
+    ]
+  },
+  "intended_use": {
+    "dataset": "Non-official candidate discovery-topic relationships for UK legislation works",
+    "source_grain": "One record per legislation.gov.uk work",
+    "assertion_grain": "One source-work, target-topic and predicate assertion",
+    "release_question": "Did remediation resolve the first audit sufficiently to promote the 22,651 assertions as independently reviewed discovery metadata?"
+  },
+  "scope": {
+    "source_records": 365786,
+    "source_chunks": 366,
+    "generated_assertions": 22651,
+    "generated_chunks": 366,
+    "manifest_chunk_root_sha256": "b5069cfbff952c8aa512c652052d2270d2f68501b91807729e7e505e563b6f47",
+    "input_semantic_sha256": "a2f3e65772f33d339825cb2d94923671ce2f1fec87ae4e63647da9ba4b362b36",
+    "artifacts": [
+      {
+        "path": "enrichment/codex-assisted-v2-rules.json",
+        "sha256": "380f91265b8ab9d1b7e17b78638ea3ade4172feeaceeebdc4cf112efa15e4cd7"
+      },
+      {
+        "path": "enrichment/codex-assisted-v2-calibration.json",
+        "sha256": "ac0d9fc0603d74f8003901ab83eacd54ad45767efdaf7825e56de61f4fcc767a"
+      },
+      {
+        "path": "scripts/build_codex_semantic_enrichment.py",
+        "sha256": "b5babea3e2f8f9b48907ca0ebdf6844115a048922bcffb58f3ab274c011a27bd"
+      },
+      {
+        "path": "bundle/enrichment/codex-assisted-v2.json",
+        "sha256": "6d9faced5f32071b94b9f48e032c77c5223842d61d4d59834064cfe50147c698"
+      },
+      {
+        "path": "bundle/data/enrichment/manifest.json",
+        "sha256": "083ae8f1065d3ac08367b990970ac43d5e79dd28f4e1b76c44af035362912d23"
+      },
+      {
+        "path": "bundle/data/enrichment/coverage.json",
+        "sha256": "c1003918e5990ab54a08ff65427077ea4b3f2fc4d79eaa63de8c556e88aa7be2"
+      },
+      {
+        "path": "bundle/data/enrichment/attempt-ledger.json",
+        "sha256": "d82587d18646e2e16156a31e283f577ffa9af7b52fdf35edaa2363f1fee2c662"
+      },
+      {
+        "path": "bundle/data/enrichment/calibration.json",
+        "sha256": "7af4f70d1dd9f8d31937b2b667969afb4b65b4fc871409f5539f5a8b0825a050"
+      },
+      {
+        "path": "whole-law/schemas/relationship-assertion.schema.json",
+        "sha256": "4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006"
+      },
+      {
+        "path": "../okf-explorer/profiles/federation/v1/relationship-assertion.schema.json",
+        "sha256": "4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006"
+      },
+      {
+        "path": "whole-law/schemas/model-enrichment-run.schema.json",
+        "sha256": "5d912ffd5d2c6eda81010ca025fe921cb50be388b1f677a5193e1073648c0a7b"
+      }
+    ]
+  },
+  "commands": [
+    {
+      "command": "python3 -m py_compile scripts/build_codex_semantic_enrichment.py",
+      "status": "passed"
+    },
+    {
+      "command": "python3 scripts/build_codex_semantic_enrichment.py --check",
+      "status": "passed",
+      "result": "Codex enrichment synchronized: 365,786 attempts, 22,651 accepted assertions, $0 API cost"
+    },
+    {
+      "command": ".venv/bin/python -",
+      "status": "passed",
+      "result": "Independent full-corpus reconstruction, integrity, calibration, schema, metadata, collision and sampling program; algorithm described in enrichment-reaudit-22651.md"
+    },
+    {
+      "command": ".venv/bin/python -",
+      "status": "passed",
+      "result": "Explorer relationship-assertion.v2 validation: 22,651 checked, 0 failures"
+    },
+    {
+      "command": ".venv/bin/python scripts/check_whole_law_okf.py",
+      "status": "failed-outside-enrichment-scope",
+      "result": "Whole-Law integrity path set does not equal publication path set"
+    },
+    {
+      "command": "python3 scripts/check_legislation_okf.py",
+      "status": "failed-outside-enrichment-scope",
+      "result": "In-progress Whole-Law authored/generated integration produced frontmatter and publication-time errors; no enrichment assertion error was reported"
+    }
+  ],
+  "methodology": {
+    "full_corpus": [
+      "Read all 366 source chunks and every one of 365,786 works.",
+      "Recompiled all include and exclude regular expressions.",
+      "Reconstructed the exact post-suppression assertion multiset for every chunk.",
+      "Recomputed input/output hashes, bytes, record counts and attempt-ledger values.",
+      "Validated all 22,651 assertions directly against the synchronized OKF Explorer relationship-assertion.v2 schema.",
+      "Checked identifiers, source and target referential integrity, evidence, authority, derivation, review, verification, rights and freshness metadata."
+    ],
+    "calibration": [
+      "Independently replayed 55 unique positive and 55 near-miss negative rule tests.",
+      "Independently replayed 40 end-to-end cases and recomputed precision, recall, evidence support and structural validity.",
+      "Compared the recomputed values to bundle/data/enrichment/calibration.json."
+    ],
+    "semantic_review": {
+      "topic_sample": {
+        "selection": "First five by SHA-256(topic + NUL + source identifier) for each of 19 emitted topics",
+        "records": 95
+      },
+      "rule_sample": {
+        "selection": "First three by SHA-256(rule identifier + NUL + source identifier) for each of 46 emitting rules, or every record when fewer than three exist",
+        "records": 136
+      },
+      "unique_sample_records": 229,
+      "adversarial_scans": [
+        "Civil outputs containing criminal, crime or prosecution",
+        "Civil legal-aid outputs containing police-station, prisoner-defence or defence-certificate context",
+        "R041 outputs containing European Social Fund",
+        "Mixed civil-and-criminal exclusions",
+        "Previously unclassified records with human-readable titles but no new match"
+      ]
+    }
+  },
+  "metrics": {
+    "corpus": {
+      "attempted_records": 365786,
+      "attempt_coverage": 1.0,
+      "records_with_accepted_assertions": 22611,
+      "accepted_record_rate": 0.061815,
+      "accepted_assertions": 22651,
+      "records_without_new_supported_assertions": 343175,
+      "raw_match_records": 25733,
+      "multiple_rule_match_records": 3793,
+      "multiple_topic_match_records": 47
+    },
+    "previously_unclassified": {
+      "records": 97899,
+      "newly_asserted_records": 16374,
+      "newly_asserted_rate": 0.167254,
+      "human_title_no_new_match": 74846,
+      "human_title_no_new_match_rate": 0.764523,
+      "url_instead_of_title": 6679,
+      "url_title_rate": 0.068223
+    },
+    "integrity": {
+      "chunk_failures": 0,
+      "attempt_ledger_failures": 0,
+      "deterministic_reconstruction_failures": 0,
+      "explorer_schema_failures": 0,
+      "evidence_failures": 0,
+      "metadata_failures": 0,
+      "duplicate_ids": 0,
+      "duplicate_source_target_predicates": 0,
+      "noncanonical_targets": 0,
+      "unregistered_topic_targets": 0
+    },
+    "calibration": {
+      "rules": 55,
+      "unique_positive_tests": 55,
+      "positive_failures": 0,
+      "unique_near_miss_negative_tests": 55,
+      "near_miss_failures": 0,
+      "end_to_end_cases": 40,
+      "correct_end_to_end_cases": 40,
+      "false_positive_assertions": 0,
+      "false_negative_assertions": 0,
+      "evidence_assertions": 36,
+      "supported_evidence_assertions": 36,
+      "reported_metrics_recomputed_exactly": true
+    },
+    "semantic_collisions": {
+      "civil_explicit_criminal_crime_prosecution": 0,
+      "civil_police_station_records": 17,
+      "civil_prisoner_defence_or_defence_certificate_records": 4,
+      "civil_clear_criminal_context_total": 21,
+      "civil_clear_criminal_context_rate": 0.017427,
+      "r041_assertions": 341,
+      "r041_european_social_fund_records": 147,
+      "r041_european_social_fund_rate": 0.431085,
+      "social_security_topic_assertions": 603,
+      "european_social_fund_share_of_topic": 0.243781,
+      "mixed_civil_and_criminal_legal_aid_records_conservatively_excluded": 7
+    },
+    "cost": {
+      "openai_api_calls": 0,
+      "incremental_openai_api_usd": 0.0,
+      "incremental_openai_api_gbp": 0.0,
+      "codex_task_usage": "not exposed as billable token data"
+    }
+  },
+  "checks": [
+    {
+      "id": "REA-22651-CHK-001",
+      "dimension": "mechanical-integrity",
+      "status": "passed",
+      "evidence": "Every source and output chunk, count, hash, attempt and reconstructed assertion reconciled."
+    },
+    {
+      "id": "REA-22651-CHK-002",
+      "dimension": "explorer-contract",
+      "status": "passed",
+      "evidence": "The local and OKF Explorer relationship-assertion.v2 schemas had identical SHA-256; all 22,651 assertions validated."
+    },
+    {
+      "id": "REA-22651-CHK-003",
+      "dimension": "topic-identifiers",
+      "status": "passed",
+      "evidence": "Every target used canonical topic/<slug> form and joined a published topic."
+    },
+    {
+      "id": "REA-22651-CHK-004",
+      "dimension": "calibration-execution",
+      "status": "passed-with-semantic-limitation",
+      "evidence": "55/55 positives, 55/55 near-miss negatives and 40/40 end-to-end cases passed with computed metrics. These authored lexical tests did not contain the European Social Fund or police-station collisions found in actual data."
+    },
+    {
+      "id": "REA-22651-CHK-005",
+      "dimension": "literal-evidence-support",
+      "status": "passed",
+      "evidence": "Every assertion had an exact supported literal, valid evidence URL and deterministic derivation."
+    },
+    {
+      "id": "REA-22651-CHK-006",
+      "dimension": "authority-and-review-metadata",
+      "status": "passed",
+      "evidence": "Assertions were model-assisted, derived, non-official and pending independent audit; verification was limited to deterministic evidence checks and made no independent/legal-assurance claim."
+    },
+    {
+      "id": "REA-22651-CHK-007",
+      "dimension": "semantic-precision",
+      "status": "failed",
+      "evidence": "Actual-corpus sampling and scans found 147 European Social Fund collisions and 21 residual criminal-context Civil assertions."
+    },
+    {
+      "id": "REA-22651-CHK-008",
+      "dimension": "conservative-recall",
+      "status": "accepted-limitation",
+      "evidence": "74,846 previously unclassified records had usable titles but no new match; limitations explicitly state that no-match is not evidence of no topic."
+    }
+  ],
+  "findings": [
+    {
+      "id": "REA-22651-F001",
+      "severity": "high",
+      "confidence": "high",
+      "title": "European Social Fund is systematically misclassified as UK social-security welfare",
+      "what_failed": "R041 matches the undifferentiated phrase 'social fund'. It maps 147 records about the European Social Fund to Social security and welfare, although those titles concern the EU structural/employment/cohesion fund rather than the UK discretionary Social Fund welfare scheme.",
+      "evidence": {
+        "r041_total": 341,
+        "european_social_fund": 147,
+        "rate": 0.431085,
+        "by_type": {
+          "eur": 48,
+          "eudn": 98,
+          "uksi": 1
+        },
+        "example": {
+          "source": "https://www.legislation.gov.uk/id/eur/2019/697",
+          "title": "Commission Delegated Regulation (EU) 2019/697 ... on the European Social Fund ..."
+        }
+      },
+      "why_it_matters": "R041 actual-corpus semantic precision is at most 56.9% on this known collision, and nearly one quarter of the emitted Social security topic consists of the wrong named fund.",
+      "remediation": [
+        "Exclude the exact named entity European Social Fund from R041.",
+        "Add a rule-level hard negative using an actual European Social Fund title.",
+        "If retained as discovery metadata, assign it to an appropriate EU/employment/cohesion concept rather than UK social-security welfare."
+      ]
+    },
+    {
+      "id": "REA-22651-F002",
+      "severity": "medium",
+      "confidence": "high",
+      "title": "Civil rules retain clear criminal-defence contexts without explicit criminal tokens",
+      "what_failed": "The explicit criminal, crime and prosecution exclusions work, but R009 still emits 17 police-station legal-advice records and R008 emits four prisoner-defence or defence-certificate records into Civil justice and procedure.",
+      "evidence": {
+        "civil_topic_total": 1205,
+        "explicit_criminal_crime_prosecution": 0,
+        "police_station": 17,
+        "prisoner_defence_or_defence_certificate": 4,
+        "known_clear_criminal_context_total": 21,
+        "rate": 0.017427,
+        "examples": [
+          "The Legal Advice and Assistance at Police Stations (Remuneration) (Amendment) Regulations 2001",
+          "The Poor Prisoners’ Defence (Legal Aid Certificate) Regulations 1963"
+        ]
+      },
+      "why_it_matters": "A lexical zero for 'criminal' does not establish Civil semantic precision; these titles name criminal-defence services through different vocabulary.",
+      "remediation": [
+        "Add police-station, poor-prisoner defence and defence-certificate exclusions or route them to Criminal law and policing.",
+        "Use actual corpus examples as rule-level hard negatives."
+      ]
+    },
+    {
+      "id": "REA-22651-F003",
+      "severity": "medium",
+      "confidence": "high",
+      "title": "Prompt provenance remains a basis hash rather than the actual authoring prompt",
+      "what_failed": "The run's prompt_hash is derived from a synthetic prompt basis assembled by the deterministic generator. Exact model identity, actual task transcript hash and exposed parameters are not recorded in the run.",
+      "why_it_matters": "Rule execution is reproducible, but the model-assisted rule-authoring step is not fully reproducible from the run manifest.",
+      "remediation": [
+        "Name the field prompt_basis_hash or link it explicitly to the evidence-governance transcript.",
+        "Record hashes and unavailable reasons for the exact transcript, model identity, parameters and schema."
+      ]
+    },
+    {
+      "id": "REA-22651-F004",
+      "severity": "low",
+      "confidence": "high",
+      "title": "Run metrics still mix assertion and record grains",
+      "what_failed": "accepted_assertions is an assertion count, while rejected_records is a record count. records_with_accepted_assertions exists only in the provider manifest.",
+      "evidence": {
+        "accepted_assertions": 22651,
+        "records_with_accepted_assertions": 22611,
+        "rejected_records": 343175
+      },
+      "remediation": [
+        "Add records_with_accepted_assertions to the run record.",
+        "Rename rejected_records to records_without_new_supported_assertions."
+      ]
+    },
+    {
+      "id": "REA-22651-F005",
+      "severity": "low",
+      "confidence": "high",
+      "title": "Nine calibrated rules emit no assertion in this snapshot",
+      "what_failed": "R002, R007, R014, R017, R024, R036, R042, R045 and R047 emit no assertion after matching and suppression; R007 has no raw corpus match.",
+      "why_it_matters": "This does not damage emitted data, but string-unit coverage should not be confused with actual-corpus rule coverage.",
+      "remediation": [
+        "Publish zero raw, suppressed and emitted counts explicitly.",
+        "Treat unused rules as dormant or aliases until a corpus hit exists."
+      ]
+    }
+  ],
+  "decision": {
+    "independent_review_status": "changes-required",
+    "release_recommendation": "do-not-promote-22651-candidate",
+    "mechanical_integrity": "passed",
+    "explorer_schema_conformance": "passed",
+    "literal_evidence_integrity": "passed",
+    "authority_and_review_metadata": "passed",
+    "semantic_precision": "failed",
+    "conservative_recall": "accepted-and-disclosed",
+    "required_before_new_audit": [
+      "Remove or reroute European Social Fund matches.",
+      "Remove or reroute police-station and prisoner-defence Civil matches.",
+      "Rebuild to a new digest and rerun full independent replay and actual-corpus sampling."
+    ]
+  }
+}

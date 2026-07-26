@@ -1,0 +1,96 @@
+{
+  "builder": {
+    "command": "python3 scripts/build_release_assurance.py",
+    "name": "build_release_assurance.py",
+    "version": "1.0.0"
+  },
+  "generated_at": "2026-07-25T23:30:00Z",
+  "materials": [
+    {
+      "bytes": 1392,
+      "path": "release-assurance/release-policy.json",
+      "sha256": "71e67b0503b4d7c14f0d68f73c24e2c6eb181d0d7f52ae4bbd9abac7f3e9ff8e"
+    },
+    {
+      "bytes": 3427,
+      "path": "release-assurance/release-gates.json",
+      "sha256": "234d6f4b57c20d2301e142a8a611b4556fdc562d6893ef69824e7f33157e8bd3"
+    },
+    {
+      "bytes": 72533,
+      "path": "release-assurance/implementation-traceability.json",
+      "sha256": "ccbfef4db7e5850786cb5aed078da0eb744f6f289f3e2125a121cc654afc3ea3"
+    },
+    {
+      "bytes": 17578,
+      "path": "evidence/requirements/controlling-requirements.md",
+      "sha256": "391519df744ab429325838e74ff019067808f239497193873e259fff602246af"
+    },
+    {
+      "bytes": 94,
+      "path": "evidence/requirements/controlling-requirements.sha256",
+      "sha256": "a2ddcc4bca147aa4ec9c69fe7ca5a6d1ed95011ef99b208b92c627e753fdedff"
+    },
+    {
+      "bytes": 12068,
+      "path": "release-assurance/gap-register.json",
+      "sha256": "c9af42b974439814c88adb4b3b31c0427a1025a3d1dbf4117283ba4c56d7a685"
+    },
+    {
+      "bytes": 4219,
+      "path": "release-assurance/implementation-status.md",
+      "sha256": "8f1d341c927038626f0969f210d269ec446dfc37da74940fcce69fa2597ce78d"
+    },
+    {
+      "bytes": 8741,
+      "path": "research/whole-law-okf-research/integrity.json",
+      "sha256": "3f597c1d749d5f0cfd81dcf35c5c55ead7292e424fb6c2a4f455bbf3671f38af"
+    },
+    {
+      "bytes": 91,
+      "path": "requirements-validation.txt",
+      "sha256": "bcb68145bf1f7fff70724d7ccd8971a4cc1f315bcb790e64e7c2e7ddb4717dc7"
+    },
+    {
+      "bytes": 517,
+      "path": "LICENSE.md",
+      "sha256": "4a5ea450ea9564ae0ed8c3493017a63c1594dc75ccaa23166bc8382557b45460"
+    },
+    {
+      "bytes": 2844,
+      "path": ".github/workflows/ci.yml",
+      "sha256": "de06ee5a1a434acc3e89a9d5f5e6e2a0df00251c038a3b600d09dfd68a8dacd9"
+    },
+    {
+      "bytes": 3265,
+      "path": ".github/workflows/pages.yml",
+      "sha256": "9c792dad57b526a19dc410a00d0cfbd6fec2aec0ce9a3864f4e5574e7cd6e987"
+    },
+    {
+      "bytes": 141234,
+      "path": "whole-law/acquisition/current/source-constraint-ledger.json",
+      "sha256": "080ea1e74acebe1ceb637e9221649c04be1b6372409f7b4b6597fb065da29ab4"
+    },
+    {
+      "bytes": 22732,
+      "path": "research/claude-4.8-evaluation-transcript.md",
+      "sha256": "55309248b57c3988c2298b110b94e35a92471fa956820080d750cfeb621d5b85"
+    },
+    {
+      "bytes": 4766,
+      "path": "bundle/enrichment/codex-assisted-v2.json",
+      "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
+    }
+  ],
+  "materials_digest": "sha256:6c11bb5e49863158b63195e056c9d6e79e13fd281054f8f53921fdf8662cf34e",
+  "outputs": {
+    "checksum_manifest": "checksums.json",
+    "deterministic": true
+  },
+  "release_snapshot": {
+    "frozen": false,
+    "state": "candidate",
+    "warning": "This projection describes a mutable candidate worktree. A release-candidate provenance attestation must bind the final commit and identical promoted artefact digests."
+  },
+  "schema": "okf-build-provenance.v1"
+}

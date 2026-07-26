@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-07-25T23:04:37Z",
+  "immutable_original": false,
+  "projection_id": "pub-20260725T203207Z-dd7315c3-7f118be4f005",
+  "replaceable": true,
+  "resources": {
+    "access-methods.json": {
+      "bytes": 161421,
+      "sha256": "30aaef86282be1ca5058689dcbde571f601114996b4d800d3d926c07a493db40"
+    },
+    "observed-access-comparison.json": {
+      "bytes": 12443,
+      "sha256": "28d4041d078817457625e4eaa8b4b6d386c8bbd88bc16fc4872ba1aa91aecb3d"
+    },
+    "publication-redactions.json": {
+      "bytes": 1647,
+      "sha256": "7f7b38c04f71582f04472baa47480cb208d37726ec54adfb92b90182e6de09a5"
+    },
+    "source-constraint-ledger.json": {
+      "bytes": 141234,
+      "sha256": "080ea1e74acebe1ceb637e9221649c04be1b6372409f7b4b6597fb065da29ab4"
+    }
+  },
+  "schema": "okf-source-access-publication-projection.v1",
+  "source_evidence": {
+    "archive_path": "evidence/source-acquisitions/whole-law-access/archives/20260725T203207Z-dd7315c3.tar.xz",
+    "archive_receipt_path": "evidence/source-acquisitions/whole-law-access/archive-receipts/20260725T203207Z-dd7315c3.json",
+    "archive_sha256": "7f118be4f00539cc24d6a5f79c7cc47359471b3e1a081f25652399b19c93cfed",
+    "archive_tree_sha256": "e751f1989aeb1c23a9d0cef04e9d366386fde53fa90376992820da812ac857c3",
+    "original_integrity_sha256": "e52b26e7d7f24da7e909427f0ab82f9f7a154e8b99cd362aab2d84254bb6975a",
+    "run_id": "20260725T203207Z-dd7315c3"
+  },
+  "status": "sanitized-publication-projection",
+  "transformation": {
+    "changes_original_run": false,
+    "included": [
+      "access-method observations",
+      "research-to-observation comparison",
+      "constraint ledger plus publication constraint",
+      "archive and redaction receipts"
+    ],
+    "kind": "metadata-only-publication",
+    "omitted": [
+      {
+        "kind": "downloaded-response-bodies",
+        "reason": "Untrusted downloaded content is available only in the integrity-bound archive."
+      }
+    ]
+  }
+}

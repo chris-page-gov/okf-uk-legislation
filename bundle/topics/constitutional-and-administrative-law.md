@@ -1,7 +1,7 @@
 ---
 type: "Derived Legal Topic"
 title: "Constitutional and administrative law"
-description: "Title-derived discovery grouping containing 15,071 works."
+description: "Title-derived discovery grouping containing 15,053 works."
 resource: "https://www.legislation.gov.uk/all/data.feed?title=constitutional-and-administrative-law"
 tags: ["topic", "derived", "constitutional-and-administrative-law"]
 generated: {"by": "process:legislation-okf-builder", "at": "2026-07-11T18:00:00Z"}
@@ -11,7 +11,7 @@ sources: [{"id": "official-source", "resource": "https://www.legislation.gov.uk/
 
 # Classification
 
-* Indexed works: **15,071**
+* Indexed works: **15,053**
 * Rule: `\b(constitution|parliament|minister|government|public bod|devolution|referendum|crown|royal)\b`
 * Evidence basis: legislation title only
 * Authority: derived and non-official

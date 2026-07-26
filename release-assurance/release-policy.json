@@ -1,0 +1,53 @@
+{
+  "current_state": "candidate",
+  "fail_closed": true,
+  "generated_at": "2026-07-25T23:30:00Z",
+  "policy_version": "1.0.0",
+  "schema": "okf-release-state-policy.v1",
+  "states": [
+    {
+      "description": "Implementation work is incomplete and no publication claim is made.",
+      "name": "draft",
+      "required_gate_groups": []
+    },
+    {
+      "description": "A reviewable implementation exists, but one or more release gates are not passed.",
+      "name": "candidate",
+      "required_gate_groups": []
+    },
+    {
+      "description": "Every validation gate is evidenced as passed for one immutable candidate snapshot.",
+      "name": "validated",
+      "required_gate_groups": [
+        "candidate",
+        "validation"
+      ]
+    },
+    {
+      "description": "The validated bytes have been packaged once as an immutable release candidate.",
+      "name": "rc",
+      "required_gate_groups": [
+        "candidate",
+        "validation",
+        "release-candidate"
+      ]
+    },
+    {
+      "description": "The exact release-candidate digests have been promoted and public smoke tests passed.",
+      "name": "published",
+      "required_gate_groups": [
+        "candidate",
+        "validation",
+        "release-candidate",
+        "publication"
+      ]
+    }
+  ],
+  "transition_order": [
+    "draft",
+    "candidate",
+    "validated",
+    "rc",
+    "published"
+  ]
+}

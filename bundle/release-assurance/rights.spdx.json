@@ -1,0 +1,69 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "creationInfo": {
+    "created": "2026-07-25T23:30:00Z",
+    "creators": [
+      "Tool: build_release_assurance.py-1.0.0"
+    ],
+    "licenseListVersion": "3.26"
+  },
+  "dataLicense": "CC0-1.0",
+  "documentDescribes": [
+    "SPDXRef-Package-Code",
+    "SPDXRef-Package-Government-Metadata",
+    "SPDXRef-Package-Source-Specific"
+  ],
+  "documentNamespace": "https://chris-page-gov.github.io/okf-uk-legislation/spdx/6c11bb5e49863158b63195e056c9d6e79e13fd281054f8f53921fdf8662cf34e",
+  "name": "UK Whole-Law OKF rights inventory",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-Code",
+      "copyrightText": "Copyright contributors",
+      "downloadLocation": "https://github.com/chris-page-gov/okf-uk-legislation",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "name": "okf-uk-legislation code and original documentation",
+      "versionInfo": "0.3.0-candidate"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-Government-Metadata",
+      "copyrightText": "Crown copyright",
+      "downloadLocation": "https://www.legislation.gov.uk/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "OGL-UK-3.0",
+      "name": "UK government source metadata and derived catalogue",
+      "versionInfo": "2026-07-25-snapshot"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-Source-Specific",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseComments": "EU-derived, third-party and item-level material can have additional terms. Record-level rights take precedence.",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "Source-specific linked material",
+      "versionInfo": "catalogued-not-redistributed"
+    }
+  ],
+  "relationships": [
+    {
+      "relatedSpdxElement": "SPDXRef-Package-Code",
+      "relationshipType": "DESCRIBES",
+      "spdxElementId": "SPDXRef-DOCUMENT"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-Government-Metadata",
+      "relationshipType": "DESCRIBES",
+      "spdxElementId": "SPDXRef-DOCUMENT"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-Source-Specific",
+      "relationshipType": "DESCRIBES",
+      "spdxElementId": "SPDXRef-DOCUMENT"
+    }
+  ],
+  "spdxVersion": "SPDX-2.3"
+}

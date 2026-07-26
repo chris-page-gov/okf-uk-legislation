@@ -1,0 +1,1055 @@
+{
+  "counts": {
+    "by_escalation_state": {
+      "escalated": 111,
+      "mitigated": 55,
+      "recorded": 51
+    },
+    "by_kind": {
+      "authentication": 5,
+      "availability": 21,
+      "fair-use": 72,
+      "hosting": 1,
+      "licence": 72,
+      "privacy": 14,
+      "rate-limit": 23,
+      "robots": 9
+    },
+    "escalations": 111,
+    "total": 217,
+    "triggered_during_capture": 164
+  },
+  "escalations": [
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC001-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC001",
+      "state": "escalated",
+      "trigger": "Open Government Licence v3.0; additional terms can apply to EU- and Westlaw-derived content."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC002-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC002",
+      "state": "escalated",
+      "trigger": "OGL v3.0, subject to item-level additional terms."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC003-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC003",
+      "state": "escalated",
+      "trigger": "OGL v3.0, subject to item-level terms."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC004-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC004",
+      "state": "escalated",
+      "trigger": "OGL v3.0, subject to item-level additional terms."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC005-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC005",
+      "state": "escalated",
+      "trigger": "Usually OGL; preserve item-level notices and third-party rights."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC006-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC006",
+      "state": "escalated",
+      "trigger": "OGL v3.0 subject to item terms."
+    },
+    {
+      "effect": "Restricted corpus content was not acquired. A reachable public documentation page is not counted as corpus access.",
+      "id": "CON-SRC007-AUTHENTICATION",
+      "kind": "authentication",
+      "owner": "Source relationship owner and government security lead",
+      "source_id": "SRC007",
+      "state": "escalated",
+      "trigger": "The research or source terms identify authenticated, subscription, licensed or credentialed access."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC007-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC007",
+      "state": "escalated",
+      "trigger": "OGL and additional source-specific terms."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC008-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC008",
+      "state": "escalated",
+      "trigger": "OGL v3.0 plus Commission Decision 2011/833/EU or other additional terms for EU-derived material."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC009-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC009",
+      "state": "escalated",
+      "trigger": "Open Justice Licence for ordinary reuse; computational analysis requires an additional licence."
+    },
+    {
+      "effect": "Robots and indexing conditions may constrain later crawling or external indexing.",
+      "id": "CON-SRC009-ROBOTS",
+      "kind": "robots",
+      "owner": "UK Whole-Law OKF acquisition maintainer",
+      "source_id": "SRC009",
+      "state": "escalated",
+      "trigger": "Reasonable requests; obey robots and no external indexing; programmatic bulk searching/enrichment is computational analysis requiring permission."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC010-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC010",
+      "state": "escalated",
+      "trigger": "Open Justice Licence for ordinary use; additional computational-analysis licence required for bulk programmatic search/extraction/enrichment."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC011-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC011",
+      "state": "escalated",
+      "trigger": "Open Justice Licence; computational analysis restrictions as above."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC012-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC012",
+      "state": "escalated",
+      "trigger": "Open Justice Licence plus computational-analysis restriction."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC013-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC013",
+      "state": "escalated",
+      "trigger": "Crown copyright/reuse terms must be checked per site/document."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC014-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC014",
+      "state": "escalated",
+      "trigger": "Crown copyright/site terms; item-level checks required."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC015-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC015",
+      "state": "escalated",
+      "trigger": "BAILII terms and document copyright; automated reuse requires specific review."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC016-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC016",
+      "state": "escalated",
+      "trigger": "Crown copyright/site terms; Open Justice Licence applies to FCL copies, not assumed for every site asset."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC017-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC017",
+      "state": "escalated",
+      "trigger": "Catalogue metadata generally reusable under OGL; record rights vary."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC018-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC018",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC018-A02=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC018-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC018",
+      "state": "escalated",
+      "trigger": "Crown copyright/OGL unless stated."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC019-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC019",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright unless stated."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC020-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC020",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright unless stated."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC021-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC021",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC021-A01=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC021-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC021",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright unless stated."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC022-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC022",
+      "state": "escalated",
+      "trigger": "Crown copyright/site terms."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC023-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC023",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright; third-party marks/contents may vary."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC024-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC024",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright."
+    },
+    {
+      "effect": "Restricted corpus content was not acquired. A reachable public documentation page is not counted as corpus access.",
+      "id": "CON-SRC025-AUTHENTICATION",
+      "kind": "authentication",
+      "owner": "Source relationship owner and government security lead",
+      "source_id": "SRC025",
+      "state": "escalated",
+      "trigger": "The research or source terms identify authenticated, subscription, licensed or credentialed access."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC025-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC025",
+      "state": "escalated",
+      "trigger": "Third-Party Courts and Tribunals Data Licence; purpose/controls subject to approval."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC026-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC026",
+      "state": "escalated",
+      "trigger": "Crown copyright/service terms."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC027-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC027",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC027-A01=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC027-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC027",
+      "state": "escalated",
+      "trigger": "Crown copyright/site terms."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC028-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC028",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC028-A01=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC028-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC028",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright unless stated."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC029-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC029",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC029-A02=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC029-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC029",
+      "state": "escalated",
+      "trigger": "Crown copyright/Open Government terms as stated."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC030-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC030",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC030-A01=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC030-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC030",
+      "state": "escalated",
+      "trigger": "Crown copyright/site terms."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC031-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC031",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC031-A02=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC031-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC031",
+      "state": "escalated",
+      "trigger": "FCA copyright/reuse terms; verify before bulk reproduction."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC032-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC032",
+      "state": "escalated",
+      "trigger": "FCA copyright/reuse terms."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC033-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC033",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC033-A02=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC033-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC033",
+      "state": "escalated",
+      "trigger": "Bank of England/PRA terms; verify reuse."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC035-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC035",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; respect personal/confidential redactions. Rights note: Ofcom terms/OGL where stated."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC036-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC036",
+      "state": "escalated",
+      "trigger": "ICO copyright/reuse terms; OGL for some materials."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC037-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC037",
+      "state": "escalated",
+      "trigger": "ICO copyright/reuse terms."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC037-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC037",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; respect personal-data redaction and avoid inferring guilt beyond notice. Rights note: ICO copyright/reuse terms."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC038-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC038",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright subject to third-party material."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC039-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC039",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC039-A01=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC039-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC039",
+      "state": "escalated",
+      "trigger": "OGL subject to personal/third-party rights."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC039-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC039",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; respect personal data and retention rules. Rights note: OGL subject to personal/third-party rights."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC040-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC040",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC040-A02=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC040-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC040",
+      "state": "escalated",
+      "trigger": "Site terms/copyright; personal information redacted."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC040-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC040",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; retention and robots must be respected. Rights note: Site terms/copyright; personal information redacted."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC041-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC041",
+      "state": "escalated",
+      "trigger": "PHSO terms/copyright; redactions apply."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC041-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC041",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; personal-data safeguards and retention rules. Rights note: PHSO terms/copyright; redactions apply."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC042-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC042",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC042-A02=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC042-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC042",
+      "state": "escalated",
+      "trigger": "SPSO copyright/terms."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC042-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC042",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; respect personal data and robots. Rights note: SPSO copyright/terms."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC043-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC043",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC043-A01=network-error."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC043-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC043",
+      "state": "escalated",
+      "trigger": "NIPSO terms/copyright."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC043-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC043",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; privacy and retention controls. Rights note: NIPSO terms/copyright."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC045-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC045",
+      "state": "escalated",
+      "trigger": "Open Parliament Licence subject to exceptions."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC046-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC046",
+      "state": "escalated",
+      "trigger": "Open Parliament Licence subject to evidence/third-party exceptions."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC048-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC048",
+      "state": "escalated",
+      "trigger": "Scottish Parliament copyright/Open Parliament Licence terms as stated."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC049-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC049",
+      "state": "escalated",
+      "trigger": "Senedd copyright/Open Parliament Licence terms as stated."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC050-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC050",
+      "state": "escalated",
+      "trigger": "Assembly copyright/Open Parliament Licence terms as stated."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC051-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC051",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright subject to third-party material."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC052-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC052",
+      "state": "escalated",
+      "trigger": "Crown copyright/OGL where stated."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC053-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC053",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC053-A01=unavailable, SRC053-A02=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC053-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC053",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright with witness/third-party exceptions."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC053-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC053",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; personal/sensitive evidence and publication restrictions require care. Rights note: OGL/Crown copyright with witness/third-party exceptions."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC054-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC054",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright subject to images/third-party material."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC054-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC054",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; sensitive personal information and causal-language caveats. Rights note: OGL/Crown copyright subject to images/third-party material."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC055-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC055",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC055-A02=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC055-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC055",
+      "state": "escalated",
+      "trigger": "OGL for dataset; treaty document rights/third-party text require checking."
+    },
+    {
+      "effect": "Restricted corpus content was not acquired. A reachable public documentation page is not counted as corpus access.",
+      "id": "CON-SRC056-AUTHENTICATION",
+      "kind": "authentication",
+      "owner": "Source relationship owner and government security lead",
+      "source_id": "SRC056",
+      "state": "escalated",
+      "trigger": "The research or source terms identify authenticated, subscription, licensed or credentialed access."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC056-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC056",
+      "state": "escalated",
+      "trigger": "EU reuse/copyright notice and Commission reuse policy."
+    },
+    {
+      "effect": "Unpaced or repeated collection could exceed an explicit or implicit source capacity limit.",
+      "id": "CON-SRC056-RATE-LIMIT",
+      "kind": "rate-limit",
+      "owner": "UK Whole-Law OKF acquisition maintainer",
+      "source_id": "SRC056",
+      "state": "escalated",
+      "trigger": "Authenticated webservice limits; use CELLAR/bulk for systematic retrieval."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC057-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC057",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC057-A01=unavailable."
+    },
+    {
+      "effect": "Unpaced or repeated collection could exceed an explicit or implicit source capacity limit.",
+      "id": "CON-SRC057-RATE-LIMIT",
+      "kind": "rate-limit",
+      "owner": "UK Whole-Law OKF acquisition maintainer",
+      "source_id": "SRC057",
+      "state": "escalated",
+      "trigger": "Use official bulk/dump guidance and rate limits; query caps apply."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC058-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC058",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC058-A02=restricted."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC058-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC058",
+      "state": "escalated",
+      "trigger": "Council of Europe copyright/reuse terms."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC059-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC059",
+      "state": "escalated",
+      "trigger": "OGL/open-data terms subject to notice content rights."
+    },
+    {
+      "effect": "Unpaced or repeated collection could exceed an explicit or implicit source capacity limit.",
+      "id": "CON-SRC059-RATE-LIMIT",
+      "kind": "rate-limit",
+      "owner": "UK Whole-Law OKF acquisition maintainer",
+      "source_id": "SRC059",
+      "state": "escalated",
+      "trigger": "Official fair-use guidance: no more than five requests per ten seconds and bulk activity preferably 9pm–7am; obey robots."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC060-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC060",
+      "state": "escalated",
+      "trigger": "Local authority copyright/OGL varies; item-level terms required."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC061-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC061",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC061-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC061",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; live verification for eligibility; personal data should not enter static bundle. Rights note: OGL/Crown copyright."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC062-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC062",
+      "state": "escalated",
+      "trigger": "SLAB/Crown copyright terms."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC062-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC062",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; do not process personal case data in static OKF. Rights note: SLAB/Crown copyright terms."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC063-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC063",
+      "state": "escalated",
+      "trigger": "Crown copyright/OGL where stated."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC063-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC063",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; personal-data protections. Rights note: Crown copyright/OGL where stated."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC064-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC064",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC064-A02=unavailable, SRC064-A03=unavailable, SRC064-A04=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC064-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC064",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright subject to page/attachment terms."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC065-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC065",
+      "state": "escalated",
+      "trigger": "BSB copyright/reuse terms."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC065-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC065",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; item-level terms and personal-data considerations. Rights note: BSB copyright/reuse terms."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC066-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC066",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC066-A01=restricted, SRC066-A02=restricted."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC066-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC066",
+      "state": "escalated",
+      "trigger": "SRA copyright/reuse terms."
+    },
+    {
+      "effect": "Public availability does not remove data-protection, redaction, retention or inference risks.",
+      "id": "CON-SRC066-PRIVACY",
+      "kind": "privacy",
+      "owner": "Government data protection lead",
+      "source_id": "SRC066",
+      "state": "escalated",
+      "trigger": "Source-use note: Public; careful handling of person-level regulatory data and retention. Rights note: SRA copyright/reuse terms."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC067-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC067",
+      "state": "escalated",
+      "trigger": "Crown copyright/site terms."
+    },
+    {
+      "effect": "Restricted corpus content was not acquired. A reachable public documentation page is not counted as corpus access.",
+      "id": "CON-SRC068-AUTHENTICATION",
+      "kind": "authentication",
+      "owner": "Source relationship owner and government security lead",
+      "source_id": "SRC068",
+      "state": "escalated",
+      "trigger": "The research or source terms identify authenticated, subscription, licensed or credentialed access."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC068-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC068",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC068-A01=restricted."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC068-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC068",
+      "state": "escalated",
+      "trigger": "Copyright/subscription/licence restrictions."
+    },
+    {
+      "effect": "Unpaced or repeated collection could exceed an explicit or implicit source capacity limit.",
+      "id": "CON-SRC068-RATE-LIMIT",
+      "kind": "rate-limit",
+      "owner": "UK Whole-Law OKF acquisition maintainer",
+      "source_id": "SRC068",
+      "state": "escalated",
+      "trigger": "Authenticated/subscription for much content; no bulk use assumed."
+    },
+    {
+      "effect": "Restricted corpus content was not acquired. A reachable public documentation page is not counted as corpus access.",
+      "id": "CON-SRC069-AUTHENTICATION",
+      "kind": "authentication",
+      "owner": "Source relationship owner and government security lead",
+      "source_id": "SRC069",
+      "state": "escalated",
+      "trigger": "The research or source terms identify authenticated, subscription, licensed or credentialed access."
+    },
+    {
+      "effect": "The recorded route could not be confirmed as publicly reachable in this attempt.",
+      "id": "CON-SRC069-AVAILABILITY",
+      "kind": "availability",
+      "owner": "UK Whole-Law OKF source monitoring owner",
+      "source_id": "SRC069",
+      "state": "escalated",
+      "trigger": "Bounded access observation: SRC069-A02=unavailable."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC069-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC069",
+      "state": "escalated",
+      "trigger": "Commercial contract/copyright; no public reuse assumed."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC070-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC070",
+      "state": "escalated",
+      "trigger": "Archived content rights/reuse vary; OGL may apply to original government content."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC071-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC071",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright subject to item rights."
+    },
+    {
+      "effect": "A successful public access probe does not establish rights to redistribute complete source content.",
+      "id": "CON-SRC072-LICENCE",
+      "kind": "licence",
+      "owner": "Government rights and licensing lead",
+      "source_id": "SRC072",
+      "state": "escalated",
+      "trigger": "OGL/Crown copyright; Companies House terms for company data."
+    }
+  ],
+  "generated_at": "2026-07-25T23:30:00Z",
+  "licence_and_fair_use_rule": "Constraints remain visible and are escalated; they do not silently remove prototype functionality or authorise authentication bypass.",
+  "publication_content_handling": {
+    "detector_values_recorded": false,
+    "immutable_original_mutated": false,
+    "mitigation": "Original bytes remain in a deterministic integrity-bound archive; the Git publication is a separately identified metadata-only projection with value-free receipts.",
+    "projection_id": "pub-20260725T203207Z-dd7315c3-7f118be4f005",
+    "projection_is_immutable_original": false,
+    "projection_source": {
+      "bytes": 1965,
+      "path": "whole-law/acquisition/current/publication-projection.json",
+      "sha256": "d8c1cdd7cc2a4fb73fa179454e2f1831dde4e9be94c98bb4d5583dbe46acae57"
+    },
+    "redacted_body_entries": 1,
+    "redaction_source": {
+      "bytes": 1647,
+      "path": "whole-law/acquisition/current/publication-redactions.json",
+      "sha256": "7f7b38c04f71582f04472baa47480cb208d37726ec54adfb92b90182e6de09a5"
+    },
+    "source_archive_sha256": "7f118be4f00539cc24d6a5f79c7cc47359471b3e1a081f25652399b19c93cfed"
+  },
+  "release_effect": "candidate-internal-escalation-required",
+  "schema": "okf-constraint-report.v1",
+  "source": {
+    "bytes": 141234,
+    "path": "whole-law/acquisition/current/source-constraint-ledger.json",
+    "sha256": "080ea1e74acebe1ceb637e9221649c04be1b6372409f7b4b6597fb065da29ab4"
+  },
+  "supply_chain": {
+    "mutable_github_action_refs": [],
+    "release_requirement": "Pin third-party GitHub Actions to reviewed 40-character commit SHAs before validated state."
+  }
+}

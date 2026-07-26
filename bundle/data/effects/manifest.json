@@ -1,0 +1,41 @@
+{
+  "acquisition": {
+    "attempt_ledger": "data/effects/attempt-ledger.json",
+    "authority": "official-source",
+    "coverage": "data/effects/coverage.json",
+    "coverage_status": "partial",
+    "evidence_archive": "evidence/source-acquisitions/legislation-effects/archives/legislation-effects-2026-07-25.tar.xz",
+    "evidence_archive_receipt": "evidence/source-acquisitions/legislation-effects/archive-receipts/legislation-effects-2026-07-25.json",
+    "evidence_publication_projection": "evidence/source-acquisitions/legislation-effects/publication-projections/legislation-effects-2026-07-25.json",
+    "kind": "official-atom-feed-frozen-envelope",
+    "reconciliation": "data/effects/reconciliation.json",
+    "seed_config": "whole-law/config/effects-seeds.json",
+    "source": "https://www.legislation.gov.uk/changes"
+  },
+  "chunks": [
+    {
+      "bytes": 3606286,
+      "compression": "gzip",
+      "media_type": "application/json",
+      "path": "data/effects/assertions.json.gz",
+      "records": 14712,
+      "sha256": "e977ec2e988622d49a759c1b48882dcb3242494fc5463cb03a5692ea91383c99"
+    }
+  ],
+  "counts": {
+    "assertions": 14712,
+    "routes_attempted": 22,
+    "routes_complete": 16,
+    "routes_failed": 6,
+    "routes_truncated": 0,
+    "seed_works": 11,
+    "source_works": 1066,
+    "target_works": 316
+  },
+  "generated_at": "2026-07-25T21:30:00Z",
+  "id": "legislation-gov-uk-official-effects-2026-07-25",
+  "replaces": null,
+  "schema": "okf-provider-datapack.v1",
+  "snapshot_id": "legislation-effects-2026-07-25",
+  "source_id": "legislation-gov-uk-changes"
+}

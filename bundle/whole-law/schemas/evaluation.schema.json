@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/evaluation.schema.json",
+  "title": "OKF Whole-Law evaluation v2",
+  "type": "object",
+  "required": ["schema", "corpus_snapshot", "questions"],
+  "properties": {
+    "schema": {"const": "okf-evaluation.v2"},
+    "corpus_snapshot": {"type": "string", "minLength": 1},
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "persona_id", "task_id", "source_class_ids", "jurisdiction", "access_state", "authority_class", "gold_status", "expected_propositions", "citation_expectations"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "persona_id": {"type": "string", "minLength": 1},
+          "task_id": {"type": "string", "minLength": 1},
+          "source_class_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "jurisdiction": {"type": "string", "minLength": 1},
+          "access_state": {"type": "string", "minLength": 1},
+          "authority_class": {"type": "string", "minLength": 1},
+          "gold_status": {"enum": ["non-gold-baseline", "provisional-machine-verified", "independently-verified"]},
+          "expected_propositions": {"type": "array"},
+          "citation_expectations": {"type": "array"}
+        }
+      }
+    }
+  }
+}

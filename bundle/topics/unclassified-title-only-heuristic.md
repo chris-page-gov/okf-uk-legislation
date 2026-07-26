@@ -1,7 +1,7 @@
 ---
 type: "Derived Legal Topic"
 title: "Unclassified — title-only heuristic"
-description: "Title-derived discovery grouping containing 97,899 works."
+description: "Title-derived discovery grouping containing 98,276 works."
 resource: "https://www.legislation.gov.uk/all/data.feed?title=unclassified-title-only-heuristic"
 tags: ["topic", "derived", "unclassified-title-only-heuristic"]
 generated: {"by": "process:legislation-okf-builder", "at": "2026-07-11T18:00:00Z"}
@@ -11,7 +11,7 @@ sources: [{"id": "official-source", "resource": "https://www.legislation.gov.uk/
 
 # Classification
 
-* Indexed works: **97,899**
+* Indexed works: **98,276**
 * Rule: `fallback — no title rule matched`
 * Evidence basis: legislation title only
 * Authority: derived and non-official

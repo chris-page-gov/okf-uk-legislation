@@ -1,0 +1,40 @@
+"@context":
+  "@vocab": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#"
+  dcterms: "http://purl.org/dc/terms/"
+  prov: "http://www.w3.org/ns/prov#"
+  dcat: "http://www.w3.org/ns/dcat#"
+  odrl: "http://www.w3.org/ns/odrl/2/"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+  title: "dcterms:title"
+  description: "dcterms:description"
+  issued:
+    "@id": "dcterms:issued"
+    "@type": "xsd:date"
+  descriptor:
+    "@id": "descriptor"
+    "@type": "@id"
+  childBundle:
+    "@id": "childBundle"
+    "@type": "@id"
+  sourceRegister:
+    "@id": "sourceRegister"
+    "@type": "@id"
+  generatedAt:
+    "@id": "prov:generatedAtTime"
+    "@type": "xsd:dateTime"
+  license:
+    "@id": "dcterms:license"
+    "@type": "@id"
+"@id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/"
+"@type": "Federation"
+okf_version: "0.2"
+title: "UK Whole-Law OKF"
+description: "A federated, evidence-led map of authoritative and supporting UK legal sources."
+version: "0.3.0"
+status: "candidate"
+issued: "2026-07-25"
+generatedAt: "2026-07-25T22:54:00Z"
+license: "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+descriptor: "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json"
+childBundle: "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"
+sourceRegister: "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json"
