@@ -145,7 +145,10 @@ def build_receipt() -> dict[str, Any]:
             },
         },
         "processor": {
-            "python": ".".join(map(str, sys.version_info[:3])),
+            # Patch releases do not change the query semantics, and pinning the
+            # local patch version makes this deterministic receipt fail on an
+            # otherwise equivalent CI runner.
+            "python": ".".join(map(str, sys.version_info[:2])),
             "rdflib": importlib.metadata.version("rdflib"),
         },
         "results": results,
