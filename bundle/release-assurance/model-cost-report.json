@@ -5,11 +5,24 @@
     "cap_usd": 250.0,
     "remaining_usd": 250.0
   },
+  "cost_boundary": "Governed paid-run cost is unavailable. The numeric incremental_cost field is retained only as the historical Codex-assisted fallback observation and cannot satisfy the paid-run gate.",
   "cost_per_accepted_assertion": {
     "gbp": 0.0,
     "usd": 0.0
   },
   "generated_at": "2026-07-25T23:30:00Z",
+  "governed_paid_cost": {
+    "available": false,
+    "gbp": null,
+    "reason": "missing-dedicated-paid-run",
+    "usd": null
+  },
+  "historical_fallback_cost": {
+    "accepted_assertions": 22299,
+    "gbp": 0.0,
+    "scope": "historical-codex-assisted-only",
+    "usd": 0.0
+  },
   "incremental_cost": {
     "gbp": 0.0,
     "usd": 0.0
@@ -19,10 +32,17 @@
   "notes": [
     "Implemented using the Codex task surface; no paid OpenAI API request was made.",
     "Codex subscription/task usage and the user's weekly allowance are not exposed as billable token data.",
-    "No currency conversion was required because recorded incremental OpenAI API spend is zero."
+    "Historical Codex-assisted fallback spend is zero; governed paid-run USD/GBP cost remains unavailable."
   ],
+  "paid_run_gate": {
+    "authored_receipt_available": false,
+    "public_projection_available": false,
+    "reason": "missing-dedicated-paid-run",
+    "status": "blocked"
+  },
+  "paid_run_governance_materials": [],
   "provider": "OpenAI",
-  "release_effect": "candidate",
+  "release_effect": "blocked-missing-exact-model-identity",
   "run_id": "codex-assisted-v2-2-2026-07-25",
   "schema": "okf-model-cost-report.v1",
   "source": {
@@ -30,10 +50,15 @@
     "path": "bundle/enrichment/codex-assisted-v2.json",
     "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
   },
+  "source_kind": "historical-codex-assisted-fallback",
+  "source_run_schema": "okf-model-enrichment-run.v1",
   "usage": {
     "api_calls": 0,
     "api_input_tokens": 0,
     "api_output_tokens": 0,
     "codex_task_usage": "not exposed as billable token data"
-  }
+  },
+  "validation_errors": [
+    "exact model deployment identity is unavailable"
+  ]
 }

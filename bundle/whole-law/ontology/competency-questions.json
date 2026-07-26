@@ -56,6 +56,72 @@
         "testDate"
       ],
       "ask": "PREFIX okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#>\nASK {\n  ?test a okflaw:AccessTest ; okflaw:accessStatus ?status ; okflaw:testedURL ?url ; okflaw:testDate ?date .\n}"
+    },
+    {
+      "id": "CQ06",
+      "question": "Can a user traverse a legal work through its expression to a source-identified manifestation and media format?",
+      "required_terms": [
+        "LegislationWork",
+        "eli:LegalExpression",
+        "LegalManifestation",
+        "eli:is_realization_of",
+        "eli:embodies",
+        "dcterms:format"
+      ],
+      "ask": "PREFIX okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#>\nPREFIX eli: <http://data.europa.eu/eli/ontology#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nASK {\n  ?work a okflaw:LegislationWork .\n  ?expression a eli:LegalExpression ; eli:is_realization_of ?work .\n  ?manifestation a okflaw:LegalManifestation ; eli:embodies ?expression ; dcterms:format ?format .\n}"
+    },
+    {
+      "id": "CQ07",
+      "question": "Can a source-native provision be distinguished from a hash-bound evidential passage?",
+      "required_terms": [
+        "Provision",
+        "LegalPassage",
+        "dcterms:isPartOf",
+        "sourceRecord",
+        "oa:hasSource",
+        "sourceHash"
+      ],
+      "ask": "PREFIX okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nPREFIX oa: <http://www.w3.org/ns/oa#>\nASK {\n  ?provision a okflaw:Provision ; dcterms:isPartOf ?work ; okflaw:sourceRecord ?record .\n  ?passage a okflaw:LegalPassage ; oa:hasSource ?source ; okflaw:sourceHash ?hash .\n}"
+    },
+    {
+      "id": "CQ08",
+      "question": "Can a case be connected to its court, governed source record and jurisdiction without inventing a cross-source identity?",
+      "required_terms": [
+        "Case",
+        "Court",
+        "SourceRecord",
+        "Jurisdiction",
+        "decidingCourt",
+        "sourceRecord",
+        "eli:jurisdiction"
+      ],
+      "ask": "PREFIX okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#>\nPREFIX eli: <http://data.europa.eu/eli/ontology#>\nASK {\n  ?case a okflaw:Case ; okflaw:decidingCourt ?court ; okflaw:sourceRecord ?record ; eli:jurisdiction ?jurisdiction .\n  ?court a okflaw:Court .\n  ?record a okflaw:SourceRecord .\n  ?jurisdiction a okflaw:Jurisdiction .\n}"
+    },
+    {
+      "id": "CQ09",
+      "question": "Can a publication identify its responsible organisation and authoritative catalogue route?",
+      "required_terms": [
+        "Publication",
+        "Organisation",
+        "SourceRecord",
+        "dcterms:publisher",
+        "sourceRecord",
+        "dcat:landingPage"
+      ],
+      "ask": "PREFIX okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#>\nPREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nASK {\n  ?publication a okflaw:Publication ; dcterms:publisher ?organisation ; okflaw:sourceRecord ?record .\n  ?organisation a okflaw:Organisation .\n  ?record a okflaw:SourceRecord ; dcat:landingPage ?route .\n}"
+    },
+    {
+      "id": "CQ10",
+      "question": "Can a temporal state be traced to its observation boundary and authoritative source?",
+      "required_terms": [
+        "TemporalState",
+        "temporalState",
+        "stateType",
+        "time:hasBeginning",
+        "prov:wasDerivedFrom",
+        "sourceRecord"
+      ],
+      "ask": "PREFIX okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#>\nPREFIX prov: <http://www.w3.org/ns/prov#>\nPREFIX time: <http://www.w3.org/2006/time#>\nASK {\n  ?work okflaw:temporalState ?state .\n  ?state a okflaw:TemporalState ; okflaw:stateType ?type ; time:hasBeginning ?instant ; prov:wasDerivedFrom ?source ; okflaw:sourceRecord ?record .\n  ?instant a time:Instant .\n}"
     }
   ]
 }

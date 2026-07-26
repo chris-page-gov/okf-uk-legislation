@@ -1,0 +1,284 @@
+{
+  "counts": {
+    "observed_access_state": {
+      "network-error": 1,
+      "reachable": 19
+    },
+    "redirects": 4,
+    "replacement_routes": 20
+  },
+  "evidence_run_id": "20260726T005115Z-04a20f01",
+  "generated_at": "2026-07-26T00:51:32Z",
+  "records": [
+    {
+      "final_url": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/raprnotes",
+      "http_status": 200,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/practice-directions",
+      "redirect_chain": [],
+      "replacement_id": "SRC018-A02-R01",
+      "replaces_method_id": "SRC018-A02",
+      "url": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/raprnotes"
+    },
+    {
+      "final_url": "https://www.gov.uk/government/organisations/tribunal-procedure-committee/about",
+      "http_status": 200,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.gov.uk/government/collections/tribunal-procedure-rules",
+      "redirect_chain": [],
+      "replacement_id": "SRC021-A01-R01",
+      "replaces_method_id": "SRC021-A01",
+      "url": "https://www.gov.uk/government/organisations/tribunal-procedure-committee/about"
+    },
+    {
+      "final_url": "https://sentencingcouncil.org.uk/",
+      "http_status": 200,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.sentencingcouncil.org.uk/guidelines/",
+      "redirect_chain": [],
+      "replacement_id": "SRC027-A01-R01",
+      "replaces_method_id": "SRC027-A01",
+      "url": "https://sentencingcouncil.org.uk/"
+    },
+    {
+      "final_url": "https://www.cps.gov.uk/prosecution-guidance/prosecution-guidance-search",
+      "http_status": 206,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.cps.gov.uk/legal-guidance",
+      "redirect_chain": [],
+      "replacement_id": "SRC028-A01-R01",
+      "replaces_method_id": "SRC028-A01",
+      "url": "https://www.cps.gov.uk/prosecution-guidance/prosecution-guidance-search"
+    },
+    {
+      "final_url": "https://www.copfs.gov.uk/publications/code-of-practice-disclosure-of-evidence-in-criminal-proceedings/",
+      "http_status": null,
+      "observed_access_state": "network-error",
+      "previous_url": "https://www.copfs.gov.uk/publications/disclosure-code/",
+      "redirect_chain": [],
+      "replacement_id": "SRC029-A02-R01",
+      "replaces_method_id": "SRC029-A02",
+      "url": "https://www.copfs.gov.uk/publications/code-of-practice-disclosure-of-evidence-in-criminal-proceedings/"
+    },
+    {
+      "final_url": "https://www.ppsni.gov.uk/publications/code-prosecutors",
+      "http_status": 206,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.ppsni.gov.uk/code-prosecutors",
+      "redirect_chain": [],
+      "replacement_id": "SRC030-A01-R01",
+      "replaces_method_id": "SRC030-A01",
+      "url": "https://www.ppsni.gov.uk/publications/code-prosecutors"
+    },
+    {
+      "final_url": "https://www.fca.org.uk/about/how-we-regulate/handbook",
+      "http_status": 206,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.fca.org.uk/firms/handbook",
+      "redirect_chain": [],
+      "replacement_id": "SRC031-A02-R01",
+      "replaces_method_id": "SRC031-A02",
+      "url": "https://www.fca.org.uk/about/how-we-regulate/handbook"
+    },
+    {
+      "final_url": "https://www.bankofengland.co.uk/prudential-regulation/pra-rulebook-website",
+      "http_status": 200,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.bankofengland.co.uk/prudential-regulation/pra-rulebook",
+      "redirect_chain": [],
+      "replacement_id": "SRC033-A02-R01",
+      "replaces_method_id": "SRC033-A02",
+      "url": "https://www.bankofengland.co.uk/prudential-regulation/pra-rulebook-website"
+    },
+    {
+      "final_url": "https://www.gov.uk/government/publications/environment-agencys-use-of-civil-sanctions",
+      "http_status": 206,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.gov.uk/government/publications/environment-agency-enforcement-undertakings-accepted",
+      "redirect_chain": [
+        {
+          "from_url": "https://www.gov.uk/government/publications/enforcement-undertakings-accepted-by-the-environment-agency",
+          "http_status": 301,
+          "target_resolution": {
+            "all_addresses_public": true,
+            "hostname": "www.gov.uk",
+            "port": 443,
+            "resolved_addresses": [
+              "199.232.52.144",
+              "2a04:4e42:f::144"
+            ],
+            "scheme": "https",
+            "url": "https://www.gov.uk/government/publications/the-environment-agencys-use-of-civil-sanctions"
+          },
+          "to_url": "https://www.gov.uk/government/publications/the-environment-agencys-use-of-civil-sanctions"
+        },
+        {
+          "from_url": "https://www.gov.uk/government/publications/the-environment-agencys-use-of-civil-sanctions",
+          "http_status": 301,
+          "target_resolution": {
+            "all_addresses_public": true,
+            "hostname": "www.gov.uk",
+            "port": 443,
+            "resolved_addresses": [
+              "199.232.52.144",
+              "2a04:4e42:f::144"
+            ],
+            "scheme": "https",
+            "url": "https://www.gov.uk/government/publications/environment-agencys-use-of-civil-sanctions"
+          },
+          "to_url": "https://www.gov.uk/government/publications/environment-agencys-use-of-civil-sanctions"
+        }
+      ],
+      "replacement_id": "SRC039-A01-R01",
+      "replaces_method_id": "SRC039-A01",
+      "url": "https://www.gov.uk/government/publications/enforcement-undertakings-accepted-by-the-environment-agency"
+    },
+    {
+      "final_url": "https://www.lgo.org.uk/decisions",
+      "http_status": 200,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.lgo.org.uk/information-centre/reports/decisions",
+      "redirect_chain": [],
+      "replacement_id": "SRC040-A02-R01",
+      "replaces_method_id": "SRC040-A02",
+      "url": "https://www.lgo.org.uk/decisions"
+    },
+    {
+      "final_url": "https://swf.spso.org.uk/case-summaries",
+      "http_status": 200,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.spso.org.uk/scottish-welfare-fund-independent-review-decisions",
+      "redirect_chain": [],
+      "replacement_id": "SRC042-A02-R01",
+      "replaces_method_id": "SRC042-A02",
+      "url": "https://swf.spso.org.uk/case-summaries"
+    },
+    {
+      "final_url": "https://www.nipso.org.uk/our-investigations/reports-and-case-summaries",
+      "http_status": 206,
+      "observed_access_state": "reachable",
+      "previous_url": "https://nipso.org.uk/nipso/publications",
+      "redirect_chain": [
+        {
+          "from_url": "https://www.nipso.org.uk/our-findings/search-our-findings",
+          "http_status": 301,
+          "target_resolution": {
+            "all_addresses_public": true,
+            "hostname": "www.nipso.org.uk",
+            "port": 443,
+            "resolved_addresses": [
+              "104.20.33.55",
+              "172.66.162.200",
+              "2606:4700:10::6814:2137",
+              "2606:4700:10::ac42:a2c8"
+            ],
+            "scheme": "https",
+            "url": "https://www.nipso.org.uk/our-investigations/reports-and-case-summaries"
+          },
+          "to_url": "https://www.nipso.org.uk/our-investigations/reports-and-case-summaries"
+        }
+      ],
+      "replacement_id": "SRC043-A01-R01",
+      "replaces_method_id": "SRC043-A01",
+      "url": "https://www.nipso.org.uk/our-findings/search-our-findings"
+    },
+    {
+      "final_url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response",
+      "http_status": 206,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.gov.uk/government/publications/public-inquiries-recommendations-dashboard",
+      "redirect_chain": [],
+      "replacement_id": "SRC053-A01-R01",
+      "replaces_method_id": "SRC053-A01",
+      "url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response"
+    },
+    {
+      "final_url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response",
+      "http_status": 206,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.gov.uk/government/collections/public-inquiries",
+      "redirect_chain": [],
+      "replacement_id": "SRC053-A02-R01",
+      "replaces_method_id": "SRC053-A02",
+      "url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response"
+    },
+    {
+      "final_url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/treaties-database",
+      "http_status": 200,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.gov.uk/government/publications/uk-treaties-dataset",
+      "redirect_chain": [
+        {
+          "from_url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/uk-treaties-database",
+          "http_status": 301,
+          "target_resolution": {
+            "all_addresses_public": true,
+            "hostname": "www.data.gov.uk",
+            "port": 443,
+            "resolved_addresses": [
+              "199.232.52.144",
+              "2a04:4e42:f::144"
+            ],
+            "scheme": "https",
+            "url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/treaties-database"
+          },
+          "to_url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/treaties-database"
+        }
+      ],
+      "replacement_id": "SRC055-A02-R01",
+      "replaces_method_id": "SRC055-A02",
+      "url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/uk-treaties-database"
+    },
+    {
+      "final_url": "https://op.europa.eu/en/web/cellar/documentation",
+      "http_status": 200,
+      "observed_access_state": "reachable",
+      "previous_url": "https://op.europa.eu/en/web/about-us/legal-notices/accessibility",
+      "redirect_chain": [],
+      "replacement_id": "SRC057-A01-R01",
+      "replaces_method_id": "SRC057-A01",
+      "url": "https://op.europa.eu/en/web/cellar/documentation"
+    },
+    {
+      "final_url": "https://www.mygov.scot/browse/crime-justice-law",
+      "http_status": 206,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.mygov.scot/justice-law-rights",
+      "redirect_chain": [],
+      "replacement_id": "SRC064-A02-R01",
+      "replaces_method_id": "SRC064-A02",
+      "url": "https://www.mygov.scot/browse/crime-justice-law"
+    },
+    {
+      "final_url": "https://www.gov.wales/justice-and-law",
+      "http_status": 206,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.gov.wales/law-and-order",
+      "redirect_chain": [],
+      "replacement_id": "SRC064-A03-R01",
+      "replaces_method_id": "SRC064-A03",
+      "url": "https://www.gov.wales/justice-and-law"
+    },
+    {
+      "final_url": "https://www.nidirect.gov.uk/information-and-services/crime-justice-and-law",
+      "http_status": 206,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.nidirect.gov.uk/information-and-services/justice-and-law",
+      "redirect_chain": [],
+      "replacement_id": "SRC064-A04-R01",
+      "replaces_method_id": "SRC064-A04",
+      "url": "https://www.nidirect.gov.uk/information-and-services/crime-justice-and-law"
+    },
+    {
+      "final_url": "https://www.lexisnexis.co.uk/products/legal-industry",
+      "http_status": 200,
+      "observed_access_state": "reachable",
+      "previous_url": "https://www.lexisnexis.co.uk/legal/lexis-plus.html",
+      "redirect_chain": [],
+      "replacement_id": "SRC069-A02-R01",
+      "replaces_method_id": "SRC069-A02",
+      "url": "https://www.lexisnexis.co.uk/products/legal-industry"
+    }
+  ],
+  "schema": "okf-source-route-replacement-comparison.v1"
+}

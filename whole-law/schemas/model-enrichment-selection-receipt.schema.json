@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-selection-receipt.schema.json",
+  "title": "OKF model enrichment selection receipt v1",
+  "description": "Observed calibration evidence selecting the lowest-cost qualifying generator and separately designating reviewer and strongest-model roles.",
+  "type": "object",
+  "required": [
+    "schema",
+    "selection_id",
+    "observed_at",
+    "calibration_manifest",
+    "pricing_snapshot",
+    "thresholds",
+    "candidates",
+    "selected_generator_model",
+    "reviewer_model",
+    "strongest_model",
+    "strongest_designation",
+    "selection_rule",
+    "role_separation_satisfied",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-selection-receipt.v1"
+    },
+    "selection_id": {
+      "type": "string",
+      "pattern": "^model-selection-[a-z0-9][a-z0-9._-]*$"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "calibration_manifest": {
+      "$ref": "#/$defs/material"
+    },
+    "pricing_snapshot": {
+      "$ref": "#/$defs/material"
+    },
+    "thresholds": {
+      "$ref": "#/$defs/thresholds"
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "$ref": "#/$defs/candidate"
+      }
+    },
+    "selected_generator_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "reviewer_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "strongest_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "strongest_designation": {
+      "$ref": "#/$defs/strongestDesignation"
+    },
+    "selection_rule": {
+      "const": "lowest measured and projected total cost among candidates passing every threshold on the same calibration population"
+    },
+    "role_separation_satisfied": {
+      "const": true
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "thresholds": {
+      "type": "object",
+      "required": [
+        "structured_output_schema_validity",
+        "precision",
+        "evidence_support"
+      ],
+      "properties": {
+        "structured_output_schema_validity": {
+          "const": 1
+        },
+        "precision": {
+          "const": 0.95
+        },
+        "evidence_support": {
+          "const": 0.95
+        }
+      },
+      "additionalProperties": false
+    },
+    "candidate": {
+      "type": "object",
+      "required": [
+        "requested_model",
+        "returned_model",
+        "availability",
+        "structured_output_schema_validity",
+        "precision",
+        "evidence_support",
+        "calibration_cost_usd",
+        "projected_total_cost_usd",
+        "projection_basis",
+        "qualified",
+        "attempt_manifest"
+      ],
+      "properties": {
+        "requested_model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "returned_model": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "availability": {
+          "enum": [
+            "available-structured-output",
+            "unavailable",
+            "structured-output-unsupported"
+          ]
+        },
+        "structured_output_schema_validity": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "precision": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence_support": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "calibration_cost_usd": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 250
+        },
+        "projected_total_cost_usd": {
+          "description": "Projected post-calibration execution cost. The deterministic selection comparison adds calibration_cost_usd to this value.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "projection_basis": {
+          "$ref": "#/$defs/projectionBasis"
+        },
+        "qualified": {
+          "type": "boolean"
+        },
+        "attempt_manifest": {
+          "$ref": "#/$defs/material"
+        }
+      },
+      "additionalProperties": false
+    },
+    "projectionBasis": {
+      "type": "object",
+      "required": [
+        "method",
+        "batch_plan",
+        "projected_total_cost_usd"
+      ],
+      "properties": {
+        "method": {
+          "const": "deterministic full-denominator batched generation, review, strongest-model and retry plan"
+        },
+        "batch_plan": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/material"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "projected_total_cost_usd": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "strongestDesignation": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "designated_model",
+        "capability_ordering_policy",
+        "capability_ordering_policy_sha256",
+        "official_model_evidence",
+        "official_model_evidence_sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "designated_model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "capability_ordering_policy": {
+          "$ref": "#/$defs/material"
+        },
+        "capability_ordering_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "official_model_evidence": {
+          "$ref": "#/$defs/material"
+        },
+        "official_model_evidence_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

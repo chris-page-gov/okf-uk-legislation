@@ -1,0 +1,413 @@
+{
+  "blocking_conditions": [],
+  "constraints_preserved": {
+    "base_constraints_preserved_verbatim": 217,
+    "by_escalation_state": {
+      "escalated": 113,
+      "mitigated": 55,
+      "recorded": 51,
+      "resolved": 20
+    },
+    "by_kind": {
+      "authentication": 5,
+      "availability": 43,
+      "fair-use": 72,
+      "hosting": 1,
+      "licence": 72,
+      "privacy": 14,
+      "rate-limit": 23,
+      "robots": 9
+    },
+    "policy": "Licence, fair-use, authentication, privacy, availability, rate-limit and robots constraints remain visible and do not authorise access-control bypass.",
+    "replacement_constraints_added": 22,
+    "total": 239,
+    "triggered_during_capture": 166
+  },
+  "decision_basis": "GATE-04 passes with declared constraints. Canonical overlays, effective route coverage, exact route-level denominators, source and register binding, evidence immutability, all 36 source-class reachability, restricted-route declaration and constraint preservation pass. This does not claim 72 complete corpora: only five source records are complete against official enumeration and 67 remain explicitly partial, conditional or restricted.",
+  "declared_constraints_and_coverage_limitations": [
+    "The COPFS landing page and first direct-PDF attempt failed strict Python TLS verification. Both failures remain immutable. A separate system-trust adapter then acquired the same official PDF with normal peer and hostname verification, DNS pinning and a bounded HTTP 206 response; no TLS check was disabled.",
+    "Four public-intended GET routes produced restricted observations; no authentication or access-control bypass was attempted.",
+    "Two source records, SRC066 and SRC068, have no reachable public GET observation; their frozen routes returned restricted responses.",
+    "All 72 source records disclose an applicability denominator, but only five are complete against an official enumerated source; 67 remain partial, conditional, restricted, discovery-only, inaccessible or unknown."
+  ],
+  "delta_capture": {
+    "created": true,
+    "primary_results": {
+      "network-error": 1,
+      "reachable": 19
+    },
+    "primary_run_id": "20260726T005115Z-04a20f01",
+    "security": "HTTPS allowlists, global-public DNS checks, redirect provenance, bounded bodies, no authentication, no unsafe XML parsing and no compressed-content decompression are verified in each immutable envelope.",
+    "supplement_results": {
+      "network-error": 1
+    },
+    "supplement_run_id": "20260726T005723Z-c0f5a002",
+    "system_trust_results": {
+      "reachable": 1
+    },
+    "system_trust_run_id": "20260726T010545Z-c0f5a003"
+  },
+  "evidence_bindings": [
+    {
+      "path": "whole-law/acquisition/current/access-methods.json",
+      "sha256": "30aaef86282be1ca5058689dcbde571f601114996b4d800d3d926c07a493db40"
+    },
+    {
+      "path": "whole-law/acquisition/current/source-access-summary.json",
+      "sha256": "e499ea7e57f740a1e2d3f58641c01e837b8d5fcfb41b2abc06c32a80b8e46ef6"
+    },
+    {
+      "path": "whole-law/acquisition/current/source-constraint-ledger.json",
+      "sha256": "080ea1e74acebe1ceb637e9221649c04be1b6372409f7b4b6597fb065da29ab4"
+    },
+    {
+      "path": "research/whole-law-okf-research/source-register.json",
+      "sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810"
+    },
+    {
+      "path": "research/whole-law-okf-research/legal-source-taxonomy.json",
+      "sha256": "ceb9b78308b54f925af902bb71dc1ee493801d7f1b5c7a74d32da8d0b9ee5320"
+    },
+    {
+      "path": "whole-law/acquisition/source-route-replacement-overlay.schema.json",
+      "sha256": "ab81d5ed663d44f0b5bace7dbe1d727f873400adb4794d7caab69c5c6b49e1db"
+    },
+    {
+      "path": "whole-law/acquisition/source-route-replacements.v1.json",
+      "sha256": "29cacaa811f8c41e90c859a24c0785c137843d9dbd0439477409d95ecfc4bcf0"
+    },
+    {
+      "path": "whole-law/acquisition/source-route-replacements-copfs-r02.v1.json",
+      "sha256": "61b80262d83fe395a1484d83cca05b76530e74c4dee9b4fbe40594535f31ec6b"
+    },
+    {
+      "path": "whole-law/acquisition/source-route-replacements-copfs-r03.v1.json",
+      "sha256": "53aec18f04f7dfed8416e8f69f6929de4187abef0a4ed92eacde312410b1c35a"
+    },
+    {
+      "path": "evidence/source-acquisitions/whole-law-route-replacements/archives/20260726T005115Z-04a20f01.tar.xz",
+      "sha256": "4a804b1d08a7d0a189dcff8f4e2b894b2dc732b48b2d9d8489735b8f03940ea4"
+    },
+    {
+      "path": "evidence/source-acquisitions/whole-law-route-replacements/archive-receipts/20260726T005115Z-04a20f01.json",
+      "sha256": "0817a012b01da26e54c42bed525250f09e23c887566b5791ba33563a9bcbf736"
+    },
+    {
+      "path": "evidence/source-acquisitions/whole-law-route-replacements/archives/20260726T005723Z-c0f5a002.tar.xz",
+      "sha256": "ec291f2c6dcedccedd18b0f67a289a997a41ae9973265f62cb1b524235bf8c3e"
+    },
+    {
+      "path": "evidence/source-acquisitions/whole-law-route-replacements/archive-receipts/20260726T005723Z-c0f5a002.json",
+      "sha256": "0cca0430342a401dc2ff433ca075ac56b99ed2c419e6fa08bfa1b9464c6fb19b"
+    },
+    {
+      "path": "evidence/source-acquisitions/whole-law-route-replacements/archives/20260726T010545Z-c0f5a003.tar.xz",
+      "sha256": "90104abb441c752a7ec754d78a03e7ab51f4c50763cc2e087e0a07edbebbc088"
+    },
+    {
+      "path": "evidence/source-acquisitions/whole-law-route-replacements/archive-receipts/20260726T010545Z-c0f5a003.json",
+      "sha256": "e48d6b54801ba04b387a72498da014f448d48159069ce951721f89b812fed320"
+    },
+    {
+      "path": "whole-law/acquisition/replacements/current/replacement-observations.json",
+      "sha256": "698a592a177d92b0d777d4457c80cba0102983c1b7decb32a17c2c25994d96c4"
+    },
+    {
+      "path": "whole-law/acquisition/replacements/current/source-constraint-ledger.json",
+      "sha256": "3c3d2c6f29fa97337a2daef0641c02c3c92b1c5da17600209a4810c1b2b5f040"
+    },
+    {
+      "path": "whole-law/acquisition/replacements/supplements/20260726T005723Z-c0f5a002/replacement-observations.json",
+      "sha256": "edae0d1b38b08c9425166c3b5e8f80b8de806b5fc6693195b0b407db3b01d385"
+    },
+    {
+      "path": "whole-law/acquisition/replacements/supplements/20260726T005723Z-c0f5a002/source-constraint-ledger.json",
+      "sha256": "aec195bd64944c3ce74a6d43b7c5a097224fbbb78a432766717a951f2d83e40f"
+    },
+    {
+      "path": "whole-law/acquisition/replacements/supplements/20260726T010545Z-c0f5a003/replacement-observations.json",
+      "sha256": "f72433a4ebac5ba6d4916fe6cbdc20f3c25b15390cf103304cf57651e73adb6f"
+    },
+    {
+      "path": "whole-law/acquisition/replacements/supplements/20260726T010545Z-c0f5a003/source-constraint-ledger.json",
+      "sha256": "0b2429a16a3b396170f183842008b7b0fe78d2a3af0ec7be99b252c746120b68"
+    }
+  ],
+  "exact_denominators": {
+    "coverage_status": {
+      "access-restricted": 2,
+      "complete against official enumerated source": 5,
+      "discovery-only": 2,
+      "documented but inaccessible": 2,
+      "licence-restricted": 3,
+      "partially complete": 53,
+      "progressively resolved": 3,
+      "unknown or not yet researched": 2
+    },
+    "declared_restricted_head_results": {
+      "reachable": 2,
+      "restricted": 1
+    },
+    "declared_restricted_head_routes": 3,
+    "effective_replacement_routes_not_reachable": 0,
+    "effective_replacement_routes_reachable": 20,
+    "original_frozen_method_envelopes": 108,
+    "primary_replacement_routes_not_reachable": 1,
+    "primary_replacement_routes_reachable": 19,
+    "public_intended_get_not_reachable": 4,
+    "public_intended_get_reachable": 101,
+    "public_intended_get_results": {
+      "reachable": 101,
+      "restricted": 4
+    },
+    "public_intended_get_routes": 105,
+    "registered_methods": 108,
+    "replacement_corpus_enumerations_exact": 0,
+    "replacement_frozen_method_envelopes": 22,
+    "replacement_route_denominators_exact": 22,
+    "replacement_routes_in_primary_overlay": 20,
+    "source_classes": 36,
+    "source_classes_with_no_reachable_get": [],
+    "source_classes_with_reachable_get": 36,
+    "source_ids_with_no_reachable_get": [
+      "SRC066",
+      "SRC068"
+    ],
+    "source_records": 72,
+    "source_records_complete_against_official_enumeration": 5,
+    "source_records_with_denominator_statement": 72,
+    "source_records_without_complete_official_enumeration": 67,
+    "sources_with_all_registered_routes_reachable": 68,
+    "sources_with_any_reachable_get": 70,
+    "sources_with_mixed_results": 2,
+    "sources_with_no_reachable_get": 2,
+    "supplemental_replacement_attempts": 1,
+    "system_trust_replacement_attempts": 1,
+    "total_frozen_method_envelopes": 130
+  },
+  "gate": {
+    "as_written_assessment": "The original run plus canonical replacement deltas provide frozen effective evidence for all 105 public-intended routes: 101 are reachable and four have declared restricted observations. Every replacement has an exact route-level denominator and lineage. Coverage flags truthfully distinguish the five complete official enumerations from 67 partial, conditional or restricted source corpora.",
+    "decision": "passed-with-declared-constraints",
+    "id": "GATE-04",
+    "requirement": "All publicly accessible in-scope source routes have frozen acquisition evidence and exact denominators; restricted routes are declared.",
+    "stronger_phase_3_assessment": "implemented-with-declared-constraints"
+  },
+  "original_observation_denominators": {
+    "public_intended_get_not_reachable": 24,
+    "public_intended_get_reachable": 81,
+    "public_intended_get_results": {
+      "network-error": 1,
+      "reachable": 81,
+      "restricted": 4,
+      "unavailable": 19
+    },
+    "source_classes_with_no_reachable_get": [
+      "SC18"
+    ],
+    "source_classes_with_reachable_get": 35,
+    "sources_with_any_reachable_get": 64,
+    "sources_with_no_reachable_get": 8
+  },
+  "replacement_evidence": [
+    {
+      "archive_path": "evidence/source-acquisitions/whole-law-route-replacements/archives/20260726T005115Z-04a20f01.tar.xz",
+      "archive_sha256": "4a804b1d08a7d0a189dcff8f4e2b894b2dc732b48b2d9d8489735b8f03940ea4",
+      "archive_tree_sha256": "d27232164bd46fc5c3b3baa37ecbc088c83c3139e28d760901de91f01d5f39cf",
+      "byte_recovery_verified": true,
+      "original_integrity_sha256": "9b29486e723b9c5bcf8d4351837d43847c7960c54799614af447557d7fcd79ce",
+      "overlay": "whole-law/acquisition/source-route-replacements.v1.json",
+      "overlay_sha256": "29cacaa811f8c41e90c859a24c0785c137843d9dbd0439477409d95ecfc4bcf0",
+      "result_counts": {
+        "network-error": 1,
+        "reachable": 19
+      },
+      "role": "primary-replacement-overlay",
+      "routes": 20,
+      "run_id": "20260726T005115Z-04a20f01"
+    },
+    {
+      "archive_path": "evidence/source-acquisitions/whole-law-route-replacements/archives/20260726T005723Z-c0f5a002.tar.xz",
+      "archive_sha256": "ec291f2c6dcedccedd18b0f67a289a997a41ae9973265f62cb1b524235bf8c3e",
+      "archive_tree_sha256": "56fdf3e679189fdcc60856306c5337033b7dc1284e90f385b5b535d2044e7925",
+      "byte_recovery_verified": true,
+      "original_integrity_sha256": "45b0b89bda856bf7ea4d85e2fb0830cd6e229ce7378a37d53b826d313670904d",
+      "overlay": "whole-law/acquisition/source-route-replacements-copfs-r02.v1.json",
+      "overlay_sha256": "61b80262d83fe395a1484d83cca05b76530e74c4dee9b4fbe40594535f31ec6b",
+      "result_counts": {
+        "network-error": 1
+      },
+      "role": "copfs-r02-supplement",
+      "routes": 1,
+      "run_id": "20260726T005723Z-c0f5a002"
+    },
+    {
+      "archive_path": "evidence/source-acquisitions/whole-law-route-replacements/archives/20260726T010545Z-c0f5a003.tar.xz",
+      "archive_sha256": "90104abb441c752a7ec754d78a03e7ab51f4c50763cc2e087e0a07edbebbc088",
+      "archive_tree_sha256": "0f81daa85935eb3ed27d68bea2315ea476c9d1b3caa9e6c3b41f8a4d708af323",
+      "byte_recovery_verified": true,
+      "original_integrity_sha256": "3c836104add218662a7a6a581dab23f46053c0976df867583583f0041fbb7eb8",
+      "overlay": "whole-law/acquisition/source-route-replacements-copfs-r03.v1.json",
+      "overlay_sha256": "53aec18f04f7dfed8416e8f69f6929de4187abef0a4ed92eacde312410b1c35a",
+      "result_counts": {
+        "reachable": 1
+      },
+      "role": "copfs-r03-system-trust-supplement",
+      "routes": 1,
+      "run_id": "20260726T010545Z-c0f5a003"
+    }
+  ],
+  "review_scope": {
+    "copfs_supplement_run_id": "20260726T005723Z-c0f5a002",
+    "copfs_system_trust_run_id": "20260726T010545Z-c0f5a003",
+    "evidence_run_id": "20260725T203207Z-dd7315c3",
+    "immutable_research_register_modified": false,
+    "network_capture_performed": true,
+    "replacement_discovery": "Official or primary-domain search and direct-page inspection; all reviewed candidates now have frozen acquisition attempts.",
+    "replacement_evidence_run_id": "20260726T005115Z-04a20f01"
+  },
+  "reviewed_at": "2026-07-26T01:06:00Z",
+  "schema": "okf-source-acquisition-gate-review.v1",
+  "sealed_evidence": {
+    "archive_path": "evidence/source-acquisitions/whole-law-access/archives/20260725T203207Z-dd7315c3.tar.xz",
+    "archive_receipt_path": "evidence/source-acquisitions/whole-law-access/archive-receipts/20260725T203207Z-dd7315c3.json",
+    "archive_sha256": "7f118be4f00539cc24d6a5f79c7cc47359471b3e1a081f25652399b19c93cfed",
+    "archive_tree_sha256": "e751f1989aeb1c23a9d0cef04e9d366386fde53fa90376992820da812ac857c3",
+    "byte_recovery_verified": true,
+    "files": 216,
+    "original_integrity_sha256": "e52b26e7d7f24da7e909427f0ab82f9f7a154e8b99cd362aab2d84254bb6975a"
+  },
+  "stale_or_network_routes": {
+    "candidates": [
+      {
+        "candidate_url": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/raprnotes",
+        "method_id": "SRC018-A02"
+      },
+      {
+        "candidate_url": "https://www.gov.uk/government/organisations/tribunal-procedure-committee/about",
+        "denominator_note": "The official page states that the committee keeps nine sets of Tribunal Procedure Rules under review.",
+        "method_id": "SRC021-A01"
+      },
+      {
+        "candidate_url": "https://sentencingcouncil.org.uk/",
+        "method_id": "SRC027-A01"
+      },
+      {
+        "candidate_url": "https://www.cps.gov.uk/prosecution-guidance/prosecution-guidance-search",
+        "method_id": "SRC028-A01"
+      },
+      {
+        "candidate_url": "https://www.copfs.gov.uk/publications/code-of-practice-disclosure-of-evidence-in-criminal-proceedings/",
+        "method_id": "SRC029-A02"
+      },
+      {
+        "candidate_url": "https://www.ppsni.gov.uk/publications/code-prosecutors",
+        "method_id": "SRC030-A01"
+      },
+      {
+        "candidate_url": "https://www.fca.org.uk/about/how-we-regulate/handbook",
+        "method_id": "SRC031-A02"
+      },
+      {
+        "candidate_url": "https://www.bankofengland.co.uk/prudential-regulation/pra-rulebook-website",
+        "method_id": "SRC033-A02"
+      },
+      {
+        "candidate_url": "https://www.gov.uk/government/publications/enforcement-undertakings-accepted-by-the-environment-agency",
+        "method_id": "SRC039-A01"
+      },
+      {
+        "candidate_url": "https://www.lgo.org.uk/decisions",
+        "denominator_note": "The official page describes five-year decision-statement and ten-year public-interest-report publication windows.",
+        "method_id": "SRC040-A02"
+      },
+      {
+        "candidate_url": "https://swf.spso.org.uk/case-summaries",
+        "method_id": "SRC042-A02"
+      },
+      {
+        "candidate_url": "https://www.nipso.org.uk/our-findings/search-our-findings",
+        "method_id": "SRC043-A01"
+      },
+      {
+        "candidate_url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response",
+        "denominator_note": "The current collection is explicitly a subset since 2024 and names six inquiries; it is not a denominator for all inquiries.",
+        "method_id": "SRC053-A01"
+      },
+      {
+        "candidate_url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response",
+        "denominator_note": "The current collection is explicitly a subset since 2024 and names six inquiries; it is not a denominator for all inquiries.",
+        "method_id": "SRC053-A02"
+      },
+      {
+        "candidate_url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/uk-treaties-database",
+        "method_id": "SRC055-A02"
+      },
+      {
+        "candidate_url": "https://op.europa.eu/en/web/cellar/documentation",
+        "method_id": "SRC057-A01"
+      },
+      {
+        "candidate_url": "https://www.mygov.scot/browse/crime-justice-law",
+        "method_id": "SRC064-A02"
+      },
+      {
+        "candidate_url": "https://www.gov.wales/justice-and-law",
+        "method_id": "SRC064-A03"
+      },
+      {
+        "candidate_url": "https://www.nidirect.gov.uk/information-and-services/crime-justice-and-law",
+        "method_id": "SRC064-A04"
+      },
+      {
+        "candidate_url": "https://www.lexisnexis.co.uk/products/legal-industry",
+        "method_id": "SRC069-A02"
+      }
+    ],
+    "copfs_supplement": {
+      "python_strict": {
+        "candidate_url": "https://www.copfs.gov.uk/media/03znmxlq/code-of-practice-disclosure-of-evidence-in-criminal-proceedings.pdf",
+        "error": {
+          "message": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1010)",
+          "type": "URLError"
+        },
+        "observed_access_state": "network-error",
+        "replacement_id": "SRC029-A02-R02"
+      },
+      "system_trust": {
+        "candidate_url": "https://www.copfs.gov.uk/media/03znmxlq/code-of-practice-disclosure-of-evidence-in-criminal-proceedings.pdf",
+        "error": null,
+        "http_status": 206,
+        "observed_access_state": "reachable",
+        "replacement_id": "SRC029-A02-R03"
+      }
+    },
+    "count": 20,
+    "distinct_candidate_urls": 20,
+    "frozen_attempt_count": 22,
+    "primary_candidate_count": 20,
+    "status": "frozen-20-effective-reachable-with-two-retained-tls-failures",
+    "supplemental_candidate_count": 2
+  },
+  "unexpected_public_route_restrictions": {
+    "count": 4,
+    "routes": [
+      {
+        "candidate_url": "https://www.echr.coe.int/en/hudoc-database",
+        "method_id": "SRC058-A02"
+      },
+      {
+        "candidate_url": null,
+        "method_id": "SRC066-A01"
+      },
+      {
+        "candidate_url": null,
+        "method_id": "SRC066-A02"
+      },
+      {
+        "candidate_url": null,
+        "method_id": "SRC068-A01"
+      }
+    ],
+    "status": "frozen-restricted-observation-no-bypass-attempted"
+  }
+}

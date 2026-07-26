@@ -82,7 +82,7 @@
     },
     "relationship_schema": {
       "path": "whole-law/schemas/relationship-assertion.schema.json",
-      "sha256": "4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006"
+      "sha256": "1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4"
     },
     "run_manifest": {
       "path": "bundle/enrichment/codex-assisted-v2.json",

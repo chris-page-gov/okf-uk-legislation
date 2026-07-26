@@ -1,11 +1,11 @@
 {
   "as_of": "2026-07-26",
   "counts": {
-    "blocked": 9,
-    "deferred": 2,
-    "open": 5,
-    "resolved": 5,
-    "total": 21
+    "blocked": 4,
+    "deferred": 3,
+    "open": 7,
+    "resolved": 11,
+    "total": 25
   },
   "gaps": [
     {
@@ -51,28 +51,31 @@
         "whole-law/assurance/competency-question-results.json"
       ],
       "id": "IMP-GAP-004",
-      "next_action": "Bind the five passing ASK results to the frozen candidate.",
+      "next_action": "Bind the ten passing ASK results to the frozen candidate.",
       "release_effect": "none-before-freeze",
       "status": "resolved",
-      "summary": "Five executable ontology competency questions pass against the authored examples."
+      "summary": "Ten executable ontology competency questions pass against the authored examples."
     },
     {
       "area": "semantic validation",
       "evidence": [
         "whole-law/ontology/shapes.ttl",
+        "whole-law/assurance/semantic-conformance.json",
+        "scripts/run_semantic_conformance.py",
         "scripts/check_whole_law_okf.py"
       ],
       "id": "IMP-GAP-005",
-      "next_action": "Execute SHACL and JSON-LD/RDF equivalence over the complete generated candidate graph, not only examples and contract samples.",
-      "release_effect": "blocks-GATE-03",
-      "status": "blocked",
-      "summary": "Authored shapes exist, but current evidence does not demonstrate complete-graph SHACL and RDF-equivalence execution on a frozen candidate."
+      "next_action": "Retain the receipt and its bound semantic, shape, vocabulary, schema and row-inventory digests through release-candidate freeze and promotion.",
+      "release_effect": "none-before-freeze",
+      "status": "resolved",
+      "summary": "The complete authored and generated two-node semantic descriptor graphs pass SHACL and RDF equivalence, while all 872,574 core/provider relationship rows pass their JSON contracts; the receipt explicitly records that the 365,786 works are not materialised as RDF."
     },
     {
       "area": "namespace",
       "evidence": [
         "whole-law/ontology/context.jsonld",
-        "whole-law/ontology/standards.json"
+        "whole-law/ontology/standards.json",
+        "whole-law/governance/architecture-decisions/ADR-016-namespace-migration.md"
       ],
       "id": "IMP-GAP-006",
       "next_action": "Create a namespace-migration release only after a suitable government domain is selected.",
@@ -84,24 +87,28 @@
       "area": "source acquisition",
       "evidence": [
         "whole-law/acquisition/current/observed-access-comparison.json",
-        "whole-law/acquisition/current/source-constraint-ledger.json"
+        "whole-law/acquisition/current/source-constraint-ledger.json",
+        "whole-law/acquisition/replacements/current/evidence-reference.json",
+        "whole-law/acquisition/replacements/supplements/20260726T010545Z-c0f5a003/evidence-reference.json",
+        "whole-law/assurance/source-acquisition-gate-20260726.json"
       ],
       "id": "IMP-GAP-007",
-      "next_action": "Close every publicly accessible in-scope route with a frozen envelope or record the exact access blocker and denominator.",
-      "release_effect": "blocks-GATE-04",
-      "status": "blocked",
-      "summary": "Adapters and constraint metadata exist for 72 records and 36 source classes, but not every public authoritative route has a successful frozen acquisition."
+      "next_action": "Retain all four immutable acquisition archives and their exact route-level lineage through release freeze. Improve the 67 partial, conditional or restricted corpus denominators when official enumerations become available, without reopening the acquisition-assurance decision.",
+      "release_effect": "none-before-freeze-declared-coverage-limitations-retained",
+      "status": "resolved",
+      "summary": "The base run and three immutable replacement attempts provide frozen evidence for all 105 effective public-intended GET routes: 101 are reachable and four are declared restricted. Seventy of 72 sources and all 36 source classes have reachable observations. GATE-04 passes with declared constraints; only five of 72 source records are complete against an official enumeration, so 67 coverage limitations remain explicit."
     },
     {
       "area": "official effects reconciliation",
       "evidence": [
-        "bundle/data/effects/reconciliation.json"
+        "bundle/data/effects/reconciliation.json",
+        "whole-law/assurance/effects-live-reconciliation-20260726.json"
       ],
       "id": "IMP-GAP-008",
-      "next_action": "Run and freeze a post-build live reconciliation for the selected works; retain inaccessible checks as inaccessible.",
-      "release_effect": "blocks-GATE-05",
-      "status": "blocked",
-      "summary": "The current receipt records agreement or inaccessibility at acquisition time, not a later live reconciliation against the candidate."
+      "next_action": "Retain the immutable archive and receipt through promotion and keep inaccessible routes visibly distinct in Explorer.",
+      "release_effect": "none-before-ui-acceptance",
+      "status": "resolved",
+      "summary": "A post-build latest-entry check is bound to the effects chunk and records 16 agreements and six consistently inaccessible routes without claiming a full recrawl."
     },
     {
       "area": "model-assisted enrichment",
@@ -117,26 +124,33 @@
     },
     {
       "area": "evaluation gold evidence",
-      "evidence": [
-        "whole-law/evaluation/README.md",
-        "whole-law/evaluation/release-questions.json"
-      ],
-      "id": "IMP-GAP-010",
-      "next_action": "Add independently verified source evidence, legal propositions, near-miss rules, citations and temporal expectations before promoting any question to gold.",
-      "release_effect": "blocks-GATE-11",
-      "status": "blocked",
-      "summary": "The release suite is structurally complete but intentionally non-gold; no legal-answer correctness claim is available."
+  "evidence": [
+    "whole-law/evaluation/README.md",
+    "whole-law/evaluation/release-questions.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/verification.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/integrity.json"
+  ],
+  "id": "IMP-GAP-010",
+  "next_action": "Preserve the explicit distinction between the independently verified corpus-navigation gold suite and the retained non-gold broad legal prompts; do not present the navigation score as legal-answer correctness.",
+  "release_effect": "resolved-for-corpus-navigation-GATE-11; no-legal-answer-assurance-claimed",
+  "status": "resolved",
+  "summary": "All 415 release questions now have independently reconstructed immutable corpus-navigation evidence, propositions, near-miss rules, temporal context and citations. Broad legal prompts remain non-gold context and no legal-answer correctness claim is made."
     },
     {
       "area": "evaluation execution",
-      "evidence": [
-        "whole-law/evaluation/README.md"
-      ],
-      "id": "IMP-GAP-011",
-      "next_action": "Execute verified answers through Explorer and direct-source baselines, then complete two held-out challenge passes.",
-      "release_effect": "blocks-GATE-11",
-      "status": "blocked",
-      "summary": "The required zero-hard-failure, citation-resolution, 85/100 critical-score and held-out-challenge evidence does not exist."
+  "evidence": [
+    "whole-law/evaluation/README.md",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/results.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/scores.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/challenge-discovery-calibration.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/challenge-pass-1.json",
+    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/challenge-pass-2.json"
+  ],
+  "id": "IMP-GAP-011",
+  "next_action": "Bind this immutable evaluation execution into the final candidate and retain its corpus-navigation-only assurance boundary.",
+  "release_effect": "resolved-for-GATE-11",
+  "status": "resolved",
+  "summary": "The 415-answer release execution has zero hard failures, 100% schema-valid and citation-resolvable answers, a 100/100 minimum critical-family score, and two disjoint challenge passes with zero critical modes and 0% new categories."
     },
     {
       "area": "browser, accessibility and performance",
@@ -144,10 +158,10 @@
         "release-assurance/release-gates.json"
       ],
       "id": "IMP-GAP-012",
-      "next_action": "Run Chrome, Firefox and WebKit journeys, keyboard and automated WCAG checks, transfer/latency measurements and browser-memory measurement on the frozen candidate.",
+      "next_action": "Bind or rerun the passing Chrome, Firefox and WebKit receipt against the exact Explorer v0.5.0 commit and frozen Legislation descriptor digests, then record that binding in external finalization evidence.",
       "release_effect": "blocks-GATE-07-and-GATE-08",
       "status": "blocked",
-      "summary": "Local Explorer work is in progress; complete cross-browser, accessibility and performance receipts are not yet frozen."
+      "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations, but it is not yet bound to the exact released Explorer commit and frozen Legislation candidate."
     },
     {
       "area": "public access and links",
@@ -233,25 +247,80 @@
     {
       "area": "GitHub operation",
       "evidence": [
-        "evidence/requirements/controlling-requirements.md"
+        "AGENTS.md",
+        "release-assurance/github-operation-environment.json"
       ],
       "id": "IMP-GAP-020",
-      "next_action": "Run authenticated GitHub operations outside the restricted sandbox and distinguish network/sandbox failures from authentication state.",
+      "next_action": "Retain the outside-sandbox authentication rule and credential-safe receipt; repeat the safe check if a later sandboxed GitHub operation fails.",
       "release_effect": "procedural",
-      "status": "open",
-      "summary": "A local sandbox failure must not be reclassified as an invalid GitHub token without an authenticated external check."
+      "status": "resolved",
+      "summary": "Repository policy distinguishes restricted-sandbox failures from credential state, and an outside-sandbox check verified the active chris-page-gov login and a passing authenticated PR operation without recording the token."
     },
     {
-      "area": "model execution metadata",
+      "area": "historical model execution metadata",
       "evidence": [
         "bundle/enrichment/codex-assisted-v2.json",
         "whole-law/assurance/enrichment-v2-independent-audit-20260726.json"
       ],
       "id": "IMP-GAP-021",
-      "next_action": "Record the exact deployment identifier and billable subscription usage if the Codex task surface exposes them in a future execution environment.",
-      "release_effect": "externally-blocked-metadata",
+      "next_action": "Retain this as a historical-only Codex task-surface limitation. Do not use it to satisfy the dedicated paid-run gate; that run must produce its own exact model, token, cache, retry and cost receipts.",
+      "release_effect": "externally-blocked-historical-metadata",
       "status": "blocked",
-      "summary": "The provider and Codex task model are recorded, but the task surface does not expose its exact underlying deployment identifier or billable subscription-token usage."
+      "summary": "Historical Codex-assisted evidence records the provider and task model, but the task surface does not expose its exact underlying deployment identifier or billable subscription-token usage. This gap is historical-only and cannot stand in for a dedicated paid-run receipt."
+    },
+    {
+      "area": "legal entity model coverage",
+      "evidence": [
+        "whole-law/assurance/entity-model-coverage-assessment-20260726.json",
+        "release-assurance/implementation-traceability.json"
+      ],
+      "id": "IMP-GAP-022",
+      "next_action": "Future child bundles may acquire independently counted expression, provision, case, court, organisation, publication, jurisdiction and temporal-state inventories without changing or overstating the v0.3.0 federation catalogue.",
+      "release_effect": "accepted-federation-population-boundary",
+      "status": "deferred",
+      "summary": "The semantic contract represents every named class at the approved catalogue/schema grain. Complete population of every future source-family child bundle is explicitly outside the initial v0.3.0 federation claim."
+    },
+    {
+      "area": "OpenAI model calibration and selection",
+      "evidence": [
+        "enrichment/codex-assisted-v2-calibration.json",
+        "enrichment/model-assisted-calibration-manifest-v1.json",
+        "enrichment/model-assisted-paid-governance-v1.json",
+        "release-assurance/implementation-traceability.json"
+      ],
+      "id": "IMP-GAP-023",
+      "next_action": "After explicit approval to reuse the configured API key, run the fixed calibration through the available OpenAI structured-output candidates, select the lowest-cost model meeting all thresholds, exercise strongest-model escalation on disagreements/high-risk records, and bind exact model, usage and cost receipts.",
+      "release_effect": "blocks-full-P05-02-and-GATE-01",
+      "status": "open",
+      "summary": "Credential-free calibration and fail-closed selection contracts exist, but no dedicated paid run proves lowest-cost qualifying OpenAI structured-output model selection or strongest-model escalation. Historical Codex-assisted output cannot satisfy this gate."
+    },
+    {
+      "area": "model enrichment input evidence",
+      "evidence": [
+        "scripts/build_model_enrichment_input_evidence.py",
+        "whole-law/assurance/model-assisted-input-eligibility-20260726.json",
+        "whole-law/schemas/model-enrichment-terminal-outcome-manifest.schema.json",
+        "release-assurance/implementation-traceability.json"
+      ],
+      "id": "IMP-GAP-024",
+      "next_action": "Use the fixed 365,786-work input order in the dedicated run: process the 359,140 local-semantic records, freeze and reconcile CLML for the 6,646 deferred records, then record one unique terminal outcome per work. Zero CLML bodies are currently frozen; lack of frozen evidence must yield abstention rather than an assertion.",
+      "release_effect": "blocks-full-P05-01-and-GATE-01",
+      "status": "open",
+      "summary": "Credential-free preflight covers all 365,786 works, with 359,140 local-semantic candidates and 6,646 deferred pending frozen CLML, but zero CLML bodies are frozen and no dedicated paid-run terminal-outcome manifest exists."
+    },
+    {
+      "area": "independent model review",
+      "evidence": [
+        "whole-law/schemas/model-enrichment-review.schema.json",
+        "whole-law/schemas/model-enrichment-run-v2.schema.json",
+        "enrichment/model-assisted-paid-governance-v1.json",
+        "release-assurance/implementation-traceability.json"
+      ],
+      "id": "IMP-GAP-025",
+      "next_action": "Run a separately hashed reviewer prompt with an exact reviewer model distinct from the selected generator over every proposed assertion, then deterministically reconstruct accept, reject and escalation outcomes.",
+      "release_effect": "blocks-full-P05-04-and-GATE-01",
+      "status": "open",
+      "summary": "Strict reviewer and role-separation contracts exist, but the historical independent deterministic reconstruction is not a separately identified reviewer prompt/model and no dedicated paid run has reviewed every proposed assertion."
     }
   ],
   "scope_note": "This implementation gap register supplements, but does not modify, the immutable 28-record research gap register. Resolved means the named implementation omission has evidence; it does not mean the release is complete.",

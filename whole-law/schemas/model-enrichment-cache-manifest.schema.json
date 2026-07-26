@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-cache-manifest.schema.json",
+  "title": "OKF model-enrichment cache manifest v1",
+  "description": "A complete integrity-bound inventory of immutable credential-free cache entries for one governed paid run.",
+  "type": "object",
+  "required": [
+    "schema",
+    "run_id",
+    "cache_entry_schema",
+    "entries",
+    "counts",
+    "complete",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-cache-manifest.v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "cache_entry_schema": {
+      "$ref": "#/$defs/material"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/material"
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "entries",
+        "unique_cache_keys",
+        "cache_hits"
+      ],
+      "properties": {
+        "entries": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unique_cache_keys": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cache_hits": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "complete": {
+      "const": true
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

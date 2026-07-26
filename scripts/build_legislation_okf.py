@@ -66,6 +66,12 @@ MODEL_ENRICHMENT_AUDIT_PATH = (
 MODEL_ENRICHMENT_AUDIT_MARKDOWN_PATH = (
     ROOT / "enrichment" / "model-assisted-v1-independent-audit.md"
 )
+MODEL_ENRICHMENT_PAID_GOVERNANCE_PATH = (
+    ROOT / "enrichment" / "model-assisted-paid-governance-v1.json"
+)
+MODEL_ENRICHMENT_CALIBRATION_MANIFEST_PATH = (
+    ROOT / "enrichment" / "model-assisted-calibration-manifest-v1.json"
+)
 SEARCH_RESULT_DOC_CHUNK_SIZE = 500
 SEARCH_MAX_POSTINGS_PER_TOKEN = 10_000
 MISSING_FILTER_VALUE = "__missing__"
@@ -1203,14 +1209,19 @@ def normalized_relationship_confidence(row: dict[str, Any]) -> str:
     return str(value).strip().lower() or "unknown"
 
 
-def normalized_relationship_freshness(row: dict[str, Any]) -> str:
+def normalized_relationship_freshness(
+    row: dict[str, Any],
+    default: str = "unknown",
+) -> str:
     value = str(row.get("freshness", "")).strip().lower()
-    return value or "unknown"
+    return value or default
 
 
 def summarize_relationship_rows(
     rows: Any,
     datapack: str,
+    *,
+    default_freshness: str = "unknown",
 ) -> list[dict[str, Any]]:
     """Aggregate relationship rows without losing required authority signals."""
 
@@ -1223,7 +1234,10 @@ def summarize_relationship_rows(
                 predicate,
                 normalized_relationship_authority(row),
                 normalized_relationship_confidence(row),
-                normalized_relationship_freshness(row),
+                normalized_relationship_freshness(
+                    row,
+                    default=default_freshness,
+                ),
             )
         ] += 1
     return [
@@ -1536,6 +1550,20 @@ This pack indexes **{len(records):,} legal works** returned by the official legi
 * [Coverage, provenance and limitations](methodology/)
 * [Explorer descriptor](okf-explorer.json)
 
+# Canonical access
+
+| Repository | Canonical descriptor | Declared `raw_subpath` | Release/archive fallback |
+|---|---|---|---|
+| [GitHub](https://github.com/chris-page-gov/okf-uk-legislation) | [published descriptor](https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json) | `bundle` | [immutable releases](https://github.com/chris-page-gov/okf-uk-legislation/releases) |
+
+# Official sources and examples
+
+* [legislation.gov.uk](https://www.legislation.gov.uk/)
+* [Official legislation data/API documentation]({DATA_DOCS})
+* [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
+* [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
+* [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
+
 {citations(("Legislation.gov.uk data reuse documentation", DATA_DOCS), ("Legislation document data model", MODEL_DOCS), ("ELI ontology", ELI), ("Schema.org Legislation", SCHEMA_ORG), ("CLML User Guide", CLML_DOCS))}""")
     files[Path("log.md")] = f"# Legislation OKF generation log\n\n## {generated_at[:10]}\n\n* **Generation**: indexed {len(records):,} official works and {sum(row['resource_count'] for row in records):,} advertised manifestations.\n* **Normalization**: mapped works and subdivisions to ELI 1.5, ELI-I, Schema.org Legislation, CLML and Akoma Ntoso.\n* **Access**: retained Atom, CLML, AKN, RDF/XML, HTML, PDF, CSV, effects and publication-log routes where supplied or documented.\n"
     files[Path("ontology/index.md")] = concept("Ontology Index", "Legal ontology and normalized vocabulary", "Crosswalk between legislation.gov.uk, ELI, Schema.org, CLML and Akoma Ntoso.", ELI, generated_at, ["ontology", "eli", "schema-org", "clml"], f"""# Selected model
@@ -1629,6 +1657,7 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
     relationship_composition_rows = summarize_relationship_rows(
         relationships,
         "core",
+        default_freshness="current",
     )
     relationship_composition = relationship_composition_document(
         relationship_composition_rows,
@@ -2036,6 +2065,14 @@ def output_files(corpus: dict[str, Any], source_meta: dict[str, Any]) -> dict[Pa
         Path("enrichment/model-assisted-v1-independent-audit.md"): (
             MODEL_ENRICHMENT_AUDIT_MARKDOWN_PATH.read_text(encoding="utf-8")
         ),
+        Path("enrichment/model-assisted-paid-governance-v1.json"): (
+            MODEL_ENRICHMENT_PAID_GOVERNANCE_PATH.read_text(encoding="utf-8")
+        ),
+        Path("enrichment/model-assisted-calibration-manifest-v1.json"): (
+            MODEL_ENRICHMENT_CALIBRATION_MANIFEST_PATH.read_text(
+                encoding="utf-8"
+            )
+        ),
     }
     files.update(
         search_publication_files(
@@ -2164,7 +2201,16 @@ def main(argv: list[str] | None = None) -> int:
     if not records:
         print("no legislation records received", file=sys.stderr)
         return 1
-    generated_at = args.generated_at or (existing_generated_at(output) if args.check else None) or now_utc()
+    preserve_existing_timestamp = args.check or args.from_existing
+    generated_at = (
+        args.generated_at
+        or (
+            existing_generated_at(output)
+            if preserve_existing_timestamp
+            else None
+        )
+        or now_utc()
+    )
     corpus = build_corpus(records, source_meta, generated_at)
     files = output_files(corpus, source_meta)
     if args.check:

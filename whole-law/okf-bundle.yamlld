@@ -1,5 +1,6 @@
 "@context":
   "@vocab": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#"
+  okflaw: "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#"
   dcterms: "http://purl.org/dc/terms/"
   prov: "http://www.w3.org/ns/prov#"
   dcat: "http://www.w3.org/ns/dcat#"
@@ -7,6 +8,10 @@
   xsd: "http://www.w3.org/2001/XMLSchema#"
   title: "dcterms:title"
   description: "dcterms:description"
+  identifier: "dcterms:identifier"
+  okf_version: "okflaw:okfVersion"
+  version: "okflaw:version"
+  status: "okflaw:status"
   issued:
     "@id": "dcterms:issued"
     "@type": "xsd:date"
@@ -17,8 +22,21 @@
     "@id": "childBundle"
     "@type": "@id"
   sourceRegister:
-    "@id": "sourceRegister"
+    "@id": "okflaw:sourceRegister"
     "@type": "@id"
+  registerSchema: "okflaw:registerSchema"
+  recordCount:
+    "@id": "okflaw:recordCount"
+    "@type": "xsd:integer"
+  sourceClassCount:
+    "@id": "okflaw:sourceClassCount"
+    "@type": "xsd:integer"
+  accessMethodCount:
+    "@id": "okflaw:accessMethodCount"
+    "@type": "xsd:integer"
+  accessTestDate:
+    "@id": "okflaw:accessTestDate"
+    "@type": "xsd:date"
   generatedAt:
     "@id": "prov:generatedAtTime"
     "@type": "xsd:dateTime"
@@ -37,4 +55,14 @@ generatedAt: "2026-07-25T22:54:00Z"
 license: "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
 descriptor: "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json"
 childBundle: "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"
-sourceRegister: "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json"
+sourceRegister:
+  "@id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json"
+  "@type": "SourceRegister"
+  title: "UK Whole-Law governed source register"
+  identifier: "whole-law-source-register-2026-07-25"
+  registerSchema: "okf-whole-law-source-register.v1"
+  recordCount: 72
+  sourceClassCount: 36
+  accessMethodCount: 108
+  accessTestDate: "2026-07-25"
+  sourceHash: "sha256:575c62fab383a2c9444d3480640a086c4970b88c3ecafe9929f401969a84cdfe"

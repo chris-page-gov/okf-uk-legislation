@@ -20,6 +20,9 @@
     "title": "dcterms:title",
     "description": "dcterms:description",
     "identifier": "dcterms:identifier",
+    "okf_version": "okflaw:okfVersion",
+    "version": "okflaw:version",
+    "status": "okflaw:status",
     "publisher": {
       "@id": "dcterms:publisher",
       "@type": "@id"
@@ -45,6 +48,23 @@
       "@id": "okflaw:sourceRegister",
       "@type": "@id"
     },
+    "registerSchema": "okflaw:registerSchema",
+    "recordCount": {
+      "@id": "okflaw:recordCount",
+      "@type": "xsd:integer"
+    },
+    "sourceClassCount": {
+      "@id": "okflaw:sourceClassCount",
+      "@type": "xsd:integer"
+    },
+    "accessMethodCount": {
+      "@id": "okflaw:accessMethodCount",
+      "@type": "xsd:integer"
+    },
+    "accessTestDate": {
+      "@id": "okflaw:accessTestDate",
+      "@type": "xsd:date"
+    },
     "generatedAt": {
       "@id": "prov:generatedAtTime",
       "@type": "xsd:dateTime"
@@ -65,6 +85,14 @@
       "@id": "eli:jurisdiction",
       "@type": "@id"
     },
+    "sourceRecord": {
+      "@id": "okflaw:sourceRecord",
+      "@type": "@id"
+    },
+    "sourceURL": {
+      "@id": "dcat:landingPage",
+      "@type": "@id"
+    },
     "expression": {
       "@id": "eli:is_realized_by",
       "@type": "@id"
@@ -75,6 +103,40 @@
     },
     "manifestation": {
       "@id": "eli:is_embodied_by",
+      "@type": "@id"
+    },
+    "embodies": {
+      "@id": "eli:embodies",
+      "@type": "@id"
+    },
+    "format": "dcterms:format",
+    "isPartOf": {
+      "@id": "dcterms:isPartOf",
+      "@type": "@id"
+    },
+    "decidingCourt": {
+      "@id": "okflaw:decidingCourt",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "temporalState": {
+      "@id": "okflaw:temporalState",
+      "@type": "@id"
+    },
+    "stateType": {
+      "@id": "okflaw:stateType",
+      "@type": "@id"
+    },
+    "hasBeginning": {
+      "@id": "time:hasBeginning",
+      "@type": "@id"
+    },
+    "inXSDDateTime": {
+      "@id": "time:inXSDDateTime",
+      "@type": "xsd:dateTime"
+    },
+    "derivedFrom": {
+      "@id": "prov:wasDerivedFrom",
       "@type": "@id"
     },
     "passage": {

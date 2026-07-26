@@ -44,6 +44,13 @@
       "version": "1.1.22"
     },
     {
+      "bom-ref": "pkg:pypi/zstandard@0.23.0",
+      "name": "zstandard",
+      "purl": "pkg:pypi/zstandard@0.23.0",
+      "type": "library",
+      "version": "0.23.0"
+    },
+    {
       "bom-ref": "pkg:github/actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
       "name": "actions/checkout",
       "properties": [
@@ -160,7 +167,8 @@
         "pkg:pypi/pyshacl@0.30.1",
         "pkg:pypi/pyyaml@6.0.2",
         "pkg:pypi/rdflib@7.6.0",
-        "pkg:pypi/yaml-ld@1.1.22"
+        "pkg:pypi/yaml-ld@1.1.22",
+        "pkg:pypi/zstandard@0.23.0"
       ],
       "ref": "pkg:github/chris-page-gov/okf-uk-legislation@candidate"
     }
@@ -190,7 +198,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:50a6069a-089c-5d61-971f-cbd11ace27bd",
+  "serialNumber": "urn:uuid:90174772-2b51-56c1-98a8-1a2de21d4342",
   "specVersion": "1.6",
   "version": 1
 }

@@ -18,6 +18,49 @@ import check_legislation_okf as checker  # noqa: E402
 class LegislationOkfTests(unittest.TestCase):
     fixture = ROOT / "tests" / "fixtures" / "legislation_okf" / "sample.feed.xml"
 
+    def test_from_existing_preserves_timestamp_and_every_base_byte(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            output = Path(temp) / "bundle"
+            generated_at = "2026-07-10T00:00:00Z"
+            self.assertEqual(
+                0,
+                legislation.main(
+                    [
+                        "--fixture",
+                        str(self.fixture),
+                        "--output",
+                        str(output),
+                        "--generated-at",
+                        generated_at,
+                    ]
+                ),
+            )
+            before = {
+                path.relative_to(output): path.read_bytes()
+                for path in output.rglob("*")
+                if path.is_file()
+            }
+            self.assertEqual(
+                0,
+                legislation.main(
+                    [
+                        "--from-existing",
+                        "--output",
+                        str(output),
+                    ]
+                ),
+            )
+            after = {
+                path.relative_to(output): path.read_bytes()
+                for path in output.rglob("*")
+                if path.is_file()
+            }
+            self.assertEqual(before, after)
+            descriptor = json.loads(
+                (output / "okf-explorer.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(generated_at, descriptor["generated_at"])
+
     def test_fixture_maps_to_eli_and_schema_org(self) -> None:
         rows, _ = legislation.load_fixture(self.fixture)
         self.assertEqual(2, len(rows))
@@ -54,6 +97,14 @@ class LegislationOkfTests(unittest.TestCase):
         self.assertIn(Path("data/search/shards.json"), files)
         self.assertIn(Path("data/relationship-composition.json"), files)
         self.assertIn(Path("enrichment/model-assisted-v1.json"), files)
+        self.assertIn(
+            Path("enrichment/model-assisted-paid-governance-v1.json"),
+            files,
+        )
+        self.assertIn(
+            Path("enrichment/model-assisted-calibration-manifest-v1.json"),
+            files,
+        )
         self.assertIn(Path("ontology/normalized-vocabulary.md"), files)
         self.assertIn(Path("access/search-lists-feeds.md"), files)
         descriptor = json.loads(files[Path("okf-explorer.json")])

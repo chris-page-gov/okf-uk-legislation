@@ -1,0 +1,27 @@
+{
+  "account": "chris-page-gov",
+  "active_login": true,
+  "checked_at": "2026-07-26T02:39:09Z",
+  "credential_value_recorded": false,
+  "git_protocol": "https",
+  "host": "github.com",
+  "interpretation": "A GitHub CLI failure observed only inside a restricted sandbox is an environment or network result, not evidence of an invalid token. Credential invalidity may be diagnosed only after a safe read-only authentication check also fails outside the restricted sandbox.",
+  "operation_receipt": {
+    "repository": "chris-page-gov/okf-explorer",
+    "result": "passed",
+    "run_url": "https://github.com/chris-page-gov/okf-explorer/actions/runs/30184480772/job/89746597149",
+    "safe_read_only_operation": "gh pr checks 37 --repo chris-page-gov/okf-explorer"
+  },
+  "scopes": [
+    "gist",
+    "read:org",
+    "repo",
+    "workflow"
+  ],
+  "schema": "okf-github-operation-environment.v1",
+  "verification": {
+    "authentication_command": "gh auth status",
+    "execution_environment": "outside-restricted-sandbox",
+    "status": "passed"
+  }
+}

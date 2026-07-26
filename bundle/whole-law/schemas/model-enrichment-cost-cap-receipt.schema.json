@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-cost-cap-receipt.schema.json",
+  "title": "OKF model enrichment cost-cap receipt v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "receipt_id",
+    "run_id",
+    "mode",
+    "recorded_at",
+    "pricing_snapshot",
+    "cap_usd",
+    "spent_usd",
+    "reserved_usd",
+    "next_request_upper_bound_usd",
+    "projected_total_usd",
+    "remaining_usd",
+    "permitted",
+    "reservations",
+    "invariant",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-cost-cap-receipt.v1"
+    },
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^model-cost-[a-z0-9][a-z0-9._-]*$"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "mode": {
+      "enum": [
+        "preflight",
+        "runtime-reservation",
+        "hard-stop",
+        "final-reconciliation"
+      ]
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "pricing_snapshot": {
+      "$ref": "#/$defs/material"
+    },
+    "cap_usd": {
+      "const": 250
+    },
+    "spent_usd": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 250
+    },
+    "reserved_usd": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 250
+    },
+    "next_request_upper_bound_usd": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 250
+    },
+    "projected_total_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "remaining_usd": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 250
+    },
+    "permitted": {
+      "type": "boolean"
+    },
+    "reservations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/reservation"
+      }
+    },
+    "invariant": {
+      "const": "spent_usd + reserved_usd + next_request_upper_bound_usd <= cap_usd when permitted"
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "observed_at"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "reservation": {
+      "type": "object",
+      "required": [
+        "reservation_id",
+        "attempt_id",
+        "upper_bound_usd",
+        "settled_usd",
+        "state"
+      ],
+      "properties": {
+        "reservation_id": {
+          "type": "string",
+          "pattern": "^model-reservation-[a-z0-9][a-z0-9._-]*$"
+        },
+        "attempt_id": {
+          "type": "string",
+          "pattern": "^model-attempt-[a-z0-9][a-z0-9._-]*$"
+        },
+        "upper_bound_usd": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 250
+        },
+        "settled_usd": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 250
+        },
+        "state": {
+          "enum": [
+            "reserved",
+            "released",
+            "settled"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

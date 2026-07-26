@@ -1,0 +1,424 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-batch-plan.schema.json",
+  "title": "OKF paid model-enrichment deterministic batch plan v1",
+  "description": "A full-denominator, worst-case batch and retry plan. Every batch cost is recomputed from governed token bounds and the captured pricing snapshot.",
+  "type": "object",
+  "required": [
+    "schema",
+    "snapshot_id",
+    "ordered_input_projection_sha256",
+    "input_partition",
+    "generator_model",
+    "reviewer_model",
+    "strongest_model",
+    "pricing_snapshot",
+    "model_capabilities",
+    "role_profiles",
+    "batch_capacity_records",
+    "max_assertions_per_record",
+    "escalation_fraction",
+    "retry_fraction",
+    "safety_margin",
+    "input_token_bound",
+    "escalation_bound",
+    "retry_bound",
+    "batches",
+    "counts",
+    "projected_total_cost_usd",
+    "content_root_algorithm",
+    "content_root_sha256",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-batch-plan.v1"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "ordered_input_projection_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "input_partition": {
+      "$ref": "#/$defs/inputPartition"
+    },
+    "generator_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "reviewer_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "strongest_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "pricing_snapshot": {
+      "$ref": "#/$defs/material"
+    },
+    "model_capabilities": {
+      "$ref": "#/$defs/material"
+    },
+    "role_profiles": {
+      "$ref": "#/$defs/roleProfiles"
+    },
+    "batch_capacity_records": {
+      "const": 32
+    },
+    "max_assertions_per_record": {
+      "const": 8
+    },
+    "escalation_fraction": {
+      "const": 1
+    },
+    "retry_fraction": {
+      "const": 1
+    },
+    "safety_margin": {
+      "const": 1.25
+    },
+    "input_token_bound": {
+      "const": "ceil(1.25 * exact UTF-8 bytes) is used as a conservative upper bound because a byte-level token cannot encode less than one source byte"
+    },
+    "escalation_bound": {
+      "const": "worst-case every candidate-local record"
+    },
+    "retry_bound": {
+      "const": "one full retry reservation for every planned base batch"
+    },
+    "batches": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/batch"
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "generation",
+        "review",
+        "escalation",
+        "retry",
+        "total"
+      ],
+      "properties": {
+        "generation": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "review": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "escalation": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "retry": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "projected_total_cost_usd": {
+      "type": "number",
+      "minimum": 0
+    },
+    "content_root_algorithm": {
+      "const": "sha256(concatenated canonical JSON batch rows, each LF-terminated, in listed order)"
+    },
+    "content_root_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "inputPartition": {
+      "type": "object",
+      "required": [
+        "terminal_records",
+        "candidate_local_records",
+        "deterministic_deferred_records"
+      ],
+      "properties": {
+        "terminal_records": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "candidate_local_records": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "deterministic_deferred_records": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "roleProfiles": {
+      "type": "object",
+      "required": [
+        "generation",
+        "review",
+        "escalation"
+      ],
+      "properties": {
+        "generation": {
+          "$ref": "#/$defs/roleProfile"
+        },
+        "review": {
+          "$ref": "#/$defs/roleProfile"
+        },
+        "escalation": {
+          "$ref": "#/$defs/roleProfile"
+        }
+      },
+      "additionalProperties": false
+    },
+    "roleProfile": {
+      "type": "object",
+      "required": [
+        "requested_model",
+        "returned_model",
+        "processing_route",
+        "prompt",
+        "response_schema",
+        "parameters",
+        "envelope_template",
+        "fixed_input_overhead_tokens",
+        "output_tokens_per_record",
+        "context_window_tokens",
+        "model_max_output_tokens"
+      ],
+      "properties": {
+        "requested_model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "returned_model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "processing_route": {
+          "enum": [
+            "standard",
+            "batch",
+            "priority",
+            "other-documented"
+          ]
+        },
+        "prompt": {
+          "$ref": "#/$defs/material"
+        },
+        "response_schema": {
+          "$ref": "#/$defs/material"
+        },
+        "parameters": {
+          "$ref": "#/$defs/material"
+        },
+        "envelope_template": {
+          "$ref": "#/$defs/material"
+        },
+        "fixed_input_overhead_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "output_tokens_per_record": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "context_window_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "model_max_output_tokens": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "batch": {
+      "type": "object",
+      "required": [
+        "batch_id",
+        "role",
+        "retry_of",
+        "requested_model",
+        "endpoint",
+        "processing_route",
+        "prompt_sha256",
+        "response_schema_sha256",
+        "parameters_sha256",
+        "ordinal_start",
+        "ordinal_end",
+        "records",
+        "source_ordinal_start",
+        "source_ordinal_end",
+        "member_root_sha256",
+        "payload_sha256",
+        "fixed_input_overhead_tokens",
+        "member_input_tokens",
+        "upstream_input_tokens",
+        "estimated_uncached_input_tokens",
+        "estimated_cached_input_tokens",
+        "max_output_tokens",
+        "context_window_tokens",
+        "model_max_output_tokens",
+        "request_upper_bound_usd"
+      ],
+      "properties": {
+        "batch_id": {
+          "type": "string",
+          "pattern": "^model-batch-[a-z0-9][a-z0-9._-]*$"
+        },
+        "role": {
+          "enum": [
+            "generation",
+            "review",
+            "escalation",
+            "retry"
+          ]
+        },
+        "retry_of": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^model-batch-[a-z0-9][a-z0-9._-]*$"
+        },
+        "requested_model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "endpoint": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "processing_route": {
+          "enum": [
+            "standard",
+            "batch",
+            "priority",
+            "other-documented"
+          ]
+        },
+        "prompt_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "response_schema_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "parameters_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "ordinal_start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ordinal_end": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "records": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32
+        },
+        "source_ordinal_start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_ordinal_end": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "member_root_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "payload_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "fixed_input_overhead_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "member_input_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "upstream_input_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "estimated_uncached_input_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "estimated_cached_input_tokens": {
+          "const": 0
+        },
+        "max_output_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "context_window_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "model_max_output_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "request_upper_bound_usd": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 250
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

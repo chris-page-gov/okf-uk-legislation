@@ -24,12 +24,20 @@ verification applies file-count, per-file, total-size, regular-file and path
 safety bounds without extracting downloaded content.
 
 Frozen assertions are published under `data/effects/`. Live route references
-are kept separately for reconciliation. A refresh creates a new capture,
-archive, receipt and projection rather than rewriting evidence.
+are kept separately for reconciliation. On 26 July 2026 a bounded post-build
+check requested only the latest entry for both directions of all 11 seed
+works. Its 22 exact responses are preserved only in a bounded deterministic
+archive; the public receipt contains hashes and state counts, not response
+bodies. Six routes remained inaccessible consistently and the other 16 agreed
+with the static snapshot. The receipt does not claim a full live recrawl.
+A refresh creates a new capture, archive, receipt and projection rather than
+rewriting evidence.
 
 See the
 [effects evidence recovery guide](../evidence/source-acquisitions/legislation-effects/README.md)
 for offline validation and explicit byte-recovery commands.
+The post-build receipt is
+[`effects-live-reconciliation-20260726.json`](../whole-law/assurance/effects-live-reconciliation-20260726.json).
 
 ## Codex-assisted enrichment
 

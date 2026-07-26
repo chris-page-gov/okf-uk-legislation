@@ -28,7 +28,11 @@ PREFIXES = {
     "prov": "http://www.w3.org/ns/prov#",
     "eli": "http://data.europa.eu/eli/ontology#",
     "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
     "oa": "http://www.w3.org/ns/oa#",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "time": "http://www.w3.org/2006/time#",
 }
 
 

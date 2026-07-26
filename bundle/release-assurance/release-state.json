@@ -1,19 +1,72 @@
 {
   "current_state": "candidate",
+  "embedded_state": {
+    "gates": {
+      "GATE-12": "passed"
+    },
+    "release_report": {
+      "bytes": 141761,
+      "path": "bundle/release-assurance/release-report.json",
+      "sha256": "3e4630fc1505b3a4bf8d61b8231cf15518d96fd1860011ee08b9192ef2176b6e"
+    }
+  },
+  "external_finalization": {
+    "contract": {
+      "bytes": 5019,
+      "path": "release-assurance/external-finalization-contract.json",
+      "projected_path": "external-finalization-contract.json",
+      "sha256": "5b423fc7ba13f7d77da463425ed5ad9d2b6b93392b91a97a0c675c61f273a4ad"
+    },
+    "evidence_plane": "external-write-once",
+    "finalizer": {
+      "bytes": 122711,
+      "path": "scripts/finalize_release_candidate.py",
+      "sha256": "0217a0c2e7e8dcbb92832f9c86deb03740b199f8727a01ac30b95d64f4c676c2"
+    },
+    "release_observation_controller": {
+      "bytes": 33683,
+      "path": "scripts/capture_github_release_observation.py",
+      "sha256": "dabe0c5c5f8ec0162d046f5a4b045b76006037035a665b25d781912bd20a0383"
+    },
+    "workflow": [
+      {
+        "command": "authorize-rc",
+        "effect": "write the immutable pre-RC authorization receipt"
+      },
+      {
+        "command": "verify-rc",
+        "effect": "reconstruct and verify the pre-RC authorization receipt"
+      },
+      {
+        "command": "authorize-final-promotion",
+        "effect": "write immutable authorization to publish the already sealed RC asset as final"
+      },
+      {
+        "command": "finalize",
+        "effect": "write the immutable finalization receipt after identical-byte promotion"
+      },
+      {
+        "command": "verify-final",
+        "effect": "reconstruct and verify the finalization receipt"
+      }
+    ]
+  },
   "fail_closed": true,
   "gate_counts": {
-    "passed": 1,
-    "pending": 12
+    "passed": 5,
+    "pending": 9
   },
   "gates": [
     {
+      "evidence_plane": "embedded",
       "group": "candidate",
       "id": "GATE-01",
       "observed_reason": "One or more implementation clauses remain proposed, started or merely implemented.",
-      "requirement": "Every originating requirement has evidence-backed passed, explicitly accepted deferred, or externally blocked status; acceptance alone is not passage.",
+      "requirement": "Every originating requirement has an explicit lifecycle disposition and evidence appropriate to the pre-freeze state; no embedded pre-freeze must-have is unclassified or merely accepted, and post-freeze requirements are identified as external finalization obligations.",
       "status": "pending"
     },
     {
+      "evidence_plane": "embedded",
       "group": "candidate",
       "id": "GATE-02",
       "observed_reason": "All 24 research-package files (23 content hashes plus the integrity manifest) and the separately hashed Claude DOCX are present.",
@@ -21,69 +74,95 @@
       "status": "passed"
     },
     {
+      "evidence_plane": "embedded",
       "group": "validation",
       "id": "GATE-03",
       "requirement": "OKF 0.2, YAML-LD semantic round-trip, JSON-LD/RDF equivalence, SHACL, JSON Schema and vocabulary competency checks pass.",
-      "status": "pending"
+      "status": "passed"
     },
     {
+      "evidence_plane": "embedded",
       "group": "validation",
       "id": "GATE-04",
       "requirement": "All publicly accessible in-scope source routes have frozen acquisition evidence and exact denominators; restricted routes are declared.",
-      "status": "pending"
+      "status": "passed"
     },
     {
+      "evidence_plane": "embedded",
       "group": "validation",
       "id": "GATE-05",
-      "requirement": "The official effects graph is non-empty and queryable, live reconciliation is evidenced, and every eligible record has a recorded enrichment outcome.",
+      "requirement": "The official effects graph is non-empty and queryable, live reconciliation is evidenced, and a dedicated governed paid run records exactly one unique terminal outcome for every one of the 365,786 eligible records. Historical Codex-assisted output cannot satisfy the paid-run denominator.",
       "status": "pending"
     },
     {
-      "group": "validation",
+      "evidence_plane": "external",
+      "group": "frozen-candidate-validation",
       "id": "GATE-06",
+      "prerequisite_state": "validated",
       "requirement": "A clean clone reproduces identical semantic and byte digests with pinned dependencies.",
       "status": "pending"
     },
     {
-      "group": "validation",
+      "evidence_plane": "external",
+      "group": "frozen-candidate-validation",
       "id": "GATE-07",
+      "prerequisite_state": "validated",
       "requirement": "Chrome, Firefox and WebKit journeys pass, keyboard operation is verified, and automated WCAG checks have no serious or critical violations.",
       "status": "pending"
     },
     {
-      "group": "validation",
+      "evidence_plane": "external",
+      "group": "frozen-candidate-validation",
       "id": "GATE-08",
+      "prerequisite_state": "validated",
       "requirement": "Initial transfer, cold and warm search latency, and browser-memory limits pass on the frozen candidate.",
       "status": "pending"
     },
     {
-      "group": "validation",
+      "evidence_plane": "external",
+      "group": "post-rc-validation",
       "id": "GATE-09",
-      "requirement": "Pages, raw, archive and compatibility entry points pass unauthenticated smoke tests; the YAML-LD MIME exception remains explicit.",
+      "prerequisite_state": "rc",
+      "requirement": "After the immutable RC release and archive exist, Pages, raw, RC archive and compatibility entry points pass unauthenticated smoke tests; the YAML-LD MIME exception remains explicit.",
       "status": "pending"
     },
     {
-      "group": "validation",
+      "evidence_plane": "external",
+      "group": "frozen-candidate-validation",
       "id": "GATE-10",
-      "requirement": "Secret, dependency, content-injection, XML/XXE, archive-bomb, SSRF and privacy checks pass on the frozen candidate.",
+      "prerequisite_state": "validated",
+      "requirement": "Secrets, dependencies, content injection, XML/XXE, archive bombs, SSRF, privacy, unsafe redirects/URLs, untrusted downloaded content, immutable-evidence handling and supply-chain checks pass on the frozen candidate.",
       "status": "pending"
     },
     {
+      "evidence_plane": "embedded",
       "group": "validation",
       "id": "GATE-11",
       "requirement": "The corpus-bound release suite has independently verified gold evidence, citation-bearing executed answers, zero hard failures, at least 85/100 for every critical persona/task family, and two successful held-out challenge passes.",
-      "status": "pending"
+      "status": "passed"
     },
     {
+      "evidence_plane": "embedded",
       "group": "release-candidate",
       "id": "GATE-12",
+      "observed_reason": "The checksum-bound embedded release report records exact relationship composition, coverage and snapshot currency, unresolved gaps, licence/access escalations, executed evaluation, model cost and the YAML-LD MIME exception.",
       "requirement": "The final release report records relationship composition, coverage, freshness, gaps, licence/access escalations, evaluation results and model cost.",
+      "status": "passed"
+    },
+    {
+      "evidence_plane": "external",
+      "group": "publication",
+      "id": "GATE-13",
+      "prerequisite_state": "rc",
+      "requirement": "The release candidate is promoted without rebuilding; the RC and final tags peel to the frozen commit, their immutable API observations are integrity-bound, and both public assets equal the sealed archive bytes.",
       "status": "pending"
     },
     {
+      "evidence_plane": "external",
       "group": "publication",
-      "id": "GATE-13",
-      "requirement": "The release candidate is promoted without rebuilding and its public artefact digests equal the validated candidate digests.",
+      "id": "GATE-14",
+      "prerequisite_state": "rc",
+      "requirement": "All 62 originating requirements have item-level final evidence-backed passed, explicitly accepted deferred, externally blocked or superseded closure; no must-have is merely accepted and the immutable closure receipt is bound to the frozen ledger and commit.",
       "status": "pending"
     }
   ],
@@ -92,6 +171,13 @@
   "next_state": "validated",
   "next_transition_allowed": false,
   "policy": "release-assurance/release-policy.json",
+  "policy_projection": {
+    "bytes": 2131,
+    "path": "release-assurance/release-policy.json",
+    "projected_path": "release-policy.json",
+    "schema": "okf-release-state-policy.v2",
+    "sha256": "3b4e6948d7db8ee236051a5895c7a06382b2fa49c2d1a78d25572eead2d5be5e"
+  },
   "schema": "okf-release-state.v1",
   "state_consistent": true
 }

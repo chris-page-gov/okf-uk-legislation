@@ -1,0 +1,283 @@
+{
+  "errors": [],
+  "generated_at": "2026-07-25T22:54:00Z",
+  "input_fingerprint_sha256": "70da64296ecc5031eca3ac5c918c4d1f0797cb288667dd388b32e1415d5e966b",
+  "json_schema": {
+    "core_relationships": {
+      "chunk_inventory_sha256": "ed5f90e8805686fb6f6a7df3112df5b1e4da3223fecb47d86c76f5ff0da47981",
+      "chunks_validated": 168,
+      "rows_expected": 835563,
+      "rows_invalid": 0,
+      "rows_validated": 835563,
+      "schema": "okf-core-relationship-row.v1",
+      "schema_violations": 0
+    },
+    "federation_descriptor": {
+      "instances_validated": 1,
+      "schema_violations": 0
+    },
+    "provider_relationships": [
+      {
+        "chunk_inventory_sha256": "caa5d02b4be062ffe9ec06146fa8be4f532609af32b09c94277a3e1db5b92d57",
+        "chunks_declared": 1,
+        "chunks_validated": 1,
+        "datapack_id": "legislation-effects",
+        "manifest": {
+          "bytes": 1691,
+          "path": "bundle/data/effects/manifest.json",
+          "sha256": "cc95a8fde5390ad1c559168e7e48b5b6c0f9dfbfe994f75ef2550f6b6e96a0c9"
+        },
+        "manifest_schema_violations": 0,
+        "rows_expected": 14712,
+        "rows_invalid": 0,
+        "rows_validated": 14712,
+        "schema_violations": 0
+      },
+      {
+        "chunk_inventory_sha256": "8b2ad7c832d15c23bf087030bdd03e5e9691e995523cff5df8ed5551b629909b",
+        "chunks_declared": 366,
+        "chunks_validated": 366,
+        "datapack_id": "codex-assisted-v2",
+        "manifest": {
+          "bytes": 97763,
+          "path": "bundle/data/enrichment/manifest.json",
+          "sha256": "4714cd29c2eeb6173b62515fee1fa41ea0a92372a8fb1ae98ffd56308ee7e1cb"
+        },
+        "manifest_schema_violations": 0,
+        "rows_expected": 22299,
+        "rows_invalid": 0,
+        "rows_validated": 22299,
+        "schema_violations": 0
+      }
+    ],
+    "totals": {
+      "core_rows": 835563,
+      "invalid_rows": 0,
+      "provider_rows": 37011,
+      "relationship_rows": 872574,
+      "schema_violations": 0
+    }
+  },
+  "materials": {
+    "authored_yaml_ld": {
+      "bytes": 2392,
+      "path": "whole-law/okf-bundle.yamlld",
+      "sha256": "03bcd567b8aae8c505641796ae8ef91bfb4e847c1c13619cca2bbb00eea4e942"
+    },
+    "context": {
+      "bytes": 4470,
+      "path": "whole-law/ontology/context.jsonld",
+      "sha256": "cb089e41cca2518d64d41b96c2318967b4a4ee700ecd408fe64948c41912b188"
+    },
+    "contract_examples": {
+      "bytes": 8949,
+      "path": "whole-law/ontology/examples.jsonld",
+      "sha256": "37a6b79ff45984f659bfab0e92013f19edd9091fbfc228fc8317ad771f05d0eb"
+    },
+    "federation_descriptor": {
+      "bytes": 109764,
+      "path": "bundle/whole-law/okf-explorer.json",
+      "sha256": "cc110e0dfbee15f25aabd3634744973671f9c7b77f02d028a127d8635e664403"
+    },
+    "generated_json_ld": {
+      "bytes": 5737,
+      "path": "bundle/whole-law/okf-bundle.jsonld",
+      "sha256": "0ef7adcea9faad120f8dad6ff6fd0d03d410d51b05a4acb6371882b576e6bee8"
+    },
+    "published_yaml_ld": {
+      "bytes": 2392,
+      "path": "bundle/whole-law/okf-bundle.yamlld",
+      "sha256": "03bcd567b8aae8c505641796ae8ef91bfb4e847c1c13619cca2bbb00eea4e942"
+    },
+    "schemas": {
+      "core_relationship_row": {
+        "bytes": 1345,
+        "path": "whole-law/schemas/core-relationship-row.schema.json",
+        "sha256": "c81458b9d78607e7adbcb5f4e67b548455a2d94e38a1d5579c5d97e81bb3b995"
+      },
+      "federation": {
+        "bytes": 11776,
+        "path": "whole-law/schemas/federation.schema.json",
+        "sha256": "e8e775d80f32770ff6793935e445d0002731e1ef0c76f3874320c2a57cae0c33"
+      },
+      "provider_datapack": {
+        "bytes": 1363,
+        "path": "whole-law/schemas/provider-datapack.schema.json",
+        "sha256": "5710786b90afea23162054ae939960215fa800dd8a2b015d9b9432197580f799"
+      },
+      "provider_relationship_assertion": {
+        "bytes": 4937,
+        "path": "whole-law/schemas/relationship-assertion.schema.json",
+        "sha256": "1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4"
+      }
+    },
+    "shapes": {
+      "bytes": 10862,
+      "path": "whole-law/ontology/shapes.ttl",
+      "sha256": "5fe646674af3d237049722efcb1750fef1d258464cf6d6cfcb8f32b4855ce6b3"
+    },
+    "source_register": {
+      "bytes": 219607,
+      "path": "bundle/whole-law/data/source-register.json",
+      "sha256": "575c62fab383a2c9444d3480640a086c4970b88c3ecafe9929f401969a84cdfe"
+    },
+    "validator": {
+      "bytes": 35625,
+      "path": "scripts/run_semantic_conformance.py",
+      "sha256": "98627748e082de9bff1f9d245ae5b5f27f03c47e1070b95a349fea113c06b7ac"
+    },
+    "vocabulary": {
+      "bytes": 5972,
+      "path": "whole-law/ontology/vocabulary.ttl",
+      "sha256": "fec52841a2062e2137234b1b4de9ab4be5bbd1677f703fb1d4e05509443df9aa"
+    }
+  },
+  "processors": {
+    "PyLD": "2.0.4",
+    "jsonschema": "4.25.1",
+    "pyshacl": "0.30.1",
+    "rdflib": "7.6.0",
+    "yaml-ld": "1.1.22"
+  },
+  "schema": "okf-semantic-conformance.v1",
+  "scope": {
+    "catalogued_legal_works": 365786,
+    "claim_boundary": "The 365,786 catalogued legal works and relationship data plane are not materialised as RDF in this publication. SHACL covers the complete two-node semantic descriptor graph; JSON Schema covers every compact core and provider relationship row.",
+    "rdf_materialized_legal_works": 0,
+    "relationship_rows_exhaustively_validated_as_json": 872574,
+    "relationship_rows_materialized_as_rdf": 0,
+    "semantic_graph": "The complete authored/generated Whole-Law federation descriptor graph: one Federation and its governed SourceRegister contract node."
+  },
+  "semantic_equivalence": {
+    "canonical_nquads_sha256": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a",
+    "canonical_serializations_equal": true,
+    "graphs_isomorphic": true,
+    "json_graph_triples": 21,
+    "json_ld_api_operations": {
+      "authored_yaml_ld": {
+        "compaction_non_empty": true,
+        "flattening_non_empty": true,
+        "framed_federation_id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/",
+        "framed_identity_retained": true,
+        "framing_non_empty": true
+      },
+      "generated_json_ld": {
+        "compaction_non_empty": true,
+        "flattening_non_empty": true,
+        "framed_federation_id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/",
+        "framed_identity_retained": true,
+        "framing_non_empty": true
+      }
+    },
+    "json_ld_expanded_non_empty": true,
+    "json_ld_rdf_round_trip": true,
+    "yaml_graph_triples": 21,
+    "yaml_ld_expanded_non_empty": true,
+    "yaml_ld_rdf_round_trip": true
+  },
+  "shacl": {
+    "contract_examples": {
+      "all_named_entity_contracts_non_vacuous": true,
+      "conforms": true,
+      "entity_contract_targets": {
+        "case": {
+          "class": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Case",
+          "example_focus_nodes": 1,
+          "node_shapes": 1,
+          "required_property_constraints": 5
+        },
+        "court": {
+          "class": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Court",
+          "example_focus_nodes": 1,
+          "node_shapes": 1,
+          "required_property_constraints": 3
+        },
+        "jurisdiction": {
+          "class": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Jurisdiction",
+          "example_focus_nodes": 1,
+          "node_shapes": 1,
+          "required_property_constraints": 3
+        },
+        "legal_manifestation": {
+          "class": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#LegalManifestation",
+          "example_focus_nodes": 1,
+          "node_shapes": 1,
+          "required_property_constraints": 3
+        },
+        "organisation": {
+          "class": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Organisation",
+          "example_focus_nodes": 2,
+          "node_shapes": 1,
+          "required_property_constraints": 3
+        },
+        "provision": {
+          "class": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Provision",
+          "example_focus_nodes": 1,
+          "node_shapes": 1,
+          "required_property_constraints": 4
+        },
+        "publication": {
+          "class": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Publication",
+          "example_focus_nodes": 1,
+          "node_shapes": 1,
+          "required_property_constraints": 4
+        },
+        "source_record": {
+          "class": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#SourceRecord",
+          "example_focus_nodes": 2,
+          "node_shapes": 1,
+          "required_property_constraints": 4
+        },
+        "temporal_state": {
+          "class": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#TemporalState",
+          "example_focus_nodes": 1,
+          "node_shapes": 1,
+          "required_property_constraints": 4
+        }
+      },
+      "triples": 87,
+      "validation_results": 0
+    },
+    "descriptor_graphs_validated": 2,
+    "node_shapes_declared": 19,
+    "results": {
+      "authored_yaml_ld": {
+        "conforms": true,
+        "explicit_typed_nodes": 2,
+        "federation_focus_nodes": 1,
+        "severity_counts": {},
+        "source_register_focus_nodes": 1,
+        "target_counts": {
+          "okflaw:Federation": 1,
+          "okflaw:SourceRegister": 1
+        },
+        "uncovered_explicit_types": [],
+        "validation_results": 0
+      },
+      "generated_json_ld": {
+        "conforms": true,
+        "explicit_typed_nodes": 2,
+        "federation_focus_nodes": 1,
+        "severity_counts": {},
+        "source_register_focus_nodes": 1,
+        "target_counts": {
+          "okflaw:Federation": 1,
+          "okflaw:SourceRegister": 1
+        },
+        "uncovered_explicit_types": [],
+        "validation_results": 0
+      }
+    }
+  },
+  "source_contract": {
+    "access_methods": 108,
+    "access_test_date": "2026-07-25",
+    "published_sha256": "575c62fab383a2c9444d3480640a086c4970b88c3ecafe9929f401969a84cdfe",
+    "records": 72,
+    "schema": "okf-whole-law-source-register.v1",
+    "semantic_hash_binding": "sha256:575c62fab383a2c9444d3480640a086c4970b88c3ecafe9929f401969a84cdfe",
+    "semantic_values_match_published_register": true,
+    "source_classes": 36
+  },
+  "status": "passed"
+}

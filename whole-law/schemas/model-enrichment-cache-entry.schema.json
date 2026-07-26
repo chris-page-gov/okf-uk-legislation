@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-cache-entry.schema.json",
+  "title": "OKF immutable model enrichment cache entry v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "cache_key",
+    "provider",
+    "endpoint",
+    "requested_model",
+    "prompt_sha256",
+    "response_schema_sha256",
+    "parameters",
+    "parameters_sha256",
+    "input_sha256",
+    "max_output_tokens",
+    "processing_route",
+    "attempt",
+    "response_body_sha256",
+    "parsed_output_sha256",
+    "schema_valid",
+    "created_at",
+    "secret_material_recorded",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-cache-entry.v1"
+    },
+    "cache_key": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "provider": {
+      "const": "OpenAI"
+    },
+    "endpoint": {
+      "type": "string",
+      "pattern": "^https://api\\.openai\\.com/"
+    },
+    "requested_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "prompt_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "response_schema_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "parameters_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "input_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "max_output_tokens": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "processing_route": {
+      "enum": [
+        "standard",
+        "batch",
+        "priority",
+        "other-documented"
+      ]
+    },
+    "attempt": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "response_body_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "parsed_output_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "schema_valid": {
+      "const": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "secret_material_recorded": {
+      "const": false
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-independent-audit.schema.json",
+  "title": "OKF paid model-enrichment independent audit v1",
+  "description": "Final independently reviewed, deterministic-validation audit for one governed paid run.",
+  "type": "object",
+  "required": [
+    "schema",
+    "run_id",
+    "authority",
+    "generator_model",
+    "reviewer_model",
+    "strongest_model",
+    "selection_receipt",
+    "execution_authorization_receipt",
+    "attempt_ledger",
+    "cache_manifest",
+    "cost_cap_receipt",
+    "terminal_outcome_manifest",
+    "accepted_assertion_manifest",
+    "counts",
+    "schema_validity",
+    "accepted_evidence_support",
+    "accepted_deterministic_validation",
+    "status",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-independent-audit.v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "authority": {
+      "const": "derived-non-official"
+    },
+    "generator_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "reviewer_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "strongest_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "selection_receipt": {
+      "$ref": "#/$defs/material"
+    },
+    "execution_authorization_receipt": {
+      "$ref": "#/$defs/material"
+    },
+    "attempt_ledger": {
+      "$ref": "#/$defs/material"
+    },
+    "cache_manifest": {
+      "$ref": "#/$defs/material"
+    },
+    "cost_cap_receipt": {
+      "$ref": "#/$defs/material"
+    },
+    "terminal_outcome_manifest": {
+      "$ref": "#/$defs/material"
+    },
+    "accepted_assertion_manifest": {
+      "$ref": "#/$defs/material"
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "candidate_assertions",
+        "reviewed_assertions",
+        "accepted_assertions",
+        "review_rejections",
+        "escalations",
+        "deterministic_vetoes"
+      ],
+      "properties": {
+        "candidate_assertions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reviewed_assertions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "accepted_assertions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "review_rejections": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "escalations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "deterministic_vetoes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "schema_validity": {
+      "const": 1
+    },
+    "accepted_evidence_support": {
+      "const": 1
+    },
+    "accepted_deterministic_validation": {
+      "const": 1
+    },
+    "status": {
+      "const": "passed"
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

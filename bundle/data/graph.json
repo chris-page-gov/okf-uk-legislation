@@ -11,17 +11,17 @@
   ],
   "external_edge_counts": [
     {
+      "authority": "model-assisted",
+      "count": 22299,
+      "datapack": "data/enrichment/manifest.json",
+      "kind": "classified as"
+    },
+    {
       "authority": "official-source",
       "count": 14712,
       "coverage_status": "partial",
       "datapack": "data/effects/manifest.json",
       "kind": "official legislation effect"
-    },
-    {
-      "authority": "model-assisted",
-      "count": 22299,
-      "datapack": "data/enrichment/manifest.json",
-      "kind": "classified as"
     }
   ],
   "node_counts": {

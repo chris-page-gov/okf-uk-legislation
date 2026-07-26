@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-terminal-outcome.schema.json",
+  "title": "OKF model enrichment terminal record outcome v1",
+  "description": "One immutable terminal outcome for one governed eligible record. Rows are complete only when sealed by a validated terminal-outcome manifest.",
+  "type": "object",
+  "required": [
+    "schema",
+    "run_id",
+    "ordinal",
+    "record_id",
+    "input_sha256",
+    "outcome",
+    "candidate_assertions",
+    "accepted_assertions",
+    "review_rejections",
+    "escalations",
+    "risk_flags",
+    "deterministic_validation",
+    "outcome_evidence",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-terminal-outcome.v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "ordinal": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "input_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "outcome": {
+      "enum": [
+        "accepted",
+        "already-supported",
+        "budget-stopped",
+        "escalation-rejected",
+        "generator-schema-rejected",
+        "input-invalid",
+        "insufficient-frozen-evidence",
+        "no-supported-new-assertion",
+        "review-rejected"
+      ]
+    },
+    "candidate_assertions": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "accepted_assertions": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "review_rejections": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "escalations": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "risk_flags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "concept-link",
+          "deterministic-disagreement",
+          "entity-link",
+          "evidence-field-mismatch",
+          "jurisdiction-ambiguity",
+          "known-collision-family",
+          "low-confidence",
+          "multi-topic",
+          "non-title-evidence",
+          "official-looking-target",
+          "reviewer-uncertainty",
+          "semantic-disagreement",
+          "temporal-ambiguity",
+          "uri-fallback-title"
+        ]
+      }
+    },
+    "deterministic_validation": {
+      "enum": [
+        "passed",
+        "rejected",
+        "not-applicable"
+      ]
+    },
+    "outcome_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/material"
+      }
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

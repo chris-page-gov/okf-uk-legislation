@@ -523,6 +523,7 @@ def descriptor(
             "standards": "ontology/standards.json",
             "ontology": "ontology/index.md",
             "shapes": "ontology/shapes.ttl",
+            "semantic_conformance": "assurance/semantic-conformance.json",
             "evaluation": "evaluation/release-questions.json",
             "evaluation_coverage": "evaluation/coverage.json",
             "official_effects": "../data/effects/manifest.json",
@@ -770,6 +771,11 @@ def build_files() -> dict[Path, bytes]:
         "families": families,
         "claim": "The register covers all researched source records/classes; it does not claim complete ingestion of every legal corpus.",
     }
+    source_register_bytes = render_json(source_register)
+    source_register_sha256 = sha256_bytes(source_register_bytes.encode("utf-8"))
+    access_method_count = sum(
+        len(row.get("access_methods", [])) for row in source_register["records"]
+    )
 
     semantic = {
         "@context": load(SOURCE / "ontology" / "context.jsonld")["@context"],
@@ -786,7 +792,18 @@ def build_files() -> dict[Path, bytes]:
             {"@id": urljoin(desc["@id"], bundle["descriptor"])}
             for bundle in desc["bundles"]
         ],
-        "sourceRegister": {"@id": f"{PUBLIC}/whole-law/data/source-register.json"},
+        "sourceRegister": {
+            "@id": f"{PUBLIC}/whole-law/data/source-register.json",
+            "@type": "okflaw:SourceRegister",
+            "title": "UK Whole-Law governed source register",
+            "identifier": "whole-law-source-register-2026-07-25",
+            "registerSchema": source_register["schema"],
+            "recordCount": len(source_register["records"]),
+            "sourceClassCount": len(taxonomy["classes"]),
+            "accessMethodCount": access_method_count,
+            "accessTestDate": source_register["access_test_date"],
+            "sourceHash": f"sha256:{source_register_sha256}",
+        },
         "generatedAt": GENERATED_AT,
         "license": {"@id": OGL},
     }
@@ -803,7 +820,7 @@ def build_files() -> dict[Path, bytes]:
 
     put("okf-explorer.json", render_json(desc))
     put("okf-bundle.jsonld", render_json(semantic))
-    put("data/source-register.json", render_json(source_register))
+    put("data/source-register.json", source_register_bytes)
     put("data/legal-source-taxonomy.json", render_json(taxonomy))
     put("data/persona-task-matrix.json", render_json(personas))
     put("data/coverage.json", render_json(coverage))
@@ -883,6 +900,18 @@ binding, coverage strata, evidence and independent verification state.
 - [Answer schema](answer-schema.json)
 - [Claude access journey](claude-access-suite.json)
 - [All immutable evaluation executions](executions/index.json)
+
+## Canonical publication access
+
+| Repository | Canonical descriptor | Declared `raw_subpath` | Release/archive fallback |
+|---|---|---|---|
+| [GitHub](https://github.com/chris-page-gov/okf-uk-legislation) | [federation descriptor](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json) | `bundle/whole-law` | [immutable releases](https://github.com/chris-page-gov/okf-uk-legislation/releases) |
+
+- [legislation.gov.uk](https://www.legislation.gov.uk/)
+- [Official legislation data/API documentation](https://legislation.github.io/data-documentation/)
+- [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
+- [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
+- [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
 """)
     latest_execution_html = (
         "<li><a href=\"executions/"
@@ -904,6 +933,19 @@ binding, coverage strata, evidence and independent verification state.
 <li><a href="answer-schema.json">Answer schema</a></li>
 <li><a href="claude-access-suite.json">Claude access suite</a></li>
 <li><a href="executions/index.json">All immutable evaluation executions</a></li>
+</ul>
+<h2>Canonical publication access</h2><ul>
+<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
+<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Canonical federation descriptor</a></li>
+<li>Declared raw subpath: <code>bundle/whole-law</code></li>
+<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
+</ul>
+<h2>Official sources and examples</h2><ul>
+<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
+<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
+<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
+<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
+<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
 </ul></main></html>
 """)
     put(
@@ -940,6 +982,21 @@ binding, coverage strata, evidence and independent verification state.
 - [Sources, access and coverage](sources-and-coverage.md)
 - [Standards and validation](standards-and-validation.md)
 - [Maintenance and recovery](maintenance.md)
+- [Role guides](../../docs/roles/)
+
+## Canonical access
+
+| Repository | Canonical descriptor | Declared `raw_subpath` | Release/archive fallback |
+|---|---|---|---|
+| [GitHub](https://github.com/chris-page-gov/okf-uk-legislation) | [federation descriptor](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json) | `bundle/whole-law` | [immutable releases](https://github.com/chris-page-gov/okf-uk-legislation/releases) |
+
+## Official sources and examples
+
+- [legislation.gov.uk](https://www.legislation.gov.uk/)
+- [Official legislation data/API documentation](https://legislation.github.io/data-documentation/)
+- [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
+- [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
+- [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
 """)
     put("docs/index.html", """<!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
@@ -951,16 +1008,35 @@ binding, coverage strata, evidence and independent verification state.
 <li><a href="standards-and-validation.md">Standards and validation</a></li>
 <li><a href="maintenance.md">Maintenance and recovery</a></li>
 <li><a href="../evaluation/">Evaluation</a></li>
+<li><a href="../../docs/roles/">Role guides</a></li>
+</ul>
+<h2>Canonical access</h2><ul>
+<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
+<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Canonical federation descriptor</a></li>
+<li>Declared raw subpath: <code>bundle/whole-law</code></li>
+<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
+</ul>
+<h2>Official sources and examples</h2><ul>
+<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
+<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
+<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
+<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
+<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
 </ul></main></html>
 """)
     put("docs/getting-started.md", f"""# Getting started
 
 Open the federation in OKF Explorer with:
 
-`https://chris-page-gov.github.io/okf-explorer/?bundle={PUBLIC}%2Fwhole-law%2Fokf-explorer.json`
+`https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fwhole-law%2Fokf-explorer.json&view=reader#overview`
 
 The descriptor declares its repository, raw subpath, archive, JSON-LD fallback
 and source-family coverage so agents do not need to guess paths.
+
+Canonical descriptor:
+`{PUBLIC}/whole-law/okf-explorer.json`. Its declared raw subpath is
+`bundle/whole-law`; its archive fallback is
+`https://github.com/chris-page-gov/okf-uk-legislation/releases`.
 """)
     put("docs/authority-and-evidence.md", """# Authority, evidence and legal-use boundaries
 
@@ -1012,8 +1088,13 @@ documented compatibility decision.
 `okf-bundle.jsonld` from the same governed values. Validation exercises
 YAML-LD expansion, JSON-LD compaction, flattening and framing, RDF conversion,
 RDF-to-JSON-LD-to-RDF round-trip, graph isomorphism and canonical N-Quads
-equivalence. SHACL validates the example/entity contract and JSON Schema
-validates each public extension contract.
+equivalence. SHACL validates both the complete authored/generated semantic
+descriptor graphs and the example/entity contract. The semantic descriptor
+contains the Federation and its hash-bound SourceRegister contract node; it
+does not materialise the 365,786 catalogued legal works as RDF. The
+[deterministic conformance receipt](../assurance/semantic-conformance.json)
+separately records exhaustive JSON Schema validation of every compact core and
+provider relationship row.
 
 These checks establish conformance of this publication to its declared basic
 profile. They do not claim that the selected third-party processor passes
@@ -1054,12 +1135,21 @@ artefacts are promoted by digest without rebuilding.
 <main><h1>UK Whole-Law OKF</h1>
 <p>A federated, evidence-led map of authoritative and supporting UK legal sources.</p>
 <ul>
-<li><a href="okf-explorer.json">Explorer descriptor</a></li>
+<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Canonical Explorer descriptor</a></li>
 <li><a href="okf-bundle.yamlld">YAML-LD</a></li>
 <li><a href="okf-bundle.jsonld">JSON-LD</a></li>
 <li><a href="docs/index.md">Documentation</a></li>
 <li><a href="data/source-register.json">Source register</a></li>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/tree/main/bundle/whole-law">Repository source</a></li>
+<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
+<li>Declared raw subpath: <code>bundle/whole-law</code></li>
+<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
+</ul>
+<h2>Official sources and examples</h2><ul>
+<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
+<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
+<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
+<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
+<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
 </ul>
 <p>Coverage and authority state are explicit. This prototype is not legal advice.</p>
 </main></html>
@@ -1125,7 +1215,11 @@ def main() -> int:
         print(f"Whole-Law OKF synchronized: {len(files)} files")
         return 0
     write_files(files, output)
-    print(f"Wrote {len(files)} Whole-Law OKF files to {output.relative_to(ROOT)}")
+    try:
+        display_output = output.relative_to(ROOT)
+    except ValueError:
+        display_output = output
+    print(f"Wrote {len(files)} Whole-Law OKF files to {display_output}")
     return 0
 
 

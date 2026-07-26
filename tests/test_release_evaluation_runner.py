@@ -22,6 +22,143 @@ runner = load_runner()
 
 
 class ReleaseEvaluationRunnerTest(unittest.TestCase):
+    def test_challenge_seeds_are_reproducible_domain_separated_commitments(self):
+        context = {
+            "answer_schema_sha256": "a" * 64,
+            "archive_tree_sha256": "b" * 64,
+            "corpus_snapshot": "snapshot-1",
+            "question_ids_sha256": "c" * 64,
+            "source_register_sha256": "d" * 64,
+            "verifier_sha256": "e" * 64,
+        }
+        first = runner.derive_challenge_seed_commitment(
+            "held-out-pass-1",
+            context,
+        )
+        repeated = runner.derive_challenge_seed_commitment(
+            "held-out-pass-1",
+            dict(reversed(list(context.items()))),
+        )
+        second = runner.derive_challenge_seed_commitment(
+            "held-out-pass-2",
+            context,
+        )
+        self.assertEqual(first, repeated)
+        self.assertNotEqual(first["seed_sha256"], second["seed_sha256"])
+        self.assertTrue(first["answer_outputs_excluded"])
+        self.assertTrue(first["previous_pass_results_excluded"])
+        self.assertFalse(first["secret_or_random_seed"])
+
+    def test_challenge_mutations_are_discovered_from_answer_surfaces(self):
+        answer = {
+            "question_id": "Q1",
+            "evaluation_scope": runner.EVALUATION_SCOPE,
+            "underlying_legal_task_status": runner.LEGAL_TASK_STATUS,
+            "corpus_snapshot": "snapshot-1",
+            "temporal_context": {"snapshot": "snapshot-1"},
+            "limitations": [runner.LIMITATION_MARKER],
+            "independent_verification": {"status": "independently-verified"},
+            "propositions": [
+                {
+                    "id": "required-source-set",
+                    "value": ["SRC001"],
+                    "citation_ids": ["C1"],
+                },
+                {
+                    "id": "source-SRC001",
+                    "value": {
+                        "title": "Official source",
+                        "jurisdictions": ["UK"],
+                    },
+                    "citation_ids": ["C1"],
+                },
+                {
+                    "id": "access-SRC001",
+                    "value": [{"http_status": 200}],
+                    "citation_ids": ["C1"],
+                },
+            ],
+            "citations": [
+                {
+                    "id": "C1",
+                    "url": "https://example.test/evidence",
+                    "evidence_scope": "repository-file",
+                    "evidence_path": "evidence.json",
+                    "evidence_hash": "f" * 64,
+                }
+            ],
+        }
+        first = runner.select_mutation_specs(
+            answer,
+            seed="1" * 64,
+            limitation_marker=runner.LIMITATION_MARKER,
+            case_budget=12,
+        )
+        second = runner.select_mutation_specs(
+            answer,
+            seed="2" * 64,
+            limitation_marker=runner.LIMITATION_MARKER,
+            case_budget=12,
+        )
+        self.assertEqual(12, len(first))
+        self.assertEqual(12, len(second))
+        self.assertNotEqual(
+            [row["id"] for row in first],
+            [row["id"] for row in second],
+        )
+        surfaces = {row["surface"] for row in [*first, *second]}
+        self.assertTrue(any("propositions[" in value for value in surfaces))
+        self.assertTrue(any("citations[" in value for value in surfaces))
+        self.assertTrue(
+            any(value.endswith(".value.title") for value in surfaces)
+        )
+        source_spec = next(
+            row
+            for row in [*first, *second]
+            if row["operator"] == "alter-discovered-source-field"
+        )
+        mutated = runner.apply_discovered_mutation(answer, source_spec)
+        self.assertNotEqual(answer, mutated)
+        self.assertEqual("Official source", answer["propositions"][1]["value"]["title"])
+
+    def test_challenge_diagnostic_classification_is_independent_and_fail_closed(self):
+        rows = runner.classify_challenge_diagnostics(
+            [
+                "question-identity",
+                "corpus-snapshot",
+                "scope-boundary",
+                "required-source-set",
+                "source-metadata",
+                "direct-access-evidence",
+                "citation-hashes",
+                "declared-gold-match",
+                "jsonschema::additionalProperties",
+                "future-verifier-diagnostic",
+            ]
+        )
+        categories = {row["category"] for row in rows}
+        self.assertEqual(
+            {
+                "answer-identity",
+                "snapshot-integrity",
+                "scope-boundary",
+                "source-set-integrity",
+                "source-metadata-integrity",
+                "access-evidence-integrity",
+                "citation-integrity",
+                "proposition-integrity",
+                "schema-contract",
+                "unclassified-diagnostic",
+            },
+            categories,
+        )
+        unknown = next(
+            row
+            for row in rows
+            if row["category"] == "unclassified-diagnostic"
+        )
+        self.assertEqual("critical-protocol-failure", unknown["severity"])
+
     def test_work_identifier_preserves_modern_and_regnal_citations(self):
         self.assertEqual(
             "dataset/ukpga-1998-42",
@@ -152,28 +289,56 @@ class ReleaseEvaluationRunnerTest(unittest.TestCase):
             contract["high_risk_three_way"]["covered"],
         )
 
-    def test_release_questions_are_bound_and_truthfully_non_gold(self):
+    def test_release_questions_preserve_legal_prompts_but_scope_gold_to_corpus_facts(self):
         suite = json.loads(
             (
                 ROOT / "whole-law" / "evaluation" / "release-questions.json"
             ).read_text(encoding="utf-8")
         )
         source_hash = suite["corpus_binding"]["source_register_sha256"]
-        self.assertEqual("non-gold-baseline", suite["gold_status"])
-        self.assertIsNone(
-            suite["assurance_boundary"]["legal_answer_score"]
+        self.assertEqual(
+            "corpus-navigation-gold-candidate",
+            suite["gold_status"],
         )
         self.assertEqual(
-            0,
-            suite["assurance_boundary"]["held_out_answer_passes"],
+            runner.EVALUATION_SCOPE,
+            suite["evaluation_scope"],
+        )
+        self.assertEqual(
+            "not-applicable-to-refined-scope",
+            suite["assurance_boundary"]["legal_answer_score"]
         )
         for row in suite["questions"]:
-            self.assertEqual("non-gold-baseline", row["gold_status"])
+            self.assertEqual(
+                "corpus-navigation-gold-candidate",
+                row["gold_status"],
+            )
+            self.assertEqual(
+                runner.EVALUATION_SCOPE,
+                row["evaluation_scope"],
+            )
+            self.assertEqual(
+                runner.LEGAL_TASK_STATUS,
+                row["underlying_legal_task_status"],
+            )
+            self.assertTrue(row["original_legal_prompt"])
+            self.assertIn(
+                "do not answer the underlying legal task",
+                row["prompt"],
+            )
             self.assertEqual(
                 "not-performed",
                 row["independent_verification"]["status"],
             )
-            self.assertEqual([], row["independent_verification"]["evidence"])
+            self.assertTrue(row["independent_verification"]["evidence"])
+            expected = {
+                proposition["id"]: proposition
+                for proposition in row["expected_propositions"]
+            }
+            self.assertEqual(
+                sorted(row["required_source_ids"]),
+                expected["required-source-set"]["value"],
+            )
             self.assertEqual(
                 source_hash,
                 row["evidence_binding"]["source_register_sha256"],
@@ -186,6 +351,123 @@ class ReleaseEvaluationRunnerTest(unittest.TestCase):
                 row["corpus_snapshot"],
                 row["evidence_binding"]["corpus_snapshot"],
             )
+
+    def test_executed_evaluation_reconstructs_every_answer_and_rejects_mutations(self):
+        snapshot, archived_files, archive_validation = (
+            runner.collect_input_snapshot()
+        )
+        analysis, _timings, artifacts = runner.build_analysis(
+            snapshot,
+            archived_files,
+            archive_validation,
+        )
+        executed = analysis["whole_law_release"]["executed_evaluation"]
+        self.assertEqual("passed", executed["status"])
+        self.assertEqual(415, executed["answers_executed"])
+        self.assertEqual(415, executed["schema_valid_answers"])
+        self.assertEqual(415, executed["resolvable_citation_answers"])
+        self.assertEqual(415, executed["answers_independently_verified"])
+        self.assertEqual(0, executed["hard_failures"])
+        self.assertEqual(100, executed["minimum_critical_family_score"])
+        self.assertEqual(2, executed["held_out_passes"])
+        self.assertEqual("passed", executed["held_out_challenge_status"])
+        self.assertEqual("passed", executed["direct_source_baseline_status"])
+        self.assertIsNone(executed["legal_answer_score"])
+        self.assertEqual(
+            2,
+            executed["challenge_protocol"]["successive_qualifying_passes"],
+        )
+        self.assertEqual(
+            [0.0, 0.0],
+            executed["challenge_protocol"][
+                "new_non_critical_category_rates"
+            ],
+        )
+        self.assertEqual(
+            0,
+            executed["challenge_protocol"]["critical_failure_modes"],
+        )
+        self.assertFalse(
+            executed["challenge_protocol"]["held_out_is_secret_or_blinded"]
+        )
+
+        scores = json.loads(artifacts["scores.json"])
+        self.assertEqual(38, len(scores["personas"]))
+        self.assertEqual(20, len(scores["tasks"]))
+        calibration = json.loads(
+            artifacts["challenge-discovery-calibration.json"]
+        )
+        self.assertEqual(runner.CALIBRATION_SCHEMA, calibration["schema"])
+        self.assertEqual("passed", calibration["status"])
+        self.assertFalse(
+            calibration["selection"]["qualification_eligible"]
+        )
+        self.assertEqual(186, calibration["selection"]["question_count"])
+        self.assertEqual(
+            2_976,
+            calibration["adversarial_answers_expected"],
+        )
+        self.assertEqual(
+            calibration["adversarial_answers_expected"],
+            calibration["adversarial_answers_rejected"],
+        )
+        self.assertEqual(
+            18,
+            len(
+                calibration["challenge_registry"][
+                    "operators_discovered"
+                ]
+            ),
+        )
+        self.assertEqual(
+            9,
+            len(calibration["discovered_non_critical_categories"]),
+        )
+        self.assertTrue(calibration["catalogue_after_pass"])
+        seeds = {
+            calibration["protocol"]["seed_commitment"]["seed_sha256"]
+        }
+        for name in ("challenge-pass-1.json", "challenge-pass-2.json"):
+            challenge = json.loads(artifacts[name])
+            self.assertEqual(runner.PASS_SCHEMA, challenge["schema"])
+            self.assertEqual("passed", challenge["status"])
+            self.assertEqual(
+                challenge["correct_answers_expected"],
+                challenge["correct_answers_accepted"],
+            )
+            self.assertEqual(
+                challenge["adversarial_answers_expected"],
+                challenge["adversarial_answers_rejected"],
+            )
+            self.assertEqual([], challenge["critical_failure_modes"])
+            self.assertEqual([], challenge["new_non_critical_categories"])
+            self.assertEqual(
+                0.0,
+                challenge["new_non_critical_category_rate"],
+            )
+            self.assertTrue(
+                challenge["selection"]["critical_family_coverage_passed"]
+            )
+            self.assertTrue(
+                challenge["selection"]["qualification_eligible"]
+            )
+            self.assertEqual(94, challenge["selection"]["question_count"])
+            self.assertEqual(
+                1_128,
+                challenge["adversarial_answers_expected"],
+            )
+            self.assertGreater(
+                len(
+                    challenge["challenge_registry"][
+                        "operators_discovered"
+                    ]
+                ),
+                6,
+            )
+            seeds.add(
+                challenge["protocol"]["seed_commitment"]["seed_sha256"]
+            )
+        self.assertEqual(3, len(seeds))
 
     def test_coverage_fails_closed_when_a_required_mapping_case_is_removed(self):
         suite = json.loads(

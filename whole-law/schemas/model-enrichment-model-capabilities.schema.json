@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-model-capabilities.schema.json",
+  "title": "OKF exact model capability evidence v1",
+  "description": "A hash-bound capture of exact returned model identifiers and the context/output limits used by deterministic paid-run batching.",
+  "type": "object",
+  "required": [
+    "schema",
+    "provider",
+    "observed_at",
+    "source_url",
+    "source_body",
+    "source_body_sha256",
+    "external_attestation",
+    "models",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-model-capabilities.v1"
+    },
+    "provider": {
+      "const": "OpenAI"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_url": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "source_body": {
+      "$ref": "#/$defs/material"
+    },
+    "source_body_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "external_attestation": {
+      "$ref": "#/$defs/material"
+    },
+    "models": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "$ref": "#/$defs/model"
+      }
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "model": {
+      "type": "object",
+      "required": [
+        "requested_model",
+        "returned_model",
+        "structured_output_supported",
+        "context_window_tokens",
+        "max_output_tokens"
+      ],
+      "properties": {
+        "requested_model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "returned_model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "structured_output_supported": {
+          "const": true
+        },
+        "context_window_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_output_tokens": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

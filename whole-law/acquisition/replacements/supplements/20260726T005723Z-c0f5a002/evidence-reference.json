@@ -1,0 +1,40 @@
+{
+  "archive_path": "evidence/source-acquisitions/whole-law-route-replacements/archives/20260726T005723Z-c0f5a002.tar.xz",
+  "archive_receipt_path": "evidence/source-acquisitions/whole-law-route-replacements/archive-receipts/20260726T005723Z-c0f5a002.json",
+  "archive_sha256": "ec291f2c6dcedccedd18b0f67a289a997a41ae9973265f62cb1b524235bf8c3e",
+  "archive_tree_sha256": "56fdf3e679189fdcc60856306c5337033b7dc1284e90f385b5b535d2044e7925",
+  "evidence_run_id": "20260726T005723Z-c0f5a002",
+  "generated_at": "2026-07-26T00:57:32Z",
+  "original_integrity_sha256": "45b0b89bda856bf7ea4d85e2fb0830cd6e229ce7378a37d53b826d313670904d",
+  "overlay": "whole-law/acquisition/source-route-replacements-copfs-r02.v1.json",
+  "overlay_sha256": "61b80262d83fe395a1484d83cca05b76530e74c4dee9b4fbe40594535f31ec6b",
+  "publication_projection_id": "replacement-pub-20260726T005723Z-c0f5a002-ec291f2c6dce",
+  "schema": "okf-source-route-replacement-evidence-reference.v1",
+  "superseded_evidence_run_id": "20260725T203207Z-dd7315c3",
+  "validation": {
+    "archive_bytes": 9496,
+    "archive_sha256": "ec291f2c6dcedccedd18b0f67a289a997a41ae9973265f62cb1b524235bf8c3e",
+    "base_constraints_preserved": 217,
+    "byte_recovery_verified": true,
+    "compressed_blob_plaintext_check_passed": true,
+    "delta_constraints_added": 1,
+    "exact_corpus_enumerations": 0,
+    "exact_route_denominators": 1,
+    "file_count": 7,
+    "flagged_public_payload_bytes": null,
+    "flagged_public_payload_sha256": null,
+    "observed_access_state": {
+      "network-error": 1
+    },
+    "original_integrity_file_count": 6,
+    "original_integrity_sha256": "45b0b89bda856bf7ea4d85e2fb0830cd6e229ce7378a37d53b826d313670904d",
+    "original_integrity_total_bytes": 153489,
+    "redirects": 0,
+    "replacement_routes": 1,
+    "run_id": "20260726T005723Z-c0f5a002",
+    "schema": "okf-source-access-archive-validation.v1",
+    "source_records": 1,
+    "tree_sha256": "56fdf3e679189fdcc60856306c5337033b7dc1284e90f385b5b535d2044e7925",
+    "uncompressed_file_bytes": 154557
+  }
+}

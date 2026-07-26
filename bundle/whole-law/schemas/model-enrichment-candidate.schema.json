@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-candidate.schema.json",
+  "title": "OKF model enrichment candidate v1",
+  "description": "Strict structured output returned by a non-official semantic-enrichment generator. Publication metadata is added only after independent review and deterministic validation.",
+  "type": "object",
+  "required": [
+    "schema",
+    "batch_id",
+    "input_snapshot",
+    "records"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-candidate.v1"
+    },
+    "batch_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "input_snapshot": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "httpUrl": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "source_field",
+        "source_uri",
+        "source_sha256",
+        "quote",
+        "start",
+        "end"
+      ],
+      "properties": {
+        "source_field": {
+          "enum": [
+            "title",
+            "long_title",
+            "source_metadata",
+            "clml_annotation"
+          ]
+        },
+        "source_uri": {
+          "$ref": "#/$defs/httpUrl"
+        },
+        "source_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "start": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "end": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "assertion": {
+      "type": "object",
+      "required": [
+        "kind",
+        "predicate",
+        "target_id",
+        "confidence",
+        "evidence",
+        "risk_flags"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "topic",
+            "concept",
+            "entity"
+          ]
+        },
+        "predicate": {
+          "enum": [
+            "classified as",
+            "about concept",
+            "mentions entity"
+          ]
+        },
+        "target_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "risk_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/riskFlag"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "riskFlag": {
+      "enum": [
+        "concept-link",
+        "deterministic-disagreement",
+        "entity-link",
+        "evidence-field-mismatch",
+        "jurisdiction-ambiguity",
+        "known-collision-family",
+        "low-confidence",
+        "multi-topic",
+        "non-title-evidence",
+        "official-looking-target",
+        "temporal-ambiguity",
+        "uri-fallback-title"
+      ]
+    },
+    "record": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "input_sha256",
+        "decision",
+        "assertions",
+        "abstention_reason",
+        "risk_flags"
+      ],
+      "properties": {
+        "record_id": {
+          "$ref": "#/$defs/httpUrl"
+        },
+        "input_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "decision": {
+          "enum": [
+            "assert",
+            "abstain"
+          ]
+        },
+      "assertions": {
+        "type": "array",
+        "maxItems": 8,
+        "items": {
+            "$ref": "#/$defs/assertion"
+          }
+        },
+        "abstention_reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            null,
+            "already-supported",
+            "insufficient-frozen-evidence",
+            "no-supported-new-assertion"
+          ]
+        },
+        "risk_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/riskFlag"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

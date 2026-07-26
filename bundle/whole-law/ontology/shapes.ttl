@@ -1,10 +1,143 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix okflaw: <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#> .
+
+okflaw:FederationShape a sh:NodeShape ;
+  sh:targetClass okflaw:Federation ;
+  sh:closed true ;
+  sh:ignoredProperties (rdf:type) ;
+  sh:property [
+    sh:path dcterms:title ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:string
+  ] ;
+  sh:property [
+    sh:path dcterms:description ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:string
+  ] ;
+  sh:property [
+    sh:path okflaw:okfVersion ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:hasValue "0.2"
+  ] ;
+  sh:property [
+    sh:path okflaw:version ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:string
+  ] ;
+  sh:property [
+    sh:path okflaw:status ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:string
+  ] ;
+  sh:property [
+    sh:path dcterms:issued ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:date
+  ] ;
+  sh:property [
+    sh:path okflaw:descriptor ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path okflaw:childBundle ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path okflaw:sourceRegister ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:SourceRegister ;
+    sh:node okflaw:SourceRegisterShape
+  ] ;
+  sh:property [
+    sh:path prov:generatedAtTime ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:dateTime
+  ] ;
+  sh:property [
+    sh:path dcterms:license ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI
+  ] .
+
+okflaw:SourceRegisterShape a sh:NodeShape ;
+  sh:targetClass okflaw:SourceRegister ;
+  sh:closed true ;
+  sh:ignoredProperties (rdf:type) ;
+  sh:property [
+    sh:path dcterms:title ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:string
+  ] ;
+  sh:property [
+    sh:path dcterms:identifier ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:string
+  ] ;
+  sh:property [
+    sh:path okflaw:registerSchema ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:hasValue "okf-whole-law-source-register.v1"
+  ] ;
+  sh:property [
+    sh:path okflaw:recordCount ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:integer ;
+    sh:minInclusive 1
+  ] ;
+  sh:property [
+    sh:path okflaw:sourceClassCount ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:integer ;
+    sh:minInclusive 1
+  ] ;
+  sh:property [
+    sh:path okflaw:accessMethodCount ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:integer ;
+    sh:minInclusive 1
+  ] ;
+  sh:property [
+    sh:path okflaw:accessTestDate ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:date
+  ] ;
+  sh:property [
+    sh:path okflaw:sourceHash ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:pattern "^sha256:[a-f0-9]{64}$"
+  ] .
 
 okflaw:LegalWorkShape a sh:NodeShape ;
   sh:targetClass okflaw:LegalWork ;
@@ -23,12 +156,174 @@ okflaw:LegalExpressionShape a sh:NodeShape ;
     [ sh:property [ sh:path okflaw:versionState ; sh:minCount 1 ] ]
   ) .
 
+okflaw:LegalManifestationShape a sh:NodeShape ;
+  sh:targetClass okflaw:LegalManifestation ;
+  sh:property [
+    sh:path eli:embodies ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class eli:LegalExpression
+  ] ;
+  sh:property [
+    sh:path dcterms:format ;
+    sh:minCount 1 ;
+    sh:maxCount 1
+  ] ;
+  sh:property [
+    sh:path prov:wasDerivedFrom ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI
+  ] .
+
+okflaw:ProvisionShape a sh:NodeShape ;
+  sh:targetClass okflaw:Provision ;
+  sh:property [
+    sh:path dcterms:identifier ;
+    sh:minCount 1 ;
+    sh:maxCount 1
+  ] ;
+  sh:property [
+    sh:path dcterms:isPartOf ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:LegalWork
+  ] ;
+  sh:property [
+    sh:path okflaw:sourceRecord ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:SourceRecord
+  ] ;
+  sh:property [
+    sh:path prov:wasDerivedFrom ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI
+  ] .
+
 okflaw:PassageShape a sh:NodeShape ;
   sh:targetClass okflaw:LegalPassage ;
   sh:property [ sh:path oa:hasSource ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
   sh:property [ sh:path oa:hasSelector ; sh:minCount 1 ] ;
   sh:property [ sh:path okflaw:retrievedAt ; sh:minCount 1 ; sh:datatype xsd:dateTime ] ;
   sh:property [ sh:path okflaw:sourceHash ; sh:minCount 1 ; sh:pattern "^sha256:" ] .
+
+okflaw:CaseShape a sh:NodeShape ;
+  sh:targetClass okflaw:Case ;
+  sh:property [ sh:path dcterms:title ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path dcterms:identifier ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [
+    sh:path okflaw:decidingCourt ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:Court
+  ] ;
+  sh:property [
+    sh:path okflaw:sourceRecord ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:SourceRecord
+  ] ;
+  sh:property [
+    sh:path eli:jurisdiction ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:Jurisdiction
+  ] .
+
+okflaw:CourtShape a sh:NodeShape ;
+  sh:targetClass okflaw:Court ;
+  sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path dcterms:identifier ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [
+    sh:path okflaw:sourceRecord ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:SourceRecord
+  ] .
+
+okflaw:OrganisationShape a sh:NodeShape ;
+  sh:targetClass okflaw:Organisation ;
+  sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path dcterms:identifier ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [
+    sh:path okflaw:sourceRecord ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:SourceRecord
+  ] .
+
+okflaw:PublicationShape a sh:NodeShape ;
+  sh:targetClass okflaw:Publication ;
+  sh:property [ sh:path dcterms:title ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path dcterms:identifier ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [
+    sh:path dcterms:publisher ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:Organisation
+  ] ;
+  sh:property [
+    sh:path okflaw:sourceRecord ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:SourceRecord
+  ] .
+
+okflaw:SourceRecordEntityShape a sh:NodeShape ;
+  sh:targetClass okflaw:SourceRecord ;
+  sh:property [ sh:path dcterms:title ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path dcterms:identifier ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [
+    sh:path dcat:landingPage ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path dcterms:publisher ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:Organisation
+  ] .
+
+okflaw:JurisdictionShape a sh:NodeShape ;
+  sh:targetClass okflaw:Jurisdiction ;
+  sh:property [ sh:path skos:prefLabel ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path skos:notation ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [
+    sh:path okflaw:sourceRecord ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:SourceRecord
+  ] .
+
+okflaw:TemporalStateShape a sh:NodeShape ;
+  sh:targetClass okflaw:TemporalState ;
+  sh:property [
+    sh:path okflaw:stateType ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path time:hasBeginning ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class time:Instant
+  ] ;
+  sh:property [
+    sh:path prov:wasDerivedFrom ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path okflaw:sourceRecord ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:class okflaw:SourceRecord
+  ] .
 
 okflaw:PropositionShape a sh:NodeShape ;
   sh:targetClass okflaw:SynthesisedProposition ;
@@ -73,4 +368,3 @@ okflaw:NoUnsupportedSameAsShape a sh:NodeShape ;
       }
     }"""
   ] .
-

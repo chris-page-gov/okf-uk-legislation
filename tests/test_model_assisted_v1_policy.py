@@ -20,6 +20,24 @@ class LegacyModelAssistedV1PolicyTests(unittest.TestCase):
         ROOT / "enrichment" / "model-assisted-v1-independent-audit.json"
     )
 
+    def test_historical_api_prototype_is_quarantined_from_automation(self) -> None:
+        script = "scripts/enrich_legislation_semantics.py"
+        agreement = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn(f"Do not run `{script}`", agreement)
+        automated_surfaces = [
+            ROOT / ".github" / "workflows" / "ci.yml",
+            ROOT / ".github" / "workflows" / "pages.yml",
+            ROOT / ".github" / "workflows" / "drift.yml",
+            ROOT / "release-assurance" / "reproduction-profile.json",
+            ROOT / "scripts" / "validate_publication.sh",
+        ]
+        for path in automated_surfaces:
+            self.assertNotIn(
+                script,
+                path.read_text(encoding="utf-8"),
+                f"historical API prototype escaped quarantine in {path}",
+            )
+
     def test_original_rule_artifact_is_preserved_and_hash_bound(self) -> None:
         audit = json.loads(self.audit_path.read_text(encoding="utf-8"))
         self.assertEqual(

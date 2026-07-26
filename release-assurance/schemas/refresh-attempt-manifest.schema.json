@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/refresh-attempt-manifest.schema.json",
+  "title": "Immutable OKF refresh-attempt manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "attempt_id",
+    "identity_sha256",
+    "observed_at",
+    "source_commit",
+    "producer",
+    "probes",
+    "result",
+    "datapack",
+    "persistence",
+    "replacement_lineage",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-refresh-attempt-manifest.v1"
+    },
+    "attempt_id": {
+      "type": "string",
+      "pattern": "^[0-9]{8}T[0-9]{6}Z-[0-9a-f]{16}$"
+    },
+    "identity_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "const": "seal_refresh_attempt.py"
+        },
+        "version": {
+          "const": "1.0"
+        }
+      }
+    },
+    "probes": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "status",
+          "details"
+        ],
+        "properties": {
+          "name": {
+            "enum": [
+              "source_drift",
+              "new_work_delta",
+              "link_availability",
+              "checksum_integrity",
+              "source_access"
+            ]
+          },
+          "status": {
+            "enum": [
+              "passed",
+              "drift",
+              "failed",
+              "unavailable"
+            ]
+          },
+          "details": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "result": {
+      "enum": [
+        "no-drift-observed",
+        "drift-detected"
+      ]
+    },
+    "datapack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "media_type",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "datapack.json"
+        },
+        "media_type": {
+          "const": "application/json"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "persistence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "release_tag",
+        "append_only",
+        "overwrite_prohibited",
+        "edit_prohibited",
+        "delete_prohibited",
+        "retention"
+      ],
+      "properties": {
+        "kind": {
+          "const": "github-release"
+        },
+        "release_tag": {
+          "type": "string",
+          "pattern": "^refresh-attempt-[0-9]{8}T[0-9]{6}Z-[0-9a-f]{16}$"
+        },
+        "append_only": {
+          "const": true
+        },
+        "overwrite_prohibited": {
+          "const": true
+        },
+        "edit_prohibited": {
+          "const": true
+        },
+        "delete_prohibited": {
+          "const": true
+        },
+        "retention": {
+          "const": "release-lifetime"
+        }
+      }
+    },
+    "replacement_lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "supersedes",
+        "historical_attempts_mutated"
+      ],
+      "properties": {
+        "supersedes": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "historical_attempts_mutated": {
+          "const": false
+        }
+      }
+    },
+    "immutable": {
+      "const": true
+    }
+  }
+}

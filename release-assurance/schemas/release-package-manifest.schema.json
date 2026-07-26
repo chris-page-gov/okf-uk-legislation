@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/release-package-manifest.schema.json",
+  "title": "OKF immutable release package manifest",
+  "type": "object",
+  "required": [
+    "schema",
+    "commit",
+    "tree",
+    "archive",
+    "publication",
+    "semantic_digests",
+    "promotion"
+  ],
+  "properties": {
+    "schema": {"const": "okf-release-package-manifest.v1"},
+    "commit": {"$ref": "#/$defs/gitObject"},
+    "tree": {"$ref": "#/$defs/gitObject"},
+    "archive": {"$ref": "#/$defs/archive"},
+    "publication": {
+      "type": "object",
+      "required": ["files", "bytes", "inventory_sha256"],
+      "properties": {
+        "files": {"type": "integer", "minimum": 1},
+        "bytes": {"type": "integer", "minimum": 1},
+        "inventory_sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "semantic_digests": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/semanticDigest"}
+    },
+    "promotion": {
+      "type": "object",
+      "required": [
+        "candidate_tag",
+        "final_tag",
+        "asset_filename",
+        "asset_name_preserved",
+        "archive_bytes_reused",
+        "rebuild_prohibited",
+        "rename_prohibited",
+        "promote_by_sha256",
+        "rule"
+      ],
+      "properties": {
+        "candidate_tag": {"$ref": "#/$defs/gitRef"},
+        "final_tag": {"$ref": "#/$defs/gitRef"},
+        "asset_filename": {
+          "type": "string",
+          "pattern": "^[^/\\\\]+\\.tar\\.zst$"
+        },
+        "asset_name_preserved": {"const": true},
+        "archive_bytes_reused": {"const": true},
+        "rebuild_prohibited": {"const": true},
+        "rename_prohibited": {"const": true},
+        "promote_by_sha256": {"$ref": "#/$defs/sha256"},
+        "rule": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "gitObject": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "gitRef": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._/@+~-]{1,256}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "contextMaterial": {
+      "type": "object",
+      "required": ["url", "path", "bytes", "sha256"],
+      "properties": {
+        "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "semanticDigest": {
+      "type": "object",
+      "required": [
+        "id",
+        "yaml_ld",
+        "json_ld",
+        "canonical_nquads_sha256",
+        "canonical_nquads_bytes",
+        "canonical_nquads_statements",
+        "representations_equivalent"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "yaml_ld": {"$ref": "#/$defs/material"},
+        "json_ld": {"$ref": "#/$defs/material"},
+        "canonical_nquads_sha256": {"$ref": "#/$defs/sha256"},
+        "canonical_nquads_bytes": {"type": "integer", "minimum": 1},
+        "canonical_nquads_statements": {"type": "integer", "minimum": 1},
+        "representations_equivalent": {"const": true},
+        "offline_contexts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/contextMaterial"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "archive": {
+      "type": "object",
+      "required": [
+        "filename",
+        "format",
+        "content_profile",
+        "bytes",
+        "sha256",
+        "normalized_tar_bytes",
+        "normalized_tar_sha256",
+        "compression_ratio",
+        "zstandard",
+        "validation"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "pattern": "^[^/\\\\]+\\.tar\\.zst$"
+        },
+        "format": {"const": "application/zstd"},
+        "content_profile": {"const": "application/x-tar"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "normalized_tar_bytes": {"type": "integer", "minimum": 1},
+        "normalized_tar_sha256": {"$ref": "#/$defs/sha256"},
+        "compression_ratio": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "zstandard": {
+          "type": "object",
+          "required": [
+            "distribution",
+            "version",
+            "level",
+            "threads",
+            "checksum",
+            "content_size",
+            "dictionary_id"
+          ],
+          "properties": {
+            "distribution": {"type": "string", "minLength": 1},
+            "version": {"type": "string", "minLength": 1},
+            "level": {"type": "integer"},
+            "threads": {"const": 0},
+            "checksum": {"const": true},
+            "content_size": {"const": true},
+            "dictionary_id": {"const": false}
+          },
+          "additionalProperties": false
+        },
+        "validation": {
+          "type": "object",
+          "required": [
+            "safe_paths",
+            "regular_files_only",
+            "bounded_members",
+            "bounded_uncompressed_bytes",
+            "all_member_hashes_match"
+          ],
+          "properties": {
+            "safe_paths": {"const": true},
+            "regular_files_only": {"const": true},
+            "bounded_members": {"const": true},
+            "bounded_uncompressed_bytes": {"const": true},
+            "all_member_hashes_match": {"const": true}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

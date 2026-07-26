@@ -1,0 +1,398 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/deployed-entrypoints-manifest.schema.json",
+  "title": "GATE-09 deployed entrypoint allowlist manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "state",
+    "gate",
+    "candidate",
+    "allowed_hosts",
+    "policy",
+    "routes",
+    "cross_route_assertions"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-deployed-entrypoint-manifest.v1"
+    },
+    "state": {
+      "enum": [
+        "awaiting-exact-rc",
+        "locked"
+      ]
+    },
+    "gate": {
+      "const": "GATE-09"
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "git_commit",
+        "bundle_tree_sha256",
+        "release_tag",
+        "explorer_release"
+      ],
+      "properties": {
+        "repository": {
+          "const": "https://github.com/chris-page-gov/okf-uk-legislation"
+        },
+        "git_commit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bundle_tree_sha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "release_tag": {
+          "type": "string",
+          "minLength": 1
+        },
+        "explorer_release": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "allowed_hosts": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9.-]+$"
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authentication",
+        "cookies",
+        "dns_timeout_seconds",
+        "maximum_body_bytes",
+        "maximum_redirects",
+        "per_request_timeout_seconds",
+        "timeout_seconds",
+        "request_headers",
+        "raw_evidence",
+        "safe_projection"
+      ],
+      "properties": {
+        "authentication": {
+          "const": "none"
+        },
+        "cookies": {
+          "const": "never"
+        },
+        "dns_timeout_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 5
+        },
+        "maximum_body_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2097152
+        },
+        "maximum_redirects": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "per_request_timeout_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 20
+        },
+        "timeout_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 30
+        },
+        "request_headers": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "Accept",
+            "Accept-Encoding",
+            "Connection",
+            "User-Agent"
+          ],
+          "properties": {
+            "Accept": {
+              "type": "string",
+              "minLength": 1
+            },
+            "Accept-Encoding": {
+              "const": "identity"
+            },
+            "Connection": {
+              "const": "close"
+            },
+            "User-Agent": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "raw_evidence": {
+          "const": "write-once-untrusted-response-bytes"
+        },
+        "safe_projection": {
+          "const": "selected-headers-status-url-and-body-hash-only"
+        }
+      }
+    },
+    "routes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "$ref": "#/$defs/route"
+      }
+    },
+    "cross_route_assertions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/assertion"
+      }
+    }
+  },
+  "$defs": {
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "coverage",
+        "url",
+        "allowed_redirect_hosts",
+        "expected"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{1,79}$"
+        },
+        "coverage": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "pages-descriptor",
+              "pages-documentation",
+              "raw-declared-subpath",
+              "github-archive-fallback",
+              "github-release-fallback",
+              "explorer-loading",
+              "compatibility-documentation",
+              "compatibility-moved-descriptor",
+              "ckan-documentation",
+              "ckan-example",
+              "yaml-ld",
+              "json-ld-fallback"
+            ]
+          }
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "allowed_redirect_hosts": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9.-]+$"
+          }
+        },
+        "maximum_redirects": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "maximum_body_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2097152
+        },
+        "expected": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "statuses",
+            "media_types",
+            "document_kind"
+          ],
+          "properties": {
+            "statuses": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "integer",
+                "minimum": 200,
+                "maximum": 299
+              }
+            },
+            "media_types": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "document_kind": {
+              "enum": [
+                "json",
+                "json-ld",
+                "moved-descriptor",
+                "yaml-ld",
+                "html",
+                "text",
+                "markdown",
+                "gzip-archive",
+                "zstd-archive"
+              ]
+            },
+            "allow_declared_yaml_ld_mime_exception": {
+              "type": "boolean"
+            },
+            "allow_truncated": {
+              "type": "boolean"
+            },
+            "required_text": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              }
+            },
+            "json_fields": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "assertion": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "kind",
+            "left_route",
+            "right_route"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{1,79}$"
+            },
+            "kind": {
+              "const": "body-digest-equal"
+            },
+            "left_route": {
+              "type": "string"
+            },
+            "right_route": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "kind",
+            "yaml_route",
+            "json_route"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{1,79}$"
+            },
+            "kind": {
+              "const": "yaml-json-fallback"
+            },
+            "yaml_route": {
+              "type": "string"
+            },
+            "json_route": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "kind",
+            "explorer_route",
+            "bundle_route"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{1,79}$"
+            },
+            "kind": {
+              "const": "explorer-bundle-query"
+            },
+            "explorer_route": {
+              "type": "string"
+            },
+            "bundle_route": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "locked"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "candidate": {
+            "properties": {
+              "git_commit": {
+                "pattern": "^[0-9a-f]{40}$"
+              },
+              "bundle_tree_sha256": {
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "release_tag": {
+                "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+-rc\\.[0-9]+$"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

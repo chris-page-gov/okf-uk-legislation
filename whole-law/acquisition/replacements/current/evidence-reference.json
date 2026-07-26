@@ -1,0 +1,41 @@
+{
+  "archive_path": "evidence/source-acquisitions/whole-law-route-replacements/archives/20260726T005115Z-04a20f01.tar.xz",
+  "archive_receipt_path": "evidence/source-acquisitions/whole-law-route-replacements/archive-receipts/20260726T005115Z-04a20f01.json",
+  "archive_sha256": "4a804b1d08a7d0a189dcff8f4e2b894b2dc732b48b2d9d8489735b8f03940ea4",
+  "archive_tree_sha256": "d27232164bd46fc5c3b3baa37ecbc088c83c3139e28d760901de91f01d5f39cf",
+  "evidence_run_id": "20260726T005115Z-04a20f01",
+  "generated_at": "2026-07-26T00:51:32Z",
+  "original_integrity_sha256": "9b29486e723b9c5bcf8d4351837d43847c7960c54799614af447557d7fcd79ce",
+  "overlay": "whole-law/acquisition/source-route-replacements.v1.json",
+  "overlay_sha256": "29cacaa811f8c41e90c859a24c0785c137843d9dbd0439477409d95ecfc4bcf0",
+  "publication_projection_id": "replacement-pub-20260726T005115Z-04a20f01-4a804b1d08a7",
+  "schema": "okf-source-route-replacement-evidence-reference.v1",
+  "superseded_evidence_run_id": "20260725T203207Z-dd7315c3",
+  "validation": {
+    "archive_bytes": 115228,
+    "archive_sha256": "4a804b1d08a7d0a189dcff8f4e2b894b2dc732b48b2d9d8489735b8f03940ea4",
+    "base_constraints_preserved": 217,
+    "byte_recovery_verified": true,
+    "compressed_blob_plaintext_check_passed": true,
+    "delta_constraints_added": 20,
+    "exact_corpus_enumerations": 0,
+    "exact_route_denominators": 20,
+    "file_count": 45,
+    "flagged_public_payload_bytes": null,
+    "flagged_public_payload_sha256": null,
+    "observed_access_state": {
+      "network-error": 1,
+      "reachable": 19
+    },
+    "original_integrity_file_count": 44,
+    "original_integrity_sha256": "9b29486e723b9c5bcf8d4351837d43847c7960c54799614af447557d7fcd79ce",
+    "original_integrity_total_bytes": 931193,
+    "redirects": 4,
+    "replacement_routes": 20,
+    "run_id": "20260726T005115Z-04a20f01",
+    "schema": "okf-source-access-archive-validation.v1",
+    "source_records": 17,
+    "tree_sha256": "d27232164bd46fc5c3b3baa37ecbc088c83c3139e28d760901de91f01d5f39cf",
+    "uncompressed_file_bytes": 938687
+  }
+}

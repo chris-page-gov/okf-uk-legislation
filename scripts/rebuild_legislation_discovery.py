@@ -231,7 +231,12 @@ def relationship_dimensions(
 
     counts: Counter[tuple[str, str, str, str, str]] = Counter()
 
-    def consume(rows: Any, datapack: str) -> int:
+    def consume(
+        rows: Any,
+        datapack: str,
+        *,
+        default_freshness: str = "unknown",
+    ) -> int:
         if not isinstance(rows, list):
             raise ValueError(f"{datapack} relationship chunk is not a list")
         for row in rows:
@@ -246,14 +251,21 @@ def relationship_dimensions(
                     predicate,
                     builder.normalized_relationship_authority(row),
                     builder.normalized_relationship_confidence(row),
-                    builder.normalized_relationship_freshness(row),
+                    builder.normalized_relationship_freshness(
+                        row,
+                        default=default_freshness,
+                    ),
                 )
             ] += 1
         return len(rows)
 
     core_total = 0
     for relative in manifest["chunks"]["relationships"]:
-        core_total += consume(load_json(resolved_bundle_path(relative)), "core")
+        core_total += consume(
+            load_json(resolved_bundle_path(relative)),
+            "core",
+            default_freshness="current",
+        )
     expected_core = int(manifest["counts"]["relationships"])
     if core_total != expected_core:
         raise ValueError(

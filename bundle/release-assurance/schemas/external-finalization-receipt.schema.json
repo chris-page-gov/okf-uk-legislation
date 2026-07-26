@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/external-finalization-receipt.schema.json",
+  "title": "OKF immutable external release finalization receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "status", "finalization_id", "state", "pre_rc_authorization", "final_promotion_authorization", "frozen_candidate", "archive", "explorer_release", "security", "accessibility", "performance", "public_probe", "traceability", "promotion", "gates", "invariants"],
+  "properties": {
+    "schema": {"const": "okf-external-finalization-receipt.v2"},
+    "status": {"const": "passed"},
+    "finalization_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+    "state": {"const": "published"},
+    "pre_rc_authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorization_id", "receipt"],
+      "properties": {
+        "authorization_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+        "receipt": {"$ref": "#/$defs/material"}
+      }
+    },
+    "final_promotion_authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorization_id", "receipt"],
+      "properties": {
+        "authorization_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+        "receipt": {"$ref": "#/$defs/material"}
+      }
+    },
+    "frozen_candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit", "tree", "release_package_manifest", "reproduction_receipt", "provenance_inputs"],
+      "properties": {
+        "repository": {"const": "https://github.com/chris-page-gov/okf-uk-legislation"},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "release_package_manifest": {"$ref": "#/$defs/material"},
+        "reproduction_receipt": {"$ref": "#/$defs/material"},
+        "provenance_inputs": {"$ref": "#/$defs/material"}
+      }
+    },
+    "archive": {"$ref": "#/$defs/archive"},
+    "explorer_release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "tag", "commit", "release_url", "receipt", "materials"],
+      "properties": {
+        "repository": {"const": "https://github.com/chris-page-gov/okf-explorer"},
+        "tag": {"const": "v0.5.0"},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "release_url": {"const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.0"},
+        "receipt": {"$ref": "#/$defs/material"},
+        "materials": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/material"}}
+      }
+    },
+    "security": {"$ref": "#/$defs/gateEvidenceWithChecks"},
+    "accessibility": {"$ref": "#/$defs/gateEvidence"},
+    "performance": {"$ref": "#/$defs/gateEvidence"},
+    "public_probe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate", "status", "candidate", "attempt", "projection", "integrity", "route_manifest"],
+      "properties": {
+        "gate": {"const": "GATE-09"},
+        "status": {"const": "passed"},
+        "candidate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "git_commit", "bundle_tree_sha256", "release_tag", "explorer_release"],
+          "properties": {
+            "repository": {"const": "https://github.com/chris-page-gov/okf-uk-legislation"},
+            "git_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+            "bundle_tree_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "release_tag": {"const": "v0.3.0-rc.1"},
+            "explorer_release": {"const": "v0.5.0"}
+          }
+        },
+        "attempt": {"$ref": "#/$defs/material"},
+        "projection": {"$ref": "#/$defs/material"},
+        "integrity": {"$ref": "#/$defs/material"},
+        "route_manifest": {"$ref": "#/$defs/material"}
+      }
+    },
+    "traceability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirements_total", "requirements_closed", "unresolved_must_haves", "receipt", "materials"],
+      "properties": {
+        "requirements_total": {"const": 62},
+        "requirements_closed": {"const": 62},
+        "unresolved_must_haves": {"const": 0},
+        "receipt": {"$ref": "#/$defs/material"},
+        "materials": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/material"}}
+      }
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_tag", "final_tag", "candidate_peeled_commit", "final_peeled_commit", "candidate_release_id", "final_release_id", "candidate_asset_id", "final_asset_id", "asset_filename", "candidate_release_url", "final_release_url", "candidate_observation", "final_observation", "candidate_asset", "final_asset", "identical"],
+      "properties": {
+        "candidate_tag": {"const": "v0.3.0-rc.1"},
+        "final_tag": {"const": "v0.3.0"},
+        "candidate_peeled_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "final_peeled_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "candidate_release_id": {"type": "integer", "minimum": 1},
+        "final_release_id": {"type": "integer", "minimum": 1},
+        "candidate_asset_id": {"type": "integer", "minimum": 1},
+        "final_asset_id": {"type": "integer", "minimum": 1},
+        "asset_filename": {"const": "okf-uk-legislation-v0.3.0.tar.zst"},
+        "candidate_release_url": {"const": "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.3.0-rc.1/okf-uk-legislation-v0.3.0.tar.zst"},
+        "final_release_url": {"const": "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.3.0/okf-uk-legislation-v0.3.0.tar.zst"},
+        "candidate_observation": {"$ref": "#/$defs/material"},
+        "final_observation": {"$ref": "#/$defs/material"},
+        "candidate_asset": {"$ref": "#/$defs/archive"},
+        "final_asset": {"$ref": "#/$defs/archive"},
+        "identical": {"const": true}
+      }
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["GATE-06", "GATE-07", "GATE-08", "GATE-09", "GATE-10", "GATE-13", "GATE-14"],
+      "properties": {
+        "GATE-06": {"const": "passed"},
+        "GATE-07": {"const": "passed"},
+        "GATE-08": {"const": "passed"},
+        "GATE-09": {"const": "passed"},
+        "GATE-10": {"const": "passed"},
+        "GATE-13": {"const": "passed"},
+        "GATE-14": {"const": "passed"}
+      }
+    },
+    "invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frozen_checkout_mutated", "archive_rebuilt", "archive_renamed", "candidate_and_final_assets_identical", "all_external_evidence_write_once"],
+      "properties": {
+        "frozen_checkout_mutated": {"const": false},
+        "archive_rebuilt": {"const": false},
+        "archive_renamed": {"const": false},
+        "candidate_and_final_assets_identical": {"const": true},
+        "all_external_evidence_write_once": {"const": true}
+      }
+    }
+  },
+  "$defs": {
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\\\u0000-\\u001f]+$"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"const": "okf-uk-legislation-v0.3.0.tar.zst"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "gateEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receipt", "materials"],
+      "properties": {
+        "receipt": {"$ref": "#/$defs/material"},
+        "materials": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/material"}}
+      }
+    },
+    "gateEvidenceWithChecks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scan_id", "checks", "receipt", "materials"],
+      "properties": {
+        "scan_id": {"type": "string", "minLength": 1},
+        "checks": {
+          "type": "array",
+          "minItems": 11,
+          "maxItems": 11,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "secrets",
+              "dependencies",
+              "content-injection",
+              "xml-xxe",
+              "archive-bomb",
+              "ssrf",
+              "privacy",
+              "unsafe-redirects-and-urls",
+              "untrusted-downloaded-content",
+              "immutable-evidence",
+              "supply-chain"
+            ]
+          }
+        },
+        "receipt": {"$ref": "#/$defs/material"},
+        "materials": {"type": "array", "minItems": 4, "uniqueItems": true, "items": {"$ref": "#/$defs/material"}}
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "archive_path": "evidence/source-acquisitions/whole-law-route-replacements/archives/20260726T010545Z-c0f5a003.tar.xz",
+  "archive_receipt_path": "evidence/source-acquisitions/whole-law-route-replacements/archive-receipts/20260726T010545Z-c0f5a003.json",
+  "archive_sha256": "90104abb441c752a7ec754d78a03e7ab51f4c50763cc2e087e0a07edbebbc088",
+  "archive_tree_sha256": "0f81daa85935eb3ed27d68bea2315ea476c9d1b3caa9e6c3b41f8a4d708af323",
+  "evidence_run_id": "20260726T010545Z-c0f5a003",
+  "generated_at": "2026-07-26T01:05:57Z",
+  "original_integrity_sha256": "3c836104add218662a7a6a581dab23f46053c0976df867583583f0041fbb7eb8",
+  "overlay": "whole-law/acquisition/source-route-replacements-copfs-r03.v1.json",
+  "overlay_sha256": "53aec18f04f7dfed8416e8f69f6929de4187abef0a4ed92eacde312410b1c35a",
+  "publication_projection_id": "replacement-pub-20260726T010545Z-c0f5a003-90104abb441c",
+  "schema": "okf-source-route-replacement-evidence-reference.v1",
+  "superseded_evidence_run_id": "20260725T203207Z-dd7315c3",
+  "validation": {
+    "archive_bytes": 38236,
+    "archive_sha256": "90104abb441c752a7ec754d78a03e7ab51f4c50763cc2e087e0a07edbebbc088",
+    "base_constraints_preserved": 217,
+    "byte_recovery_verified": true,
+    "compressed_blob_plaintext_check_passed": true,
+    "delta_constraints_added": 1,
+    "exact_corpus_enumerations": 0,
+    "exact_route_denominators": 1,
+    "file_count": 8,
+    "flagged_public_payload_bytes": null,
+    "flagged_public_payload_sha256": null,
+    "observed_access_state": {
+      "reachable": 1
+    },
+    "original_integrity_file_count": 7,
+    "original_integrity_sha256": "3c836104add218662a7a6a581dab23f46053c0976df867583583f0041fbb7eb8",
+    "original_integrity_total_bytes": 189877,
+    "redirects": 0,
+    "replacement_routes": 1,
+    "run_id": "20260726T010545Z-c0f5a003",
+    "schema": "okf-source-access-archive-validation.v1",
+    "source_records": 1,
+    "tree_sha256": "0f81daa85935eb3ed27d68bea2315ea476c9d1b3caa9e6c3b41f8a4d708af323",
+    "uncompressed_file_bytes": 191112
+  }
+}

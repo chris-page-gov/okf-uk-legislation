@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-pricing-snapshot.schema.json",
+  "title": "OKF model enrichment pricing snapshot v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "provider",
+    "currency",
+    "unit",
+    "observed_at",
+    "source_url",
+    "source_body",
+    "source_body_sha256",
+    "external_attestation",
+    "models",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-pricing-snapshot.v1"
+    },
+    "provider": {
+      "const": "OpenAI"
+    },
+    "currency": {
+      "const": "USD"
+    },
+    "unit": {
+      "const": "per-1-million-tokens"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_url": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "source_body": {
+      "$ref": "#/$defs/material"
+    },
+    "source_body_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "external_attestation": {
+      "$ref": "#/$defs/material"
+    },
+    "models": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/modelPrice"
+      }
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "rate": {
+      "type": "number",
+      "minimum": 0
+    },
+    "modelPrice": {
+      "type": "object",
+      "required": [
+        "requested_model",
+        "endpoint",
+        "processing_route",
+        "input_usd_per_million",
+        "cached_input_usd_per_million",
+        "output_usd_per_million",
+        "pricing_note"
+      ],
+      "properties": {
+        "requested_model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "endpoint": {
+          "type": "string",
+          "pattern": "^https://api\\.openai\\.com/"
+        },
+        "processing_route": {
+          "enum": [
+            "standard",
+            "batch",
+            "priority",
+            "other-documented"
+          ]
+        },
+        "input_usd_per_million": {
+          "$ref": "#/$defs/rate"
+        },
+        "cached_input_usd_per_million": {
+          "$ref": "#/$defs/rate"
+        },
+        "output_usd_per_million": {
+          "$ref": "#/$defs/rate"
+        },
+        "pricing_note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

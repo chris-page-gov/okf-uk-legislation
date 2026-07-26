@@ -1,0 +1,56 @@
+{
+  "created_at": "2026-07-26T01:02:00Z",
+  "overlay_id": "whole-law-route-replacements-copfs-r03-20260726",
+  "policy": {
+    "authentication_bypass": false,
+    "credentials": false,
+    "immutable_base": true,
+    "maximum_redirects": 5,
+    "replacement_only": true,
+    "schemes": [
+      "https"
+    ]
+  },
+  "routes": [
+    {
+      "allowed_redirect_hosts": [
+        "copfs.gov.uk",
+        "www.copfs.gov.uk"
+      ],
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The direct official publication is the current disclosure code.",
+        "replacement_route_count": 1,
+        "scope_note": "A single current PDF does not establish a comprehensive historical-publications denominator."
+      },
+      "officiality": {
+        "basis": "Direct PDF hosted by the official Crown Office and Procurator Fiscal Service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "previous_url": "https://www.copfs.gov.uk/media/03znmxlq/code-of-practice-disclosure-of-evidence-in-criminal-proceedings.pdf",
+      "replacement_id": "SRC029-A02-R03",
+      "replaces_method_id": "SRC029-A02",
+      "source_id": "SRC029",
+      "supplements_replacement_id": "SRC029-A02-R02",
+      "transport": "system-curl-secure",
+      "url": "https://www.copfs.gov.uk/media/03znmxlq/code-of-practice-disclosure-of-evidence-in-criminal-proceedings.pdf"
+    }
+  ],
+  "schema": "okf-source-route-replacement-overlay.v1",
+  "source_register": {
+    "path": "research/whole-law-okf-research/source-register.json",
+    "sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810"
+  },
+  "supplements": {
+    "archive_sha256": "ec291f2c6dcedccedd18b0f67a289a997a41ae9973265f62cb1b524235bf8c3e",
+    "evidence_run_id": "20260726T005723Z-c0f5a002",
+    "overlay_path": "whole-law/acquisition/source-route-replacements-copfs-r02.v1.json",
+    "overlay_sha256": "61b80262d83fe395a1484d83cca05b76530e74c4dee9b4fbe40594535f31ec6b"
+  },
+  "superseded_observation": {
+    "access_methods_path": "whole-law/acquisition/current/access-methods.json",
+    "access_methods_sha256": "30aaef86282be1ca5058689dcbde571f601114996b4d800d3d926c07a493db40",
+    "evidence_run_id": "20260725T203207Z-dd7315c3"
+  }
+}

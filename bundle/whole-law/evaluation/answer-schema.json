@@ -15,11 +15,35 @@
             "pattern": "^[0-9a-f]{64}$",
             "type": "string"
           },
+          "evidence_member": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "evidence_path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "evidence_scope": {
+            "enum": [
+              "repository-file",
+              "archive-member"
+            ]
+          },
           "id": {
             "minLength": 1,
             "type": "string"
           },
           "jurisdiction": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "observed_access_state": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "pinpoint": {
             "minLength": 1,
             "type": "string"
           },
@@ -48,6 +72,8 @@
           "jurisdiction",
           "version",
           "retrieved_at",
+          "evidence_scope",
+          "evidence_path",
           "evidence_hash"
         ],
         "type": "object"
@@ -58,7 +84,11 @@
     "corpus_snapshot": {
       "const": "whole-law-2026-07-25+legislation-2026-07-11T18:00:00Z"
     },
+    "evaluation_scope": {
+      "const": "corpus-navigation-metadata"
+    },
     "independent_verification": {
+      "additionalProperties": false,
       "properties": {
         "evidence": {
           "items": {
@@ -91,6 +121,7 @@
       "items": {
         "type": "string"
       },
+      "minItems": 2,
       "type": "array"
     },
     "propositions": {
@@ -109,14 +140,21 @@
             "minLength": 1,
             "type": "string"
           },
+          "kind": {
+            "minLength": 1,
+            "type": "string"
+          },
           "text": {
             "minLength": 1,
             "type": "string"
-          }
+          },
+          "value": {}
         },
         "required": [
           "id",
+          "kind",
           "text",
+          "value",
           "citation_ids"
         ],
         "type": "object"
@@ -129,6 +167,7 @@
       "type": "string"
     },
     "temporal_context": {
+      "additionalProperties": false,
       "properties": {
         "as_of": {
           "format": "date-time",
@@ -150,10 +189,15 @@
         "currency_limitations"
       ],
       "type": "object"
+    },
+    "underlying_legal_task_status": {
+      "const": "not-evaluated-requires-qualified-domain-review"
     }
   },
   "required": [
     "question_id",
+    "evaluation_scope",
+    "underlying_legal_task_status",
     "corpus_snapshot",
     "propositions",
     "citations",

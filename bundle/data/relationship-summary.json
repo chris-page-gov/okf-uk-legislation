@@ -2,8 +2,8 @@
   "combined_total": 872574,
   "core_total": 835563,
   "external_datapack_total": 37011,
-  "generated_at": "2026-07-25T22:20:00Z",
-  "notice": "Counts distinguish official, derived and model-assisted relationships by predicate and datapack; effects coverage is reported separately.",
+  "generated_at": "2026-07-25T21:30:00Z",
+  "notice": "Counts are separated by predicate, authority and datapack. Official effects cover only the declared partial seed snapshot.",
   "relationships": [
     {
       "authority": "derived-non-official",

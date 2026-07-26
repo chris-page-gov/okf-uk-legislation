@@ -1,0 +1,59 @@
+{
+  "evidence_run_id": "20260726T010545Z-c0f5a003",
+  "generated_at": "2026-07-26T01:05:57Z",
+  "overlay": {
+    "id": "whole-law-route-replacements-copfs-r03-20260726",
+    "path": "whole-law/acquisition/source-route-replacements-copfs-r03.v1.json",
+    "sha256": "53aec18f04f7dfed8416e8f69f6929de4187abef0a4ed92eacde312410b1c35a"
+  },
+  "records": [
+    {
+      "body_sha256": "0c1b75551404641e680b02ebb8d8c9587e2ec2581561277dc040fc029e52dae7",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The direct official publication is the current disclosure code.",
+        "replacement_route_count": 1,
+        "scope_note": "A single current PDF does not establish a comprehensive historical-publications denominator."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC029-A02-R03/envelope.json",
+      "evidence_run_id": "20260726T010545Z-c0f5a003",
+      "final_url": "https://www.copfs.gov.uk/media/03znmxlq/code-of-practice-disclosure-of-evidence-in-criminal-proceedings.pdf",
+      "http_status": 206,
+      "kind": "Disclosure Code",
+      "media_type": "application/pdf",
+      "method_id": "SRC029-A02",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T01:05:57Z",
+      "officiality": {
+        "basis": "Direct PDF hosted by the official Crown Office and Procurator Fiscal Service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Crown Office and Procurator Fiscal Service",
+      "previous_url": "https://www.copfs.gov.uk/media/03znmxlq/code-of-practice-disclosure-of-evidence-in-criminal-proceedings.pdf",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC029-A02-R03",
+      "replaces_method_id": "SRC029-A02",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official publication identified.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "9816c73c68b9427950dc58475b828bd7742fbe168e2b2efae03eeca2260d7af3",
+      "source_id": "SRC029",
+      "source_title": "COPFS Prosecution Code and guidance",
+      "url": "https://www.copfs.gov.uk/media/03znmxlq/code-of-practice-disclosure-of-evidence-in-criminal-proceedings.pdf"
+    }
+  ],
+  "schema": "okf-source-route-replacement-observations.v1",
+  "source_register": "research/whole-law-okf-research/source-register.json",
+  "source_register_sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810"
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-deterministic-results.schema.json",
+  "title": "OKF paid model-enrichment deterministic results batch v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "batch_id",
+    "run_id",
+    "results",
+    "immutable"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-model-enrichment-deterministic-results.v1"
+    },
+    "batch_id": {
+      "type": "string",
+      "pattern": "^model-deterministic-[a-z0-9][a-z0-9._-]*$"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/result"
+      }
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "result": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "input_sha256",
+        "candidate_assertion_sha256",
+        "source",
+        "predicate",
+        "target",
+        "status",
+        "checks"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "input_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "candidate_assertion_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "predicate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "const": "passed"
+        },
+        "checks": {
+          "type": "array",
+          "uniqueItems": true,
+          "allOf": [
+            {
+              "contains": {
+                "const": "candidate-schema"
+              }
+            },
+            {
+              "contains": {
+                "const": "evidence-span"
+              }
+            },
+            {
+              "contains": {
+                "const": "exact-public-projection"
+              }
+            },
+            {
+              "contains": {
+                "const": "official-authority-boundary"
+              }
+            },
+            {
+              "contains": {
+                "const": "target-policy"
+              }
+            }
+          ],
+          "items": {
+            "enum": [
+              "candidate-schema",
+              "evidence-span",
+              "exact-public-projection",
+              "official-authority-boundary",
+              "target-policy"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -321,6 +321,7 @@
       }
     }
   },
+  "evaluation_scope": "corpus-navigation-metadata",
   "expected": {
     "personas": 38,
     "source_classes": 36,

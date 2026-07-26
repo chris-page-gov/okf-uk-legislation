@@ -1,0 +1,986 @@
+{
+  "evidence_run_id": "20260726T005115Z-04a20f01",
+  "generated_at": "2026-07-26T00:51:32Z",
+  "overlay": {
+    "id": "whole-law-route-replacements-20260726",
+    "path": "whole-law/acquisition/source-route-replacements.v1.json",
+    "sha256": "29cacaa811f8c41e90c859a24c0785c137843d9dbd0439477409d95ecfc4bcf0"
+  },
+  "records": [
+    {
+      "body_sha256": "93d800605924d1871ce7bf8a686879c5014e7e56c40236160df43648482bd8d8",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Official table of rules/practice directions plus update instruments; no historical point-in-time denominator identified on the current pages.",
+        "replacement_route_count": 1,
+        "scope_note": "The overlay replaces one stale landing-page route; it does not enumerate historical practice directions."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC018-A02-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/raprnotes",
+      "http_status": 200,
+      "kind": "Practice directions",
+      "media_type": "text/html",
+      "method_id": "SRC018-A02",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:26Z",
+      "officiality": {
+        "basis": "Ministry of Justice Civil Procedure Rules service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Ministry of Justice / Civil Procedure Rule Committee",
+      "previous_url": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/practice-directions",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC018-A02-R01",
+      "replaces_method_id": "SRC018-A02",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official index accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC018",
+      "source_title": "Civil Procedure Rules and practice directions",
+      "url": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/raprnotes"
+    },
+    {
+      "body_sha256": "b8dd995d9280d72c06b9078a505ac66c01f368bd455368eb3fcedf249636f103",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The Tribunal Procedure Committee states that it keeps nine sets of Tribunal Procedure Rules under review.",
+        "replacement_route_count": 1,
+        "scope_note": "Nine is an exact ruleset count stated by the committee, not a complete count of rules, instruments or historical versions."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC021-A01-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.gov.uk/government/organisations/tribunal-procedure-committee/about",
+      "http_status": 200,
+      "kind": "Tribunal procedure rules collection",
+      "media_type": "text/html",
+      "method_id": "SRC021-A01",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:26Z",
+      "officiality": {
+        "basis": "Official GOV.UK page for the Tribunal Procedure Committee.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Ministry of Justice / Tribunal Procedure Committee / Judiciary",
+      "previous_url": "https://www.gov.uk/government/collections/tribunal-procedure-rules",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC021-A01-R01",
+      "replaces_method_id": "SRC021-A01",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official collection accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC021",
+      "source_title": "Tribunal Procedure Rules and practice directions",
+      "url": "https://www.gov.uk/government/organisations/tribunal-procedure-committee/about"
+    },
+    {
+      "body_sha256": "d359d9473a020b07e696f0da96f43e4f3c52a5abea52d2cfa1de5b44bd9b1258",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Official guideline indexes are organised by published guideline and version.",
+        "replacement_route_count": 1,
+        "scope_note": "The landing page does not establish a complete historical guideline/version denominator."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC027-A01-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://sentencingcouncil.org.uk/",
+      "http_status": 200,
+      "kind": "Guidelines collection",
+      "media_type": "text/html",
+      "method_id": "SRC027-A01",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:27Z",
+      "officiality": {
+        "basis": "Official Sentencing Council for England and Wales service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Sentencing Council for England and Wales",
+      "previous_url": "https://www.sentencingcouncil.org.uk/guidelines/",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC027-A01-R01",
+      "replaces_method_id": "SRC027-A01",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official guideline search/browse accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC027",
+      "source_title": "Sentencing Council guidelines",
+      "url": "https://sentencingcouncil.org.uk/"
+    },
+    {
+      "body_sha256": "e5814e8f2bf7b620125cd966249941c3fb57147048fa84505f6cd177e9050837",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official prosecution-guidance search is the current public index.",
+        "replacement_route_count": 1,
+        "scope_note": "A dynamic result count is not treated as a complete historical denominator."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC028-A01-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.cps.gov.uk/prosecution-guidance/prosecution-guidance-search",
+      "http_status": 206,
+      "kind": "Legal guidance library",
+      "media_type": "text/html",
+      "method_id": "SRC028-A01",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:27Z",
+      "officiality": {
+        "basis": "Official Crown Prosecution Service guidance search.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Crown Prosecution Service",
+      "previous_url": "https://www.cps.gov.uk/legal-guidance",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC028-A01-R01",
+      "replaces_method_id": "SRC028-A01",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official guidance library accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC028",
+      "source_title": "Crown Prosecution Service legal guidance",
+      "url": "https://www.cps.gov.uk/prosecution-guidance/prosecution-guidance-search"
+    },
+    {
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "captured_bytes": 0,
+      "comparison": "claim-not-reproduced",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official publication page exposes the current disclosure code.",
+        "replacement_route_count": 1,
+        "scope_note": "The page does not establish a comprehensive historical-publications denominator."
+      },
+      "error": {
+        "message": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1010)",
+        "type": "URLError"
+      },
+      "evidence_envelope": "methods/SRC029-A02-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.copfs.gov.uk/publications/code-of-practice-disclosure-of-evidence-in-criminal-proceedings/",
+      "http_status": null,
+      "kind": "Disclosure Code",
+      "media_type": null,
+      "method_id": "SRC029-A02",
+      "observed_access_state": "network-error",
+      "observed_at": "2026-07-26T00:51:27Z",
+      "officiality": {
+        "basis": "Official Crown Office and Procurator Fiscal Service publication.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Crown Office and Procurator Fiscal Service",
+      "previous_url": "https://www.copfs.gov.uk/publications/disclosure-code/",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC029-A02-R01",
+      "replaces_method_id": "SRC029-A02",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official publication identified.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": null,
+      "source_id": "SRC029",
+      "source_title": "COPFS Prosecution Code and guidance",
+      "url": "https://www.copfs.gov.uk/publications/code-of-practice-disclosure-of-evidence-in-criminal-proceedings/"
+    },
+    {
+      "body_sha256": "cf8e47c77a58a426415ef0f07fdccd4ee2a60b714184208b65f57456f53c73a2",
+      "captured_bytes": 30134,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official publication page exposes the current Code for Prosecutors.",
+        "replacement_route_count": 1,
+        "scope_note": "The page does not establish a complete historical-version denominator."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC030-A01-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.ppsni.gov.uk/publications/code-prosecutors",
+      "http_status": 206,
+      "kind": "Code for Prosecutors",
+      "media_type": "text/html",
+      "method_id": "SRC030-A01",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:27Z",
+      "officiality": {
+        "basis": "Official Public Prosecution Service for Northern Ireland publication.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Public Prosecution Service for Northern Ireland",
+      "previous_url": "https://www.ppsni.gov.uk/code-prosecutors",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC030-A01-R01",
+      "replaces_method_id": "SRC030-A01",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official page accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC030",
+      "source_title": "Public Prosecution Service NI Code for Prosecutors",
+      "url": "https://www.ppsni.gov.uk/publications/code-prosecutors"
+    },
+    {
+      "body_sha256": "f02d9562a00cdd31f734b7b6e73baac14b2bcdba0c0eb6bbfebc667d5157a076",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The complete current denominator is the publisher's Handbook module/provision tree, not a search count.",
+        "replacement_route_count": 1,
+        "scope_note": "This replacement is an explanatory landing page and does not itself enumerate the Handbook."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC031-A02-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.fca.org.uk/about/how-we-regulate/handbook",
+      "http_status": 206,
+      "kind": "FCA site explanation",
+      "media_type": "text/html",
+      "method_id": "SRC031-A02",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:28Z",
+      "officiality": {
+        "basis": "Official Financial Conduct Authority Handbook explanation.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Financial Conduct Authority",
+      "previous_url": "https://www.fca.org.uk/firms/handbook",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC031-A02-R01",
+      "replaces_method_id": "SRC031-A02",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official FCA page describing the Handbook accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC031",
+      "source_title": "FCA Handbook",
+      "url": "https://www.fca.org.uk/about/how-we-regulate/handbook"
+    },
+    {
+      "body_sha256": "572c3f4b2772abb095c9ca85a4e93f9b9d6dc64651f8fe5119235837e75ac892",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official Rulebook hierarchy and instrument register define the current denominator.",
+        "replacement_route_count": 1,
+        "scope_note": "This information page is not itself a complete Rulebook enumeration."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC033-A02-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.bankofengland.co.uk/prudential-regulation/pra-rulebook-website",
+      "http_status": 200,
+      "kind": "Rulebook information",
+      "media_type": "text/html",
+      "method_id": "SRC033-A02",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:28Z",
+      "officiality": {
+        "basis": "Official Bank of England Prudential Regulation Authority page.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Prudential Regulation Authority / Bank of England",
+      "previous_url": "https://www.bankofengland.co.uk/prudential-regulation/pra-rulebook",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC033-A02-R01",
+      "replaces_method_id": "SRC033-A02",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official explanation accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC033",
+      "source_title": "PRA Rulebook",
+      "url": "https://www.bankofengland.co.uk/prudential-regulation/pra-rulebook-website"
+    },
+    {
+      "body_sha256": "e671ece57a27f4a2727c3e3d1b2b058626bb160a6834c6fd9204a6b11a6f9191",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The denominator varies by sanction regime and publication-retention policy.",
+        "replacement_route_count": 1,
+        "scope_note": "The current publication does not establish a universal enforcement denominator."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC039-A01-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.gov.uk/government/publications/environment-agencys-use-of-civil-sanctions",
+      "http_status": 206,
+      "kind": "Enforcement undertakings",
+      "media_type": "text/html",
+      "method_id": "SRC039-A01",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:28Z",
+      "officiality": {
+        "basis": "Official GOV.UK Environment Agency publication.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Environment Agency",
+      "previous_url": "https://www.gov.uk/government/publications/environment-agency-enforcement-undertakings-accepted",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [
+        {
+          "from_url": "https://www.gov.uk/government/publications/enforcement-undertakings-accepted-by-the-environment-agency",
+          "http_status": 301,
+          "target_resolution": {
+            "all_addresses_public": true,
+            "hostname": "www.gov.uk",
+            "port": 443,
+            "resolved_addresses": [
+              "199.232.52.144",
+              "2a04:4e42:f::144"
+            ],
+            "scheme": "https",
+            "url": "https://www.gov.uk/government/publications/the-environment-agencys-use-of-civil-sanctions"
+          },
+          "to_url": "https://www.gov.uk/government/publications/the-environment-agencys-use-of-civil-sanctions"
+        },
+        {
+          "from_url": "https://www.gov.uk/government/publications/the-environment-agencys-use-of-civil-sanctions",
+          "http_status": 301,
+          "target_resolution": {
+            "all_addresses_public": true,
+            "hostname": "www.gov.uk",
+            "port": 443,
+            "resolved_addresses": [
+              "199.232.52.144",
+              "2a04:4e42:f::144"
+            ],
+            "scheme": "https",
+            "url": "https://www.gov.uk/government/publications/environment-agencys-use-of-civil-sanctions"
+          },
+          "to_url": "https://www.gov.uk/government/publications/environment-agencys-use-of-civil-sanctions"
+        }
+      ],
+      "replacement_id": "SRC039-A01-R01",
+      "replaces_method_id": "SRC039-A01",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official publication identified and accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC039",
+      "source_title": "Environment Agency enforcement and sanctions publications",
+      "url": "https://www.gov.uk/government/publications/enforcement-undertakings-accepted-by-the-environment-agency"
+    },
+    {
+      "body_sha256": "ea0b147a4a65f32e29d816b40761bc69fac3e0355cf71038fd0d7903e866921d",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The publisher states that it publishes as many decisions as possible and applies five-year decision-statement and ten-year public-interest-report windows.",
+        "replacement_route_count": 1,
+        "scope_note": "The searchable publication set is expressly not all decisions."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC040-A02-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.lgo.org.uk/decisions",
+      "http_status": 200,
+      "kind": "Publication policy",
+      "media_type": "text/html",
+      "method_id": "SRC040-A02",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:28Z",
+      "officiality": {
+        "basis": "Official Local Government and Social Care Ombudsman decisions service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Local Government and Social Care Ombudsman",
+      "previous_url": "https://www.lgo.org.uk/information-centre/reports/decisions",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC040-A02-R01",
+      "replaces_method_id": "SRC040-A02",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official retention/publication explanation identified.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC040",
+      "source_title": "Local Government and Social Care Ombudsman decisions",
+      "url": "https://www.lgo.org.uk/decisions"
+    },
+    {
+      "body_sha256": "a04f4c883497f80dd33b929635ab2ec5ca94bed3ddff750f4ff2aea4693e9ca8",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official service lists published Scottish Welfare Fund case summaries.",
+        "replacement_route_count": 1,
+        "scope_note": "The page does not establish a denominator for all applications or reviews."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC042-A02-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://swf.spso.org.uk/case-summaries",
+      "http_status": 200,
+      "kind": "Scottish Welfare Fund reviews",
+      "media_type": "text/html",
+      "method_id": "SRC042-A02",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:29Z",
+      "officiality": {
+        "basis": "Official Scottish Public Services Ombudsman service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Scottish Public Services Ombudsman",
+      "previous_url": "https://www.spso.org.uk/scottish-welfare-fund-independent-review-decisions",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC042-A02-R01",
+      "replaces_method_id": "SRC042-A02",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official review decisions identified.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC042",
+      "source_title": "Scottish Public Services Ombudsman decisions and reviews",
+      "url": "https://swf.spso.org.uk/case-summaries"
+    },
+    {
+      "body_sha256": "28c326ff2a66ebae52b35582312bc81d8d139d25e5c9e3a4da42b2cef13fb314",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official service publishes searchable findings.",
+        "replacement_route_count": 1,
+        "scope_note": "Published findings are not a denominator for all complaints."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC043-A01-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.nipso.org.uk/our-investigations/reports-and-case-summaries",
+      "http_status": 206,
+      "kind": "Investigation reports/decisions",
+      "media_type": "text/html",
+      "method_id": "SRC043-A01",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:29Z",
+      "officiality": {
+        "basis": "Official Northern Ireland Public Services Ombudsman findings service.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Northern Ireland Public Services Ombudsman",
+      "previous_url": "https://nipso.org.uk/nipso/publications",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [
+        {
+          "from_url": "https://www.nipso.org.uk/our-findings/search-our-findings",
+          "http_status": 301,
+          "target_resolution": {
+            "all_addresses_public": true,
+            "hostname": "www.nipso.org.uk",
+            "port": 443,
+            "resolved_addresses": [
+              "104.20.33.55",
+              "172.66.162.200",
+              "2606:4700:10::6814:2137",
+              "2606:4700:10::ac42:a2c8"
+            ],
+            "scheme": "https",
+            "url": "https://www.nipso.org.uk/our-investigations/reports-and-case-summaries"
+          },
+          "to_url": "https://www.nipso.org.uk/our-investigations/reports-and-case-summaries"
+        }
+      ],
+      "replacement_id": "SRC043-A01-R01",
+      "replaces_method_id": "SRC043-A01",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official publication surface accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC043",
+      "source_title": "Northern Ireland Public Services Ombudsman findings",
+      "url": "https://www.nipso.org.uk/our-findings/search-our-findings"
+    },
+    {
+      "body_sha256": "edee003171ef62164fe118e4e0c08013fa716b56ebe2210e1bdb2d93b933e9b5",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The collection names six inquiries and is explicitly limited to recommendations and responses published since 2024.",
+        "replacement_route_count": 1,
+        "scope_note": "Six is exact for the inspected collection sections, not a denominator for all UK public inquiries."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC053-A01-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response",
+      "http_status": 206,
+      "kind": "Inquiry recommendations dashboard",
+      "media_type": "text/html",
+      "method_id": "SRC053-A01",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:30Z",
+      "officiality": {
+        "basis": "Official GOV.UK Cabinet Office public-inquiries collection.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Cabinet Office / sponsoring departments / inquiry chairs",
+      "previous_url": "https://www.gov.uk/government/publications/public-inquiries-recommendations-dashboard",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC053-A01-R01",
+      "replaces_method_id": "SRC053-A01",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official cross-government dashboard accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC053",
+      "source_title": "Public inquiry reports and recommendation tracking",
+      "url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response"
+    },
+    {
+      "body_sha256": "edee003171ef62164fe118e4e0c08013fa716b56ebe2210e1bdb2d93b933e9b5",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The collection names six inquiries and is explicitly limited to recommendations and responses published since 2024.",
+        "replacement_route_count": 1,
+        "scope_note": "Six is exact for the inspected collection sections, not a denominator for all UK public inquiries."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC053-A02-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response",
+      "http_status": 206,
+      "kind": "UK public inquiries collection",
+      "media_type": "text/html",
+      "method_id": "SRC053-A02",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:30Z",
+      "officiality": {
+        "basis": "Official GOV.UK Cabinet Office public-inquiries collection.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Cabinet Office / sponsoring departments / inquiry chairs",
+      "previous_url": "https://www.gov.uk/government/collections/public-inquiries",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC053-A02-R01",
+      "replaces_method_id": "SRC053-A02",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official collection accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC053",
+      "source_title": "Public inquiry reports and recommendation tracking",
+      "url": "https://www.gov.uk/government/collections/public-inquiries-recommendations-and-the-government-response"
+    },
+    {
+      "body_sha256": "a3055f6bc74a4c4d67df5e45fed9314870db4a4f26c8be991a068c5360b7761f",
+      "captured_bytes": 20939,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "The official UK Treaties Online catalogue and downloadable dataset define the available publication set.",
+        "replacement_route_count": 1,
+        "scope_note": "The dataset page is not treated as proof of current multilateral treaty status or complete historical coverage."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC055-A02-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/treaties-database",
+      "http_status": 200,
+      "kind": "Treaty dataset",
+      "media_type": "text/html",
+      "method_id": "SRC055-A02",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:30Z",
+      "officiality": {
+        "basis": "Official data.gov.uk catalogue record for the FCDO UK Treaties Database.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Foreign, Commonwealth & Development Office",
+      "previous_url": "https://www.gov.uk/government/publications/uk-treaties-dataset",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [
+        {
+          "from_url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/uk-treaties-database",
+          "http_status": 301,
+          "target_resolution": {
+            "all_addresses_public": true,
+            "hostname": "www.data.gov.uk",
+            "port": 443,
+            "resolved_addresses": [
+              "199.232.52.144",
+              "2a04:4e42:f::144"
+            ],
+            "scheme": "https",
+            "url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/treaties-database"
+          },
+          "to_url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/treaties-database"
+        }
+      ],
+      "replacement_id": "SRC055-A02-R01",
+      "replaces_method_id": "SRC055-A02",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official CSV dataset page accessible; last updated 8 July 2026 in research evidence.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC055",
+      "source_title": "UK Treaties Online and treaty dataset",
+      "url": "https://www.data.gov.uk/dataset/d2c13ffc-78ee-4ba8-9ee5-c87be9b7f24d/uk-treaties-database"
+    },
+    {
+      "body_sha256": "bb8572abe054f14d6749c793df6851a0f80d3c3a82983eec5a3ad4967b545cbf",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "CELLAR repository datasets, dumps and identifiers can provide denominators by CELEX or resource class.",
+        "replacement_route_count": 1,
+        "scope_note": "The documentation landing page does not itself provide a complete repository denominator."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC057-A01-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://op.europa.eu/en/web/cellar/documentation",
+      "http_status": 200,
+      "kind": "CELLAR access documentation",
+      "media_type": "text/html",
+      "method_id": "SRC057-A01",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:30Z",
+      "officiality": {
+        "basis": "Official Publications Office of the European Union CELLAR documentation.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Publications Office of the European Union",
+      "previous_url": "https://op.europa.eu/en/web/about-us/legal-notices/accessibility",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC057-A01-R01",
+      "replaces_method_id": "SRC057-A01",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Publications Office service reachable; specific SPARQL/REST endpoints documented but not all exercised.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC057",
+      "source_title": "CELLAR repository and APIs",
+      "url": "https://op.europa.eu/en/web/cellar/documentation"
+    },
+    {
+      "body_sha256": "69ce5153b968116696627debd67a28ae9ebd35a4b223f43fb0f302960e70a8b6",
+      "captured_bytes": 20341,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Platform content inventories, APIs or sitemaps are required for an exact platform denominator.",
+        "replacement_route_count": 1,
+        "scope_note": "The topic landing page is not a whole-law content inventory."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC064-A02-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.mygov.scot/browse/crime-justice-law",
+      "http_status": 206,
+      "kind": "mygov.scot",
+      "media_type": "text/html",
+      "method_id": "SRC064-A02",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:31Z",
+      "officiality": {
+        "basis": "Official Scottish Government mygov.scot topic.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Government Digital Service and responsible public bodies",
+      "previous_url": "https://www.mygov.scot/justice-law-rights",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC064-A02-R01",
+      "replaces_method_id": "SRC064-A02",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official Scottish public guidance accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC064",
+      "source_title": "GOV.UK and devolved public legal guidance",
+      "url": "https://www.mygov.scot/browse/crime-justice-law"
+    },
+    {
+      "body_sha256": "394badc9b7de3b56b3606386c01c1c92cc968d08a47f0cf2689dacfaf862d64d",
+      "captured_bytes": 21941,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Platform content inventories, APIs or sitemaps are required for an exact platform denominator.",
+        "replacement_route_count": 1,
+        "scope_note": "The topic landing page is not a whole-law content inventory."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC064-A03-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.gov.wales/justice-and-law",
+      "http_status": 206,
+      "kind": "GOV.WALES",
+      "media_type": "text/html",
+      "method_id": "SRC064-A03",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:31Z",
+      "officiality": {
+        "basis": "Official Welsh Government justice and law topic.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Government Digital Service and responsible public bodies",
+      "previous_url": "https://www.gov.wales/law-and-order",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC064-A03-R01",
+      "replaces_method_id": "SRC064-A03",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official Welsh guidance accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC064",
+      "source_title": "GOV.UK and devolved public legal guidance",
+      "url": "https://www.gov.wales/justice-and-law"
+    },
+    {
+      "body_sha256": "4508152d249d78d10faf45cbbb5829d91fff1a112e1759dc26cbdd52b030dfea",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Platform content inventories, APIs or sitemaps are required for an exact platform denominator.",
+        "replacement_route_count": 1,
+        "scope_note": "The topic landing page is not a whole-law content inventory."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC064-A04-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.nidirect.gov.uk/information-and-services/crime-justice-and-law",
+      "http_status": 206,
+      "kind": "nidirect",
+      "media_type": "text/html",
+      "method_id": "SRC064-A04",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:32Z",
+      "officiality": {
+        "basis": "Official Northern Ireland Executive nidirect topic.",
+        "classification": "official-public-body",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Government Digital Service and responsible public bodies",
+      "previous_url": "https://www.nidirect.gov.uk/information-and-services/justice-and-law",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC064-A04-R01",
+      "replaces_method_id": "SRC064-A04",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Official NI guidance accessible.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC064",
+      "source_title": "GOV.UK and devolved public legal guidance",
+      "url": "https://www.nidirect.gov.uk/information-and-services/crime-justice-and-law"
+    },
+    {
+      "body_sha256": "cb8e04330b1376a89f74d0a2e7d14ad13cb9e85afe9502d2a3e2c5cec38ae0b8",
+      "captured_bytes": 32768,
+      "comparison": "claim-confirmed",
+      "conclusion": "This is a bounded point-in-time access observation. It does not prove continuing availability, corpus completeness, or permission for bulk use.",
+      "denominator": {
+        "corpus_enumeration_exact": false,
+        "official_statement": "Proprietary catalogue completeness requires the vendor contract and an independent denominator.",
+        "replacement_route_count": 1,
+        "scope_note": "This public product-information route does not grant or prove access to the authenticated legal corpus."
+      },
+      "error": null,
+      "evidence_envelope": "methods/SRC069-A02-R01/envelope.json",
+      "evidence_run_id": "20260726T005115Z-04a20f01",
+      "final_url": "https://www.lexisnexis.co.uk/products/legal-industry",
+      "http_status": 200,
+      "kind": "Lexis+ product information",
+      "media_type": "text/html",
+      "method_id": "SRC069-A02",
+      "observed_access_state": "reachable",
+      "observed_at": "2026-07-26T00:51:32Z",
+      "officiality": {
+        "basis": "Primary product-information page operated by LexisNexis.",
+        "classification": "primary-source-operator",
+        "reviewed_at": "2026-07-26"
+      },
+      "owning_institution": "Thomson Reuters / LexisNexis",
+      "previous_url": "https://www.lexisnexis.co.uk/legal/lexis-plus.html",
+      "probe_scope": "bounded-public-response",
+      "redirect_chain": [],
+      "replacement_id": "SRC069-A02-R01",
+      "replaces_method_id": "SRC069-A02",
+      "request_method": "GET",
+      "research_claim": {
+        "notes": "Public product information accessible; subscription corpus not accessed.",
+        "source_register_access_test_date": "2026-07-25",
+        "status": "verified working",
+        "test_method": "Browser HTTP GET to official page or endpoint",
+        "tested_at": "2026-07-25"
+      },
+      "schema_fingerprint_sha256": "031bb7d662216edacedaf4f24f1145226de03c7ba1c911491dc832ba19a4c5c9",
+      "source_id": "SRC069",
+      "source_title": "Westlaw UK and Lexis+ legal research services",
+      "url": "https://www.lexisnexis.co.uk/products/legal-industry"
+    }
+  ],
+  "schema": "okf-source-route-replacement-observations.v1",
+  "source_register": "research/whole-law-okf-research/source-register.json",
+  "source_register_sha256": "16b0a21e6eb34715cd4d6001a82a70bc633f8d788000e60f20cc5a45cd0ba810"
+}
