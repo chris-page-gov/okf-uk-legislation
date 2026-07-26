@@ -466,7 +466,7 @@
       ],
       "phase": 4,
       "release_disposition": {
-        "reason": "Deterministic builders generate source coverage, legal-source taxonomy, ontology crosswalks, provenance, rights and dimension-reconciled relationship summaries. The graph-enrichment receipt and Whole-Law checker directly reconcile all 872,574 rows; clean-room byte reproduction remains separately governed by GATE-06.",
+        "reason": "Deterministic builders generate source coverage, legal-source taxonomy, ontology crosswalks, provenance, rights and dimension-reconciled relationship summaries. The graph-enrichment receipt and Whole-Law checker directly reconcile all 906,754 rows: 835,563 core relationships plus 71,191 provider relationships. Clean-room byte reproduction remains separately governed by GATE-06.",
         "status": "verified"
       },
       "requirement": "Generate source coverage, legal-source taxonomy, ontology crosswalks, provenance, rights and relationship summaries deterministically.",
@@ -487,18 +487,21 @@
     "design_evidence": [
       "docs/effects-and-enrichment.md",
       "whole-law/schemas/model-enrichment-run-v2.schema.json",
-      "enrichment/model-assisted-paid-governance-v1.json"
+      "enrichment/codex-assisted-v3/generator-prompt.md",
+      "enrichment/codex-assisted-v3/rules.json"
     ],
       "id": "P05-01",
       "implementation_evidence": [
-      "bundle/enrichment/codex-assisted-v2.json",
-      "bundle/data/enrichment/manifest.json",
+      "bundle/enrichment/codex-assisted-v3/run.json",
+      "bundle/enrichment/codex-assisted-v3/coverage.json",
+      "bundle/enrichment/codex-assisted-v3/terminal-outcome-manifest.json",
+      "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
       "whole-law/assurance/model-assisted-input-eligibility-20260726.json"
       ],
       "phase": 5,
       "release_disposition": {
-        "reason": "Credential-free preflight covers all 365,786 works: 359,140 have local semantic evidence and 6,646 are deferred pending frozen CLML, while zero CLML bodies are currently frozen. The historical Codex-assisted run remains title-rule evidence only and cannot supply the dedicated paid-run terminal outcomes.",
-        "status": "started"
+        "reason": "Verified for the governed Codex v3 snapshot. All 365,786 works have exactly one integrity-bound terminal outcome: 28,635 produced supported candidates and 337,151 truthfully abstained without a supported candidate. The run evaluated available title, substantive notes and declared source-metadata fields, did not treat unfrozen CLML routes as evidence, and independently accepted 56,479 discovery assertions without inventing an assertion where evidence was absent.",
+        "status": "verified"
       },
       "requirement": "Attempt enrichment for every eligible work, using official title, long title, source metadata and available CLML annotations; lack of evidence yields no assertion rather than an invented classification.",
       "source_clause": {
@@ -508,27 +511,32 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 5",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-      "whole-law/assurance/model-assisted-input-eligibility-20260726.json",
-      "tests/test_model_enrichment_input_evidence.py"
+      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+      "tests/test_codex_semantic_enrichment_v3.py"
       ]
     },
     {
     "design_evidence": [
       "docs/effects-and-enrichment.md",
       "whole-law/schemas/model-enrichment-run-v2.schema.json",
-      "enrichment/model-assisted-paid-governance-v1.json"
+      "evidence/requirements/controlling-requirements.md",
+      "enrichment/codex-assisted-v3/calibration.json"
     ],
       "id": "P05-02",
       "implementation_evidence": [
       "enrichment/codex-assisted-v2-calibration.json",
+      "bundle/enrichment/codex-assisted-v3/calibration-result.json",
+      "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+      "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
       "enrichment/model-assisted-calibration-manifest-v1.json",
       "enrichment/model-assisted-paid-governance-v1.json"
       ],
       "phase": 5,
   "release_disposition": {
-        "reason": "The fixed calibration population and fail-closed selection contracts are authored, but no dedicated paid run has compared available OpenAI structured-output models, selected the lowest-cost qualifier, or exercised the hash-bound strongest-model escalation path. Historical Codex-assisted output cannot satisfy this gate.",
+        "reason": "Started with explicit partial supersession. D-13 supersedes the direct-API mechanics for comparing priced API models, selecting the lowest-cost API deployment and escalating to a configured paid model. The remaining fixed-set obligations are complete: the governed Codex v3 result records 100% schema-validity, 100% fixed-set precision and 100% evidence-support, exceeding the 95% precision and 95% evidence-support thresholds, and the independent reviewer and auditor accepted the result. This indivisible hash-bound mixed clause remains started only until final requirement closure records the superseded direct-API text; it is not an outstanding enrichment-quality test.",
     "status": "started"
       },
       "requirement": "Use a fixed calibration set to choose the lowest-cost available OpenAI structured-output model that achieves 100% schema validity, at least 95% precision and at least 95% evidence support. Escalate disagreements and high-risk records to the strongest available configured model.",
@@ -541,8 +549,14 @@
       },
   "status": "started",
   "validation_evidence": [
-      "enrichment/model-assisted-paid-governance-v1.json",
-      "release-assurance/gap-register.json"
+      "AGENTS.md",
+      "bundle/enrichment/codex-assisted-v3/calibration-result.json",
+      "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+      "evidence/requirements/controlling-requirements.md",
+      "release-assurance/gap-register.json",
+      "tests/test_codex_semantic_enrichment_v3.py",
+      "tests/test_release_assurance.py"
       ]
     },
     {
@@ -557,7 +571,7 @@
       ],
       "phase": 5,
       "release_disposition": {
-        "reason": "Verified only as an authority-boundary and publication-scope control: assertion contracts and Explorer presentation keep source-derived official effects separate from derived candidate discovery metadata and do not present model output as official legal classification or advice. This does not verify completion of the dedicated paid enrichment run.",
+        "reason": "Verified only as an authority-boundary and publication-scope control: assertion contracts and Explorer presentation keep source-derived official effects separate from derived candidate discovery metadata and do not present model output as official legal classification or advice. Full governed Codex enrichment completion remains separately evidenced under the other phase-5 clauses.",
         "status": "verified"
       },
       "requirement": "Treat topics, concepts and entity links as candidate discovery metadata, never official legal classification or advice. Official amendment/effect assertions remain source-derived only.",
@@ -583,13 +597,16 @@
     ],
       "id": "P05-04",
       "implementation_evidence": [
-      "whole-law/assurance/enrichment-v2-independent-audit-20260726.json",
-      "enrichment/model-assisted-paid-governance-v1.json"
+      "enrichment/codex-assisted-v3/reviewer-prompt.md",
+      "enrichment/codex-assisted-v3/review-policy.json",
+      "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+      "bundle/enrichment/codex-assisted-v3/review-verdict-manifest.json",
+      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json"
       ],
       "phase": 5,
       "release_disposition": {
-        "reason": "Deterministic audit and strict reviewer contracts exist, but no dedicated paid run has used a separately hashed reviewer prompt and exact reviewer model distinct from the generator over every proposed assertion. Historical deterministic reconstruction is not a substitute.",
-        "status": "started"
+        "reason": "Verified for Codex v3. A separately tasked semantic reviewer used a separately hash-bound reviewer prompt and made no source edits; 56,479 one-to-one verdicts cover every proposed assertion. The independent deterministic auditor reconstructed all 365,786 terminal outcomes and all reviewer and accepted rows, reported zero errors, and accepted 56,479 assertions. The reviewer task surface's unexposed deployment identity is declared rather than invented.",
+        "status": "verified"
       },
       "requirement": "Require independent validation through deterministic evidence checks plus a separate reviewer prompt/model. Generator output cannot verify itself.",
       "source_clause": {
@@ -599,26 +616,33 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 5",
         "verbatim": true
       },
-      "status": "started",
+      "status": "verified",
       "validation_evidence": [
-      "whole-law/schemas/model-enrichment-review.schema.json",
-      "release-assurance/gap-register.json"
+      "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+      "tests/test_codex_semantic_enrichment_v3.py"
       ]
     },
     {
     "design_evidence": [
       "docs/effects-and-enrichment.md",
       "whole-law/schemas/model-enrichment-run-v2.schema.json",
-      "enrichment/model-assisted-paid-governance-v1.json"
+      "AGENTS.md"
     ],
       "id": "P05-05",
       "implementation_evidence": [
-        "bundle/enrichment/codex-assisted-v2.json"
+        "bundle/enrichment/codex-assisted-v3/run.json",
+        "bundle/enrichment/codex-assisted-v3/checkpoints.json",
+        "bundle/enrichment/codex-assisted-v3/review-checkpoints.json",
+        "bundle/enrichment/codex-assisted-v3/candidate-manifest.json",
+        "bundle/enrichment/codex-assisted-v3/review-verdict-manifest.json",
+        "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json"
       ],
       "phase": 5,
       "release_disposition": {
-        "reason": "Historical Codex-assisted hashes and zero incremental API spend are recorded, but they are historical-only evidence: the task surface does not expose its exact underlying deployment identifier or billable subscription usage, and no dedicated paid run yet supplies exact model, token, retry, cache and cost receipts.",
-        "status": "blocked"
+        "reason": "Verified for the governed no-direct-API Codex profile selected by D-13. The v3 run binds the provider, assistant surface and role, prompt/rule/schema/material/input/output hashes, complete generation and review checkpoints, candidate, terminal, reviewer and accepted manifests, zero API calls, zero API input/output tokens and exact USD 0 / GBP 0 direct API cost. No API key was required or used. Exact Codex deployment identity, sampling parameters, subscription-token use, weekly-allowance use and attributable subscription cost are not exposed and are explicitly unavailable/unmetered rather than invented; deterministic content-hash checkpoints permit repeat validation without repeat API billing.",
+        "status": "verified"
       },
       "requirement": "Record provider, exact model, prompt and schema hashes, parameters, input hashes, tokens, retries, rejected records and cost. Cache by content hash and resume without repeat billing.",
       "source_clause": {
@@ -628,27 +652,30 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 5",
         "verbatim": true
       },
-      "status": "blocked",
+      "status": "verified",
       "validation_evidence": [
-        "whole-law/assurance/enrichment-v2-independent-audit-20260726.json",
-        "release-assurance/gap-register.json"
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+        "tests/test_codex_semantic_enrichment_v3.py"
       ]
     },
     {
     "design_evidence": [
       "docs/effects-and-enrichment.md",
       "whole-law/schemas/model-enrichment-cost-cap-receipt.schema.json",
-      "whole-law/schemas/model-enrichment-run-v2.schema.json"
+      "whole-law/schemas/model-enrichment-run-v2.schema.json",
+      "evidence/requirements/controlling-requirements.md"
     ],
       "id": "P05-06",
       "implementation_evidence": [
-      "bundle/enrichment/codex-assisted-v2.json",
+      "bundle/enrichment/codex-assisted-v3/run.json",
+      "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
       "release-assurance/release-policy.json",
-      "enrichment/model-assisted-paid-governance-v1.json"
+      "AGENTS.md"
       ],
       "phase": 5,
       "release_disposition": {
-        "reason": "The US$250 fail-closed cap contracts are authored, but governed paid-run cost is unavailable because the dedicated run has not occurred. Historical Codex-assisted zero incremental API spend is labelled separately and cannot satisfy the final USD/GBP paid-cost report.",
+        "reason": "Started with explicit partial supersession. D-13 supersedes the direct-API paid-stage mechanics, including API-call preflight and unattended API-cap enforcement for the selected no-API route. The accepted denominator is now 56,479 and the independent audit records exact USD and GBP direct-API totals of 0, cost per accepted assertion of USD 0, zero API calls and zero API input/output tokens; exchange-rate source/date are not applicable to zero spend, and no API key was required or used. The whole mixed clause remains started only until final-candidate evidence confirms that controls keep secrets out of Git and logs and binds the final report; no graph, Explorer, release or security gate is claimed here.",
         "status": "started"
       },
       "requirement": "Apply a US$250 unattended hard cap. A preflight projects total cost; the paid stage halts before exceeding the cap. The final report gives exact USD and GBP totals, exchange-rate source/date and cost per accepted assertion. Secrets remain outside Git and logs.",
@@ -661,8 +688,12 @@
       },
       "status": "started",
       "validation_evidence": [
+      "bundle/enrichment/codex-assisted-v3/run.json",
+      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
       "scripts/build_release_assurance.py",
-      "release-assurance/gap-register.json"
+      "release-assurance/gap-register.json",
+      "tests/test_codex_semantic_enrichment_v3.py",
+      "tests/test_release_assurance.py"
       ]
     },
     {
@@ -1369,7 +1400,7 @@
       ],
       "phase": 10,
       "release_disposition": {
-        "reason": "Rights, SBOM, provenance and report builders exist, but the dedicated paid model-cost evidence, clean-room reproduction and final multi-repository supply-chain evidence are incomplete.",
+        "reason": "Rights, SBOM, provenance and report builders exist. Direct OpenAI API spend for the selected Codex workflow is exactly USD 0 and GBP 0, while unexposed Codex subscription/weekly-allowance usage is declared unavailable; the final cost projection, clean-room reproduction and final multi-repository supply-chain evidence remain incomplete.",
         "status": "started"
       },
       "requirement": "Produce SPDX rights data, a CycloneDX SBOM, provenance attestations, checksums, source inventory, constraint report, model-cost report and clean-room reproduction evidence.",
@@ -1424,7 +1455,7 @@
       ],
       "phase": 10,
       "release_disposition": {
-        "reason": "The prerequisite Explorer v0.5.0 release is published from the exact green and deployed commit. The Legislation RC freeze, public RC smoke test and identical-byte final promotion remain outstanding.",
+        "reason": "Explorer v0.5.0 remains the immutable release-first milestone required by this verbatim clause. Post-release runtime hardening is green on draft PR 39, and corrective Explorer v0.5.1 is now the exact finalization prerequisite. P10-04 therefore remains started until v0.5.1 is published and bound to the frozen Legislation candidate, the public RC smoke test passes and identical-byte final promotion completes.",
         "status": "started"
       },
       "requirement": "Release `okf-explorer v0.5.0` before `okf-uk-legislation v0.3.0-rc.1`; deploy the RC, run public smoke tests, then promote the same artefacts to `v0.3.0`.",
@@ -1563,7 +1594,7 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "Verified as a controlling scope decision only: model-assisted semantic enrichment is authorised and governed as derived candidate discovery metadata. This disposition does not claim that the dedicated paid enrichment requirements in P05-01 through P05-06 are complete.",
+        "reason": "Verified as a controlling scope decision only: model-assisted semantic enrichment is authorised and governed as derived candidate discovery metadata. The selected implementation uses Codex without direct API calls; this disposition does not claim that the substantive full-enrichment requirements in P05-01, P05-04 and P05-05 are complete.",
         "status": "verified"
       },
       "requirement": "Model-assisted semantic enrichment is in scope for this implementation",
@@ -1576,7 +1607,8 @@
       },
       "status": "verified",
       "validation_evidence": [
-      "enrichment/model-assisted-paid-governance-v1.json"
+        "whole-law/assurance/enrichment-v2-independent-audit-20260726.json",
+        "AGENTS.md"
       ]
     },
     {
@@ -1585,11 +1617,12 @@
       ],
       "id": "D-05",
       "implementation_evidence": [
-        "scripts/build_release_assurance.py"
+        "scripts/build_release_assurance.py",
+        "bundle/enrichment/codex-assisted-v2.json"
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "The reporting path exists, but governed paid-run cost is currently unavailable and the requested end-of-implementation USD/GBP report cannot be final before the dedicated run and release completion.",
+        "reason": "The reporting path records exact direct OpenAI API spend of USD 0 and GBP 0. Codex subscription or weekly-allowance consumption, exact underlying deployment identity and billable task-surface token usage are not exposed and are therefore reported as unavailable/unmetered, not invented. The consolidated end-of-implementation cost report remains incomplete until release completion.",
         "status": "started"
       },
       "requirement": "Yes please, report hte cost at the end",
@@ -1602,7 +1635,8 @@
       },
       "status": "started",
       "validation_evidence": [
-        "scripts/build_release_assurance.py"
+        "scripts/build_release_assurance.py",
+        "whole-law/assurance/graph-enrichment-gate-20260726.json"
       ]
     },
     {
@@ -1671,7 +1705,7 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "Explorer v0.5.0 was published on 26 July 2026 from annotated tag 62bd71e2bde0caf039f42475871592198ec252d5, peeling to green and deployed commit 903b38a13c1497fcfc6c519dc764fd0b23ba0572, before any Legislation v0.3.0 release candidate exists.",
+        "reason": "Explorer v0.5.0 was published on 26 July 2026 from annotated tag 62bd71e2bde0caf039f42475871592198ec252d5, peeling to green and deployed commit 903b38a13c1497fcfc6c519dc764fd0b23ba0572, before any Legislation v0.3.0 release candidate exists; this release-order decision remains verified. The later corrective v0.5.1 finalization prerequisite does not rewrite that historical evidence and is tracked by P10-04.",
         "status": "verified"
       },
       "requirement": "Release `okf-explorer v0.5.0` before `okf-uk-legislation v0.3.0-rc.1`",
@@ -1799,15 +1833,47 @@
         "whole-law/acquisition/current/source-constraint-ledger.json",
         "whole-law/assurance/source-acquisition-gate-20260726.json"
       ]
+    },
+    {
+      "design_evidence": [
+        "evidence/requirements/controlling-requirements.md"
+      ],
+      "id": "D-13",
+      "implementation_evidence": [
+        "AGENTS.md",
+        "bundle/enrichment/codex-assisted-v3/run.json",
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+        "release-assurance/release-gates.json"
+      ],
+      "phase": 0,
+      "release_disposition": {
+        "reason": "Verified in execution as well as policy. The governed Codex task/subagent workflow produced and independently reviewed the v3 full-corpus enrichment without an API-key prerequisite or a direct OpenAI API call. The sealed run records zero API calls, zero API input/output tokens and exact incremental direct API spend of USD 0 and GBP 0; the direct API profile remains an optional future profile requiring a new explicit decision.",
+        "status": "verified"
+      },
+      "requirement": "We decided earlier that you would use Codex to do this and not require API calls",
+      "source_clause": {
+        "id": "D-13",
+        "path": "evidence/requirements/controlling-requirements.md",
+        "sha256": "6c5def6683a42e53bba15299f688a6a5b79f6e2e4e6248f98a454d273e527cf0",
+        "source": "Subsequent user decision",
+        "verbatim": true
+      },
+      "status": "verified",
+      "validation_evidence": [
+        "AGENTS.md",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+        "tests/test_codex_semantic_enrichment_v3.py"
+      ]
     }
   ],
   "schema": "okf-implementation-traceability.v2",
   "source_manifest": {
     "algorithm": "sha256",
     "document": "evidence/requirements/controlling-requirements.md",
-    "document_sha256": "391519df744ab429325838e74ff019067808f239497193873e259fff602246af",
+    "document_sha256": "1a36cb7715ed02c34e62a3ee0872bee5911ca39dcb85e7b926a5f989c17aa84e",
     "manifest": "evidence/requirements/controlling-requirements.sha256",
-    "requirements": 62
+    "requirements": 63
   },
   "status_definitions": {
     "blocked": "Work cannot pass until a stated external or prerequisite condition is satisfied.",

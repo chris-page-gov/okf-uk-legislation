@@ -6,7 +6,7 @@ This credential-free preflight reconciles all **365,786 works** in **366 source 
 
 ## Decision
 
-Evidence status: **passed**. Paid run authorized: **no**.
+Evidence status: **passed**. Current workflow: **Codex, no direct API calls**. Optional direct API profile authorized: **no**.
 
 This receipt establishes the frozen local work-chunk denominator and evidence availability only. Every source-advertised or derived CLML route still lacks a frozen body binding, and the separate governed model, review, cost and credential gates must pass before any paid call.
 
@@ -81,4 +81,4 @@ Priority is for evidence resolution and review planning, not automatic paid-call
 - 137,119 works source-advertise a CLML manifestation and 228,667 have only a deterministically derived structure route. This snapshot binds zero retrieved CLML bodies; neither route class proves live availability or annotation coverage.
 - The notes field contains 35,156 deterministic `Official … record for …` fallback strings, which are excluded from semantic evidence. Remaining prose can be explanatory or synopsis text; it is not represented as an exact statutory long title.
 - This is deterministic input and eligibility evidence, not legal-semantic classification, legal advice or independent validation of future model outputs.
-- A future paid run must record its own governed terminal outcome for every eligible work; these preflight outcomes must not be substituted for that run ledger.
+- The current governed Codex workflow must record its own terminal outcome for every work; these preflight outcomes must not be substituted for that terminal ledger. Any separately authorised future direct API profile would also need its own independent outcome ledger.

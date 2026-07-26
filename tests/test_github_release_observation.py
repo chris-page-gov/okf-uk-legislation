@@ -86,11 +86,11 @@ class FakeTransport:
 def explorer_responses(commit: str = COMMIT) -> dict[str, Any]:
     release_url = (
         "https://api.github.com/repos/chris-page-gov/okf-explorer/"
-        "releases/tags/v0.5.0"
+        "releases/tags/v0.5.1"
     )
     ref_url = (
         "https://api.github.com/repos/chris-page-gov/okf-explorer/"
-        "git/ref/tags/v0.5.0"
+        "git/ref/tags/v0.5.1"
     )
     return {
         release_url: response(
@@ -100,10 +100,10 @@ def explorer_responses(commit: str = COMMIT) -> dict[str, Any]:
                     "draft": False,
                     "html_url": (
                         "https://github.com/chris-page-gov/okf-explorer/"
-                        "releases/tag/v0.5.0"
+                        "releases/tag/v0.5.1"
                     ),
                     "id": 501,
-                    "tag_name": "v0.5.0",
+                    "tag_name": "v0.5.1",
                 }
             )
         ),
@@ -118,7 +118,7 @@ def explorer_responses(commit: str = COMMIT) -> dict[str, Any]:
                             f"okf-explorer/git/commits/{commit}"
                         ),
                     },
-                    "ref": "refs/tags/v0.5.0",
+                    "ref": "refs/tags/v0.5.1",
                 }
             )
         ),
@@ -218,6 +218,9 @@ class GithubReleaseObservationTests(unittest.TestCase):
     def new_destination(self, temporary: str, name: str = "attempt") -> Path:
         return Path(temporary).resolve() / name
 
+    def test_target_registry_preserves_historical_explorer_release(self) -> None:
+        self.assertIn((EXPLORER, "v0.5.0"), capture.TARGETS)
+
     def test_lightweight_tag_capture_validates_and_preserves_raw_responses(
         self,
     ) -> None:
@@ -227,7 +230,7 @@ class GithubReleaseObservationTests(unittest.TestCase):
             destination = self.new_destination(temporary)
             observation_path = capture.capture_observation(
                 repository=EXPLORER,
-                tag="v0.5.0",
+                tag="v0.5.1",
                 expected_commit=COMMIT,
                 output_dir=destination,
                 token=token,
@@ -378,7 +381,7 @@ class GithubReleaseObservationTests(unittest.TestCase):
             with self.assertRaises(capture.UnsafeURLError):
                 capture.capture_observation(
                     repository=EXPLORER,
-                    tag="v0.5.0",
+                    tag="v0.5.1",
                     expected_commit=COMMIT,
                     output_dir=destination,
                     transport=transport,
@@ -399,7 +402,7 @@ class GithubReleaseObservationTests(unittest.TestCase):
             ):
                 capture.capture_observation(
                     repository=EXPLORER,
-                    tag="v0.5.0",
+                    tag="v0.5.1",
                     expected_commit=COMMIT,
                     output_dir=destination,
                     transport=transport,
@@ -415,7 +418,7 @@ class GithubReleaseObservationTests(unittest.TestCase):
             destination = self.new_destination(temporary)
             observation_path = capture.capture_observation(
                 repository=EXPLORER,
-                tag="v0.5.0",
+                tag="v0.5.1",
                 expected_commit=COMMIT,
                 output_dir=destination,
                 transport=first,
@@ -429,7 +432,7 @@ class GithubReleaseObservationTests(unittest.TestCase):
             with self.assertRaisesRegex(capture.CaptureError, "must be new"):
                 capture.capture_observation(
                     repository=EXPLORER,
-                    tag="v0.5.0",
+                    tag="v0.5.1",
                     expected_commit=COMMIT,
                     output_dir=destination,
                     transport=second,
@@ -455,7 +458,7 @@ class GithubReleaseObservationTests(unittest.TestCase):
             with self.assertRaises(capture.CaptureError):
                 capture.capture_observation(
                     repository=EXPLORER,
-                    tag="v0.5.0",
+                    tag="v0.5.1",
                     expected_commit=COMMIT,
                     output_dir=linked,
                     transport=transport,
@@ -464,7 +467,7 @@ class GithubReleaseObservationTests(unittest.TestCase):
             with self.assertRaisesRegex(capture.CaptureError, "traversal"):
                 capture.capture_observation(
                     repository=EXPLORER,
-                    tag="v0.5.0",
+                    tag="v0.5.1",
                     expected_commit=COMMIT,
                     output_dir=root / "child" / ".." / "attempt",
                     transport=transport,
@@ -476,7 +479,7 @@ class GithubReleaseObservationTests(unittest.TestCase):
         responses = explorer_responses()
         ref_url = (
             "https://api.github.com/repos/chris-page-gov/okf-explorer/"
-            "git/ref/tags/v0.5.0"
+            "git/ref/tags/v0.5.1"
         )
         responses[ref_url] = RuntimeError("simulated worker crash")
         transport = FakeTransport(responses)
@@ -488,7 +491,7 @@ class GithubReleaseObservationTests(unittest.TestCase):
             ):
                 capture.capture_observation(
                     repository=EXPLORER,
-                    tag="v0.5.0",
+                    tag="v0.5.1",
                     expected_commit=COMMIT,
                     output_dir=destination,
                     transport=transport,

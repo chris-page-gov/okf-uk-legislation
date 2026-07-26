@@ -1,7 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-cache-entry.schema.json",
-  "title": "OKF immutable model enrichment cache entry v1",
+  "title": "OKF optional direct-API immutable model-enrichment cache entry v1",
+  "description": "Optional future direct-API profile contract for one credential-free immutable cache entry. It may be activated only by a new explicit user decision and is not required for the current Codex/no-direct-API release.",
   "type": "object",
   "required": [
     "schema",

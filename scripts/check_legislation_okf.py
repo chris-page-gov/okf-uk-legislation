@@ -15,6 +15,10 @@ import legislation_effects_evidence_archive as effects_evidence
 
 ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / "bundle"
+ACTIVE_RELATIONSHIP_PROVIDER_MANIFESTS = (
+    ("effects", "legislation-effects"),
+    ("enrichment-v3", "codex-assisted-v3"),
+)
 MINIMUM_COMPLETE_WORKS = 300_000
 REQUIRED_TYPE_CODES = {"ukpga", "uksi", "asp", "ssi", "anaw", "asc", "wsi", "nia", "nisr", "eur"}
 VALID_STATUS = {"draft", "stable", "deprecated"}
@@ -505,10 +509,13 @@ def check_discovery_publication(
         manifest.get("counts", {}).get("relationships", -1)
     ):
         errors.append("relationship composition core total differs from core chunks")
-    for directory, datapack in (
-        ("effects", "legislation-effects"),
-        ("enrichment", "codex-assisted-v2"),
-    ):
+    by_datapack = composition.get("by_datapack", {})
+    if "codex-assisted-v2" in by_datapack:
+        errors.append(
+            "relationship composition must exclude historical "
+            "codex-assisted-v2 assertions"
+        )
+    for directory, datapack in ACTIVE_RELATIONSHIP_PROVIDER_MANIFESTS:
         provider_path = PACK / "data" / directory / "manifest.json"
         if not provider_path.is_file():
             continue
@@ -516,7 +523,7 @@ def check_discovery_publication(
             load(provider_path).get("counts", {}).get("assertions", -1)
         )
         if int(
-            composition.get("by_datapack", {}).get(datapack, -1)
+            by_datapack.get(datapack, -1)
         ) != provider_count:
             errors.append(
                 f"relationship composition {datapack} total differs from provider"

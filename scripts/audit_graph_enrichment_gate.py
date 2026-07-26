@@ -18,6 +18,8 @@ from typing import Any, Iterable
 
 from jsonschema import Draft202012Validator
 
+import build_legislation_okf as legislation_builder
+
 
 ROOT = Path(__file__).resolve().parents[1]
 BUNDLE = ROOT / "bundle"
@@ -27,7 +29,7 @@ ENTITY_ASSESSMENT = (
     ROOT / "whole-law/assurance/entity-model-coverage-assessment-20260726.json"
 )
 EXPLORER_RECEIPT = (
-    ROOT.parent / "okf-explorer/release-assurance/explorer-runtime-acceptance.json"
+    ROOT / "release-assurance/explorer-runtime-acceptance.json"
 )
 AUDITED_AT = "2026-07-26T02:00:00Z"
 
@@ -35,9 +37,6 @@ EXPECTED = {
     "works": 365_786,
     "core_relationships": 835_563,
     "official_effects": 14_712,
-    "enrichment_attempts": 365_786,
-    "model_assisted_assertions": 22_299,
-    "combined_relationships": 872_574,
 }
 
 
@@ -418,174 +417,221 @@ def audit_enrichment(
     audit: Audit,
     relationship_schema: dict[str, Any],
     data_manifest: dict[str, Any],
-) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    manifest_path = BUNDLE / "data/enrichment/manifest.json"
-    manifest = read_json(manifest_path)
-    ledger_path = BUNDLE / "data/enrichment/attempt-ledger.json"
-    ledger = read_json(ledger_path)
-    run_path = BUNDLE / "enrichment/codex-assisted-v2.json"
-    run = read_json(run_path)
-    coverage_path = BUNDLE / "data/enrichment/coverage.json"
-    coverage = read_json(coverage_path)
-    independent_audit_path = (
+) -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
+    del data_manifest
+    governed = legislation_builder.load_governed_model_enrichment_v3()
+    manifest = governed["manifest"]
+    independent = governed["audit"]
+    reviewer = governed["reviewer"]
+    rows = governed["rows"]
+    projection_path = (
+        BUNDLE / legislation_builder.MODEL_ENRICHMENT_V3_EXPLORER_MANIFEST
+    )
+    projection = read_json(projection_path)
+    expected_projection = (
+        legislation_builder.model_enrichment_v3_explorer_manifest(governed)
+    )
+    coverage_path = (
+        BUNDLE / "enrichment/codex-assisted-v3/coverage.json"
+    )
+    historical_v2_run_path = BUNDLE / "enrichment/codex-assisted-v2.json"
+    historical_v2_audit_path = (
         ROOT / "whole-law/assurance/enrichment-v2-independent-audit-20260726.json"
     )
-    independent = read_json(independent_audit_path)
     for name, path in (
-        ("enrichment_manifest", manifest_path),
-        ("enrichment_attempt_ledger", ledger_path),
-        ("enrichment_run", run_path),
-        ("enrichment_coverage", coverage_path),
-        ("enrichment_independent_audit", independent_audit_path),
+        (
+            "enrichment_v3_accepted_manifest",
+            legislation_builder.MODEL_ENRICHMENT_V3_ACCEPTED_PATH,
+        ),
+        (
+            "enrichment_v3_independent_audit",
+            legislation_builder.MODEL_ENRICHMENT_V3_AUDIT_PATH,
+        ),
+        (
+            "enrichment_v3_reviewer_task_receipt",
+            legislation_builder.MODEL_ENRICHMENT_V3_REVIEWER_PATH,
+        ),
+        (
+            "enrichment_v3_run",
+            ROOT / governed["bindings"]["run"]["path"],
+        ),
+        ("enrichment_v3_coverage", coverage_path),
+        ("enrichment_v3_explorer_projection", projection_path),
+        ("enrichment_v2_historical_run", historical_v2_run_path),
+        ("enrichment_v2_historical_audit", historical_v2_audit_path),
     ):
         audit.bind(name, path)
 
-    rows, observations = validate_manifest_chunks(audit, manifest, name="ENRICHMENT")
+    projection_ok = projection == expected_projection
+    audit.check(
+        "G05-ENRICHMENT-CHUNKS",
+        "accepted-v3-chunk-integrity",
+        projection_ok,
+        {
+            "chunks": len(manifest["chunks"]),
+            "records": len(rows),
+            "accepted_manifest_sha256": governed["bindings"][
+                "accepted_manifest"
+            ]["sha256"],
+            "independent_audit_sha256": governed["bindings"][
+                "independent_audit"
+            ]["sha256"],
+            "explorer_projection_exact": projection_ok,
+        },
+    )
     checked, schema_failures = validate_assertions(rows, relationship_schema)
     ids = [row.get("id") for row in rows]
     v1_contamination = 0
+    v2_contamination = 0
     contract_failures = 0
     for row in rows:
         serialized = json.dumps(row, sort_keys=True).lower()
         v1_contamination += int(
             "model-assisted-v1" in serialized or "codex-assisted-v1" in serialized
         )
+        v2_contamination += int(
+            "model-assisted-v2" in serialized or "codex-assisted-v2" in serialized
+        )
         evidence = row.get("evidence") or []
+        dimension = row.get("dimension")
+        try:
+            legislation_builder.validate_model_enrichment_v3_evidence(row)
+            evidence_ok = True
+        except ValueError:
+            evidence_ok = False
+        review = row.get("review")
+        rights = row.get("rights")
         contract_failures += int(
             normalized_authority(row.get("authority")) != "model-assisted"
-            or row.get("derivation") != "codex-assisted-deterministic-title-rule"
-            or row.get("review_status") != "pending-independent-audit"
-            or not evidence
-            or any(
-                not isinstance(item, dict)
-                or item.get("type") != "literal-title-match"
-                or not item.get("value")
-                or not item.get("url")
-                for item in evidence
+            or row.get("derivation")
+            != "codex-authored-deterministic-literal-rule-v3"
+            or row.get("review_status") != "accepted-independent-review"
+            or dimension not in legislation_builder.MODEL_ENRICHMENT_V3_PREDICATES
+            or row.get("predicate")
+            != legislation_builder.MODEL_ENRICHMENT_V3_PREDICATES.get(
+                dimension
             )
-            or row.get("rights", {}).get("assertion")
+            or not isinstance(review, dict)
+            or review.get("audit_id") != manifest["audit_id"]
+            or review.get("review_task_id")
+            != reviewer["review_task_id"]
+            or not evidence_ok
+            or not isinstance(evidence, list)
+            or not isinstance(rights, dict)
+            or rights.get("assertion")
             != "derived discovery metadata"
         )
 
-    manifest_by_path = {chunk["path"]: chunk for chunk in manifest["chunks"]}
-    work_paths = data_manifest["chunks"]["datasets"]
-    ledger_inputs = [chunk["input"] for chunk in ledger["chunks"]]
-    ledger_outputs = [chunk["output"] for chunk in ledger["chunks"]]
-    ledger_failures = 0
-    for receipt in ledger["chunks"]:
-        input_path = bundle_path(receipt["input"])
-        output_path = bundle_path(receipt["output"])
-        declared = manifest_by_path.get(receipt["output"])
-        ledger_failures += int(
-            not declared
-            or sha256(input_path) != receipt["input_sha256"]
-            or sha256(output_path) != receipt["output_sha256"]
-            or receipt["output_sha256"] != declared["sha256"]
-            or receipt["accepted_assertions"] != declared["records"]
-        )
-    attempted = sum(chunk["attempted_records"] for chunk in ledger["chunks"])
-    accepted = sum(chunk["accepted_assertions"] for chunk in ledger["chunks"])
-    ledger_ok = (
-        ledger_failures == 0
-        and len(ledger["chunks"]) == 366
-        and ledger_inputs == work_paths
-        and ledger_outputs == [item["path"] for item in manifest["chunks"]]
-        and len(set(ledger_inputs)) == len(ledger_inputs)
-        and attempted == EXPECTED["enrichment_attempts"]
-        and accepted == EXPECTED["model_assisted_assertions"]
+    attempted = int(independent["counts"]["records_attempted"])
+    terminal_outcomes = int(independent["counts"]["terminal_outcomes"])
+    accepted = int(manifest["counts"]["assertions"])
+    attempts_ok = (
+        attempted == terminal_outcomes
+        and attempted == EXPECTED["works"]
+        and independent["counts"]["review_verdicts"]
+        == independent["counts"]["candidates"]
+        and independent["counts"]["accepted_assertions"] == accepted
     )
     audit.check(
         "G05-ENRICHMENT-ATTEMPTS",
-        "eligible-record-attempt-outcomes",
-        ledger_ok,
+        "complete-v3-terminal-outcomes-and-review",
+        attempts_ok,
         {
             "eligible_records": EXPECTED["works"],
             "attempted_records": attempted,
-            "attempt_receipts": len(ledger["chunks"]),
-            "input_work_chunks": len(work_paths),
-            "ledger_failures": ledger_failures,
+            "terminal_outcomes": terminal_outcomes,
+            "review_verdicts": independent["counts"]["review_verdicts"],
+            "accepted_assertions": accepted,
+            "accepted_by_kind": manifest["counts"]["by_kind"],
         },
     )
 
-    independent_binding_failures = 0
-    for binding in independent.get("bindings", {}).values():
-        if not isinstance(binding, dict) or "path" not in binding or "sha256" not in binding:
-            continue
-        path = ROOT / binding["path"]
-        independent_binding_failures += int(
-            not path.is_file() or sha256(path) != binding["sha256"]
-        )
     independent_ok = (
         independent.get("decision", {}).get("release_gate_passed") is True
         and independent.get("decision", {}).get("independent_review_status")
         == "accepted"
         and independent.get("decision", {}).get("accepted_assertions")
-        == EXPECTED["model_assisted_assertions"]
+        == accepted
+        and independent.get("decision", {}).get("accepted_by_kind")
+        == manifest["counts"]["by_kind"]
+        and independent.get("decision", {}).get("errors") == []
         and all(item.get("status") == "passed" for item in independent["checks"])
-        and independent["metrics"]["integrity"]["active_v1_output_records"] == 0
-        and independent_binding_failures == 0
+        and reviewer.get("status") == "accepted"
+        and reviewer.get("verdict") == "accepted"
+        and reviewer.get("source_edits_made_by_reviewer") is False
     )
     publication_ok = (
-        checked == EXPECTED["model_assisted_assertions"]
-        and manifest["counts"]["assertions"] == EXPECTED["model_assisted_assertions"]
-        and run["counts"]["assertions"]["accepted"]
-        == EXPECTED["model_assisted_assertions"]
-        and coverage["counts"]["assertions"]["accepted"]
-        == EXPECTED["model_assisted_assertions"]
+        checked == accepted
+        and len(rows) == accepted
         and schema_failures == 0
         and contract_failures == 0
         and v1_contamination == 0
+        and v2_contamination == 0
         and len(set(ids)) == len(ids)
         and independent_ok
+        and projection_ok
     )
     audit.check(
         "G05-ENRICHMENT",
-        "accepted-model-assisted-assertions",
+        "accepted-v3-model-assisted-assertions",
         publication_ok,
         {
             "assertions": checked,
+            "by_kind": manifest["counts"]["by_kind"],
             "schema_failures": schema_failures,
-            "candidate_contract_failures": contract_failures,
+            "accepted_contract_failures": contract_failures,
             "duplicate_ids": len(ids) - len(set(ids)),
             "v1_contamination": v1_contamination,
-            "candidate_review_status": "pending-independent-audit",
+            "v2_contamination": v2_contamination,
+            "active_review_status": "accepted-independent-review",
             "independent_audit_status": independent.get("decision", {}).get(
                 "independent_review_status"
             ),
-            "independent_binding_failures": independent_binding_failures,
+            "separate_semantic_reviewer_status": reviewer.get("status"),
+            "accepted_manifest": governed["bindings"]["accepted_manifest"],
+            "independent_audit": governed["bindings"]["independent_audit"],
+            "reviewer_task_receipt": governed["bindings"][
+                "reviewer_task_receipt"
+            ],
+            "run": governed["bindings"]["run"],
         },
     )
 
+    cost = independent["metrics"]["cost"]
     cost_ok = (
-        run["usage"]["api_calls"] == 0
-        and run["usage"]["api_input_tokens"] == 0
-        and run["usage"]["api_output_tokens"] == 0
-        and run["cost"]["incremental_openai_api_usd"] == 0
-        and run["cost"]["incremental_openai_api_gbp"] == 0
-        and run["cost"]["cap_triggered"] is False
-        and independent["metrics"]["cost"]["incremental_openai_api_usd"] == 0
+        cost["openai_api_calls"] == 0
+        and cost["openai_api_input_tokens"] == 0
+        and cost["openai_api_output_tokens"] == 0
+        and cost["incremental_openai_api_usd"] == 0
+        and cost["incremental_openai_api_gbp"] == 0
+        and cost["codex_subscription_token_usage"] == "not exposed"
+        and cost["codex_weekly_allowance_usage"] == "not exposed"
     )
     audit.check(
         "G05-ENRICHMENT-COST",
         "model-cost-boundary",
         cost_ok,
         {
-            "incremental_openai_api_usd": run["cost"][
+            "incremental_openai_api_usd": cost[
                 "incremental_openai_api_usd"
             ],
-            "incremental_openai_api_gbp": run["cost"][
+            "incremental_openai_api_gbp": cost[
                 "incremental_openai_api_gbp"
             ],
-            "api_calls": run["usage"]["api_calls"],
-            "cap_usd": run["cost"]["cap_usd"],
-            "cap_triggered": run["cost"]["cap_triggered"],
+            "api_calls": cost["openai_api_calls"],
+            "codex_subscription_token_usage": cost[
+                "codex_subscription_token_usage"
+            ],
+            "codex_weekly_allowance_usage": cost[
+                "codex_weekly_allowance_usage"
+            ],
             "boundary": (
                 "Repository metadata supports zero incremental OpenAI API cost "
                 "only. Codex subscription usage and external billing are not exposed."
             ),
         },
     )
-    return rows, manifest
+    return rows, manifest, governed
 
 
 def audit_composition(
@@ -600,7 +646,7 @@ def audit_composition(
         add_external_composition(effects, "legislation-effects", summaries)
     )
     breakdown.extend(
-        add_external_composition(enrichment, "codex-assisted-v2", summaries)
+        add_external_composition(enrichment, "codex-assisted-v3", summaries)
     )
     breakdown.sort(
         key=lambda row: (
@@ -678,7 +724,7 @@ def audit_composition(
         and root_summary["core_total"] == observed["by_datapack"]["core"]
         and root_summary["external_datapack_total"]
         == observed["by_datapack"]["legislation-effects"]
-        + observed["by_datapack"]["codex-assisted-v2"]
+        + observed["by_datapack"]["codex-assisted-v3"]
         and reduced == published_reduced
     )
     audit.check(
@@ -734,6 +780,7 @@ def audit_descriptors(
     observed: dict[str, Any],
     effects_manifest: dict[str, Any],
     enrichment_manifest: dict[str, Any],
+    governed_v3: dict[str, Any],
 ) -> None:
     root_descriptor_path = BUNDLE / "okf-explorer.json"
     federation_descriptor_path = BUNDLE / "whole-law/okf-explorer.json"
@@ -744,14 +791,25 @@ def audit_descriptors(
     required_root = {
         "data_manifest",
         "official_effects",
-        "model_enrichment_v2",
+        "model_enrichment_v3",
+        "model_enrichment_v3_accepted_manifest",
+        "model_enrichment_v3_coverage",
+        "model_enrichment_v3_independent_audit",
+        "model_enrichment_v3_reviewer",
+        "model_enrichment_v2_historical",
+        "model_enrichment_v2_historical_manifest",
         "relationship_composition",
         "relationship_summary",
         "relationship_adjacency",
     }
     required_federation = {
         "official_effects",
-        "model_enrichment",
+        "model_enrichment_v3",
+        "model_enrichment_v3_accepted_manifest",
+        "model_enrichment_v3_coverage",
+        "model_enrichment_v3_independent_audit",
+        "model_enrichment_v3_reviewer",
+        "model_enrichment_v2_historical",
         "relationship_summary",
     }
     resolved: dict[str, str] = {}
@@ -767,28 +825,61 @@ def audit_descriptors(
     ):
         for name in required:
             try:
-                path = (descriptor_path.parent / descriptor["entrypoints"][name]).resolve()
+                reference = descriptor["entrypoints"][name]
+                relative = (
+                    reference.get("path")
+                    if isinstance(reference, dict)
+                    else reference
+                )
+                path = (descriptor_path.parent / relative).resolve()
                 if BUNDLE.resolve() not in path.parents or not path.is_file():
                     safe = False
+                if (
+                    isinstance(reference, dict)
+                    and reference.get("sha256") != sha256(path)
+                ):
+                    safe = False
                 resolved[f"{prefix}.{name}"] = path.relative_to(BUNDLE).as_posix()
-            except (KeyError, ValueError):
+            except (KeyError, TypeError, ValueError):
                 safe = False
     extensions = root_descriptor["extensions"]
+    active_v3 = extensions["okf-model-enrichment.v3"]
+    historical_v2 = extensions["okf-model-enrichment.v2-historical"]
+    accepted_count = enrichment_manifest["counts"]["assertions"]
+    accepted_by_kind = enrichment_manifest["counts"]["by_kind"]
     descriptor_ok = (
         safe
         and root_descriptor["counts"]["works"] == EXPECTED["works"]
         and root_descriptor["counts"]["official_effect_relationships"]
         == EXPECTED["official_effects"]
-        and root_descriptor["counts"]["model_assisted_relationships_v2"]
-        == EXPECTED["model_assisted_assertions"]
+        and root_descriptor["counts"]["model_assisted_relationships_v3"]
+        == accepted_count
+        and root_descriptor["counts"][
+            "model_assisted_topic_relationships_v3"
+        ]
+        == accepted_by_kind["topic"]
+        and root_descriptor["counts"][
+            "model_assisted_concept_relationships_v3"
+        ]
+        == accepted_by_kind["concept"]
+        and root_descriptor["counts"][
+            "model_assisted_entity_relationships_v3"
+        ]
+        == accepted_by_kind["entity"]
         and root_descriptor["counts"]["relationships"] == observed["total"]
         and extensions["okf-official-effects.v1"]["assertions"]
         == effects_manifest["counts"]["assertions"]
         and extensions["okf-official-effects.v1"]["authority"] == "official-source"
-        and extensions["okf-model-enrichment.v2"]["accepted_assertions"]
-        == enrichment_manifest["counts"]["assertions"]
-        and extensions["okf-model-enrichment.v2"]["attempted_records"]
-        == EXPECTED["enrichment_attempts"]
+        and active_v3["accepted_assertions"] == accepted_count
+        and active_v3["accepted_by_kind"] == accepted_by_kind
+        and active_v3["attempted_records"]
+        == governed_v3["audit"]["counts"]["records_attempted"]
+        and active_v3["official_legal_classification"] is False
+        and active_v3["direct_openai_api_calls"] == 0
+        and active_v3["incremental_openai_api_usd"] == 0
+        and active_v3["incremental_openai_api_gbp"] == 0
+        and historical_v2["mode"] == "historical-evidence-not-active"
+        and historical_v2["included_in_active_relationship_totals"] is False
         and extensions["okf-model-enrichment.v1-historical"]["applied"] is False
         and extensions["okf-model-enrichment.v1-historical"]["governed_assertions"]
         == 0
@@ -796,6 +887,10 @@ def audit_descriptors(
         == "../okf-explorer.json"
         and federation_descriptor["children"][0]["counts"]["relationships"]
         == observed["total"]
+        and federation_descriptor["children"][0]["counts"][
+            "model_assisted_relationships_v3"
+        ]
+        == accepted_count
     )
     audit.check(
         "G05-DESCRIPTORS",
@@ -808,30 +903,59 @@ def audit_descriptors(
             "official_effects": root_descriptor["counts"][
                 "official_effect_relationships"
             ],
-            "model_assisted_v2": root_descriptor["counts"][
-                "model_assisted_relationships_v2"
+            "model_assisted_v3": accepted_count,
+            "model_assisted_v3_by_kind": accepted_by_kind,
+            "accepted_manifest": governed_v3["bindings"][
+                "accepted_manifest"
+            ],
+            "independent_audit": governed_v3["bindings"][
+                "independent_audit"
             ],
             "historical_v1_governed_assertions": extensions[
                 "okf-model-enrichment.v1-historical"
             ]["governed_assertions"],
+            "historical_v2_assertions": historical_v2[
+                "accepted_assertions_at_v2_snapshot"
+            ],
         },
     )
 
     graph_path = BUNDLE / "data/graph.json"
     graph = read_json(graph_path)
     audit.bind("graph_overview", graph_path)
-    graph_external = {
-        row["authority"]: row["count"] for row in graph["external_edge_counts"]
+    graph_external = graph["external_edge_counts"]
+    model_graph = {
+        str(row["kind"]): int(row["count"])
+        for row in graph_external
+        if row.get("authority") == "model-assisted"
     }
-    graph_ok = graph_external == {
-        "official-source": EXPECTED["official_effects"],
-        "model-assisted": EXPECTED["model_assisted_assertions"],
-    }
+    official_graph = sum(
+        int(row["count"])
+        for row in graph_external
+        if row.get("authority") == "official-source"
+    )
+    graph_ok = (
+        model_graph == governed_v3["predicate_counts"]
+        and official_graph == EXPECTED["official_effects"]
+        and graph.get("model_enrichment_v3_accepted_manifest")
+        == governed_v3["bindings"]["accepted_manifest"]
+        and graph.get("model_enrichment_v3_independent_audit")
+        == governed_v3["bindings"]["independent_audit"]
+    )
     audit.check(
         "G05-GRAPH-INDEX",
         "graph-provider-datapack-discovery",
         graph_ok,
-        {"external_edge_counts": graph_external},
+        {
+            "external_edge_counts": graph_external,
+            "model_assisted_relationship_kinds": model_graph,
+            "accepted_manifest": graph.get(
+                "model_enrichment_v3_accepted_manifest"
+            ),
+            "independent_audit": graph.get(
+                "model_enrichment_v3_independent_audit"
+            ),
+        },
     )
 
     explorer_ok = False
@@ -841,7 +965,7 @@ def audit_descriptors(
         audit.bind(
             "explorer_runtime_acceptance",
             EXPLORER_RECEIPT,
-            display="../okf-explorer/release-assurance/explorer-runtime-acceptance.json",
+            display="release-assurance/explorer-runtime-acceptance.json",
         )
         inputs = explorer.get("inputs", {})
         expected_root_hash = sha256(root_descriptor_path)
@@ -923,6 +1047,15 @@ def render_markdown(receipt: dict[str, Any]) -> str:
             "- Independently accepted model-assisted assertions: "
             f"{metrics['model_assisted_assertions']:,}"
         ),
+        (
+            "- Accepted v3 kinds: "
+            + ", ".join(
+                f"{kind} {count:,}"
+                for kind, count in metrics[
+                    "model_assisted_assertions_by_kind"
+                ].items()
+            )
+        ),
         f"- Combined relationships: {metrics['combined_relationships']:,}",
         "",
         "## Checks",
@@ -942,7 +1075,9 @@ def render_markdown(receipt: dict[str, Any]) -> str:
                 "frozen legislation.gov.uk routes; coverage remains explicitly partial."
             ),
             (
-                "- Enrichment is derived discovery metadata, not official legal "
+                "- Active enrichment contains only independently accepted v3 "
+                "topic, concept and entity-link discovery metadata. Historical "
+                "v2 evidence is not counted; no enrichment is official legal "
                 "classification or legal advice."
             ),
             (
@@ -991,22 +1126,33 @@ def build_receipt() -> dict[str, Any]:
 
     core_rows, summaries = scan_core(audit, data_manifest)
     effects, effects_manifest = audit_effects(audit, relationship_schema)
-    enrichment, enrichment_manifest = audit_enrichment(
+    enrichment, enrichment_manifest, governed_v3 = audit_enrichment(
         audit, relationship_schema, data_manifest
     )
     observed = audit_composition(
         audit, core_rows, summaries, effects, enrichment
     )
     audit_descriptors(
-        audit, observed, effects_manifest, enrichment_manifest
+        audit,
+        observed,
+        effects_manifest,
+        enrichment_manifest,
+        governed_v3,
     )
     counts = data_manifest["counts"]
     metrics = {
         "works": counts["works"],
         "core_relationships": summaries["datapack"]["core"],
         "official_effects": summaries["datapack"]["legislation-effects"],
-        "enrichment_attempts": EXPECTED["enrichment_attempts"],
-        "model_assisted_assertions": summaries["datapack"]["codex-assisted-v2"],
+        "enrichment_attempts": governed_v3["audit"]["counts"][
+            "records_attempted"
+        ],
+        "model_assisted_assertions": summaries["datapack"][
+            "codex-assisted-v3"
+        ],
+        "model_assisted_assertions_by_kind": governed_v3["counts"][
+            "by_kind"
+        ],
         "combined_relationships": observed["total"],
         "composition": {
             key: observed[key]
@@ -1018,6 +1164,12 @@ def build_receipt() -> dict[str, Any]:
             )
         },
         "predicate_classes": len(observed["by_predicate"]),
+        "accepted_manifest": governed_v3["bindings"]["accepted_manifest"],
+        "independent_audit": governed_v3["bindings"]["independent_audit"],
+        "run": governed_v3["bindings"]["run"],
+        "reviewer_task_receipt": governed_v3["bindings"][
+            "reviewer_task_receipt"
+        ],
     }
     expected_metrics_ok = all(
         metrics[name] == value for name, value in EXPECTED.items()
@@ -1035,8 +1187,8 @@ def build_receipt() -> dict[str, Any]:
         "status": "passed" if not audit.blockers else "blocked",
         "scope": (
             "Built UK Legislation graph, official-effects datapack, model-assisted "
-            "v2 datapack, relationship summaries, descriptors and bound Explorer "
-            "runtime receipt."
+            "v3 accepted datapack, historical v2 evidence, relationship summaries, "
+            "descriptors and bound Explorer runtime receipt."
         ),
         "metrics": metrics,
         "checks": sorted(audit.checks, key=lambda item: item["id"]),

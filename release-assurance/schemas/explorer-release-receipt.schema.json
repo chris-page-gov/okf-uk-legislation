@@ -24,14 +24,14 @@
       "const": "https://github.com/chris-page-gov/okf-explorer"
     },
     "tag": {
-      "const": "v0.5.0"
+      "const": "v0.5.1"
     },
     "commit": {
       "type": "string",
       "pattern": "^[0-9a-f]{40}$"
     },
     "release_url": {
-      "const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.0"
+      "const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.1"
     },
     "materials": {
       "type": "array",

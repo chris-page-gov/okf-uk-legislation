@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-transition-statement.schema.json",
-  "title": "OKF model enrichment transition statement v1",
-  "description": "Immutable statement binding the user decision and ready preflight evidence for one bounded paid run.",
+  "title": "OKF optional direct-API model-enrichment transition statement v1",
+  "description": "Optional future direct-API profile contract, not required for the current Codex/no-direct-API release. Immutable statement binding the new explicit user decision and ready preflight evidence for one bounded paid run.",
   "type": "object",
   "required": [
     "schema",

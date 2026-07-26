@@ -8,12 +8,12 @@ This is a fail-closed candidate status. It does not claim executed security, bro
 
 | Phase | Requirements | Status counts |
 | ---: | ---: | --- |
-| 0 (later decisions) | 12 | deferred: 1, started: 4, verified: 7 |
+| 0 (later decisions) | 13 | deferred: 1, started: 4, verified: 8 |
 | 1 | 4 | verified: 4 |
 | 2 | 4 | verified: 4 |
 | 3 | 4 | verified: 4 |
 | 4 | 4 | verified: 4 |
-| 5 | 6 | blocked: 1, started: 4, verified: 1 |
+| 5 | 6 | started: 2, verified: 4 |
 | 6 | 5 | started: 1, verified: 4 |
 | 7 | 6 | verified: 6 |
 | 8 | 7 | started: 1, verified: 6 |

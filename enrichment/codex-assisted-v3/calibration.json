@@ -1,0 +1,238 @@
+{
+  "schema": "okf-codex-enrichment-calibration.v3",
+  "calibration_id": "codex-assisted-v3-fixed-20260726-r3",
+  "scope": {
+    "meaning": "Designed rule-level calibration for deterministic literal discovery rules.",
+    "population_level_precision_claimed": false,
+    "warning": "Passing these fixed positives and near misses does not prove exhaustive population-level legal-semantic accuracy."
+  },
+  "thresholds": {
+    "schema_validity": 1.0,
+    "precision": 0.95,
+    "evidence_support": 0.95,
+    "topic_rule_coverage": 1.0,
+    "concept_mapping_coverage": 1.0,
+    "entity_rule_coverage": 1.0
+  },
+  "topic_inheritance": {
+    "rules": "enrichment/codex-assisted-v2-rules.json",
+    "calibration": "enrichment/codex-assisted-v2-calibration.json",
+    "required_rules": 55,
+    "required_positive_near_miss_tests": 55,
+    "required_end_to_end_cases": 58
+  },
+  "entity_negative_profile": {
+    "required_exclusion_tests": 7,
+    "required_collision_tests": 4,
+    "required_retirement_tests": 1,
+    "required_retained_context_tests": 1
+  },
+  "field_policy_tests": [
+    {
+      "source_field": "notes",
+      "dimension": "topic",
+      "rule_id": "R001",
+      "positive": "This Order amends the Air Navigation Order 2016.",
+      "near_miss_negative": "This Order amends the airline navigation arrangements."
+    },
+    {
+      "source_field": "notes",
+      "dimension": "concept",
+      "rule_id": "R036",
+      "positive": "These Regulations make provision for student support.",
+      "near_miss_negative": "These Regulations support students."
+    },
+    {
+      "source_field": "notes",
+      "dimension": "entity",
+      "rule_id": "E002",
+      "positive": "The functions are exercised by the Bank of England.",
+      "near_miss_negative": "The functions are exercised by banks in England."
+    },
+    {
+      "source_field": "category",
+      "dimension": "none",
+      "positive": "secondary",
+      "near_miss_negative": "secondary schools",
+      "expected_candidate_count": 0
+    },
+    {
+      "source_field": "document_type",
+      "dimension": "none",
+      "positive": "UnitedKingdomPublicGeneralAct",
+      "near_miss_negative": "Financial Services Act",
+      "expected_candidate_count": 0
+    },
+    {
+      "source_field": "publisher_title",
+      "dimension": "none",
+      "positive": "Secondary",
+      "near_miss_negative": "National Health Service",
+      "expected_candidate_count": 0
+    },
+    {
+      "source_field": "tags",
+      "dimension": "none",
+      "positive": ["uksi", "secondary", "year-2026"],
+      "near_miss_negative": ["financial services"],
+      "expected_candidate_count": 0
+    }
+  ],
+  "concept_target_template": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-{slug}",
+  "concept_mapping_expectations": [
+    {"rule_id": "R001", "label": "Air navigation"},
+    {"rule_id": "R002", "label": "Restriction of flying"},
+    {"rule_id": "R003", "label": "Motor vehicles"},
+    {"rule_id": "R004", "label": "Parking places"},
+    {"rule_id": "R005", "label": "Speed limits"},
+    {"rule_id": "R006", "label": "Driving licences"},
+    {"rule_id": "R007", "label": "Vehicle construction and use"},
+    {"rule_id": "R008", "label": "Legal aid"},
+    {"rule_id": "R009", "label": "Advice and assistance"},
+    {"rule_id": "R010", "label": "Magistrates' courts civil procedure"},
+    {"rule_id": "R011", "label": "Civil legal services"},
+    {"rule_id": "R012", "label": "Import duties"},
+    {"rule_id": "R013", "label": "Double taxation relief"},
+    {"rule_id": "R014", "label": "Taxation relief"},
+    {"rule_id": "R015", "label": "Non-domestic rating"},
+    {"rule_id": "R016", "label": "Industrial training"},
+    {"rule_id": "R017", "label": "Training levy"},
+    {"rule_id": "R018", "label": "Wages regulation"},
+    {"rule_id": "R019", "label": "Trade unions"},
+    {"rule_id": "R020", "label": "Superannuation"},
+    {"rule_id": "R021", "label": "Financial services"},
+    {"rule_id": "R022", "label": "Building societies"},
+    {"rule_id": "R023", "label": "Friendly societies"},
+    {"rule_id": "R024", "label": "Credit unions"},
+    {"rule_id": "R025", "label": "Offshore installations"},
+    {"rule_id": "R026", "label": "Sea fishing"},
+    {"rule_id": "R027", "label": "Feeding stuffs"},
+    {"rule_id": "R028", "label": "Diseases of animals"},
+    {"rule_id": "R029", "label": "Environmentally sensitive areas"},
+    {"rule_id": "R030", "label": "Smoke control"},
+    {"rule_id": "R031", "label": "Foot-and-mouth disease"},
+    {"rule_id": "R032", "label": "Primary care trusts"},
+    {"rule_id": "R033", "label": "Medicines"},
+    {"rule_id": "R034", "label": "Poisons regulation"},
+    {"rule_id": "R035", "label": "Secondary schools"},
+    {"rule_id": "R036", "label": "Student support"},
+    {"rule_id": "R037", "label": "Teachers' salaries"},
+    {"rule_id": "R038", "label": "Births, deaths and marriages"},
+    {"rule_id": "R039", "label": "Marriage validity"},
+    {"rule_id": "R040", "label": "National assistance"},
+    {"rule_id": "R041", "label": "Social Fund"},
+    {"rule_id": "R042", "label": "Housing benefit"},
+    {"rule_id": "R043", "label": "Wireless telegraphy"},
+    {"rule_id": "R044", "label": "Telecommunication systems"},
+    {"rule_id": "R045", "label": "Television licence fees"},
+    {"rule_id": "R046", "label": "Weights and measures"},
+    {"rule_id": "R047", "label": "Product safety"},
+    {"rule_id": "R048", "label": "Representation of the people"},
+    {"rule_id": "R049", "label": "Firearms control"},
+    {"rule_id": "R050", "label": "Misuse of drugs"},
+    {"rule_id": "R051", "label": "Homelessness"},
+    {"rule_id": "R052", "label": "Naval discipline"},
+    {"rule_id": "R053", "label": "European Communities"},
+    {"rule_id": "R054", "label": "Public interest disclosure"},
+    {"rule_id": "R055", "label": "Veterinary surgeons"}
+  ],
+  "entity_rule_tests": [
+    {
+      "rule_id": "E002",
+      "positive": "The Bank of England Regulations 2026",
+      "near_miss_negative": "The Banks of England Regulations 2026",
+      "exclusion_negatives": ["The Imperial Bank of England Act 1842"]
+    },
+    {"rule_id": "E003", "positive": "The Civil Aviation Authority Regulations 2026", "near_miss_negative": "The Civilian Aviation Authority Regulations 2026"},
+    {
+      "rule_id": "E004",
+      "positive": "The Environment Agency Regulations 2026",
+      "near_miss_negative": "The Environmental Agency Regulations 2026",
+      "exclusion_negatives": [
+        "The Northern Ireland Environment Agency Regulations 2026",
+        "The European Environment Agency Regulations 2026"
+      ]
+    },
+    {
+      "rule_id": "E005",
+      "positive": "The Pensions Regulator Regulations 2026",
+      "near_miss_negative": "The Pension Regulator Regulations 2026",
+      "exclusion_negatives": ["The Pensions Regulator Tribunal Rules 2005"]
+    },
+    {"rule_id": "E006", "positive": "The Care Quality Commission Regulations 2026", "near_miss_negative": "The Care Standards Commission Regulations 2026"},
+    {"rule_id": "E007", "positive": "The Office of Communications Regulations 2026", "near_miss_negative": "The Communications Office Regulations 2026"},
+    {"rule_id": "E008", "positive": "The National Crime Agency Regulations 2026", "near_miss_negative": "The National Criminal Agency Regulations 2026"},
+    {"rule_id": "E009", "positive": "The Competition and Markets Authority Regulations 2026", "near_miss_negative": "The Competition and Market Authority Regulations 2026"},
+    {
+      "rule_id": "E010",
+      "positive": "The Health and Safety Executive Regulations 2026",
+      "near_miss_negative": "The Health Safety Executive Regulations 2026",
+      "exclusion_negatives": ["The Health and Safety Executive for Northern Ireland Regulations 2026"]
+    },
+    {
+      "rule_id": "E011",
+      "positive": "The Electoral Commission Regulations 2026",
+      "near_miss_negative": "The Elections Commission Regulations 2026",
+      "exclusion_negatives": ["This Order establishes a new Constitution for Montserrat, in which an Electoral Commission is established for the first time."],
+      "retained_context_positive": "An Act to establish an Electoral Commission; and to make provision about elections and political parties."
+    },
+    {"rule_id": "E012", "positive": "The Driver and Vehicle Licensing Agency Regulations 2026", "near_miss_negative": "The Driver and Vehicles Licensing Agency Regulations 2026"},
+    {"rule_id": "E013", "positive": "The National Institute for Health and Care Excellence Regulations 2026", "near_miss_negative": "The National Institute of Health and Care Excellence Regulations 2026"},
+    {"rule_id": "E014", "positive": "The Financial Conduct Authority Regulations 2026", "near_miss_negative": "The Financial Conducts Authority Regulations 2026"},
+    {
+      "rule_id": "E015",
+      "positive": "The Charity Commission Regulations 2026",
+      "near_miss_negative": "The Charities Commission Regulations 2026",
+      "exclusion_negatives": ["The Charity Commission for Northern Ireland Regulations 2026"]
+    },
+    {"rule_id": "E016", "positive": "The Office for Students Regulations 2026", "near_miss_negative": "The Office of Students Regulations 2026"},
+    {"rule_id": "E017", "positive": "The Northern Ireland Environment Agency Regulations 2026", "near_miss_negative": "The Northern Irish Environment Agency Regulations 2026"},
+    {"rule_id": "E018", "positive": "The Health and Safety Executive for Northern Ireland Regulations 2026", "near_miss_negative": "The Health and Safety Executive of Northern Ireland Regulations 2026"},
+    {"rule_id": "E019", "positive": "The Charity Commission for Northern Ireland Regulations 2026", "near_miss_negative": "The Charities Commission for Northern Ireland Regulations 2026"},
+    {"rule_id": "E020", "positive": "The European Environment Agency Regulations 2026", "near_miss_negative": "The European Environmental Agency Regulations 2026"}
+  ],
+  "entity_collision_tests": [
+    {
+      "text": "The Northern Ireland Environment Agency Regulations 2026",
+      "expected_rule_ids": ["E017"],
+      "excluded_rule_ids": ["E004"],
+      "expected_target": "https://www.daera-ni.gov.uk/articles/northern-ireland-environment-agency",
+      "identity_evidence": "https://www.daera-ni.gov.uk/articles/northern-ireland-environment-agency",
+      "jurisdiction_scope": ["Northern Ireland"]
+    },
+    {
+      "text": "The European Environment Agency Regulations 2026",
+      "expected_rule_ids": ["E020"],
+      "excluded_rule_ids": ["E004"],
+      "expected_target": "https://www.eea.europa.eu/en",
+      "identity_evidence": "https://www.eea.europa.eu/en/about/who-we-are",
+      "jurisdiction_scope": ["European Union"]
+    },
+    {
+      "text": "The Health and Safety Executive for Northern Ireland Regulations 2026",
+      "expected_rule_ids": ["E018"],
+      "excluded_rule_ids": ["E010"],
+      "expected_target": "https://www.hseni.gov.uk/",
+      "identity_evidence": "https://www.hseni.gov.uk/",
+      "jurisdiction_scope": ["Northern Ireland"]
+    },
+    {
+      "text": "The Charity Commission for Northern Ireland Regulations 2026",
+      "expected_rule_ids": ["E019"],
+      "excluded_rule_ids": ["E015"],
+      "expected_target": "https://www.charitycommissionni.org.uk/",
+      "identity_evidence": "https://www.charitycommissionni.org.uk/about-us/",
+      "jurisdiction_scope": ["Northern Ireland"]
+    }
+  ],
+  "entity_retirement_tests": [
+    {
+      "retired_rule_id": "E001",
+      "text": "The National Health Service Regulations 2026",
+      "expected_rule_ids": [],
+      "former_target": "https://www.nhs.uk/",
+      "identity_evidence": "https://www.nhs.uk/about-us/about-the-nhs-website/",
+      "former_target_scope": ["England"]
+    }
+  ]
+}

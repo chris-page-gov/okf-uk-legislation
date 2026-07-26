@@ -8,7 +8,7 @@
   ],
   "candidate": {
     "bundle_tree_sha256": "__BUNDLE_TREE_SHA256__",
-    "explorer_release": "v0.5.0",
+    "explorer_release": "v0.5.1",
     "git_commit": "__CANDIDATE_COMMIT__",
     "release_tag": "__RC_TAG__",
     "repository": "https://github.com/chris-page-gov/okf-uk-legislation"

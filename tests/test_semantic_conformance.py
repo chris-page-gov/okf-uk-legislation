@@ -68,7 +68,7 @@ class SemanticConformanceTests(unittest.TestCase):
         self.assertEqual(365_786, receipt["scope"]["catalogued_legal_works"])
         self.assertEqual(0, receipt["scope"]["rdf_materialized_legal_works"])
         self.assertEqual(
-            872_574,
+            906_754,
             receipt["scope"]["relationship_rows_exhaustively_validated_as_json"],
         )
         self.assertEqual(
@@ -76,7 +76,7 @@ class SemanticConformanceTests(unittest.TestCase):
             receipt["json_schema"]["totals"]["core_rows"],
         )
         self.assertEqual(
-            37_011,
+            71_191,
             receipt["json_schema"]["totals"]["provider_rows"],
         )
         self.assertEqual(0, receipt["json_schema"]["totals"]["invalid_rows"])
@@ -117,6 +117,29 @@ class SemanticConformanceTests(unittest.TestCase):
             self.assertGreaterEqual(target["example_focus_nodes"], 1)
             self.assertGreaterEqual(target["node_shapes"], 1)
             self.assertGreaterEqual(target["required_property_constraints"], 1)
+
+    def test_active_provider_set_uses_governed_v3_not_historical_v2(
+        self,
+    ) -> None:
+        self.assertEqual(
+            {"legislation-effects", "codex-assisted-v3"},
+            set(conformance.PROVIDER_MANIFESTS),
+        )
+        self.assertEqual(
+            ROOT / "bundle" / "data" / "enrichment-v3" / "manifest.json",
+            conformance.PROVIDER_MANIFESTS["codex-assisted-v3"],
+        )
+        receipt = json.loads(conformance.RECEIPT.read_text(encoding="utf-8"))
+        providers = {
+            row["datapack_id"]: row
+            for row in receipt["json_schema"]["provider_relationships"]
+        }
+        self.assertNotIn("codex-assisted-v2", providers)
+        self.assertEqual(56_479, providers["codex-assisted-v3"]["rows_validated"])
+        self.assertEqual(
+            "bundle/data/enrichment-v3/manifest.json",
+            providers["codex-assisted-v3"]["manifest"]["path"],
+        )
 
     def test_receipt_material_hashes_are_current(self) -> None:
         receipt = json.loads(conformance.RECEIPT.read_text(encoding="utf-8"))

@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-model-capabilities.schema.json",
-  "title": "OKF exact model capability evidence v1",
-  "description": "A hash-bound capture of exact returned model identifiers and the context/output limits used by deterministic paid-run batching.",
+  "title": "OKF optional direct-API exact model-capability evidence v1",
+  "description": "Optional future direct-API profile contract, activated only by a new explicit user decision and not required for the current Codex/no-direct-API release. A hash-bound capture of exact returned model identifiers and the context/output limits used by deterministic paid-run batching.",
   "type": "object",
   "required": [
     "schema",

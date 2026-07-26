@@ -31,6 +31,24 @@ The offline finalizer rejects an observation unless its immutable attempt
 manifest records that exact controller SHA-256; copying the JSON from another
 tool or candidate therefore cannot satisfy the release gate.
 
+The checked-in
+[`explorer-runtime-acceptance.json`](explorer-runtime-acceptance.json) is the
+`okf-explorer-runtime-acceptance.v1` mutable-candidate receipt used by the
+embedded GATE-05 queryability check. It binds the current descriptor digests,
+but it does not claim an exact release commit or satisfy external
+finalization. It remains in the repository so ordinary pre-freeze publication
+validation can run after each deterministic rebuild.
+
+The `okf-explorer-runtime-acceptance.v2` receipt is a different, external
+post-freeze artefact. It is produced only after the Legislation commit and
+tree are frozen, binds that commit, tree and bundle inventory plus the exact
+Explorer `v0.5.1` commit, and is carried as the `runtime` material in the
+external Explorer release receipt. The finalizer rehashes that material,
+validates its v2 schema and reconstructs every candidate and Explorer binding.
+It must never be copied into the frozen checkout or declared as a required
+in-repository reproduction input: doing so would make a commit-bound receipt
+part of the commit it is required to identify.
+
 ## One archive, two releases
 
 GATE-06 creates one deterministic release archive from the exact frozen
@@ -94,9 +112,10 @@ The examples below use these external paths:
 
 ## 1. Authorize and verify the RC
 
-After the exact commit is frozen, run clean-room reproduction and the required
-Explorer, security, accessibility and performance checks against it. Then
-write the pre-RC receipt:
+After the exact commit is frozen, run clean-room reproduction. Then run the
+required Explorer, security, accessibility and performance checks against the
+exact reproduced candidate, keeping their receipts outside the checkout.
+Write the pre-RC receipt only after those external checks pass:
 
 ```sh
 .venv/bin/python scripts/finalize_release_candidate.py authorize-rc \
@@ -128,8 +147,10 @@ the immutable `v0.3.0-rc.1` release.
 Download the published RC asset to a regular external file and run the
 write-once deployed-entrypoint attempt against the RC. Close the frozen
 traceability ledger with a separate GATE-14 receipt. The public attempt must
-bind the frozen commit, bundle inventory, Explorer `v0.5.0`, RC tag and exact
-archive URL.
+bind the frozen commit, bundle inventory, the corrective Explorer `v0.5.1`
+release, RC tag and exact archive URL. Explorer `v0.5.0` remains the immutable
+release-order milestone; it is not sufficient for finalization after the
+runtime hardening incorporated into `v0.5.1`.
 
 Authorize promotion before a final release asset exists:
 

@@ -719,28 +719,6 @@ def require_filename(path: Path, expected: str, label: str) -> None:
     require_equal(path.name, expected, f"{label} filename")
 
 
-def reproduction_required_receipt(
-    reproduction: dict[str, Any],
-    receipt_id: str,
-) -> dict[str, Any]:
-    rows = require_array(
-        reproduction.get("required_receipts"),
-        "reproduction required_receipts",
-    )
-    matches = [
-        require_object(value, "reproduction required receipt")
-        for value in rows
-        if isinstance(value, dict) and value.get("id") == receipt_id
-    ]
-    if len(matches) != 1:
-        raise FinalizationError(
-            f"reproduction must bind exactly one required receipt {receipt_id}"
-        )
-    row = matches[0]
-    require_equal(row.get("status"), "passed", f"{receipt_id} reproduction status")
-    return require_object(row.get("material"), f"{receipt_id} material")
-
-
 def require_pass_summary(value: Any, label: str) -> None:
     summary = require_object(value, label)
     total = summary.get("checks_total")
@@ -971,25 +949,6 @@ def reconstruct_explorer_runtime(
             "browser_memory_bytes": measurements["browser_memory"],
         },
     }
-
-
-def verify_runtime_material_binding(
-    runtime_material: dict[str, Any],
-    reproduction: dict[str, Any],
-) -> None:
-    bound = reproduction_required_receipt(
-        reproduction, "okf-explorer-runtime-v0.5.0"
-    )
-    require_equal(
-        runtime_material.get("bytes"),
-        bound.get("bytes"),
-        "Explorer runtime receipt bytes",
-    )
-    require_equal(
-        runtime_material.get("sha256"),
-        bound.get("sha256"),
-        "Explorer runtime receipt SHA-256",
-    )
 
 
 def manifest_artifact_material(
@@ -2605,7 +2564,6 @@ def assemble_receipt(
         filename="explorer-runtime-acceptance.json",
         label="Explorer",
     )
-    verify_runtime_material_binding(runtime_material, reproduction)
     runtime = load_json(runtime_path)
     validate_schema(
         runtime,

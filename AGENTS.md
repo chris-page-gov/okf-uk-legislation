@@ -35,9 +35,16 @@
 - Do not run `scripts/enrich_legislation_semantics.py`. It is a preserved
   historical v1 API prototype whose default output is immutable evidence and
   which lacks the approved model-selection, reviewer, cache, cost-cap and
-  append-only attempt contracts. Paid enrichment requires explicit API-key
-  reuse/new-key approval and the governed v2 runner; never repurpose or
-  overwrite the historical v1 artefact.
+  append-only attempt contracts. The current release must use the governed
+  Codex task/subagent enrichment path and must not be gated on an API key or
+  make a direct paid API call. The direct API runner is retained only as an
+  optional future profile that would require a new explicit user decision;
+  never repurpose or overwrite the historical v1 artefact.
+- Report direct OpenAI API spend for the current implementation as exactly
+  USD 0 and GBP 0. Codex subscription or weekly-allowance consumption, exact
+  underlying deployment identity and billable task-surface token usage are not
+  exposed to the repository and must be recorded as unavailable/unmetered,
+  never invented or presented as evidence that total economic cost is zero.
 - Treat a GitHub CLI failure inside a restricted sandbox as inconclusive about
   the stored credential. Repeat a safe read-only authentication check outside
   the restricted sandbox before diagnosing an invalid token; never print or

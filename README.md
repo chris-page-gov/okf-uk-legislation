@@ -62,9 +62,11 @@ The checked candidate contains:
   legacy v1 title rules;
 - **14,712** official legislation.gov.uk amendment/effect assertions from a
   dated, complete-for-successful-routes 11-work seed snapshot;
-- **22,299** governed Codex-assisted topic assertions produced by attempting
-  every work, labelled model-assisted and non-official;
-- **872,574** relationships including external datapacks;
+- **56,479** independently reviewed Codex-assisted discovery assertions
+  produced after attempting every work: 23,469 topics, 31,874 concepts and
+  1,136 entity links, all labelled model-assisted and non-official;
+- **906,754** relationships including the official-effects and governed v3
+  provider datapacks;
 - **72** legal-source records, **36** source classes, **38** personas and
   **20** task families;
 - a **415-question** corpus-bound release suite covering every researched
@@ -92,7 +94,10 @@ the GitHub Pages publication:
 - `bundle/okf-bundle.yamlld` and `bundle/okf-bundle.jsonld` — legislation
   YAML-LD and JSON-LD;
 - `bundle/okf-explorer.json` — legislation Explorer descriptor;
-- `bundle/data/enrichment/` — Codex-assisted enrichment datapack and coverage;
+- `bundle/enrichment/codex-assisted-v3/` — governed Codex v3 run, coverage,
+  review and accepted-assertion evidence;
+- `bundle/data/enrichment-v3/` — active graph/semantic provider projection for
+  the independently accepted v3 assertions;
 - `bundle/data/effects/` — frozen official effect assertions, route coverage
   and live-reconciliation metadata;
 - `bundle/whole-law/okf-explorer.json` — Explorer federation v1 control plane;
@@ -127,7 +132,8 @@ Create the deterministic authored and generated layers with:
 ```sh
 python3 scripts/build_model_enrichment_input_evidence.py
 python3 scripts/build_codex_semantic_enrichment.py
-python3 scripts/build_model_enrichment_paid_publication.py
+python3 scripts/build_codex_semantic_enrichment_v3.py
+python3 scripts/audit_codex_semantic_enrichment_v3.py
 python3 scripts/build_legislation_effects.py --offline
 python3 scripts/reconcile_legislation_effects_live.py check
 python3 scripts/rebuild_legislation_discovery.py
@@ -154,7 +160,8 @@ python3 -m unittest discover -s tests -v
 python3 scripts/check_legislation_okf.py
 python3 scripts/build_model_enrichment_input_evidence.py --check
 python3 scripts/build_codex_semantic_enrichment.py --check
-python3 scripts/build_model_enrichment_paid_publication.py --check
+python3 scripts/build_codex_semantic_enrichment_v3.py check
+python3 scripts/audit_codex_semantic_enrichment_v3.py check
 python3 scripts/build_legislation_effects.py --check
 python3 scripts/reconcile_legislation_effects_live.py check
 python3 scripts/rebuild_legislation_discovery.py --check
@@ -172,11 +179,16 @@ python3 scripts/build_release_assurance.py --check
 python3 scripts/build_checksums.py --check
 ```
 
+The preserved direct-API/paid-model profile is not part of either command
+sequence. It is historical and optional, requires a new explicit decision,
+and must not gate this Codex-only release or request an API key.
+
 The input-evidence builder/check must run after the base legislation corpus
-exists and before the paid-publication builder/check. It binds the complete
-365,786-work order and records credential-free readiness only; the historical
-Codex-assisted output cannot substitute for the dedicated paid-run terminal
-outcome manifest.
+exists and before the governed Codex v3 build and independent review. It binds
+the complete 365,786-work order. Codex v3 records one terminal outcome for
+every work, publishes only evidence-supported candidate discovery metadata,
+and makes no direct OpenAI API call. The paid-publication check validates an
+optional future profile; its absence does not block this release.
 
 Source refreshes create immutable attempts and datapacks; they do not rewrite
 historical evidence. The release sequence is fail-closed:

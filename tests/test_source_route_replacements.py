@@ -5,6 +5,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -172,3 +173,27 @@ class SourceRouteReplacementTests(unittest.TestCase):
                     validation["observed_access_state"],
                     states,
                 )
+
+    def test_offline_archive_validation_does_not_read_current_curl(self) -> None:
+        archive, receipt = REPLACEMENTS.archive_paths(
+            "20260726T010545Z-c0f5a003"
+        )
+        original_sha256_file = REPLACEMENTS.sha256_file
+
+        def guarded_sha256_file(path: Path) -> str:
+            if Path(path) == Path("/usr/bin/curl"):
+                raise AssertionError(
+                    "offline validation read the current curl binary"
+                )
+            return original_sha256_file(path)
+
+        with mock.patch.object(
+            REPLACEMENTS,
+            "sha256_file",
+            side_effect=guarded_sha256_file,
+        ):
+            validation, _ = REPLACEMENTS.validate_archive(
+                archive,
+                receipt,
+            )
+        self.assertTrue(validation["byte_recovery_verified"])

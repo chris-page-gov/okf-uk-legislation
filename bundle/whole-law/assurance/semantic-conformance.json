@@ -1,7 +1,7 @@
 {
   "errors": [],
   "generated_at": "2026-07-25T22:54:00Z",
-  "input_fingerprint_sha256": "70da64296ecc5031eca3ac5c918c4d1f0797cb288667dd388b32e1415d5e966b",
+  "input_fingerprint_sha256": "b9f638b1ecd716c2ece78e908a0bc8c409e2910ca57ebde379b397411ed56a44",
   "json_schema": {
     "core_relationships": {
       "chunk_inventory_sha256": "ed5f90e8805686fb6f6a7df3112df5b1e4da3223fecb47d86c76f5ff0da47981",
@@ -34,27 +34,27 @@
         "schema_violations": 0
       },
       {
-        "chunk_inventory_sha256": "8b2ad7c832d15c23bf087030bdd03e5e9691e995523cff5df8ed5551b629909b",
+        "chunk_inventory_sha256": "15ee5634558a23eb702864d4adbcd378e8059d9ef5c3751683e29221f1258601",
         "chunks_declared": 366,
         "chunks_validated": 366,
-        "datapack_id": "codex-assisted-v2",
+        "datapack_id": "codex-assisted-v3",
         "manifest": {
-          "bytes": 97763,
-          "path": "bundle/data/enrichment/manifest.json",
-          "sha256": "4714cd29c2eeb6173b62515fee1fa41ea0a92372a8fb1ae98ffd56308ee7e1cb"
+          "bytes": 90338,
+          "path": "bundle/data/enrichment-v3/manifest.json",
+          "sha256": "6e9c71ca1171316419d32107316cac6f6ba4a9abfc8c85c98fab69c5424efc4e"
         },
         "manifest_schema_violations": 0,
-        "rows_expected": 22299,
+        "rows_expected": 56479,
         "rows_invalid": 0,
-        "rows_validated": 22299,
+        "rows_validated": 56479,
         "schema_violations": 0
       }
     ],
     "totals": {
       "core_rows": 835563,
       "invalid_rows": 0,
-      "provider_rows": 37011,
-      "relationship_rows": 872574,
+      "provider_rows": 71191,
+      "relationship_rows": 906754,
       "schema_violations": 0
     }
   },
@@ -75,9 +75,9 @@
       "sha256": "37a6b79ff45984f659bfab0e92013f19edd9091fbfc228fc8317ad771f05d0eb"
     },
     "federation_descriptor": {
-      "bytes": 109764,
+      "bytes": 110829,
       "path": "bundle/whole-law/okf-explorer.json",
-      "sha256": "cc110e0dfbee15f25aabd3634744973671f9c7b77f02d028a127d8635e664403"
+      "sha256": "958a79e8866832a20073b5227598d9c869c6581c69de81987edc6975025f29ce"
     },
     "generated_json_ld": {
       "bytes": 5737,
@@ -122,9 +122,9 @@
       "sha256": "575c62fab383a2c9444d3480640a086c4970b88c3ecafe9929f401969a84cdfe"
     },
     "validator": {
-      "bytes": 35625,
+      "bytes": 36260,
       "path": "scripts/run_semantic_conformance.py",
-      "sha256": "98627748e082de9bff1f9d245ae5b5f27f03c47e1070b95a349fea113c06b7ac"
+      "sha256": "5738eee030f7e30851faf56df1da11f1d875048a82864bae45aa989f59a383e3"
     },
     "vocabulary": {
       "bytes": 5972,
@@ -144,7 +144,7 @@
     "catalogued_legal_works": 365786,
     "claim_boundary": "The 365,786 catalogued legal works and relationship data plane are not materialised as RDF in this publication. SHACL covers the complete two-node semantic descriptor graph; JSON Schema covers every compact core and provider relationship row.",
     "rdf_materialized_legal_works": 0,
-    "relationship_rows_exhaustively_validated_as_json": 872574,
+    "relationship_rows_exhaustively_validated_as_json": 906754,
     "relationship_rows_materialized_as_rdf": 0,
     "semantic_graph": "The complete authored/generated Whole-Law federation descriptor graph: one Federation and its governed SourceRegister contract node."
   },

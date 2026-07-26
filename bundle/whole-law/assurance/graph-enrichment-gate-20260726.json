@@ -31,30 +31,45 @@
       "path": "bundle/data/effects/manifest.json",
       "sha256": "cc95a8fde5390ad1c559168e7e48b5b6c0f9dfbfe994f75ef2550f6b6e96a0c9"
     },
-    "enrichment_attempt_ledger": {
-      "bytes": 131072,
-      "path": "bundle/data/enrichment/attempt-ledger.json",
-      "sha256": "d35e8e1c0fe2533157fc2f2e644237171b825875c37c76d99002eadcc5de97ea"
-    },
-    "enrichment_coverage": {
-      "bytes": 21587,
-      "path": "bundle/data/enrichment/coverage.json",
-      "sha256": "b1d3ddcf49d4574dbc9f9690f411ed8b2f5e2467c1f94d7bbc2604c6616f4c7e"
-    },
-    "enrichment_independent_audit": {
+    "enrichment_v2_historical_audit": {
       "bytes": 10752,
       "path": "whole-law/assurance/enrichment-v2-independent-audit-20260726.json",
-      "sha256": "141aaa73fa6723b52ee802503319076f60cf927a201378587fa34b6b2de24427"
+      "sha256": "e69d355c5c6b01990b5cb7237ec0f0668a0a54840c7d4c71d48bd11468eb2f80"
     },
-    "enrichment_manifest": {
-      "bytes": 97763,
-      "path": "bundle/data/enrichment/manifest.json",
-      "sha256": "4714cd29c2eeb6173b62515fee1fa41ea0a92372a8fb1ae98ffd56308ee7e1cb"
-    },
-    "enrichment_run": {
+    "enrichment_v2_historical_run": {
       "bytes": 4766,
       "path": "bundle/enrichment/codex-assisted-v2.json",
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
+    },
+    "enrichment_v3_accepted_manifest": {
+      "bytes": 112096,
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+      "sha256": "ea4fe5dd9975a8775369bc0ef33f4a082c7e357c4e15268458760a831dbf3de7"
+    },
+    "enrichment_v3_coverage": {
+      "bytes": 14732,
+      "path": "bundle/enrichment/codex-assisted-v3/coverage.json",
+      "sha256": "6836e5b43ff7491c630afb2fa0d365ba9544e935c1651ac3d53dc5eb9736c458"
+    },
+    "enrichment_v3_explorer_projection": {
+      "bytes": 90338,
+      "path": "bundle/data/enrichment-v3/manifest.json",
+      "sha256": "6e9c71ca1171316419d32107316cac6f6ba4a9abfc8c85c98fab69c5424efc4e"
+    },
+    "enrichment_v3_independent_audit": {
+      "bytes": 9133,
+      "path": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+      "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
+    },
+    "enrichment_v3_reviewer_task_receipt": {
+      "bytes": 4111,
+      "path": "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+      "sha256": "2168de01aa604288912161e4bf9d63cabb8024381ab19b78fd71e77f11d1788a"
+    },
+    "enrichment_v3_run": {
+      "bytes": 9647,
+      "path": "bundle/enrichment/codex-assisted-v3/run.json",
+      "sha256": "0d3a0b236e87e2a091d731904641cff1533b10293f9b5a020811faff86d71a4f"
     },
     "entity_model_assessment": {
       "bytes": 5400,
@@ -62,19 +77,19 @@
       "sha256": "e4e1d508a07602bfa981e6d042d264979f487865efa1821f667658324bb5fe9a"
     },
     "explorer_runtime_acceptance": {
-      "bytes": 73331,
-      "path": "../okf-explorer/release-assurance/explorer-runtime-acceptance.json",
-      "sha256": "a7e1da78e852677f0ce94f1108f057536b5c5ecfb43ff8cf40d221594780f365"
+      "bytes": 73370,
+      "path": "release-assurance/explorer-runtime-acceptance.json",
+      "sha256": "d6ec63c55fffd214546c05bbb2a27e07e2667d36992807acc2a88dbf3ecacf27"
     },
     "federation_relationship_summary": {
-      "bytes": 74865,
+      "bytes": 74960,
       "path": "bundle/whole-law/data/relationship-summary.json",
-      "sha256": "647ebc01e31a244259580560e775cac710153bd3555f31a5fd360114dd789c32"
+      "sha256": "ca1178a23db8cc7ed5e290d59fee460ae1579e5330bff9554e5f02e1526ac46d"
     },
     "graph_overview": {
-      "bytes": 1327,
+      "bytes": 1808,
       "path": "bundle/data/graph.json",
-      "sha256": "934c4d3db757683d144c45b8a4675c59fa07ed1e51a55b43b17cbea728cb1ef1"
+      "sha256": "40b9fec22be0e08c96803f1ed59a199fb10000d055063a7a8921b9dcbe14a029"
     },
     "relationship_assertion_schema": {
       "bytes": 4937,
@@ -82,24 +97,24 @@
       "sha256": "1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4"
     },
     "relationship_composition": {
-      "bytes": 243985,
+      "bytes": 244796,
       "path": "bundle/data/relationship-composition.json",
-      "sha256": "baeda4ffcf6ce43938c1bdc89bdd71c922fe1405a7a6c9a61f1a56c93e3c9564"
+      "sha256": "6c6f74acf08b2596b4804427fe6dcfc927a49b5836a345c1aac66013808015a7"
     },
     "root_explorer_descriptor": {
-      "bytes": 6441,
+      "bytes": 8392,
       "path": "bundle/okf-explorer.json",
-      "sha256": "2d7c18dc4e678d7cde63e1bf1bb1c03ca7232cbcc346b9424a5e10dfacb2c73f"
+      "sha256": "93405064a3fd04ed1f5a4d8aa64a1827ee2d08977952e98a7c55bcefcab19d82"
     },
     "root_relationship_summary": {
-      "bytes": 185298,
+      "bytes": 146607,
       "path": "bundle/data/relationship-summary.json",
-      "sha256": "45f56a1cd76d9cc8d9d807f0b4c525944260760ec73b759d426d3867366470d9"
+      "sha256": "965964d211313f17721a2610e6bdfec4996a00a9ea6b40527d95e74f25487fd3"
     },
     "whole_law_explorer_descriptor": {
-      "bytes": 109764,
+      "bytes": 110829,
       "path": "bundle/whole-law/okf-explorer.json",
-      "sha256": "cc110e0dfbee15f25aabd3634744973671f9c7b77f02d028a127d8635e664403"
+      "sha256": "958a79e8866832a20073b5227598d9c869c6581c69de81987edc6975025f29ce"
     }
   },
   "blockers": [],
@@ -108,54 +123,54 @@
       "dimension": "relationship-composition-reconciliation",
       "evidence": {
         "breakdown_equal": true,
-        "breakdown_rows": 930,
+        "breakdown_rows": 935,
         "observed_by_authority": {
           "derived": 469777,
-          "model-assisted": 22299,
+          "model-assisted": 56479,
           "official": 380498
         },
         "observed_by_confidence": {
-          "0.96": 2197,
-          "0.97": 2332,
-          "0.98": 6719,
-          "0.99": 11051,
-          "1": 14712,
+          "0.96": 4961,
+          "0.97": 5103,
+          "0.98": 16812,
+          "0.99": 28467,
+          "1": 15848,
           "high": 365786,
           "low": 469777
         },
         "observed_by_datapack": {
-          "codex-assisted-v2": 22299,
+          "codex-assisted-v3": 56479,
           "core": 835563,
           "legislation-effects": 14712
         },
         "observed_by_freshness": {
-          "current": 872574
+          "current": 906754
         },
-        "observed_total": 872574,
+        "observed_total": 906754,
         "predicate_maps_equal": true,
         "published_by_authority": {
           "derived": 469777,
-          "model-assisted": 22299,
+          "model-assisted": 56479,
           "official": 380498
         },
         "published_by_confidence": {
-          "0.96": 2197,
-          "0.97": 2332,
-          "0.98": 6719,
-          "0.99": 11051,
-          "1": 14712,
+          "0.96": 4961,
+          "0.97": 5103,
+          "0.98": 16812,
+          "0.99": 28467,
+          "1": 15848,
           "high": 365786,
           "low": 469777
         },
         "published_by_datapack": {
-          "codex-assisted-v2": 22299,
+          "codex-assisted-v3": 56479,
           "core": 835563,
           "legislation-effects": 14712
         },
         "published_by_freshness": {
-          "current": 872574
+          "current": 906754
         },
-        "published_total": 872574
+        "published_total": 906754
       },
       "id": "G05-COMPOSITION",
       "status": "passed"
@@ -173,19 +188,46 @@
     {
       "dimension": "descriptor-entrypoints-and-counts",
       "evidence": {
+        "accepted_manifest": {
+          "bytes": 112096,
+          "path": "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+          "sha256": "ea4fe5dd9975a8775369bc0ef33f4a082c7e357c4e15268458760a831dbf3de7"
+        },
         "all_required_entrypoints_resolve_inside_bundle": true,
         "historical_v1_governed_assertions": 0,
-        "model_assisted_v2": 22299,
+        "historical_v2_assertions": 22299,
+        "independent_audit": {
+          "bytes": 9133,
+          "path": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+          "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
+        },
+        "model_assisted_v3": 56479,
+        "model_assisted_v3_by_kind": {
+          "concept": 31874,
+          "entity": 1136,
+          "topic": 23469
+        },
         "official_effects": 14712,
-        "relationships": 872574,
+        "relationships": 906754,
         "resolved_entrypoints": {
           "root.data_manifest": "data/manifest.json",
-          "root.model_enrichment_v2": "data/enrichment/manifest.json",
+          "root.model_enrichment_v2_historical": "enrichment/codex-assisted-v2.json",
+          "root.model_enrichment_v2_historical_manifest": "data/enrichment/manifest.json",
+          "root.model_enrichment_v3": "data/enrichment-v3/manifest.json",
+          "root.model_enrichment_v3_accepted_manifest": "enrichment/codex-assisted-v3/accepted-manifest.json",
+          "root.model_enrichment_v3_coverage": "enrichment/codex-assisted-v3/coverage.json",
+          "root.model_enrichment_v3_independent_audit": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+          "root.model_enrichment_v3_reviewer": "whole-law/assurance/enrichment-v3-reviewer-task-receipt.json",
           "root.official_effects": "data/effects/manifest.json",
           "root.relationship_adjacency": "data/adjacency/manifest.json",
           "root.relationship_composition": "data/relationship-composition.json",
           "root.relationship_summary": "data/relationship-summary.json",
-          "whole_law.model_enrichment": "data/enrichment/manifest.json",
+          "whole_law.model_enrichment_v2_historical": "enrichment/codex-assisted-v2.json",
+          "whole_law.model_enrichment_v3": "data/enrichment-v3/manifest.json",
+          "whole_law.model_enrichment_v3_accepted_manifest": "enrichment/codex-assisted-v3/accepted-manifest.json",
+          "whole_law.model_enrichment_v3_coverage": "enrichment/codex-assisted-v3/coverage.json",
+          "whole_law.model_enrichment_v3_independent_audit": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+          "whole_law.model_enrichment_v3_reviewer": "whole-law/assurance/enrichment-v3-reviewer-task-receipt.json",
           "whole_law.official_effects": "data/effects/manifest.json",
           "whole_law.relationship_summary": "whole-law/data/relationship-summary.json"
         }
@@ -240,38 +282,71 @@
       "status": "passed"
     },
     {
-      "dimension": "accepted-model-assisted-assertions",
+      "dimension": "accepted-v3-model-assisted-assertions",
       "evidence": {
-        "assertions": 22299,
-        "candidate_contract_failures": 0,
-        "candidate_review_status": "pending-independent-audit",
+        "accepted_contract_failures": 0,
+        "accepted_manifest": {
+          "bytes": 112096,
+          "path": "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+          "sha256": "ea4fe5dd9975a8775369bc0ef33f4a082c7e357c4e15268458760a831dbf3de7"
+        },
+        "active_review_status": "accepted-independent-review",
+        "assertions": 56479,
+        "by_kind": {
+          "concept": 31874,
+          "entity": 1136,
+          "topic": 23469
+        },
         "duplicate_ids": 0,
+        "independent_audit": {
+          "bytes": 9133,
+          "path": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+          "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
+        },
         "independent_audit_status": "accepted",
-        "independent_binding_failures": 0,
+        "reviewer_task_receipt": {
+          "bytes": 4111,
+          "path": "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+          "sha256": "2168de01aa604288912161e4bf9d63cabb8024381ab19b78fd71e77f11d1788a"
+        },
+        "run": {
+          "bytes": 9647,
+          "path": "bundle/enrichment/codex-assisted-v3/run.json",
+          "sha256": "0d3a0b236e87e2a091d731904641cff1533b10293f9b5a020811faff86d71a4f"
+        },
         "schema_failures": 0,
-        "v1_contamination": 0
+        "separate_semantic_reviewer_status": "accepted",
+        "v1_contamination": 0,
+        "v2_contamination": 0
       },
       "id": "G05-ENRICHMENT",
       "status": "passed"
     },
     {
-      "dimension": "eligible-record-attempt-outcomes",
+      "dimension": "complete-v3-terminal-outcomes-and-review",
       "evidence": {
-        "attempt_receipts": 366,
+        "accepted_assertions": 56479,
+        "accepted_by_kind": {
+          "concept": 31874,
+          "entity": 1136,
+          "topic": 23469
+        },
         "attempted_records": 365786,
         "eligible_records": 365786,
-        "input_work_chunks": 366,
-        "ledger_failures": 0
+        "review_verdicts": 56479,
+        "terminal_outcomes": 365786
       },
       "id": "G05-ENRICHMENT-ATTEMPTS",
       "status": "passed"
     },
     {
-      "dimension": "ENRICHMENT-chunk-integrity",
+      "dimension": "accepted-v3-chunk-integrity",
       "evidence": {
-        "all_declared_hashes_bytes_and_counts_match": true,
+        "accepted_manifest_sha256": "ea4fe5dd9975a8775369bc0ef33f4a082c7e357c4e15268458760a831dbf3de7",
         "chunks": 366,
-        "records": 22299
+        "explorer_projection_exact": true,
+        "independent_audit_sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55",
+        "records": 56479
       },
       "id": "G05-ENRICHMENT-CHUNKS",
       "status": "passed"
@@ -281,8 +356,8 @@
       "evidence": {
         "api_calls": 0,
         "boundary": "Repository metadata supports zero incremental OpenAI API cost only. Codex subscription usage and external billing are not exposed.",
-        "cap_triggered": false,
-        "cap_usd": 250.0,
+        "codex_subscription_token_usage": "not exposed",
+        "codex_weekly_allowance_usage": "not exposed",
         "incremental_openai_api_gbp": 0.0,
         "incremental_openai_api_usd": 0.0
       },
@@ -292,8 +367,8 @@
     {
       "dimension": "explorer-queryability",
       "evidence": {
-        "expected_legislation_descriptor_sha256": "2d7c18dc4e678d7cde63e1bf1bb1c03ca7232cbcc346b9424a5e10dfacb2c73f",
-        "expected_whole_law_descriptor_sha256": "cc110e0dfbee15f25aabd3634744973671f9c7b77f02d028a127d8635e664403",
+        "expected_legislation_descriptor_sha256": "93405064a3fd04ed1f5a4d8aa64a1827ee2d08977952e98a7c55bcefcab19d82",
+        "expected_whole_law_descriptor_sha256": "958a79e8866832a20073b5227598d9c869c6581c69de81987edc6975025f29ce",
         "federation_and_child": {
           "status": "passed"
         },
@@ -301,9 +376,9 @@
           "status": "passed"
         },
         "legislation_descriptor_current": true,
-        "receipt_legislation_descriptor_sha256": "2d7c18dc4e678d7cde63e1bf1bb1c03ca7232cbcc346b9424a5e10dfacb2c73f",
+        "receipt_legislation_descriptor_sha256": "93405064a3fd04ed1f5a4d8aa64a1827ee2d08977952e98a7c55bcefcab19d82",
         "receipt_status": "passed",
-        "receipt_whole_law_descriptor_sha256": "cc110e0dfbee15f25aabd3634744973671f9c7b77f02d028a127d8635e664403",
+        "receipt_whole_law_descriptor_sha256": "958a79e8866832a20073b5227598d9c869c6581c69de81987edc6975025f29ce",
         "whole_law_descriptor_current": true
       },
       "id": "G05-EXPLORER",
@@ -317,7 +392,7 @@
         "by_freshness_equal": true,
         "by_predicate_equal": true,
         "freshness_semantics": "`current` means the frozen datapack is inside its declared refresh window. It does not mean that every legal provision is in force, unamended or suitable for reliance without live verification.",
-        "total": 872574
+        "total": 906754
       },
       "id": "G05-FEDERATION-SUMMARY",
       "status": "passed"
@@ -325,9 +400,50 @@
     {
       "dimension": "graph-provider-datapack-discovery",
       "evidence": {
-        "external_edge_counts": {
-          "model-assisted": 22299,
-          "official-source": 14712
+        "accepted_manifest": {
+          "bytes": 112096,
+          "path": "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+          "sha256": "ea4fe5dd9975a8775369bc0ef33f4a082c7e357c4e15268458760a831dbf3de7"
+        },
+        "external_edge_counts": [
+          {
+            "authority": "model-assisted",
+            "count": 23469,
+            "datapack": "data/enrichment-v3/manifest.json",
+            "dimension": "topic",
+            "kind": "classified as"
+          },
+          {
+            "authority": "model-assisted",
+            "count": 31874,
+            "datapack": "data/enrichment-v3/manifest.json",
+            "dimension": "concept",
+            "kind": "has discovery concept"
+          },
+          {
+            "authority": "model-assisted",
+            "count": 1136,
+            "datapack": "data/enrichment-v3/manifest.json",
+            "dimension": "entity",
+            "kind": "mentions entity"
+          },
+          {
+            "authority": "official-source",
+            "count": 14712,
+            "coverage_status": "partial",
+            "datapack": "data/effects/manifest.json",
+            "kind": "official legislation effect"
+          }
+        ],
+        "independent_audit": {
+          "bytes": 9133,
+          "path": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+          "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
+        },
+        "model_assisted_relationship_kinds": {
+          "classified as": 23469,
+          "has discovery concept": 31874,
+          "mentions entity": 1136
         }
       },
       "id": "G05-GRAPH-INDEX",
@@ -336,9 +452,9 @@
     {
       "dimension": "root-relationship-summary-reconciliation",
       "evidence": {
-        "combined_total": 872574,
+        "combined_total": 906754,
         "predicate_authority_datapack_rows_equal": true,
-        "summary_rows": 927
+        "summary_rows": 929
       },
       "id": "G05-ROOT-SUMMARY",
       "status": "passed"
@@ -347,44 +463,66 @@
       "dimension": "locked-release-totals",
       "evidence": {
         "expected": {
-          "combined_relationships": 872574,
           "core_relationships": 835563,
-          "enrichment_attempts": 365786,
-          "model_assisted_assertions": 22299,
           "official_effects": 14712,
           "works": 365786
         },
         "observed": {
-          "combined_relationships": 872574,
+          "accepted_manifest": {
+            "bytes": 112096,
+            "path": "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+            "sha256": "ea4fe5dd9975a8775369bc0ef33f4a082c7e357c4e15268458760a831dbf3de7"
+          },
+          "combined_relationships": 906754,
           "composition": {
             "by_authority": {
               "derived": 469777,
-              "model-assisted": 22299,
+              "model-assisted": 56479,
               "official": 380498
             },
             "by_confidence": {
-              "0.96": 2197,
-              "0.97": 2332,
-              "0.98": 6719,
-              "0.99": 11051,
-              "1": 14712,
+              "0.96": 4961,
+              "0.97": 5103,
+              "0.98": 16812,
+              "0.99": 28467,
+              "1": 15848,
               "high": 365786,
               "low": 469777
             },
             "by_datapack": {
-              "codex-assisted-v2": 22299,
+              "codex-assisted-v3": 56479,
               "core": 835563,
               "legislation-effects": 14712
             },
             "by_freshness": {
-              "current": 872574
+              "current": 906754
             }
           },
           "core_relationships": 835563,
           "enrichment_attempts": 365786,
-          "model_assisted_assertions": 22299,
+          "independent_audit": {
+            "bytes": 9133,
+            "path": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+            "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
+          },
+          "model_assisted_assertions": 56479,
+          "model_assisted_assertions_by_kind": {
+            "concept": 31874,
+            "entity": 1136,
+            "topic": 23469
+          },
           "official_effects": 14712,
-          "predicate_classes": 926,
+          "predicate_classes": 928,
+          "reviewer_task_receipt": {
+            "bytes": 4111,
+            "path": "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+            "sha256": "2168de01aa604288912161e4bf9d63cabb8024381ab19b78fd71e77f11d1788a"
+          },
+          "run": {
+            "bytes": 9647,
+            "path": "bundle/enrichment/codex-assisted-v3/run.json",
+            "sha256": "0d3a0b236e87e2a091d731904641cff1533b10293f9b5a020811faff86d71a4f"
+          },
           "works": 365786
         }
       },
@@ -410,39 +548,64 @@
   },
   "gate": "GATE-05",
   "metrics": {
-    "combined_relationships": 872574,
+    "accepted_manifest": {
+      "bytes": 112096,
+      "path": "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+      "sha256": "ea4fe5dd9975a8775369bc0ef33f4a082c7e357c4e15268458760a831dbf3de7"
+    },
+    "combined_relationships": 906754,
     "composition": {
       "by_authority": {
         "derived": 469777,
-        "model-assisted": 22299,
+        "model-assisted": 56479,
         "official": 380498
       },
       "by_confidence": {
-        "0.96": 2197,
-        "0.97": 2332,
-        "0.98": 6719,
-        "0.99": 11051,
-        "1": 14712,
+        "0.96": 4961,
+        "0.97": 5103,
+        "0.98": 16812,
+        "0.99": 28467,
+        "1": 15848,
         "high": 365786,
         "low": 469777
       },
       "by_datapack": {
-        "codex-assisted-v2": 22299,
+        "codex-assisted-v3": 56479,
         "core": 835563,
         "legislation-effects": 14712
       },
       "by_freshness": {
-        "current": 872574
+        "current": 906754
       }
     },
     "core_relationships": 835563,
     "enrichment_attempts": 365786,
-    "model_assisted_assertions": 22299,
+    "independent_audit": {
+      "bytes": 9133,
+      "path": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+      "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
+    },
+    "model_assisted_assertions": 56479,
+    "model_assisted_assertions_by_kind": {
+      "concept": 31874,
+      "entity": 1136,
+      "topic": 23469
+    },
     "official_effects": 14712,
-    "predicate_classes": 926,
+    "predicate_classes": 928,
+    "reviewer_task_receipt": {
+      "bytes": 4111,
+      "path": "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+      "sha256": "2168de01aa604288912161e4bf9d63cabb8024381ab19b78fd71e77f11d1788a"
+    },
+    "run": {
+      "bytes": 9647,
+      "path": "bundle/enrichment/codex-assisted-v3/run.json",
+      "sha256": "0d3a0b236e87e2a091d731904641cff1533b10293f9b5a020811faff86d71a4f"
+    },
     "works": 365786
   },
   "schema": "okf-graph-enrichment-gate-assurance.v1",
-  "scope": "Built UK Legislation graph, official-effects datapack, model-assisted v2 datapack, relationship summaries, descriptors and bound Explorer runtime receipt.",
+  "scope": "Built UK Legislation graph, official-effects datapack, model-assisted v3 accepted datapack, historical v2 evidence, relationship summaries, descriptors and bound Explorer runtime receipt.",
   "status": "passed"
 }

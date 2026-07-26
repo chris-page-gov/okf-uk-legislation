@@ -1,11 +1,11 @@
 {
   "as_of": "2026-07-26",
   "counts": {
-    "blocked": 4,
+    "blocked": 3,
     "deferred": 3,
-    "open": 7,
-    "resolved": 11,
-    "total": 25
+    "open": 5,
+    "resolved": 15,
+    "total": 26
   },
   "gaps": [
     {
@@ -68,7 +68,7 @@
       "next_action": "Retain the receipt and its bound semantic, shape, vocabulary, schema and row-inventory digests through release-candidate freeze and promotion.",
       "release_effect": "none-before-freeze",
       "status": "resolved",
-      "summary": "The complete authored and generated two-node semantic descriptor graphs pass SHACL and RDF equivalence, while all 872,574 core/provider relationship rows pass their JSON contracts; the receipt explicitly records that the 365,786 works are not materialised as RDF."
+      "summary": "The complete authored and generated two-node semantic descriptor graphs pass SHACL and RDF equivalence, while all 906,754 core/provider relationship rows pass their JSON contracts; the receipt explicitly records that the 365,786 works are not materialised as RDF."
     },
     {
       "area": "namespace",
@@ -114,13 +114,16 @@
       "area": "model-assisted enrichment",
       "evidence": [
         "enrichment/model-assisted-v1-independent-audit.json",
-        "whole-law/assurance/enrichment-v2-independent-audit-20260726.json"
+        "whole-law/assurance/enrichment-v2-independent-audit-20260726.json",
+        "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json"
       ],
       "id": "IMP-GAP-009",
-      "next_action": "Retain the independent audit and its producer, candidate, semantic, assertion-ID and chunk-root bindings through release promotion.",
+      "next_action": "Retain the rejected v1 and independently audited v2 publications as immutable historical evidence, and preserve the active v3 generator, reviewer, terminal-outcome, accepted-assertion and audit bindings through release promotion.",
       "release_effect": "none-before-freeze",
       "status": "resolved",
-      "summary": "Historical v1 output is rejected and the independently implemented v2 audit reconstructs the current 22,299-assertion candidate with no v1 output."
+      "summary": "Historical v1 output remains rejected and the independently audited 22,299-assertion v2 publication remains preserved. The active governed v3 audit reconstructs all 365,786 terminal outcomes and all 56,479 independently reviewed accepted assertions with no active v1 output."
     },
     {
       "area": "evaluation gold evidence",
@@ -158,10 +161,10 @@
         "release-assurance/release-gates.json"
       ],
       "id": "IMP-GAP-012",
-      "next_action": "Bind or rerun the passing Chrome, Firefox and WebKit receipt against the exact Explorer v0.5.0 commit and frozen Legislation descriptor digests, then record that binding in external finalization evidence.",
+      "next_action": "Publish the green corrective Explorer v0.5.1 release, then bind or rerun the Chrome, Firefox and WebKit receipt against its exact commit and the frozen Legislation descriptor digests before recording that binding in external finalization evidence.",
       "release_effect": "blocks-GATE-07-and-GATE-08",
       "status": "blocked",
-      "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations, but it is not yet bound to the exact released Explorer commit and frozen Legislation candidate."
+      "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations. Explorer v0.5.0 remains the completed release-order milestone, but corrective v0.5.1 is now the exact finalization prerequisite and is not yet published or bound to the frozen Legislation candidate."
     },
     {
       "area": "public access and links",
@@ -257,16 +260,18 @@
       "summary": "Repository policy distinguishes restricted-sandbox failures from credential state, and an outside-sandbox check verified the active chris-page-gov login and a passing authenticated PR operation without recording the token."
     },
     {
-      "area": "historical model execution metadata",
+      "area": "Codex task-surface execution metadata",
       "evidence": [
-        "bundle/enrichment/codex-assisted-v2.json",
-        "whole-law/assurance/enrichment-v2-independent-audit-20260726.json"
+        "AGENTS.md",
+        "bundle/enrichment/codex-assisted-v3/run.json",
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json"
       ],
       "id": "IMP-GAP-021",
-      "next_action": "Retain this as a historical-only Codex task-surface limitation. Do not use it to satisfy the dedicated paid-run gate; that run must produce its own exact model, token, cache, retry and cost receipts.",
-      "release_effect": "externally-blocked-historical-metadata",
-      "status": "blocked",
-      "summary": "Historical Codex-assisted evidence records the provider and task model, but the task surface does not expose its exact underlying deployment identifier or billable subscription-token usage. This gap is historical-only and cannot stand in for a dedicated paid-run receipt."
+      "next_action": "Retain the unavailable fields explicitly in every governed Codex run and final cost report; bind all metadata the task surface does expose, and never infer deployment identity, sampling parameters, subscription usage, weekly-allowance consumption or task-surface token billing.",
+      "release_effect": "declared-nonblocking-task-surface-limitation",
+      "status": "resolved",
+      "summary": "The Codex task surface does not expose its exact underlying deployment identifier, sampling parameters, subscription or weekly-allowance consumption, or billable task-surface token usage. D-13 selects Codex without an API key or direct API calls, so this is an explicitly declared nonblocking observability limitation rather than a missing paid-run prerequisite. The accepted v3 run records zero API calls, zero API input/output tokens and exactly USD 0 / GBP 0 direct OpenAI API spend; total economic cost is not claimed to be zero."
     },
     {
       "area": "legal entity model coverage",
@@ -281,46 +286,72 @@
       "summary": "The semantic contract represents every named class at the approved catalogue/schema grain. Complete population of every future source-family child bundle is explicitly outside the initial v0.3.0 federation claim."
     },
     {
-      "area": "OpenAI model calibration and selection",
+      "area": "Codex calibration thresholds and optional direct API profile",
       "evidence": [
+        "enrichment/codex-assisted-v3/calibration.json",
+        "bundle/enrichment/codex-assisted-v3/calibration-result.json",
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
         "enrichment/codex-assisted-v2-calibration.json",
         "enrichment/model-assisted-calibration-manifest-v1.json",
         "enrichment/model-assisted-paid-governance-v1.json",
         "release-assurance/implementation-traceability.json"
       ],
       "id": "IMP-GAP-023",
-      "next_action": "After explicit approval to reuse the configured API key, run the fixed calibration through the available OpenAI structured-output candidates, select the lowest-cost model meeting all thresholds, exercise strongest-model escalation on disagreements/high-risk records, and bind exact model, usage and cost receipts.",
-      "release_effect": "blocks-full-P05-02-and-GATE-01",
-      "status": "open",
-      "summary": "Credential-free calibration and fail-closed selection contracts exist, but no dedicated paid run proves lowest-cost qualifying OpenAI structured-output model selection or strongest-model escalation. Historical Codex-assisted output cannot satisfy this gate."
+      "next_action": "At final requirement closure, preserve the independently accepted Codex calibration result and record that D-13 superseded only direct-API priced-model comparison and configured paid-model escalation. Retain those API mechanics solely as an optional future profile requiring a new explicit user decision.",
+      "release_effect": "resolved-current-Codex-calibration; direct-API-profile-superseded-by-D-13",
+      "status": "resolved",
+      "summary": "The governed v3 fixed calibration set passed with 100% output-contract schema validity, 100% fixed-set precision and 100% evidence support, and the separate reviewer plus deterministic auditor accepted it. D-13 supersedes direct-API priced-model selection and configured paid-model escalation for the current no-API implementation. The indivisible P05-02 source clause remains started only for final partial-supersession closure, not because an enrichment-quality test is missing."
     },
     {
       "area": "model enrichment input evidence",
       "evidence": [
-        "scripts/build_model_enrichment_input_evidence.py",
+        "bundle/enrichment/codex-assisted-v3/run.json",
+        "bundle/enrichment/codex-assisted-v3/coverage.json",
+        "bundle/enrichment/codex-assisted-v3/terminal-outcome-manifest.json",
+        "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
         "whole-law/assurance/model-assisted-input-eligibility-20260726.json",
-        "whole-law/schemas/model-enrichment-terminal-outcome-manifest.schema.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
         "release-assurance/implementation-traceability.json"
       ],
       "id": "IMP-GAP-024",
-      "next_action": "Use the fixed 365,786-work input order in the dedicated run: process the 359,140 local-semantic records, freeze and reconcile CLML for the 6,646 deferred records, then record one unique terminal outcome per work. Zero CLML bodies are currently frozen; lack of frozen evidence must yield abstention rather than an assertion.",
-      "release_effect": "blocks-full-P05-01-and-GATE-01",
-      "status": "open",
-      "summary": "Credential-free preflight covers all 365,786 works, with 359,140 local-semantic candidates and 6,646 deferred pending frozen CLML, but zero CLML bodies are frozen and no dedicated paid-run terminal-outcome manifest exists."
+      "next_action": "Retain the per-work terminal outcomes and explicit field-evaluation evidence on refresh. If frozen CLML becomes available in a later snapshot, process it as new evidence rather than rewriting this immutable abstention record.",
+      "release_effect": "resolved-for-v3-snapshot",
+      "status": "resolved",
+      "summary": "The v3 run attempted all 365,786 works and emitted exactly one integrity-bound terminal outcome for each: 28,635 works produced supported candidates and 337,151 truthfully abstained without a supported candidate. It did not fabricate CLML evidence where no frozen body was available. Independent review and audit accepted 56,479 assertions."
     },
     {
       "area": "independent model review",
       "evidence": [
-        "whole-law/schemas/model-enrichment-review.schema.json",
-        "whole-law/schemas/model-enrichment-run-v2.schema.json",
-        "enrichment/model-assisted-paid-governance-v1.json",
+        "enrichment/codex-assisted-v3/reviewer-prompt.md",
+        "enrichment/codex-assisted-v3/review-policy.json",
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+        "bundle/enrichment/codex-assisted-v3/review-verdict-manifest.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
         "release-assurance/implementation-traceability.json"
       ],
       "id": "IMP-GAP-025",
-      "next_action": "Run a separately hashed reviewer prompt with an exact reviewer model distinct from the selected generator over every proposed assertion, then deterministically reconstruct accept, reject and escalation outcomes.",
-      "release_effect": "blocks-full-P05-04-and-GATE-01",
+      "next_action": "Preserve reviewer/generator task separation, prompt and material hashes, one-to-one verdict coverage and deterministic reconstruction on every refresh. Continue to declare the exact Codex deployment identity unavailable and do not present this as qualified legal assurance.",
+      "release_effect": "resolved-for-v3-snapshot",
+      "status": "resolved",
+      "summary": "A separately tasked Codex semantic reviewer, bound to a distinct prompt and review policy, accepted the corrected R3 materials without editing the source. The verdict manifest contains one verdict for every one of 56,479 proposed assertions, and the independent deterministic auditor reconstructed all outcomes with zero errors. Exact deployment identity remains a declared nonblocking limitation."
+    },
+    {
+      "area": "final Codex cost and secret-safe release evidence",
+      "evidence": [
+        "AGENTS.md",
+        "bundle/enrichment/codex-assisted-v3/run.json",
+        "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+        "release-assurance/implementation-traceability.json",
+        "scripts/build_release_assurance.py",
+        "tests/test_release_assurance.py"
+      ],
+      "id": "IMP-GAP-026",
+      "next_action": "At final candidate closure, preserve the accepted v3 denominator and exact zero direct-API cost receipt in the final report, then bind exact-RC security evidence that no credential or secret entered Git or logs.",
+      "release_effect": "blocks-full-P05-06-finalization",
       "status": "open",
-      "summary": "Strict reviewer and role-separation contracts exist, but the historical independent deterministic reconstruction is not a separately identified reviewer prompt/model and no dedicated paid run has reviewed every proposed assertion."
+      "summary": "D-13 partially supersedes P05-06: direct-API paid-stage preflight and cap mechanics are not used by the selected no-API route. The accepted v3 evidence now records 56,479 accepted assertions, zero API calls and input/output tokens, exact USD 0 / GBP 0 direct API spend, USD 0 cost per accepted assertion, exchange-rate non-applicability and unavailable/unmetered Codex service fields. No API key was required or used; final exact-RC secret-safe evidence and report binding remain outstanding."
     }
   ],
   "scope_note": "This implementation gap register supplements, but does not modify, the immutable 28-record research gap register. Resolved means the named implementation omission has evidence; it does not mean the release is complete.",

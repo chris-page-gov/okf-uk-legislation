@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-calibration-result.schema.json",
-  "title": "OKF model-enrichment calibration result v1",
-  "description": "Complete per-case calibration evidence whose aggregate metrics are recomputed by the paid-run validator.",
+  "title": "OKF optional direct-API model-enrichment calibration result v1",
+  "description": "Optional future direct-API profile contract, activated only by a new explicit user decision and not required for the current Codex/no-direct-API release. Complete per-case calibration evidence whose aggregate metrics are recomputed by the paid-run validator.",
   "type": "object",
   "required": [
     "schema",

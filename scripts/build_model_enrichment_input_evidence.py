@@ -1437,8 +1437,10 @@ def build_receipt(
             "outcome_counts": outcomes,
             "paid_run_eligible_now": 0,
             "paid_run_eligibility_note": (
-                "The current receipt is intentionally incapable of making a "
-                "paid-run authorization decision."
+                "The optional direct API profile is outside the current "
+                "release and this receipt intentionally cannot authorize it. "
+                "The governed Codex workflow consumes this frozen input "
+                "evidence without an API key or direct API call."
             ),
         },
         "field_coverage": {
@@ -1533,9 +1535,11 @@ def build_receipt(
                 "validation of future model outputs."
             ),
             (
-                "A future paid run must record its own governed terminal "
-                "outcome for every eligible work; these preflight outcomes "
-                "must not be substituted for that run ledger."
+                "The current governed Codex workflow must record its own "
+                "terminal outcome for every work; these preflight outcomes "
+                "must not be substituted for that terminal ledger. Any "
+                "separately authorised future direct API profile would also "
+                "need its own independent outcome ledger."
             ),
         ],
         "observed_date": OBSERVED_DATE,
@@ -1672,7 +1676,8 @@ def markdown_report(receipt: dict[str, Any]) -> str:
         "",
         (
             f"Evidence status: **{receipt['decision']['evidence_status']}**. "
-            "Paid run authorized: **no**."
+            "Current workflow: **Codex, no direct API calls**. Optional "
+            "direct API profile authorized: **no**."
         ),
         "",
         receipt["decision"]["reason"],

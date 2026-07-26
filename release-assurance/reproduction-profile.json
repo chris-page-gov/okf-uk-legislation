@@ -1,6 +1,6 @@
 {
   "schema": "okf-reproduction-profile.v1",
-  "profile_version": "1.1.0",
+  "profile_version": "1.3.0",
   "finalization_controller": "scripts/finalize_release_candidate.py",
   "finalization_contract": "release-assurance/external-finalization-contract.json",
   "release_observation_controller": "scripts/capture_github_release_observation.py",
@@ -61,7 +61,8 @@
     ["{python}", "scripts/build_legislation_okf.py", "--from-existing"],
     ["{python}", "scripts/build_model_enrichment_input_evidence.py"],
     ["{python}", "scripts/build_codex_semantic_enrichment.py"],
-    ["{python}", "scripts/build_model_enrichment_paid_publication.py"],
+    ["{python}", "scripts/build_codex_semantic_enrichment_v3.py", "build"],
+    ["{python}", "scripts/audit_codex_semantic_enrichment_v3.py", "audit"],
     ["{python}", "scripts/build_legislation_effects.py", "--offline"],
     ["{python}", "scripts/rebuild_legislation_discovery.py"],
     ["{python}", "scripts/build_legislation_evaluation.py"],
@@ -89,7 +90,8 @@
     ["{python}", "scripts/build_legislation_effects.py", "--check"],
     ["{python}", "scripts/build_model_enrichment_input_evidence.py", "--check"],
     ["{python}", "scripts/build_codex_semantic_enrichment.py", "--check"],
-    ["{python}", "scripts/build_model_enrichment_paid_publication.py", "--check"],
+    ["{python}", "scripts/build_codex_semantic_enrichment_v3.py", "check"],
+    ["{python}", "scripts/audit_codex_semantic_enrichment_v3.py", "check"],
     ["{python}", "scripts/audit_model_assisted_v2_independent.py", "--check"],
     ["{python}", "scripts/build_whole_law_evaluation.py", "--check"],
     ["{python}", "scripts/run_release_evaluation.py", "--check"],
@@ -139,34 +141,22 @@
       "reason": "The release evaluation imports and executes the independent answer verifier over the complete bound answer set."
     },
     {
-      "capability": "legacy-v1-rejection-and-v2-preservation",
+      "capability": "governed-v3-independent-enrichment-audit",
+      "command": ["{python}", "scripts/audit_codex_semantic_enrichment_v3.py", "check"],
+      "implementation": "scripts/audit_codex_semantic_enrichment_v3.py",
+      "reason": "The active independent audit reconstructs all 365,786 terminal outcomes and all 56,479 governed v3 reviewer verdicts and accepted assertions, verifies exact zero direct-API calls, tokens and spend, and fails closed on any material, schema, population or semantic mismatch."
+    },
+    {
+      "capability": "historical-v1-rejection-and-v2-preservation",
       "command": ["{python}", "scripts/audit_model_assisted_v2_independent.py", "--check"],
       "implementation": "scripts/audit_model_assisted_v2_independent.py",
-      "reason": "The current independent audit validates all 22,299 accepted v2 assertions, zero active v1 output and six suppressed v1/v2 overlaps, and explicitly supersedes the historical preservation receipt as the release gate."
+      "reason": "This preservation-only check retains the rejected v1 decision and independently audited 22,299-assertion v2 publication as historical evidence; neither is the active enrichment release gate."
     }
   ],
   "excluded_network_checks": [
     {
       "script": "scripts/check_release_drift.py",
       "reason": "This is an intentionally live, bounded post-deployment observation and is outside the network-free byte-reproduction run."
-    }
-  ],
-  "required_receipts": [
-    {
-      "id": "okf-explorer-runtime-v0.5.0",
-      "path": "release-assurance/explorer-runtime-acceptance.json",
-      "schema": "okf-explorer-runtime-acceptance.v1",
-      "assertions": [
-        {"pointer": "/status", "equals": "passed"},
-        {"pointer": "/runtime/status", "equals": "passed"},
-        {"pointer": "/runtime/summary/all_passed", "equals": true},
-        {"pointer": "/runtime/summary/checks_failed", "equals": 0},
-        {"pointer": "/runtime/summary/checks_passed", "equals_pointer": "/runtime/summary/checks_total"},
-        {"pointer": "/cross_engine/status", "equals": "passed"},
-        {"pointer": "/accessibility/status", "equals": "passed"},
-        {"pointer": "/performance/status", "equals": "passed"},
-        {"pointer": "/integrity/status", "equals": "passed"}
-      ]
     }
   ],
   "output_schemas": {

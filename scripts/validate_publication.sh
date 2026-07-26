@@ -23,12 +23,14 @@ python3 scripts/build_legislation_effects.py --check
 python3 scripts/reconcile_legislation_effects_live.py check
 python3 scripts/build_model_enrichment_input_evidence.py --check
 python3 scripts/build_codex_semantic_enrichment.py --check
-python3 scripts/build_model_enrichment_paid_publication.py --check
+python3 scripts/build_codex_semantic_enrichment_v3.py check
+python3 scripts/audit_codex_semantic_enrichment_v3.py check
 python3 scripts/audit_model_assisted_v2_independent.py --check
 python3 scripts/build_whole_law_evaluation.py --check
 python3 scripts/run_release_evaluation.py --check
 python3 scripts/run_yaml_ld_conformance.py --check
 python3 scripts/run_ontology_competency_questions.py --check
+python3 scripts/run_semantic_conformance.py --check
 python3 scripts/build_whole_law_okf.py --check
 python3 scripts/check_whole_law_okf.py
 python3 scripts/audit_graph_enrichment_gate.py check

@@ -41,20 +41,27 @@ The post-build receipt is
 
 ## Codex-assisted enrichment
 
-Codex was used to design and review conservative, literal title rules. The
-governed rule set was then applied deterministically to every one of the
-365,786 records. It made no paid OpenAI API calls.
+Codex agents were used to design and independently review conservative,
+literal-evidence rules. The governed rule set was then applied
+deterministically to every one of the 365,786 records. It made no direct
+OpenAI API calls and required no API key.
 
-The classifier emits an assertion only when title evidence supports a
-controlled topic and the assertion is not already present. No match is an
-explicit attempted/no-assertion outcome—not evidence that the work has no
-topic. Assertions are non-official discovery metadata and carry their rule,
-literal evidence, confidence, input snapshot and review status.
+The classifier emits an assertion only when the frozen official title or a
+substantive source note supports a controlled topic, concept or
+jurisdictionally compatible entity target. Category, document type, publisher
+and tags are inspected but deliberately do not generate subject or entity
+links in this profile. No match is an explicit attempted/no-assertion outcome,
+not evidence that the work has no topic. Missing frozen CLML content is also
+recorded as an abstention. Assertions are non-official discovery metadata and
+carry their rule, ordered literal evidence, support profile, confidence, input
+snapshot and review status.
 
-Calibration includes 58 end-to-end cases, positive and near-miss tests for all
-55 rules, and 16 actual-corpus hard negatives. The accepted 22,299-assertion
-candidate was independently reconstructed across all 365,786 attempts and
-reviewed through a 451-title stratified semantic sample covering every emitting
-rule and topic. Independent audits remain immutable and hash-bound to the exact
-candidate they assessed; earlier 22,651 and 22,483 decisions are preserved as
-superseded evidence.
+Calibration includes positive, near-miss, cross-jurisdiction and
+metadata-abstention cases for every active rule and supported evidence field.
+The candidate and terminal-outcome populations are reconstructed independently
+from their frozen source evidence before any assertion can enter the active
+graph. Independent audits remain immutable and hash-bound to the exact
+candidate they assessed; prior v2 audit decisions are preserved as historical
+evidence and are excluded from current active relationship totals.
+The [v3 review history](model-assisted-enrichment-review-history.md)
+records the rejected pre-release freezes and their corrections.

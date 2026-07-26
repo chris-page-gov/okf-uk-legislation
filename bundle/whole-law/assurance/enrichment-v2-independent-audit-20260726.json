@@ -69,7 +69,7 @@
       ],
       "parsed": true,
       "path": "scripts/build_codex_semantic_enrichment.py",
-      "sha256": "2a4c1f4cfc90b37cb552ef4ba8544c207337e43f98c7e74be252c251872a8084"
+      "sha256": "395fed5c9f26ef17daab736a5471ebb58106b87e817a6b67731c92aeb1725081"
     },
     "rejected_v1": {
       "audit_path": "enrichment/model-assisted-v1-independent-audit.json",

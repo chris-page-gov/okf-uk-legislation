@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/schemas/model-enrichment-review.schema.json",
-  "title": "OKF model enrichment independent review v1",
-  "description": "Strict output from a reviewer model that is separate from the generator. A reviewer can accept, reject or escalate a candidate but cannot introduce an assertion.",
+  "title": "OKF optional direct-API model-enrichment independent review v1",
+  "description": "Optional future direct-API profile contract, activated only by a new explicit user decision and not required for the current Codex/no-direct-API release. Strict output from a reviewer model that is separate from the generator; a reviewer can accept, reject or escalate a candidate but cannot introduce an assertion.",
   "type": "object",
   "required": [
     "schema",

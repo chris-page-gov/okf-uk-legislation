@@ -19,7 +19,7 @@ class ImplementationTraceabilityTests(unittest.TestCase):
         self.assertEqual([], parse_errors)
         trace = traceability.load(traceability.TRACE)
         rows = {row["id"]: row for row in trace["requirements"]}
-        self.assertEqual(62, len(clauses))
+        self.assertEqual(63, len(clauses))
         self.assertEqual(set(clauses), set(rows))
         self.assertEqual(
             hashlib.sha256(traceability.SOURCE.read_bytes()).hexdigest(),

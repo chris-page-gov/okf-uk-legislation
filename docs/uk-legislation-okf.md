@@ -56,7 +56,14 @@ ELI is the primary semantic spine. Schema.org is a compatibility layer, not a re
 
 Official type codes are retained. They are also grouped into `primary`, `secondary`, `draft`, `eu-origin` and `other`, with separate jurisdiction and document-type facets. This preserves Church Measures, local/private Acts, old Parliament material, ministerial directions and other uncommon families rather than forcing them into a misleading primary/secondary binary.
 
-Topics are a deterministic title-only discovery aid across constitutional, civil, criminal, employment, tax, company, land, environment, health, education, family, immigration, welfare, transport, data, consumer, local-government, election, defence, equality, intellectual-property, professional-regulation and EU themes. They are explicitly labelled non-authoritative. An agent must never treat a topic assignment as a legal proposition.
+Topics and concepts are conservative discovery aids derived from frozen
+official titles and, where present, substantive source notes. Entity links
+require an exact controlled literal and a jurisdictionally compatible target.
+Category, document type, publisher and tag fields are still inspected, but the
+current policy abstains from turning those coarse metadata fields into subject
+or entity assertions. All resulting links are explicitly labelled
+non-authoritative. An agent must never treat one as a legal proposition,
+official classification or legal advice.
 
 The complete core catalogue emits provenance-bearing `classified as` and `has
 document type` relationships. Route-scoped FNV-1a adjacency shards let the
@@ -75,9 +82,15 @@ those v1 rules and excludes all 18,697 v1 assertions from the core graph and
 governed-model totals.
 
 The v1 runner's first direct API attempt was rejected for project quota before
-output and recorded $0.00 API cost. That history does not affect the separately
-implemented and independently audited v2 enrichment datapack, whose accepted
-topic assertions remain labelled derived and non-official.
+output and recorded $0.00 API cost. It is preserved only as historical
+evidence. The current governed enrichment is Codex-assisted and makes no direct
+API calls. It records a terminal outcome for every work and for every inspected
+evidence field, then publishes only independently reviewed, deterministically
+reconstructable topic, concept and entity-link candidates. Evidence support is
+reported as `title-only`, `notes-only` or `multi-field`; unavailable frozen
+CLML bodies are an explicit abstention, not silently inferred coverage. Exact
+direct API spend is USD 0 / GBP 0; unexposed Codex subscription and allowance
+usage is reported as unavailable rather than guessed.
 
 ## Official access methods
 

@@ -1,0 +1,51 @@
+{
+  "schema": "okf-codex-enrichment-review-policy.v1",
+  "policy_id": "codex-assisted-v3-independent-review-20260726",
+  "reviewer_role": "independent-codex-policy-reviewer",
+  "decision_mode": "deterministic-independent-reconstruction",
+  "generator_execution_permitted": false,
+  "candidate_verdicts": [
+    "accepted",
+    "rejected"
+  ],
+  "acceptance_requirements": [
+    "candidate identifier reconstructs from source, dimension, target and rule",
+    "source work exists exactly once in the canonical input",
+    "registered inclusion pattern matches each governed title or substantive notes evidence value independently",
+    "registered exclusion pattern does not match within the same declared evidence field",
+    "a jurisdiction-qualified organisation literal resolves only to its separately registered jurisdiction-specific rule and official identity target",
+    "a retired generic entity rule remains absent where its literal spans public systems in multiple jurisdictions but its former target represented only one",
+    "a prefix- or suffix-qualified name for a distinct bank, agency, commission or tribunal cannot support the shorter entity rule",
+    "the Montserrat constitutional context abstains without suppressing the separately calibrated UK Electoral Commission founding context",
+    "every evidence row preserves its exact source field, raw source value, canonical-JSON value hash, matched literal and governed field provenance",
+    "evidence value is an exact case-insensitive substring of the normalized declared source field",
+    "one candidate deduplicates stable title and notes support for the same source, dimension, target and rule",
+    "category, document_type, publisher_title and tags are inspected but cannot support a subject or entity candidate under the governed snapshot profile",
+    "topic candidates are not already source-declared and are not in the fail-closed v1 suppression set",
+    "concept and entity targets are registered in the controlled vocabulary",
+    "authority is model-assisted derived discovery metadata",
+    "rights and freshness metadata are present",
+    "candidate does not claim official legal classification or legal advice"
+  ],
+  "terminal_outcome_requirements": [
+    "exactly one terminal outcome exists for every canonical work",
+    "topic, concept and entity-link attempt outcomes are explicit",
+    "title, notes, category, document_type, publisher_title and tags each record considered status, exact value hash, governed dimensions, evaluation outcome and supporting candidate identifiers",
+    "candidate identifiers referenced by an outcome join exactly",
+    "abstention is used where no literal supported candidate exists",
+    "metadata-only candidate count is exactly zero",
+    "CLML remains an explicit abstention while no frozen body is bound"
+  ],
+  "publication": {
+    "accepted_projection_required": true,
+    "accepted_review_status": "accepted-independent-review",
+    "audit_receipt": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+    "candidate_mutation_permitted": false
+  },
+  "limitations": [
+    "Policy review and deterministic reconstruction are not qualified legal-practitioner assurance.",
+    "A literal-rule match is discovery metadata, not an official legal classification.",
+    "An abstention is not evidence that a work lacks a topic, concept or entity.",
+    "The Codex task surface does not expose exact deployment identity, sampling parameters, subscription token usage, weekly allowance usage or attributable subscription cost."
+  ]
+}

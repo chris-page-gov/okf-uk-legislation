@@ -1622,21 +1622,55 @@ def validate_delta_files(
             receipts = envelope["response"].get("transport_receipts", [])
             if not receipts:
                 raise ValueError("system-trust transport receipt is absent")
-            for receipt in receipts:
+            manual_hops = security.get("manual_hops", [])
+            if len(manual_hops) != len(receipts):
+                raise ValueError(
+                    "system-trust request/response receipt count mismatch"
+                )
+            for manual_hop, receipt in zip(
+                manual_hops,
+                receipts,
+                strict=True,
+            ):
                 transport = receipt["transport"]
                 if (
                     transport["path"] != "/usr/bin/curl"
-                    or transport["sha256"]
-                    != sha256_file(Path("/usr/bin/curl"))
+                    or re.fullmatch(
+                        r"[a-f0-9]{64}",
+                        str(transport.get("sha256", "")),
+                    )
+                    is None
+                    or not str(transport.get("version_line", "")).startswith(
+                        "curl "
+                    )
+                    or not str(transport.get("feature_line", ""))
+                    or transport.get("exit_code") != 0
                     or transport["ssl_verify_result"] != 0
                     or transport["peer_verification_disabled"] is not False
                     or transport["hostname_verification_disabled"] is not False
                     or transport["curlrc_loaded"] is not False
                     or transport["automatic_redirects_followed"] is not False
                     or transport["dns_pin_used"] is not True
+                    or transport.get("https_protocol_only") is not True
+                    or transport.get("cookie_engine_enabled") is not False
+                    or transport.get("timed_out") is not False
+                    or transport.get("body_size_limit_bytes")
+                    != manifest["policy"]["max_body_bytes"]
                 ):
                     raise ValueError(
                         "system-trust transport receipt failed closed"
+                    )
+                if (
+                    manual_hop.get("url") != receipt.get("url")
+                    or manual_hop.get("pinned_address")
+                    != receipt.get("pinned_address")
+                    or manual_hop.get("resolution")
+                    != receipt.get("resolution")
+                    or manual_hop.get("transport") != transport
+                ):
+                    raise ValueError(
+                        "system-trust request/response receipts are not "
+                        "internally bound"
                     )
                 if (
                     ipaddress.ip_address(transport["remote_ip"])
