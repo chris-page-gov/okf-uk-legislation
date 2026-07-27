@@ -1266,9 +1266,17 @@ def semantic_digests(
                     data=turtle_body.decode("utf-8"),
                     format="turtle",
                 )
-                turtle_ntriples = turtle_graph.serialize(format="nt")
+                # The publication contract requires the Turtle representation
+                # to be the canonical default-graph N-Quads byte stream.  Do
+                # not round-trip it through RDFLib before comparing semantics:
+                # RDFLib is permitted to canonicalize literal lexical forms
+                # while serializing (for example, xsd:dateTime ``Z`` becomes
+                # ``+00:00``), which changes the RDF term even though the
+                # original canonical stream is valid Turtle.  The parse above
+                # still provides the independent Turtle syntax check; PyLD
+                # consumes the original bytes for the graph comparison.
                 turtle_document = jsonld.from_rdf(
-                    turtle_ntriples,
+                    turtle_body.decode("utf-8"),
                     {"format": "application/n-quads"},
                 )
                 turtle_canonical = jsonld.normalize(
