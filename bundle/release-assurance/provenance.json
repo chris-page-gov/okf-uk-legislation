@@ -153,9 +153,9 @@
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
-      "bytes": 208138,
+      "bytes": 209001,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "ae6b79b29e7879a615a080d0a6ae1a54d37fa67184da646c0f0b396e7e82a065"
+      "sha256": "6a2eafdf1bec4c7f0b16765b0127a0fdf309b3c0aef288ba8849113d51c31bb6"
     },
     "invariants": {
       "archive_rebuild_prohibited": true,
@@ -207,10 +207,10 @@
         "sha256": "633c3f3513df8eefb02ad89482c6f957d40f809fff3dde1f7d052ccc0ad039a3"
       },
       {
-        "bytes": 14164,
+        "bytes": 19628,
         "path": "release-assurance/schemas/explorer-runtime-receipt.schema.json",
         "projected_path": "schemas/explorer-runtime-receipt.schema.json",
-        "sha256": "44bfb392c1d158edee5d0d8ce4c94fb5312b5eae468f252d2b6998af323e3d4a"
+        "sha256": "b018f626c3399c5595816526870e62d2f8e46d7d2581bcb1c30a1e7dfd2eb3ad"
       },
       {
         "bytes": 9773,
@@ -320,9 +320,9 @@
       "sha256": "c27500adb3643ac51d014dab4662610fb82bf5cf2bc75fac80831bf3fe040a9b"
     },
     {
-      "bytes": 208138,
+      "bytes": 209001,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "ae6b79b29e7879a615a080d0a6ae1a54d37fa67184da646c0f0b396e7e82a065"
+      "sha256": "6a2eafdf1bec4c7f0b16765b0127a0fdf309b3c0aef288ba8849113d51c31bb6"
     },
     {
       "bytes": 35620,
@@ -520,9 +520,9 @@
       "sha256": "633c3f3513df8eefb02ad89482c6f957d40f809fff3dde1f7d052ccc0ad039a3"
     },
     {
-      "bytes": 14164,
+      "bytes": 19628,
       "path": "release-assurance/schemas/explorer-runtime-receipt.schema.json",
-      "sha256": "44bfb392c1d158edee5d0d8ce4c94fb5312b5eae468f252d2b6998af323e3d4a"
+      "sha256": "b018f626c3399c5595816526870e62d2f8e46d7d2581bcb1c30a1e7dfd2eb3ad"
     },
     {
       "bytes": 9773,
@@ -620,7 +620,7 @@
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
     }
   ],
-  "materials_digest": "sha256:2e1ba08a7f050983bf377475b2b2569e259e88608c2e142dc6f75e22b9889ff3",
+  "materials_digest": "sha256:9d8cf28f5c0bcf3caf9a8a4c006952a8081e78547495e20f432ae609f9b19210",
   "optional_direct_api_model_governance": {
     "authored_run": null,
     "current_release_required": false,

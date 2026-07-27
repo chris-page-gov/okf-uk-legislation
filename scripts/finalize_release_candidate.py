@@ -102,6 +102,21 @@ EXPECTED_EXPLORER_SCREENSHOT_PATHS = (
     "output/playwright/legislation-runtime-graph-chrome.png",
     "output/playwright/legislation-runtime-chrome.png",
 )
+EXPECTED_RUNTIME_GATE_IDS = (
+    "startup_transfer",
+    "cold_search",
+    "warm_search",
+    "browser_memory",
+    "federation_and_child",
+    "graph_relationship_rendering",
+    "model_assisted_styling_and_filtering",
+    "live_reconciliation_states",
+    "facet_count_colour_and_space",
+    "cross_browser",
+    "keyboard",
+    "accessibility",
+)
+EXPECTED_PERFORMANCE_GATE_IDS = EXPECTED_RUNTIME_GATE_IDS[:4]
 PAGES_EVIDENCE_DIRECTORY = "pages"
 PAGES_SUPPORT_PATHS = (
     pages_observation.RUN_HEADERS_PATH,
@@ -1090,7 +1105,12 @@ def require_filename(path: Path, expected: str, label: str) -> None:
     require_equal(path.name, expected, f"{label} filename")
 
 
-def require_pass_summary(value: Any, label: str) -> None:
+def require_pass_summary(
+    value: Any,
+    label: str,
+    *,
+    expected_ids: tuple[str, ...] | None = None,
+) -> None:
     summary = require_object(value, label)
     total = summary.get("checks_total")
     passed = summary.get("checks_passed")
@@ -1109,17 +1129,33 @@ def require_pass_summary(value: Any, label: str) -> None:
     require_equal(passed, total, f"{label} passed count")
     require_equal(summary.get("all_passed"), True, f"{label} all_passed")
     checks = summary.get("checks")
+    if expected_ids is not None and checks is None:
+        raise FinalizationError(f"{label} checks are required")
     if checks is not None:
         rows = require_array(checks, f"{label} checks")
         require_equal(len(rows), total, f"{label} check row count")
         ids: set[str] = set()
+        ordered_ids: list[str] = []
         for value in rows:
             row = require_object(value, f"{label} check")
+            require_equal(
+                set(row),
+                {"id", "status"},
+                f"{label} check properties",
+            )
             check_id = row.get("id")
             if not isinstance(check_id, str) or check_id in ids:
                 raise FinalizationError(f"{label} check id is invalid or duplicated")
             ids.add(check_id)
+            ordered_ids.append(check_id)
             require_equal(row.get("status"), "passed", f"{label} {check_id}")
+        if expected_ids is not None:
+            require_equal(
+                ordered_ids,
+                list(expected_ids),
+                f"{label} check IDs and order",
+            )
+            require_equal(total, len(expected_ids), f"{label} expected count")
 
 
 def reconstruct_explorer_runtime(
@@ -1160,7 +1196,9 @@ def reconstruct_explorer_runtime(
         runtime_summary.get("status"), "passed", "Explorer runtime result status"
     )
     require_pass_summary(
-        runtime_summary.get("summary"), "Explorer runtime summary"
+        runtime_summary.get("summary"),
+        "Explorer runtime summary",
+        expected_ids=EXPECTED_RUNTIME_GATE_IDS,
     )
     performance = require_object(
         runtime.get("performance"), "Explorer performance result"
@@ -1169,7 +1207,9 @@ def reconstruct_explorer_runtime(
         performance.get("status"), "passed", "Explorer performance status"
     )
     require_pass_summary(
-        performance.get("summary"), "Explorer performance summary"
+        performance.get("summary"),
+        "Explorer performance summary",
+        expected_ids=EXPECTED_PERFORMANCE_GATE_IDS,
     )
     integrity = require_object(runtime.get("integrity"), "Explorer runtime integrity")
     require_equal(integrity.get("status"), "passed", "Explorer integrity status")
@@ -1247,20 +1287,7 @@ def reconstruct_explorer_runtime(
     require_equal(set(browser_rows), browsers, "Explorer accessibility browser set")
 
     gates = require_object(runtime.get("gates"), "Explorer runtime gates")
-    required_gate_ids = {
-        "startup_transfer",
-        "cold_search",
-        "warm_search",
-        "browser_memory",
-        "federation_and_child",
-        "graph_relationship_rendering",
-        "model_assisted_styling_and_filtering",
-        "live_reconciliation_states",
-        "facet_count_colour_and_space",
-        "cross_browser",
-        "keyboard",
-        "accessibility",
-    }
+    required_gate_ids = set(EXPECTED_RUNTIME_GATE_IDS)
     require_equal(set(gates), required_gate_ids, "Explorer runtime gate set")
     for gate_id, value in gates.items():
         gate = require_object(value, f"Explorer runtime gate {gate_id}")

@@ -42,7 +42,7 @@
       "$ref": "#/$defs/explorer"
     },
     "runtime": {
-      "$ref": "#/$defs/summaryContainer"
+      "$ref": "#/$defs/runtimeSummaryContainer"
     },
     "cross_engine": {
       "type": "object",
@@ -111,7 +111,7 @@
       }
     },
     "performance": {
-      "$ref": "#/$defs/summaryContainer"
+      "$ref": "#/$defs/performanceSummaryContainer"
     },
     "integrity": {
       "type": "object",
@@ -505,7 +505,123 @@
         }
       }
     },
-    "summaryContainer": {
+    "runtimePassSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checks",
+        "checks_total",
+        "checks_passed",
+        "checks_failed",
+        "all_passed"
+      ],
+      "properties": {
+        "checks": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "uniqueItems": true,
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/startupTransferCheck"
+            },
+            {
+              "$ref": "#/$defs/coldSearchCheck"
+            },
+            {
+              "$ref": "#/$defs/warmSearchCheck"
+            },
+            {
+              "$ref": "#/$defs/browserMemoryCheck"
+            },
+            {
+              "$ref": "#/$defs/federationAndChildCheck"
+            },
+            {
+              "$ref": "#/$defs/graphRelationshipRenderingCheck"
+            },
+            {
+              "$ref": "#/$defs/modelAssistedStylingCheck"
+            },
+            {
+              "$ref": "#/$defs/liveReconciliationCheck"
+            },
+            {
+              "$ref": "#/$defs/facetCountColourSpaceCheck"
+            },
+            {
+              "$ref": "#/$defs/crossBrowserCheck"
+            },
+            {
+              "$ref": "#/$defs/keyboardCheck"
+            },
+            {
+              "$ref": "#/$defs/accessibilityCheck"
+            }
+          ],
+          "items": false
+        },
+        "checks_total": {
+          "const": 12
+        },
+        "checks_passed": {
+          "const": 12
+        },
+        "checks_failed": {
+          "const": 0
+        },
+        "all_passed": {
+          "const": true
+        }
+      }
+    },
+    "performancePassSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checks",
+        "checks_total",
+        "checks_passed",
+        "checks_failed",
+        "all_passed"
+      ],
+      "properties": {
+        "checks": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/startupTransferCheck"
+            },
+            {
+              "$ref": "#/$defs/coldSearchCheck"
+            },
+            {
+              "$ref": "#/$defs/warmSearchCheck"
+            },
+            {
+              "$ref": "#/$defs/browserMemoryCheck"
+            }
+          ],
+          "items": false
+        },
+        "checks_total": {
+          "const": 4
+        },
+        "checks_passed": {
+          "const": 4
+        },
+        "checks_failed": {
+          "const": 0
+        },
+        "all_passed": {
+          "const": true
+        }
+      }
+    },
+    "runtimeSummaryContainer": {
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -517,7 +633,136 @@
           "const": "passed"
         },
         "summary": {
-          "$ref": "#/$defs/passSummary"
+          "$ref": "#/$defs/runtimePassSummary"
+        }
+      }
+    },
+    "performanceSummaryContainer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "summary"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "summary": {
+          "$ref": "#/$defs/performancePassSummary"
+        }
+      }
+    },
+    "startupTransferCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "startup_transfer"
+        }
+      }
+    },
+    "coldSearchCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "cold_search"
+        }
+      }
+    },
+    "warmSearchCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "warm_search"
+        }
+      }
+    },
+    "browserMemoryCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "browser_memory"
+        }
+      }
+    },
+    "federationAndChildCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "federation_and_child"
+        }
+      }
+    },
+    "graphRelationshipRenderingCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "graph_relationship_rendering"
+        }
+      }
+    },
+    "modelAssistedStylingCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "model_assisted_styling_and_filtering"
+        }
+      }
+    },
+    "liveReconciliationCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "live_reconciliation_states"
+        }
+      }
+    },
+    "facetCountColourSpaceCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "facet_count_colour_and_space"
+        }
+      }
+    },
+    "crossBrowserCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "cross_browser"
+        }
+      }
+    },
+    "keyboardCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "keyboard"
+        }
+      }
+    },
+    "accessibilityCheck": {
+      "$ref": "#/$defs/passedCheck",
+      "properties": {
+        "id": {
+          "const": "accessibility"
+        }
+      }
+    },
+    "passedCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "const": "passed"
         }
       }
     },
