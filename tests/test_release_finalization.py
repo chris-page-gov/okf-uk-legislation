@@ -204,7 +204,6 @@ class FinalizationFixture:
         self.tree = "b" * 40
         self.inventory = "c" * 64
         self.explorer_commit = self.contract["explorer"]["required_commit"]
-        self.snapshot_digest = "e" * 64
         self.archive_name = self.contract["archive"]["filename"]
         self.reproduction_dir = root / "reproduction"
         self.reproduction_dir.mkdir()
@@ -1509,7 +1508,7 @@ class FinalizationFixture:
             "documentType": "codex-security.coverage",
             "schemaVersion": "1.0",
             "scanId": "scan-fixture",
-            "mode": "commit",
+            "mode": "repository",
             "completeness": "complete",
             "inventoryStrategy": "repository",
             "includePaths": ["."],
@@ -1547,15 +1546,11 @@ class FinalizationFixture:
                 "completedAt": "2026-07-26T04:01:00Z",
                 "sealedAt": "2026-07-26T04:01:00Z",
                 "target": {
-                    "kind": "git_diff",
+                    "kind": "git_revision",
                     "targetId": "fixture",
                     "displayName": "fixture",
                     "remote": self.contract["candidate"]["repository"],
-                    "headRevision": self.commit,
-                    "snapshotDigest": (
-                        "codex-security-snapshot/v1:sha256:"
-                        + self.snapshot_digest
-                    ),
+                    "revision": self.commit,
                 },
                 "scope": {"includePaths": ["."], "excludePaths": []},
                 "coverageRef": "coverage.json",
@@ -1621,9 +1616,9 @@ class FinalizationFixture:
                 "tree": self.tree,
             },
             "scan_target": {
+                "kind": "git_revision",
                 "repository": self.contract["candidate"]["repository"],
-                "commit": self.commit,
-                "snapshot_digest": self.snapshot_digest,
+                "revision": self.commit,
             },
             "checks": checks,
             "finding_summary": {
@@ -2209,6 +2204,27 @@ class ReleaseFinalizationTests(unittest.TestCase):
         write_json(self.fixture.security_receipt, receipt)
         with self.assertRaisesRegex(
             finalization.FinalizationError, "security coverage"
+        ):
+            self.fixture.authorize_rc()
+
+    def test_security_manifest_rejects_inapplicable_snapshot_coordinate(self) -> None:
+        manifest_path = self.fixture.security_dir / "scan-manifest.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["scan"]["target"]["snapshotDigest"] = (
+            "codex-security-snapshot/v1:sha256:" + "0" * 64
+        )
+        write_json(manifest_path, manifest)
+        receipt = json.loads(
+            self.fixture.security_receipt.read_text(encoding="utf-8")
+        )
+        for row in receipt["materials"]:
+            if row["role"] == "scan_manifest":
+                row["bytes"] = manifest_path.stat().st_size
+                row["sha256"] = finalization.sha256_file(manifest_path)
+        write_json(self.fixture.security_receipt, receipt)
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "inapplicable coordinates: snapshotDigest",
         ):
             self.fixture.authorize_rc()
 

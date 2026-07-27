@@ -372,6 +372,44 @@ class PostRCAssuranceReceiptTests(unittest.TestCase):
         self.assertEqual(output, builder.build_security_receipt(args))
         self.assertEqual(first, self.tree_bytes(args.output_dir))
 
+    def test_security_requires_canonical_git_revision_target(self) -> None:
+        args = self.security_args()
+        manifest_path = self.fixture.security_dir / "scan-manifest.json"
+
+        manifest = self.load(manifest_path)
+        manifest["scan"]["target"]["kind"] = "git_worktree"
+        self._write_security_manifest(manifest)
+        with self.assertRaisesRegex(
+            builder.ReceiptBuildError,
+            "exact immutable Git revision",
+        ):
+            builder.build_security_receipt(args)
+        self.assertFalse(args.output_dir.exists())
+
+        self._prepare_security_scan()
+        manifest = self.load(manifest_path)
+        manifest["scan"]["target"]["revision"] = "0" * 40
+        self._write_security_manifest(manifest)
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "security scan target revision differs",
+        ):
+            builder.build_security_receipt(args)
+        self.assertFalse(args.output_dir.exists())
+
+        self._prepare_security_scan()
+        manifest = self.load(manifest_path)
+        manifest["scan"]["target"]["snapshotDigest"] = (
+            "codex-security-snapshot/v1:sha256:" + "0" * 64
+        )
+        self._write_security_manifest(manifest)
+        with self.assertRaisesRegex(
+            builder.ReceiptBuildError,
+            "inapplicable coordinates: snapshotDigest",
+        ):
+            builder.build_security_receipt(args)
+        self.assertFalse(args.output_dir.exists())
+
     def test_security_rejects_unpinned_or_malformed_schema(self) -> None:
         args = self.security_args()
         schema = self.schema_dir / builder.SECURITY_SCHEMA_FILENAMES["coverage"]
@@ -474,6 +512,17 @@ class PostRCAssuranceReceiptTests(unittest.TestCase):
         with self.assertRaisesRegex(
             builder.ReceiptBuildError,
             "startedAt must be a canonical UTC date-time",
+        ):
+            builder.build_security_receipt(args)
+        self.assertFalse(args.output_dir.exists())
+
+        self._prepare_security_scan()
+        coverage = self.load(self.fixture.security_dir / "coverage.json")
+        coverage["mode"] = "commit"
+        self._write_security_coverage(coverage)
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "security coverage mode differs",
         ):
             builder.build_security_receipt(args)
         self.assertFalse(args.output_dir.exists())

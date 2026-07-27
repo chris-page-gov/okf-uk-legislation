@@ -48,6 +48,27 @@ class ReleaseContractSchemaTests(unittest.TestCase):
             set(checks["items"]["enum"]),
         )
 
+    def test_security_schema_uses_revision_target_without_snapshot(self) -> None:
+        schema = load(SCHEMAS / "security-assurance-receipt.schema.json")
+        target = schema["properties"]["scan_target"]
+        self.assertEqual(
+            {"kind", "repository", "revision"},
+            set(target["required"]),
+        )
+        self.assertNotIn("snapshot_digest", target["properties"])
+        validator = Draft202012Validator(target)
+        canonical = {
+            "kind": "git_revision",
+            "repository": self.contract["candidate"]["repository"],
+            "revision": "a" * 40,
+        }
+        self.assertEqual([], list(validator.iter_errors(canonical)))
+        legacy = {
+            **canonical,
+            "snapshot_digest": "b" * 64,
+        }
+        self.assertTrue(list(validator.iter_errors(legacy)))
+
     def test_security_plugin_and_explorer_deployment_are_exactly_bound(
         self,
     ) -> None:
@@ -571,9 +592,9 @@ class ReleaseContractSchemaTests(unittest.TestCase):
                 "tree": "b" * 40,
             },
             "scan_target": {
+                "kind": "git_revision",
                 "repository": self.contract["candidate"]["repository"],
-                "commit": "a" * 40,
-                "snapshot_digest": "c" * 64,
+                "revision": "a" * 40,
             },
             "checks": ["secrets"],
             "finding_summary": {
