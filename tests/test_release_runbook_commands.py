@@ -45,6 +45,14 @@ SHELL_VALUES = {
     "CODEX_SECURITY_SCHEMA_DIR": "/external/codex-security-schemas",
     "EVIDENCE": "/external/okf-v0.3.0",
     "EXPLORER_COMMIT": "4" * 40,
+    "EXPLORER_PAGES_OBSERVATION_PATH": (
+        "/external/okf-v0.3.0/explorer-pages-observation/"
+        "github-pages-observation.json"
+    ),
+    "EXPLORER_RELEASE_OBSERVATION_PATH": (
+        "/external/okf-v0.3.0/explorer-observation/"
+        "explorer-release-observation.json"
+    ),
     "EXPLORER_REPOSITORY": EXPLORER_REPOSITORY,
     "EXPLORER_ROOT": "/checkout/okf-explorer",
     "EXPLORER_TAG": "v0.5.4",
@@ -380,6 +388,21 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
                 "github-pages-observation.json"
             ),
             builder[builder.index("--pages-observation") + 1],
+        )
+        self.assertEqual(
+            (
+                "/external/okf-v0.3.0/explorer-observation/"
+                "explorer-release-observation.json"
+            ),
+            builder[builder.index("--explorer-observation") + 1],
+        )
+        self.assertIn(
+            'export EXPLORER_PAGES_OBSERVATION_PATH="$EXPLORER_OBSERVATION_SOURCE/explorer-pages-observation/github-pages-observation.json"',
+            self.document,
+        )
+        self.assertIn(
+            'shasum -a 256 -c "$EXPLORER_OBSERVATION_CHECKPOINT"',
+            self.document,
         )
 
     def test_traceability_map_has_exact_contract_rows_and_keys(self) -> None:
