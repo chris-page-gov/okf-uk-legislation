@@ -542,6 +542,34 @@ class PreRcAssuranceReceiptBuilderTests(unittest.TestCase):
         }
         self.assertEqual(before, after)
 
+    def test_rejects_pages_contract_without_computed_tree_digest(
+        self,
+    ) -> None:
+        tree = self.fixture.contract["pages_observation"]["archive"][
+            "build"
+        ]["tree"]
+        tree.pop("computed_sha256")
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "Pages build tree",
+        ):
+            self.build()
+        self.assertFalse(self.output_dir.exists())
+
+    def test_rejects_pages_contract_with_divergent_computed_tree_digest(
+        self,
+    ) -> None:
+        tree = self.fixture.contract["pages_observation"]["archive"][
+            "build"
+        ]["tree"]
+        tree["computed_sha256"] = "0" * 64
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "Pages build tree",
+        ):
+            self.build()
+        self.assertFalse(self.output_dir.exists())
+
     def test_rejects_tampered_pages_zip(self) -> None:
         pages_zip = (
             self.fixture.pages_observation.parent

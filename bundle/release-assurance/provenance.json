@@ -2,9 +2,9 @@
   "builder": {
     "command": "python3 scripts/build_release_assurance.py",
     "material": {
-      "bytes": 167562,
+      "bytes": 168444,
       "path": "scripts/build_release_assurance.py",
-      "sha256": "13956195e5368a4cb47c899f4e0af5e240bc2dac2e876b79406ed097494987c2"
+      "sha256": "aa3d68a7ec1ca0e194cd810152eba3f120bf080e56fba77ddc1f122527e76af1"
     },
     "name": "build_release_assurance.py",
     "version": "1.2.0"
@@ -146,10 +146,10 @@
   },
   "external_finalization": {
     "contract": {
-      "bytes": 12196,
+      "bytes": 12293,
       "path": "release-assurance/external-finalization-contract.json",
       "projected_path": "external-finalization-contract.json",
-      "sha256": "c27500adb3643ac51d014dab4662610fb82bf5cf2bc75fac80831bf3fe040a9b"
+      "sha256": "642325a2b95505ea8fef16070bbb18e010dd229dd3d103a4b06efbb9229162d1"
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
@@ -315,9 +315,9 @@
       "sha256": "4ae427a5e488bea43a899e8414124f57844873b4933f9e845747841f9e45a92a"
     },
     {
-      "bytes": 12196,
+      "bytes": 12293,
       "path": "release-assurance/external-finalization-contract.json",
-      "sha256": "c27500adb3643ac51d014dab4662610fb82bf5cf2bc75fac80831bf3fe040a9b"
+      "sha256": "642325a2b95505ea8fef16070bbb18e010dd229dd3d103a4b06efbb9229162d1"
     },
     {
       "bytes": 209001,
@@ -375,9 +375,9 @@
       "sha256": "102a5babf7208a0149926852706573d4b19dea6ef327226b2355734c6a070734"
     },
     {
-      "bytes": 167562,
+      "bytes": 168444,
       "path": "scripts/build_release_assurance.py",
-      "sha256": "13956195e5368a4cb47c899f4e0af5e240bc2dac2e876b79406ed097494987c2"
+      "sha256": "aa3d68a7ec1ca0e194cd810152eba3f120bf080e56fba77ddc1f122527e76af1"
     },
     {
       "bytes": 517,
@@ -620,7 +620,7 @@
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
     }
   ],
-  "materials_digest": "sha256:9d8cf28f5c0bcf3caf9a8a4c006952a8081e78547495e20f432ae609f9b19210",
+  "materials_digest": "sha256:5c548168077bfd950dcc3dfc6ed6810580a6862456caf3baf9990699d2237d5a",
   "optional_direct_api_model_governance": {
     "authored_run": null,
     "current_release_required": false,
@@ -685,9 +685,9 @@
     "package_count": 52,
     "sources": {
       "controller": {
-        "bytes": 167562,
+        "bytes": 168444,
         "path": "scripts/build_release_assurance.py",
-        "sha256": "13956195e5368a4cb47c899f4e0af5e240bc2dac2e876b79406ed097494987c2"
+        "sha256": "aa3d68a7ec1ca0e194cd810152eba3f120bf080e56fba77ddc1f122527e76af1"
       },
       "direct_requirements": {
         "bytes": 399,

@@ -204,6 +204,20 @@ class ReleaseContractSchemaTests(unittest.TestCase):
             "b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7",
             pages["build_tree"]["sha256"],
         )
+        observed_tree = self.contract["pages_observation"]["archive"][
+            "build"
+        ]["tree"]
+        self.assertEqual(
+            {
+                **pages["build_tree"],
+                "computed_sha256": pages["build_tree"]["sha256"],
+            },
+            observed_tree,
+        )
+        self.assertEqual(
+            observed_tree["sha256"],
+            observed_tree["computed_sha256"],
+        )
 
         runtime_schema = load(
             SCHEMAS / "explorer-runtime-receipt.schema.json"

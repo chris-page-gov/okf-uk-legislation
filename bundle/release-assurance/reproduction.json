@@ -15,10 +15,10 @@
   },
   "external_finalization": {
     "contract": {
-      "bytes": 12196,
+      "bytes": 12293,
       "path": "release-assurance/external-finalization-contract.json",
       "projected_path": "external-finalization-contract.json",
-      "sha256": "c27500adb3643ac51d014dab4662610fb82bf5cf2bc75fac80831bf3fe040a9b"
+      "sha256": "642325a2b95505ea8fef16070bbb18e010dd229dd3d103a4b06efbb9229162d1"
     },
     "evidence_plane": "external-write-once",
     "evidence_storage": "All authorization, deployed-attempt and finalization receipts are regular files outside the frozen repository. Each output is write-once; verification reconstructs it from the same external evidence without changing the checkout or archive.",
@@ -174,7 +174,7 @@
   },
   "generated_at": "2026-07-26T20:54:40Z",
   "inputs": {
-    "materials_digest": "sha256:9d8cf28f5c0bcf3caf9a8a4c006952a8081e78547495e20f432ae609f9b19210",
+    "materials_digest": "sha256:5c548168077bfd950dcc3dfc6ed6810580a6862456caf3baf9990699d2237d5a",
     "research_evidence_verified": true
   },
   "limitations": [

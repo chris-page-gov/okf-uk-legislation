@@ -228,7 +228,8 @@
         "tree": {
           "algorithm": "sha256-canonical-json-materials-v1",
           "files": 16,
-          "sha256": "b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7"
+          "sha256": "b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7",
+          "computed_sha256": "b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7"
         }
       }
     },
