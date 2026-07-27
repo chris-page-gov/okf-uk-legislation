@@ -178,7 +178,8 @@ stages their write-once copies beneath
 ## 3. Capture the published Explorer v0.5.4 release and Pages deployment
 
 This bounded controller makes no retry and writes a new immutable directory.
-It is not an Explorer asset download; it verifies the tag and release object:
+It verifies the tag and release object, then downloads and hash-checks the
+declared Explorer release asset:
 
 ```sh
 .venv/bin/python scripts/capture_github_release_observation.py \
@@ -216,16 +217,16 @@ Required closure:
 ```text
 $EVIDENCE/explorer-pages-observation/github-pages-observation.json
 $EVIDENCE/explorer-pages-observation/attempt-manifest.json
-$EVIDENCE/explorer-pages-observation/raw/run-headers.json
-$EVIDENCE/explorer-pages-observation/raw/run.json
-$EVIDENCE/explorer-pages-observation/raw/artifact-headers.json
-$EVIDENCE/explorer-pages-observation/raw/artifact.json
-$EVIDENCE/explorer-pages-observation/raw/download-headers.json
-$EVIDENCE/explorer-pages-observation/pages-artifact.zip
-$EVIDENCE/explorer-pages-observation/inventory/pages-tar-inventory.json
+$EVIDENCE/explorer-pages-observation/raw/run-attempt-response.headers.json
+$EVIDENCE/explorer-pages-observation/raw/run-attempt-response.body.json
+$EVIDENCE/explorer-pages-observation/raw/artifact-response.headers.json
+$EVIDENCE/explorer-pages-observation/raw/artifact-response.body.json
+$EVIDENCE/explorer-pages-observation/raw/artifact-download-response.headers.json
+$EVIDENCE/explorer-pages-observation/raw/github-pages-artifact.zip
+$EVIDENCE/explorer-pages-observation/inventory/tar-files.json
 ```
 
-The observation must bind run `30228627196`, artifact `490852327`, exact
+The observation must bind run `30228627196`, artifact `8639352412`, exact
 Explorer commit `a23dfdea56fea0184b6d53f3163b292dd1a312ed`, the same
 185,023,908-byte/`357c2fcf…c1c0` release asset observed above, and the
 16-file app tree
@@ -411,7 +412,7 @@ test -d "$PUBLIC_ATTEMPT"
 
 Expected output: exactly one immutable attempt directory containing
 `attempt.json`, `projection.json`, `route-manifest.json`, `integrity.json` and
-the raw bounded route evidence. All 24 routes and every cross-route assertion
+the raw bounded route evidence. All 25 routes and every cross-route assertion
 must pass. A failed or partial attempt remains evidence; correct the deployed
 state and use a new reviewed attempt root rather than changing it.
 
