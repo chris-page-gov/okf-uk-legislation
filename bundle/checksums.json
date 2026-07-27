@@ -25326,7 +25326,7 @@
     },
     "release-assurance/checksums.json": {
       "bytes": 6886,
-      "sha256": "938a3456c355ca98ee82c16c39b73e365d2931f69b23d070f92c9bedffcb247c"
+      "sha256": "5182f316bd3a50cecae96cd84d984bf5def49ed9d9ee12b27b5b3ce75bd16295"
     },
     "release-assurance/claude-observed-access-test.json": {
       "bytes": 2251,
@@ -25349,8 +25349,8 @@
       "sha256": "678ff8d0479ea52758173920dd14491b74572fd8bd2fd641e3eb030807f87256"
     },
     "release-assurance/external-finalization-contract.json": {
-      "bytes": 12196,
-      "sha256": "c27500adb3643ac51d014dab4662610fb82bf5cf2bc75fac80831bf3fe040a9b"
+      "bytes": 12293,
+      "sha256": "642325a2b95505ea8fef16070bbb18e010dd229dd3d103a4b06efbb9229162d1"
     },
     "release-assurance/gap-register.json": {
       "bytes": 23290,
@@ -25386,7 +25386,7 @@
     },
     "release-assurance/provenance.json": {
       "bytes": 27291,
-      "sha256": "b375762a10200094a1f07f21a446c8689ef50acce8b5e9a6237a9b704a7b7cc9"
+      "sha256": "2cfc7d12956f7f5505d61e7e3c30629dc5302609aafe0284e84af3a5704e692d"
     },
     "release-assurance/release-gates.json": {
       "bytes": 10884,
@@ -25402,19 +25402,19 @@
     },
     "release-assurance/release-state.json": {
       "bytes": 13161,
-      "sha256": "a7cbb2a1df43d786b8c09b7c49f7f7ab01b681b663399b699865b9f5456e8fa9"
+      "sha256": "0697e7d7dedefc53d49f8c99ec459e7a13055ac71318d52c6409f469becc748b"
     },
     "release-assurance/reproduction.json": {
       "bytes": 8277,
-      "sha256": "ef95a7fe24d15bfd42f454cb2219f4c1f9d4e6c9f8bb5725f1b803d2ae44d939"
+      "sha256": "65755d422610aec3e0147179cb7e2473f96d55eed68c4fd32c4abb44230b8152"
     },
     "release-assurance/rights.spdx.json": {
       "bytes": 2378,
-      "sha256": "01a709b1d150e148648066acc056cfcef1119c6cf8795b7346b49bbe7cbfbceb"
+      "sha256": "9b0fe9148c09a23c5cbed50618271f25daaaffd5aca424dbd013814a079e6d8a"
     },
     "release-assurance/sbom.cdx.json": {
       "bytes": 189459,
-      "sha256": "b7ff0d6801a1467dbfdb405bc29909f0a432724e5c2e9a3f9c80dc035cc6a630"
+      "sha256": "1929f82644a61578ce4db8ce0ea9ed59703d28a1b9bad5dc6eb52a54d5a8f64f"
     },
     "release-assurance/schemas/accessibility-assurance-receipt.schema.json": {
       "bytes": 4268,

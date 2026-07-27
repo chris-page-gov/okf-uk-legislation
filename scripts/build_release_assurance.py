@@ -396,6 +396,25 @@ def external_finalization_projection(
                 "Explorer runtime provenance must bind the exact published "
                 "v0.5.4 Pages build"
             )
+        pages_declaration = contract.get("pages_observation")
+        pages_tree = None
+        if isinstance(pages_declaration, dict):
+            pages_archive = pages_declaration.get("archive")
+            if isinstance(pages_archive, dict):
+                pages_build = pages_archive.get("build")
+                if isinstance(pages_build, dict):
+                    pages_tree = pages_build.get("tree")
+        expected_pages_tree = {
+            **expected_runtime_provenance["pages"]["build_tree"],
+            "computed_sha256": (
+                expected_runtime_provenance["pages"]["build_tree"]["sha256"]
+            ),
+        }
+        if pages_tree != expected_pages_tree:
+            errors.append(
+                "Pages observation contract must bind both the declared and "
+                "independently computed Explorer v0.5.4 build-tree digest"
+            )
     codex_security = contract.get("codex_security")
     if not isinstance(codex_security, dict):
         errors.append("external finalization contract lacks Codex Security binding")

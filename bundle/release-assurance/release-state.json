@@ -12,10 +12,10 @@
   },
   "external_finalization": {
     "contract": {
-      "bytes": 12196,
+      "bytes": 12293,
       "path": "release-assurance/external-finalization-contract.json",
       "projected_path": "external-finalization-contract.json",
-      "sha256": "c27500adb3643ac51d014dab4662610fb82bf5cf2bc75fac80831bf3fe040a9b"
+      "sha256": "642325a2b95505ea8fef16070bbb18e010dd229dd3d103a4b06efbb9229162d1"
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
