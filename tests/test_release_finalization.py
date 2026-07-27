@@ -838,7 +838,7 @@ class FinalizationFixture:
                     if key == "implementation_traceability"
                     else finalization.render(self.embedded[key])
                 )
-                info = tarfile.TarInfo(f"{prefix}/{relative}")
+                info = tarfile.TarInfo(f"{prefix}/bundle/{relative}")
                 info.size = len(body)
                 info.mode = 0o644
                 archive.addfile(info, io.BytesIO(body))

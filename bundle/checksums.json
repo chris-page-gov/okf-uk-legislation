@@ -25326,7 +25326,7 @@
     },
     "release-assurance/checksums.json": {
       "bytes": 6886,
-      "sha256": "52410a68f65235c121655ff6560062f87268ff4152159ddb3c5a1cf5b43315fb"
+      "sha256": "d58c5dc02230e8107c8cad931e1863032cedd76e3e5834058b3fcb7a22b694b1"
     },
     "release-assurance/claude-observed-access-test.json": {
       "bytes": 2251,
@@ -25386,7 +25386,7 @@
     },
     "release-assurance/provenance.json": {
       "bytes": 27291,
-      "sha256": "69ff2330a51d18cdf09d943bd50e2bd951f7967ba3408891bcb856f1bdc67fb9"
+      "sha256": "bf4b26c3ac5c177deaec56a5045b76ee33faff72d682d21f5c3e214f362624ae"
     },
     "release-assurance/release-gates.json": {
       "bytes": 10884,
@@ -25402,19 +25402,19 @@
     },
     "release-assurance/release-state.json": {
       "bytes": 13161,
-      "sha256": "b0350367f3252243542ffc20627790e10e35c3ece725b59785d7e0cb83a3a680"
+      "sha256": "227ccca6f4c6e02d97c70324ce663ffdf5c8edf0dd92fdef625e555b593eed4b"
     },
     "release-assurance/reproduction.json": {
       "bytes": 8277,
-      "sha256": "d64e745f82ad9f898fe796033ee39a9e1d58fb2f45fc0b83c874a0106f4259aa"
+      "sha256": "031d5c669f6cf36931bd6267a44a29ca1fd6b861c4f8a6891683ee9b8c180aca"
     },
     "release-assurance/rights.spdx.json": {
       "bytes": 2378,
-      "sha256": "491d0aae8776622c6a3ff5808818b4e7cd27d2401742dd92f7790fd57d15a9d6"
+      "sha256": "b1a8cdf77f675346bad8b9efb0f6503f894bb68e8e3a63e94771fb9fcf087f20"
     },
     "release-assurance/sbom.cdx.json": {
       "bytes": 189459,
-      "sha256": "4d02fc47295b994735e3446cf0878d06857e3180dfe6ffc88d17523703d2f651"
+      "sha256": "197bda1477d9953bddb2f50e954c97de34bbf2fbebc53d702ba375f96efbfdb2"
     },
     "release-assurance/schemas/accessibility-assurance-receipt.schema.json": {
       "bytes": 4268,

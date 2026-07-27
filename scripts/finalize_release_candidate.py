@@ -701,7 +701,7 @@ def read_embedded_release_files(
         raise FinalizationError("sealed archive filename is not canonical .tar.zst")
     prefix = archive_name[: -len(".tar.zst")]
     expected = {
-        f"{prefix}/{relative}": key
+        f"{prefix}/bundle/{relative}": key
         for key, relative in EMBEDDED_RELEASE_FILES.items()
     }
     documents: dict[str, dict[str, Any]] = {}

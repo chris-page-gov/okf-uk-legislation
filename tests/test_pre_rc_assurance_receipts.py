@@ -19,6 +19,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_pre_rc_assurance_receipts as builder  # noqa: E402
 import finalize_release_candidate as finalization  # noqa: E402
+import reproduce_release_candidate as reproduction  # noqa: E402
 
 try:  # Standard module invocation from the repository root.
     from tests.test_release_finalization import (  # type: ignore[import-not-found]  # noqa: E402
@@ -66,6 +67,80 @@ class PreRcAssuranceReceiptBuilderTests(unittest.TestCase):
 
     def tearDown(self) -> None:
         self.temporary.cleanup()
+
+    def test_production_tar_layout_is_readable_by_finalizer(self) -> None:
+        publication = self.root / "production-layout" / "bundle"
+        rows = []
+        for key, relative in finalization.EMBEDDED_RELEASE_FILES.items():
+            body = finalization.render({"key": key})
+            path = publication / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(body)
+            rows.append(
+                {
+                    "path": relative,
+                    "bytes": len(body),
+                    "sha256": finalization.sha256_bytes(body),
+                }
+            )
+        rows.sort(key=lambda row: row["path"])
+
+        prefix = "okf-uk-legislation-v0.3.0"
+        tar_path = self.root / "production-layout.tar"
+        reproduction.deterministic_tar(
+            publication,
+            {"rows": rows},
+            tar_path,
+            prefix=prefix,
+            limits={"max_tar_bytes": 1024 * 1024},
+        )
+        archive_path = self.root / f"{prefix}.tar.zst"
+        archive_path.write_bytes(
+            zstandard.ZstdCompressor(level=1).compress(
+                tar_path.read_bytes()
+            )
+        )
+
+        documents, materials = finalization.read_embedded_release_files(
+            archive_path,
+            archive_path.name,
+        )
+        self.assertEqual(
+            set(documents),
+            set(finalization.EMBEDDED_RELEASE_FILES),
+        )
+        for key, relative in finalization.EMBEDDED_RELEASE_FILES.items():
+            self.assertEqual(documents[key], {"key": key})
+            self.assertEqual(
+                materials[key]["path"],
+                f"bundle/{relative}",
+            )
+
+    def test_legacy_root_layout_is_rejected(self) -> None:
+        prefix = "okf-uk-legislation-v0.3.0"
+        tar_path = self.root / "legacy-root-layout.tar"
+        with tarfile.open(tar_path, mode="w") as archive:
+            for key, relative in finalization.EMBEDDED_RELEASE_FILES.items():
+                body = finalization.render({"key": key})
+                info = tarfile.TarInfo(f"{prefix}/{relative}")
+                info.size = len(body)
+                info.mode = 0o644
+                archive.addfile(info, io.BytesIO(body))
+        archive_path = self.root / f"{prefix}.tar.zst"
+        archive_path.write_bytes(
+            zstandard.ZstdCompressor(level=1).compress(
+                tar_path.read_bytes()
+            )
+        )
+
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "sealed archive omits embedded release evidence",
+        ):
+            finalization.read_embedded_release_files(
+                archive_path,
+                archive_path.name,
+            )
 
     def reproduction_context(self) -> dict[str, Any]:
         with mock.patch.object(
@@ -319,7 +394,7 @@ class PreRcAssuranceReceiptBuilderTests(unittest.TestCase):
                     if key == "implementation_traceability"
                     else finalization.render(self.fixture.embedded[key])
                 )
-                info = tarfile.TarInfo(f"{prefix}/{relative}")
+                info = tarfile.TarInfo(f"{prefix}/bundle/{relative}")
                 info.size = len(body)
                 info.mode = 0o644
                 archive.addfile(info, io.BytesIO(body))
