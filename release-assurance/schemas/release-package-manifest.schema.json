@@ -112,6 +112,7 @@
         "id": {"type": "string", "minLength": 1},
         "yaml_ld": {"$ref": "#/$defs/material"},
         "json_ld": {"$ref": "#/$defs/material"},
+        "turtle": {"$ref": "#/$defs/material"},
         "canonical_nquads_sha256": {"$ref": "#/$defs/sha256"},
         "canonical_nquads_bytes": {"type": "integer", "minimum": 1},
         "canonical_nquads_statements": {"type": "integer", "minimum": 1},

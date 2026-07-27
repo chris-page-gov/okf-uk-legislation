@@ -31,6 +31,7 @@ from typing import Any, Iterable
 
 try:
     import jsonschema
+    import rdflib
     import yaml_ld
     import zstandard
     from pyld import jsonld
@@ -44,10 +45,19 @@ except ImportError as exc:  # pragma: no cover - dependency setup failure
         "never installs dependencies itself."
     ) from exc
 
+import validation_dependency_lock as validation_lock
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_PROFILE = ROOT / "release-assurance" / "reproduction-profile.json"
 CONTROLLER = Path(__file__).resolve()
+VALIDATION_LOCK_PARSER_CONTROLLER = Path(
+    validation_lock.__file__
+).resolve()
+CANONICAL_DIRECT_REQUIREMENTS = "requirements-validation.in"
+CANONICAL_DEPENDENCY_LOCK = "requirements-validation.txt"
+CANONICAL_DEPENDENCY_LOCK_PARSER = "scripts/validation_dependency_lock.py"
+CANONICAL_BOOTSTRAP_DISTRIBUTION_ALLOWLIST = ("pip",)
 CANONICAL_FINALIZATION_CONTROLLER = (
     "scripts/finalize_release_candidate.py"
 )
@@ -57,6 +67,23 @@ CANONICAL_FINALIZATION_CONTRACT = (
 CANONICAL_RELEASE_OBSERVATION_CONTROLLER = (
     "scripts/capture_github_release_observation.py"
 )
+CANONICAL_PAGES_OBSERVATION_CONTROLLER = (
+    "scripts/capture_github_pages_observation.py"
+)
+CANONICAL_PAGES_OBSERVATION_SCHEMA = (
+    "release-assurance/schemas/github-pages-observation.schema.json"
+)
+CANONICAL_ASSURANCE_RECEIPT_CONTROLLERS = (
+    "scripts/build_pre_rc_assurance_receipts.py",
+    "scripts/build_post_rc_assurance_receipts.py",
+)
+CANONICAL_DEPLOYED_MANIFEST_TEMPLATE = (
+    "release-assurance/deployed-entrypoints-manifest.json"
+)
+CANONICAL_DEPLOYED_PROBE_CONTROLLER = (
+    "scripts/probe_deployed_entrypoints.py"
+)
+CANONICAL_DEPLOYED_PROBE_CONTROLLER_VERSION = "1.0.0"
 CANONICAL_OUTPUT_SCHEMAS = {
     "reproduction_receipt": (
         "release-assurance/schemas/reproduction-receipt.schema.json"
@@ -293,10 +320,10 @@ def finalization_schema_declarations(
 ) -> list[str]:
     """Return the exact, de-duplicated schema set declared by the finalizer."""
 
-    if contract.get("schema") != "okf-external-finalization-contract.v2":
+    if contract.get("schema") != "okf-external-finalization-contract.v3":
         raise ReproductionError(
             "finalization contract schema is not "
-            "okf-external-finalization-contract.v2"
+            "okf-external-finalization-contract.v3"
         )
     input_schemas = contract.get("input_schemas")
     if not isinstance(input_schemas, dict) or not input_schemas:
@@ -360,9 +387,15 @@ def finalization_materials(
     dict[str, Any],
     dict[str, Any],
     dict[str, Any],
+    dict[str, Any],
     list[dict[str, Any]],
+    dict[str, Any],
+    dict[str, Any],
+    dict[str, Any],
+    list[dict[str, Any]],
+    dict[str, Any],
 ]:
-    """Hash-bind the finalizer, observation controller, contract and schemas."""
+    """Hash-bind every controller, the finalization contract and its schemas."""
 
     controller_path = checkout_path(
         checkout,
@@ -374,6 +407,34 @@ def finalization_materials(
         profile["release_observation_controller"],
         label="release observation controller",
     )
+    pages_observation_controller_path = checkout_path(
+        checkout,
+        profile["pages_observation_controller"],
+        label="Pages observation controller",
+    )
+    pages_observation_schema_path = checkout_path(
+        checkout,
+        profile["pages_observation_schema"],
+        label="Pages observation schema",
+    )
+    assurance_controller_paths = [
+        checkout_path(
+            checkout,
+            relative,
+            label="assurance receipt controller",
+        )
+        for relative in profile["assurance_receipt_controllers"]
+    ]
+    deployed_manifest_template_path = checkout_path(
+        checkout,
+        profile["deployed_manifest_template"],
+        label="deployed manifest template",
+    )
+    deployed_probe_controller_path = checkout_path(
+        checkout,
+        profile["deployed_probe_controller"],
+        label="deployed probe controller",
+    )
     contract_path = checkout_path(
         checkout,
         profile["finalization_contract"],
@@ -382,7 +443,15 @@ def finalization_materials(
     for path, label in (
         (controller_path, "finalization controller"),
         (observation_controller_path, "release observation controller"),
+        (pages_observation_controller_path, "Pages observation controller"),
+        (pages_observation_schema_path, "Pages observation schema"),
         (contract_path, "finalization contract"),
+        *(
+            (path, "assurance receipt controller")
+            for path in assurance_controller_paths
+        ),
+        (deployed_manifest_template_path, "deployed manifest template"),
+        (deployed_probe_controller_path, "deployed probe controller"),
     ):
         if not path.is_file() or path.is_symlink():
             raise ReproductionError(
@@ -409,6 +478,56 @@ def finalization_materials(
         raise ReproductionError(
             "finalization contract and reproduction profile disagree on the "
             "release observation controller"
+        )
+    pages_observation = contract.get("pages_observation")
+    if not isinstance(pages_observation, dict):
+        raise ReproductionError(
+            "finalization contract pages_observation must be an object"
+        )
+    if (
+        pages_observation.get("controller")
+        != profile["pages_observation_controller"]
+        or pages_observation.get("schema")
+        != profile["pages_observation_schema"]
+    ):
+        raise ReproductionError(
+            "finalization contract and reproduction profile disagree on the "
+            "Pages observation controller or schema"
+        )
+    if (
+        contract.get("assurance_receipt_controllers")
+        != profile["assurance_receipt_controllers"]
+    ):
+        raise ReproductionError(
+            "finalization contract and reproduction profile disagree on the "
+            "assurance receipt controllers"
+        )
+    if (
+        contract.get("deployed_manifest_template")
+        != profile["deployed_manifest_template"]
+    ):
+        raise ReproductionError(
+            "finalization contract and reproduction profile disagree on the "
+            "deployed manifest template"
+        )
+    deployed_probe_contract = contract.get("deployed_probe_controller")
+    if deployed_probe_contract != {
+        "path": profile["deployed_probe_controller"],
+        "version": CANONICAL_DEPLOYED_PROBE_CONTROLLER_VERSION,
+    }:
+        raise ReproductionError(
+            "finalization contract and reproduction profile disagree on the "
+            "deployed probe controller"
+        )
+    explorer = contract.get("explorer")
+    if not isinstance(explorer, dict):
+        raise ReproductionError(
+            "finalization contract Explorer declaration must be an object"
+        )
+    explorer_runtime_provenance = explorer.get("runtime_provenance")
+    if not isinstance(explorer_runtime_provenance, dict):
+        raise ReproductionError(
+            "finalization contract Explorer runtime provenance must be an object"
         )
 
     schemas: list[dict[str, Any]] = []
@@ -442,31 +561,48 @@ def finalization_materials(
     return (
         material(controller_path, relative_to=checkout),
         material(observation_controller_path, relative_to=checkout),
+        material(pages_observation_controller_path, relative_to=checkout),
+        material(pages_observation_schema_path, relative_to=checkout),
+        [
+            material(path, relative_to=checkout)
+            for path in assurance_controller_paths
+        ],
+        material(deployed_manifest_template_path, relative_to=checkout),
+        material(deployed_probe_controller_path, relative_to=checkout),
         material(contract_path, relative_to=checkout),
         schemas,
+        explorer_runtime_provenance,
     )
 
 
-def parse_dependency_lock(path: Path) -> list[dict[str, str]]:
-    dependencies: list[dict[str, str]] = []
-    for raw in path.read_text(encoding="utf-8").splitlines():
-        line = raw.strip()
-        if not line or line.startswith("#"):
-            continue
-        name, separator, version = line.partition("==")
-        if (
-            not separator
-            or not name
-            or not version
-            or any(token in version for token in (";", " ", "\t"))
-        ):
-            raise ReproductionError(
-                f"dependency lock is not an exact name==version pin: {line!r}"
-            )
-        dependencies.append({"name": name, "version": version})
-    if not dependencies:
-        raise ReproductionError("dependency lock contains no exact pins")
-    return dependencies
+def parse_dependency_lock(
+    lock_path: Path,
+    direct_path: Path,
+) -> validation_lock.ValidationDependencyLock:
+    """Parse the complete hash lock with the repository's strict controller."""
+
+    try:
+        return validation_lock.load_validation_dependency_lock(
+            lock_path,
+            direct_path,
+        )
+    except validation_lock.DependencyLockError as exc:
+        raise ReproductionError(
+            f"validation dependency lock is invalid: {exc}"
+        ) from exc
+
+
+def dependency_lock_identity(
+    dependency_lock: validation_lock.ValidationDependencyLock,
+) -> dict[str, Any]:
+    return {
+        "package_count": len(dependency_lock.requirements),
+        "direct_count": len(dependency_lock.direct_requirements),
+        "transitive_count": len(dependency_lock.transitive_names),
+        "artifact_hash_count": len(dependency_lock.artifact_hashes),
+        "identity_sha256": dependency_lock.identity_digest,
+        "artifact_hash_sha256": dependency_lock.artifact_hash_digest,
+    }
 
 
 def verify_environment(
@@ -491,30 +627,83 @@ def verify_environment(
             f"{python_pin['micro']}"
         )
 
+    direct_path = checkout_path(
+        checkout,
+        profile["direct_requirements"],
+        label="direct validation requirements",
+    )
     lock_path = checkout_path(
         checkout,
         profile["dependency_lock"],
         label="dependency lock",
     )
-    dependencies = parse_dependency_lock(lock_path)
-    installed: list[dict[str, Any]] = []
-    for dependency in dependencies:
-        try:
-            actual = importlib.metadata.version(dependency["name"])
-        except importlib.metadata.PackageNotFoundError as exc:
+    parser_path = checkout_path(
+        checkout,
+        profile["dependency_lock_parser"],
+        label="dependency lock parser",
+    )
+    for path, label in (
+        (direct_path, "direct validation requirements"),
+        (lock_path, "dependency lock"),
+        (parser_path, "dependency lock parser"),
+    ):
+        if not path.is_file() or path.is_symlink():
             raise ReproductionError(
-                f"pinned dependency is unavailable: "
-                f"{dependency['name']}=={dependency['version']}"
-            ) from exc
-        if actual != dependency["version"]:
-            raise ReproductionError(
-                f"pinned dependency differs: {dependency['name']} "
-                f"{actual} != {dependency['version']}"
+                f"{label} is missing, not regular, or a symlink"
             )
+    if parser_path.read_bytes() != VALIDATION_LOCK_PARSER_CONTROLLER.read_bytes():
+        raise ReproductionError(
+            "target dependency lock parser differs from the executing parser"
+        )
+
+    dependency_lock = parse_dependency_lock(lock_path, direct_path)
+    identity = dependency_lock_identity(dependency_lock)
+    if identity != profile["dependency_lock_identity"]:
+        raise ReproductionError(
+            "validation dependency lock identity differs from reproduction "
+            "profile"
+        )
+
+    installed_versions = dict(
+        validation_lock.installed_distribution_versions()
+    )
+    bootstrap_allowlist = profile["bootstrap_distribution_allowlist"]
+    try:
+        comparison = validation_lock.compare_installed_versions(
+            dependency_lock,
+            installed_versions,
+            allow_extra=bootstrap_allowlist,
+        )
+    except validation_lock.DependencyLockError as exc:
+        raise ReproductionError(
+            f"installed distribution inventory is invalid: {exc}"
+        ) from exc
+    if comparison.missing:
+        raise ReproductionError(
+            "pinned dependencies are unavailable: "
+            + ", ".join(comparison.missing)
+        )
+    if comparison.mismatched:
+        raise ReproductionError(
+            "pinned dependencies differ: "
+            + ", ".join(
+                f"{row.name} {row.actual} != {row.expected}"
+                for row in comparison.mismatched
+            )
+        )
+    if comparison.unexpected:
+        raise ReproductionError(
+            "undeclared installed distributions are forbidden: "
+            + ", ".join(comparison.unexpected)
+        )
+
+    installed: list[dict[str, Any]] = []
+    for requirement in dependency_lock.requirements:
+        actual = installed_versions[requirement.name]
         installed.append(
             {
-                "name": dependency["name"],
-                "required": dependency["version"],
+                "name": requirement.name,
+                "required": requirement.version,
                 "installed": actual,
                 "matches": True,
             }
@@ -544,7 +733,21 @@ def verify_environment(
         "python": actual_python,
         "python_executable": str(Path(sys.executable).resolve()),
         "dependencies": installed,
+        "dependencies_exact": comparison.matches,
+        "dependency_direct_requirements": material(
+            direct_path,
+            relative_to=checkout,
+        ),
         "dependency_lock": material(lock_path, relative_to=checkout),
+        "dependency_lock_identity": identity,
+        "dependency_lock_parser": material(
+            parser_path,
+            relative_to=checkout,
+        ),
+        "bootstrap_distribution_allowlist": bootstrap_allowlist,
+        "bootstrap_distributions_present": sorted(
+            set(installed_versions) - set(dependency_lock.by_name)
+        ),
         "zstandard": {
             "distribution": zstd_distribution,
             "version": zstd_installed,
@@ -556,8 +759,8 @@ def verify_environment(
 
 
 def validate_profile(profile: dict[str, Any]) -> None:
-    if profile.get("schema") != "okf-reproduction-profile.v1":
-        raise ReproductionError("reproduction profile schema is not v1")
+    if profile.get("schema") != "okf-reproduction-profile.v2":
+        raise ReproductionError("reproduction profile schema is not v2")
     for key, expected in (
         (
             "finalization_controller",
@@ -571,6 +774,14 @@ def validate_profile(profile: dict[str, Any]) -> None:
             "release_observation_controller",
             CANONICAL_RELEASE_OBSERVATION_CONTROLLER,
         ),
+        (
+            "pages_observation_controller",
+            CANONICAL_PAGES_OBSERVATION_CONTROLLER,
+        ),
+        (
+            "pages_observation_schema",
+            CANONICAL_PAGES_OBSERVATION_SCHEMA,
+        ),
     ):
         declared = profile.get(key)
         if declared != expected:
@@ -578,8 +789,87 @@ def validate_profile(profile: dict[str, Any]) -> None:
                 f"{key} must use canonical path {expected!r}"
             )
         safe_relative(declared, label=key.replace("_", " "))
+    assurance_controllers = profile.get("assurance_receipt_controllers")
+    if assurance_controllers != list(CANONICAL_ASSURANCE_RECEIPT_CONTROLLERS):
+        raise ReproductionError(
+            "assurance_receipt_controllers must use the canonical ordered paths"
+        )
+    for declared in assurance_controllers:
+        safe_relative(declared, label="assurance receipt controller")
+    if (
+        profile.get("deployed_manifest_template")
+        != CANONICAL_DEPLOYED_MANIFEST_TEMPLATE
+    ):
+        raise ReproductionError(
+            "deployed_manifest_template must use the canonical path"
+        )
+    safe_relative(
+        profile["deployed_manifest_template"],
+        label="deployed manifest template",
+    )
+    if (
+        profile.get("deployed_probe_controller")
+        != CANONICAL_DEPLOYED_PROBE_CONTROLLER
+    ):
+        raise ReproductionError(
+            "deployed_probe_controller must use the canonical path"
+        )
+    safe_relative(
+        profile["deployed_probe_controller"],
+        label="deployed probe controller",
+    )
     safe_relative(profile["publication_root"], label="publication root")
-    safe_relative(profile["dependency_lock"], label="dependency lock")
+    for key, expected in (
+        ("direct_requirements", CANONICAL_DIRECT_REQUIREMENTS),
+        ("dependency_lock", CANONICAL_DEPENDENCY_LOCK),
+        ("dependency_lock_parser", CANONICAL_DEPENDENCY_LOCK_PARSER),
+    ):
+        if profile.get(key) != expected:
+            raise ReproductionError(
+                f"{key} must use canonical path {expected!r}"
+            )
+        safe_relative(profile[key], label=key.replace("_", " "))
+    if profile.get("bootstrap_distribution_allowlist") != list(
+        CANONICAL_BOOTSTRAP_DISTRIBUTION_ALLOWLIST
+    ):
+        raise ReproductionError(
+            "bootstrap_distribution_allowlist must equal the minimal "
+            "canonical allowlist"
+        )
+    lock_identity = profile.get("dependency_lock_identity")
+    expected_identity_keys = {
+        "package_count",
+        "direct_count",
+        "transitive_count",
+        "artifact_hash_count",
+        "identity_sha256",
+        "artifact_hash_sha256",
+    }
+    if (
+        not isinstance(lock_identity, dict)
+        or set(lock_identity) != expected_identity_keys
+        or any(
+            not isinstance(lock_identity[key], int)
+            or lock_identity[key] <= 0
+            for key in (
+                "package_count",
+                "direct_count",
+                "transitive_count",
+                "artifact_hash_count",
+            )
+        )
+        or lock_identity["package_count"]
+        != lock_identity["direct_count"] + lock_identity["transitive_count"]
+        or lock_identity["artifact_hash_count"] < lock_identity["package_count"]
+        or any(
+            not isinstance(lock_identity[key], str)
+            or re.fullmatch(r"[0-9a-f]{64}", lock_identity[key]) is None
+            for key in ("identity_sha256", "artifact_hash_sha256")
+        )
+    ):
+        raise ReproductionError(
+            "dependency_lock_identity must be a complete canonical lock receipt"
+        )
     if set(profile.get("python", {})) != {"major", "minor", "micro"}:
         raise ReproductionError(
             "Python profile must pin major, minor and micro exactly"
@@ -637,9 +927,42 @@ def validate_profile(profile: dict[str, Any]) -> None:
     semantic_pairs = profile.get("semantic_pairs")
     if not isinstance(semantic_pairs, list) or not semantic_pairs:
         raise ReproductionError("semantic_pairs must be a non-empty array")
+    semantic_ids: set[str] = set()
     for pair in semantic_pairs:
+        if (
+            not isinstance(pair, dict)
+            or set(pair) - {"id", "yaml_ld", "json_ld", "turtle"}
+            or not isinstance(pair.get("id"), str)
+            or not pair["id"]
+            or pair["id"] in semantic_ids
+            or not isinstance(pair.get("yaml_ld"), str)
+            or not pair["yaml_ld"]
+            or not isinstance(pair.get("json_ld"), str)
+            or not pair["json_ld"]
+            or (
+                "turtle" in pair
+                and (
+                    not isinstance(pair["turtle"], str)
+                    or not pair["turtle"]
+                )
+            )
+        ):
+            raise ReproductionError("semantic pair declaration is invalid")
+        semantic_ids.add(pair["id"])
         safe_relative(pair["yaml_ld"], label="semantic YAML-LD")
         safe_relative(pair["json_ld"], label="semantic JSON-LD")
+        if "turtle" in pair:
+            safe_relative(pair["turtle"], label="semantic Turtle")
+        if pair["id"] == "whole-law" and pair.get("turtle") != (
+            "bundle/whole-law/okf-bundle.ttl"
+        ):
+            raise ReproductionError(
+                "Whole-Law semantic pair must bind canonical Turtle"
+            )
+        if pair["id"] == "uk-legislation" and "turtle" in pair:
+            raise ReproductionError(
+                "root UK Legislation semantic pair remains YAML-LD/JSON-LD"
+            )
     context_urls: set[str] = set()
     for context in profile.get("offline_contexts", []):
         if (
@@ -925,6 +1248,54 @@ def semantic_digests(
             ),
             "representations_equivalent": True,
         }
+        turtle_relative = pair.get("turtle")
+        if turtle_relative is not None:
+            turtle_path = checkout_path(
+                checkout,
+                turtle_relative,
+                label=f"{pair['id']} Turtle",
+            )
+            if not turtle_path.is_file() or turtle_path.is_symlink():
+                raise ReproductionError(
+                    f"{pair['id']} Turtle is missing, not regular, or a symlink"
+                )
+            turtle_body = turtle_path.read_bytes()
+            try:
+                turtle_graph = rdflib.Graph()
+                turtle_graph.parse(
+                    data=turtle_body.decode("utf-8"),
+                    format="turtle",
+                )
+                turtle_ntriples = turtle_graph.serialize(format="nt")
+                turtle_document = jsonld.from_rdf(
+                    turtle_ntriples,
+                    {"format": "application/n-quads"},
+                )
+                turtle_canonical = jsonld.normalize(
+                    turtle_document,
+                    options,
+                )
+            except Exception as exc:
+                raise ReproductionError(
+                    f"{pair['id']} Turtle cannot be parsed as an RDF dataset"
+                ) from exc
+            if (
+                not turtle_canonical
+                or turtle_canonical != yaml_canonical
+            ):
+                raise ReproductionError(
+                    f"{pair['id']} Turtle canonical graph differs from "
+                    "YAML-LD and JSON-LD"
+                )
+            if turtle_body != turtle_canonical.encode("utf-8"):
+                raise ReproductionError(
+                    f"{pair['id']} Turtle is not the canonical dataset "
+                    "serialization"
+                )
+            result["turtle"] = material(
+                turtle_path,
+                relative_to=checkout,
+            )
         if context_materials:
             result["offline_contexts"] = context_materials
         results.append(result)
@@ -1034,7 +1405,18 @@ def command_materials(
     checkout: Path,
     profile: dict[str, Any],
 ) -> list[dict[str, Any]]:
-    paths: set[Path] = set()
+    paths: set[Path] = {
+        checkout_path(
+            checkout,
+            profile["direct_requirements"],
+            label="direct validation requirements",
+        ),
+        checkout_path(
+            checkout,
+            profile["dependency_lock_parser"],
+            label="dependency lock parser",
+        ),
+    }
     for category in ("build_commands", "validation_commands"):
         for command in profile[category]:
             if command[1] == "-m":
@@ -1511,8 +1893,14 @@ def run_reproduction(
         (
             finalization_controller_material,
             release_observation_controller_material,
+            pages_observation_controller_material,
+            pages_observation_schema_material,
+            assurance_receipt_controller_materials,
+            deployed_manifest_template_material,
+            deployed_probe_controller_material,
             finalization_contract_material,
             finalization_schema_materials,
+            explorer_runtime_provenance,
         ) = finalization_materials(checkout, profile)
 
         environment = verify_environment(checkout, profile)
@@ -1609,7 +1997,7 @@ def run_reproduction(
             relative_to=checkout,
         )
         provenance = {
-            "schema": "okf-reproduction-provenance-inputs.v1",
+            "schema": "okf-reproduction-provenance-inputs.v2",
             "commit": commit,
             "tree": tree,
             "commit_time": commit_time,
@@ -1618,8 +2006,18 @@ def run_reproduction(
             "release_observation_controller": (
                 release_observation_controller_material
             ),
+            "pages_observation_controller": (
+                pages_observation_controller_material
+            ),
+            "pages_observation_schema": pages_observation_schema_material,
+            "assurance_receipt_controllers": (
+                assurance_receipt_controller_materials
+            ),
+            "deployed_manifest_template": deployed_manifest_template_material,
+            "deployed_probe_controller": deployed_probe_controller_material,
             "finalization_contract": finalization_contract_material,
             "finalization_schemas": finalization_schema_materials,
+            "explorer_runtime_provenance": explorer_runtime_provenance,
             "profile": profile_material,
             "dependency_lock": environment["dependency_lock"],
             "dependencies": environment["dependencies"],
@@ -1653,6 +2051,9 @@ def run_reproduction(
                     "publication": rebuilt_inventory["inventory_sha256"],
                     "archive": archive["sha256"],
                     "provenance_inputs": sha256_bytes(provenance_body),
+                    "dependency_lock_identity": environment[
+                        "dependency_lock_identity"
+                    ],
                     "required_receipts": [
                         row["material"]["sha256"] for row in required_receipts
                     ],
@@ -1720,9 +2121,7 @@ def run_reproduction(
             },
             "environment": {
                 "python": environment["python"],
-                "dependencies_exact": all(
-                    row["matches"] for row in environment["dependencies"]
-                ),
+                "dependencies_exact": environment["dependencies_exact"],
                 "zstandard": environment["zstandard"],
                 "network_access_required": False,
                 "network_access_guarded": True,
@@ -1846,17 +2245,64 @@ def copy_finalization_fixture(repository: Path) -> None:
 
     finalization_controller = ROOT / CANONICAL_FINALIZATION_CONTROLLER
     observation_controller = ROOT / CANONICAL_RELEASE_OBSERVATION_CONTROLLER
+    pages_observation_controller = (
+        ROOT / CANONICAL_PAGES_OBSERVATION_CONTROLLER
+    )
+    assurance_controllers = [
+        ROOT / relative for relative in CANONICAL_ASSURANCE_RECEIPT_CONTROLLERS
+    ]
+    deployed_manifest_template = ROOT / CANONICAL_DEPLOYED_MANIFEST_TEMPLATE
+    deployed_probe_controller = ROOT / CANONICAL_DEPLOYED_PROBE_CONTROLLER
     finalization_contract = ROOT / CANONICAL_FINALIZATION_CONTRACT
     target_controller = repository / CANONICAL_FINALIZATION_CONTROLLER
     target_observation_controller = (
         repository / CANONICAL_RELEASE_OBSERVATION_CONTROLLER
     )
+    target_pages_observation_controller = (
+        repository / CANONICAL_PAGES_OBSERVATION_CONTROLLER
+    )
+    target_assurance_controllers = [
+        repository / relative
+        for relative in CANONICAL_ASSURANCE_RECEIPT_CONTROLLERS
+    ]
+    target_deployed_manifest_template = (
+        repository / CANONICAL_DEPLOYED_MANIFEST_TEMPLATE
+    )
+    target_deployed_probe_controller = (
+        repository / CANONICAL_DEPLOYED_PROBE_CONTROLLER
+    )
     target_contract = repository / CANONICAL_FINALIZATION_CONTRACT
     target_controller.parent.mkdir(parents=True, exist_ok=True)
     target_observation_controller.parent.mkdir(parents=True, exist_ok=True)
+    target_pages_observation_controller.parent.mkdir(
+        parents=True, exist_ok=True
+    )
     target_contract.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(finalization_controller, target_controller)
     shutil.copyfile(observation_controller, target_observation_controller)
+    shutil.copyfile(
+        pages_observation_controller,
+        target_pages_observation_controller,
+    )
+    for source, target in zip(
+        assurance_controllers,
+        target_assurance_controllers,
+        strict=True,
+    ):
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, target)
+    target_deployed_manifest_template.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(
+        deployed_manifest_template,
+        target_deployed_manifest_template,
+    )
+    target_deployed_probe_controller.parent.mkdir(
+        parents=True, exist_ok=True
+    )
+    shutil.copyfile(
+        deployed_probe_controller,
+        target_deployed_probe_controller,
+    )
     shutil.copyfile(finalization_contract, target_contract)
 
     contract = load(finalization_contract)
@@ -1877,6 +2323,10 @@ def create_fixture_repository(root: Path) -> tuple[Path, str, Path]:
     (repository / "scripts").mkdir()
     (repository / "bundle").mkdir()
     (repository / "release-assurance" / "schemas").mkdir(parents=True)
+    fixture_dependency_lock = parse_dependency_lock(
+        ROOT / CANONICAL_DEPENDENCY_LOCK,
+        ROOT / CANONICAL_DIRECT_REQUIREMENTS,
+    )
     fixture_builder = """#!/usr/bin/env python3
 import argparse
 import hashlib
@@ -1952,15 +2402,32 @@ title: "Reproduction fixture"
         b"stable fixture publication\n"
     )
     profile = {
-        "schema": "okf-reproduction-profile.v1",
+        "schema": "okf-reproduction-profile.v2",
         "profile_version": "fixture-1",
         "finalization_controller": CANONICAL_FINALIZATION_CONTROLLER,
         "finalization_contract": CANONICAL_FINALIZATION_CONTRACT,
         "release_observation_controller": (
             CANONICAL_RELEASE_OBSERVATION_CONTROLLER
         ),
+        "pages_observation_controller": (
+            CANONICAL_PAGES_OBSERVATION_CONTROLLER
+        ),
+        "pages_observation_schema": CANONICAL_PAGES_OBSERVATION_SCHEMA,
+        "assurance_receipt_controllers": list(
+            CANONICAL_ASSURANCE_RECEIPT_CONTROLLERS
+        ),
+        "deployed_manifest_template": CANONICAL_DEPLOYED_MANIFEST_TEMPLATE,
+        "deployed_probe_controller": CANONICAL_DEPLOYED_PROBE_CONTROLLER,
         "publication_root": "bundle",
-        "dependency_lock": "requirements-validation.txt",
+        "direct_requirements": CANONICAL_DIRECT_REQUIREMENTS,
+        "dependency_lock": CANONICAL_DEPENDENCY_LOCK,
+        "dependency_lock_parser": CANONICAL_DEPENDENCY_LOCK_PARSER,
+        "dependency_lock_identity": dependency_lock_identity(
+            fixture_dependency_lock
+        ),
+        "bootstrap_distribution_allowlist": list(
+            CANONICAL_BOOTSTRAP_DISTRIBUTION_ALLOWLIST
+        ),
         "python": {
             "major": sys.version_info.major,
             "minor": sys.version_info.minor,
@@ -2024,9 +2491,17 @@ title: "Reproduction fixture"
     }
     profile_path = repository / "release-assurance" / "reproduction-profile.json"
     profile_path.write_bytes(render(profile))
-    (repository / "requirements-validation.txt").write_text(
-        f"zstandard=={zstandard.__version__}\n",
-        encoding="utf-8",
+    shutil.copyfile(
+        ROOT / CANONICAL_DIRECT_REQUIREMENTS,
+        repository / CANONICAL_DIRECT_REQUIREMENTS,
+    )
+    shutil.copyfile(
+        ROOT / CANONICAL_DEPENDENCY_LOCK,
+        repository / CANONICAL_DEPENDENCY_LOCK,
+    )
+    shutil.copyfile(
+        VALIDATION_LOCK_PARSER_CONTROLLER,
+        repository / CANONICAL_DEPENDENCY_LOCK_PARSER,
     )
     copy_schema_fixture(repository / "release-assurance" / "schemas")
     copy_finalization_fixture(repository)

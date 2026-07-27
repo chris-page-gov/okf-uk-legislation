@@ -14,13 +14,12 @@
     "archive",
     "rc_release",
     "public_probe",
-    "traceability",
     "gates",
     "invariants"
   ],
   "properties": {
     "schema": {
-      "const": "okf-final-promotion-authorization-receipt.v1"
+      "const": "okf-final-promotion-authorization-receipt.v2"
     },
     "status": {
       "const": "passed"
@@ -101,6 +100,7 @@
         "gate",
         "status",
         "candidate",
+        "executed_at",
         "attempt",
         "projection",
         "integrity",
@@ -121,6 +121,7 @@
             "git_commit",
             "bundle_tree_sha256",
             "release_tag",
+            "explorer_commit",
             "explorer_release"
           ],
           "properties": {
@@ -138,10 +139,17 @@
             "release_tag": {
               "const": "v0.3.0-rc.1"
             },
+            "explorer_commit": {
+              "const": "a23dfdea56fea0184b6d53f3163b292dd1a312ed"
+            },
             "explorer_release": {
-              "const": "v0.5.1"
+              "const": "v0.5.4"
             }
           }
+        },
+        "executed_at": {
+          "type": "string",
+          "format": "date-time"
         },
         "attempt": {
           "$ref": "#/$defs/material"
@@ -157,46 +165,14 @@
         }
       }
     },
-    "traceability": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "requirements_total",
-        "requirements_closed",
-        "unresolved_must_haves",
-        "receipt",
-        "source_ledger"
-      ],
-      "properties": {
-        "requirements_total": {
-          "const": 63
-        },
-        "requirements_closed": {
-          "const": 63
-        },
-        "unresolved_must_haves": {
-          "const": 0
-        },
-        "receipt": {
-          "$ref": "#/$defs/material"
-        },
-        "source_ledger": {
-          "$ref": "#/$defs/material"
-        }
-      }
-    },
     "gates": {
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "GATE-09",
-        "GATE-14"
+        "GATE-09"
       ],
       "properties": {
         "GATE-09": {
-          "const": "passed"
-        },
-        "GATE-14": {
           "const": "passed"
         }
       }

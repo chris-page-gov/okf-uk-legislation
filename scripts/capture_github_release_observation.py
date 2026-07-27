@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Capture one immutable GitHub release observation in external evidence.
 
-Only the four supported current-or-historical release/tag pairs are accepted.
+Only the seven supported current-or-historical release/tag pairs are accepted.
 The tool performs one bounded request per required GitHub
 endpoint, follows redirects manually through a fixed HTTPS host allowlist, and
 does not retry failed requests.  ``GITHUB_TOKEN`` is optional, is sent only to
@@ -38,7 +38,7 @@ SCHEMA_PATH = (
 )
 OBSERVATION_SCHEMA = "okf-github-release-observation.v1"
 ATTEMPT_SCHEMA = "okf-github-release-observation-attempt.v1"
-TOOL_VERSION = "1.0.0"
+TOOL_VERSION = "1.1.0"
 
 API_HOST = "api.github.com"
 ASSET_HOSTS = {
@@ -74,6 +74,33 @@ class Target:
 
 
 TARGETS = {
+    (
+        "https://github.com/chris-page-gov/okf-explorer",
+        "v0.5.4",
+    ): Target(
+        repository="https://github.com/chris-page-gov/okf-explorer",
+        slug="chris-page-gov/okf-explorer",
+        tag="v0.5.4",
+        observation_filename="explorer-release-observation.json",
+    ),
+    (
+        "https://github.com/chris-page-gov/okf-explorer",
+        "v0.5.3",
+    ): Target(
+        repository="https://github.com/chris-page-gov/okf-explorer",
+        slug="chris-page-gov/okf-explorer",
+        tag="v0.5.3",
+        observation_filename="explorer-release-observation.json",
+    ),
+    (
+        "https://github.com/chris-page-gov/okf-explorer",
+        "v0.5.2",
+    ): Target(
+        repository="https://github.com/chris-page-gov/okf-explorer",
+        slug="chris-page-gov/okf-explorer",
+        tag="v0.5.2",
+        observation_filename="explorer-release-observation.json",
+    ),
     (
         "https://github.com/chris-page-gov/okf-explorer",
         "v0.5.1",
@@ -244,6 +271,24 @@ def url_without_query(url: str) -> str:
     return urlunsplit(
         (parsed.scheme, parsed.netloc, parsed.path, "", "")
     )
+
+
+def _persisted_headers(
+    headers: list[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Remove transient signed query material from persisted redirect headers."""
+
+    return [
+        {
+            "name": row["name"],
+            "value": (
+                url_without_query(row["value"])
+                if row["name"].lower() == "location"
+                else row["value"]
+            ),
+        }
+        for row in headers
+    ]
 
 
 def _header_values(
@@ -450,7 +495,14 @@ def header_document(
         {
             "requests": [
                 {
-                    "hops": result.hops,
+                    "hops": [
+                        {
+                            **hop,
+                            "headers": _persisted_headers(hop["headers"]),
+                            "url": url_without_query(hop["url"]),
+                        }
+                        for hop in result.hops
+                    ],
                     "purpose": purpose,
                 }
                 for purpose, result in responses

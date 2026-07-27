@@ -31,18 +31,29 @@ exception.
 Post-freeze evidence never goes back into the frozen checkout. Store every
 receipt, deployed attempt, GitHub release observation and downloaded release
 asset as a regular, non-symbolic-link file outside the repository. The offline
-finalizer enforces this sequence:
+pre- and post-RC receipt controllers derive the wrapper receipts and locked
+probe manifest from verified sources; do not hand-author those JSON
+documents. The offline finalizer enforces this sequence:
 
 1. `authorize-rc` writes the pre-RC authorization from clean-room
    reproduction, Explorer release, security, accessibility and performance
    evidence;
 2. `verify-rc` reconstructs that receipt before the RC is published;
-3. after RC publication and public-route/traceability closure,
-   `authorize-final-promotion` binds the downloaded RC asset and authorizes
-   uploading those already sealed bytes under the final tag;
-4. after the final asset is available, `finalize` rehashes the sealed, RC and
-   final copies and writes the external finalization receipt; and
+3. after RC publication and public-route validation,
+   `authorize-final-promotion` closes GATE-09, binds the downloaded RC asset
+   and authorizes uploading those already sealed bytes under the final tag;
+4. after the final asset and its release observation are available, create
+   the terminal GATE-14 traceability receipt; `finalize` verifies those final
+   materials, rehashes the sealed, RC and final copies, reconstructs GATE-14
+   and writes the external finalization receipt; and
 5. `verify-final` reconstructs the terminal receipt without writing.
+
+The frozen ledger is never rewritten to claim post-freeze work. Only the nine
+release obligations explicitly named by
+`traceability.externally_closable_ids` may move from a frozen `started` or
+`blocked` status to `passed` in the external receipt, and only with non-empty
+hash-verified evidence. Every other passage still requires frozen
+`verified` status.
 
 The authorizing commands are atomic and write-once: an identical rerun is
 idempotent, while different bytes at an existing output path fail closed.
@@ -70,9 +81,9 @@ performs network access. See the
 python3 scripts/build_legislation_okf.py --from-existing
 python3 scripts/build_model_enrichment_input_evidence.py
 python3 scripts/build_codex_semantic_enrichment.py
+python3 scripts/build_legislation_effects.py --offline
 python3 scripts/build_codex_semantic_enrichment_v3.py
 python3 scripts/audit_codex_semantic_enrichment_v3.py
-python3 scripts/build_legislation_effects.py --offline
 python3 scripts/rebuild_legislation_discovery.py
 python3 scripts/build_legislation_evaluation.py
 python3 scripts/build_whole_law_evaluation.py
@@ -100,10 +111,14 @@ itself. Omitting either pass is not an equivalent release build.
 
 The model-enrichment input-evidence build is ordered immediately after the base
 corpus. It fixes the complete work order and credential-free eligibility
-projection before the governed Codex v3 build. The v3 terminal ledger then
-records exactly one outcome for each of all 365,786 works. The historical v2
-and optional direct API publication checks remain preservation/contract checks;
-neither an API key nor a direct API call is required by the current release.
+projection before the governed Codex v3 build. The official-effects projection
+must follow v2 and precede v3 because the v3 governed materials bind the
+post-v2, post-effects data manifest. Reversing those stages invalidates the
+independent reviewer binding even when the source-corpus semantic digest is
+unchanged. The v3 terminal ledger then records exactly one outcome for each of
+all 365,786 works. The historical v2 and optional direct API publication checks
+remain preservation/contract checks; neither an API key nor a direct API call
+is required by the current release.
 
 Network refreshes are separate and create immutable acquisition attempts. They
 must not overwrite the evidence used by an existing release candidate.
@@ -125,9 +140,9 @@ python3 -m unittest discover -s tests -v
 python3 scripts/check_legislation_okf.py
 python3 scripts/build_model_enrichment_input_evidence.py --check
 python3 scripts/build_codex_semantic_enrichment.py --check
+python3 scripts/build_legislation_effects.py --check
 python3 scripts/build_codex_semantic_enrichment_v3.py check
 python3 scripts/audit_codex_semantic_enrichment_v3.py check
-python3 scripts/build_legislation_effects.py --check
 python3 scripts/rebuild_legislation_discovery.py --check
 python3 scripts/build_whole_law_evaluation.py --check
 python3 scripts/run_release_evaluation.py --check

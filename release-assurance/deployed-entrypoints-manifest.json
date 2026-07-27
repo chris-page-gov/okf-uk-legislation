@@ -1,5 +1,6 @@
 {
   "allowed_hosts": [
+    "api.github.com",
     "chris-page-gov.github.io",
     "codeload.github.com",
     "github.com",
@@ -8,7 +9,8 @@
   ],
   "candidate": {
     "bundle_tree_sha256": "__BUNDLE_TREE_SHA256__",
-    "explorer_release": "v0.5.1",
+    "explorer_commit": "a23dfdea56fea0184b6d53f3163b292dd1a312ed",
+    "explorer_release": "v0.5.4",
     "git_commit": "__CANDIDATE_COMMIT__",
     "release_tag": "__RC_TAG__",
     "repository": "https://github.com/chris-page-gov/okf-uk-legislation"
@@ -67,7 +69,7 @@
     "per_request_timeout_seconds": 12,
     "raw_evidence": "write-once-untrusted-response-bytes",
     "request_headers": {
-      "Accept": "application/ld+json, application/json, application/ld+yaml, application/yaml, text/yaml, text/html, text/markdown, application/octet-stream;q=0.8, */*;q=0.1",
+      "Accept": "application/ld+json, application/json, application/ld+yaml, application/yaml, text/yaml, text/turtle, text/html, text/markdown, application/octet-stream;q=0.8, */*;q=0.1",
       "Accept-Encoding": "identity",
       "Connection": "close",
       "User-Agent": "okf-uk-legislation-gate09-probe/1.0 (unauthenticated bounded release-candidate assurance)"
@@ -76,6 +78,31 @@
     "timeout_seconds": 25
   },
   "routes": [
+    {
+      "allowed_redirect_hosts": [
+        "api.github.com"
+      ],
+      "coverage": [
+        "explorer-deployment"
+      ],
+      "expected": {
+        "document_kind": "json",
+        "json_fields": {
+          "/conclusion": "success",
+          "/head_sha": "a23dfdea56fea0184b6d53f3163b292dd1a312ed",
+          "/id": 30228627196,
+          "/status": "completed"
+        },
+        "media_types": [
+          "application/json"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "explorer-pages-deployment",
+      "url": "https://api.github.com/repos/chris-page-gov/okf-explorer/actions/runs/30228627196"
+    },
     {
       "allowed_redirect_hosts": [
         "chris-page-gov.github.io"
@@ -253,6 +280,29 @@
       },
       "id": "pages-whole-law-jsonld",
       "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.jsonld"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "chris-page-gov.github.io"
+      ],
+      "coverage": [
+        "turtle"
+      ],
+      "expected": {
+        "document_kind": "turtle",
+        "media_types": [
+          "text/turtle"
+        ],
+        "required_text": [
+          "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/",
+          "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#"
+        ],
+        "statuses": [
+          200
+        ]
+      },
+      "id": "pages-whole-law-turtle",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.ttl"
     },
     {
       "allowed_redirect_hosts": [

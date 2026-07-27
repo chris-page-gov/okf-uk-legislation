@@ -40,6 +40,11 @@ WHOLE_LAW_DESCRIPTOR = (
     "https://chris-page-gov.github.io/okf-uk-legislation/"
     "whole-law/okf-explorer.json"
 )
+WHOLE_LAW_SEMANTIC_PATHS = (
+    "okf-bundle.yamlld",
+    "okf-bundle.jsonld",
+    "okf-bundle.ttl",
+)
 OFFICIAL_SERVICE = "https://www.legislation.gov.uk/"
 OFFICIAL_DATA_DOCS = "https://legislation.github.io/data-documentation/"
 GOVUK_DATA_DOCS = "https://guidance.data.gov.uk/get_data/api_documentation/"
@@ -74,7 +79,11 @@ LANDING_REQUIREMENTS = {
     Path("docs/roles/index.md"): COMMON_LANDING_REQUIREMENTS
     + (LEGISLATION_DESCRIPTOR, WHOLE_LAW_DESCRIPTOR, "`bundle`", "`bundle/whole-law`"),
     Path("whole-law/index.md"): COMMON_LANDING_REQUIREMENTS
-    + (WHOLE_LAW_DESCRIPTOR, "`bundle/whole-law`"),
+    + (
+        WHOLE_LAW_DESCRIPTOR,
+        "`bundle/whole-law`",
+        *WHOLE_LAW_SEMANTIC_PATHS,
+    ),
     Path("bundle/index.md"): COMMON_LANDING_REQUIREMENTS
     + (LEGISLATION_DESCRIPTOR, "`bundle`"),
     Path("bundle/docs/index.md"): COMMON_LANDING_REQUIREMENTS
@@ -86,13 +95,29 @@ LANDING_REQUIREMENTS = {
     Path("bundle/evaluation/index.html"): COMMON_LANDING_REQUIREMENTS
     + (LEGISLATION_DESCRIPTOR, "bundle"),
     Path("bundle/whole-law/index.md"): COMMON_LANDING_REQUIREMENTS
-    + (WHOLE_LAW_DESCRIPTOR, "`bundle/whole-law`"),
+    + (
+        WHOLE_LAW_DESCRIPTOR,
+        "`bundle/whole-law`",
+        *WHOLE_LAW_SEMANTIC_PATHS,
+    ),
     Path("bundle/whole-law/index.html"): COMMON_LANDING_REQUIREMENTS
-    + (WHOLE_LAW_DESCRIPTOR, "bundle/whole-law"),
+    + (
+        WHOLE_LAW_DESCRIPTOR,
+        "bundle/whole-law",
+        *WHOLE_LAW_SEMANTIC_PATHS,
+    ),
     Path("bundle/whole-law/docs/index.md"): COMMON_LANDING_REQUIREMENTS
-    + (WHOLE_LAW_DESCRIPTOR, "`bundle/whole-law`"),
+    + (
+        WHOLE_LAW_DESCRIPTOR,
+        "`bundle/whole-law`",
+        *WHOLE_LAW_SEMANTIC_PATHS,
+    ),
     Path("bundle/whole-law/docs/index.html"): COMMON_LANDING_REQUIREMENTS
-    + (WHOLE_LAW_DESCRIPTOR, "bundle/whole-law"),
+    + (
+        WHOLE_LAW_DESCRIPTOR,
+        "bundle/whole-law",
+        *WHOLE_LAW_SEMANTIC_PATHS,
+    ),
     Path("bundle/whole-law/evaluation/index.md"): COMMON_LANDING_REQUIREMENTS
     + (WHOLE_LAW_DESCRIPTOR, "`bundle/whole-law`"),
     Path("bundle/whole-law/evaluation/index.html"): COMMON_LANDING_REQUIREMENTS

@@ -22,6 +22,10 @@ import capture_github_release_observation as capture  # noqa: E402
 COMMIT = "1" * 40
 OTHER_COMMIT = "2" * 40
 TAG_OBJECT_SHA = "3" * 40
+EXPLORER_V053_COMMIT = "c87a96051bd36631181d46885bbeadf69beed52e"
+EXPLORER_V053_TAG_OBJECT = "5854a2db8996cbc849d21f554d3a53767d8e241d"
+EXPLORER_V054_COMMIT = "a23dfdea56fea0184b6d53f3163b292dd1a312ed"
+EXPLORER_V054_TAG_OBJECT = "5f22de79e8521b9ca9314f6e3c92b097b9a23a5b"
 OBSERVED_AT = "2026-07-26T10:00:00Z"
 EXPLORER = "https://github.com/chris-page-gov/okf-explorer"
 LEGISLATION = (
@@ -83,14 +87,18 @@ class FakeTransport:
         return result
 
 
-def explorer_responses(commit: str = COMMIT) -> dict[str, Any]:
+def explorer_responses(
+    commit: str = COMMIT,
+    *,
+    tag: str = "v0.5.1",
+) -> dict[str, Any]:
     release_url = (
         "https://api.github.com/repos/chris-page-gov/okf-explorer/"
-        "releases/tags/v0.5.1"
+        f"releases/tags/{tag}"
     )
     ref_url = (
         "https://api.github.com/repos/chris-page-gov/okf-explorer/"
-        "git/ref/tags/v0.5.1"
+        f"git/ref/tags/{tag}"
     )
     return {
         release_url: response(
@@ -100,10 +108,10 @@ def explorer_responses(commit: str = COMMIT) -> dict[str, Any]:
                     "draft": False,
                     "html_url": (
                         "https://github.com/chris-page-gov/okf-explorer/"
-                        "releases/tag/v0.5.1"
+                        f"releases/tag/{tag}"
                     ),
                     "id": 501,
-                    "tag_name": "v0.5.1",
+                    "tag_name": tag,
                 }
             )
         ),
@@ -118,7 +126,66 @@ def explorer_responses(commit: str = COMMIT) -> dict[str, Any]:
                             f"okf-explorer/git/commits/{commit}"
                         ),
                     },
-                    "ref": "refs/tags/v0.5.1",
+                    "ref": f"refs/tags/{tag}",
+                }
+            )
+        ),
+    }
+
+
+def annotated_explorer_responses(
+    *,
+    tag: str,
+    commit: str,
+    tag_object: str,
+) -> dict[str, Any]:
+    release_url = (
+        "https://api.github.com/repos/chris-page-gov/okf-explorer/"
+        f"releases/tags/{tag}"
+    )
+    ref_url = (
+        "https://api.github.com/repos/chris-page-gov/okf-explorer/"
+        f"git/ref/tags/{tag}"
+    )
+    tag_object_url = (
+        "https://api.github.com/repos/chris-page-gov/okf-explorer/"
+        f"git/tags/{tag_object}"
+    )
+    return {
+        release_url: response(
+            json_body(
+                {
+                    "assets": [],
+                    "draft": False,
+                    "html_url": (
+                        "https://github.com/chris-page-gov/okf-explorer/"
+                        f"releases/tag/{tag}"
+                    ),
+                    "id": 503,
+                    "tag_name": tag,
+                }
+            )
+        ),
+        ref_url: response(
+            json_body(
+                {
+                    "object": {
+                        "sha": tag_object,
+                        "type": "tag",
+                        "url": tag_object_url,
+                    },
+                    "ref": f"refs/tags/{tag}",
+                }
+            )
+        ),
+        tag_object_url: response(
+            json_body(
+                {
+                    "object": {
+                        "sha": commit,
+                        "type": "commit",
+                    },
+                    "sha": tag_object,
                 }
             )
         ),
@@ -147,7 +214,7 @@ def annotated_asset_responses(
     redirected_url = (
         "https://release-assets.githubusercontent.com/"
         "github-production-release-asset/fixture"
-        "?sp=r&sig=official-fixture"
+        "?sp=r&sig=official-fixture&jwt=fixture.header.payload.signature"
     )
     return {
         release_url: response(
@@ -219,7 +286,120 @@ class GithubReleaseObservationTests(unittest.TestCase):
         return Path(temporary).resolve() / name
 
     def test_target_registry_preserves_historical_explorer_release(self) -> None:
+        self.assertIn((EXPLORER, "v0.5.4"), capture.TARGETS)
+        self.assertIn((EXPLORER, "v0.5.3"), capture.TARGETS)
+        self.assertIn((EXPLORER, "v0.5.2"), capture.TARGETS)
+        self.assertIn((EXPLORER, "v0.5.1"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.5.0"), capture.TARGETS)
+
+    def test_v054_annotated_explorer_release_observation_is_supported(
+        self,
+    ) -> None:
+        tag = "v0.5.4"
+        transport = FakeTransport(
+            annotated_explorer_responses(
+                tag=tag,
+                commit=EXPLORER_V054_COMMIT,
+                tag_object=EXPLORER_V054_TAG_OBJECT,
+            )
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = self.new_destination(temporary)
+            observation_path = capture.capture_observation(
+                repository=EXPLORER,
+                tag=tag,
+                expected_commit=EXPLORER_V054_COMMIT,
+                output_dir=destination,
+                transport=transport,
+                observed_at=OBSERVED_AT,
+            )
+            document = json.loads(observation_path.read_text())
+            schema = json.loads(capture.SCHEMA_PATH.read_text())
+            Draft202012Validator(
+                schema,
+                format_checker=FormatChecker(),
+            ).validate(document)
+            self.assertEqual(tag, document["tag"])
+            self.assertEqual("tag", document["tag_resolution"]["object_type"])
+            self.assertEqual(
+                EXPLORER_V054_TAG_OBJECT,
+                document["tag_resolution"]["object_sha"],
+            )
+            self.assertEqual(
+                EXPLORER_V054_COMMIT,
+                document["tag_resolution"]["peeled_commit"],
+            )
+        self.assertEqual(3, len(transport.calls))
+
+    def test_v053_annotated_explorer_release_observation_is_supported(
+        self,
+    ) -> None:
+        tag = "v0.5.3"
+        transport = FakeTransport(
+            annotated_explorer_responses(
+                tag=tag,
+                commit=EXPLORER_V053_COMMIT,
+                tag_object=EXPLORER_V053_TAG_OBJECT,
+            )
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = self.new_destination(temporary)
+            observation_path = capture.capture_observation(
+                repository=EXPLORER,
+                tag=tag,
+                expected_commit=EXPLORER_V053_COMMIT,
+                output_dir=destination,
+                transport=transport,
+                observed_at=OBSERVED_AT,
+            )
+            document = json.loads(observation_path.read_text())
+            schema = json.loads(capture.SCHEMA_PATH.read_text())
+            Draft202012Validator(
+                schema,
+                format_checker=FormatChecker(),
+            ).validate(document)
+            self.assertEqual(tag, document["tag"])
+            self.assertEqual("tag", document["tag_resolution"]["object_type"])
+            self.assertEqual(
+                EXPLORER_V053_TAG_OBJECT,
+                document["tag_resolution"]["object_sha"],
+            )
+            self.assertEqual(
+                EXPLORER_V053_COMMIT,
+                document["tag_resolution"]["peeled_commit"],
+            )
+            self.assertEqual(
+                2,
+                len(document["tag_resolution"]["response_bodies"]),
+            )
+        self.assertEqual(3, len(transport.calls))
+
+    def test_v052_explorer_release_observation_is_supported(self) -> None:
+        tag = "v0.5.2"
+        transport = FakeTransport(explorer_responses(tag=tag))
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = self.new_destination(temporary)
+            observation_path = capture.capture_observation(
+                repository=EXPLORER,
+                tag=tag,
+                expected_commit=COMMIT,
+                output_dir=destination,
+                transport=transport,
+                observed_at=OBSERVED_AT,
+            )
+            document = json.loads(observation_path.read_text())
+            schema = json.loads(capture.SCHEMA_PATH.read_text())
+            Draft202012Validator(
+                schema,
+                format_checker=FormatChecker(),
+            ).validate(document)
+            self.assertEqual(tag, document["tag"])
+            self.assertEqual(tag, document["release"]["tag_name"])
+            self.assertTrue(document["release"]["api_url"].endswith(tag))
+            self.assertTrue(
+                document["tag_resolution"]["ref_api_url"].endswith(tag)
+            )
+        self.assertEqual(2, len(transport.calls))
 
     def test_lightweight_tag_capture_validates_and_preserves_raw_responses(
         self,
@@ -344,6 +524,29 @@ class GithubReleaseObservationTests(unittest.TestCase):
                 ]
             }
             self.assertEqual(referenced, declared)
+            all_output = b"".join(
+                path.read_bytes()
+                for path in destination.rglob("*")
+                if path.is_file()
+            )
+            self.assertNotIn(b"official-fixture", all_output)
+            self.assertNotIn(
+                b"fixture.header.payload.signature",
+                all_output,
+            )
+            header_document = json.loads(
+                (
+                    destination / capture.ASSET_HEADERS_PATH
+                ).read_text(encoding="utf-8")
+            )
+            for request in header_document["requests"]:
+                for hop in request["hops"]:
+                    self.assertNotIn("?", hop["url"])
+                    self.assertNotIn("#", hop["url"])
+                    for header in hop["headers"]:
+                        if header["name"].lower() == "location":
+                            self.assertNotIn("?", header["value"])
+                            self.assertNotIn("#", header["value"])
         api_calls = [
             call for call in transport.calls
             if call["url"].startswith("https://api.github.com/")

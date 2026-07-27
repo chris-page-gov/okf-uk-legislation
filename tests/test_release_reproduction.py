@@ -4,11 +4,13 @@ import copy
 import io
 import json
 import os
+import shutil
 import sys
 import tarfile
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import jsonschema
 
@@ -62,6 +64,27 @@ class ReleaseReproductionTests(unittest.TestCase):
     @classmethod
     def tearDownClass(cls) -> None:
         cls.temporary.cleanup()
+
+    def dependency_checkout(
+        self,
+    ) -> tuple[Path, dict[str, object]]:
+        checkout = Path(
+            tempfile.mkdtemp(
+                prefix="dependency-checkout-",
+                dir=self.root,
+            )
+        )
+        for relative in (
+            reproduction.CANONICAL_DIRECT_REQUIREMENTS,
+            reproduction.CANONICAL_DEPENDENCY_LOCK,
+            reproduction.CANONICAL_DEPENDENCY_LOCK_PARSER,
+        ):
+            source = self.repository / relative
+            target = checkout / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, target)
+        profile = json.loads(self.profile.read_text(encoding="utf-8"))
+        return checkout, profile
 
     def test_clean_committed_checkout_reproduces_bytes_and_semantics(self) -> None:
         receipt = self.eligible_receipt
@@ -217,6 +240,10 @@ class ReleaseReproductionTests(unittest.TestCase):
             / "external-finalization-contract.json"
         )
         contract = json.loads(contract_path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            contract["explorer"]["runtime_provenance"],
+            provenance["explorer_runtime_provenance"],
+        )
         expected_schemas = reproduction.finalization_schema_declarations(
             contract
         )
@@ -246,6 +273,111 @@ class ReleaseReproductionTests(unittest.TestCase):
                     reproduction.sha256(actual),
                     provenance[key]["sha256"],
                 )
+        self.assertEqual(
+            list(reproduction.CANONICAL_ASSURANCE_RECEIPT_CONTROLLERS),
+            [
+                row["path"]
+                for row in provenance["assurance_receipt_controllers"]
+            ],
+        )
+        for row in provenance["assurance_receipt_controllers"]:
+            with self.subTest(controller=row["path"]):
+                actual = self.repository / row["path"]
+                self.assertEqual(actual.stat().st_size, row["bytes"])
+                self.assertEqual(
+                    reproduction.sha256(actual),
+                    row["sha256"],
+                )
+
+    def test_full_dependency_lock_identity_and_sources_are_receipted(
+        self,
+    ) -> None:
+        provenance = json.loads(
+            (self.eligible / "provenance-inputs.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        profile = json.loads(self.profile.read_text(encoding="utf-8"))
+        identity = profile["dependency_lock_identity"]
+        self.assertEqual(
+            {
+                "package_count": 52,
+                "direct_count": 7,
+                "transitive_count": 45,
+                "artifact_hash_count": 1159,
+                "identity_sha256": (
+                    "9542649bd62f7064e1bf6bfc82b4db0bc3260015649fd20cc804077076bc0c97"
+                ),
+                "artifact_hash_sha256": (
+                    "e8a43fc379630e059925a1a892476a23b7bccd0ca459d07da2015594755a191c"
+                ),
+            },
+            identity,
+        )
+        parsed = reproduction.parse_dependency_lock(
+            self.repository / reproduction.CANONICAL_DEPENDENCY_LOCK,
+            self.repository / reproduction.CANONICAL_DIRECT_REQUIREMENTS,
+        )
+        self.assertEqual(
+            identity,
+            reproduction.dependency_lock_identity(parsed),
+        )
+        self.assertEqual(52, len(provenance["dependencies"]))
+        self.assertEqual(
+            sorted(parsed.identities),
+            sorted(
+                f"{row['name']}=={row['required']}"
+                for row in provenance["dependencies"]
+            ),
+        )
+        command_materials = {
+            row["path"]: row for row in provenance["command_scripts"]
+        }
+        for relative in (
+            reproduction.CANONICAL_DIRECT_REQUIREMENTS,
+            reproduction.CANONICAL_DEPENDENCY_LOCK_PARSER,
+        ):
+            with self.subTest(material=relative):
+                path = self.repository / relative
+                self.assertEqual(
+                    reproduction.sha256(path),
+                    command_materials[relative]["sha256"],
+                )
+        self.assertEqual(
+            reproduction.sha256(
+                self.repository / reproduction.CANONICAL_DEPENDENCY_LOCK
+            ),
+            provenance["dependency_lock"]["sha256"],
+        )
+        self.assertEqual(
+            ["pip"],
+            profile["bootstrap_distribution_allowlist"],
+        )
+        self.assertTrue(
+            self.eligible_receipt["environment"]["dependencies_exact"]
+        )
+        deployed_template = provenance["deployed_manifest_template"]
+        self.assertEqual(
+            reproduction.CANONICAL_DEPLOYED_MANIFEST_TEMPLATE,
+            deployed_template["path"],
+        )
+        deployed_template_path = (
+            self.repository / deployed_template["path"]
+        )
+        self.assertEqual(
+            reproduction.sha256(deployed_template_path),
+            deployed_template["sha256"],
+        )
+        deployed_probe = provenance["deployed_probe_controller"]
+        self.assertEqual(
+            reproduction.CANONICAL_DEPLOYED_PROBE_CONTROLLER,
+            deployed_probe["path"],
+        )
+        deployed_probe_path = self.repository / deployed_probe["path"]
+        self.assertEqual(
+            reproduction.sha256(deployed_probe_path),
+            deployed_probe["sha256"],
+        )
         for row in provenance["finalization_schemas"]:
             with self.subTest(schema=row["path"]):
                 actual = self.repository / row["path"]
@@ -347,14 +479,47 @@ class ReleaseReproductionTests(unittest.TestCase):
         ]
         self.assertEqual(base, commands[0])
         self.assertEqual(1, commands.count(base))
-        self.assertLess(
-            commands.index(base),
-            commands.index(
-                [
-                    "{python}",
-                    "scripts/build_codex_semantic_enrichment.py",
-                ]
-            ),
+        input_evidence = [
+            "{python}",
+            "scripts/build_model_enrichment_input_evidence.py",
+        ]
+        v2 = [
+            "{python}",
+            "scripts/build_codex_semantic_enrichment.py",
+        ]
+        effects = [
+            "{python}",
+            "scripts/build_legislation_effects.py",
+            "--offline",
+        ]
+        v3_build = [
+            "{python}",
+            "scripts/build_codex_semantic_enrichment_v3.py",
+            "build",
+        ]
+        v3_audit = [
+            "{python}",
+            "scripts/audit_codex_semantic_enrichment_v3.py",
+            "audit",
+        ]
+        discovery = [
+            "{python}",
+            "scripts/rebuild_legislation_discovery.py",
+        ]
+        stages = [
+            base,
+            input_evidence,
+            v2,
+            effects,
+            v3_build,
+            v3_audit,
+            discovery,
+        ]
+        for stage in stages:
+            self.assertEqual(1, commands.count(stage))
+        self.assertEqual(
+            [commands.index(stage) for stage in stages],
+            sorted(commands.index(stage) for stage in stages),
         )
         self.assertLess(
             commands.index(
@@ -422,7 +587,7 @@ class ReleaseReproductionTests(unittest.TestCase):
                 / "external-finalization-contract.json"
             ).read_text(encoding="utf-8")
         )
-        self.assertEqual("v0.5.1", contract["explorer"]["required_tag"])
+        self.assertEqual("v0.5.4", contract["explorer"]["required_tag"])
         self.assertEqual(
             "release-assurance/schemas/explorer-runtime-receipt.schema.json",
             contract["input_schemas"]["explorer_runtime_receipt"],
@@ -439,6 +604,39 @@ class ReleaseReproductionTests(unittest.TestCase):
         ):
             reproduction.validate_profile(profile)
 
+    def test_profile_requires_canonical_assurance_receipt_controllers(
+        self,
+    ) -> None:
+        profile = json.loads(self.profile.read_text(encoding="utf-8"))
+        profile["assurance_receipt_controllers"].reverse()
+        with self.assertRaisesRegex(
+            reproduction.ReproductionError,
+            "assurance_receipt_controllers must use the canonical",
+        ):
+            reproduction.validate_profile(profile)
+
+    def test_profile_requires_canonical_deployed_manifest_template(
+        self,
+    ) -> None:
+        profile = json.loads(self.profile.read_text(encoding="utf-8"))
+        profile["deployed_manifest_template"] = "release-assurance/other.json"
+        with self.assertRaisesRegex(
+            reproduction.ReproductionError,
+            "deployed_manifest_template must use the canonical path",
+        ):
+            reproduction.validate_profile(profile)
+
+    def test_profile_requires_canonical_deployed_probe_controller(
+        self,
+    ) -> None:
+        profile = json.loads(self.profile.read_text(encoding="utf-8"))
+        profile["deployed_probe_controller"] = "scripts/other-probe.py"
+        with self.assertRaisesRegex(
+            reproduction.ReproductionError,
+            "deployed_probe_controller must use the canonical path",
+        ):
+            reproduction.validate_profile(profile)
+
     def test_pinned_zstandard_version_mismatch_fails_closed(self) -> None:
         profile = json.loads(self.profile.read_text(encoding="utf-8"))
         profile["zstandard"]["version"] = "0.0.0"
@@ -447,6 +645,214 @@ class ReleaseReproductionTests(unittest.TestCase):
             "Zstandard implementation differs",
         ):
             reproduction.verify_environment(self.repository, profile)
+
+    def test_dependency_lock_inputs_and_parser_fail_closed_on_tamper(
+        self,
+    ) -> None:
+        checkout, profile = self.dependency_checkout()
+        lock_path = checkout / reproduction.CANONICAL_DEPENDENCY_LOCK
+        lock_body = lock_path.read_text(encoding="utf-8")
+        lock_path.write_text(
+            lock_body.replace(
+                "--hash=sha256:",
+                "--hash=sha512:",
+                1,
+            ),
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(
+            reproduction.ReproductionError,
+            "lock is invalid",
+        ):
+            reproduction.verify_environment(checkout, profile)
+
+        checkout, profile = self.dependency_checkout()
+        (
+            checkout / reproduction.CANONICAL_DIRECT_REQUIREMENTS
+        ).unlink()
+        with self.assertRaisesRegex(
+            reproduction.ReproductionError,
+            "direct validation requirements is missing",
+        ):
+            reproduction.verify_environment(checkout, profile)
+
+        checkout, profile = self.dependency_checkout()
+        parser_path = (
+            checkout / reproduction.CANONICAL_DEPENDENCY_LOCK_PARSER
+        )
+        parser_path.write_text(
+            parser_path.read_text(encoding="utf-8")
+            + "\n# unauthorised parser mutation\n",
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(
+            reproduction.ReproductionError,
+            "parser differs",
+        ):
+            reproduction.verify_environment(checkout, profile)
+
+    def test_installed_distribution_inventory_is_exhaustive(
+        self,
+    ) -> None:
+        profile = json.loads(self.profile.read_text(encoding="utf-8"))
+        actual = dict(
+            reproduction.validation_lock.installed_distribution_versions()
+        )
+        missing = dict(actual)
+        missing.pop("attrs")
+        with mock.patch.object(
+            reproduction.validation_lock,
+            "installed_distribution_versions",
+            return_value=missing,
+        ):
+            with self.assertRaisesRegex(
+                reproduction.ReproductionError,
+                "pinned dependencies are unavailable",
+            ):
+                reproduction.verify_environment(self.repository, profile)
+
+        unexpected = dict(actual)
+        unexpected["rogue-package"] = "1.0"
+        with mock.patch.object(
+            reproduction.validation_lock,
+            "installed_distribution_versions",
+            return_value=unexpected,
+        ):
+            with self.assertRaisesRegex(
+                reproduction.ReproductionError,
+                "undeclared installed distributions are forbidden",
+            ):
+                reproduction.verify_environment(self.repository, profile)
+
+        allowlisted = dict(actual)
+        allowlisted["pip"] = "99.0"
+        with mock.patch.object(
+            reproduction.validation_lock,
+            "installed_distribution_versions",
+            return_value=allowlisted,
+        ):
+            environment = reproduction.verify_environment(
+                self.repository,
+                profile,
+            )
+        self.assertTrue(environment["dependencies_exact"])
+        self.assertEqual(
+            ["pip"],
+            environment["bootstrap_distributions_present"],
+        )
+
+    def test_profile_binds_turtle_only_for_whole_law(self) -> None:
+        profile = json.loads(
+            (
+                ROOT
+                / "release-assurance"
+                / "reproduction-profile.json"
+            ).read_text(encoding="utf-8")
+        )
+        reproduction.validate_profile(profile)
+        pairs = {pair["id"]: pair for pair in profile["semantic_pairs"]}
+        self.assertEqual(
+            "bundle/whole-law/okf-bundle.ttl",
+            pairs["whole-law"]["turtle"],
+        )
+        self.assertNotIn("turtle", pairs["uk-legislation"])
+
+        missing = copy.deepcopy(profile)
+        next(
+            pair
+            for pair in missing["semantic_pairs"]
+            if pair["id"] == "whole-law"
+        ).pop("turtle")
+        with self.assertRaisesRegex(
+            reproduction.ReproductionError,
+            "Whole-Law semantic pair",
+        ):
+            reproduction.validate_profile(missing)
+
+        root_turtle = copy.deepcopy(profile)
+        next(
+            pair
+            for pair in root_turtle["semantic_pairs"]
+            if pair["id"] == "uk-legislation"
+        )["turtle"] = "bundle/okf-bundle.ttl"
+        with self.assertRaisesRegex(
+            reproduction.ReproductionError,
+            "root UK Legislation",
+        ):
+            reproduction.validate_profile(root_turtle)
+
+        expanded_allowlist = copy.deepcopy(profile)
+        expanded_allowlist["bootstrap_distribution_allowlist"].append(
+            "setuptools"
+        )
+        with self.assertRaisesRegex(
+            reproduction.ReproductionError,
+            "minimal canonical allowlist",
+        ):
+            reproduction.validate_profile(expanded_allowlist)
+
+    def test_turtle_semantics_are_parsed_receipted_and_fail_closed(
+        self,
+    ) -> None:
+        checkout = Path(
+            tempfile.mkdtemp(prefix="turtle-checkout-", dir=self.root)
+        )
+        bundle = checkout / "bundle"
+        bundle.mkdir()
+        for name in ("okf-bundle.yamlld", "okf-bundle.jsonld"):
+            shutil.copyfile(self.repository / "bundle" / name, bundle / name)
+        json_document = json.loads(
+            (bundle / "okf-bundle.jsonld").read_text(encoding="utf-8")
+        )
+        canonical = reproduction.jsonld.normalize(
+            json_document,
+            {
+                "algorithm": "URDNA2015",
+                "format": "application/n-quads",
+            },
+        )
+        turtle_path = bundle / "okf-bundle.ttl"
+        turtle_path.write_text(canonical, encoding="utf-8")
+        pair = {
+            "id": "fixture-turtle",
+            "yaml_ld": "bundle/okf-bundle.yamlld",
+            "json_ld": "bundle/okf-bundle.jsonld",
+            "turtle": "bundle/okf-bundle.ttl",
+        }
+        result = reproduction.semantic_digests(
+            checkout,
+            [pair],
+            [],
+        )[0]
+        self.assertTrue(result["representations_equivalent"])
+        self.assertEqual(
+            reproduction.sha256(turtle_path),
+            result["turtle"]["sha256"],
+        )
+        self.assertEqual(
+            reproduction.sha256_bytes(canonical.encode("utf-8")),
+            result["canonical_nquads_sha256"],
+        )
+
+        turtle_path.write_text(
+            (
+                "<https://example.test/fixture> "
+                "<https://example.test/okf#title> \"Tampered\" .\n"
+            ),
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(
+            reproduction.ReproductionError,
+            "Turtle canonical graph differs",
+        ):
+            reproduction.semantic_digests(checkout, [pair], [])
+
+        turtle_path.unlink()
+        with self.assertRaisesRegex(
+            reproduction.ReproductionError,
+            "Turtle is missing",
+        ):
+            reproduction.semantic_digests(checkout, [pair], [])
 
     def test_promotion_asset_name_must_match_archive(self) -> None:
         profile = json.loads(self.profile.read_text(encoding="utf-8"))

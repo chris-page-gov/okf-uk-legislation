@@ -1,12 +1,12 @@
 {
-  "current_state": "candidate",
+  "current_state": "validated",
   "evidence_planes": {
     "embedded": "Evidence generated before freeze and committed with the candidate.",
     "external": "Write-once evidence generated from or against the exact frozen commit without changing that commit or rebuilding its archive."
   },
   "external_finalization_contract": "release-assurance/external-finalization-contract.json",
   "fail_closed": true,
-  "generated_at": "2026-07-25T23:30:00Z",
+  "generated_at": "2026-07-26T20:54:40Z",
   "policy_version": "1.1.0",
   "schema": "okf-release-state-policy.v2",
   "states": [

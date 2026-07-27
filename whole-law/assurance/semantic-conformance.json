@@ -1,7 +1,7 @@
 {
   "errors": [],
   "generated_at": "2026-07-25T22:54:00Z",
-  "input_fingerprint_sha256": "b9f638b1ecd716c2ece78e908a0bc8c409e2910ca57ebde379b397411ed56a44",
+  "input_fingerprint_sha256": "8f5753622c62ac4cd989fa255695e46cdf74dc35669c8170e18ec18808151309",
   "json_schema": {
     "core_relationships": {
       "chunk_inventory_sha256": "ed5f90e8805686fb6f6a7df3112df5b1e4da3223fecb47d86c76f5ff0da47981",
@@ -75,14 +75,19 @@
       "sha256": "37a6b79ff45984f659bfab0e92013f19edd9091fbfc228fc8317ad771f05d0eb"
     },
     "federation_descriptor": {
-      "bytes": 110829,
+      "bytes": 110999,
       "path": "bundle/whole-law/okf-explorer.json",
-      "sha256": "958a79e8866832a20073b5227598d9c869c6581c69de81987edc6975025f29ce"
+      "sha256": "18297c95e172b1af4a15eb4332851f09ab04a981ea9aa53e57f74f6ec82d96eb"
     },
     "generated_json_ld": {
       "bytes": 5737,
       "path": "bundle/whole-law/okf-bundle.jsonld",
       "sha256": "0ef7adcea9faad120f8dad6ff6fd0d03d410d51b05a4acb6371882b576e6bee8"
+    },
+    "generated_turtle": {
+      "bytes": 4176,
+      "path": "bundle/whole-law/okf-bundle.ttl",
+      "sha256": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a"
     },
     "published_yaml_ld": {
       "bytes": 2392,
@@ -122,9 +127,9 @@
       "sha256": "575c62fab383a2c9444d3480640a086c4970b88c3ecafe9929f401969a84cdfe"
     },
     "validator": {
-      "bytes": 36260,
+      "bytes": 38861,
       "path": "scripts/run_semantic_conformance.py",
-      "sha256": "5738eee030f7e30851faf56df1da11f1d875048a82864bae45aa989f59a383e3"
+      "sha256": "e043de665217be02138e61d968c98de57ac921912c547e0a0b5de7952900a65e"
     },
     "vocabulary": {
       "bytes": 5972,
@@ -146,9 +151,14 @@
     "rdf_materialized_legal_works": 0,
     "relationship_rows_exhaustively_validated_as_json": 906754,
     "relationship_rows_materialized_as_rdf": 0,
-    "semantic_graph": "The complete authored/generated Whole-Law federation descriptor graph: one Federation and its governed SourceRegister contract node."
+    "semantic_graph": "The complete authored/generated Whole-Law federation descriptor graph in YAML-LD, JSON-LD and canonical Turtle: one Federation and its governed SourceRegister contract node."
   },
   "semantic_equivalence": {
+    "canonical_digest_by_representation": {
+      "json_ld": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a",
+      "turtle": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a",
+      "yaml_ld": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a"
+    },
     "canonical_nquads_sha256": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a",
     "canonical_serializations_equal": true,
     "graphs_isomorphic": true,
@@ -171,6 +181,8 @@
     },
     "json_ld_expanded_non_empty": true,
     "json_ld_rdf_round_trip": true,
+    "turtle_graph_triples": 21,
+    "turtle_rdf_round_trip": true,
     "yaml_graph_triples": 21,
     "yaml_ld_expanded_non_empty": true,
     "yaml_ld_rdf_round_trip": true
@@ -238,7 +250,7 @@
       "triples": 87,
       "validation_results": 0
     },
-    "descriptor_graphs_validated": 2,
+    "descriptor_graphs_validated": 3,
     "node_shapes_declared": 19,
     "results": {
       "authored_yaml_ld": {
@@ -255,6 +267,19 @@
         "validation_results": 0
       },
       "generated_json_ld": {
+        "conforms": true,
+        "explicit_typed_nodes": 2,
+        "federation_focus_nodes": 1,
+        "severity_counts": {},
+        "source_register_focus_nodes": 1,
+        "target_counts": {
+          "okflaw:Federation": 1,
+          "okflaw:SourceRegister": 1
+        },
+        "uncovered_explicit_types": [],
+        "validation_results": 0
+      },
+      "generated_turtle": {
         "conforms": true,
         "explicit_typed_nodes": 2,
         "federation_focus_nodes": 1,

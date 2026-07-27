@@ -23,8 +23,13 @@ from pathlib import Path
 from typing import Any
 
 import build_model_enrichment_paid_publication as paid_publication
+from validation_dependency_lock import (
+    ValidationDependencyLock,
+    load_validation_dependency_lock,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
+ASSURANCE_CONTROLLER = Path(__file__).resolve()
 SOURCE = ROOT / "release-assurance"
 OUTPUT = ROOT / "bundle" / "release-assurance"
 RESEARCH = ROOT / "research" / "whole-law-okf-research"
@@ -34,6 +39,9 @@ POLICY = SOURCE / "release-policy.json"
 GATES = SOURCE / "release-gates.json"
 EXTERNAL_FINALIZATION_CONTRACT = (
     SOURCE / "external-finalization-contract.json"
+)
+DEPLOYED_ENTRYPOINT_TEMPLATE = (
+    SOURCE / "deployed-entrypoints-manifest.json"
 )
 FINALIZER = ROOT / "scripts" / "finalize_release_candidate.py"
 RELEASE_OBSERVATION_CONTROLLER = (
@@ -46,6 +54,9 @@ TRACEABILITY_SOURCE = (
 TRACEABILITY_SOURCE_DIGEST = TRACEABILITY_SOURCE.with_suffix(".sha256")
 GAP_REGISTER = SOURCE / "gap-register.json"
 AUTHORED_STATUS = SOURCE / "implementation-status.md"
+AUTHORED_STATUS_PUBLICATION = Path(
+    "implementation-status-detailed-2026-07-26.md"
+)
 GITHUB_OPERATION_ENVIRONMENT = SOURCE / "github-operation-environment.json"
 HELPER_CRASH_STOP_RECEIPT = SOURCE / "helper-crash-stop-receipt.json"
 RELATIONSHIP_COMPOSITION = (
@@ -126,6 +137,20 @@ GRAPH_ENRICHMENT_GATE = (
     / "assurance"
     / "graph-enrichment-gate-20260726.json"
 )
+VALIDATION_REQUIREMENTS_DIRECT = ROOT / "requirements-validation.in"
+VALIDATION_REQUIREMENTS_LOCK = ROOT / "requirements-validation.txt"
+VALIDATION_LOCK_PARSER = ROOT / "scripts" / "validation_dependency_lock.py"
+VALIDATION_ENVIRONMENT_REF = "pkg:generic/okf-validation-environment@1"
+EXPECTED_WORKFLOW_ACTIONS = {
+    "actions/checkout": "11d5960a326750d5838078e36cf38b85af677262",
+    "actions/configure-pages": "983d7736d9b0ae728b81ab479565c72886d7745b",
+    "actions/deploy-pages": "d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
+    "actions/setup-python": "a26af69be951a213d495a4c3e4e4022e16d87065",
+    "actions/upload-artifact": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+    "actions/upload-pages-artifact": (
+        "56afc609e74202658d3ffba0e8f6dda462b719fa"
+    ),
+}
 VALID_STATUSES = {
     "proposed",
     "started",
@@ -198,7 +223,11 @@ def contract_schema_paths(value: Any) -> list[Path]:
         elif isinstance(node, list):
             for child in node:
                 visit(child)
-        elif isinstance(node, str) and node.endswith(".schema.json"):
+        elif (
+            isinstance(node, str)
+            and node.startswith("release-assurance/")
+            and node.endswith(".schema.json")
+        ):
             references.add(node)
 
     visit(value)
@@ -227,12 +256,200 @@ def external_finalization_projection(
         errors.append(
             "release policy must link the external finalization contract"
         )
-    if contract.get("schema") != "okf-external-finalization-contract.v2":
+    if contract.get("schema") != "okf-external-finalization-contract.v3":
         errors.append(
             "external finalization contract must use its v2 schema"
         )
     if contract.get("evidence_plane") != "external-write-once":
         errors.append("external finalization evidence plane must be write-once")
+    explorer = contract.get("explorer")
+    if not isinstance(explorer, dict):
+        errors.append("external finalization contract lacks Explorer binding")
+    else:
+        expected_explorer = {
+            "repository": "https://github.com/chris-page-gov/okf-explorer",
+            "required_tag": "v0.5.4",
+            "required_tag_object": (
+                "5f22de79e8521b9ca9314f6e3c92b097b9a23a5b"
+            ),
+            "required_commit": (
+                "a23dfdea56fea0184b6d53f3163b292dd1a312ed"
+            ),
+            "git_tree": "981d5c967b7017c78f37aab379edd95f44917cf5",
+            "ci_workflow_run_id": 30228300676,
+            "pages_workflow_run_id": 30228627196,
+        }
+        for field, expected in expected_explorer.items():
+            if explorer.get(field) != expected:
+                errors.append(
+                    f"Explorer {field} must bind published v0.5.4 fact "
+                    f"{expected!r}"
+                )
+        if explorer.get("pages_workflow") != "pages.yml":
+            errors.append("Explorer Pages workflow binding is invalid")
+        expected_release_asset = {
+            "asset_id": 490852327,
+            "name": "okf-explorer-v0.5.4-pages-artifact.zip",
+            "bytes": 185023908,
+            "sha256": (
+                "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0"
+            ),
+            "url": (
+                "https://github.com/chris-page-gov/okf-explorer/releases/"
+                "download/v0.5.4/okf-explorer-v0.5.4-pages-artifact.zip"
+            ),
+        }
+        if explorer.get("release_asset") != expected_release_asset:
+            errors.append(
+                "Explorer release asset must bind the exact durable v0.5.4 "
+                "Pages artifact"
+            )
+        expected_runtime_provenance = {
+            "runner": {
+                "path": (
+                    "apps/okf-explorer/scripts/"
+                    "run_legislation_runtime_acceptance.mjs"
+                ),
+                "bytes": 42808,
+                "sha256": (
+                    "ede0f39d1421ab52eddc6e7c78fde8ca4f6a40770c188a9a36d1848efd6b4d1c"
+                ),
+            },
+            "site_assembly": {
+                "app_manifest_module": {
+                    "path": (
+                        "apps/okf-explorer/scripts/app_build_manifest.mjs"
+                    ),
+                    "bytes": 15822,
+                    "sha256": (
+                        "387a2981711d5c890d47b644751eabd8e97b5bdd432fbf834f19537474478896"
+                    ),
+                },
+                "assembler": {
+                    "path": "scripts/build_site.py",
+                    "bytes": 6113,
+                    "sha256": (
+                        "6ba7746c5a2d71870585d21928fbde16612cfc69a8299eb4f2a9414d3e62ef30"
+                    ),
+                },
+                "verifier": {
+                    "path": (
+                        "apps/okf-explorer/scripts/verify_assembled_site.mjs"
+                    ),
+                    "bytes": 1435,
+                    "sha256": (
+                        "68f32b4f4f1bc1c048dd4bb35572c673a87bb6448cef0bc6afc50430f014b565"
+                    ),
+                },
+            },
+            "pages": {
+                "workflow_path": ".github/workflows/pages.yml",
+                "workflow_bytes": 2529,
+                "workflow_sha256": (
+                    "e9af1abad43567826d5c611c0a57d2ced694cd3e925ed5c2eed5e85d80f470fd"
+                ),
+                "run_id": 30228627196,
+                "run_attempt": 1,
+                "commit": "a23dfdea56fea0184b6d53f3163b292dd1a312ed",
+                "artifact_id": 8639352412,
+                "artifact_name": "github-pages",
+                "artifact_zip": {
+                    "bytes": 185023908,
+                    "sha256": (
+                        "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0"
+                    ),
+                },
+                "artifact_tar": {
+                    "bytes": 817694720,
+                    "sha256": (
+                        "10565ce278f5386d736ac7396909d0213431f0c15c4086139302aba5702a01bc"
+                    ),
+                },
+                "build_manifest": {
+                    "path": (
+                        "explorer-build/"
+                        "okf-explorer-build-manifest.json"
+                    ),
+                    "bytes": 2849,
+                    "sha256": (
+                        "62dd2b96fba2c832a61fcbccbc01fbe83dda83ffeab61dfb8544a60fa37310be"
+                    ),
+                },
+                "build_index": {
+                    "path": "explorer-build/index.html",
+                    "bytes": 1318,
+                    "sha256": (
+                        "b40439d2c8f67447d80f583595197493a1c2a2fe12e61e6e632b74cb4d9b6cc9"
+                    ),
+                },
+                "build_tree": {
+                    "algorithm": "sha256-canonical-json-materials-v1",
+                    "files": 16,
+                    "sha256": (
+                        "b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7"
+                    ),
+                },
+            },
+        }
+        if explorer.get("runtime_provenance") != expected_runtime_provenance:
+            errors.append(
+                "Explorer runtime provenance must bind the exact published "
+                "v0.5.4 Pages build"
+            )
+    codex_security = contract.get("codex_security")
+    if not isinstance(codex_security, dict):
+        errors.append("external finalization contract lacks Codex Security binding")
+    else:
+        if codex_security.get("producer") != {
+            "name": "codex-security-plugin",
+            "version": "0.1.13",
+        }:
+            errors.append("Codex Security producer binding is invalid")
+        security_schemas = codex_security.get("schemas")
+        expected_filenames = {
+            "coverage": "coverage.schema.json",
+            "findings": "findings.schema.json",
+            "scan_manifest": "scan-manifest.schema.json",
+        }
+        if not isinstance(security_schemas, dict) or set(security_schemas) != set(
+            expected_filenames
+        ):
+            errors.append("Codex Security schema binding set is invalid")
+        else:
+            for role, filename in expected_filenames.items():
+                row = security_schemas.get(role)
+                if (
+                    not isinstance(row, dict)
+                    or set(row) != {"filename", "sha256"}
+                    or row.get("filename") != filename
+                    or not re.fullmatch(
+                        r"[0-9a-f]{64}", str(row.get("sha256", ""))
+                    )
+                ):
+                    errors.append(
+                        f"Codex Security {role} schema binding is invalid"
+                    )
+    if (
+        contract.get("deployed_manifest_template")
+        != DEPLOYED_ENTRYPOINT_TEMPLATE.relative_to(ROOT).as_posix()
+    ):
+        errors.append(
+            "external finalization contract names the wrong deployed template"
+        )
+    else:
+        deployed_template = load(DEPLOYED_ENTRYPOINT_TEMPLATE)
+        deployed_candidate = deployed_template.get("candidate")
+        if not isinstance(deployed_candidate, dict) or not isinstance(explorer, dict):
+            errors.append("deployed template candidate binding is invalid")
+        elif (
+            deployed_candidate.get("explorer_release")
+            != explorer.get("required_tag")
+            or deployed_candidate.get("explorer_commit")
+            != explorer.get("required_commit")
+        ):
+            errors.append(
+                "deployed template Explorer identity differs from the contract"
+            )
     traceability_contract = contract.get("traceability")
     traceability_document = load(TRACEABILITY)
     traceability_ids = [
@@ -1231,25 +1448,24 @@ def release_state(
     )
 
 
-def parse_requirements() -> list[dict[str, str]]:
-    rows = []
-    for raw in (ROOT / "requirements-validation.txt").read_text(
-        encoding="utf-8"
-    ).splitlines():
-        line = raw.strip()
-        if not line or line.startswith("#"):
-            continue
-        name, separator, version = line.partition("==")
-        if not separator:
-            raise ValueError(f"dependency is not exactly pinned: {line}")
-        rows.append({"name": name, "version": version})
-    return rows
+def validation_dependency_inventory() -> ValidationDependencyLock:
+    """Load the strict direct pins and complete hash-locked closure."""
+
+    return load_validation_dependency_lock(
+        VALIDATION_REQUIREMENTS_LOCK,
+        VALIDATION_REQUIREMENTS_DIRECT,
+    )
+
+
+def workflow_paths() -> tuple[Path, ...]:
+    root = ROOT / ".github" / "workflows"
+    return tuple(sorted({*root.glob("*.yml"), *root.glob("*.yaml")}))
 
 
 def workflow_actions() -> list[dict[str, Any]]:
     found: dict[tuple[str, str], set[str]] = defaultdict(set)
     pattern = re.compile(r"^\s*(?:-\s+)?uses:\s*([^@\s]+)@([^\s#]+)")
-    for workflow in sorted((ROOT / ".github" / "workflows").glob("*.yml")):
+    for workflow in workflow_paths():
         for line in workflow.read_text(encoding="utf-8").splitlines():
             match = pattern.match(line)
             if match:
@@ -1266,20 +1482,282 @@ def workflow_actions() -> list[dict[str, Any]]:
     ]
 
 
-def build_sbom(generated_at: str, materials_digest: str) -> dict[str, Any]:
-    components: list[dict[str, Any]] = []
-    for row in parse_requirements():
-        normalized = row["name"].lower().replace("_", "-")
-        components.append(
-            {
-                "bom-ref": f"pkg:pypi/{normalized}@{row['version']}",
-                "name": row["name"],
-                "purl": f"pkg:pypi/{normalized}@{row['version']}",
-                "type": "library",
-                "version": row["version"],
-            }
+def validated_workflow_actions(
+    rows: list[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    """Return the exact commit-pinned workflow action inventory."""
+
+    selected = workflow_actions() if rows is None else rows
+    by_name: dict[str, dict[str, Any]] = {}
+    for row in selected:
+        name = row.get("name")
+        version = row.get("version")
+        workflows = row.get("workflows")
+        if (
+            not isinstance(name, str)
+            or not isinstance(version, str)
+            or not isinstance(workflows, list)
+            or not workflows
+            or not all(isinstance(path, str) and path for path in workflows)
+        ):
+            raise ValueError("GitHub Action inventory contains a malformed row")
+        if name in by_name:
+            raise ValueError(
+                f"GitHub Action inventory contains duplicate component {name!r}"
+            )
+        if re.fullmatch(r"[0-9a-f]{40}", version) is None:
+            raise ValueError(
+                f"GitHub Action {name!r} is not pinned to a lowercase "
+                "40-character commit SHA"
+            )
+        by_name[name] = {
+            "name": name,
+            "version": version,
+            "workflows": sorted(set(workflows)),
+        }
+
+    actual = set(by_name)
+    expected_names = set(EXPECTED_WORKFLOW_ACTIONS)
+    if actual != expected_names:
+        missing = sorted(expected_names - actual)
+        unexpected = sorted(actual - expected_names)
+        details = []
+        if missing:
+            details.append("missing " + ", ".join(missing))
+        if unexpected:
+            details.append("unexpected " + ", ".join(unexpected))
+        raise ValueError(
+            "GitHub Action inventory differs from the reviewed six: "
+            + "; ".join(details)
         )
-    for row in workflow_actions():
+    wrong_commits = [
+        (
+            name,
+            EXPECTED_WORKFLOW_ACTIONS[name],
+            by_name[name]["version"],
+        )
+        for name in sorted(by_name)
+        if by_name[name]["version"] != EXPECTED_WORKFLOW_ACTIONS[name]
+    ]
+    if wrong_commits:
+        details = ", ".join(
+            f"{name} expected {expected}, found {actual}"
+            for name, expected, actual in wrong_commits
+        )
+        raise ValueError(
+            "GitHub Action inventory differs from reviewed commit pins: "
+            + details
+        )
+    return [by_name[name] for name in sorted(by_name)]
+
+
+def _validation_environment_component(
+    dependency_lock: ValidationDependencyLock,
+) -> dict[str, Any]:
+    return {
+        "bom-ref": VALIDATION_ENVIRONMENT_REF,
+        "name": "okf-validation-environment",
+        "properties": [
+            {
+                "name": "okf:artifact-hash-count",
+                "value": str(len(dependency_lock.artifact_hashes)),
+            },
+            {
+                "name": "okf:artifact-hash-digest",
+                "value": f"sha256:{dependency_lock.artifact_hash_digest}",
+            },
+            {
+                "name": "okf:direct-dependency-count",
+                "value": str(len(dependency_lock.direct_requirements)),
+            },
+            {
+                "name": "okf:identity-digest",
+                "value": f"sha256:{dependency_lock.identity_digest}",
+            },
+            {
+                "name": "okf:package-count",
+                "value": str(len(dependency_lock.requirements)),
+            },
+            {
+                "name": "okf:transitive-dependency-count",
+                "value": str(len(dependency_lock.transitive_names)),
+            },
+        ],
+        "purl": VALIDATION_ENVIRONMENT_REF,
+        "type": "platform",
+        "version": "1",
+    }
+
+
+def validate_sbom_lock_alignment(
+    sbom: dict[str, Any],
+    dependency_lock: ValidationDependencyLock,
+    actions: list[dict[str, Any]],
+) -> None:
+    """Fail when the CycloneDX projection diverges from governed sources."""
+
+    action_rows = validated_workflow_actions(actions)
+    components = sbom.get("components")
+    if not isinstance(components, list):
+        raise ValueError("SBOM/lock divergence: components must be a list")
+    if not all(isinstance(component, dict) for component in components):
+        raise ValueError("SBOM/lock divergence: malformed component")
+
+    component_refs = [component.get("bom-ref") for component in components]
+    component_purls = [component.get("purl") for component in components]
+    if not all(isinstance(value, str) and value for value in component_refs):
+        raise ValueError("SBOM/lock divergence: component lacks bom-ref")
+    if not all(isinstance(value, str) and value for value in component_purls):
+        raise ValueError("SBOM/lock divergence: component lacks purl")
+    if len(component_refs) != len(set(component_refs)):
+        raise ValueError("SBOM/lock divergence: duplicate component bom-ref")
+    if len(component_purls) != len(set(component_purls)):
+        raise ValueError("SBOM/lock divergence: duplicate component purl")
+    by_ref = {
+        component["bom-ref"]: component for component in components
+    }
+
+    expected_python_refs = {
+        requirement.purl for requirement in dependency_lock.requirements
+    }
+    expected_action_refs = {
+        f"pkg:github/{row['name']}@{row['version']}" for row in action_rows
+    }
+    expected_refs = (
+        expected_python_refs
+        | expected_action_refs
+        | {VALIDATION_ENVIRONMENT_REF}
+    )
+    if set(by_ref) != expected_refs:
+        missing = sorted(expected_refs - set(by_ref))
+        unexpected = sorted(set(by_ref) - expected_refs)
+        raise ValueError(
+            "SBOM/lock divergence: component set differs; "
+            f"missing={missing}, unexpected={unexpected}"
+        )
+
+    for requirement in dependency_lock.requirements:
+        component = by_ref[requirement.purl]
+        expected_hashes = [
+            {"alg": "SHA-256", "content": digest}
+            for digest in requirement.hashes
+        ]
+        expected_kind = "direct" if requirement.direct else "transitive"
+        properties = component.get("properties")
+        if (
+            component.get("name") != requirement.name
+            or component.get("version") != requirement.version
+            or component.get("purl") != requirement.purl
+            or component.get("type") != "library"
+            or component.get("hashes") != expected_hashes
+            or properties
+            != [
+                {
+                    "name": "uk.gov.okf.validation-dependency-kind",
+                    "value": expected_kind,
+                }
+            ]
+        ):
+            raise ValueError(
+                "SBOM/lock divergence for Python dependency "
+                f"{requirement.identity}"
+            )
+
+    expected_environment = _validation_environment_component(
+        dependency_lock
+    )
+    if by_ref[VALIDATION_ENVIRONMENT_REF] != expected_environment:
+        raise ValueError(
+            "SBOM/lock divergence: validation environment identity differs"
+        )
+
+    for row in action_rows:
+        purl = f"pkg:github/{row['name']}@{row['version']}"
+        expected_action = {
+            "bom-ref": purl,
+            "name": row["name"],
+            "properties": [
+                {
+                    "name": "okf:workflow",
+                    "value": ", ".join(row["workflows"]),
+                },
+                {
+                    "name": "okf:ref-kind",
+                    "value": "commit-sha",
+                },
+            ],
+            "purl": purl,
+            "type": "application",
+            "version": row["version"],
+        }
+        if by_ref[purl] != expected_action:
+            raise ValueError(
+                f"SBOM/lock divergence for GitHub Action {row['name']}"
+            )
+
+    metadata = sbom.get("metadata")
+    if not isinstance(metadata, dict):
+        raise ValueError("SBOM/lock divergence: metadata is missing")
+    metadata_component = metadata.get("component")
+    if not isinstance(metadata_component, dict):
+        raise ValueError("SBOM/lock divergence: metadata root is missing")
+    root_ref = metadata_component.get("bom-ref")
+    if not isinstance(root_ref, str) or not root_ref:
+        raise ValueError("SBOM/lock divergence: metadata root is missing")
+    relationships = sbom.get("dependencies")
+    if not isinstance(relationships, list):
+        raise ValueError("SBOM/lock divergence: dependencies must be a list")
+    if not all(isinstance(row, dict) for row in relationships):
+        raise ValueError("SBOM/lock divergence: malformed dependency row")
+    relationship_refs = [row.get("ref") for row in relationships]
+    if (
+        not all(isinstance(ref, str) and ref for ref in relationship_refs)
+        or len(relationship_refs) != len(set(relationship_refs))
+    ):
+        raise ValueError(
+            "SBOM/lock divergence: duplicate or missing dependency ref"
+        )
+    actual_relationships = {
+        row["ref"]: row.get("dependsOn") for row in relationships
+    }
+    expected_relationships = {
+        root_ref: sorted(
+            [VALIDATION_ENVIRONMENT_REF, *expected_action_refs]
+        ),
+        VALIDATION_ENVIRONMENT_REF: sorted(expected_python_refs),
+        **{reference: [] for reference in expected_python_refs},
+        **{reference: [] for reference in expected_action_refs},
+    }
+    if actual_relationships != expected_relationships:
+        raise ValueError(
+            "SBOM/lock divergence: dependency graph is not rooted through "
+            "the validation environment"
+        )
+
+
+def build_sbom(
+    generated_at: str,
+    materials_digest: str,
+    *,
+    dependency_lock: ValidationDependencyLock | None = None,
+    actions: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    lock_inventory = (
+        validation_dependency_inventory()
+        if dependency_lock is None
+        else dependency_lock
+    )
+    action_rows = validated_workflow_actions(actions)
+    components: list[dict[str, Any]] = []
+    for requirement in lock_inventory.requirements:
+        component = requirement.sbom_component()
+        component["hashes"] = [
+            {"alg": "SHA-256", "content": digest}
+            for digest in requirement.hashes
+        ]
+        components.append(component)
+    components.append(_validation_environment_component(lock_inventory))
+    for row in action_rows:
         purl = f"pkg:github/{row['name']}@{row['version']}"
         components.append(
             {
@@ -1292,11 +1770,7 @@ def build_sbom(generated_at: str, materials_digest: str) -> dict[str, Any]:
                     },
                     {
                         "name": "okf:ref-kind",
-                        "value": (
-                            "commit-sha"
-                            if re.fullmatch(r"[0-9a-fA-F]{40}", row["version"])
-                            else "mutable-tag"
-                        ),
+                        "value": "commit-sha",
                     },
                 ],
                 "purl": purl,
@@ -1304,19 +1778,36 @@ def build_sbom(generated_at: str, materials_digest: str) -> dict[str, Any]:
                 "version": row["version"],
             }
         )
+    components.sort(key=lambda component: component["bom-ref"])
     root_ref = "pkg:github/chris-page-gov/okf-uk-legislation@candidate"
+    action_refs = [
+        f"pkg:github/{row['name']}@{row['version']}" for row in action_rows
+    ]
+    python_refs = [
+        requirement.purl for requirement in lock_inventory.requirements
+    ]
     serial = uuid.uuid5(
         uuid.NAMESPACE_URL,
         f"https://github.com/chris-page-gov/okf-uk-legislation/{materials_digest}",
     )
-    return {
+    sbom = {
         "bomFormat": "CycloneDX",
         "components": components,
         "dependencies": [
             {
-                "dependsOn": sorted(component["bom-ref"] for component in components),
+                "dependsOn": sorted(
+                    [VALIDATION_ENVIRONMENT_REF, *action_refs]
+                ),
                 "ref": root_ref,
-            }
+            },
+            {
+                "dependsOn": sorted(python_refs),
+                "ref": VALIDATION_ENVIRONMENT_REF,
+            },
+            *[
+                {"dependsOn": [], "ref": reference}
+                for reference in sorted([*python_refs, *action_refs])
+            ],
         ],
         "metadata": {
             "component": {
@@ -1332,7 +1823,7 @@ def build_sbom(generated_at: str, materials_digest: str) -> dict[str, Any]:
                     {
                         "name": "build_release_assurance.py",
                         "type": "application",
-                        "version": "1.0.0",
+                        "version": "1.2.0",
                     }
                 ]
             },
@@ -1341,6 +1832,8 @@ def build_sbom(generated_at: str, materials_digest: str) -> dict[str, Any]:
         "specVersion": "1.6",
         "version": 1,
     }
+    validate_sbom_lock_alignment(sbom, lock_inventory, action_rows)
+    return sbom
 
 
 def build_spdx(generated_at: str, materials_digest: str) -> dict[str, Any]:
@@ -3390,7 +3883,10 @@ def build_model_cost(generated_at: str) -> dict[str, Any]:
     }
 
 
-def build_constraint_report(generated_at: str) -> dict[str, Any]:
+def build_constraint_report(
+    generated_at: str,
+    action_components: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
     source_path = (
         ROOT
         / "whole-law"
@@ -3422,7 +3918,7 @@ def build_constraint_report(generated_at: str) -> dict[str, Any]:
         for row in constraints
         if row.get("escalation_state") in {"escalated", "blocked"}
     ]
-    action_components = workflow_actions()
+    action_components = validated_workflow_actions(action_components)
     mutable_actions = [
         row
         for row in action_components
@@ -3494,7 +3990,8 @@ def build_status_markdown(status: dict[str, Any], state: dict[str, Any]) -> byte
         f"Release state: **{state['current_state']}**. Maximum evidenced state: "
         f"**{state['maximum_evidenced_state']}**.",
         "",
-        "This is a fail-closed candidate status. It does not claim executed "
+        f"This is a fail-closed {state['current_state']} pre-freeze status. "
+        "It does not claim executed "
         "security, browser, accessibility, performance, legal-practitioner or "
         "third-party assurance.",
         "",
@@ -3519,7 +4016,10 @@ def build_status_markdown(status: dict[str, Any], state: dict[str, Any]) -> byte
             "",
             "The machine-readable clause ledger is in "
             "[implementation-status.json](implementation-status.json); release "
-            "gates are in [release-state.json](release-state.json).",
+            "gates are in [release-state.json](release-state.json). The "
+            "separate detailed dated review is preserved byte-for-byte in "
+            "[implementation-status-detailed-2026-07-26.md]"
+            "(implementation-status-detailed-2026-07-26.md).",
             "",
         ]
     )
@@ -3534,7 +4034,8 @@ immutable research evidence, release state, rights, dependencies, provenance,
 constraints and model cost. They are projections, not substitutes for gates
 which must still be executed on a frozen release candidate.
 
-- [Implementation status](implementation-status.md)
+- [Generated current ledger status](implementation-status.md)
+- [Detailed dated implementation review](implementation-status-detailed-2026-07-26.md)
 - [Controlling requirements](controlling-requirements.md)
 - [Clause-level traceability](implementation-traceability.json)
 - [Implementation gap register](gap-register.json)
@@ -3571,6 +4072,8 @@ which must still be executed on a frozen release candidate.
 
 
 def build_files() -> tuple[dict[Path, bytes], list[str]]:
+    dependency_lock = validation_dependency_inventory()
+    action_inventory = validated_workflow_actions()
     policy = load(POLICY)
     generated_at = policy["generated_at"]
     evidence, evidence_errors = evidence_manifest(generated_at)
@@ -3578,7 +4081,10 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
     external_finalization, schema_paths, external_errors = (
         external_finalization_projection(policy)
     )
-    constraint_report = build_constraint_report(generated_at)
+    constraint_report = build_constraint_report(
+        generated_at,
+        action_inventory,
+    )
     constraint_body = render(constraint_report)
     model_cost = build_model_cost(generated_at)
     model_cost_body = render(model_cost)
@@ -3637,10 +4143,12 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
         GAP_REGISTER,
         AUTHORED_STATUS,
         RESEARCH / "integrity.json",
-        ROOT / "requirements-validation.txt",
+        VALIDATION_REQUIREMENTS_DIRECT,
+        VALIDATION_REQUIREMENTS_LOCK,
+        VALIDATION_LOCK_PARSER,
+        ASSURANCE_CONTROLLER,
         ROOT / "LICENSE.md",
-        ROOT / ".github" / "workflows" / "ci.yml",
-        ROOT / ".github" / "workflows" / "pages.yml",
+        *workflow_paths(),
         ROOT
         / "whole-law"
         / "acquisition"
@@ -3706,11 +4214,18 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
             "utf-8"
         )
     )
+    validation_dependency_sources = {
+        "controller": material(ASSURANCE_CONTROLLER),
+        "direct_requirements": material(VALIDATION_REQUIREMENTS_DIRECT),
+        "lock": material(VALIDATION_REQUIREMENTS_LOCK),
+        "parser": material(VALIDATION_LOCK_PARSER),
+    }
     provenance = {
         "builder": {
             "command": "python3 scripts/build_release_assurance.py",
+            "material": validation_dependency_sources["controller"],
             "name": "build_release_assurance.py",
-            "version": "1.1.0",
+            "version": "1.2.0",
         },
         "external_finalization": external_finalization,
         "generated_at": generated_at,
@@ -3782,6 +4297,18 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
             ),
         },
         "schema": "okf-build-provenance.v1",
+        "validation_dependency_environment": {
+            "artifact_hash_count": len(dependency_lock.artifact_hashes),
+            "artifact_hash_digest": (
+                f"sha256:{dependency_lock.artifact_hash_digest}"
+            ),
+            "direct_count": len(dependency_lock.direct_requirements),
+            "direct_names": list(dependency_lock.direct_names),
+            "identity_digest": f"sha256:{dependency_lock.identity_digest}",
+            "package_count": len(dependency_lock.requirements),
+            "sources": validation_dependency_sources,
+            "transitive_count": len(dependency_lock.transitive_names),
+        },
     }
     reproduction = {
         "check_command": "python3 scripts/build_release_assurance.py --check",
@@ -3834,6 +4361,7 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
         ): EXTERNAL_FINALIZATION_CONTRACT.read_bytes(),
         Path("implementation-status.json"): render(status),
         Path("implementation-status.md"): build_status_markdown(status, state),
+        AUTHORED_STATUS_PUBLICATION: AUTHORED_STATUS.read_bytes(),
         Path("implementation-traceability.json"): TRACEABILITY.read_bytes(),
         Path("gap-register.json"): GAP_REGISTER.read_bytes(),
         Path(
@@ -3856,7 +4384,14 @@ def build_files() -> tuple[dict[Path, bytes], list[str]]:
         Path("release-state.json"): render(state),
         Path("reproduction.json"): render(reproduction),
         Path("rights.spdx.json"): render(build_spdx(generated_at, materials_digest)),
-        Path("sbom.cdx.json"): render(build_sbom(generated_at, materials_digest)),
+        Path("sbom.cdx.json"): render(
+            build_sbom(
+                generated_at,
+                materials_digest,
+                dependency_lock=dependency_lock,
+                actions=action_inventory,
+            )
+        ),
     }
     for row in external_finalization["schemas"]:
         source_path = ROOT / row["path"]
@@ -3930,7 +4465,13 @@ def main() -> int:
             for error in errors:
                 print(f"- {error}")
             return 1
-        print(f"release assurance verified: {len(files)} files; state=candidate")
+        projected_state = json.loads(
+            files[Path("release-state.json")].decode("utf-8")
+        )["current_state"]
+        print(
+            f"release assurance verified: {len(files)} files; "
+            f"state={projected_state}"
+        )
         return 0
     write(files, output)
     try:

@@ -1,0 +1,693 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/schemas/github-pages-observation.schema.json",
+  "title": "Immutable GitHub Pages workflow artifact observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "observed_at",
+    "target",
+    "controller",
+    "run",
+    "artifact",
+    "requests",
+    "archive",
+    "durable_alternate",
+    "integrity"
+  ],
+  "properties": {
+    "schema": {
+      "const": "okf-github-pages-observation.v1"
+    },
+    "status": {
+      "const": "verified"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "target": {
+      "$ref": "#/$defs/target"
+    },
+    "controller": {
+      "$ref": "#/$defs/controller"
+    },
+    "run": {
+      "$ref": "#/$defs/run"
+    },
+    "artifact": {
+      "$ref": "#/$defs/artifact"
+    },
+    "requests": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/request"
+            },
+            {
+              "properties": {
+                "purpose": {
+                  "const": "workflow-run-attempt"
+                },
+                "final_url": {
+                  "pattern": "^https://api\\.github\\.com/repos/chris-page-gov/okf-explorer/actions/runs/[1-9][0-9]*/attempts/[1-9][0-9]*$"
+                },
+                "redirects": {
+                  "const": 0
+                },
+                "response_headers": {
+                  "properties": {
+                    "path": {
+                      "const": "raw/run-attempt-response.headers.json"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/request"
+            },
+            {
+              "properties": {
+                "purpose": {
+                  "const": "workflow-artifact"
+                },
+                "final_url": {
+                  "pattern": "^https://api\\.github\\.com/repos/chris-page-gov/okf-explorer/actions/artifacts/[1-9][0-9]*$"
+                },
+                "redirects": {
+                  "const": 0
+                },
+                "response_headers": {
+                  "properties": {
+                    "path": {
+                      "const": "raw/artifact-response.headers.json"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/request"
+            },
+            {
+              "properties": {
+                "purpose": {
+                  "const": "workflow-artifact-download"
+                },
+                "final_url": {
+                  "pattern": "^https://[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.blob\\.core\\.windows\\.net/[^?#\\\\\\u0000-\\u001f\\u007f]*$"
+                },
+                "redirects": {
+                  "minimum": 1,
+                  "maximum": 3
+                },
+                "response_headers": {
+                  "properties": {
+                    "path": {
+                      "const": "raw/artifact-download-response.headers.json"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "items": false
+    },
+    "archive": {
+      "$ref": "#/$defs/archive"
+    },
+    "durable_alternate": {
+      "$ref": "#/$defs/durableAlternate"
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attempt_manifest",
+        "raw_evidence_closed",
+        "write_once"
+      ],
+      "properties": {
+        "attempt_manifest": {
+          "$ref": "#/$defs/material"
+        },
+        "raw_evidence_closed": {
+          "const": true
+        },
+        "write_once": {
+          "const": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "safePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "^(?!/)(?!\\.{1,2}(?:/|$))(?!.*//)(?!.*(?:/)\\.{1,2}(?:/|$))(?!.*\\/$)[^\\\\\\u0000-\\u001f\\u007f]+$"
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/safePath"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "archiveMaterial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/safePath"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "run_id",
+        "run_attempt",
+        "head_sha",
+        "git_tree",
+        "workflow_path",
+        "artifact_id",
+        "artifact_name"
+      ],
+      "properties": {
+        "repository": {
+          "const": "https://github.com/chris-page-gov/okf-explorer"
+        },
+        "run_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "run_attempt": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "head_sha": {
+          "$ref": "#/$defs/commit"
+        },
+        "git_tree": {
+          "$ref": "#/$defs/commit"
+        },
+        "workflow_path": {
+          "const": ".github/workflows/pages.yml"
+        },
+        "artifact_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "artifact_name": {
+          "const": "github-pages"
+        }
+      }
+    },
+    "controller": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/material"
+        },
+        {
+          "properties": {
+            "path": {
+              "const": "scripts/capture_github_pages_observation.py"
+            }
+          }
+        }
+      ]
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "api_url",
+        "id",
+        "attempt",
+        "head_sha",
+        "git_tree",
+        "status",
+        "conclusion",
+        "workflow_path",
+        "html_url",
+        "response_headers",
+        "response_body"
+      ],
+      "properties": {
+        "api_url": {
+          "type": "string",
+          "pattern": "^https://api\\.github\\.com/repos/chris-page-gov/okf-explorer/actions/runs/[1-9][0-9]*/attempts/[1-9][0-9]*$"
+        },
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "attempt": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "head_sha": {
+          "$ref": "#/$defs/commit"
+        },
+        "git_tree": {
+          "$ref": "#/$defs/commit"
+        },
+        "status": {
+          "const": "completed"
+        },
+        "conclusion": {
+          "const": "success"
+        },
+        "workflow_path": {
+          "const": ".github/workflows/pages.yml"
+        },
+        "html_url": {
+          "type": "string",
+          "pattern": "^https://github\\.com/chris-page-gov/okf-explorer/actions/runs/[1-9][0-9]*$"
+        },
+        "response_headers": {
+          "$ref": "#/$defs/material"
+        },
+        "response_body": {
+          "$ref": "#/$defs/material"
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "api_url",
+        "archive_download_url",
+        "id",
+        "name",
+        "size_in_bytes",
+        "expired",
+        "workflow_run",
+        "response_headers",
+        "response_body"
+      ],
+      "properties": {
+        "api_url": {
+          "type": "string",
+          "pattern": "^https://api\\.github\\.com/repos/chris-page-gov/okf-explorer/actions/artifacts/[1-9][0-9]*$"
+        },
+        "archive_download_url": {
+          "type": "string",
+          "pattern": "^https://api\\.github\\.com/repos/chris-page-gov/okf-explorer/actions/artifacts/[1-9][0-9]*/zip$"
+        },
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "name": {
+          "const": "github-pages"
+        },
+        "size_in_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "expired": {
+          "const": false
+        },
+        "workflow_run": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "head_sha"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "head_sha": {
+              "$ref": "#/$defs/commit"
+            }
+          }
+        },
+        "response_headers": {
+          "$ref": "#/$defs/material"
+        },
+        "response_body": {
+          "$ref": "#/$defs/material"
+        }
+      }
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "purpose",
+        "final_url",
+        "http_status",
+        "redirects",
+        "response_headers"
+      ],
+      "properties": {
+        "purpose": {
+          "type": "string"
+        },
+        "final_url": {
+          "type": "string",
+          "minLength": 9,
+          "maxLength": 8192,
+          "pattern": "^https://[^/?#@\\\\\\u0000-\\u001f\\u007f]+(?::443)?/[^?#\\\\\\u0000-\\u001f\\u007f]*$"
+        },
+        "http_status": {
+          "const": 200
+        },
+        "redirects": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "response_headers": {
+          "$ref": "#/$defs/material"
+        }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zip",
+        "tar",
+        "inventory",
+        "build"
+      ],
+      "properties": {
+        "zip": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "material",
+            "entry"
+          ],
+          "properties": {
+            "material": {
+              "$ref": "#/$defs/material"
+            },
+            "entry": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "compressed_bytes",
+                "uncompressed_bytes",
+                "crc32",
+                "encrypted",
+                "regular_file"
+              ],
+              "properties": {
+                "name": {
+                  "const": "artifact.tar"
+                },
+                "compressed_bytes": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "uncompressed_bytes": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "crc32": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{8}$"
+                },
+                "encrypted": {
+                  "const": false
+                },
+                "regular_file": {
+                  "const": true
+                }
+              }
+            }
+          }
+        },
+        "tar": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "bytes",
+            "sha256",
+            "member_count",
+            "file_count",
+            "directory_count",
+            "total_file_bytes",
+            "retained_separately",
+            "raw_header_census"
+          ],
+          "properties": {
+            "name": {
+              "const": "artifact.tar"
+            },
+            "bytes": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "member_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "file_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "directory_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "total_file_bytes": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "retained_separately": {
+              "const": false
+            },
+            "raw_header_census": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "raw_headers",
+                "gnu_longname_headers",
+                "regular_headers",
+                "directory_headers",
+                "logical_members"
+              ],
+              "properties": {
+                "raw_headers": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "gnu_longname_headers": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "regular_headers": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "directory_headers": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "logical_members": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        },
+        "inventory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "algorithm",
+            "file_count",
+            "total_file_bytes",
+            "materials_sha256",
+            "material"
+          ],
+          "properties": {
+            "algorithm": {
+              "const": "sha256-canonical-json-materials-v1"
+            },
+            "file_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "total_file_bytes": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "materials_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "material": {
+              "$ref": "#/$defs/material"
+            }
+          }
+        },
+        "build": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schema",
+            "algorithm",
+            "manifest",
+            "index",
+            "materials",
+            "tree"
+          ],
+          "properties": {
+            "schema": {
+              "const": "okf-explorer-app-build-manifest.v1"
+            },
+            "algorithm": {
+              "const": "sha256-canonical-json-materials-v1"
+            },
+            "manifest": {
+              "$ref": "#/$defs/archiveMaterial"
+            },
+            "index": {
+              "$ref": "#/$defs/archiveMaterial"
+            },
+            "materials": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 4096,
+              "items": {
+                "$ref": "#/$defs/archiveMaterial"
+              }
+            },
+            "tree": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "algorithm",
+                "files",
+                "sha256",
+                "computed_sha256"
+              ],
+              "properties": {
+                "algorithm": {
+                  "const": "sha256-canonical-json-materials-v1"
+                },
+                "files": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "sha256": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "computed_sha256": {
+                  "$ref": "#/$defs/sha256"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "durableAlternate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_id",
+        "name",
+        "url",
+        "bytes",
+        "sha256",
+        "github_digest",
+        "cross_binding"
+      ],
+      "properties": {
+        "asset_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "name": {
+          "const": "okf-explorer-v0.5.4-pages-artifact.zip"
+        },
+        "url": {
+          "const": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.5.4/okf-explorer-v0.5.4-pages-artifact.zip"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "github_digest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "cross_binding": {
+          "const": "required-from-github-release-observation"
+        }
+      }
+    }
+  }
+}

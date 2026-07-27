@@ -45,10 +45,10 @@
       "name": "Pages access"
     },
     {
-      "expected": "Octet-stream YAML-LD is safely content-sniffed; JSON-LD is the strict transport fallback.",
+      "expected": "YAML-LD, JSON-LD and Turtle are isomorphic semantic representations; octet-stream YAML-LD is safely content-sniffed and JSON-LD is the strict transport fallback.",
       "external_receipt_required": "explorer-mime-fallback-browser-journey",
       "id": "CLAUDE-ACCESS-05",
-      "local_contract": "yaml-ld-json-ld-fallback-declared",
+      "local_contract": "yaml-ld-json-ld-turtle-publication-and-json-ld-mime-fallback",
       "name": "YAML-LD MIME fallback"
     },
     {

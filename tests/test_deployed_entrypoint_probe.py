@@ -92,10 +92,26 @@ def response_for(route: dict[str, Any]) -> dict[str, Any]:
             {"schema": "okf-explorer-federation.v1"},
             sort_keys=True,
         ).encode()
+    elif route["id"] == "explorer-pages-deployment":
+        body = json.dumps(
+            {
+                "conclusion": "success",
+                "head_sha": manifest_explorer_commit(route),
+                "id": manifest_explorer_run_id(route),
+                "status": "completed",
+            },
+            sort_keys=True,
+        ).encode()
     elif kind == "json-ld":
         body = b'{"@context": {"okf": "https://example.test/okf#"}}'
     elif kind == "yaml-ld":
         body = b'"@context":\\n  okf: "https://example.test/okf#"\\n'
+    elif kind == "turtle":
+        subject, vocabulary = route["expected"]["required_text"]
+        body = (
+            f"<{subject}> <{vocabulary}descriptor> "
+            f"<{subject}okf-explorer.json> .\n"
+        ).encode()
     elif kind == "moved-descriptor":
         body = json.dumps(
             {
@@ -126,6 +142,8 @@ def response_for(route: dict[str, Any]) -> dict[str, Any]:
         content_type = "application/octet-stream"
     elif kind == "json-ld":
         content_type = "application/ld+json"
+    elif kind == "turtle":
+        content_type = "text/turtle; charset=utf-8"
     elif kind in {"json", "moved-descriptor"}:
         content_type = (
             "text/plain"
@@ -153,6 +171,34 @@ def response_for(route: dict[str, Any]) -> dict[str, Any]:
         "status": 200,
         "truncated": False,
     }
+
+
+def manifest_explorer_commit(route: dict[str, Any]) -> str:
+    return route["expected"]["json_fields"]["/head_sha"]
+
+
+def manifest_explorer_run_id(route: dict[str, Any]) -> int:
+    return route["expected"]["json_fields"]["/id"]
+
+
+def reseal_integrity_file(destination: Path, relative: str) -> None:
+    """Update one integrity row after an adversarial fixture mutation."""
+
+    target = destination / relative
+    body = target.read_bytes()
+    integrity_path = destination / "integrity.json"
+    integrity = json.loads(integrity_path.read_text(encoding="utf-8"))
+    row = next(
+        value
+        for value in integrity["files"]
+        if value["path"] == relative
+    )
+    row["bytes"] = len(body)
+    row["sha256"] = probe.sha256_bytes(body)
+    integrity_path.write_text(
+        probe.render(integrity),
+        encoding="utf-8",
+    )
 
 
 class FakeTransport:
@@ -214,6 +260,31 @@ class DeployedEntrypointProbeTests(unittest.TestCase):
     def test_locked_fixture_executes_every_route_and_cross_assertion_offline(self) -> None:
         manifest = locked_manifest()
         self.assertEqual([], probe.validate_manifest(manifest, require_locked=True))
+        deployment = next(
+            row
+            for row in manifest["routes"]
+            if row["id"] == "explorer-pages-deployment"
+        )
+        run_id = manifest_explorer_run_id(deployment)
+        self.assertEqual(
+            (
+                "https://api.github.com/repos/chris-page-gov/okf-explorer/"
+                f"actions/runs/{run_id}"
+            ),
+            deployment["url"],
+        )
+        self.assertEqual(
+            {"/conclusion", "/head_sha", "/id", "/status"},
+            set(deployment["expected"]["json_fields"]),
+        )
+        turtle = next(
+            row
+            for row in manifest["routes"]
+            if row["id"] == "pages-whole-law-turtle"
+        )
+        self.assertEqual(["turtle"], turtle["coverage"])
+        self.assertEqual("turtle", turtle["expected"]["document_kind"])
+        self.assertEqual(["text/turtle"], turtle["expected"]["media_types"])
         release_asset = next(
             row
             for row in manifest["routes"]
@@ -233,7 +304,7 @@ class DeployedEntrypointProbeTests(unittest.TestCase):
         )
         self.assertEqual("passed", attempt["status"])
         self.assertEqual("passed", projection["gate_evidence_status"])
-        self.assertEqual(23, projection["summary"]["routes_passed"])
+        self.assertEqual(25, projection["summary"]["routes_passed"])
         self.assertEqual(0, projection["summary"]["routes_failed"])
         self.assertEqual(
             projection["summary"]["cross_assertions_total"],
@@ -243,6 +314,7 @@ class DeployedEntrypointProbeTests(unittest.TestCase):
         for request in transport.requests:
             lowered = {name.lower() for name in request["headers"]}
             self.assertTrue(lowered.isdisjoint(probe.FORBIDDEN_REQUEST_HEADERS))
+            self.assertIn("text/turtle", request["headers"]["Accept"])
             self.assertLessEqual(
                 request["maximum_body_bytes"],
                 manifest["policy"]["maximum_body_bytes"],
@@ -268,6 +340,94 @@ class DeployedEntrypointProbeTests(unittest.TestCase):
                     wrong_name,
                     require_locked=True,
                 )
+            )
+        )
+
+    def test_turtle_route_rejects_malformed_graph(self) -> None:
+        route = next(
+            row
+            for row in locked_manifest()["routes"]
+            if row["id"] == "pages-whole-law-turtle"
+        )
+
+        errors, receipt = probe.evaluate_document(
+            route,
+            b"<https://example.test/subject> this is not Turtle .\n",
+            [{"name": "Content-Type", "value": "text/turtle"}],
+            truncated=False,
+        )
+
+        self.assertEqual("failed", receipt["content_sniff"])
+        self.assertTrue(
+            any("Turtle parse failed" in error for error in errors),
+            errors,
+        )
+
+    def test_manifest_rejects_mutable_latest_workflow_run_route(self) -> None:
+        manifest = locked_manifest()
+        deployment = next(
+            row
+            for row in manifest["routes"]
+            if row["id"] == "explorer-pages-deployment"
+        )
+        deployment["url"] = (
+            "https://api.github.com/repos/chris-page-gov/okf-explorer/"
+            "actions/workflows/pages.yml/runs?branch=main&per_page=1"
+        )
+
+        failures = probe.validate_manifest(manifest, require_locked=True)
+
+        self.assertTrue(
+            any(
+                "not the immutable configured run endpoint" in failure
+                for failure in failures
+            )
+        )
+
+    def test_manifest_rejects_run_endpoint_that_differs_from_asserted_id(
+        self,
+    ) -> None:
+        manifest = locked_manifest()
+        deployment = next(
+            row
+            for row in manifest["routes"]
+            if row["id"] == "explorer-pages-deployment"
+        )
+        deployment["url"] = deployment["url"].replace(
+            str(manifest_explorer_run_id(deployment)),
+            "99999999999",
+        )
+
+        failures = probe.validate_manifest(manifest, require_locked=True)
+
+        self.assertTrue(
+            any(
+                "not the immutable configured run endpoint" in failure
+                for failure in failures
+            )
+        )
+
+    def test_manifest_rejects_latest_run_collection_field_pointers(
+        self,
+    ) -> None:
+        manifest = locked_manifest()
+        deployment = next(
+            row
+            for row in manifest["routes"]
+            if row["id"] == "explorer-pages-deployment"
+        )
+        deployment["expected"]["json_fields"] = {
+            f"/workflow_runs/0{pointer}": value
+            for pointer, value in deployment["expected"]["json_fields"].items()
+        }
+
+        failures = probe.validate_manifest(manifest, require_locked=True)
+
+        self.assertTrue(
+            any(
+                "assertions must target the exact run document fields"
+                in failure
+                for failure in failures
             )
         )
 
@@ -437,6 +597,96 @@ class DeployedEntrypointProbeTests(unittest.TestCase):
                     or "byte count differs" in failure
                     for failure in probe.verify_attempt(destination)
                 )
+            )
+
+    def test_verify_attempt_rejects_forged_tool_after_integrity_reseal(
+        self,
+    ) -> None:
+        manifest = locked_manifest()
+        attempt, projection, raw_files = probe.run_probe(
+            manifest,
+            transport=FakeTransport(manifest),
+            resolver=public_resolver,
+            executed_at="2026-07-26T03:00:00Z",
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = probe.write_attempt(
+                Path(temporary),
+                probe.render(manifest).encode(),
+                manifest,
+                attempt,
+                projection,
+                raw_files,
+            )
+            attempt_path = destination / "attempt.json"
+            forged = json.loads(attempt_path.read_text(encoding="utf-8"))
+            forged["tool"] = {
+                "name": "forged-probe.py",
+                "sha256": "0" * 64,
+                "version": "999",
+            }
+            attempt_path.write_text(
+                probe.render(forged),
+                encoding="utf-8",
+            )
+            reseal_integrity_file(destination, "attempt.json")
+
+            failures = probe.verify_attempt(destination)
+            self.assertIn(
+                "attempt tool identity differs from this controller",
+                failures,
+            )
+            self.assertNotIn("digest differs: attempt.json", failures)
+
+    def test_verify_attempt_reconstructs_mutated_raw_body_after_reseal(
+        self,
+    ) -> None:
+        manifest = locked_manifest()
+        attempt, projection, raw_files = probe.run_probe(
+            manifest,
+            transport=FakeTransport(manifest),
+            resolver=public_resolver,
+            executed_at="2026-07-26T03:00:00Z",
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = probe.write_attempt(
+                Path(temporary),
+                probe.render(manifest).encode(),
+                manifest,
+                attempt,
+                projection,
+                raw_files,
+            )
+            route_id = "explorer-pages-deployment"
+            body_relative = f"raw/{route_id}/hop-00.body"
+            route_relative = f"raw/{route_id}/route.json"
+            body_path = destination / body_relative
+            body_path.write_bytes(b"{}")
+            route_path = destination / route_relative
+            raw_route = json.loads(route_path.read_text(encoding="utf-8"))
+            raw_route["hops"][0]["body_bytes"] = 2
+            raw_route["hops"][0]["body_sha256"] = probe.sha256_bytes(b"{}")
+            route_path.write_text(
+                probe.render(raw_route),
+                encoding="utf-8",
+            )
+            reseal_integrity_file(destination, body_relative)
+            reseal_integrity_file(destination, route_relative)
+
+            failures = probe.verify_attempt(destination)
+            self.assertIn(
+                (
+                    "explorer-pages-deployment: raw route errors differ "
+                    "from response reconstruction"
+                ),
+                failures,
+            )
+            self.assertIn(
+                "projection differs from raw evidence reconstruction",
+                failures,
+            )
+            self.assertFalse(
+                any("digest differs" in failure for failure in failures)
             )
 
 

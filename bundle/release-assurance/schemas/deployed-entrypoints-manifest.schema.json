@@ -35,6 +35,7 @@
         "git_commit",
         "bundle_tree_sha256",
         "release_tag",
+        "explorer_commit",
         "explorer_release"
       ],
       "properties": {
@@ -52,6 +53,10 @@
         "release_tag": {
           "type": "string",
           "minLength": 1
+        },
+        "explorer_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
         },
         "explorer_release": {
           "type": "string",
@@ -192,12 +197,14 @@
               "github-archive-fallback",
               "github-release-fallback",
               "explorer-loading",
+              "explorer-deployment",
               "compatibility-documentation",
               "compatibility-moved-descriptor",
               "ckan-documentation",
               "ckan-example",
               "yaml-ld",
-              "json-ld-fallback"
+              "json-ld-fallback",
+              "turtle"
             ]
           }
         },
@@ -258,6 +265,7 @@
                 "json-ld",
                 "moved-descriptor",
                 "yaml-ld",
+                "turtle",
                 "html",
                 "text",
                 "markdown",

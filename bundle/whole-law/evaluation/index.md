@@ -4,7 +4,7 @@ The original 100-question legislation suite and the 360-question research
 suite are retained as non-gold baselines. The release suite adds corpus
 binding, coverage strata, evidence and independent verification state.
 
-- [Latest executed assurance report](executions/eval-24eeb1c54bbb2b604c70/report.md) — `blocked-pending-deployed-access-journey-receipts`
+- [Latest executed assurance report](executions/eval-7d891e153705f9991f2e/report.md) — `blocked-pending-deployed-access-journey-receipts`
 
 - [Release questions](release-questions.json)
 - [Coverage](coverage.json)

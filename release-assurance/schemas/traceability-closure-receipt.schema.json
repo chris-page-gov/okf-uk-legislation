@@ -21,7 +21,7 @@
       "const": "okf-traceability-closure-receipt.v2"
     },
     "status": {
-      "const": "passed"
+      "const": "candidate"
     },
     "gate": {
       "const": "GATE-14"

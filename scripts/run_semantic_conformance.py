@@ -45,6 +45,7 @@ PUBLISHED_RECEIPT = PACK / "assurance" / "semantic-conformance.json"
 AUTHORED_YAML = SOURCE / "okf-bundle.yamlld"
 PUBLISHED_YAML = PACK / "okf-bundle.yamlld"
 GENERATED_JSONLD = PACK / "okf-bundle.jsonld"
+GENERATED_TURTLE = PACK / "okf-bundle.ttl"
 CONTEXT = SOURCE / "ontology" / "context.jsonld"
 SHAPES = SOURCE / "ontology" / "shapes.ttl"
 VOCABULARY = SOURCE / "ontology" / "vocabulary.ttl"
@@ -486,6 +487,7 @@ def semantic_materials() -> dict[str, Any]:
         "authored_yaml_ld": material(AUTHORED_YAML),
         "published_yaml_ld": material(PUBLISHED_YAML),
         "generated_json_ld": material(GENERATED_JSONLD),
+        "generated_turtle": material(GENERATED_TURTLE),
         "context": material(CONTEXT),
         "shapes": material(SHAPES),
         "vocabulary": material(VOCABULARY),
@@ -522,10 +524,13 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
     json_expanded: Any = None
     yaml_graph: rdflib.ConjunctiveGraph | None = None
     json_graph: rdflib.ConjunctiveGraph | None = None
+    turtle_graph: rdflib.Graph | None = None
     yaml_canonical = ""
     json_canonical = ""
+    turtle_canonical = ""
     yaml_round_trip = False
     json_round_trip = False
+    turtle_round_trip = False
     api_operations: dict[str, Any] = {}
     try:
         yaml_expanded = yaml_ld.expand(AUTHORED_YAML)
@@ -534,8 +539,17 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
             errors.append("YAML-LD or JSON-LD expands to an empty graph")
         yaml_graph = graph_from_document(AUTHORED_YAML)
         json_graph = graph_from_document(GENERATED_JSONLD)
-        if not isomorphic(yaml_graph, json_graph):
-            errors.append("authored YAML-LD and generated JSON-LD graphs differ")
+        turtle_canonical = GENERATED_TURTLE.read_text(encoding="utf-8")
+        turtle_graph = rdflib.Graph()
+        turtle_graph.parse(data=turtle_canonical, format="turtle")
+        if not (
+            isomorphic(yaml_graph, json_graph)
+            and isomorphic(yaml_graph, turtle_graph)
+        ):
+            errors.append(
+                "authored YAML-LD, generated JSON-LD and generated Turtle "
+                "graphs differ"
+            )
         canonical_options = {
             "algorithm": "URDNA2015",
             "format": "application/n-quads",
@@ -545,6 +559,11 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
         if yaml_canonical != json_canonical:
             errors.append(
                 "YAML-LD and JSON-LD canonical N-Quads serializations differ"
+            )
+        if yaml_canonical != turtle_canonical:
+            errors.append(
+                "generated Turtle is not the canonical N-Triples projection "
+                "of the YAML-LD/JSON-LD dataset"
             )
         for name, path, graph in (
             ("YAML-LD", AUTHORED_YAML, yaml_graph),
@@ -570,6 +589,24 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
                 json_round_trip = passed
             if not passed:
                 errors.append(f"{name} RDF round-trip changed the semantic graph")
+        turtle_round_trip_document = yaml_ld.from_rdf(turtle_canonical)
+        turtle_round_trip_nquads = yaml_ld.to_rdf(
+            turtle_round_trip_document,
+            options=ToRDFOptions(format="application/n-quads"),
+        )
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", DeprecationWarning)
+            turtle_round_trip_graph = rdflib.ConjunctiveGraph()
+            turtle_round_trip_graph.parse(
+                data=turtle_round_trip_nquads,
+                format="nquads",
+            )
+        turtle_round_trip = isomorphic(
+            turtle_graph,
+            turtle_round_trip_graph,
+        )
+        if not turtle_round_trip:
+            errors.append("Turtle RDF round-trip changed the semantic graph")
 
         context = load(CONTEXT)["@context"]
         expected_id = (
@@ -613,10 +650,15 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
         set(shapes_graph.subjects(rdflib.RDF.type, SH.NodeShape))
     )
     shacl_results: dict[str, Any] = {}
-    if yaml_graph is not None and json_graph is not None:
+    if (
+        yaml_graph is not None
+        and json_graph is not None
+        and turtle_graph is not None
+    ):
         for name, graph in (
             ("authored_yaml_ld", yaml_graph),
             ("generated_json_ld", json_graph),
+            ("generated_turtle", turtle_graph),
         ):
             result, shacl_errors = validate_shacl_graph(
                 graph,
@@ -846,8 +888,8 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
         "scope": {
             "semantic_graph": (
                 "The complete authored/generated Whole-Law federation "
-                "descriptor graph: one Federation and its governed "
-                "SourceRegister contract node."
+                "descriptor graph in YAML-LD, JSON-LD and canonical Turtle: "
+                "one Federation and its governed SourceRegister contract node."
             ),
             "catalogued_legal_works": catalogued_works,
             "rdf_materialized_legal_works": rdf_legal_works,
@@ -871,26 +913,50 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
             "graphs_isomorphic": bool(
                 yaml_graph is not None
                 and json_graph is not None
+                and turtle_graph is not None
                 and isomorphic(yaml_graph, json_graph)
+                and isomorphic(yaml_graph, turtle_graph)
             ),
             "yaml_graph_triples": len(yaml_graph) if yaml_graph is not None else 0,
             "json_graph_triples": len(json_graph) if json_graph is not None else 0,
+            "turtle_graph_triples": (
+                len(turtle_graph) if turtle_graph is not None else 0
+            ),
             "canonical_nquads_sha256": (
                 sha256_bytes(yaml_canonical.encode("utf-8"))
                 if yaml_canonical
                 else None
             ),
+            "canonical_digest_by_representation": {
+                "yaml_ld": (
+                    sha256_bytes(yaml_canonical.encode("utf-8"))
+                    if yaml_canonical
+                    else None
+                ),
+                "json_ld": (
+                    sha256_bytes(json_canonical.encode("utf-8"))
+                    if json_canonical
+                    else None
+                ),
+                "turtle": (
+                    sha256_bytes(turtle_canonical.encode("utf-8"))
+                    if turtle_canonical
+                    else None
+                ),
+            },
             "canonical_serializations_equal": (
                 bool(yaml_canonical)
                 and yaml_canonical == json_canonical
+                and yaml_canonical == turtle_canonical
             ),
             "yaml_ld_rdf_round_trip": yaml_round_trip,
             "json_ld_rdf_round_trip": json_round_trip,
+            "turtle_rdf_round_trip": turtle_round_trip,
             "json_ld_api_operations": api_operations,
         },
         "shacl": {
             "node_shapes_declared": shape_count,
-            "descriptor_graphs_validated": 2,
+            "descriptor_graphs_validated": 3,
             "results": shacl_results,
             "contract_examples": {
                 "conforms": bool(examples_conforms),

@@ -11,7 +11,7 @@
     "status": "bound-by-generated-manifest"
   },
   "gate": "GATE-12",
-  "generated_at": "2026-07-25T23:30:00Z",
+  "generated_at": "2026-07-26T20:54:40Z",
   "limitations": [
     "Passing GATE-12 means the required release facts and limitations are recorded; it does not pass any external gate.",
     "No public deployment, release-candidate publication or final promotion is claimed by this embedded report.",
@@ -25,8 +25,78 @@
       "repository": "https://github.com/chris-page-gov/okf-uk-legislation"
     },
     "explorer": {
+      "ci_workflow_run_id": 30228300676,
+      "git_tree": "981d5c967b7017c78f37aab379edd95f44917cf5",
+      "pages_workflow": "pages.yml",
+      "pages_workflow_run_id": 30228627196,
+      "release_asset": {
+        "asset_id": 490852327,
+        "bytes": 185023908,
+        "name": "okf-explorer-v0.5.4-pages-artifact.zip",
+        "sha256": "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0",
+        "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.5.4/okf-explorer-v0.5.4-pages-artifact.zip"
+      },
       "repository": "https://github.com/chris-page-gov/okf-explorer",
-      "required_tag": "v0.5.1"
+      "required_commit": "a23dfdea56fea0184b6d53f3163b292dd1a312ed",
+      "required_tag": "v0.5.4",
+      "required_tag_object": "5f22de79e8521b9ca9314f6e3c92b097b9a23a5b",
+      "runtime_provenance": {
+        "pages": {
+          "artifact_id": 8639352412,
+          "artifact_name": "github-pages",
+          "artifact_tar": {
+            "bytes": 817694720,
+            "sha256": "10565ce278f5386d736ac7396909d0213431f0c15c4086139302aba5702a01bc"
+          },
+          "artifact_zip": {
+            "bytes": 185023908,
+            "sha256": "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0"
+          },
+          "build_index": {
+            "bytes": 1318,
+            "path": "explorer-build/index.html",
+            "sha256": "b40439d2c8f67447d80f583595197493a1c2a2fe12e61e6e632b74cb4d9b6cc9"
+          },
+          "build_manifest": {
+            "bytes": 2849,
+            "path": "explorer-build/okf-explorer-build-manifest.json",
+            "sha256": "62dd2b96fba2c832a61fcbccbc01fbe83dda83ffeab61dfb8544a60fa37310be"
+          },
+          "build_tree": {
+            "algorithm": "sha256-canonical-json-materials-v1",
+            "files": 16,
+            "sha256": "b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7"
+          },
+          "commit": "a23dfdea56fea0184b6d53f3163b292dd1a312ed",
+          "run_attempt": 1,
+          "run_id": 30228627196,
+          "workflow_bytes": 2529,
+          "workflow_path": ".github/workflows/pages.yml",
+          "workflow_sha256": "e9af1abad43567826d5c611c0a57d2ced694cd3e925ed5c2eed5e85d80f470fd"
+        },
+        "runner": {
+          "bytes": 42808,
+          "path": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs",
+          "sha256": "ede0f39d1421ab52eddc6e7c78fde8ca4f6a40770c188a9a36d1848efd6b4d1c"
+        },
+        "site_assembly": {
+          "app_manifest_module": {
+            "bytes": 15822,
+            "path": "apps/okf-explorer/scripts/app_build_manifest.mjs",
+            "sha256": "387a2981711d5c890d47b644751eabd8e97b5bdd432fbf834f19537474478896"
+          },
+          "assembler": {
+            "bytes": 6113,
+            "path": "scripts/build_site.py",
+            "sha256": "6ba7746c5a2d71870585d21928fbde16612cfc69a8299eb4f2a9414d3e62ef30"
+          },
+          "verifier": {
+            "bytes": 1435,
+            "path": "apps/okf-explorer/scripts/verify_assembled_site.mjs",
+            "sha256": "68f32b4f4f1bc1c048dd4bb35572c673a87bb6448cef0bc6afc50430f014b565"
+          }
+        }
+      }
     }
   },
   "schema": "okf-release-report.v1",
@@ -147,42 +217,42 @@
         "No browser, public HTTP or compatibility-host result was inferred from a local descriptor check."
       ],
       "corpus_navigation_score": 100,
-      "executed_at": "2026-07-26T17:17:39Z",
+      "executed_at": "2026-07-27T02:38:39Z",
       "hard_failures": [],
       "materials": [
         {
-          "bytes": 5293,
+          "bytes": 6189,
           "path": "bundle/whole-law/evaluation/executions/index.json",
-          "sha256": "dba408a12eb4f028e40ef53711b3707b4e95d784564492e66c6cd4b992c56818"
+          "sha256": "5a8e7254a5d3882563d5f8a19f185f4f68a002311d7067fbb445f24ad19fb002"
         },
         {
-          "bytes": 3125033,
-          "path": "bundle/whole-law/evaluation/executions/eval-24eeb1c54bbb2b604c70/results.json",
-          "sha256": "6844635bbd4545d2997d117b407a7085fefbb90714249f99c82ce0d9aac4df40"
+          "bytes": 3125384,
+          "path": "bundle/whole-law/evaluation/executions/eval-7d891e153705f9991f2e/results.json",
+          "sha256": "812a3e06a36909f2808c8e2acb21cf9e6644afea7cc88f326ce56e9360691d2c"
         },
         {
           "bytes": 10678,
-          "path": "bundle/whole-law/evaluation/executions/eval-24eeb1c54bbb2b604c70/scores.json",
+          "path": "bundle/whole-law/evaluation/executions/eval-7d891e153705f9991f2e/scores.json",
           "sha256": "8228f85adbf098493e28892d5901c15d2f7ce11ea2e84d82b97281b778a3642c"
         }
       ],
       "minimum_critical_family_score": 100,
-      "run_id": "eval-24eeb1c54bbb2b604c70",
+      "run_id": "eval-7d891e153705f9991f2e",
       "scope": "corpus-navigation-metadata",
       "status": "passed"
     },
     "gaps": {
       "counts": {
-        "blocked": 3,
+        "blocked": 5,
         "deferred": 3,
-        "open": 5,
-        "resolved": 15,
+        "open": 2,
+        "resolved": 16,
         "total": 26
       },
       "source": {
-        "bytes": 22063,
+        "bytes": 23290,
         "path": "release-assurance/gap-register.json",
-        "sha256": "651d371cfcf520fdb8084b7853e2077f84a2fa5897073b1ce290ef0c2c5c048d"
+        "sha256": "87d9b06e9e417d98bbe1a972d1cfc5a741180498bb83b68c3d92c396cf0464a1"
       },
       "unresolved": [
         {
@@ -196,10 +266,10 @@
         {
           "area": "browser, accessibility and performance",
           "id": "IMP-GAP-012",
-          "next_action": "Publish the green corrective Explorer v0.5.1 release, then bind or rerun the Chrome, Firefox and WebKit receipt against its exact commit and the frozen Legislation descriptor digests before recording that binding in external finalization evidence.",
+          "next_action": "Bind and rerun the Chrome, Firefox and WebKit receipt against published Explorer v0.5.4 commit a23dfdea56fea0184b6d53f3163b292dd1a312ed and the frozen Legislation descriptor digests, then record that binding in external finalization evidence.",
           "release_effect": "blocks-GATE-07-and-GATE-08",
           "status": "blocked",
-          "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations. Explorer v0.5.0 remains the completed release-order milestone, but corrective v0.5.1 is now the exact finalization prerequisite and is not yet published or bound to the frozen Legislation candidate."
+          "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations. Explorer v0.5.0 remains the completed release-order milestone and v0.5.1 remains historical corrective work. Explorer v0.5.2 is historical and superseded because timestamp-derived SvelteKit build bytes were not reproducible. Explorer v0.5.3 is historical and superseded because an independent observation of its Actions TAR found a 159-byte 404.html after assembly where the canonical app-build manifest declared 1,122 bytes. Published v0.5.4 from protected-main commit a23dfdea56fea0184b6d53f3163b292dd1a312ed and tree 981d5c967b7017c78f37aab379edd95f44917cf5 preserves the built 404.html, adds a post-assembly manifest verifier, and supplies a durable 185,023,908-byte Pages release asset with SHA-256 357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0; binding it to the frozen Legislation candidate is externally closable only after exact freeze."
         },
         {
           "area": "public access and links",
@@ -207,7 +277,7 @@
           "next_action": "After deployment, crawl Pages, raw, archive and compatibility routes unauthenticated and bind the results.",
           "release_effect": "blocks-GATE-09",
           "status": "blocked",
-          "summary": "Local link validation exists, but deployed public entry-point validation cannot precede deployment."
+          "summary": "Local link validation exists, but deployed public entry-point validation is externally closable only after exact freeze, immutable RC publication and deployment."
         },
         {
           "area": "YAML-LD HTTP media type",
@@ -223,23 +293,23 @@
           "next_action": "Run clean-clone generation with pinned dependencies and compare semantic and byte digests.",
           "release_effect": "blocks-GATE-06",
           "status": "blocked",
-          "summary": "A reproduction contract exists, but clean-room execution evidence does not."
+          "summary": "A reproduction contract exists, but clean-room execution and exact archive-byte evidence are externally closable only after exact freeze."
         },
         {
           "area": "security assurance",
           "id": "IMP-GAP-016",
           "next_action": "Run the security scan only after the exact release candidate is frozen.",
           "release_effect": "blocks-GATE-10-after-freeze",
-          "status": "open",
-          "summary": "The earlier security scan targeted a mutable, incomplete implementation and cannot seal the final candidate."
+          "status": "blocked",
+          "summary": "The earlier security scan targeted a mutable, incomplete implementation and cannot seal the final candidate. Exact-candidate secret, dependency, content and supply-chain assurance is externally closable only after exact freeze."
         },
         {
           "area": "release and promotion",
           "id": "IMP-GAP-017",
-          "next_action": "Release Explorer first, freeze and validate the Legislation RC once, deploy it, then promote identical digests.",
-          "release_effect": "blocks-GATE-12-and-GATE-13",
-          "status": "open",
-          "summary": "No exact release candidate has been frozen, deployed or promoted."
+          "next_action": "Freeze the validated Legislation candidate once, create and publish its immutable archive, deploy it, run the post-RC checks and promote identical digests through the external finalization workflow.",
+          "release_effect": "blocks-external-release-and-GATE-13-after-freeze",
+          "status": "blocked",
+          "summary": "No exact Legislation candidate has been frozen, archived, deployed or promoted. These release and promotion obligations are externally closable only after exact freeze; embedded GATE-12 is already complete and is not blocked by this record."
         },
         {
           "area": "external assurance",
@@ -264,14 +334,6 @@
           "release_effect": "accepted-federation-population-boundary",
           "status": "deferred",
           "summary": "The semantic contract represents every named class at the approved catalogue/schema grain. Complete population of every future source-family child bundle is explicitly outside the initial v0.3.0 federation claim."
-        },
-        {
-          "area": "final Codex cost and secret-safe release evidence",
-          "id": "IMP-GAP-026",
-          "next_action": "At final candidate closure, preserve the accepted v3 denominator and exact zero direct-API cost receipt in the final report, then bind exact-RC security evidence that no credential or secret entered Git or logs.",
-          "release_effect": "blocks-full-P05-06-finalization",
-          "status": "open",
-          "summary": "D-13 partially supersedes P05-06: direct-API paid-stage preflight and cap mechanics are not used by the selected no-API route. The accepted v3 evidence now records 56,479 accepted assertions, zero API calls and input/output tokens, exact USD 0 / GBP 0 direct API spend, USD 0 cost per accepted assertion, exchange-rate non-applicability and unavailable/unmetered Codex service fields. No API key was required or used; final exact-RC secret-safe evidence and report binding remain outstanding."
         }
       ]
     },
@@ -1301,7 +1363,7 @@
       "source": {
         "bytes": 45109,
         "path": "bundle/release-assurance/constraint-report.json",
-        "sha256": "b2c65174da65d6b6dc6d5a1b6a5b1202f1476be7d2794cb60273bc432f41db15"
+        "sha256": "a42487f2af4e3a091c926b8b82df63f40014459b57ad5e5bfe7161363f3f6c0b"
       }
     },
     "model_cost": {
@@ -1385,7 +1447,7 @@
           {
             "bytes": 22602,
             "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-            "sha256": "e5f8b992daa45a477433d71af47eb04001bab0ce3da77b29e27baea4246a60be"
+            "sha256": "6b498a1009de8d1ba0f83b72dacc68c3d9f0fbeb9d62b72a1dcbfb1c053c7e51"
           },
           {
             "bytes": 96352,
@@ -1454,7 +1516,7 @@
       "source": {
         "bytes": 6778,
         "path": "bundle/release-assurance/model-cost-report.json",
-        "sha256": "8fe570c020f70240eb84e7a49012c3d286b28a54ae2cfb1a823ecf207127b763"
+        "sha256": "cebe51171d4cb670302f5ae21efce6c57f47f66959aa9606fcb97fee6cd15e43"
       },
       "source_kind": "governed-codex-assisted-v3",
       "usage": {

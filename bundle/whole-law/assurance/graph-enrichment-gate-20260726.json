@@ -77,9 +77,9 @@
       "sha256": "e4e1d508a07602bfa981e6d042d264979f487865efa1821f667658324bb5fe9a"
     },
     "explorer_runtime_acceptance": {
-      "bytes": 73370,
+      "bytes": 77151,
       "path": "release-assurance/explorer-runtime-acceptance.json",
-      "sha256": "d6ec63c55fffd214546c05bbb2a27e07e2667d36992807acc2a88dbf3ecacf27"
+      "sha256": "5bfa975b1a19d3beeaf8260da29e86dcaf80e7d66b0bc7a659dd9dec0f7b125b"
     },
     "federation_relationship_summary": {
       "bytes": 74960,
@@ -112,9 +112,9 @@
       "sha256": "965964d211313f17721a2610e6bdfec4996a00a9ea6b40527d95e74f25487fd3"
     },
     "whole_law_explorer_descriptor": {
-      "bytes": 110829,
+      "bytes": 110999,
       "path": "bundle/whole-law/okf-explorer.json",
-      "sha256": "958a79e8866832a20073b5227598d9c869c6581c69de81987edc6975025f29ce"
+      "sha256": "18297c95e172b1af4a15eb4332851f09ab04a981ea9aa53e57f74f6ec82d96eb"
     }
   },
   "blockers": [],
@@ -368,7 +368,7 @@
       "dimension": "explorer-queryability",
       "evidence": {
         "expected_legislation_descriptor_sha256": "93405064a3fd04ed1f5a4d8aa64a1827ee2d08977952e98a7c55bcefcab19d82",
-        "expected_whole_law_descriptor_sha256": "958a79e8866832a20073b5227598d9c869c6581c69de81987edc6975025f29ce",
+        "expected_whole_law_descriptor_sha256": "18297c95e172b1af4a15eb4332851f09ab04a981ea9aa53e57f74f6ec82d96eb",
         "federation_and_child": {
           "status": "passed"
         },
@@ -378,7 +378,7 @@
         "legislation_descriptor_current": true,
         "receipt_legislation_descriptor_sha256": "93405064a3fd04ed1f5a4d8aa64a1827ee2d08977952e98a7c55bcefcab19d82",
         "receipt_status": "passed",
-        "receipt_whole_law_descriptor_sha256": "958a79e8866832a20073b5227598d9c869c6581c69de81987edc6975025f29ce",
+        "receipt_whole_law_descriptor_sha256": "18297c95e172b1af4a15eb4332851f09ab04a981ea9aa53e57f74f6ec82d96eb",
         "whole_law_descriptor_current": true
       },
       "id": "G05-EXPLORER",

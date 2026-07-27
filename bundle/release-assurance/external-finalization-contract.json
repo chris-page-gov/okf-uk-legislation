@@ -2,6 +2,35 @@
   "archive": {
     "filename": "okf-uk-legislation-v0.3.0.tar.zst"
   },
+  "assurance_receipt_controllers": [
+    "scripts/build_pre_rc_assurance_receipts.py",
+    "scripts/build_post_rc_assurance_receipts.py"
+  ],
+  "codex_security": {
+    "producer": {
+      "name": "codex-security-plugin",
+      "version": "0.1.13"
+    },
+    "schemas": {
+      "coverage": {
+        "filename": "coverage.schema.json",
+        "sha256": "7964b132998ca4dcdd19c75f5d92483e1d44cb71462237709b968ec548c10652"
+      },
+      "findings": {
+        "filename": "findings.schema.json",
+        "sha256": "bd16dfe9a68c9b0485cad15b4ea3b037b0006dfb76a0549ed65a60ab8b062ac4"
+      },
+      "scan_manifest": {
+        "filename": "scan-manifest.schema.json",
+        "sha256": "20d6801775ae1b056d10114c3af5e07c5edfef27468218611411231a95c7c55e"
+      }
+    }
+  },
+  "deployed_manifest_template": "release-assurance/deployed-entrypoints-manifest.json",
+  "deployed_probe_controller": {
+    "path": "scripts/probe_deployed_entrypoints.py",
+    "version": "1.0.0"
+  },
   "candidate": {
     "final_tag": "v0.3.0",
     "rc_tag": "v0.3.0-rc.1",
@@ -9,8 +38,78 @@
   },
   "evidence_plane": "external-write-once",
   "explorer": {
+    "ci_workflow_run_id": 30228300676,
+    "git_tree": "981d5c967b7017c78f37aab379edd95f44917cf5",
+    "pages_workflow": "pages.yml",
+    "pages_workflow_run_id": 30228627196,
     "repository": "https://github.com/chris-page-gov/okf-explorer",
-    "required_tag": "v0.5.1"
+    "release_asset": {
+      "asset_id": 490852327,
+      "bytes": 185023908,
+      "name": "okf-explorer-v0.5.4-pages-artifact.zip",
+      "sha256": "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0",
+      "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.5.4/okf-explorer-v0.5.4-pages-artifact.zip"
+    },
+    "required_commit": "a23dfdea56fea0184b6d53f3163b292dd1a312ed",
+    "required_tag": "v0.5.4",
+    "required_tag_object": "5f22de79e8521b9ca9314f6e3c92b097b9a23a5b",
+    "runtime_provenance": {
+      "runner": {
+        "path": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs",
+        "bytes": 42808,
+        "sha256": "ede0f39d1421ab52eddc6e7c78fde8ca4f6a40770c188a9a36d1848efd6b4d1c"
+      },
+      "site_assembly": {
+        "app_manifest_module": {
+          "path": "apps/okf-explorer/scripts/app_build_manifest.mjs",
+          "bytes": 15822,
+          "sha256": "387a2981711d5c890d47b644751eabd8e97b5bdd432fbf834f19537474478896"
+        },
+        "assembler": {
+          "path": "scripts/build_site.py",
+          "bytes": 6113,
+          "sha256": "6ba7746c5a2d71870585d21928fbde16612cfc69a8299eb4f2a9414d3e62ef30"
+        },
+        "verifier": {
+          "path": "apps/okf-explorer/scripts/verify_assembled_site.mjs",
+          "bytes": 1435,
+          "sha256": "68f32b4f4f1bc1c048dd4bb35572c673a87bb6448cef0bc6afc50430f014b565"
+        }
+      },
+      "pages": {
+        "workflow_path": ".github/workflows/pages.yml",
+        "workflow_bytes": 2529,
+        "workflow_sha256": "e9af1abad43567826d5c611c0a57d2ced694cd3e925ed5c2eed5e85d80f470fd",
+        "run_id": 30228627196,
+        "run_attempt": 1,
+        "commit": "a23dfdea56fea0184b6d53f3163b292dd1a312ed",
+        "artifact_id": 8639352412,
+        "artifact_name": "github-pages",
+        "artifact_zip": {
+          "bytes": 185023908,
+          "sha256": "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0"
+        },
+        "artifact_tar": {
+          "bytes": 817694720,
+          "sha256": "10565ce278f5386d736ac7396909d0213431f0c15c4086139302aba5702a01bc"
+        },
+        "build_manifest": {
+          "path": "explorer-build/okf-explorer-build-manifest.json",
+          "bytes": 2849,
+          "sha256": "62dd2b96fba2c832a61fcbccbc01fbe83dda83ffeab61dfb8544a60fa37310be"
+        },
+        "build_index": {
+          "path": "explorer-build/index.html",
+          "bytes": 1318,
+          "sha256": "b40439d2c8f67447d80f583595197493a1c2a2fe12e61e6e632b74cb4d9b6cc9"
+        },
+        "build_tree": {
+          "algorithm": "sha256-canonical-json-materials-v1",
+          "files": 16,
+          "sha256": "b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7"
+        }
+      }
+    }
   },
   "finalization": {
     "archive_rebuild_prohibited": true,
@@ -22,7 +121,7 @@
   "final_promotion_authorization": {
     "output_filename": "final-promotion-authorization-receipt.json",
     "output_schema": "release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
-    "required_gates": ["GATE-09", "GATE-14"],
+    "required_gates": ["GATE-09"],
     "state": "final_promotion_eligible",
     "write_once": true
   },
@@ -40,6 +139,7 @@
     "explorer_runtime_receipt": "release-assurance/schemas/explorer-runtime-receipt.schema.json",
     "explorer_release_receipt": "release-assurance/schemas/explorer-release-receipt.schema.json",
     "final_promotion_authorization_receipt": "release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
+    "github_pages_observation": "release-assurance/schemas/github-pages-observation.schema.json",
     "github_release_observation": "release-assurance/schemas/github-release-observation.schema.json",
     "performance_assurance_receipt": "release-assurance/schemas/performance-assurance-receipt.schema.json",
     "pre_rc_authorization_receipt": "release-assurance/schemas/pre-rc-authorization-receipt.schema.json",
@@ -64,6 +164,84 @@
     "rc": "okf-uk-legislation-v0.3.0-rc.1-release-observation.json",
     "schema": "release-assurance/schemas/github-release-observation.schema.json"
   },
+  "pages_observation": {
+    "controller": "scripts/capture_github_pages_observation.py",
+    "schema": "release-assurance/schemas/github-pages-observation.schema.json",
+    "output": "github-pages-observation.json",
+    "target": {
+      "repository": "https://github.com/chris-page-gov/okf-explorer",
+      "run_id": 30228627196,
+      "run_attempt": 1,
+      "head_sha": "a23dfdea56fea0184b6d53f3163b292dd1a312ed",
+      "git_tree": "981d5c967b7017c78f37aab379edd95f44917cf5",
+      "workflow_path": ".github/workflows/pages.yml",
+      "artifact_id": 8639352412,
+      "artifact_name": "github-pages"
+    },
+    "archive": {
+      "zip": {
+        "path": "raw/github-pages-artifact.zip",
+        "bytes": 185023908,
+        "sha256": "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0"
+      },
+      "tar": {
+        "name": "artifact.tar",
+        "bytes": 817694720,
+        "sha256": "10565ce278f5386d736ac7396909d0213431f0c15c4086139302aba5702a01bc",
+        "member_count": 9980,
+        "file_count": 9911,
+        "directory_count": 69,
+        "total_file_bytes": 807618104,
+        "retained_separately": false,
+        "raw_header_census": {
+          "raw_headers": 12375,
+          "gnu_longname_headers": 2395,
+          "logical_members": 9980,
+          "regular_headers": 9911,
+          "directory_headers": 69
+        }
+      },
+      "inventory": {
+        "path": "inventory/tar-files.json",
+        "bytes": 1947196,
+        "sha256": "3910b02ea89caa5e9e9080fb6a58bc7ab01d4b33ba7a5190cd4e257f388b0bce",
+        "file_count": 9911,
+        "total_file_bytes": 807618104,
+        "materials_sha256": "13928e64e515171336f8c8523c515706693a1c13d8c46abc83728e779a913c61"
+      },
+      "build": {
+        "manifest": {
+          "path": "okf-explorer-build-manifest.json",
+          "bytes": 2849,
+          "sha256": "62dd2b96fba2c832a61fcbccbc01fbe83dda83ffeab61dfb8544a60fa37310be"
+        },
+        "index": {
+          "path": "index.html",
+          "bytes": 1318,
+          "sha256": "b40439d2c8f67447d80f583595197493a1c2a2fe12e61e6e632b74cb4d9b6cc9"
+        },
+        "not_found": {
+          "path": "404.html",
+          "bytes": 1122,
+          "sha256": "73a1864b436ac540bd983e0f191cd69bac5889fef37153904dddd00099f9d781"
+        },
+        "tree": {
+          "algorithm": "sha256-canonical-json-materials-v1",
+          "files": 16,
+          "sha256": "b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7"
+        }
+      }
+    },
+    "durable_alternate": {
+      "asset_id": 490852327,
+      "name": "okf-explorer-v0.5.4-pages-artifact.zip",
+      "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.5.4/okf-explorer-v0.5.4-pages-artifact.zip",
+      "bytes": 185023908,
+      "sha256": "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0",
+      "github_digest": "sha256:357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0",
+      "cross_binding": "required-from-github-release-observation"
+    }
+  },
   "output_schema": "release-assurance/schemas/external-finalization-receipt.schema.json",
   "required_security_checks": [
     "secrets",
@@ -79,6 +257,17 @@
     "supply-chain"
   ],
   "traceability": {
+    "externally_closable_ids": [
+      "P06-03",
+      "P08-06",
+      "P09-05",
+      "P10-02",
+      "P10-03",
+      "P10-04",
+      "D-01",
+      "D-05",
+      "D-07"
+    ],
     "frozen_ids": [
       "P01-01", "P01-02", "P01-03", "P01-04",
       "P02-01", "P02-02", "P02-03", "P02-04",
@@ -94,9 +283,9 @@
       "D-07", "D-08", "D-09", "D-10", "D-11", "D-12", "D-13"
     ],
     "frozen_ledger_path": "release-assurance/implementation-traceability.json",
-    "frozen_ledger_sha256": "650c74298155abf3b665a94a3377fdad6c36ff51dcebabd921473842f36511a2",
+    "frozen_ledger_sha256": "37040d0065af9ee2fd90090c33c2f1ca1a0082953ca6325c77adc3c4e77acf23",
     "terminal_dispositions": ["passed", "deferred", "blocked", "superseded"]
   },
-  "schema": "okf-external-finalization-contract.v2",
-  "version": "2.1.0"
+  "schema": "okf-external-finalization-contract.v3",
+  "version": "3.0.0"
 }

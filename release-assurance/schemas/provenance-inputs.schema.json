@@ -11,8 +11,14 @@
     "controller",
     "finalization_controller",
     "release_observation_controller",
+    "pages_observation_controller",
+    "pages_observation_schema",
+    "assurance_receipt_controllers",
+    "deployed_manifest_template",
+    "deployed_probe_controller",
     "finalization_contract",
     "finalization_schemas",
+    "explorer_runtime_provenance",
     "profile",
     "dependency_lock",
     "dependencies",
@@ -22,7 +28,7 @@
     "network_policy"
   ],
   "properties": {
-    "schema": {"const": "okf-reproduction-provenance-inputs.v1"},
+    "schema": {"const": "okf-reproduction-provenance-inputs.v2"},
     "commit": {"$ref": "#/$defs/gitObject"},
     "tree": {"$ref": "#/$defs/gitObject"},
     "commit_time": {"type": "string", "format": "date-time"},
@@ -35,6 +41,32 @@
     "release_observation_controller": {
       "$ref": "#/$defs/releaseObservationControllerMaterial"
     },
+    "pages_observation_controller": {
+      "$ref": "#/$defs/pagesObservationControllerMaterial"
+    },
+    "pages_observation_schema": {
+      "$ref": "#/$defs/pagesObservationSchemaMaterial"
+    },
+    "assurance_receipt_controllers": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/preRcAssuranceReceiptControllerMaterial"
+        },
+        {
+          "$ref": "#/$defs/postRcAssuranceReceiptControllerMaterial"
+        }
+      ],
+      "items": false
+    },
+    "deployed_manifest_template": {
+      "$ref": "#/$defs/deployedManifestTemplateMaterial"
+    },
+    "deployed_probe_controller": {
+      "$ref": "#/$defs/deployedProbeControllerMaterial"
+    },
     "finalization_contract": {
       "$ref": "#/$defs/finalizationContractMaterial"
     },
@@ -43,6 +75,9 @@
       "minItems": 1,
       "uniqueItems": true,
       "items": {"$ref": "#/$defs/finalizationSchemaMaterial"}
+    },
+    "explorer_runtime_provenance": {
+      "$ref": "#/$defs/explorerRuntimeProvenance"
     },
     "profile": {"$ref": "#/$defs/profileMaterial"},
     "dependency_lock": {"$ref": "#/$defs/dependencyLockMaterial"},
@@ -122,6 +157,78 @@
       },
       "additionalProperties": false
     },
+    "pagesObservationControllerMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "scripts/capture_github_pages_observation.py"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "pagesObservationSchemaMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "release-assurance/schemas/github-pages-observation.schema.json"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "preRcAssuranceReceiptControllerMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "scripts/build_pre_rc_assurance_receipts.py"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "postRcAssuranceReceiptControllerMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "scripts/build_post_rc_assurance_receipts.py"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "deployedManifestTemplateMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "release-assurance/deployed-entrypoints-manifest.json"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "deployedProbeControllerMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "scripts/probe_deployed_entrypoints.py"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
     "finalizationContractMaterial": {
       "type": "object",
       "required": ["path", "bytes", "sha256"],
@@ -144,6 +251,161 @@
         },
         "bytes": {"type": "integer", "minimum": 1},
         "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "explorerRuntimeProvenance": {
+      "type": "object",
+      "required": ["runner", "site_assembly", "pages"],
+      "properties": {
+        "runner": {
+          "type": "object",
+          "required": ["path", "bytes", "sha256"],
+          "properties": {
+            "path": {
+              "const": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs"
+            },
+            "bytes": {"type": "integer", "minimum": 1},
+            "sha256": {"$ref": "#/$defs/sha256"}
+          },
+          "additionalProperties": false
+        },
+        "site_assembly": {
+          "type": "object",
+          "required": ["app_manifest_module", "assembler", "verifier"],
+          "properties": {
+            "app_manifest_module": {
+              "$ref": "#/$defs/explorerAppManifestModuleMaterial"
+            },
+            "assembler": {
+              "$ref": "#/$defs/explorerSiteAssemblerMaterial"
+            },
+            "verifier": {
+              "$ref": "#/$defs/explorerAssembledSiteVerifierMaterial"
+            }
+          },
+          "additionalProperties": false
+        },
+        "pages": {
+          "type": "object",
+          "required": [
+            "workflow_path",
+            "workflow_bytes",
+            "workflow_sha256",
+            "run_id",
+            "run_attempt",
+            "commit",
+            "artifact_id",
+            "artifact_name",
+            "artifact_zip",
+            "artifact_tar",
+            "build_manifest",
+            "build_index",
+            "build_tree"
+          ],
+          "properties": {
+            "workflow_path": {
+              "const": ".github/workflows/pages.yml"
+            },
+            "workflow_bytes": {"type": "integer", "minimum": 1},
+            "workflow_sha256": {"$ref": "#/$defs/sha256"},
+            "run_id": {"type": "integer", "minimum": 1},
+            "run_attempt": {"type": "integer", "minimum": 1},
+            "commit": {"$ref": "#/$defs/gitObject"},
+            "artifact_id": {"type": "integer", "minimum": 1},
+            "artifact_name": {"type": "string", "minLength": 1},
+            "artifact_zip": {"$ref": "#/$defs/artifactSeal"},
+            "artifact_tar": {"$ref": "#/$defs/artifactSeal"},
+            "build_manifest": {
+              "$ref": "#/$defs/explorerBuildManifestMaterial"
+            },
+            "build_index": {
+              "$ref": "#/$defs/explorerBuildIndexMaterial"
+            },
+            "build_tree": {
+              "$ref": "#/$defs/explorerBuildTree"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "explorerAppManifestModuleMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "apps/okf-explorer/scripts/app_build_manifest.mjs"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "explorerSiteAssemblerMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"const": "scripts/build_site.py"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "explorerAssembledSiteVerifierMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "apps/okf-explorer/scripts/verify_assembled_site.mjs"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "artifactSeal": {
+      "type": "object",
+      "required": ["bytes", "sha256"],
+      "properties": {
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "explorerBuildManifestMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "const": "explorer-build/okf-explorer-build-manifest.json"
+        },
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "explorerBuildIndexMaterial": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"const": "explorer-build/index.html"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "explorerBuildTree": {
+      "type": "object",
+      "required": ["algorithm", "files", "sha256"],
+      "properties": {
+        "algorithm": {
+          "const": "sha256-canonical-json-materials-v1"
+        },
+        "files": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "computed_sha256": {"$ref": "#/$defs/sha256"}
       },
       "additionalProperties": false
     },

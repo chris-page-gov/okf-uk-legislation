@@ -1,7 +1,7 @@
 {
   "SPDXID": "SPDXRef-DOCUMENT",
   "creationInfo": {
-    "created": "2026-07-25T23:30:00Z",
+    "created": "2026-07-26T20:54:40Z",
     "creators": [
       "Tool: build_release_assurance.py-1.0.0"
     ],
@@ -13,7 +13,7 @@
     "SPDXRef-Package-Government-Metadata",
     "SPDXRef-Package-Source-Specific"
   ],
-  "documentNamespace": "https://chris-page-gov.github.io/okf-uk-legislation/spdx/0242aae39fc1209693221ce58c776896049c05140e9618d51a9d9e954d40870c",
+  "documentNamespace": "https://chris-page-gov.github.io/okf-uk-legislation/spdx/1e639bbf4e18d264f9c9279d41c2a3ba7cd3020d5e25ba40a2d7b0ed3d0d9de3",
   "name": "UK Whole-Law OKF rights inventory",
   "packages": [
     {

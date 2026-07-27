@@ -38,7 +38,7 @@
     "source_semantic_root_sha256": "88774344579e6d18572f981a1fc240a6452311e642fcf42fed95eafdfa5bc341",
     "eligibility_evidence": {
       "path": "whole-law/assurance/model-assisted-input-eligibility-20260726.json",
-      "sha256": "aa2e783cf0d585ae90817969ef80b38d54788f90f2a522f7eaa18468664a32b6",
+      "sha256": "72f139daf1cdbaf00dbc09b2b9993e9e01f59f59121048abdf8431f164896434",
       "ordered_identity_sha256": "8c8d65057485e9e0ebf5426964ae7ee0d72a7acaff93da4de2d660ccfd289332",
       "ordered_input_projection_sha256": "f68c2130d2019f0958e705afc43a4f358e5da353c6d4e23baf9f9429ed6ef5cf",
       "binding": "required-before-api-use",
