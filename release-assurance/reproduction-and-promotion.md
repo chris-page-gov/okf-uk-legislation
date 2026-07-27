@@ -175,9 +175,17 @@ captures originate in the distinct fresh
 stages their write-once copies beneath
 `$EVIDENCE/explorer-runtime/output/playwright`.
 
-## 3. Capture the published Explorer v0.5.4 release and Pages deployment
+## 3. Supply the published Explorer v0.5.4 release and Pages deployment
 
-This bounded controller makes no retry and writes a new immutable directory.
+Choose exactly one of the two routes below. A fresh bounded capture is the
+default. Offline reuse is permitted only for a previously completed,
+candidate-independent Explorer v0.5.4 closure whose complete 18-file
+checkpoint still verifies. Both routes supply the same immutable inputs to
+step 4; neither changes or refreshes the Explorer release.
+
+### Route A: fresh bounded capture
+
+The release controller makes no retry and writes a new immutable directory.
 It verifies the tag and release object, then downloads and hash-checks the
 declared Explorer release asset:
 
@@ -232,6 +240,50 @@ Explorer commit `a23dfdea56fea0184b6d53f3163b292dd1a312ed`, the same
 16-file app tree
 `b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7`.
 
+Bind step 4 to the newly captured observations:
+
+```sh
+export EXPLORER_RELEASE_OBSERVATION_PATH="$EVIDENCE/explorer-observation/explorer-release-observation.json"
+export EXPLORER_PAGES_OBSERVATION_PATH="$EVIDENCE/explorer-pages-observation/github-pages-observation.json"
+```
+
+### Route B: verified offline reuse
+
+This route avoids downloading two identical 185,023,908-byte assets again. It
+does not accept a partial directory, a convenience copy without its original
+checkpoint, or an observation of a different Explorer release or Pages run.
+Set the checkpoint root to the directory from which its recorded paths were
+hashed, verify every recorded file, reject links and unexpected file counts,
+then bind step 4 directly to the immutable source closure:
+
+```sh
+export EXPLORER_OBSERVATION_SOURCE="/absolute/path/to/explorer-v0.5.4-observations"
+export EXPLORER_OBSERVATION_CHECKPOINT="/absolute/path/to/explorer-v0.5.4-observations.sha256"
+export EXPLORER_OBSERVATION_CHECKPOINT_ROOT="/absolute/path/used-when-the-checkpoint-was-authored"
+
+test -d "$EXPLORER_OBSERVATION_SOURCE"
+test -f "$EXPLORER_OBSERVATION_CHECKPOINT"
+test ! -L "$EXPLORER_OBSERVATION_SOURCE"
+test ! -L "$EXPLORER_OBSERVATION_CHECKPOINT"
+test "$(wc -l < "$EXPLORER_OBSERVATION_CHECKPOINT" | tr -d ' ')" = 18
+test "$(find "$EXPLORER_OBSERVATION_SOURCE" -type f | wc -l | tr -d ' ')" = 18
+test -z "$(find "$EXPLORER_OBSERVATION_SOURCE" -type l -print -quit)"
+test -z "$(find "$EXPLORER_OBSERVATION_SOURCE" -type f ! -links 1 -print -quit)"
+(
+  cd "$EXPLORER_OBSERVATION_CHECKPOINT_ROOT"
+  shasum -a 256 -c "$EXPLORER_OBSERVATION_CHECKPOINT"
+)
+
+export EXPLORER_RELEASE_OBSERVATION_PATH="$EXPLORER_OBSERVATION_SOURCE/explorer-release-observation/explorer-release-observation.json"
+export EXPLORER_PAGES_OBSERVATION_PATH="$EXPLORER_OBSERVATION_SOURCE/explorer-pages-observation/github-pages-observation.json"
+```
+
+Step 4 independently reopens and reconstructs both observation closures,
+checks the pinned controller and schema hashes, exact tag, commit, run,
+artifact, byte count, SHA-256, TAR inventory, manifest and application-tree
+digest, and copies the verified materials into its own write-once output. A
+checkpoint pass alone therefore cannot authorize reuse.
+
 ## 4. Derive the three pre-RC Explorer receipts
 
 The builder independently reconstructs the Pages ZIP/TAR/app tree, cross-binds
@@ -243,8 +295,8 @@ directory:
 .venv/bin/python scripts/build_pre_rc_assurance_receipts.py \
   --reproduction-dir "$EVIDENCE/reproduction" \
   --runtime "$EVIDENCE/explorer-runtime/explorer-runtime-acceptance.json" \
-  --explorer-observation "$EVIDENCE/explorer-observation/explorer-release-observation.json" \
-  --pages-observation "$EVIDENCE/explorer-pages-observation/github-pages-observation.json" \
+  --explorer-observation "$EXPLORER_RELEASE_OBSERVATION_PATH" \
+  --pages-observation "$EXPLORER_PAGES_OBSERVATION_PATH" \
   --output-dir "$EVIDENCE/pre-rc-assurance" \
   --safe-external-root "$EVIDENCE"
 ```
