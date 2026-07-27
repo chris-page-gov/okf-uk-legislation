@@ -25,7 +25,6 @@ import subprocess
 import sys
 import tarfile
 import tempfile
-from math import ceil
 from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
 
@@ -1721,28 +1720,33 @@ def build_tar_zst(
         )
 
     decompressed = scratch / "verified-release.tar"
-    # python-zstandard specifies max_window_size in KiB, while the profile
-    # records byte limits.  Keep the decoder allocation bound aligned with the
-    # configured maximum tar size rather than accidentally multiplying it.
+    # The pinned python-zstandard stream_reader applies max_window_size in
+    # bytes. Use the same byte-unit cap as the bounded normalized tar.
     decompressor = zstandard.ZstdDecompressor(
-        max_window_size=ceil(archive_profile["max_tar_bytes"] / 1024)
+        max_window_size=archive_profile["max_tar_bytes"]
     )
     total = 0
-    with (
-        temporary_archive.open("rb") as source,
-        decompressor.stream_reader(source) as reader,
-        decompressed.open("wb") as target,
-    ):
-        while True:
-            chunk = reader.read(1024 * 1024)
-            if not chunk:
-                break
-            total += len(chunk)
-            if total > archive_profile["max_tar_bytes"]:
-                raise ReproductionError(
-                    "decompressed release archive exceeds byte limit"
-                )
-            target.write(chunk)
+    try:
+        with (
+            temporary_archive.open("rb") as source,
+            decompressor.stream_reader(source) as reader,
+            decompressed.open("wb") as target,
+        ):
+            while True:
+                chunk = reader.read(1024 * 1024)
+                if not chunk:
+                    break
+                total += len(chunk)
+                if total > archive_profile["max_tar_bytes"]:
+                    raise ReproductionError(
+                        "decompressed release archive exceeds byte limit"
+                    )
+                target.write(chunk)
+    except zstandard.ZstdError as exc:
+        raise ReproductionError(
+            "Zstandard archive cannot be decoded within the configured "
+            "window limit"
+        ) from exc
     if (
         total != tar_material["bytes"]
         or sha256(decompressed) != tar_material["sha256"]
