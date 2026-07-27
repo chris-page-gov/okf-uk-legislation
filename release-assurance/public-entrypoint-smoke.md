@@ -14,7 +14,7 @@ release review; it does not promote or rebuild the candidate.
 
 ## What the manifest covers
 
-The 24 explicit routes cover:
+The 25 explicit routes cover:
 
 - legislation and Whole-Law Pages descriptors and documentation;
 - raw descriptors beneath the declared `bundle/` and `bundle/whole-law/`
@@ -28,7 +28,8 @@ The 24 explicit routes cover:
   CKAN/Explorer guide;
 - compatibility moved descriptors for legislation, Whole-Law and CKAN;
 - the canonical GOV.UK CKAN descriptor;
-- legislation and Whole-Law YAML-LD documents plus strict JSON-LD fallbacks.
+- legislation and Whole-Law YAML-LD documents plus strict JSON-LD fallbacks;
+- the canonical Whole-Law Turtle projection.
 
 Cross-route assertions require Pages/raw descriptor byte equality, validate
 the three Explorer `bundle` query values, and require a passing strict JSON-LD
@@ -108,7 +109,7 @@ These commands make no network request:
 .venv/bin/python -m unittest tests.test_deployed_entrypoint_probe -v
 ```
 
-The fixtures exercise all 24 routes and every cross-route assertion. They also
+The fixtures exercise all 25 routes and every cross-route assertion. They also
 prove fail-closed handling of private DNS answers, unsafe schemes,
 non-allowlisted redirects, missing JSON-LD fallback, credential-bearing
 headers and attempted mutation of an existing attempt.
