@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import io
 import json
 import os
@@ -1101,6 +1102,55 @@ class ReleaseReproductionTests(unittest.TestCase):
                 prefix="fixture",
                 limits=limits,
             )
+
+    def test_archive_decoder_window_uses_profile_byte_limit(self) -> None:
+        root = self.root / "decoder-window"
+        publication = root / "bundle"
+        scratch = root / "scratch"
+        publication.mkdir(parents=True)
+        scratch.mkdir()
+        payload = b"".join(
+            hashlib.sha256(index.to_bytes(4, "big")).digest()
+            for index in range(4096)
+        )
+        (publication / "payload.bin").write_bytes(payload)
+        archive_profile = {
+            "prefix": "decoder-window-fixture",
+            "max_files": 10,
+            "max_file_bytes": 256 * 1024,
+            "max_total_file_bytes": 256 * 1024,
+            "max_tar_bytes": 512 * 1024,
+            "max_compression_ratio": 200,
+        }
+        profile = {
+            "archive": archive_profile,
+            "zstandard": {
+                "distribution": "zstandard",
+                "version": reproduction.zstandard.__version__,
+                "level": 3,
+                "threads": 0,
+                "write_checksum": True,
+                "write_content_size": True,
+                "write_dict_id": False,
+            },
+        }
+        inventory = reproduction.inventory_publication(
+            publication,
+            archive_profile,
+        )
+        output = root / "fixture.tar.zst"
+        result = reproduction.build_tar_zst(
+            publication,
+            inventory,
+            output,
+            profile,
+            scratch,
+        )
+        self.assertTrue(output.is_file())
+        self.assertEqual(reproduction.sha256(output), result["sha256"])
+        self.assertTrue(
+            result["validation"]["all_member_hashes_match"]
+        )
 
     def test_frozen_candidate_rejects_symbolic_ref(self) -> None:
         with self.assertRaisesRegex(
