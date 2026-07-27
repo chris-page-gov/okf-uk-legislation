@@ -11,11 +11,14 @@
     "tag",
     "commit",
     "release_url",
-    "materials"
+    "materials",
+    "release_evidence",
+    "pages_evidence",
+    "runtime_evidence"
   ],
   "properties": {
     "schema": {
-      "const": "okf-explorer-release-receipt.v2"
+      "const": "okf-explorer-release-receipt.v3"
     },
     "status": {
       "const": "published"
@@ -24,23 +27,37 @@
       "const": "https://github.com/chris-page-gov/okf-explorer"
     },
     "tag": {
-      "const": "v0.5.1"
+      "const": "v0.5.4"
     },
     "commit": {
       "type": "string",
       "pattern": "^[0-9a-f]{40}$"
     },
     "release_url": {
-      "const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.1"
+      "const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.4"
     },
     "materials": {
       "type": "array",
-      "minItems": 2,
-      "maxItems": 2,
+      "minItems": 3,
+      "maxItems": 3,
       "items": {
         "$ref": "#/$defs/roleMaterial"
       },
       "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "pages_observation"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
         {
           "contains": {
             "properties": {
@@ -70,9 +87,58 @@
           "maxContains": 1
         }
       ]
+    },
+    "release_evidence": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/material"
+      }
+    },
+    "pages_evidence": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/material"
+      }
+    },
+    "runtime_evidence": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/material"
+      }
     }
   },
   "$defs": {
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\\\u0000-\\u001f]+$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
     "roleMaterial": {
       "type": "object",
       "additionalProperties": false,
@@ -86,6 +152,7 @@
         "role": {
           "enum": [
             "release_observation",
+            "pages_observation",
             "runtime"
           ]
         },

@@ -1,0 +1,21 @@
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <http://purl.org/dc/terms/description> "A federated, evidence-led map of authoritative and supporting UK legal sources." .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <http://purl.org/dc/terms/issued> "2026-07-25"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <http://purl.org/dc/terms/license> <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <http://purl.org/dc/terms/title> "UK Whole-Law OKF" .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#Federation> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <http://www.w3.org/ns/prov#generatedAtTime> "2026-07-25T22:54:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#childBundle> <https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#descriptor> <https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#okfVersion> "0.2" .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#sourceRegister> <https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#status> "candidate" .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#version> "0.3.0" .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json> <http://purl.org/dc/terms/identifier> "whole-law-source-register-2026-07-25" .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json> <http://purl.org/dc/terms/title> "UK Whole-Law governed source register" .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#SourceRegister> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#accessMethodCount> "108"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#accessTestDate> "2026-07-25"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#recordCount> "72"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#registerSchema> "okf-whole-law-source-register.v1" .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#sourceClassCount> "36"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json> <https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#sourceHash> "sha256:575c62fab383a2c9444d3480640a086c4970b88c3ecafe9929f401969a84cdfe" .

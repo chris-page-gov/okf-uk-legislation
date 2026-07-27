@@ -5,7 +5,8 @@ immutable research evidence, release state, rights, dependencies, provenance,
 constraints and model cost. They are projections, not substitutes for gates
 which must still be executed on a frozen release candidate.
 
-- [Implementation status](implementation-status.md)
+- [Generated current ledger status](implementation-status.md)
+- [Detailed dated implementation review](implementation-status-detailed-2026-07-26.md)
 - [Controlling requirements](controlling-requirements.md)
 - [Clause-level traceability](implementation-traceability.json)
 - [Implementation gap register](gap-register.json)
@@ -36,6 +37,7 @@ which must still be executed on a frozen release candidate.
 - [explorer-runtime-receipt.schema.json](schemas/explorer-runtime-receipt.schema.json)
 - [external-finalization-receipt.schema.json](schemas/external-finalization-receipt.schema.json)
 - [final-promotion-authorization-receipt.schema.json](schemas/final-promotion-authorization-receipt.schema.json)
+- [github-pages-observation.schema.json](schemas/github-pages-observation.schema.json)
 - [github-release-observation.schema.json](schemas/github-release-observation.schema.json)
 - [performance-assurance-receipt.schema.json](schemas/performance-assurance-receipt.schema.json)
 - [pre-rc-authorization-receipt.schema.json](schemas/pre-rc-authorization-receipt.schema.json)

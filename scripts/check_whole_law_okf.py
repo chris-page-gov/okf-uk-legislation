@@ -13,6 +13,7 @@ from typing import Any
 
 try:
     import jsonschema
+    import rdflib
     from run_semantic_conformance import build_receipt, compare_receipt
 except ImportError as exc:  # pragma: no cover - exercised by CI setup failure
     raise SystemExit(
@@ -23,6 +24,27 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "whole-law"
 RESEARCH = ROOT / "research" / "whole-law-okf-research"
 PACK = ROOT / "bundle" / "whole-law"
+PUBLIC = "https://chris-page-gov.github.io/okf-uk-legislation/whole-law"
+SEMANTIC_REPRESENTATIONS = {
+    "yaml_ld": {
+        "path": "okf-bundle.yamlld",
+        "url": f"{PUBLIC}/okf-bundle.yamlld",
+    },
+    "json_ld": {
+        "path": "okf-bundle.jsonld",
+        "url": f"{PUBLIC}/okf-bundle.jsonld",
+        "alternate_kind": "jsonld-fallback",
+    },
+    "turtle": {
+        "path": "okf-bundle.ttl",
+        "url": f"{PUBLIC}/okf-bundle.ttl",
+        "alternate_kind": "turtle",
+    },
+}
+OKFLAW = rdflib.Namespace(
+    "https://chris-page-gov.github.io/okf-uk-legislation/"
+    "profile/whole-law/v1#"
+)
 EXPECTED = {
     "source_records": 72,
     "source_classes": 36,
@@ -183,6 +205,98 @@ def check_integrity(errors: list[str]) -> None:
     }
     if actual != expected_paths:
         errors.append("Whole-Law integrity path set does not equal publication path set")
+    required_semantic_paths = {
+        row["path"] for row in SEMANTIC_REPRESENTATIONS.values()
+    }
+    missing_semantic_paths = required_semantic_paths - expected_paths
+    if missing_semantic_paths:
+        errors.append(
+            "Whole-Law integrity omits required semantic representation(s): "
+            + ", ".join(sorted(missing_semantic_paths))
+        )
+
+
+def check_public_semantic_entrypoints(errors: list[str]) -> None:
+    descriptor_path = PACK / "okf-explorer.json"
+    if not descriptor_path.is_file():
+        errors.append("Whole-Law public descriptor is missing")
+        return
+    descriptor = load(descriptor_path)
+    yaml_ld = SEMANTIC_REPRESENTATIONS["yaml_ld"]
+    if descriptor.get("semantic_descriptor") != yaml_ld["url"]:
+        errors.append("Whole-Law descriptor does not declare canonical YAML-LD")
+    discovery = descriptor.get("discovery")
+    if not isinstance(discovery, dict):
+        discovery = {}
+    if discovery.get("semantic_descriptor") != yaml_ld["url"]:
+        errors.append(
+            "Whole-Law discovery contract does not declare canonical YAML-LD"
+        )
+    entrypoints = descriptor.get("entrypoints")
+    if not isinstance(entrypoints, dict):
+        entrypoints = {}
+    turtle = SEMANTIC_REPRESENTATIONS["turtle"]
+    if entrypoints.get("semantic_turtle") != turtle["path"]:
+        errors.append(
+            "Whole-Law descriptor does not expose the Turtle entrypoint"
+        )
+
+    alternate_access = descriptor.get("alternate_access")
+    if not isinstance(alternate_access, list):
+        alternate_access = []
+    alternates = {
+        (row.get("kind"), row.get("url"))
+        for row in alternate_access
+        if isinstance(row, dict)
+    }
+    for name in ("json_ld", "turtle"):
+        representation = SEMANTIC_REPRESENTATIONS[name]
+        expected = (
+            representation["alternate_kind"],
+            representation["url"],
+        )
+        if expected not in alternates:
+            errors.append(
+                "Whole-Law descriptor omits semantic alternate "
+                f"{expected[0]} at {expected[1]}"
+            )
+
+    for representation in SEMANTIC_REPRESENTATIONS.values():
+        path = PACK / representation["path"]
+        if not path.is_file():
+            errors.append(
+                "Whole-Law semantic representation is missing: "
+                f"{representation['path']}"
+            )
+
+    turtle_path = PACK / turtle["path"]
+    if not turtle_path.is_file():
+        return
+    try:
+        graph = rdflib.Graph()
+        graph.parse(turtle_path, format="turtle")
+    except Exception as exc:
+        errors.append(f"Whole-Law Turtle entrypoint is invalid: {exc}")
+        return
+    federations = set(graph.subjects(rdflib.RDF.type, OKFLAW.Federation))
+    source_registers = set(
+        graph.subjects(rdflib.RDF.type, OKFLAW.SourceRegister)
+    )
+    if len(federations) != 1 or len(source_registers) != 1:
+        errors.append(
+            "Whole-Law Turtle entrypoint must contain one Federation and "
+            "one SourceRegister"
+        )
+        return
+    federation = next(iter(federations))
+    source_register = next(iter(source_registers))
+    if set(graph.objects(federation, OKFLAW.sourceRegister)) != {
+        source_register
+    }:
+        errors.append(
+            "Whole-Law Turtle Federation does not link its governed "
+            "SourceRegister"
+        )
 
 
 def check_contracts(errors: list[str]) -> None:
@@ -354,6 +468,7 @@ def main() -> int:
     check_research(errors)
     check_okf_markdown(errors)
     check_contracts(errors)
+    check_public_semantic_entrypoints(errors)
     check_semantics(errors)
     check_integrity(errors)
     check_evaluation(errors)

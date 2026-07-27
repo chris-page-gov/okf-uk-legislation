@@ -115,6 +115,7 @@
     },
     "integrity": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "status",
         "summary",
@@ -129,7 +130,8 @@
         },
         "checks": {
           "type": "array",
-          "minItems": 2
+          "minItems": 8,
+          "maxItems": 8
         }
       }
     },
@@ -138,23 +140,98 @@
       "minLength": 1
     },
     "runner": {
-      "type": "object"
+      "$ref": "#/$defs/material"
     },
     "inputs": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "bundle_root",
         "federation_descriptor",
         "legislation_descriptor",
         "explorer_build"
-      ]
+      ],
+      "properties": {
+        "bundle_root": {
+          "$ref": "#/$defs/safeRelativePath"
+        },
+        "federation_descriptor": {
+          "$ref": "#/$defs/material"
+        },
+        "legislation_descriptor": {
+          "$ref": "#/$defs/material"
+        },
+        "explorer_build": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "root",
+            "manifest",
+            "index",
+            "files",
+            "sha256",
+            "algorithm",
+            "materials"
+          ],
+          "properties": {
+            "root": {
+              "const": "explorer-build"
+            },
+            "manifest": {
+              "$ref": "#/$defs/material"
+            },
+            "index": {
+              "$ref": "#/$defs/material"
+            },
+            "files": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "algorithm": {
+              "const": "sha256-canonical-json-materials-v1"
+            },
+            "materials": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/material"
+              }
+            }
+          }
+        }
+      }
     },
     "outputs": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "receipt",
         "screenshots"
-      ]
+      ],
+      "properties": {
+        "receipt": {
+          "const": "explorer-runtime-acceptance.json"
+        },
+        "screenshots": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/graphScreenshotMaterial"
+            },
+            {
+              "$ref": "#/$defs/runtimeScreenshotMaterial"
+            }
+          ],
+          "items": false
+        }
+      }
     },
     "gates": {
       "type": "object",
@@ -203,6 +280,7 @@
         },
         "cross_browser": {
           "type": "object",
+          "additionalProperties": false,
           "required": [
             "status",
             "required",
@@ -224,7 +302,20 @@
           "$ref": "#/$defs/passGate"
         },
         "accessibility": {
-          "$ref": "#/$defs/passGate"
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "standard"
+          ],
+          "properties": {
+            "status": {
+              "const": "passed"
+            },
+            "standard": {
+              "const": "WCAG 2.2 AA"
+            }
+          }
         }
       }
     },
@@ -242,6 +333,79 @@
     }
   },
   "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "safeRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\\\u0000-\\u001f\\u007f\\ud800-\\udfff]+$"
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/safeRelativePath"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "graphScreenshotMaterial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "output/playwright/legislation-runtime-graph-chrome.png"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "runtimeScreenshotMaterial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "output/playwright/legislation-runtime-chrome.png"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
     "candidate": {
       "type": "object",
       "additionalProperties": false,
@@ -282,7 +446,7 @@
           "const": "https://github.com/chris-page-gov/okf-explorer"
         },
         "tag": {
-          "const": "v0.5.1"
+          "const": "v0.5.4"
         },
         "commit": {
           "type": "string",
@@ -305,6 +469,7 @@
     },
     "passGate": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "status"
       ],
@@ -316,6 +481,7 @@
     },
     "passSummary": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "checks_total",
         "checks_passed",
@@ -341,6 +507,7 @@
     },
     "summaryContainer": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "status",
         "summary"

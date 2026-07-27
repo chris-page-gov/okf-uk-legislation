@@ -85,6 +85,37 @@ class SemanticConformanceTests(unittest.TestCase):
                 "semantic_values_match_published_register"
             ]
         )
+        semantic = receipt["semantic_equivalence"]
+        self.assertTrue(semantic["graphs_isomorphic"])
+        self.assertTrue(semantic["canonical_serializations_equal"])
+        self.assertTrue(semantic["turtle_rdf_round_trip"])
+        self.assertEqual(
+            [21, 21, 21],
+            [
+                semantic["yaml_graph_triples"],
+                semantic["json_graph_triples"],
+                semantic["turtle_graph_triples"],
+            ],
+        )
+        self.assertEqual(
+            1,
+            len(
+                set(
+                    semantic[
+                        "canonical_digest_by_representation"
+                    ].values()
+                )
+            ),
+        )
+        self.assertEqual(3, receipt["shacl"]["descriptor_graphs_validated"])
+        self.assertEqual(
+            {
+                "authored_yaml_ld",
+                "generated_json_ld",
+                "generated_turtle",
+            },
+            set(receipt["shacl"]["results"]),
+        )
         for result in receipt["shacl"]["results"].values():
             self.assertTrue(result["conforms"])
             self.assertEqual(1, result["federation_focus_nodes"])

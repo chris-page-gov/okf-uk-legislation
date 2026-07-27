@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import io
 import json
 import os
@@ -8,7 +9,9 @@ import sys
 import tarfile
 import tempfile
 import unittest
+from dataclasses import replace
 from pathlib import Path
+from typing import Any
 from unittest import mock
 
 import zstandard
@@ -17,6 +20,24 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import finalize_release_candidate as finalization  # noqa: E402
+import capture_github_pages_observation as pages_capture  # noqa: E402
+
+try:
+    from tests.test_github_pages_observation import (  # type: ignore[import-not-found]  # noqa: E402
+        FakeTransport as PagesFakeTransport,
+        fixture_archive,
+        resolver as pages_resolver,
+        responses as pages_responses,
+    )
+except ModuleNotFoundError:
+    from test_github_pages_observation import (  # type: ignore[no-redef]  # noqa: E402
+        FakeTransport as PagesFakeTransport,
+        fixture_archive,
+        resolver as pages_resolver,
+        responses as pages_responses,
+    )
+
+REAL_LOAD_JSON = finalization.load_json
 
 
 def write_json(path: Path, value: object) -> None:
@@ -28,6 +49,153 @@ def role_material(path: Path, role: str) -> dict[str, object]:
     return {"role": role, **finalization.material(path, path.name)}
 
 
+def synthetic_security_schemas() -> dict[str, dict[str, object]]:
+    """Return small producer schemas for the hermetic finalizer fixture."""
+
+    artifact = {
+        "type": "object",
+        "required": ["path", "sha256", "mediaType"],
+        "properties": {
+            "path": {"type": "string", "minLength": 1},
+            "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$",
+            },
+            "mediaType": {"type": "string", "minLength": 1},
+        },
+    }
+    return {
+        "scan_manifest": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "required": ["documentType", "schemaVersion", "scan"],
+            "properties": {
+                "documentType": {"const": "codex-security.scan-manifest"},
+                "schemaVersion": {"const": "1.0"},
+                "scan": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "producer",
+                        "status",
+                        "startedAt",
+                        "completedAt",
+                        "sealedAt",
+                        "target",
+                        "scope",
+                        "coverageRef",
+                        "findingsRef",
+                        "artifacts",
+                    ],
+                    "properties": {
+                        "id": {"type": "string", "minLength": 1},
+                        "producer": {"type": "object"},
+                        "status": {"const": "completed"},
+                        "startedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                        },
+                        "completedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                        },
+                        "sealedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                        },
+                        "target": {"type": "object"},
+                        "scope": {"type": "object"},
+                        "coverageRef": {"const": "coverage.json"},
+                        "findingsRef": {"const": "findings.json"},
+                        "artifacts": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": artifact,
+                        },
+                    },
+                },
+            },
+        },
+        "findings": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "required": [
+                "documentType",
+                "schemaVersion",
+                "scanId",
+                "findings",
+            ],
+            "properties": {
+                "documentType": {"const": "codex-security.findings"},
+                "schemaVersion": {"const": "1.0"},
+                "scanId": {"type": "string", "minLength": 1},
+                "findings": {"type": "array"},
+            },
+        },
+        "coverage": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "required": [
+                "documentType",
+                "schemaVersion",
+                "scanId",
+                "mode",
+                "completeness",
+                "inventoryStrategy",
+                "includePaths",
+                "excludePaths",
+                "surfaces",
+                "explicitExclusions",
+                "deferred",
+                "openQuestions",
+            ],
+            "properties": {
+                "documentType": {"const": "codex-security.coverage"},
+                "schemaVersion": {"const": "1.0"},
+                "scanId": {"type": "string", "minLength": 1},
+                "mode": {"type": "string"},
+                "completeness": {"type": "string"},
+                "inventoryStrategy": {"type": "string"},
+                "includePaths": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                },
+                "excludePaths": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                },
+                "surfaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "label",
+                            "disposition",
+                            "receiptRefs",
+                        ],
+                        "properties": {
+                            "id": {"type": "string", "minLength": 1},
+                            "label": {"type": "string", "minLength": 1},
+                            "disposition": {"type": "string"},
+                            "receiptRefs": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                },
+                            },
+                        },
+                    },
+                },
+                "explicitExclusions": {"type": "array"},
+                "deferred": {"type": "array"},
+                "openQuestions": {"type": "array"},
+            },
+        },
+    }
+
+
 class FinalizationFixture:
     def __init__(self, root: Path) -> None:
         self.root = root
@@ -35,7 +203,7 @@ class FinalizationFixture:
         self.commit = "a" * 40
         self.tree = "b" * 40
         self.inventory = "c" * 64
-        self.explorer_commit = "d" * 40
+        self.explorer_commit = self.contract["explorer"]["required_commit"]
         self.snapshot_digest = "e" * 64
         self.archive_name = self.contract["archive"]["filename"]
         self.reproduction_dir = root / "reproduction"
@@ -51,6 +219,9 @@ class FinalizationFixture:
             self.performance_dir,
         ):
             directory.mkdir()
+        self._prepare_runtime_evidence()
+        self._prepare_pages_evidence()
+        self._prepare_security_schema_pins()
         self.runtime = self._runtime_document()
         self.runtime_body = finalization.render(self.runtime)
         self.runtime_paths: dict[str, Path] = {}
@@ -69,6 +240,218 @@ class FinalizationFixture:
         self._write_security_evidence()
         self._write_accessibility_evidence()
         self._write_performance_evidence()
+
+    def _prepare_runtime_evidence(self) -> None:
+        runner_relative = self.contract["explorer"]["runtime_provenance"][
+            "runner"
+        ]["path"]
+        build_bodies = {
+            "explorer-build/assets/app.js": (
+                b"export const fixture = 'Explorer build closure';\n"
+            ),
+            "explorer-build/404.html": (
+                b"<!doctype html><title>Explorer fixture not found</title>\n"
+            ),
+            "explorer-build/index.html": (
+                b"<!doctype html><title>Explorer fixture</title>\n"
+            ),
+        }
+        build_source_materials = [
+            {
+                "path": relative.removeprefix("explorer-build/"),
+                "bytes": len(body),
+                "sha256": finalization.sha256_bytes(body),
+            }
+            for relative, body in sorted(build_bodies.items())
+        ]
+        build_tree_sha256 = finalization.sha256_bytes(
+            finalization.canonical_explorer_build_materials_bytes(
+                build_source_materials
+            )
+        )
+        build_manifest_body = finalization.render_explorer_build_manifest(
+            file_count=len(build_source_materials),
+            tree_sha256=build_tree_sha256,
+            materials=build_source_materials,
+        )
+        bodies = {
+            runner_relative: b"// deterministic Explorer runner fixture\n",
+            "bundle/whole-law/okf-explorer.json": (
+                b'{"id":"whole-law-fixture"}\n'
+            ),
+            "bundle/okf-explorer.json": (
+                b'{"id":"legislation-fixture"}\n'
+            ),
+            **build_bodies,
+            finalization.EXPLORER_BUILD_MANIFEST_PATH: build_manifest_body,
+            finalization.EXPECTED_EXPLORER_SCREENSHOT_PATHS[0]: (
+                b"\x89PNG\r\n\x1a\nExplorer graph fixture screenshot\n"
+            ),
+            finalization.EXPECTED_EXPLORER_SCREENSHOT_PATHS[1]: (
+                b"\x89PNG\r\n\x1a\nExplorer reader fixture screenshot\n"
+            ),
+        }
+        for directory in (
+            self.explorer_dir,
+            self.accessibility_dir,
+            self.performance_dir,
+        ):
+            for relative, body in bodies.items():
+                path = directory / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(body)
+        runner_path = self.explorer_dir / runner_relative
+        build_manifest_path = (
+            self.explorer_dir / finalization.EXPLORER_BUILD_MANIFEST_PATH
+        )
+        build_index_path = (
+            self.explorer_dir / finalization.EXPLORER_BUILD_INDEX_PATH
+        )
+        self.contract["explorer"]["runtime_provenance"]["runner"] = (
+            finalization.material(runner_path, runner_relative)
+        )
+        pages = self.contract["explorer"]["runtime_provenance"]["pages"]
+        pages["build_manifest"] = finalization.material(
+            build_manifest_path,
+            finalization.EXPLORER_BUILD_MANIFEST_PATH,
+        )
+        pages["build_index"] = finalization.material(
+            build_index_path,
+            finalization.EXPLORER_BUILD_INDEX_PATH,
+        )
+        pages["build_tree"] = {
+            "algorithm": finalization.EXPLORER_BUILD_ALGORITHM,
+            "files": len(build_source_materials),
+            "sha256": build_tree_sha256,
+        }
+        self.runtime_evidence = [
+            finalization.material(self.explorer_dir / relative, relative)
+            for relative in sorted(bodies)
+        ]
+        self.runtime_build_bodies = {
+            relative.removeprefix("explorer-build/"): body
+            for relative, body in build_bodies.items()
+        }
+
+    def _prepare_pages_evidence(self) -> None:
+        profile, zipped = fixture_archive(
+            actual_files=self.runtime_build_bodies
+        )
+        profile = replace(profile, head_sha=self.explorer_commit)
+        destination = self.explorer_dir / "pages"
+        transport = PagesFakeTransport(pages_responses(profile, zipped))
+        self.pages_observation = pages_capture.capture_observation(
+            output_dir=destination,
+            transport=transport,
+            resolver=pages_resolver,
+            clock=lambda: "2026-07-27T10:00:00Z",
+            observed_at="2026-07-27T10:00:00Z",
+            profile=profile,
+        )
+        self.pages_profile = profile
+        self.pages_zip_body = zipped
+        document = json.loads(
+            self.pages_observation.read_text(encoding="utf-8")
+        )
+        observed_archive = document["archive"]
+        build = observed_archive["build"]
+        not_found = next(
+            row
+            for row in build["materials"]
+            if row["path"] == "404.html"
+        )
+        self.contract["pages_observation"] = {
+            "controller": finalization.CANONICAL_PAGES_OBSERVATION_CONTROLLER,
+            "schema": finalization.CANONICAL_PAGES_OBSERVATION_SCHEMA,
+            "output": pages_capture.OBSERVATION_FILENAME,
+            "target": copy.deepcopy(document["target"]),
+            "archive": {
+                "zip": copy.deepcopy(observed_archive["zip"]["material"]),
+                "tar": copy.deepcopy(observed_archive["tar"]),
+                "inventory": {
+                    **copy.deepcopy(observed_archive["inventory"]["material"]),
+                    "file_count": observed_archive["inventory"]["file_count"],
+                    "total_file_bytes": observed_archive["inventory"][
+                        "total_file_bytes"
+                    ],
+                    "materials_sha256": observed_archive["inventory"][
+                        "materials_sha256"
+                    ],
+                },
+                "build": {
+                    "manifest": copy.deepcopy(build["manifest"]),
+                    "index": copy.deepcopy(build["index"]),
+                    "not_found": copy.deepcopy(not_found),
+                    "tree": copy.deepcopy(build["tree"]),
+                },
+            },
+            "durable_alternate": copy.deepcopy(
+                document["durable_alternate"]
+            ),
+        }
+        self.contract["explorer"]["pages_workflow_run_id"] = profile.run_id
+        self.contract["explorer"]["git_tree"] = profile.git_tree
+        pages_runtime = self.contract["explorer"]["runtime_provenance"][
+            "pages"
+        ]
+        pages_runtime.update(
+            {
+                "run_id": profile.run_id,
+                "run_attempt": profile.run_attempt,
+                "commit": profile.head_sha,
+                "artifact_id": profile.artifact_id,
+                "artifact_name": profile.artifact_name,
+                "artifact_zip": {
+                    "bytes": profile.zip_bytes,
+                    "sha256": profile.zip_sha256,
+                },
+                "artifact_tar": {
+                    "bytes": profile.tar_bytes,
+                    "sha256": profile.tar_sha256,
+                },
+                "build_manifest": {
+                    **copy.deepcopy(build["manifest"]),
+                    "path": (
+                        f"{finalization.EXPLORER_BUILD_ROOT}/"
+                        f"{build['manifest']['path']}"
+                    ),
+                },
+                "build_index": {
+                    **copy.deepcopy(build["index"]),
+                    "path": (
+                        f"{finalization.EXPLORER_BUILD_ROOT}/"
+                        f"{build['index']['path']}"
+                    ),
+                },
+                "build_tree": {
+                    "algorithm": build["tree"]["algorithm"],
+                    "files": build["tree"]["files"],
+                    "sha256": build["tree"]["sha256"],
+                },
+            }
+        )
+
+    def _prepare_security_schema_pins(self) -> None:
+        schema_dir = self.security_dir / "schemas"
+        schema_dir.mkdir()
+        self.security_schema_paths: dict[str, Path] = {}
+        filenames = {
+            "scan_manifest": "scan-manifest.schema.json",
+            "findings": "findings.schema.json",
+            "coverage": "coverage.schema.json",
+        }
+        for role, schema in synthetic_security_schemas().items():
+            path = schema_dir / filenames[role]
+            write_json(path, schema)
+            self.security_schema_paths[role] = path
+            self.contract["codex_security"]["schemas"][role]["sha256"] = (
+                finalization.sha256_file(path)
+            )
+
+    def load_json_with_contract(self, path: Path) -> dict[str, object]:
+        if Path(path).resolve() == finalization.DEFAULT_CONTRACT.resolve():
+            return copy.deepcopy(self.contract)
+        return REAL_LOAD_JSON(path)
 
     def _runtime_document(self) -> dict[str, object]:
         browsers = ["chrome", "firefox", "webkit"]
@@ -130,6 +513,99 @@ class FinalizationFixture:
             "required": browsers,
             "completed": browsers,
         }
+        gates["accessibility"] = {
+            "status": "passed",
+            "standard": "WCAG 2.2 AA",
+        }
+        runner = copy.deepcopy(
+            self.contract["explorer"]["runtime_provenance"]["runner"]
+        )
+        build_index = copy.deepcopy(
+            self.contract["explorer"]["runtime_provenance"]["pages"][
+                "build_index"
+            ]
+        )
+        build_manifest = copy.deepcopy(
+            self.contract["explorer"]["runtime_provenance"]["pages"][
+                "build_manifest"
+            ]
+        )
+        build_tree = copy.deepcopy(
+            self.contract["explorer"]["runtime_provenance"]["pages"][
+                "build_tree"
+            ]
+        )
+        manifest = finalization.parse_explorer_build_manifest(
+            (
+                self.explorer_dir
+                / finalization.EXPLORER_BUILD_MANIFEST_PATH
+            ).read_bytes()
+        )
+        build_materials = [
+            {
+                **row,
+                "path": f"{finalization.EXPLORER_BUILD_ROOT}/{row['path']}",
+            }
+            for row in manifest["materials"]
+        ]
+        federation = finalization.material(
+            self.explorer_dir / "bundle/whole-law/okf-explorer.json",
+            "whole-law/okf-explorer.json",
+        )
+        legislation = finalization.material(
+            self.explorer_dir / "bundle/okf-explorer.json",
+            "okf-explorer.json",
+        )
+        screenshots = [
+            finalization.material(
+                self.explorer_dir / relative,
+                relative,
+            )
+            for relative in finalization.EXPECTED_EXPLORER_SCREENSHOT_PATHS
+        ]
+        integrity_checks = [
+            {
+                "id": "federation_descriptor",
+                "status": "passed",
+                **federation,
+            },
+            {
+                "id": "legislation_descriptor",
+                "status": "passed",
+                **legislation,
+            },
+            {
+                "id": "explorer_build_manifest",
+                "status": "passed",
+                **build_manifest,
+            },
+            {
+                "id": "explorer_build_materials",
+                "status": "passed",
+                "files": len(build_materials),
+            },
+            {
+                "id": "explorer_build_index",
+                "status": "passed",
+                "sha256": build_index["sha256"],
+            },
+            {
+                "id": "explorer_build_tree",
+                "status": "passed",
+                "algorithm": build_tree["algorithm"],
+                "files": build_tree["files"],
+                "sha256": build_tree["sha256"],
+                "computed_sha256": build_tree["sha256"],
+            },
+            *[
+                {
+                    "id": f"screenshot:{screenshot['path']}",
+                    "status": "passed",
+                    **screenshot,
+                }
+                for screenshot in screenshots
+            ],
+        ]
         return {
             "schema": "okf-explorer-runtime-acceptance.v2",
             "measured_at": "2026-07-26T04:00:00Z",
@@ -175,25 +651,33 @@ class FinalizationFixture:
             "integrity": {
                 "status": "passed",
                 "summary": {
-                    "checks_total": 2,
-                    "checks_passed": 2,
+                    "checks_total": len(integrity_checks),
+                    "checks_passed": len(integrity_checks),
                     "checks_failed": 0,
                     "all_passed": True,
                 },
-                "checks": [
-                    {"id": "bundle", "status": "passed"},
-                    {"id": "explorer", "status": "passed"},
-                ],
+                "checks": integrity_checks,
             },
             "scope": "Exact frozen fixture publication.",
-            "runner": {"path": "runner.mjs"},
+            "runner": runner,
             "inputs": {
                 "bundle_root": "bundle",
-                "federation_descriptor": {},
-                "legislation_descriptor": {},
-                "explorer_build": {},
+                "federation_descriptor": federation,
+                "legislation_descriptor": legislation,
+                "explorer_build": {
+                    "root": finalization.EXPLORER_BUILD_ROOT,
+                    "manifest": build_manifest,
+                    "index": build_index,
+                    "files": build_tree["files"],
+                    "sha256": build_tree["sha256"],
+                    "algorithm": build_tree["algorithm"],
+                    "materials": build_materials,
+                },
             },
-            "outputs": {"receipt": "receipt.json", "screenshots": []},
+            "outputs": {
+                "receipt": "explorer-runtime-acceptance.json",
+                "screenshots": screenshots,
+            },
             "gates": gates,
             "browsers": [{"browser": browser} for browser in browsers],
             "failures": [],
@@ -205,6 +689,72 @@ class FinalizationFixture:
             ROOT / "release-assurance" / "implementation-traceability.json"
         ).read_bytes()
         self.ledger = json.loads(self.ledger_body)
+        cost_boundary = (
+            "Exact incremental direct OpenAI API cost only. The selected "
+            "Codex workflow made zero direct API calls; this does not claim "
+            "that total economic or subscription cost is zero."
+        )
+        codex_service_cost = {
+            "attributable_subscription_cost": None,
+            "billing_boundary": (
+                "Codex subscription/task-surface cost and weekly-allowance "
+                "consumption are not exposed."
+            ),
+            "subscription_usage": "unavailable-unmetered",
+            "weekly_allowance_usage": "unavailable-unmetered",
+        }
+        usage = {
+            "api_calls": 0,
+            "api_input_tokens": 0,
+            "api_output_tokens": 0,
+            "codex_subscription_token_usage": "not exposed",
+            "codex_weekly_allowance_usage": "not exposed",
+        }
+        enrichment_gate = {
+            "status": "passed",
+            "accepted_assertions": 1,
+        }
+        model_cost = {
+            "schema": "okf-model-cost-report.v2",
+            "provider": "OpenAI",
+            "accepted_assertions": 1,
+            "cost_boundary": cost_boundary,
+            "codex_service_cost": codex_service_cost,
+            "cost_per_accepted_assertion": {"usd": 0.0, "gbp": 0.0},
+            "enrichment_gate": enrichment_gate,
+            "incremental_cost": {"usd": 0.0, "gbp": 0.0},
+            "model_deployment_identity_available": False,
+            "model_identity": "Codex interactive task surface",
+            "model_identity_limitation": "Exact deployment is not exposed.",
+            "optional_direct_api_profile": {"status": "not-invoked"},
+            "release_effect": "candidate",
+            "run_id": "fixture-codex-run",
+            "source_kind": "governed-codex-assisted-v3",
+            "usage": usage,
+            "validation_errors": [],
+        }
+        model_cost_body = finalization.render(model_cost)
+        model_cost_material = {
+            "path": "bundle/release-assurance/model-cost-report.json",
+            "bytes": len(model_cost_body),
+            "sha256": finalization.sha256_bytes(model_cost_body),
+        }
+        model_cost_section = {
+            "boundary": cost_boundary,
+            "codex_service_cost": codex_service_cost,
+            "cost_per_accepted_assertion": {"usd": 0.0, "gbp": 0.0},
+            "enrichment_gate": enrichment_gate,
+            "incremental_cost": {"usd": 0.0, "gbp": 0.0},
+            "model_deployment_identity_available": False,
+            "model_identity": "Codex interactive task surface",
+            "model_identity_limitation": "Exact deployment is not exposed.",
+            "optional_direct_api_profile": {"status": "not-invoked"},
+            "release_effect": "candidate",
+            "run_id": "fixture-codex-run",
+            "source": model_cost_material,
+            "source_kind": "governed-codex-assisted-v3",
+            "usage": usage,
+        }
         report = {
             "schema": "okf-release-report.v1",
             "status": "passed",
@@ -212,16 +762,18 @@ class FinalizationFixture:
             "generated_at": "2026-07-26T04:00:00Z",
             "release": {"archive": self.archive_name},
             "sections": {
-                key: {"status": "passed"}
-                for key in (
+                **{
+                    key: {"status": "passed"}
+                    for key in (
                     "relationship_composition",
                     "coverage_and_freshness",
                     "gaps",
                     "licence_and_access_escalations",
                     "evaluation",
-                    "model_cost",
                     "yaml_ld_mime_exception",
-                )
+                    )
+                },
+                "model_cost": model_cost_section,
             },
             "checksum_binding": {"sha256": "f" * 64},
             "limitations": ["External publication gates remain pending."],
@@ -236,16 +788,17 @@ class FinalizationFixture:
         embedded = set(finalization.EMBEDDED_RC_GATES)
         for number in range(1, 15):
             gate_id = f"GATE-{number:02d}"
-            gate_rows.append(
-                {
-                    "id": gate_id,
-                    "group": "validation",
-                    "evidence_plane": (
-                        "embedded" if gate_id in embedded else "external"
-                    ),
-                    "status": "passed" if gate_id in embedded else "pending",
-                }
-            )
+            gate_row = {
+                "id": gate_id,
+                "group": "validation",
+                "evidence_plane": (
+                    "embedded" if gate_id in embedded else "external"
+                ),
+                "status": "passed" if gate_id in embedded else "pending",
+            }
+            if gate_id == "GATE-05":
+                gate_row["observed_evidence"] = enrichment_gate
+            gate_rows.append(gate_row)
         release_gates = {
             "schema": "okf-release-gates.v1",
             "gates": gate_rows,
@@ -272,6 +825,7 @@ class FinalizationFixture:
             "release_gates": release_gates,
             "implementation_traceability": self.ledger,
             "release_report": report,
+            "model_cost_report": model_cost,
         }
 
     def _seal_archive(self) -> None:
@@ -378,7 +932,7 @@ class FinalizationFixture:
             )
         ]
         provenance = {
-            "schema": "okf-reproduction-provenance-inputs.v1",
+            "schema": "okf-reproduction-provenance-inputs.v2",
             "commit": self.commit,
             "tree": self.tree,
             "commit_time": "2026-07-26T04:00:00Z",
@@ -456,11 +1010,40 @@ class FinalizationFixture:
                 finalization.RELEASE_OBSERVATION_CONTROLLER_PATH,
                 finalization.CANONICAL_RELEASE_OBSERVATION_CONTROLLER,
             ),
+            "pages_observation_controller": finalization.material(
+                finalization.PAGES_OBSERVATION_CONTROLLER_PATH,
+                finalization.CANONICAL_PAGES_OBSERVATION_CONTROLLER,
+            ),
+            "pages_observation_schema": finalization.material(
+                finalization.PAGES_OBSERVATION_SCHEMA_PATH,
+                finalization.CANONICAL_PAGES_OBSERVATION_SCHEMA,
+            ),
+            "assurance_receipt_controllers": [
+                finalization.material(
+                    ROOT / relative,
+                    relative,
+                )
+                for relative in (
+                    "scripts/build_pre_rc_assurance_receipts.py",
+                    "scripts/build_post_rc_assurance_receipts.py",
+                )
+            ],
+            "deployed_manifest_template": finalization.material(
+                ROOT / finalization.CANONICAL_DEPLOYED_MANIFEST_TEMPLATE,
+                finalization.CANONICAL_DEPLOYED_MANIFEST_TEMPLATE,
+            ),
+            "deployed_probe_controller": finalization.material(
+                finalization.DEPLOYED_PROBE_CONTROLLER_PATH,
+                finalization.CANONICAL_DEPLOYED_PROBE_CONTROLLER,
+            ),
             "finalization_contract": finalization.material(
                 finalization.DEFAULT_CONTRACT,
                 "release-assurance/external-finalization-contract.json",
             ),
             "finalization_schemas": schema_materials,
+            "explorer_runtime_provenance": copy.deepcopy(
+                self.contract["explorer"]["runtime_provenance"]
+            ),
         }
         self.provenance_path = self.reproduction_dir / "provenance-inputs.json"
         write_json(self.provenance_path, provenance)
@@ -539,24 +1122,34 @@ class FinalizationFixture:
         commit: str,
         filename: str,
         asset: bool,
+        asset_name: str | None = None,
+        asset_body: bytes | None = None,
+        asset_id_override: int | None = None,
+        annotated_tag_sha: str | None = None,
+        observed_at: str = "2026-07-26T04:10:00Z",
     ) -> tuple[Path, Path | None, str | None]:
         directory.mkdir(parents=True, exist_ok=True)
         release_id = 100 + len(tag)
-        asset_id = 200 + len(tag)
+        asset_id = asset_id_override or (200 + len(tag))
+        published_asset_name = asset_name or self.archive_name
         release_url = (
-            f"{repository}/releases/download/{tag}/{self.archive_name}"
+            f"{repository}/releases/download/{tag}/{published_asset_name}"
             if asset
             else None
         )
         asset_rows = []
         asset_path: Path | None = None
         if asset:
-            asset_path = directory / self.archive_name
-            asset_path.write_bytes(self.archive_path.read_bytes())
+            asset_path = directory / published_asset_name
+            asset_path.write_bytes(
+                self.archive_path.read_bytes()
+                if asset_body is None
+                else asset_body
+            )
             asset_rows = [
                 {
                     "id": asset_id,
-                    "name": self.archive_name,
+                    "name": published_asset_name,
                     "browser_download_url": release_url,
                     "size": asset_path.stat().st_size,
                 }
@@ -565,8 +1158,42 @@ class FinalizationFixture:
         release_body = directory / "release-body.json"
         tag_headers = directory / "tag-headers.json"
         tag_body = directory / "tag-body.json"
+        annotated_tag_body = (
+            directory / "annotated-tag-body.json"
+            if annotated_tag_sha is not None
+            else None
+        )
         attempt = directory / "attempt-manifest.json"
-        write_json(release_headers, {"etag": '"release"'})
+        release_api_url = (
+            f"https://api.github.com/repos/"
+            f"{repository.removeprefix('https://github.com/')}/"
+            f"releases/tags/{tag}"
+        )
+        ref_api_url = (
+            f"https://api.github.com/repos/"
+            f"{repository.removeprefix('https://github.com/')}/"
+            f"git/ref/tags/{tag}"
+        )
+        write_json(
+            release_headers,
+            {
+                "requests": [
+                    {
+                        "purpose": "release",
+                        "hops": [
+                            {
+                                "headers": [
+                                    {"name": "ETag", "value": '"release"'}
+                                ],
+                                "reason": "OK",
+                                "status": 200,
+                                "url": release_api_url,
+                            }
+                        ],
+                    }
+                ]
+            },
+        )
         write_json(
             release_body,
             {
@@ -577,24 +1204,82 @@ class FinalizationFixture:
                 "assets": asset_rows,
             },
         )
-        write_json(tag_headers, {"etag": '"tag"'})
+        write_json(
+            tag_headers,
+            {
+                "requests": [
+                    {
+                        "purpose": "tag-ref",
+                        "hops": [
+                            {
+                                "headers": [
+                                    {"name": "ETag", "value": '"tag"'}
+                                ],
+                                "reason": "OK",
+                                "status": 200,
+                                "url": ref_api_url,
+                            }
+                        ],
+                    }
+                ]
+            },
+        )
         write_json(
             tag_body,
             {
                 "ref": f"refs/tags/{tag}",
-                "object": {"type": "commit", "sha": commit},
+                "object": {
+                    "type": "tag" if annotated_tag_sha is not None else "commit",
+                    "sha": annotated_tag_sha or commit,
+                },
             },
         )
+        if annotated_tag_body is not None:
+            write_json(
+                annotated_tag_body,
+                {
+                    "sha": annotated_tag_sha,
+                    "object": {"type": "commit", "sha": commit},
+                },
+            )
         attempt_materials = [
             finalization.material(release_headers, release_headers.name),
             finalization.material(release_body, release_body.name),
             finalization.material(tag_headers, tag_headers.name),
             finalization.material(tag_body, tag_body.name),
         ]
+        if annotated_tag_body is not None:
+            attempt_materials.append(
+                finalization.material(
+                    annotated_tag_body, annotated_tag_body.name
+                )
+            )
         asset_headers: Path | None = None
         if asset and asset_path is not None:
             asset_headers = directory / "asset-headers.json"
-            write_json(asset_headers, {"etag": '"asset"'})
+            write_json(
+                asset_headers,
+                {
+                    "requests": [
+                        {
+                            "purpose": "release-asset",
+                            "hops": [
+                                {
+                                    "headers": [
+                                        {
+                                            "name": "ETag",
+                                            "value": '"asset"',
+                                        }
+                                    ],
+                                    "reason": "OK",
+                                    "status": 200,
+                                    "url": release_url,
+                                }
+                            ],
+                        }
+                    ]
+                },
+            )
             attempt_materials.extend(
                 [
                     finalization.material(asset_headers, asset_headers.name),
@@ -625,15 +1310,13 @@ class FinalizationFixture:
         observation: dict[str, object] = {
             "schema": "okf-github-release-observation.v1",
             "status": "verified",
-            "observed_at": "2026-07-26T04:10:00Z",
+            "observed_at": observed_at,
             "repository": repository,
             "tag": tag,
             "expected_commit": commit,
             "release": {
                 "api_url": (
-                    f"https://api.github.com/repos/"
-                    f"{repository.removeprefix('https://github.com/')}/"
-                    f"releases/tags/{tag}"
+                    release_api_url
                 ),
                 "http_status": 200,
                 "release_id": release_id,
@@ -648,19 +1331,29 @@ class FinalizationFixture:
             },
             "tag_resolution": {
                 "ref_api_url": (
-                    f"https://api.github.com/repos/"
-                    f"{repository.removeprefix('https://github.com/')}/"
-                    f"git/ref/tags/{tag}"
+                    ref_api_url
                 ),
                 "http_status": 200,
-                "object_type": "commit",
-                "object_sha": commit,
+                "object_type": (
+                    "tag" if annotated_tag_sha is not None else "commit"
+                ),
+                "object_sha": annotated_tag_sha or commit,
                 "peeled_commit": commit,
                 "response_headers": finalization.material(
                     tag_headers, tag_headers.name
                 ),
                 "response_bodies": [
-                    finalization.material(tag_body, tag_body.name)
+                    finalization.material(tag_body, tag_body.name),
+                    *(
+                        [
+                            finalization.material(
+                                annotated_tag_body,
+                                annotated_tag_body.name,
+                            )
+                        ]
+                        if annotated_tag_body is not None
+                        else []
+                    ),
                 ],
             },
             "integrity": {
@@ -671,7 +1364,7 @@ class FinalizationFixture:
         if asset and asset_path is not None and release_url is not None:
             assert asset_headers is not None
             observation["asset"] = {
-                "name": self.archive_name,
+                "name": published_asset_name,
                 "asset_id": asset_id,
                 "download_url": release_url,
                 "http_status": 200,
@@ -690,14 +1383,35 @@ class FinalizationFixture:
 
     def _write_explorer_evidence(self) -> None:
         observation_name = self.contract["release_observations"]["explorer"]
-        self.explorer_observation, _, _ = self._observation(
-            self.explorer_dir / "release",
-            repository=self.contract["explorer"]["repository"],
-            tag=self.contract["explorer"]["required_tag"],
-            commit=self.explorer_commit,
-            filename=observation_name,
-            asset=False,
+        self.explorer_observation, explorer_asset_path, explorer_asset_url = (
+            self._observation(
+                self.explorer_dir / "release",
+                repository=self.contract["explorer"]["repository"],
+                tag=self.contract["explorer"]["required_tag"],
+                commit=self.explorer_commit,
+                filename=observation_name,
+                asset=True,
+                asset_name=self.pages_profile.alternate_asset_name,
+                asset_body=self.pages_zip_body,
+                asset_id_override=self.pages_profile.alternate_asset_id,
+                annotated_tag_sha=self.contract["explorer"][
+                    "required_tag_object"
+                ],
+            )
         )
+        assert explorer_asset_path is not None
+        assert explorer_asset_url is not None
+        explorer_observation = json.loads(
+            self.explorer_observation.read_text(encoding="utf-8")
+        )
+        observed_asset = explorer_observation["asset"]
+        self.contract["explorer"]["release_asset"] = {
+            "asset_id": observed_asset["asset_id"],
+            "name": observed_asset["name"],
+            "bytes": observed_asset["bytes"],
+            "sha256": observed_asset["sha256"],
+            "url": explorer_asset_url,
+        }
         # Receipt-relative paths may use a subdirectory, while the canonical
         # leaf filenames remain fixed.
         observation_row = finalization.material(
@@ -708,8 +1422,30 @@ class FinalizationFixture:
             self.runtime_paths["explorer"],
             self.runtime_paths["explorer"].name,
         )
+        pages_observation_row = finalization.material(
+            self.pages_observation,
+            f"pages/{self.pages_observation.name}",
+        )
+        release_evidence = [
+            finalization.material(
+                path,
+                f"release/{path.name}",
+            )
+            for path in sorted(
+                self.explorer_observation.parent.iterdir(),
+                key=lambda value: value.name,
+            )
+            if path.is_file() and path != self.explorer_observation
+        ]
+        pages_evidence = [
+            finalization.material(
+                self.pages_observation.parent / relative,
+                f"pages/{relative}",
+            )
+            for relative in sorted(finalization.PAGES_SUPPORT_PATHS)
+        ]
         receipt = {
-            "schema": "okf-explorer-release-receipt.v2",
+            "schema": "okf-explorer-release-receipt.v3",
             "status": "published",
             "repository": self.contract["explorer"]["repository"],
             "tag": self.contract["explorer"]["required_tag"],
@@ -720,8 +1456,12 @@ class FinalizationFixture:
             ),
             "materials": [
                 {"role": "release_observation", **observation_row},
+                {"role": "pages_observation", **pages_observation_row},
                 {"role": "runtime", **runtime_row},
             ],
+            "release_evidence": release_evidence,
+            "pages_evidence": pages_evidence,
+            "runtime_evidence": copy.deepcopy(self.runtime_evidence),
         }
         self.explorer_receipt = (
             self.explorer_dir / finalization.CANONICAL_INPUT_NAMES["explorer"]
@@ -733,7 +1473,21 @@ class FinalizationFixture:
         coverage_path = self.security_dir / "coverage.json"
         manifest_path = self.security_dir / "scan-manifest.json"
         report_path = self.security_dir / "report.md"
+        inventory_path = self.security_dir / "artifact-inventory.json"
         checks = self.contract["required_security_checks"]
+        review_relative = "artifacts/security-review.json"
+        review_path = self.security_dir / review_relative
+        write_json(
+            review_path,
+            {
+                "status": "passed",
+                "candidate": {
+                    "repository": self.contract["candidate"]["repository"],
+                    "commit": self.commit,
+                    "tree": self.tree,
+                },
+            },
+        )
         findings = {
             "documentType": "codex-security.findings",
             "schemaVersion": "1.0",
@@ -754,7 +1508,7 @@ class FinalizationFixture:
                     "id": check,
                     "label": check,
                     "disposition": "no_issue_found",
-                    "receiptRefs": [],
+                    "receiptRefs": [review_relative],
                 }
                 for check in checks
             ],
@@ -764,12 +1518,19 @@ class FinalizationFixture:
         }
         write_json(findings_path, findings)
         write_json(coverage_path, coverage)
+        artifact_sources = {
+            "findings.json": (findings_path, "application/json"),
+            "coverage.json": (coverage_path, "application/json"),
+            review_relative: (review_path, "application/json"),
+        }
         manifest = {
             "documentType": "codex-security.scan-manifest",
             "schemaVersion": "1.0",
             "scan": {
                 "id": "scan-fixture",
-                "producer": {"name": "codex-security-plugin", "version": "1"},
+                "producer": copy.deepcopy(
+                    self.contract["codex_security"]["producer"]
+                ),
                 "status": "completed",
                 "startedAt": "2026-07-26T04:00:00Z",
                 "completedAt": "2026-07-26T04:01:00Z",
@@ -790,20 +1551,54 @@ class FinalizationFixture:
                 "findingsRef": "findings.json",
                 "artifacts": [
                     {
-                        "path": "findings.json",
-                        "sha256": finalization.sha256_file(findings_path),
-                        "mediaType": "application/json",
-                    },
-                    {
-                        "path": "coverage.json",
-                        "sha256": finalization.sha256_file(coverage_path),
-                        "mediaType": "application/json",
-                    },
+                        "path": relative,
+                        "sha256": finalization.sha256_file(source),
+                        "mediaType": media_type,
+                    }
+                    for relative, (source, media_type) in artifact_sources.items()
                 ],
             },
         }
         write_json(manifest_path, manifest)
-        report_path.write_text("# Passed\n", encoding="utf-8")
+        report_path.write_text(
+            "# Codex Security Report\n\n"
+            "This report is a deterministic projection of the sealed scan.\n\n"
+            "| Result | Count |\n"
+            "| --- | ---: |\n"
+            "| Reportable findings | 0 |\n\n"
+            "## Findings\n\n"
+            "### No findings\n\n"
+            "The completed scan contains no reportable findings.\n",
+            encoding="utf-8",
+        )
+        evidence_dir = self.security_dir / "scan-evidence"
+        inventory_entries = []
+        for relative, (source, media_type) in artifact_sources.items():
+            copied = evidence_dir / relative
+            copied.parent.mkdir(parents=True, exist_ok=True)
+            copied.write_bytes(source.read_bytes())
+            inventory_entries.append(
+                {
+                    "source_path": relative,
+                    "path": f"scan-evidence/{relative}",
+                    "bytes": copied.stat().st_size,
+                    "sha256": finalization.sha256_file(copied),
+                    "media_type": media_type,
+                }
+            )
+        write_json(
+            inventory_path,
+            {
+                "schema": "okf-codex-security-artifact-inventory.v1",
+                "scan_id": "scan-fixture",
+                "entries": inventory_entries,
+            },
+        )
+        schema_roles = {
+            "scan_manifest": "scan_manifest_schema",
+            "findings": "findings_schema",
+            "coverage": "coverage_schema",
+        }
         receipt = {
             "schema": "okf-security-assurance-receipt.v2",
             "status": "passed",
@@ -829,6 +1624,20 @@ class FinalizationFixture:
                 role_material(findings_path, "findings"),
                 role_material(coverage_path, "coverage"),
                 role_material(report_path, "report"),
+                *[
+                    {
+                        "role": material_role,
+                        **finalization.material(
+                            self.security_schema_paths[role],
+                            (
+                                "schemas/"
+                                + self.security_schema_paths[role].name
+                            ),
+                        ),
+                    }
+                    for role, material_role in schema_roles.items()
+                ],
+                role_material(inventory_path, "artifact_inventory"),
             ],
             "assurance_boundary": "Exact frozen candidate.",
         }
@@ -916,9 +1725,14 @@ class FinalizationFixture:
         }
 
     def authorize_rc(self) -> dict[str, object]:
-        return finalization.assemble_receipt(
-            command="authorize-rc", **self.base_args()
-        )
+        with mock.patch.object(
+            finalization,
+            "load_json",
+            side_effect=self.load_json_with_contract,
+        ):
+            return finalization.assemble_receipt(
+                command="authorize-rc", **self.base_args()
+            )
 
     def set_embedded_gate(self, gate_id: str, status: str) -> None:
         for document_key in ("release_state", "release_gates"):
@@ -952,6 +1766,96 @@ class FinalizationFixture:
         self._write_accessibility_evidence()
         self._write_performance_evidence()
 
+    def create_traceability_evidence(
+        self,
+        external_sources: dict[str, list[Path]] | None = None,
+    ) -> None:
+        traceability_dir = self.root / "traceability"
+        traceability_dir.mkdir()
+        ledger_path = traceability_dir / "implementation-traceability.json"
+        ledger_path.write_bytes(self.ledger_body)
+        evidence_path = traceability_dir / "evidence.txt"
+        evidence_path.write_text("evidence\n", encoding="utf-8")
+        evidence = finalization.material(evidence_path, evidence_path.name)
+        ledger_material = finalization.material(ledger_path, ledger_path.name)
+        external_ids = set(
+            self.contract["traceability"]["externally_closable_ids"]
+        )
+        if external_sources is not None:
+            self.assert_external_source_ids(external_sources, external_ids)
+        closures = []
+        for row in self.ledger["requirements"]:
+            requirement_id = row["id"]
+            if row["status"] == "verified" or requirement_id in external_ids:
+                disposition = "passed"
+            elif requirement_id == "D-06":
+                disposition = "deferred"
+            else:
+                disposition = "superseded"
+            if requirement_id in external_ids:
+                if external_sources is None:
+                    closure_evidence = [evidence]
+                else:
+                    closure_evidence = []
+                    for index, source in enumerate(
+                        external_sources[requirement_id], start=1
+                    ):
+                        destination = (
+                            traceability_dir
+                            / f"{requirement_id}-{index:02d}-{source.name}"
+                        )
+                        destination.write_bytes(source.read_bytes())
+                        closure_evidence.append(
+                            finalization.material(destination, destination.name)
+                        )
+            else:
+                closure_evidence = [ledger_material]
+            closure = {
+                "id": requirement_id,
+                "frozen_status": row["status"],
+                "disposition": disposition,
+                "must_have": requirement_id != "D-06",
+                "rationale": row["release_disposition"]["reason"],
+                "evidence": closure_evidence,
+            }
+            if requirement_id == "D-06":
+                closure["accepted_exception"] = {
+                    "accepted": True,
+                    "authority": row["source_clause"]["source"],
+                    "decision_evidence": ledger_material,
+                }
+            if disposition == "superseded":
+                closure["superseded_by"] = "D-13"
+            closures.append(closure)
+        traceability = {
+            "schema": "okf-traceability-closure-receipt.v2",
+            "status": "candidate",
+            "gate": "GATE-14",
+            "candidate": {
+                "repository": self.contract["candidate"]["repository"],
+                "commit": self.commit,
+                "tree": self.tree,
+            },
+            "requirements_total": len(closures),
+            "requirements_closed": len(closures),
+            "unresolved_must_haves": 0,
+            "source_ledger": ledger_material,
+            "closures": closures,
+            "closure_rule": "Every frozen requirement has a terminal disposition.",
+        }
+        self.traceability_receipt = (
+            traceability_dir / finalization.CANONICAL_INPUT_NAMES["traceability"]
+        )
+        write_json(self.traceability_receipt, traceability)
+
+    @staticmethod
+    def assert_external_source_ids(
+        external_sources: dict[str, list[Path]],
+        expected: set[str],
+    ) -> None:
+        if set(external_sources) != expected:
+            raise AssertionError("fixture external source IDs differ")
+
     def create_post_rc_evidence(self) -> dict[str, object]:
         pre_rc = self.authorize_rc()
         self.pre_rc_path = self.root / "pre-rc-authorization-receipt.json"
@@ -963,17 +1867,34 @@ class FinalizationFixture:
             "git_commit": self.commit,
             "bundle_tree_sha256": self.inventory,
             "release_tag": self.contract["candidate"]["rc_tag"],
+            "explorer_commit": self.contract["explorer"]["required_commit"],
             "explorer_release": self.contract["explorer"]["required_tag"],
         }
         write_json(
             self.public_attempt / "attempt.json",
-            {"status": "passed", "candidate": public_candidate},
+            {
+                "status": "passed",
+                "candidate": public_candidate,
+                "executed_at": "2026-07-26T04:20:00Z",
+                "tool": {
+                    "name": (
+                        finalization.DEPLOYED_PROBE_CONTROLLER_PATH.name
+                    ),
+                    "version": self.contract[
+                        "deployed_probe_controller"
+                    ]["version"],
+                    "sha256": finalization.sha256_file(
+                        finalization.DEPLOYED_PROBE_CONTROLLER_PATH
+                    ),
+                },
+            },
         )
         write_json(
             self.public_attempt / "projection.json",
             {
                 "gate_evidence_status": "passed",
                 "candidate": public_candidate,
+                "executed_at": "2026-07-26T04:20:00Z",
                 "summary": {
                     "routes_total": 1,
                     "routes_passed": 1,
@@ -984,59 +1905,27 @@ class FinalizationFixture:
                 },
             },
         )
+        route_manifest_text = (
+            ROOT
+            / finalization.CANONICAL_DEPLOYED_MANIFEST_TEMPLATE
+        ).read_text(encoding="utf-8")
+        route_manifest = json.loads(
+            route_manifest_text.replace(
+                "__CANDIDATE_COMMIT__", self.commit
+            )
+            .replace("__BUNDLE_TREE_SHA256__", self.inventory)
+            .replace(
+                "__RC_TAG__",
+                self.contract["candidate"]["rc_tag"],
+            )
+        )
+        route_manifest["state"] = "locked"
         write_json(
             self.public_attempt / "route-manifest.json",
-            {"candidate": public_candidate},
+            route_manifest,
         )
         write_json(self.public_attempt / "integrity.json", {"status": "passed"})
 
-        traceability_dir = self.root / "traceability"
-        traceability_dir.mkdir()
-        ledger_path = traceability_dir / "implementation-traceability.json"
-        ledger_path.write_bytes(self.ledger_body)
-        evidence_path = traceability_dir / "evidence.txt"
-        evidence_path.write_text("evidence\n", encoding="utf-8")
-        evidence = finalization.material(evidence_path, evidence_path.name)
-        closures = []
-        for row in self.ledger["requirements"]:
-            disposition = "passed" if row["status"] == "verified" else "deferred"
-            closure = {
-                "id": row["id"],
-                "frozen_status": row["status"],
-                "disposition": disposition,
-                "must_have": False,
-                "rationale": "Fixture closure.",
-                "evidence": [evidence],
-            }
-            if disposition == "deferred":
-                closure["accepted_exception"] = {
-                    "accepted": True,
-                    "authority": "Fixture authority",
-                    "decision_evidence": evidence,
-                }
-            closures.append(closure)
-        traceability = {
-            "schema": "okf-traceability-closure-receipt.v2",
-            "status": "passed",
-            "gate": "GATE-14",
-            "candidate": {
-                "repository": self.contract["candidate"]["repository"],
-                "commit": self.commit,
-                "tree": self.tree,
-            },
-            "requirements_total": len(closures),
-            "requirements_closed": len(closures),
-            "unresolved_must_haves": 0,
-            "source_ledger": finalization.material(
-                ledger_path, ledger_path.name
-            ),
-            "closures": closures,
-            "closure_rule": "Every frozen requirement has a terminal disposition.",
-        }
-        self.traceability_receipt = (
-            traceability_dir / finalization.CANONICAL_INPUT_NAMES["traceability"]
-        )
-        write_json(self.traceability_receipt, traceability)
         self.rc_observation, self.rc_asset, self.rc_url = self._observation(
             self.root / "rc-release",
             repository=self.contract["candidate"]["repository"],
@@ -1049,7 +1938,6 @@ class FinalizationFixture:
             **self.base_args(),
             "pre_rc_authorization_path": self.pre_rc_path,
             "public_attempt_dir": self.public_attempt,
-            "traceability_receipt_path": self.traceability_receipt,
             "rc_release_observation_path": self.rc_observation,
             "rc_asset_path": self.rc_asset,
             "rc_release_url": self.rc_url,
@@ -1065,6 +1953,30 @@ class ReleaseFinalizationTests(unittest.TestCase):
 
     def tearDown(self) -> None:
         self.temporary.cleanup()
+
+    def traceability_case(
+        self,
+    ) -> tuple[dict[str, object], dict[str, object]]:
+        self.fixture.create_post_rc_evidence()
+        self.fixture.create_traceability_evidence()
+        receipt = json.loads(
+            self.fixture.traceability_receipt.read_text(encoding="utf-8")
+        )
+        contract = copy.deepcopy(self.fixture.contract)
+        contract["traceability"]["frozen_ledger_sha256"] = receipt[
+            "source_ledger"
+        ]["sha256"]
+        return receipt, contract
+
+    @staticmethod
+    def traceability_closure(
+        receipt: dict[str, object], requirement_id: str
+    ) -> dict[str, object]:
+        return next(
+            row
+            for row in receipt["closures"]
+            if row["id"] == requirement_id
+        )
 
     def test_authorize_rc_reconstructs_embedded_and_runtime_gates(self) -> None:
         reproduction = json.loads(
@@ -1095,6 +2007,102 @@ class ReleaseFinalizationTests(unittest.TestCase):
             "Explorer runtime candidate binding",
         ):
             self.fixture.authorize_rc()
+
+    def test_explorer_build_integrity_rows_are_exactly_reconstructed(
+        self,
+    ) -> None:
+        runtime_path = self.fixture.runtime_paths["explorer"]
+        baseline_runtime = json.loads(
+            runtime_path.read_text(encoding="utf-8")
+        )
+        baseline_receipt = json.loads(
+            self.fixture.explorer_receipt.read_text(encoding="utf-8")
+        )
+
+        def mutate_manifest(row: dict[str, Any]) -> None:
+            check = next(
+                value
+                for value in row["integrity"]["checks"]
+                if value["id"] == "explorer_build_manifest"
+            )
+            check["sha256"] = "0" * 64
+
+        def mutate_material_count(row: dict[str, Any]) -> None:
+            check = next(
+                value
+                for value in row["integrity"]["checks"]
+                if value["id"] == "explorer_build_materials"
+            )
+            check["files"] += 1
+
+        def mutate_tree_algorithm(row: dict[str, Any]) -> None:
+            check = next(
+                value
+                for value in row["integrity"]["checks"]
+                if value["id"] == "explorer_build_tree"
+            )
+            check["algorithm"] = "attacker-selected-tree-v1"
+
+        def mutate_computed_tree(row: dict[str, Any]) -> None:
+            check = next(
+                value
+                for value in row["integrity"]["checks"]
+                if value["id"] == "explorer_build_tree"
+            )
+            check["computed_sha256"] = "0" * 64
+
+        def mutate_check_order(row: dict[str, Any]) -> None:
+            checks = row["integrity"]["checks"]
+            checks[-1], checks[-2] = checks[-2], checks[-1]
+
+        cases = (
+            (
+                "manifest identity",
+                mutate_manifest,
+                "integrity check explorer_build_manifest differs",
+            ),
+            (
+                "material count",
+                mutate_material_count,
+                "integrity check explorer_build_materials differs",
+            ),
+            (
+                "tree algorithm",
+                mutate_tree_algorithm,
+                "integrity check explorer_build_tree differs",
+            ),
+            (
+                "computed tree",
+                mutate_computed_tree,
+                "integrity check explorer_build_tree differs",
+            ),
+            (
+                "integrity check order",
+                mutate_check_order,
+                "integrity check order differs",
+            ),
+        )
+        for label, mutate, error in cases:
+            with self.subTest(label=label):
+                runtime = copy.deepcopy(baseline_runtime)
+                mutate(runtime)
+                write_json(runtime_path, runtime)
+                explorer_receipt = copy.deepcopy(baseline_receipt)
+                for material_row in explorer_receipt["materials"]:
+                    if material_row["role"] == "runtime":
+                        material_row["bytes"] = runtime_path.stat().st_size
+                        material_row["sha256"] = finalization.sha256_file(
+                            runtime_path
+                        )
+                write_json(
+                    self.fixture.explorer_receipt,
+                    explorer_receipt,
+                )
+                with self.assertRaisesRegex(
+                    finalization.FinalizationError,
+                    error,
+                ):
+                    self.fixture.authorize_rc()
 
     def test_pending_embedded_gate_blocks_rc_authorization(self) -> None:
         self.fixture.set_embedded_gate("GATE-12", "pending")
@@ -1148,6 +2156,18 @@ class ReleaseFinalizationTests(unittest.TestCase):
         with self.assertRaisesRegex(
             finalization.FinalizationError,
             "release observation controller SHA-256",
+        ):
+            self.fixture.authorize_rc()
+
+    def test_unbound_assurance_receipt_controller_is_rejected(self) -> None:
+        provenance = json.loads(
+            self.fixture.provenance_path.read_text(encoding="utf-8")
+        )
+        provenance["assurance_receipt_controllers"][0]["sha256"] = "0" * 64
+        write_json(self.fixture.provenance_path, provenance)
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "assurance receipt controller SHA-256",
         ):
             self.fixture.authorize_rc()
 
@@ -1230,6 +2250,51 @@ class ReleaseFinalizationTests(unittest.TestCase):
         ):
             finalization.validate_cli_arguments(namespace)
 
+    def test_cli_reserves_traceability_for_terminal_finalization(self) -> None:
+        root = Path(self.temporary.name)
+        namespace = argparse.Namespace(
+            command="authorize-final-promotion",
+            contract=finalization.DEFAULT_CONTRACT,
+            receipt=root / "final-promotion-authorization-receipt.json",
+            pre_rc_authorization=root / "pre-rc-authorization-receipt.json",
+            public_attempt=root / "public-attempt",
+            traceability_receipt=None,
+            rc_release_observation=root / "rc-release-observation.json",
+            rc_asset=root / self.fixture.archive_name,
+            rc_release_url="https://example.test/rc",
+            final_promotion_authorization=None,
+            final_release_observation=None,
+            final_asset=None,
+            final_release_url=None,
+        )
+        finalization.validate_cli_arguments(namespace)
+
+        namespace.traceability_receipt = (
+            root / "traceability-closure-receipt.json"
+        )
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "rejects post-publication arguments: traceability_receipt",
+        ):
+            finalization.validate_cli_arguments(namespace)
+
+        namespace.command = "finalize"
+        namespace.receipt = root / "external-finalization-receipt.json"
+        namespace.traceability_receipt = None
+        namespace.final_promotion_authorization = (
+            root / "final-promotion-authorization-receipt.json"
+        )
+        namespace.final_release_observation = (
+            root / "final-release-observation.json"
+        )
+        namespace.final_asset = root / self.fixture.archive_name
+        namespace.final_release_url = "https://example.test/final"
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "finalize requires: traceability_receipt",
+        ):
+            finalization.validate_cli_arguments(namespace)
+
     def test_write_once_converts_filesystem_errors(self) -> None:
         output = Path(self.temporary.name) / "external-finalization-receipt.json"
         with mock.patch.object(
@@ -1241,12 +2306,154 @@ class ReleaseFinalizationTests(unittest.TestCase):
             ):
                 finalization.write_once(output, b"{}\n")
 
+    def test_contract_declared_release_obligations_can_close_externally(
+        self,
+    ) -> None:
+        original, contract = self.traceability_case()
+        expected_ids = contract["traceability"]["externally_closable_ids"]
+        for requirement_id in expected_ids:
+            with self.subTest(requirement_id=requirement_id):
+                receipt = copy.deepcopy(original)
+                closure = self.traceability_closure(
+                    receipt, requirement_id
+                )
+                self.assertIn(
+                    closure["frozen_status"], {"started", "blocked"}
+                )
+                closure["disposition"] = "passed"
+                closure.pop("accepted_exception", None)
+                source = finalization.reconstruct_traceability(
+                    receipt=receipt,
+                    receipt_path=self.fixture.traceability_receipt,
+                    contract=contract,
+                    commit=self.fixture.commit,
+                    tree=self.fixture.tree,
+                )
+                self.assertEqual(
+                    receipt["source_ledger"]["sha256"], source["sha256"]
+                )
+
+    def test_undeclared_started_requirement_cannot_close_as_passed(
+        self,
+    ) -> None:
+        receipt, contract = self.traceability_case()
+        requirement_id = "P01-01"
+        self.assertNotIn(
+            requirement_id,
+            contract["traceability"]["externally_closable_ids"],
+        )
+        ledger_path = (
+            self.fixture.traceability_receipt.parent
+            / "implementation-traceability.json"
+        )
+        ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
+        requirement = next(
+            row
+            for row in ledger["requirements"]
+            if row["id"] == requirement_id
+        )
+        requirement["status"] = "started"
+        write_json(ledger_path, ledger)
+        receipt["source_ledger"] = finalization.material(
+            ledger_path, ledger_path.name
+        )
+        contract["traceability"]["frozen_ledger_sha256"] = receipt[
+            "source_ledger"
+        ]["sha256"]
+        closure = self.traceability_closure(receipt, requirement_id)
+        closure["frozen_status"] = "started"
+        closure["disposition"] = "passed"
+        closure.pop("accepted_exception", None)
+
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "P01-01 cannot pass from frozen status 'started'",
+        ):
+            finalization.reconstruct_traceability(
+                receipt=receipt,
+                receipt_path=self.fixture.traceability_receipt,
+                contract=contract,
+                commit=self.fixture.commit,
+                tree=self.fixture.tree,
+            )
+
+    def test_external_passage_requires_nonempty_verified_evidence(
+        self,
+    ) -> None:
+        receipt, contract = self.traceability_case()
+        requirement_id = contract["traceability"]["externally_closable_ids"][0]
+        closure = self.traceability_closure(receipt, requirement_id)
+        closure["disposition"] = "passed"
+        closure["evidence"] = []
+        closure.pop("accepted_exception", None)
+
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            f"{requirement_id} evidence is empty",
+        ):
+            finalization.reconstruct_traceability(
+                receipt=receipt,
+                receipt_path=self.fixture.traceability_receipt,
+                contract=contract,
+                commit=self.fixture.commit,
+                tree=self.fixture.tree,
+            )
+
+    def test_external_closure_contract_fails_closed_when_malformed(
+        self,
+    ) -> None:
+        receipt, original = self.traceability_case()
+        missing = copy.deepcopy(original)
+        missing["traceability"].pop("externally_closable_ids")
+        duplicate = copy.deepcopy(original)
+        duplicate["traceability"]["externally_closable_ids"].append(
+            duplicate["traceability"]["externally_closable_ids"][0]
+        )
+        unknown = copy.deepcopy(original)
+        unknown["traceability"]["externally_closable_ids"].append("P99-99")
+
+        cases = (
+            (missing, "externally closable traceability IDs must be an array"),
+            (duplicate, "invalid or duplicated"),
+            (unknown, "is not frozen: P99-99"),
+        )
+        for contract, pattern in cases:
+            with self.subTest(pattern=pattern), self.assertRaisesRegex(
+                finalization.FinalizationError, pattern
+            ):
+                finalization.reconstruct_traceability(
+                    receipt=receipt,
+                    receipt_path=self.fixture.traceability_receipt,
+                    contract=contract,
+                    commit=self.fixture.commit,
+                    tree=self.fixture.tree,
+                )
+
+    def test_external_closure_contract_rejects_terminal_frozen_status(
+        self,
+    ) -> None:
+        receipt, contract = self.traceability_case()
+        requirement_id = "P01-01"
+        contract["traceability"]["externally_closable_ids"].append(
+            requirement_id
+        )
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "P01-01 has ineligible frozen status 'verified'",
+        ):
+            finalization.reconstruct_traceability(
+                receipt=receipt,
+                receipt_path=self.fixture.traceability_receipt,
+                contract=contract,
+                commit=self.fixture.commit,
+                tree=self.fixture.tree,
+            )
+
     def test_final_promotion_precedes_post_publication_finalization(self) -> None:
         post_args = self.fixture.create_post_rc_evidence()
-        real_load_json = finalization.load_json
 
         def load_with_fixture_ledger(path: Path) -> dict[str, object]:
-            document = real_load_json(path)
+            document = self.fixture.load_json_with_contract(path)
             if path.resolve() == finalization.DEFAULT_CONTRACT.resolve():
                 document["traceability"]["frozen_ledger_sha256"] = (
                     finalization.sha256_bytes(self.fixture.ledger_body)
@@ -1262,6 +2469,12 @@ class ReleaseFinalizationTests(unittest.TestCase):
                 command="authorize-final-promotion", **post_args
             )
         self.assertEqual("final_promotion_eligible", promotion["state"])
+        self.assertEqual(
+            "okf-final-promotion-authorization-receipt.v2",
+            promotion["schema"],
+        )
+        self.assertEqual({"GATE-09": "passed"}, promotion["gates"])
+        self.assertNotIn("traceability", promotion)
         promotion_path = (
             Path(self.temporary.name)
             / "final-promotion-authorization-receipt.json"
@@ -1274,9 +2487,61 @@ class ReleaseFinalizationTests(unittest.TestCase):
             commit=self.fixture.commit,
             filename=self.fixture.contract["release_observations"]["final"],
             asset=True,
+            observed_at="2026-07-26T04:30:00Z",
         )
+        model_cost_path = Path(self.temporary.name) / "model-cost-report.json"
+        model_cost_path.write_bytes(
+            finalization.render(
+                self.fixture.embedded["model_cost_report"]
+            )
+        )
+        projection_path = self.fixture.public_attempt / "projection.json"
+        route_manifest_path = (
+            self.fixture.public_attempt / "route-manifest.json"
+        )
+        external_sources = {
+            "P06-03": [
+                self.fixture.package_path,
+                self.fixture.rc_observation,
+                final_observation,
+            ],
+            "P08-06": [
+                self.fixture.runtime_paths["explorer"],
+                projection_path,
+            ],
+            "P09-05": [projection_path, route_manifest_path],
+            "P10-02": [
+                self.fixture.reproduction_path,
+                self.fixture.provenance_path,
+                self.fixture.security_receipt,
+            ],
+            "P10-03": [
+                self.fixture.pre_rc_path,
+                self.fixture.rc_observation,
+                final_observation,
+            ],
+            "P10-04": [
+                self.fixture.explorer_receipt,
+                self.fixture.rc_observation,
+                final_observation,
+                projection_path,
+            ],
+            "D-01": [
+                self.fixture.pre_rc_path,
+                promotion_path,
+                final_observation,
+            ],
+            "D-05": [model_cost_path, final_observation],
+            "D-07": [
+                self.fixture.pre_rc_path,
+                promotion_path,
+                final_observation,
+            ],
+        }
+        self.fixture.create_traceability_evidence(external_sources)
         final_args = {
             **post_args,
+            "traceability_receipt_path": self.fixture.traceability_receipt,
             "final_promotion_authorization_path": promotion_path,
             "final_release_observation_path": final_observation,
             "final_asset_path": final_asset,
@@ -1295,6 +2560,27 @@ class ReleaseFinalizationTests(unittest.TestCase):
             promotion["authorization_id"],
             receipt["final_promotion_authorization"]["authorization_id"],
         )
+
+    def test_public_probe_from_unbound_controller_is_rejected(self) -> None:
+        post_args = self.fixture.create_post_rc_evidence()
+        attempt_path = self.fixture.public_attempt / "attempt.json"
+        attempt = json.loads(attempt_path.read_text(encoding="utf-8"))
+        attempt["tool"]["sha256"] = "0" * 64
+        write_json(attempt_path, attempt)
+        with mock.patch.object(
+            finalization.deployed_probe, "verify_attempt", return_value=[]
+        ), mock.patch.object(
+            finalization,
+            "load_json",
+            side_effect=self.fixture.load_json_with_contract,
+        ), self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "public probe controller identity",
+        ):
+            finalization.assemble_receipt(
+                command="authorize-final-promotion",
+                **post_args,
+            )
 
 
 if __name__ == "__main__":

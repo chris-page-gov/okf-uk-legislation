@@ -21,6 +21,10 @@
     {
       "kind": "jsonld-fallback",
       "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.jsonld"
+    },
+    {
+      "kind": "turtle",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.ttl"
     }
   ],
   "bundles": [
@@ -231,6 +235,7 @@
     "ontology": "ontology/index.md",
     "relationship_summary": "data/relationship-summary.json",
     "semantic_conformance": "assurance/semantic-conformance.json",
+    "semantic_turtle": "okf-bundle.ttl",
     "shapes": "ontology/shapes.ttl",
     "source_classes": "data/legal-source-taxonomy.json",
     "source_register": "data/source-register.json",

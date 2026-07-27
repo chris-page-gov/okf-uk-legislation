@@ -21,6 +21,7 @@ import hashlib
 import http.client
 import ipaddress
 import json
+import math
 import multiprocessing
 import os
 import re
@@ -38,6 +39,11 @@ try:
     from jsonschema import Draft202012Validator
 except ImportError:  # pragma: no cover - the release venv pins jsonschema
     Draft202012Validator = None
+
+try:
+    import rdflib
+except ImportError:  # pragma: no cover - the release venv pins rdflib
+    rdflib = None
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -103,17 +109,19 @@ REQUIRED_COVERAGE = {
     "github-archive-fallback",
     "github-release-fallback",
     "explorer-loading",
+    "explorer-deployment",
     "compatibility-documentation",
     "compatibility-moved-descriptor",
     "ckan-documentation",
     "ckan-example",
     "yaml-ld",
     "json-ld-fallback",
+    "turtle",
 }
 REQUEST_HEADERS = {
     "Accept": (
         "application/ld+json, application/json, application/ld+yaml, "
-        "application/yaml, text/yaml, text/html, text/markdown, "
+        "application/yaml, text/yaml, text/turtle, text/html, text/markdown, "
         "application/octet-stream;q=0.8, */*;q=0.1"
     ),
     "Accept-Encoding": "identity",
@@ -599,6 +607,51 @@ def validate_manifest(
         except UnsafeRouteError as error:
             errors.append(f"unsafe allowed host {host}: {error}")
     by_id = {row["id"]: row for row in routes}
+    explorer_deployment = by_id.get("explorer-pages-deployment")
+    if explorer_deployment is None:
+        errors.append("Explorer Pages deployment route is absent")
+    else:
+        explorer_fields = explorer_deployment["expected"].get(
+            "json_fields", {}
+        )
+        required_explorer_fields = {
+            "/conclusion",
+            "/head_sha",
+            "/id",
+            "/status",
+        }
+        if set(explorer_fields) != required_explorer_fields:
+            errors.append(
+                "Explorer Pages deployment assertions must target the exact "
+                "run document fields /head_sha, /id, /status and /conclusion"
+            )
+        explorer_run_id = explorer_fields.get("/id")
+        if (
+            not isinstance(explorer_run_id, int)
+            or isinstance(explorer_run_id, bool)
+            or explorer_run_id <= 0
+        ):
+            errors.append(
+                "Explorer Pages deployment run id is not a positive integer"
+            )
+        else:
+            expected_run_url = (
+                "https://api.github.com/repos/chris-page-gov/okf-explorer/"
+                f"actions/runs/{explorer_run_id}"
+            )
+            if explorer_deployment["url"] != expected_run_url:
+                errors.append(
+                    "Explorer Pages deployment route is not the immutable "
+                    f"configured run endpoint {expected_run_url}"
+                )
+        if explorer_fields.get("/status") != "completed":
+            errors.append(
+                "Explorer Pages deployment status assertion is not completed"
+            )
+        if explorer_fields.get("/conclusion") != "success":
+            errors.append(
+                "Explorer Pages deployment conclusion assertion is not success"
+            )
     for route in routes:
         route_hosts = set(route["allowed_redirect_hosts"])
         if not route_hosts <= hosts:
@@ -637,6 +690,8 @@ def validate_manifest(
             errors.append("candidate git_commit is not an exact 40-hex commit")
         if not DIGEST.fullmatch(candidate["bundle_tree_sha256"]):
             errors.append("candidate bundle_tree_sha256 is not a SHA-256")
+        if not COMMIT.fullmatch(candidate["explorer_commit"]):
+            errors.append("candidate explorer_commit is not an exact 40-hex commit")
         serialized = render(manifest)
         if PLACEHOLDER.search(serialized):
             errors.append("locked manifest still contains placeholders")
@@ -672,6 +727,17 @@ def validate_manifest(
             errors.append(
                 "release asset route does not use the frozen production filename "
                 + RELEASE_ASSET_NAME
+        )
+        explorer_head_sha = (
+            explorer_deployment["expected"]
+            .get("json_fields", {})
+            .get("/head_sha")
+            if explorer_deployment is not None
+            else None
+        )
+        if explorer_head_sha != candidate["explorer_commit"]:
+            errors.append(
+                "Explorer Pages deployment route is not pinned to explorer_commit"
             )
     return sorted(set(errors))
 
@@ -749,6 +815,21 @@ def evaluate_document(
                 errors.append("YAML-LD content sniff found no top-level @context")
             if "<html" in prefix[:1024].lower():
                 errors.append("YAML-LD route returned HTML")
+        elif kind == "turtle":
+            text = _decode_text(body)
+            if "<html" in text[:1024].lower():
+                errors.append("Turtle route returned HTML")
+            elif rdflib is None:
+                errors.append("Turtle parser dependency is unavailable")
+            else:
+                try:
+                    graph = rdflib.Graph()
+                    graph.parse(data=text, format="turtle")
+                except Exception as error:
+                    errors.append(f"Turtle parse failed: {error}")
+                else:
+                    if not graph:
+                        errors.append("Turtle graph is empty")
         elif kind == "html":
             text = _decode_text(body)
             lowered = text[:16_384].lower()
@@ -1039,75 +1120,28 @@ def evaluate_cross_route_assertions(
     return receipts
 
 
-def run_probe(
+def build_projection(
     manifest: dict[str, Any],
+    route_results: list[dict[str, Any]],
+    bodies: dict[str, bytes],
     *,
-    transport: Transport,
-    resolver: Callable[..., list[Any]],
     executed_at: str,
-) -> tuple[dict[str, Any], dict[str, Any], dict[str, bytes]]:
-    validate_executed_at(executed_at)
-    errors = validate_manifest(manifest, require_locked=True)
-    if errors:
-        raise ProbeError("manifest is not runnable:\n- " + "\n- ".join(errors))
-    route_results: list[dict[str, Any]] = []
-    raw_files: dict[str, bytes] = {}
-    bodies: dict[str, bytes] = {}
-    for route in manifest["routes"]:
-        try:
-            result, files, body = probe_route(
-                route,
-                manifest["policy"],
-                transport=transport,
-                resolver=resolver,
-            )
-        except (ProbeError, OSError, ValueError) as error:
-            result = {
-                "body_bytes": 0,
-                "body_hash_scope": "none",
-                "body_sha256": None,
-                "coverage": route["coverage"],
-                "declared_yaml_ld_mime_exception_observed": False,
-                "elapsed_ms": None,
-                "errors": [f"{type(error).__name__}: {error}"],
-                "final_url": None,
-                "final_url_query_redacted": False,
-                "final_url_sha256": None,
-                "headers": [],
-                "hops": 0,
-                "id": route["id"],
-                "media_type": None,
-                "omitted_response_header_names": [],
-                "status": "failed",
-                "status_code": None,
-                "transport_conformant_yaml_ld": False,
-                "truncated": False,
-                "url": route["url"],
-            }
-            files = {
-                f"raw/{route['id']}/route.json": render(
-                    {
-                        "errors": result["errors"],
-                        "route_id": route["id"],
-                        "schema": "okf-deployed-entrypoint-raw-route.v1",
-                        "status": "failed",
-                        "untrusted_response_evidence": True,
-                    }
-                ).encode()
-            }
-            body = b""
-        route_results.append(result)
-        raw_files.update(files)
-        bodies[route["id"]] = body
+) -> dict[str, Any]:
+    """Build the deterministic safe projection from route outcomes."""
+
     by_id = {row["id"]: row for row in route_results}
     cross = evaluate_cross_route_assertions(
         manifest["cross_route_assertions"],
         by_id,
         bodies,
     )
-    failed_routes = [row["id"] for row in route_results if row["status"] != "passed"]
-    failed_cross = [row["id"] for row in cross if row["status"] != "passed"]
-    projection = {
+    failed_routes = [
+        row["id"] for row in route_results if row["status"] != "passed"
+    ]
+    failed_cross = [
+        row["id"] for row in cross if row["status"] != "passed"
+    ]
+    return {
         "assurance_boundary": (
             "Unauthenticated bounded HTTPS evidence for the exact candidate. "
             "This receipt does not replace browser GATE-07 evidence or promote "
@@ -1150,13 +1184,17 @@ def run_probe(
             "routes_total": len(route_results),
         },
     }
-    projection_errors = schema_errors(projection, PROJECTION_SCHEMA)
-    if projection_errors:
-        raise ProbeError(
-            "generated projection does not validate:\n- "
-            + "\n- ".join(projection_errors)
-        )
-    attempt = {
+
+
+def build_attempt(
+    manifest: dict[str, Any],
+    projection: dict[str, Any],
+    *,
+    executed_at: str,
+) -> dict[str, Any]:
+    """Build attempt metadata bound to this exact controller and projection."""
+
+    return {
         "candidate": manifest["candidate"],
         "executed_at": executed_at,
         "gate": "GATE-09",
@@ -1176,6 +1214,95 @@ def run_probe(
             "version": TOOL_VERSION,
         },
     }
+
+
+def failed_route_projection(
+    route: dict[str, Any],
+    route_errors: list[str],
+) -> dict[str, Any]:
+    """Return the canonical projection for a route that failed pre-response."""
+
+    return {
+        "body_bytes": 0,
+        "body_hash_scope": "none",
+        "body_sha256": None,
+        "coverage": route["coverage"],
+        "declared_yaml_ld_mime_exception_observed": False,
+        "elapsed_ms": None,
+        "errors": route_errors,
+        "final_url": None,
+        "final_url_query_redacted": False,
+        "final_url_sha256": None,
+        "headers": [],
+        "hops": 0,
+        "id": route["id"],
+        "media_type": None,
+        "omitted_response_header_names": [],
+        "status": "failed",
+        "status_code": None,
+        "transport_conformant_yaml_ld": False,
+        "truncated": False,
+        "url": route["url"],
+    }
+
+
+def run_probe(
+    manifest: dict[str, Any],
+    *,
+    transport: Transport,
+    resolver: Callable[..., list[Any]],
+    executed_at: str,
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, bytes]]:
+    validate_executed_at(executed_at)
+    errors = validate_manifest(manifest, require_locked=True)
+    if errors:
+        raise ProbeError("manifest is not runnable:\n- " + "\n- ".join(errors))
+    route_results: list[dict[str, Any]] = []
+    raw_files: dict[str, bytes] = {}
+    bodies: dict[str, bytes] = {}
+    for route in manifest["routes"]:
+        try:
+            result, files, body = probe_route(
+                route,
+                manifest["policy"],
+                transport=transport,
+                resolver=resolver,
+            )
+        except (ProbeError, OSError, ValueError) as error:
+            route_errors = [f"{type(error).__name__}: {error}"]
+            result = failed_route_projection(route, route_errors)
+            files = {
+                f"raw/{route['id']}/route.json": render(
+                    {
+                        "errors": route_errors,
+                        "route_id": route["id"],
+                        "schema": "okf-deployed-entrypoint-raw-route.v1",
+                        "status": "failed",
+                        "untrusted_response_evidence": True,
+                    }
+                ).encode()
+            }
+            body = b""
+        route_results.append(result)
+        raw_files.update(files)
+        bodies[route["id"]] = body
+    projection = build_projection(
+        manifest,
+        route_results,
+        bodies,
+        executed_at=executed_at,
+    )
+    projection_errors = schema_errors(projection, PROJECTION_SCHEMA)
+    if projection_errors:
+        raise ProbeError(
+            "generated projection does not validate:\n- "
+            + "\n- ".join(projection_errors)
+        )
+    attempt = build_attempt(
+        manifest,
+        projection,
+        executed_at=executed_at,
+    )
     attempt_errors = schema_errors(attempt, ATTEMPT_SCHEMA)
     if attempt_errors:
         raise ProbeError(
@@ -1249,6 +1376,408 @@ def write_attempt(
     return destination
 
 
+RAW_HOP_KEYS = {
+    "body_bytes",
+    "body_path",
+    "body_sha256",
+    "elapsed_ms",
+    "headers",
+    "peer_ip",
+    "request_headers",
+    "resolved_addresses",
+    "response_reason",
+    "status",
+    "truncated",
+    "url",
+}
+RAW_ROUTE_KEYS = {
+    "errors",
+    "final_url",
+    "hops",
+    "route_id",
+    "schema",
+    "status",
+    "total_elapsed_ms",
+    "untrusted_response_evidence",
+}
+RAW_FAILED_ROUTE_KEYS = {
+    "errors",
+    "route_id",
+    "schema",
+    "status",
+    "untrusted_response_evidence",
+}
+
+
+def finite_nonnegative_number(value: Any) -> bool:
+    return (
+        isinstance(value, (int, float))
+        and not isinstance(value, bool)
+        and math.isfinite(value)
+        and value >= 0
+    )
+
+
+def reconstruct_route_from_raw(
+    attempt_dir: Path,
+    route: dict[str, Any],
+    policy: dict[str, Any],
+) -> tuple[dict[str, Any], bytes, set[str], list[str]]:
+    """Re-evaluate one route from its retained, untrusted hop evidence."""
+
+    route_id = route["id"]
+    route_relative = f"raw/{route_id}/route.json"
+    expected_files = {route_relative}
+    failures: list[str] = []
+
+    def fail(message: str) -> None:
+        failures.append(f"{route_id}: {message}")
+
+    route_path = attempt_dir / route_relative
+    try:
+        raw_route = json.loads(route_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        fail(f"cannot read raw route receipt: {error}")
+        return (
+            failed_route_projection(
+                route, ["raw route receipt is unreadable"]
+            ),
+            b"",
+            expected_files,
+            failures,
+        )
+    if not isinstance(raw_route, dict):
+        fail("raw route receipt must be an object")
+        return (
+            failed_route_projection(
+                route, ["raw route receipt is not an object"]
+            ),
+            b"",
+            expected_files,
+            failures,
+        )
+    if raw_route.get("schema") != "okf-deployed-entrypoint-raw-route.v1":
+        fail("raw route schema differs")
+    if raw_route.get("route_id") != route_id:
+        fail("raw route id differs")
+    if raw_route.get("untrusted_response_evidence") is not True:
+        fail("raw route does not mark response evidence untrusted")
+
+    if "hops" not in raw_route:
+        if set(raw_route) != RAW_FAILED_ROUTE_KEYS:
+            fail("pre-response failure receipt key set differs")
+        route_errors = raw_route.get("errors")
+        if (
+            not isinstance(route_errors, list)
+            or not route_errors
+            or any(
+                not isinstance(value, str) or not value
+                for value in route_errors
+            )
+        ):
+            fail("pre-response failure errors are invalid")
+            route_errors = ["invalid pre-response failure evidence"]
+        if raw_route.get("status") != "failed":
+            fail("pre-response failure status is not failed")
+        return (
+            failed_route_projection(route, route_errors),
+            b"",
+            expected_files,
+            failures,
+        )
+
+    if set(raw_route) != RAW_ROUTE_KEYS:
+        fail("raw route receipt key set differs")
+    hops_value = raw_route.get("hops")
+    if not isinstance(hops_value, list) or not hops_value:
+        fail("raw route hops must be a non-empty array")
+        return (
+            failed_route_projection(route, ["raw route hops are invalid"]),
+            b"",
+            expected_files,
+            failures,
+        )
+    maximum_redirects = min(
+        policy["maximum_redirects"],
+        route.get("maximum_redirects", policy["maximum_redirects"]),
+    )
+    maximum_body_bytes = min(
+        policy["maximum_body_bytes"],
+        route.get("maximum_body_bytes", policy["maximum_body_bytes"]),
+    )
+    if len(hops_value) > maximum_redirects + 1:
+        fail("raw route hop count exceeds its redirect limit")
+
+    allowed_hosts = set(route["allowed_redirect_hosts"])
+    try:
+        expected_url = canonical_https_url(route["url"], allowed_hosts)
+    except UnsafeRouteError as error:
+        fail(f"manifest route URL became unsafe: {error}")
+        expected_url = route["url"]
+
+    hops: list[dict[str, Any]] = []
+    bodies: list[bytes] = []
+    route_errors: list[str] = []
+    for index, value in enumerate(hops_value):
+        if not isinstance(value, dict):
+            fail(f"hop {index} must be an object")
+            value = {}
+        if set(value) != RAW_HOP_KEYS:
+            fail(f"hop {index} key set differs")
+        hop = value
+        hops.append(hop)
+        expected_body_path = f"raw/{route_id}/hop-{index:02d}.body"
+        expected_files.add(expected_body_path)
+        if hop.get("body_path") != expected_body_path:
+            fail(f"hop {index} body path differs")
+        try:
+            body = (attempt_dir / expected_body_path).read_bytes()
+        except OSError as error:
+            fail(f"cannot read hop {index} body: {error}")
+            body = b""
+        bodies.append(body)
+        if (
+            not isinstance(hop.get("body_bytes"), int)
+            or isinstance(hop.get("body_bytes"), bool)
+            or hop.get("body_bytes") != len(body)
+        ):
+            fail(f"hop {index} body byte count differs")
+        if hop.get("body_sha256") != sha256_bytes(body):
+            fail(f"hop {index} body SHA-256 differs")
+        if len(body) > maximum_body_bytes:
+            fail(f"hop {index} body exceeds its route limit")
+        if not finite_nonnegative_number(hop.get("elapsed_ms")):
+            fail(f"hop {index} elapsed time is invalid")
+        if hop.get("request_headers") != REQUEST_HEADERS:
+            fail(f"hop {index} request headers differ from fixed headers")
+        if not isinstance(hop.get("response_reason"), str):
+            fail(f"hop {index} response reason is invalid")
+        status = hop.get("status")
+        if (
+            not isinstance(status, int)
+            or isinstance(status, bool)
+            or not 100 <= status <= 599
+        ):
+            fail(f"hop {index} response status is invalid")
+        if not isinstance(hop.get("truncated"), bool):
+            fail(f"hop {index} truncated flag is invalid")
+
+        headers_value = hop.get("headers")
+        headers: list[dict[str, str]] = []
+        if not isinstance(headers_value, list):
+            fail(f"hop {index} headers must be an array")
+        else:
+            for header_index, row in enumerate(headers_value):
+                if (
+                    not isinstance(row, dict)
+                    or set(row) != {"name", "value"}
+                    or not isinstance(row.get("name"), str)
+                    or not isinstance(row.get("value"), str)
+                ):
+                    fail(
+                        f"hop {index} header {header_index} is invalid"
+                    )
+                    continue
+                headers.append(row)
+        hop["headers"] = headers
+
+        addresses_value = hop.get("resolved_addresses")
+        resolved_addresses: list[str] = []
+        if not isinstance(addresses_value, list) or not addresses_value:
+            fail(f"hop {index} resolved addresses are invalid")
+        else:
+            for address_index, row in enumerate(addresses_value):
+                if (
+                    not isinstance(row, dict)
+                    or set(row) != {"address", "family"}
+                    or not isinstance(row.get("address"), str)
+                ):
+                    fail(
+                        f"hop {index} resolved address {address_index} "
+                        "is invalid"
+                    )
+                    continue
+                try:
+                    parsed_address = ipaddress.ip_address(row["address"])
+                except ValueError:
+                    fail(
+                        f"hop {index} resolved address {address_index} "
+                        "is not an IP address"
+                    )
+                    continue
+                expected_family = (
+                    "IPv4" if parsed_address.version == 4 else "IPv6"
+                )
+                if row.get("family") != expected_family:
+                    fail(
+                        f"hop {index} resolved address {address_index} "
+                        "family differs"
+                    )
+                if not parsed_address.is_global:
+                    fail(
+                        f"hop {index} resolved address {address_index} "
+                        "is not globally routable"
+                    )
+                resolved_addresses.append(row["address"])
+        if hop.get("peer_ip") not in resolved_addresses:
+            fail(f"hop {index} peer IP is not a resolved address")
+
+        hop_url = hop.get("url")
+        if not isinstance(hop_url, str):
+            fail(f"hop {index} URL is invalid")
+            hop_url = ""
+        else:
+            try:
+                canonical_hop_url = canonical_https_url(
+                    hop_url, allowed_hosts
+                )
+            except UnsafeRouteError as error:
+                fail(f"hop {index} URL is unsafe: {error}")
+            else:
+                if canonical_hop_url != hop_url:
+                    fail(f"hop {index} URL is not canonical")
+        if hop_url != expected_url:
+            fail(f"hop {index} URL differs from redirect reconstruction")
+
+        is_last = index == len(hops_value) - 1
+        if status in REDIRECT_STATUSES:
+            locations = header_values(headers, "location")
+            if len(locations) != 1:
+                route_errors.append(
+                    "redirect response has no unique Location header"
+                )
+                if not is_last:
+                    fail(f"hop {index} continues after an invalid redirect")
+            elif index >= maximum_redirects:
+                route_errors.append("redirect limit exceeded")
+                if not is_last:
+                    fail(f"hop {index} continues past the redirect limit")
+            else:
+                redirected = urljoin(hop_url, locations[0])
+                try:
+                    next_url = canonical_https_url(
+                        redirected, allowed_hosts
+                    )
+                except UnsafeRouteError as error:
+                    route_errors.append(str(error))
+                    if not is_last:
+                        fail(
+                            f"hop {index} continues after an unsafe redirect"
+                        )
+                else:
+                    if is_last:
+                        fail(
+                            f"hop {index} omits the permitted redirect target"
+                        )
+                    expected_url = next_url
+        elif not is_last:
+            fail(f"hop {index} continues after a terminal response")
+
+    final_hop = hops[-1]
+    final_body = bodies[-1]
+    final_headers = final_hop["headers"]
+    final_status = final_hop.get("status")
+    if final_status not in set(route["expected"]["statuses"]):
+        route_errors.append(
+            f"unexpected final status {final_status}; "
+            f"expected {route['expected']['statuses']}"
+        )
+    document_errors, document_receipt = evaluate_document(
+        route,
+        final_body,
+        final_headers,
+        truncated=final_hop.get("truncated") is True,
+    )
+    route_errors.extend(document_errors)
+    route_errors = sorted(set(route_errors))
+    expected_status = "passed" if not route_errors else "failed"
+    if raw_route.get("errors") != route_errors:
+        fail("raw route errors differ from response reconstruction")
+    if raw_route.get("status") != expected_status:
+        fail("raw route status differs from response reconstruction")
+    if raw_route.get("final_url") != final_hop.get("url"):
+        fail("raw route final URL differs from terminal hop")
+    total_elapsed_ms = raw_route.get("total_elapsed_ms")
+    if not finite_nonnegative_number(total_elapsed_ms):
+        fail("raw route total elapsed time is invalid")
+
+    selected_headers, omitted_headers = safe_headers(
+        final_headers,
+        response_url=str(final_hop.get("url", "")),
+    )
+    final_url = str(final_hop.get("url", ""))
+    final_url_query_redacted = bool(urlsplit(final_url).query)
+    projected_final_url = (
+        url_without_query(final_url)
+        if final_url_query_redacted
+        else final_url
+    )
+    reconstructed = {
+        "body_bytes": len(final_body),
+        "body_hash_scope": (
+            "bounded-prefix"
+            if final_hop.get("truncated") is True
+            else "complete-response"
+        ),
+        "body_sha256": sha256_bytes(final_body),
+        "coverage": route["coverage"],
+        "declared_yaml_ld_mime_exception_observed": document_receipt[
+            "declared_yaml_ld_mime_exception_observed"
+        ],
+        "elapsed_ms": total_elapsed_ms,
+        "errors": route_errors,
+        "final_url": projected_final_url,
+        "final_url_query_redacted": final_url_query_redacted,
+        "final_url_sha256": sha256_bytes(final_url.encode()),
+        "headers": selected_headers,
+        "hops": len(hops),
+        "id": route_id,
+        "media_type": document_receipt["media_type"],
+        "omitted_response_header_names": omitted_headers,
+        "status": expected_status,
+        "status_code": final_status,
+        "transport_conformant_yaml_ld": document_receipt[
+            "transport_conformant_yaml_ld"
+        ],
+        "truncated": final_hop.get("truncated"),
+        "url": route["url"],
+    }
+    return reconstructed, final_body, expected_files, failures
+
+
+def reconstruct_projection_from_raw(
+    attempt_dir: Path,
+    manifest: dict[str, Any],
+    *,
+    executed_at: str,
+) -> tuple[dict[str, Any], set[str], list[str]]:
+    """Rebuild the complete safe projection from all retained route evidence."""
+
+    route_results: list[dict[str, Any]] = []
+    bodies: dict[str, bytes] = {}
+    expected_raw_files: set[str] = set()
+    failures: list[str] = []
+    for route in manifest["routes"]:
+        result, body, route_files, route_failures = (
+            reconstruct_route_from_raw(
+                attempt_dir,
+                route,
+                manifest["policy"],
+            )
+        )
+        route_results.append(result)
+        bodies[route["id"]] = body
+        expected_raw_files.update(route_files)
+        failures.extend(route_failures)
+    projection = build_projection(
+        manifest,
+        route_results,
+        bodies,
+        executed_at=executed_at,
+    )
+    return projection, expected_raw_files, failures
+
+
 def verify_attempt(path: Path) -> list[str]:
     errors: list[str] = []
     for name in (
@@ -1262,55 +1791,147 @@ def verify_attempt(path: Path) -> list[str]:
     if errors:
         return errors
     try:
-        attempt = json.loads((path / "attempt.json").read_text())
-        projection = json.loads((path / "projection.json").read_text())
-        manifest = json.loads((path / "route-manifest.json").read_text())
-        integrity = json.loads((path / "integrity.json").read_text())
-    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        attempt_body = (path / "attempt.json").read_bytes()
+        projection_body = (path / "projection.json").read_bytes()
+        manifest_body = (path / "route-manifest.json").read_bytes()
+        attempt = json.loads(attempt_body)
+        projection = json.loads(projection_body)
+        manifest = json.loads(manifest_body)
+        integrity = json.loads((path / "integrity.json").read_bytes())
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
         return [f"invalid JSON: {error}"]
-    errors.extend(
+    if not all(
+        isinstance(value, dict)
+        for value in (attempt, projection, manifest, integrity)
+    ):
+        return ["attempt documents must all be JSON objects"]
+
+    attempt_schema_errors = [
         f"attempt schema: {value}"
         for value in schema_errors(attempt, ATTEMPT_SCHEMA)
-    )
-    errors.extend(
+    ]
+    projection_schema_errors = [
         f"projection schema: {value}"
         for value in schema_errors(projection, PROJECTION_SCHEMA)
-    )
-    errors.extend(
+    ]
+    manifest_errors = [
         f"manifest: {value}"
         for value in validate_manifest(manifest, require_locked=True)
-    )
-    declared = {
-        row["path"]: row
-        for row in integrity.get("files", [])
-        if isinstance(row, dict) and isinstance(row.get("path"), str)
-    }
+    ]
+    errors.extend(attempt_schema_errors)
+    errors.extend(projection_schema_errors)
+    errors.extend(manifest_errors)
+
+    if integrity.get("schema") != INTEGRITY_SCHEMA_ID:
+        errors.append("integrity schema differs")
+    declared: dict[str, dict[str, Any]] = {}
+    integrity_rows = integrity.get("files")
+    if not isinstance(integrity_rows, list):
+        errors.append("integrity files must be an array")
+        integrity_rows = []
+    for row in integrity_rows:
+        if not isinstance(row, dict) or set(row) != {
+            "bytes",
+            "path",
+            "sha256",
+        }:
+            errors.append("integrity material row is invalid")
+            continue
+        relative = row.get("path")
+        if (
+            not isinstance(relative, str)
+            or not relative
+            or Path(relative).is_absolute()
+            or "\\" in relative
+            or ".." in Path(relative).parts
+        ):
+            errors.append("integrity material path is invalid")
+            continue
+        if relative in declared:
+            errors.append(f"integrity path is duplicated: {relative}")
+            continue
+        declared[relative] = row
+
+    try:
+        resolved_attempt = path.resolve(strict=True)
+    except OSError as error:
+        return [f"cannot resolve attempt directory: {error}"]
     for relative, receipt in sorted(declared.items()):
-        candidate = (path / relative).resolve()
-        if not candidate.is_relative_to(path.resolve()):
+        try:
+            candidate = (path / relative).resolve(strict=True)
+        except OSError as error:
+            errors.append(f"integrity path missing: {relative}: {error}")
+            continue
+        if not candidate.is_relative_to(resolved_attempt):
             errors.append(f"integrity path escapes attempt: {relative}")
             continue
         if not candidate.is_file():
             errors.append(f"integrity path missing: {relative}")
             continue
-        body = candidate.read_bytes()
+        try:
+            body = candidate.read_bytes()
+        except OSError as error:
+            errors.append(f"cannot read integrity path {relative}: {error}")
+            continue
         if len(body) != receipt.get("bytes"):
             errors.append(f"byte count differs: {relative}")
         if sha256_bytes(body) != receipt.get("sha256"):
             errors.append(f"digest differs: {relative}")
-    actual = {
-        file.relative_to(path).as_posix()
-        for file in path.rglob("*")
-        if file.is_file() and file.name != "integrity.json"
-    }
+    try:
+        actual = {
+            file.relative_to(path).as_posix()
+            for file in path.rglob("*")
+            if file.is_file() and file.name != "integrity.json"
+        }
+    except OSError as error:
+        errors.append(f"cannot enumerate attempt contents: {error}")
+        actual = set()
     if actual != set(declared):
         errors.append("integrity file set differs from attempt contents")
-    if attempt.get("projection_sha256") != sha256_bytes(
-        (path / "projection.json").read_bytes()
-    ):
+    if attempt.get("projection_sha256") != sha256_bytes(projection_body):
         errors.append("attempt projection digest differs")
     if attempt.get("manifest_sha256") != sha256_bytes(render(manifest).encode()):
         errors.append("attempt manifest semantic digest differs")
+
+    if attempt_schema_errors or projection_schema_errors or manifest_errors:
+        return sorted(set(errors))
+
+    executed_at = attempt.get("executed_at")
+    try:
+        validate_executed_at(executed_at)
+    except (ProbeError, TypeError) as error:
+        errors.append(f"attempt executed_at is invalid: {error}")
+        return sorted(set(errors))
+    if projection.get("executed_at") != executed_at:
+        errors.append("attempt and projection executed_at differ")
+    if integrity.get("attempt_id") != attempt_id(manifest, executed_at):
+        errors.append("integrity attempt id differs")
+
+    reconstructed, expected_raw_files, reconstruction_errors = (
+        reconstruct_projection_from_raw(
+            path,
+            manifest,
+            executed_at=executed_at,
+        )
+    )
+    errors.extend(reconstruction_errors)
+    actual_raw_files = {
+        relative for relative in actual if relative.startswith("raw/")
+    }
+    if actual_raw_files != expected_raw_files:
+        errors.append("raw evidence file set differs from route reconstruction")
+    if render(projection) != render(reconstructed):
+        errors.append("projection differs from raw evidence reconstruction")
+
+    expected_attempt = build_attempt(
+        manifest,
+        reconstructed,
+        executed_at=executed_at,
+    )
+    if attempt.get("tool") != expected_attempt["tool"]:
+        errors.append("attempt tool identity differs from this controller")
+    if render(attempt) != render(expected_attempt):
+        errors.append("attempt metadata differs from reconstructed evidence")
     return sorted(set(errors))
 
 

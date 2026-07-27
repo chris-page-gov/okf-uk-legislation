@@ -6,7 +6,7 @@
   "additionalProperties": false,
   "required": ["schema", "status", "state", "authorization_id", "frozen_candidate", "embedded_validation", "archive", "explorer_release", "gate_evidence", "gates", "invariants"],
   "properties": {
-    "schema": {"const": "okf-pre-rc-authorization-receipt.v2"},
+    "schema": {"const": "okf-pre-rc-authorization-receipt.v3"},
     "status": {"const": "passed"},
     "state": {"const": "rc_eligible"},
     "authorization_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
@@ -26,12 +26,13 @@
     "embedded_validation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["current_state", "release_state", "release_gates", "release_report", "traceability", "gates"],
+      "required": ["current_state", "release_state", "release_gates", "release_report", "model_cost_report", "traceability", "gates"],
       "properties": {
         "current_state": {"const": "validated"},
         "release_state": {"$ref": "#/$defs/material"},
         "release_gates": {"$ref": "#/$defs/material"},
         "release_report": {"$ref": "#/$defs/material"},
+        "model_cost_report": {"$ref": "#/$defs/material"},
         "traceability": {"$ref": "#/$defs/material"},
         "gates": {
           "type": "object",
@@ -53,16 +54,17 @@
     "explorer_release": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repository", "tag", "commit", "release_url", "receipt", "observation", "runtime_receipt", "materials"],
+      "required": ["repository", "tag", "commit", "release_url", "receipt", "release_observation", "pages_observation", "runtime_receipt", "materials"],
       "properties": {
         "repository": {"const": "https://github.com/chris-page-gov/okf-explorer"},
-        "tag": {"const": "v0.5.1"},
+        "tag": {"const": "v0.5.4"},
         "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
-        "release_url": {"const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.1"},
+        "release_url": {"const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.4"},
         "receipt": {"$ref": "#/$defs/material"},
-        "observation": {"$ref": "#/$defs/material"},
+        "release_observation": {"$ref": "#/$defs/material"},
+        "pages_observation": {"$ref": "#/$defs/material"},
         "runtime_receipt": {"$ref": "#/$defs/material"},
-        "materials": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"$ref": "#/$defs/material"}}
+        "materials": {"type": "array", "minItems": 20, "uniqueItems": true, "items": {"$ref": "#/$defs/material"}}
       }
     },
     "gate_evidence": {

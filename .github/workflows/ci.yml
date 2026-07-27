@@ -21,6 +21,10 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-validation.txt
       - name: Install pinned validation dependencies
-        run: python3 -m pip install --disable-pip-version-check --requirement requirements-validation.txt
+        run: >-
+          python3 -m pip install
+          --disable-pip-version-check
+          --require-hashes
+          --requirement requirements-validation.txt
       - name: Run complete offline publication validation
         run: sh scripts/validate_publication.sh

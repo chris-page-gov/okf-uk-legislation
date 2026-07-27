@@ -1,0 +1,484 @@
+{
+  "counts": {
+    "critical_personas": 38,
+    "critical_tasks": 20,
+    "families_passed": 58,
+    "families_total": 58
+  },
+  "critical_definition": "Every persona and task with at least one research mapping marked professional_escalation; this resolves to all 38 personas and all 20 task families.",
+  "evaluation_scope": "corpus-navigation-metadata",
+  "legal_answer_score": null,
+  "minimum_family_score": 100,
+  "personas": {
+    "P01": {
+      "answers": 19,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P02": {
+      "answers": 9,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P03": {
+      "answers": 8,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P04": {
+      "answers": 14,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P05": {
+      "answers": 9,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P06": {
+      "answers": 8,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P07": {
+      "answers": 12,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P08": {
+      "answers": 11,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P09": {
+      "answers": 9,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P10": {
+      "answers": 11,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P11": {
+      "answers": 10,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P12": {
+      "answers": 29,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P13": {
+      "answers": 14,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P14": {
+      "answers": 11,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P15": {
+      "answers": 12,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P16": {
+      "answers": 12,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P17": {
+      "answers": 10,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P18": {
+      "answers": 10,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P19": {
+      "answers": 15,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P20": {
+      "answers": 9,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P21": {
+      "answers": 10,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P22": {
+      "answers": 11,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P23": {
+      "answers": 9,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P24": {
+      "answers": 13,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P25": {
+      "answers": 7,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P26": {
+      "answers": 11,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P27": {
+      "answers": 12,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P28": {
+      "answers": 8,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P29": {
+      "answers": 11,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P30": {
+      "answers": 7,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P31": {
+      "answers": 12,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P32": {
+      "answers": 7,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P33": {
+      "answers": 7,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P34": {
+      "answers": 9,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P35": {
+      "answers": 9,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P36": {
+      "answers": 11,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P37": {
+      "answers": 12,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "P38": {
+      "answers": 7,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    }
+  },
+  "schema": "okf-evaluation-critical-family-scores.v1",
+  "score_name": "corpus-navigation-metadata-score",
+  "status": "passed",
+  "tasks": {
+    "T01": {
+      "answers": 60,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T02": {
+      "answers": 34,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T03": {
+      "answers": 20,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T04": {
+      "answers": 32,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T05": {
+      "answers": 18,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T06": {
+      "answers": 21,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T07": {
+      "answers": 26,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T08": {
+      "answers": 7,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T09": {
+      "answers": 15,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T10": {
+      "answers": 22,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T11": {
+      "answers": 19,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T12": {
+      "answers": 7,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T13": {
+      "answers": 20,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T14": {
+      "answers": 7,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T15": {
+      "answers": 6,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T16": {
+      "answers": 15,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T17": {
+      "answers": 33,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T18": {
+      "answers": 14,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T19": {
+      "answers": 20,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    },
+    "T20": {
+      "answers": 19,
+      "average_score": 100.0,
+      "hard_failures": 0,
+      "minimum_item_score": 100,
+      "passed": true,
+      "threshold": 85
+    }
+  },
+  "threshold": 85
+}

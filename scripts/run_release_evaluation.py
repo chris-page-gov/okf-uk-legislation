@@ -30,6 +30,9 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urljoin, urlparse
 
+from rdflib import Graph
+from rdflib.compare import isomorphic
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
@@ -115,6 +118,18 @@ WHOLE_LAW_REQUIRED_FIELDS = {
     "evaluation_scope",
     "underlying_legal_task_status",
     "strata",
+}
+CLAUDE_LOCAL_CONTRACTS = {
+    "CLAUDE-ACCESS-01": "descriptor-discovery",
+    "CLAUDE-ACCESS-02": "non-api-alternate-routes",
+    "CLAUDE-ACCESS-03": "declared-raw-subpaths",
+    "CLAUDE-ACCESS-04": "pages-routes-declared",
+    "CLAUDE-ACCESS-05": (
+        "yaml-ld-json-ld-turtle-publication-and-json-ld-mime-fallback"
+    ),
+    "CLAUDE-ACCESS-06": "effects-and-reconciliation-entrypoints",
+    "CLAUDE-ACCESS-07": None,
+    "CLAUDE-ACCESS-08": "freshness-and-access-cliff-metadata",
 }
 
 
@@ -229,6 +244,7 @@ def collect_input_snapshot() -> tuple[
         ROOT / "bundle" / "whole-law" / "okf-explorer.json",
         ROOT / "bundle" / "whole-law" / "okf-bundle.yamlld",
         ROOT / "bundle" / "whole-law" / "okf-bundle.jsonld",
+        ROOT / "bundle" / "whole-law" / "okf-bundle.ttl",
         ROOT / "bundle" / "whole-law" / "docs" / "index.md",
         ROOT / "bundle" / "whole-law" / "data" / "source-register.json",
         ROOT / "bundle" / "whole-law" / "data" / "legal-source-taxonomy.json",
@@ -529,6 +545,130 @@ def descriptor_discovery_contract(descriptor: dict[str, Any]) -> list[str]:
     return failures
 
 
+def jsonld_requires_remote_context(value: Any) -> bool:
+    """Return true when parsing could require a non-local JSON-LD context."""
+
+    if isinstance(value, dict):
+        for key, item in value.items():
+            if key == "@import":
+                return True
+            if key == "@context" and (
+                isinstance(item, str)
+                or (
+                    isinstance(item, list)
+                    and any(isinstance(row, str) for row in item)
+                )
+            ):
+                return True
+            if jsonld_requires_remote_context(item):
+                return True
+    elif isinstance(value, list):
+        return any(jsonld_requires_remote_context(row) for row in value)
+    return False
+
+
+def whole_law_semantic_representation_contract(
+    descriptor: dict[str, Any],
+    snapshot: dict[str, bytes],
+) -> list[str]:
+    """Verify the three Whole-Law semantic publication routes and RDF graph."""
+
+    failures: list[str] = []
+    yaml_ld = snapshot.get("bundle/whole-law/okf-bundle.yamlld")
+    json_ld = snapshot.get("bundle/whole-law/okf-bundle.jsonld")
+    turtle = snapshot.get("bundle/whole-law/okf-bundle.ttl")
+    for label, body in (
+        ("YAML-LD", yaml_ld),
+        ("JSON-LD", json_ld),
+        ("Turtle", turtle),
+    ):
+        if not body:
+            failures.append(f"{label} publication is missing or empty")
+
+    entrypoints = descriptor.get("entrypoints")
+    entrypoints = entrypoints if isinstance(entrypoints, dict) else {}
+    if entrypoints.get("semantic_turtle") != "okf-bundle.ttl":
+        failures.append(
+            "entrypoints.semantic_turtle must equal okf-bundle.ttl"
+        )
+
+    discovery = descriptor.get("discovery")
+    discovery = discovery if isinstance(discovery, dict) else {}
+    semantic_descriptor = discovery.get("semantic_descriptor")
+    expected_turtle_url = (
+        urljoin(semantic_descriptor, "okf-bundle.ttl")
+        if isinstance(semantic_descriptor, str)
+        and semantic_descriptor.strip()
+        else None
+    )
+    turtle_alternates = [
+        row
+        for row in descriptor.get("alternate_access", [])
+        if isinstance(row, dict) and row.get("kind") == "turtle"
+    ]
+    if len(turtle_alternates) != 1:
+        failures.append("alternate_access must declare exactly one Turtle route")
+    elif (
+        expected_turtle_url is None
+        or turtle_alternates[0].get("url") != expected_turtle_url
+        or not expected_turtle_url.endswith("/okf-bundle.ttl")
+    ):
+        failures.append(
+            "Turtle alternate must be the semantic descriptor's exact "
+            "same-origin, same-directory /okf-bundle.ttl URL"
+        )
+
+    alternate_kinds = {
+        row.get("kind")
+        for row in descriptor.get("alternate_access", [])
+        if isinstance(row, dict)
+    }
+    if "jsonld-fallback" not in alternate_kinds:
+        failures.append("JSON-LD strict transport fallback is not declared")
+    if not any(
+        "application/octet-stream" in str(notice)
+        for notice in descriptor.get("notices", [])
+    ):
+        failures.append("YAML-LD octet-stream MIME limitation is not declared")
+
+    if json_ld and turtle:
+        try:
+            json_ld_text = json_ld.decode("utf-8")
+            json_ld_document = json.loads(json_ld_text)
+            if not isinstance(json_ld_document, dict) or not isinstance(
+                json_ld_document.get("@context"),
+                dict,
+            ):
+                raise ValueError(
+                    "generated JSON-LD must contain an inline context"
+                )
+            if jsonld_requires_remote_context(json_ld_document):
+                raise ValueError(
+                    "generated JSON-LD must not use remote contexts"
+                )
+            json_ld_graph = Graph()
+            json_ld_graph.parse(data=json_ld_text, format="json-ld")
+        except (UnicodeDecodeError, ValueError, TypeError):
+            failures.append("generated JSON-LD is not valid offline JSON-LD")
+            json_ld_graph = None
+        try:
+            turtle_graph = Graph()
+            turtle_graph.parse(data=turtle.decode("utf-8"), format="turtle")
+        except (UnicodeDecodeError, ValueError, TypeError, SyntaxError):
+            failures.append("generated Turtle is not valid Turtle")
+            turtle_graph = None
+        if json_ld_graph is not None and turtle_graph is not None:
+            if len(json_ld_graph) == 0 or len(turtle_graph) == 0:
+                failures.append(
+                    "JSON-LD and Turtle RDF graphs must both be non-empty"
+                )
+            elif not isomorphic(json_ld_graph, turtle_graph):
+                failures.append(
+                    "generated JSON-LD and Turtle RDF graphs are not isomorphic"
+                )
+    return failures
+
+
 def analyze_okf_explorer_workflow(
     root_descriptor: dict[str, Any],
     whole_descriptor: dict[str, Any],
@@ -640,6 +780,7 @@ def analyze_okf_explorer_workflow(
         "evaluation",
         "evaluation_coverage",
         "official_effects",
+        "semantic_turtle",
         "integrity",
         "docs",
     }
@@ -739,14 +880,20 @@ def analyze_claude_access_journey(
     pages_declared = (
         "pages" in root_alternates and "pages" in whole_alternates
     )
-    yaml_fallback_ok = (
-        bool(snapshot.get("bundle/whole-law/okf-bundle.yamlld"))
-        and bool(snapshot.get("bundle/whole-law/okf-bundle.jsonld"))
-        and "jsonld-fallback" in whole_alternates
-        and any(
-            "application/octet-stream" in str(notice)
-            for notice in whole_descriptor.get("notices", [])
+    semantic_representation_failures = (
+        whole_law_semantic_representation_contract(
+            whole_descriptor,
+            snapshot,
         )
+    )
+    semantic_representations_ok = not semantic_representation_failures
+    semantic_representations_evidence = (
+        "YAML-LD, JSON-LD and Turtle are published; generated JSON-LD and "
+        "Turtle are non-empty isomorphic RDF graphs; JSON-LD is the strict "
+        "transport fallback for the declared YAML-LD MIME limitation"
+        if semantic_representations_ok
+        else "semantic representation contract failed: "
+        + "; ".join(semantic_representation_failures)
     )
     effects_states = effects_reconciliation.get("states", {})
     effects_ok = (
@@ -777,7 +924,10 @@ def analyze_claude_access_journey(
         "CLAUDE-ACCESS-02": (non_api_routes_ok, "non-API alternate routes"),
         "CLAUDE-ACCESS-03": (raw_subpaths_ok, "declared repository subpaths"),
         "CLAUDE-ACCESS-04": (pages_declared, "Pages routes declared locally"),
-        "CLAUDE-ACCESS-05": (yaml_fallback_ok, "YAML-LD/JSON-LD fallback contract"),
+        "CLAUDE-ACCESS-05": (
+            semantic_representations_ok,
+            semantic_representations_evidence,
+        ),
         "CLAUDE-ACCESS-06": (effects_ok, "frozen effects and reconciliation metadata"),
         "CLAUDE-ACCESS-07": (None, "compatibility host is outside this repository"),
         "CLAUDE-ACCESS-08": (freshness_ok, "freshness and access-cliff metadata"),
@@ -789,6 +939,17 @@ def analyze_claude_access_journey(
             identifier,
             (False, "unknown scenario id"),
         )
+        expected_contract = CLAUDE_LOCAL_CONTRACTS.get(identifier)
+        if (
+            identifier not in CLAUDE_LOCAL_CONTRACTS
+            or scenario.get("local_contract") != expected_contract
+        ):
+            passed = False
+            evidence = (
+                "local_contract mismatch: expected "
+                f"{expected_contract!r}; found "
+                f"{scenario.get('local_contract')!r}"
+            )
         rows.append(
             {
                 "id": identifier,

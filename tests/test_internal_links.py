@@ -126,6 +126,27 @@ class InternalLinkTests(unittest.TestCase):
             ],
         )
 
+    def test_whole_law_landing_requires_all_semantic_representations(
+        self,
+    ) -> None:
+        requirements = links.WHOLE_LAW_SEMANTIC_PATHS
+        complete = " ".join(requirements)
+        self.assertEqual(
+            links.landing_requirement_failures(
+                Path("whole-law/index.md"),
+                complete,
+                requirements,
+            ),
+            [],
+        )
+        failures = links.landing_requirement_failures(
+            Path("whole-law/index.md"),
+            "okf-bundle.yamlld okf-bundle.jsonld",
+            requirements,
+        )
+        self.assertEqual(len(failures), 1)
+        self.assertIn("okf-bundle.ttl", failures[0])
+
     def test_evaluation_machine_identifiers_are_canonical(self) -> None:
         for relative, expected_fields in links.CANONICAL_MACHINE_IDENTIFIERS.items():
             payload = links.json.loads(

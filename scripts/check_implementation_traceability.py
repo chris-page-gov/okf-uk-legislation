@@ -17,6 +17,9 @@ SOURCE_DIGEST = SOURCE.with_suffix(".sha256")
 TRACE = ROOT / "release-assurance" / "implementation-traceability.json"
 GAPS = ROOT / "release-assurance" / "gap-register.json"
 STATUS = ROOT / "release-assurance" / "implementation-status.md"
+EVALUATION_INDEX = (
+    ROOT / "bundle" / "whole-law" / "evaluation" / "executions" / "index.json"
+)
 
 VALID_STATUSES = {
     "proposed",
@@ -34,6 +37,9 @@ CLAUSE_PATTERN = re.compile(
     r"Verbatim: (?P<verbatim>yes|no)\n\n"
     r"> (?P<text>.+)$",
     re.MULTILINE,
+)
+EVALUATION_EXECUTION_PATTERN = re.compile(
+    r"^whole-law/evaluation/executions/(?P<run_id>eval-[a-f0-9]{20})/"
 )
 
 
@@ -249,6 +255,67 @@ def validate_gap_register() -> list[str]:
     return errors
 
 
+def validate_current_evaluation_references() -> list[str]:
+    """Require assurance ledgers to cite the selected current execution.
+
+    The release-evaluation runner independently proves that the selected
+    execution matches the current corpus fingerprint.  This check closes the
+    other half of that binding: a historical execution may remain published,
+    but it cannot be cited as the evidence for current traceability or gap
+    closure.
+    """
+
+    errors: list[str] = []
+    if not EVALUATION_INDEX.is_file():
+        return ["current evaluation execution index is missing"]
+    index = load(EVALUATION_INDEX)
+    latest_run_id = index.get("latest_run_id")
+    if not isinstance(latest_run_id, str) or not re.fullmatch(
+        r"eval-[a-f0-9]{20}", latest_run_id
+    ):
+        return ["evaluation execution index has no canonical latest_run_id"]
+
+    referenced: list[tuple[str, str]] = []
+    trace = load(TRACE)
+    for row in trace.get("requirements", []):
+        identifier = str(row.get("id"))
+        for field in (
+            "design_evidence",
+            "implementation_evidence",
+            "validation_evidence",
+        ):
+            for reference in row.get(field, []):
+                if isinstance(reference, str):
+                    match = EVALUATION_EXECUTION_PATTERN.match(reference)
+                    if match:
+                        referenced.append(
+                            (f"{identifier}.{field}", match.group("run_id"))
+                        )
+
+    gaps = load(GAPS)
+    for row in gaps.get("gaps", []):
+        identifier = str(row.get("id"))
+        for reference in row.get("evidence", []):
+            if isinstance(reference, str):
+                match = EVALUATION_EXECUTION_PATTERN.match(reference)
+                if match:
+                    referenced.append(
+                        (f"{identifier}.evidence", match.group("run_id"))
+                    )
+
+    if not referenced:
+        errors.append(
+            "traceability and gap ledgers cite no release-evaluation execution"
+        )
+    for location, run_id in referenced:
+        if run_id != latest_run_id:
+            errors.append(
+                f"{location}: cites historical evaluation {run_id}; "
+                f"current selected execution is {latest_run_id}"
+            )
+    return errors
+
+
 def validate_status_markdown(counts: Counter[str]) -> list[str]:
     text = STATUS.read_text(encoding="utf-8")
     normalized_text = " ".join(text.split())
@@ -284,7 +351,14 @@ def validate_status_markdown(counts: Counter[str]) -> list[str]:
 def validate() -> list[str]:
     missing = [
         path.relative_to(ROOT).as_posix()
-        for path in (SOURCE, SOURCE_DIGEST, TRACE, GAPS, STATUS)
+        for path in (
+            SOURCE,
+            SOURCE_DIGEST,
+            TRACE,
+            GAPS,
+            STATUS,
+            EVALUATION_INDEX,
+        )
         if not path.is_file()
     ]
     if missing:
@@ -294,6 +368,7 @@ def validate() -> list[str]:
     counts, trace_errors = validate_traceability(clauses)
     errors.extend(trace_errors)
     errors.extend(validate_gap_register())
+    errors.extend(validate_current_evaluation_references())
     errors.extend(validate_status_markdown(counts))
     return errors
 
@@ -322,6 +397,8 @@ def main() -> int:
             "started",
             "blocked",
             "deferred",
+            "proposed",
+            "superseded",
         )
     )
     print(

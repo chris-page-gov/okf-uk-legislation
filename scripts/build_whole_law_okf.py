@@ -22,6 +22,9 @@ from pathlib import Path
 from typing import Any, Iterable
 from urllib.parse import urljoin
 
+import rdflib
+from pyld import jsonld
+
 import build_legislation_okf as legislation_builder
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,6 +68,32 @@ def render_json(value: Any) -> str:
 
 def sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
+
+
+def render_canonical_turtle(document: dict[str, Any]) -> bytes:
+    """Render the JSON-LD dataset as deterministic canonical N-Triples.
+
+    RDFC-1.0/URDNA2015 emits N-Quads.  This descriptor uses only the RDF
+    default graph, so its normalized statements are also valid N-Triples and
+    therefore valid Turtle.  Parsing the result as Turtle makes that
+    default-graph constraint fail closed if the semantic model later changes.
+    """
+
+    normalized = jsonld.normalize(
+        document,
+        {
+            "algorithm": "URDNA2015",
+            "format": "application/n-quads",
+        },
+    )
+    try:
+        rdflib.Graph().parse(data=normalized, format="turtle")
+    except Exception as exc:
+        raise ValueError(
+            "canonical semantic descriptor is not a Turtle-compatible "
+            "default-graph serialization"
+        ) from exc
+    return normalized.encode("utf-8")
 
 
 def slugify(value: str) -> str:
@@ -568,6 +597,7 @@ def descriptor(
             "standards": "ontology/standards.json",
             "ontology": "ontology/index.md",
             "shapes": "ontology/shapes.ttl",
+            "semantic_turtle": "okf-bundle.ttl",
             "semantic_conformance": "assurance/semantic-conformance.json",
             "evaluation": "evaluation/release-questions.json",
             "evaluation_coverage": "evaluation/coverage.json",
@@ -614,6 +644,7 @@ def descriptor(
             {"kind": "raw", "url": "https://raw.githubusercontent.com/chris-page-gov/okf-uk-legislation/main/bundle/whole-law/okf-explorer.json"},
             {"kind": "archive", "url": "https://github.com/chris-page-gov/okf-uk-legislation/archive/refs/heads/main.tar.gz"},
             {"kind": "jsonld-fallback", "url": f"{PUBLIC}/whole-law/okf-bundle.jsonld"},
+            {"kind": "turtle", "url": f"{PUBLIC}/whole-law/okf-bundle.ttl"},
         ],
         "extensions": {
             "okf-whole-law.v1": {
@@ -884,6 +915,7 @@ def build_files() -> dict[Path, bytes]:
 
     put("okf-explorer.json", render_json(desc))
     put("okf-bundle.jsonld", render_json(semantic))
+    put("okf-bundle.ttl", render_canonical_turtle(semantic))
     put("data/source-register.json", source_register_bytes)
     put("data/legal-source-taxonomy.json", render_json(taxonomy))
     put("data/persona-task-matrix.json", render_json(personas))
@@ -1054,6 +1086,12 @@ binding, coverage strata, evidence and independent verification state.
 |---|---|---|---|
 | [GitHub](https://github.com/chris-page-gov/okf-uk-legislation) | [federation descriptor](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json) | `bundle/whole-law` | [immutable releases](https://github.com/chris-page-gov/okf-uk-legislation/releases) |
 
+## Semantic representations
+
+- [Authored YAML-LD](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.yamlld)
+- [Generated JSON-LD](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.jsonld)
+- [Canonical Turtle](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.ttl)
+
 ## Official sources and examples
 
 - [legislation.gov.uk](https://www.legislation.gov.uk/)
@@ -1080,6 +1118,11 @@ binding, coverage strata, evidence and independent verification state.
 <li>Declared raw subpath: <code>bundle/whole-law</code></li>
 <li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
 </ul>
+<h2>Semantic representations</h2><ul>
+<li><a href="../okf-bundle.yamlld">Authored YAML-LD</a></li>
+<li><a href="../okf-bundle.jsonld">Generated JSON-LD</a></li>
+<li><a href="../okf-bundle.ttl">Canonical Turtle</a></li>
+</ul>
 <h2>Official sources and examples</h2><ul>
 <li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
 <li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
@@ -1094,13 +1137,20 @@ Open the federation in OKF Explorer with:
 
 `https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fwhole-law%2Fokf-explorer.json&view=reader#overview`
 
-The descriptor declares its repository, raw subpath, archive, JSON-LD fallback
-and source-family coverage so agents do not need to guess paths.
+The descriptor declares its repository, raw subpath, archive, JSON-LD and
+Turtle alternatives, and source-family coverage so agents do not need to
+guess paths.
 
 Canonical descriptor:
 `{PUBLIC}/whole-law/okf-explorer.json`. Its declared raw subpath is
 `bundle/whole-law`; its archive fallback is
 `https://github.com/chris-page-gov/okf-uk-legislation/releases`.
+
+Semantic representations:
+
+- `{PUBLIC}/whole-law/okf-bundle.yamlld`
+- `{PUBLIC}/whole-law/okf-bundle.jsonld`
+- `{PUBLIC}/whole-law/okf-bundle.ttl`
 """)
     put("docs/authority-and-evidence.md", """# Authority, evidence and legal-use boundaries
 
@@ -1149,10 +1199,11 @@ documented compatibility decision.
 ## Authored and generated representations
 
 `okf-bundle.yamlld` is the authored semantic publication. The builder emits
-`okf-bundle.jsonld` from the same governed values. Validation exercises
-YAML-LD expansion, JSON-LD compaction, flattening and framing, RDF conversion,
-RDF-to-JSON-LD-to-RDF round-trip, graph isomorphism and canonical N-Quads
-equivalence. SHACL validates both the complete authored/generated semantic
+`okf-bundle.jsonld` and canonical N-Triples-compatible
+`okf-bundle.ttl` from the same governed values. Validation exercises YAML-LD
+expansion, JSON-LD compaction, flattening and framing, RDF conversion,
+RDF-to-JSON-LD-to-RDF round-trip, three-way graph isomorphism and canonical
+dataset-digest equivalence. SHACL validates all three complete semantic
 descriptor graphs and the example/entity contract. The semantic descriptor
 contains the Federation and its hash-bound SourceRegister contract node; it
 does not materialise the 365,786 catalogued legal works as RDF. The
@@ -1202,6 +1253,7 @@ artefacts are promoted by digest without rebuilding.
 <li><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Canonical Explorer descriptor</a></li>
 <li><a href="okf-bundle.yamlld">YAML-LD</a></li>
 <li><a href="okf-bundle.jsonld">JSON-LD</a></li>
+<li><a href="okf-bundle.ttl">Turtle</a></li>
 <li><a href="docs/index.md">Documentation</a></li>
 <li><a href="data/source-register.json">Source register</a></li>
 <li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>

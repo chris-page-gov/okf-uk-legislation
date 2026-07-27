@@ -1,0 +1,12 @@
+# Direct validation and deterministic-publication dependencies.
+#
+# requirements-validation.txt is the generated, hash-locked CPython 3.12
+# Linux x86_64 closure. Change direct requirements here, then regenerate the
+# lock with the command documented in docs/validation-dependency-lock.md.
+jsonschema==4.25.1
+PyLD==2.0.4
+pyshacl==0.30.1
+PyYAML==6.0.2
+rdflib==7.6.0
+yaml-ld==1.1.22
+zstandard==0.23.0

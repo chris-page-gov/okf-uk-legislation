@@ -1,10 +1,10 @@
 {
   "as_of": "2026-07-26",
   "counts": {
-    "blocked": 3,
+    "blocked": 5,
     "deferred": 3,
-    "open": 5,
-    "resolved": 15,
+    "open": 2,
+    "resolved": 16,
     "total": 26
   },
   "gaps": [
@@ -130,8 +130,8 @@
   "evidence": [
     "whole-law/evaluation/README.md",
     "whole-law/evaluation/release-questions.json",
-    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/verification.json",
-    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/integrity.json"
+    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/verification.json",
+    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/integrity.json"
   ],
   "id": "IMP-GAP-010",
   "next_action": "Preserve the explicit distinction between the independently verified corpus-navigation gold suite and the retained non-gold broad legal prompts; do not present the navigation score as legal-answer correctness.",
@@ -143,11 +143,11 @@
       "area": "evaluation execution",
   "evidence": [
     "whole-law/evaluation/README.md",
-    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/results.json",
-    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/scores.json",
-    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/challenge-discovery-calibration.json",
-    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/challenge-pass-1.json",
-    "whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/challenge-pass-2.json"
+    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/results.json",
+    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/scores.json",
+    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/challenge-discovery-calibration.json",
+    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/challenge-pass-1.json",
+    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/challenge-pass-2.json"
   ],
   "id": "IMP-GAP-011",
   "next_action": "Bind this immutable evaluation execution into the final candidate and retain its corpus-navigation-only assurance boundary.",
@@ -161,10 +161,10 @@
         "release-assurance/release-gates.json"
       ],
       "id": "IMP-GAP-012",
-      "next_action": "Publish the green corrective Explorer v0.5.1 release, then bind or rerun the Chrome, Firefox and WebKit receipt against its exact commit and the frozen Legislation descriptor digests before recording that binding in external finalization evidence.",
+      "next_action": "Bind and rerun the Chrome, Firefox and WebKit receipt against published Explorer v0.5.4 commit a23dfdea56fea0184b6d53f3163b292dd1a312ed and the frozen Legislation descriptor digests, then record that binding in external finalization evidence.",
       "release_effect": "blocks-GATE-07-and-GATE-08",
       "status": "blocked",
-      "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations. Explorer v0.5.0 remains the completed release-order milestone, but corrective v0.5.1 is now the exact finalization prerequisite and is not yet published or bound to the frozen Legislation candidate."
+      "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations. Explorer v0.5.0 remains the completed release-order milestone and v0.5.1 remains historical corrective work. Explorer v0.5.2 is historical and superseded because timestamp-derived SvelteKit build bytes were not reproducible. Explorer v0.5.3 is historical and superseded because an independent observation of its Actions TAR found a 159-byte 404.html after assembly where the canonical app-build manifest declared 1,122 bytes. Published v0.5.4 from protected-main commit a23dfdea56fea0184b6d53f3163b292dd1a312ed and tree 981d5c967b7017c78f37aab379edd95f44917cf5 preserves the built 404.html, adds a post-assembly manifest verifier, and supplies a durable 185,023,908-byte Pages release asset with SHA-256 357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0; binding it to the frozen Legislation candidate is externally closable only after exact freeze."
     },
     {
       "area": "public access and links",
@@ -176,7 +176,7 @@
       "next_action": "After deployment, crawl Pages, raw, archive and compatibility routes unauthenticated and bind the results.",
       "release_effect": "blocks-GATE-09",
       "status": "blocked",
-      "summary": "Local link validation exists, but deployed public entry-point validation cannot precede deployment."
+      "summary": "Local link validation exists, but deployed public entry-point validation is externally closable only after exact freeze, immutable RC publication and deployment."
     },
     {
       "area": "YAML-LD HTTP media type",
@@ -199,7 +199,7 @@
       "next_action": "Run clean-clone generation with pinned dependencies and compare semantic and byte digests.",
       "release_effect": "blocks-GATE-06",
       "status": "blocked",
-      "summary": "A reproduction contract exists, but clean-room execution evidence does not."
+      "summary": "A reproduction contract exists, but clean-room execution and exact archive-byte evidence are externally closable only after exact freeze."
     },
     {
       "area": "security assurance",
@@ -209,8 +209,8 @@
       "id": "IMP-GAP-016",
       "next_action": "Run the security scan only after the exact release candidate is frozen.",
       "release_effect": "blocks-GATE-10-after-freeze",
-      "status": "open",
-      "summary": "The earlier security scan targeted a mutable, incomplete implementation and cannot seal the final candidate."
+      "status": "blocked",
+      "summary": "The earlier security scan targeted a mutable, incomplete implementation and cannot seal the final candidate. Exact-candidate secret, dependency, content and supply-chain assurance is externally closable only after exact freeze."
     },
     {
       "area": "release and promotion",
@@ -219,10 +219,10 @@
         "release-assurance/release-gates.json"
       ],
       "id": "IMP-GAP-017",
-      "next_action": "Release Explorer first, freeze and validate the Legislation RC once, deploy it, then promote identical digests.",
-      "release_effect": "blocks-GATE-12-and-GATE-13",
-      "status": "open",
-      "summary": "No exact release candidate has been frozen, deployed or promoted."
+      "next_action": "Freeze the validated Legislation candidate once, create and publish its immutable archive, deploy it, run the post-RC checks and promote identical digests through the external finalization workflow.",
+      "release_effect": "blocks-external-release-and-GATE-13-after-freeze",
+      "status": "blocked",
+      "summary": "No exact Legislation candidate has been frozen, archived, deployed or promoted. These release and promotion obligations are externally closable only after exact freeze; embedded GATE-12 is already complete and is not blocked by this record."
     },
     {
       "area": "external assurance",
@@ -298,10 +298,10 @@
         "release-assurance/implementation-traceability.json"
       ],
       "id": "IMP-GAP-023",
-      "next_action": "At final requirement closure, preserve the independently accepted Codex calibration result and record that D-13 superseded only direct-API priced-model comparison and configured paid-model escalation. Retain those API mechanics solely as an optional future profile requiring a new explicit user decision.",
+      "next_action": "Preserve the independently accepted Codex calibration result and the D-13 supersession through freeze and promotion. Retain direct-API priced-model comparison and configured paid-model escalation solely as an optional future profile requiring a new explicit user decision.",
       "release_effect": "resolved-current-Codex-calibration; direct-API-profile-superseded-by-D-13",
       "status": "resolved",
-      "summary": "The governed v3 fixed calibration set passed with 100% output-contract schema validity, 100% fixed-set precision and 100% evidence support, and the separate reviewer plus deterministic auditor accepted it. D-13 supersedes direct-API priced-model selection and configured paid-model escalation for the current no-API implementation. The indivisible P05-02 source clause remains started only for final partial-supersession closure, not because an enrichment-quality test is missing."
+      "summary": "The governed v3 fixed calibration set passed with 100% output-contract schema validity, 100% fixed-set precision and 100% evidence support, and the separate reviewer plus deterministic auditor accepted it. D-13 supersedes P05-02's direct-API priced-model selection and configured paid-model escalation for the current no-API implementation; P05-02 therefore has terminal superseded closure without discarding the completed calibration evidence."
     },
     {
       "area": "model enrichment input evidence",
@@ -348,10 +348,10 @@
         "tests/test_release_assurance.py"
       ],
       "id": "IMP-GAP-026",
-      "next_action": "At final candidate closure, preserve the accepted v3 denominator and exact zero direct-API cost receipt in the final report, then bind exact-RC security evidence that no credential or secret entered Git or logs.",
-      "release_effect": "blocks-full-P05-06-finalization",
-      "status": "open",
-      "summary": "D-13 partially supersedes P05-06: direct-API paid-stage preflight and cap mechanics are not used by the selected no-API route. The accepted v3 evidence now records 56,479 accepted assertions, zero API calls and input/output tokens, exact USD 0 / GBP 0 direct API spend, USD 0 cost per accepted assertion, exchange-rate non-applicability and unavailable/unmetered Codex service fields. No API key was required or used; final exact-RC secret-safe evidence and report binding remain outstanding."
+      "next_action": "Preserve the accepted v3 denominator, exact zero direct-API cost receipt and unavailable/unmetered Codex service fields through freeze and promotion. Bind exact-candidate secret assurance separately under external GATE-10.",
+      "release_effect": "resolved-by-D-13; exact-candidate-secret-scan-remains-external-GATE-10",
+      "status": "resolved",
+      "summary": "D-13 supersedes P05-06's direct-API paid-stage preflight and cap mechanics for the selected no-API route. The accepted v3 evidence records 56,479 accepted assertions, zero API calls and API input/output tokens, exact USD 0 / GBP 0 direct API spend, USD 0 cost per accepted assertion, exchange-rate non-applicability and unavailable/unmetered Codex service fields; no API key was required or used. P05-06 therefore has terminal superseded closure, while exact-frozen-candidate secret scanning remains a separate external GATE-10 obligation."
     }
   ],
   "scope_note": "This implementation gap register supplements, but does not modify, the immutable 28-record research gap register. Resolved means the named implementation omission has evidence; it does not mean the release is complete.",

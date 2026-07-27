@@ -909,8 +909,16 @@ def build() -> dict[Path, bytes]:
             {
                 "id": "CLAUDE-ACCESS-05",
                 "name": "YAML-LD MIME fallback",
-                "expected": "Octet-stream YAML-LD is safely content-sniffed; JSON-LD is the strict transport fallback.",
-                "local_contract": "yaml-ld-json-ld-fallback-declared",
+                "expected": (
+                    "YAML-LD, JSON-LD and Turtle are isomorphic semantic "
+                    "representations; octet-stream YAML-LD is safely "
+                    "content-sniffed and JSON-LD is the strict transport "
+                    "fallback."
+                ),
+                "local_contract": (
+                    "yaml-ld-json-ld-turtle-publication-and-json-ld-"
+                    "mime-fallback"
+                ),
                 "external_receipt_required": "explorer-mime-fallback-browser-journey",
             },
             {

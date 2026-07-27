@@ -34,6 +34,9 @@
     },
     "tag": {
       "enum": [
+        "v0.5.4",
+        "v0.5.3",
+        "v0.5.2",
         "v0.5.1",
         "v0.5.0",
         "v0.3.0-rc.1",
@@ -59,7 +62,7 @@
       "properties": {
         "api_url": {
           "type": "string",
-          "pattern": "^https://api\\.github\\.com/repos/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/releases/tags/(?:v0\\.5\\.1|v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)$"
+          "pattern": "^https://api\\.github\\.com/repos/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/releases/tags/(?:v0\\.5\\.4|v0\\.5\\.3|v0\\.5\\.2|v0\\.5\\.1|v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)$"
         },
         "http_status": {
           "const": 200
@@ -70,10 +73,13 @@
         },
         "html_url": {
           "type": "string",
-          "pattern": "^https://github\\.com/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/releases/tag/(?:v0\\.5\\.1|v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)$"
+          "pattern": "^https://github\\.com/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/releases/tag/(?:v0\\.5\\.4|v0\\.5\\.3|v0\\.5\\.2|v0\\.5\\.1|v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)$"
         },
         "tag_name": {
           "enum": [
+            "v0.5.4",
+            "v0.5.3",
+            "v0.5.2",
             "v0.5.1",
             "v0.5.0",
             "v0.3.0-rc.1",
@@ -103,7 +109,7 @@
       "properties": {
         "ref_api_url": {
           "type": "string",
-          "pattern": "^https://api\\.github\\.com/repos/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/git/ref/tags/(?:v0\\.5\\.1|v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)$"
+          "pattern": "^https://api\\.github\\.com/repos/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/git/ref/tags/(?:v0\\.5\\.4|v0\\.5\\.3|v0\\.5\\.2|v0\\.5\\.1|v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)$"
         },
         "http_status": {
           "const": 200
@@ -160,7 +166,7 @@
         },
         "download_url": {
           "type": "string",
-          "pattern": "^https://github\\.com/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/releases/download/(?:v0\\.5\\.1|v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)/[^/]+$"
+          "pattern": "^https://github\\.com/chris-page-gov/(?:okf-explorer|okf-uk-legislation)/releases/download/(?:v0\\.5\\.4|v0\\.5\\.3|v0\\.5\\.2|v0\\.5\\.1|v0\\.5\\.0|v0\\.3\\.0-rc\\.1|v0\\.3\\.0)/[^/]+$"
         },
         "http_status": {
           "const": 200

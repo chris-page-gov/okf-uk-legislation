@@ -160,7 +160,7 @@
           "const": "https://github.com/chris-page-gov/okf-explorer"
         },
         "tag": {
-          "const": "v0.5.1"
+          "const": "v0.5.4"
         },
         "commit": {
           "type": "string",

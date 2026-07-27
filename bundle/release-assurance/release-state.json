@@ -1,32 +1,32 @@
 {
-  "current_state": "candidate",
+  "current_state": "validated",
   "embedded_state": {
     "gates": {
       "GATE-12": "passed"
     },
     "release_report": {
-      "bytes": 145372,
+      "bytes": 148654,
       "path": "bundle/release-assurance/release-report.json",
-      "sha256": "2a29ba1cf8498b5efad37ef32466210aba0c39b03015cddfc103edc6583120b5"
+      "sha256": "333f8c78c97254a8fbd75ee8fb1ecb4d419cb6bb0cbeeedae37558f1ffd87bcf"
     }
   },
   "external_finalization": {
     "contract": {
-      "bytes": 5027,
+      "bytes": 12196,
       "path": "release-assurance/external-finalization-contract.json",
       "projected_path": "external-finalization-contract.json",
-      "sha256": "11d8db4b74d64d12525f9a082b830baa6e4906d85b0e80f254138a708f328d69"
+      "sha256": "c27500adb3643ac51d014dab4662610fb82bf5cf2bc75fac80831bf3fe040a9b"
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
-      "bytes": 121407,
+      "bytes": 208131,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "d729871380d636f85ba5c4dfbfe0129013287bf9ca2e8e977d93b64b79462074"
+      "sha256": "d9adc9f0f0b9dfd11f925d1591eed7a336d7b45db15e7a438c4783103801efa6"
     },
     "release_observation_controller": {
-      "bytes": 33974,
+      "bytes": 35620,
       "path": "scripts/capture_github_release_observation.py",
-      "sha256": "b656f20b963db3435a1b73ad9b4b7600f18e78f5d7005e855526a2ea6ca42b58"
+      "sha256": "ba67e9a49b107da553e791ddee37105f43bbdea26966d998e540d33d5dc141a7"
     },
     "workflow": [
       {
@@ -53,17 +53,17 @@
   },
   "fail_closed": true,
   "gate_counts": {
-    "passed": 6,
-    "pending": 8
+    "passed": 7,
+    "pending": 7
   },
   "gates": [
     {
       "evidence_plane": "embedded",
       "group": "candidate",
       "id": "GATE-01",
-      "observed_reason": "One or more implementation clauses remain proposed, started or merely implemented.",
+      "observed_reason": "Every implementation clause is verified, explicitly deferred, superseded or externally blocked.",
       "requirement": "Every originating requirement has an explicit lifecycle disposition and evidence appropriate to the pre-freeze state; no embedded pre-freeze must-have is unclassified or merely accepted, and post-freeze requirements are identified as external finalization obligations.",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "evidence_plane": "embedded",
@@ -160,7 +160,7 @@
           {
             "bytes": 22602,
             "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-            "sha256": "e5f8b992daa45a477433d71af47eb04001bab0ce3da77b29e27baea4246a60be"
+            "sha256": "6b498a1009de8d1ba0f83b72dacc68c3d9f0fbeb9d62b72a1dcbfb1c053c7e51"
           },
           {
             "bytes": 96352,
@@ -284,9 +284,9 @@
       "status": "pending"
     }
   ],
-  "generated_at": "2026-07-25T23:30:00Z",
-  "maximum_evidenced_state": "candidate",
-  "next_state": "validated",
+  "generated_at": "2026-07-26T20:54:40Z",
+  "maximum_evidenced_state": "validated",
+  "next_state": "rc",
   "next_transition_allowed": false,
   "policy": "release-assurance/release-policy.json",
   "policy_projection": {
@@ -294,7 +294,7 @@
     "path": "release-assurance/release-policy.json",
     "projected_path": "release-policy.json",
     "schema": "okf-release-state-policy.v2",
-    "sha256": "3b4e6948d7db8ee236051a5895c7a06382b2fa49c2d1a78d25572eead2d5be5e"
+    "sha256": "aaae2690ab1b421ea775625a96a4c8b36939e0c7060ed9531b973a432a1865b0"
   },
   "schema": "okf-release-state.v1",
   "state_consistent": true

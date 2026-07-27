@@ -26,10 +26,11 @@ documented compatibility decision.
 ## Authored and generated representations
 
 `okf-bundle.yamlld` is the authored semantic publication. The builder emits
-`okf-bundle.jsonld` from the same governed values. Validation exercises
-YAML-LD expansion, JSON-LD compaction, flattening and framing, RDF conversion,
-RDF-to-JSON-LD-to-RDF round-trip, graph isomorphism and canonical N-Quads
-equivalence. SHACL validates both the complete authored/generated semantic
+`okf-bundle.jsonld` and canonical N-Triples-compatible
+`okf-bundle.ttl` from the same governed values. Validation exercises YAML-LD
+expansion, JSON-LD compaction, flattening and framing, RDF conversion,
+RDF-to-JSON-LD-to-RDF round-trip, three-way graph isomorphism and canonical
+dataset-digest equivalence. SHACL validates all three complete semantic
 descriptor graphs and the example/entity contract. The semantic descriptor
 contains the Federation and its hash-bound SourceRegister contract node; it
 does not materialise the 365,786 catalogued legal works as RDF. The

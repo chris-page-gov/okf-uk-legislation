@@ -30,6 +30,12 @@ already been ingested.
 | UK Legislation | [GitHub repository][repository] | [root descriptor][legislation-descriptor] | `bundle` | [immutable releases][releases] |
 | UK Whole-Law | [GitHub repository][repository] | [federation descriptor][whole-law-descriptor] | `bundle/whole-law` | [immutable releases][releases] |
 
+The Whole-Law semantic descriptor is published as
+[YAML-LD][whole-law-yamlld], [JSON-LD][whole-law-jsonld] and canonical
+[Turtle][whole-law-turtle]. The deployed-entrypoint release gate requests
+`text/turtle`, parses the Turtle graph and verifies Whole-Law profile/content
+identifiers rather than treating a successful HTTP response as sufficient.
+
 For source and cross-domain context, keep these direct entry points:
 
 - [legislation.gov.uk][legislation-service] and its [official data/API documentation][legislation-data-docs];
@@ -101,8 +107,9 @@ the GitHub Pages publication:
 - `bundle/data/effects/` — frozen official effect assertions, route coverage
   and live-reconciliation metadata;
 - `bundle/whole-law/okf-explorer.json` — Explorer federation v1 control plane;
-- `bundle/whole-law/okf-bundle.yamlld` and `okf-bundle.jsonld` — authored
-  YAML-LD and generated JSON-LD Whole-Law semantics;
+- `bundle/whole-law/okf-bundle.yamlld`, `okf-bundle.jsonld` and
+  `okf-bundle.ttl` — authored YAML-LD plus generated JSON-LD and canonical
+  Turtle Whole-Law semantics;
 - `bundle/whole-law/data/` — source, coverage, constraints and relationship
   ledgers;
 - `bundle/whole-law/evaluation/` — release questions, historical baselines,
@@ -127,56 +134,74 @@ remove prototype functionality or authorise authentication bypass.
 
 ## Build and validate
 
-Create the deterministic authored and generated layers with:
+The machine-readable
+[`reproduction-profile.json`](release-assurance/reproduction-profile.json) is
+the source of truth for the ordered, offline build and validation sequences.
+Using the pinned virtual-environment interpreter, create the deterministic
+authored and generated layers with exactly its `build_commands`:
 
 ```sh
-python3 scripts/build_model_enrichment_input_evidence.py
-python3 scripts/build_codex_semantic_enrichment.py
-python3 scripts/build_codex_semantic_enrichment_v3.py
-python3 scripts/audit_codex_semantic_enrichment_v3.py
-python3 scripts/build_legislation_effects.py --offline
-python3 scripts/reconcile_legislation_effects_live.py check
-python3 scripts/rebuild_legislation_discovery.py
-python3 scripts/capture_whole_law_source_access.py publish
-python3 scripts/build_legislation_evaluation.py
-python3 scripts/build_whole_law_evaluation.py
-python3 scripts/run_release_evaluation.py
-python3 scripts/run_yaml_ld_conformance.py
-python3 scripts/run_ontology_competency_questions.py
-python3 scripts/build_publication_docs.py
-python3 scripts/build_whole_law_okf.py
-python3 scripts/run_semantic_conformance.py
-python3 scripts/build_whole_law_okf.py
-python3 scripts/audit_graph_enrichment_gate.py build
-python3 scripts/build_whole_law_okf.py
-python3 scripts/build_release_assurance.py
-python3 scripts/build_checksums.py
+.venv/bin/python scripts/build_legislation_okf.py --from-existing
+.venv/bin/python scripts/build_model_enrichment_input_evidence.py
+.venv/bin/python scripts/build_codex_semantic_enrichment.py
+.venv/bin/python scripts/build_legislation_effects.py --offline
+.venv/bin/python scripts/build_codex_semantic_enrichment_v3.py build
+.venv/bin/python scripts/audit_codex_semantic_enrichment_v3.py audit
+.venv/bin/python scripts/rebuild_legislation_discovery.py
+.venv/bin/python scripts/build_legislation_evaluation.py
+.venv/bin/python scripts/build_whole_law_evaluation.py
+.venv/bin/python scripts/run_yaml_ld_conformance.py
+.venv/bin/python scripts/run_ontology_competency_questions.py
+.venv/bin/python scripts/build_publication_docs.py
+.venv/bin/python scripts/build_whole_law_okf.py
+.venv/bin/python scripts/run_release_evaluation.py --check
+.venv/bin/python scripts/run_semantic_conformance.py
+.venv/bin/python scripts/build_whole_law_okf.py
+.venv/bin/python scripts/audit_graph_enrichment_gate.py build
+.venv/bin/python scripts/build_whole_law_okf.py
+.venv/bin/python scripts/build_checksums.py
+.venv/bin/python scripts/build_release_assurance.py
+.venv/bin/python scripts/build_checksums.py
 ```
 
-Validate without changing the publication:
+The official-effects projection must precede the v3 build. The v3 governed
+materials bind the post-v2, post-effects data manifest, so reversing those
+stages invalidates the independent review receipt even when the work corpus
+and semantic candidate population are unchanged.
+
+Validate without changing the publication with exactly the profile's
+`validation_commands`:
 
 ```sh
-python3 -m unittest discover -s tests -v
-python3 scripts/check_legislation_okf.py
-python3 scripts/build_model_enrichment_input_evidence.py --check
-python3 scripts/build_codex_semantic_enrichment.py --check
-python3 scripts/build_codex_semantic_enrichment_v3.py check
-python3 scripts/audit_codex_semantic_enrichment_v3.py check
-python3 scripts/build_legislation_effects.py --check
-python3 scripts/reconcile_legislation_effects_live.py check
-python3 scripts/rebuild_legislation_discovery.py --check
-python3 scripts/capture_whole_law_source_access.py check
-python3 scripts/build_whole_law_evaluation.py --check
-python3 scripts/run_release_evaluation.py --check
-python3 scripts/run_yaml_ld_conformance.py --check
-python3 scripts/run_ontology_competency_questions.py --check
-python3 scripts/build_publication_docs.py --check
-python3 scripts/build_whole_law_okf.py --check
+.venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python scripts/build_publication_docs.py --check
+.venv/bin/python scripts/check_internal_links.py
+.venv/bin/python scripts/rebuild_legislation_discovery.py --check
+.venv/bin/python scripts/check_legislation_okf.py
+.venv/bin/python scripts/legislation_effects_evidence_archive.py check --snapshot-id legislation-effects-2026-07-25
+.venv/bin/python scripts/build_legislation_effects.py --check
+.venv/bin/python scripts/build_model_enrichment_input_evidence.py --check
+.venv/bin/python scripts/build_codex_semantic_enrichment.py --check
+.venv/bin/python scripts/build_codex_semantic_enrichment_v3.py check
+.venv/bin/python scripts/audit_codex_semantic_enrichment_v3.py check
+.venv/bin/python scripts/audit_model_assisted_v2_independent.py --check
+.venv/bin/python scripts/build_whole_law_evaluation.py --check
+.venv/bin/python scripts/run_release_evaluation.py --check
+.venv/bin/python scripts/run_yaml_ld_conformance.py --check
+.venv/bin/python scripts/run_ontology_competency_questions.py --check
+.venv/bin/python scripts/build_whole_law_okf.py --check
 .venv/bin/python scripts/run_semantic_conformance.py --check
 .venv/bin/python scripts/check_whole_law_okf.py
-python3 scripts/audit_graph_enrichment_gate.py check
-python3 scripts/build_release_assurance.py --check
-python3 scripts/build_checksums.py --check
+.venv/bin/python scripts/audit_graph_enrichment_gate.py check
+.venv/bin/python scripts/build_release_assurance.py --check
+.venv/bin/python scripts/build_checksums.py --check
+.venv/bin/python scripts/reconcile_legislation_effects_live.py check
+.venv/bin/python scripts/source_access_evidence_archive.py check --run-id 20260725T203207Z-dd7315c3
+.venv/bin/python scripts/capture_whole_law_route_replacements.py check --run 20260726T005115Z-04a20f01
+.venv/bin/python scripts/capture_whole_law_route_replacements.py check --run 20260726T005723Z-c0f5a002
+.venv/bin/python scripts/capture_whole_law_route_replacements.py check --run 20260726T010545Z-c0f5a003
+.venv/bin/python scripts/audit_source_acquisition_gate.py check
+.venv/bin/python scripts/check_implementation_traceability.py --check
 ```
 
 The preserved direct-API/paid-model profile is not part of either command
@@ -197,10 +222,30 @@ The [reproduction and promotion contract](release-assurance/reproduction-and-pro
 keeps `okf-uk-legislation-v0.3.0.tar.zst` byte-identical and identically named
 across the `v0.3.0-rc.1` and `v0.3.0` releases.
 
+Published Explorer `v0.5.4` at protected-main commit
+`a23dfdea56fea0184b6d53f3163b292dd1a312ed` is the active release
+prerequisite. The release history remains explicit: `v0.5.0` is the original
+release-order milestone, `v0.5.1` is historical corrective work, and `v0.5.2`
+is superseded because its timestamp-derived SvelteKit build bytes were not
+reproducible. `v0.5.3` is also historical and superseded: an independent
+observation of its Actions TAR found a 159-byte `404.html` after assembly,
+while the canonical app-build manifest declared the 1,122-byte Svelte file.
+
+The `v0.5.4` Pages assembly preserves the built `404.html`, runs a
+manifest-bound post-assembly verifier before upload, and binds the canonical
+16-file app tree at SHA-256
+`b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7`.
+Its durable Pages release asset is
+`okf-explorer-v0.5.4-pages-artifact.zip` (185,023,908 bytes; SHA-256
+`357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0`).
+
 [legislation-explorer]: https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview
 [whole-law-explorer]: https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fwhole-law%2Fokf-explorer.json&view=reader#overview
 [legislation-descriptor]: https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json
 [whole-law-descriptor]: https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json
+[whole-law-yamlld]: https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.yamlld
+[whole-law-jsonld]: https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.jsonld
+[whole-law-turtle]: https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.ttl
 [repository]: https://github.com/chris-page-gov/okf-uk-legislation
 [releases]: https://github.com/chris-page-gov/okf-uk-legislation/releases
 [whole-law-guide]: https://chris-page-gov.github.io/okf-uk-legislation/whole-law/docs/

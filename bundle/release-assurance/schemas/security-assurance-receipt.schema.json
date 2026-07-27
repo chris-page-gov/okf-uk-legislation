@@ -95,8 +95,8 @@
     },
     "materials": {
       "type": "array",
-      "minItems": 4,
-      "maxItems": 4,
+      "minItems": 8,
+      "maxItems": 8,
       "items": {
         "$ref": "#/$defs/roleMaterial"
       },
@@ -156,6 +156,62 @@
           },
           "minContains": 1,
           "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "scan_manifest_schema"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "findings_schema"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "coverage_schema"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "artifact_inventory"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
         }
       ]
     },
@@ -202,7 +258,11 @@
             "scan_manifest",
             "findings",
             "coverage",
-            "report"
+            "report",
+            "scan_manifest_schema",
+            "findings_schema",
+            "coverage_schema",
+            "artifact_inventory"
           ]
         },
         "path": {

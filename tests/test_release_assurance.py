@@ -141,11 +141,10 @@ class ReleaseAssuranceTests(unittest.TestCase):
         )
         state = json.loads(self.files[Path("release-state.json")])
         self.assertTrue(state["fail_closed"])
-        self.assertEqual("candidate", state["current_state"])
-        self.assertEqual("candidate", state["maximum_evidenced_state"])
+        self.assertEqual("validated", state["current_state"])
+        self.assertEqual("validated", state["maximum_evidenced_state"])
         self.assertFalse(state["next_transition_allowed"])
-        self.assertGreaterEqual(state["gate_counts"]["passed"], 1)
-        self.assertGreater(state["gate_counts"]["pending"], 0)
+        self.assertEqual({"passed": 7, "pending": 7}, state["gate_counts"])
         gate_12 = next(
             row for row in state["gates"] if row["id"] == "GATE-12"
         )
@@ -158,11 +157,46 @@ class ReleaseAssuranceTests(unittest.TestCase):
         self.assertEqual(10, status["phase_count"])
         self.assertEqual(list(range(1, 11)), [row["phase"] for row in status["phases"]])
         self.assertFalse(status["complete_for_release"])
-        self.assertGreater(status["status_counts"]["started"], 0)
-        self.assertGreater(status["status_counts"]["blocked"], 0)
+        self.assertTrue(status["requirements_accounted_for"])
+        self.assertEqual(
+            {
+                "blocked": 9,
+                "deferred": 1,
+                "superseded": 2,
+                "verified": 51,
+            },
+            status["status_counts"],
+        )
         self.assertNotIn("passed", status["status_counts"])
 
-    def test_d13_only_partially_supersedes_mixed_phase_5_clauses(
+    def test_detailed_dated_status_is_published_without_overwriting_summary(
+        self,
+    ) -> None:
+        self.assertEqual([], self.errors)
+        detailed = self.files[assurance.AUTHORED_STATUS_PUBLICATION]
+        summary = self.files[Path("implementation-status.md")]
+        readme = self.files[Path("README.md")].decode("utf-8")
+        self.assertEqual(assurance.AUTHORED_STATUS.read_bytes(), detailed)
+        self.assertNotEqual(detailed, summary)
+        self.assertIn(
+            assurance.AUTHORED_STATUS_PUBLICATION.as_posix(),
+            summary.decode("utf-8"),
+        )
+        self.assertIn(
+            assurance.AUTHORED_STATUS_PUBLICATION.as_posix(),
+            readme,
+        )
+        checksums = json.loads(self.files[Path("checksums.json")])
+        checksum_rows = {
+            row["path"]: row for row in checksums["files"]
+        }
+        row = checksum_rows[
+            assurance.AUTHORED_STATUS_PUBLICATION.as_posix()
+        ]
+        self.assertEqual(len(detailed), row["bytes"])
+        self.assertEqual(hashlib.sha256(detailed).hexdigest(), row["sha256"])
+
+    def test_d13_terminally_supersedes_api_mechanics_and_preserves_results(
         self,
     ) -> None:
         traceability = assurance.load(assurance.TRACEABILITY)
@@ -171,13 +205,13 @@ class ReleaseAssuranceTests(unittest.TestCase):
         }
         calibration = by_id["P05-02"]
         cost = by_id["P05-06"]
-        self.assertEqual("started", calibration["status"])
+        self.assertEqual("superseded", calibration["status"])
         self.assertEqual(
-            "started",
+            "superseded",
             calibration["release_disposition"]["status"],
         )
         self.assertIn(
-            "partial supersession",
+            "Superseded by D-13",
             calibration["release_disposition"]["reason"],
         )
         for obligation in (
@@ -189,19 +223,19 @@ class ReleaseAssuranceTests(unittest.TestCase):
                 obligation,
                 calibration["release_disposition"]["reason"],
             )
-        self.assertEqual("started", cost["status"])
+        self.assertEqual("superseded", cost["status"])
         self.assertEqual(
-            "started",
+            "superseded",
             cost["release_disposition"]["status"],
         )
         self.assertIn(
-            "partial supersession",
+            "Superseded by D-13",
             cost["release_disposition"]["reason"],
         )
         for obligation in (
-            "USD and GBP",
-            "cost per accepted assertion",
-            "secrets out of Git and logs",
+            "USD 0 / GBP 0",
+            "USD 0 cost per accepted assertion",
+            "no API key",
         ):
             self.assertIn(
                 obligation,
@@ -254,6 +288,62 @@ class ReleaseAssuranceTests(unittest.TestCase):
         self.assertEqual("1.6", sbom["specVersion"])
         purls = {row["purl"] for row in sbom["components"]}
         self.assertIn("pkg:pypi/yaml-ld@1.1.22", purls)
+        python_components = [
+            row
+            for row in sbom["components"]
+            if row["purl"].startswith("pkg:pypi/")
+        ]
+        self.assertEqual(52, len(python_components))
+        self.assertEqual(
+            1159,
+            sum(len(row["hashes"]) for row in python_components),
+        )
+        dependency_kinds = Counter(
+            next(
+                property_row["value"]
+                for property_row in row["properties"]
+                if property_row["name"]
+                == "uk.gov.okf.validation-dependency-kind"
+            )
+            for row in python_components
+        )
+        self.assertEqual(
+            {"direct": 7, "transitive": 45},
+            dict(dependency_kinds),
+        )
+        for component in python_components:
+            self.assertEqual(component["bom-ref"], component["purl"])
+            self.assertRegex(component["version"], r"^[^\s]+$")
+            self.assertGreater(len(component["hashes"]), 0)
+            self.assertEqual(
+                component["hashes"],
+                sorted(
+                    component["hashes"],
+                    key=lambda row: row["content"],
+                ),
+            )
+            for hash_row in component["hashes"]:
+                self.assertEqual("SHA-256", hash_row["alg"])
+                self.assertRegex(hash_row["content"], r"^[0-9a-f]{64}$")
+
+        environment = next(
+            row
+            for row in sbom["components"]
+            if row["bom-ref"] == assurance.VALIDATION_ENVIRONMENT_REF
+        )
+        self.assertEqual("platform", environment["type"])
+        graph = {
+            row["ref"]: row["dependsOn"] for row in sbom["dependencies"]
+        }
+        root_ref = sbom["metadata"]["component"]["bom-ref"]
+        self.assertIn(
+            assurance.VALIDATION_ENVIRONMENT_REF,
+            graph[root_ref],
+        )
+        self.assertEqual(
+            sorted(row["bom-ref"] for row in python_components),
+            graph[assurance.VALIDATION_ENVIRONMENT_REF],
+        )
         action_components = [
             row
             for row in sbom["components"]
@@ -277,6 +367,10 @@ class ReleaseAssuranceTests(unittest.TestCase):
                 for row in component["properties"]
             }
             self.assertEqual("commit-sha", properties["okf:ref-kind"])
+            self.assertIn(component["bom-ref"], graph[root_ref])
+            self.assertEqual([], graph[component["bom-ref"]])
+        for component in python_components:
+            self.assertEqual([], graph[component["bom-ref"]])
         constraints = json.loads(
             self.files[Path("constraint-report.json")]
         )
@@ -284,6 +378,138 @@ class ReleaseAssuranceTests(unittest.TestCase):
         self.assertEqual(
             [], constraints["supply_chain"]["mutable_github_action_refs"]
         )
+
+    def test_sbom_and_provenance_bind_complete_validation_sources(self) -> None:
+        provenance = json.loads(self.files[Path("provenance.json")])
+        environment = provenance["validation_dependency_environment"]
+        self.assertEqual(52, environment["package_count"])
+        self.assertEqual(7, environment["direct_count"])
+        self.assertEqual(45, environment["transitive_count"])
+        self.assertEqual(1159, environment["artifact_hash_count"])
+        self.assertEqual(
+            "sha256:"
+            "9542649bd62f7064e1bf6bfc82b4db0bc3260015649fd20cc804077076bc0c97",
+            environment["identity_digest"],
+        )
+        self.assertEqual(
+            "sha256:"
+            "e8a43fc379630e059925a1a892476a23b7bccd0ca459d07da2015594755a191c",
+            environment["artifact_hash_digest"],
+        )
+
+        expected_sources = {
+            "controller": assurance.ASSURANCE_CONTROLLER,
+            "direct_requirements": assurance.VALIDATION_REQUIREMENTS_DIRECT,
+            "lock": assurance.VALIDATION_REQUIREMENTS_LOCK,
+            "parser": assurance.VALIDATION_LOCK_PARSER,
+        }
+        materials = {
+            row["path"]: row for row in provenance["materials"]
+        }
+        for role, path in expected_sources.items():
+            with self.subTest(role=role):
+                expected = assurance.material(path)
+                self.assertEqual(expected, environment["sources"][role])
+                self.assertEqual(expected, materials[expected["path"]])
+        self.assertEqual(
+            environment["sources"]["controller"],
+            provenance["builder"]["material"],
+        )
+        self.assertIn(
+            ".github/workflows/drift.yml",
+            materials,
+        )
+
+    def test_sbom_builder_rejects_missing_or_mutable_action_pins(self) -> None:
+        actions = assurance.workflow_actions()
+        self.assertEqual(6, len(actions))
+
+        with self.assertRaisesRegex(ValueError, "reviewed six"):
+            assurance.validated_workflow_actions(actions[:-1])
+
+        mutable = copy.deepcopy(actions)
+        mutable[0]["version"] = "v4"
+        with self.assertRaisesRegex(ValueError, "commit SHA"):
+            assurance.validated_workflow_actions(mutable)
+
+        unreviewed = copy.deepcopy(actions)
+        unreviewed[0]["version"] = "0" * 40
+        with self.assertRaisesRegex(ValueError, "reviewed commit pins"):
+            assurance.validated_workflow_actions(unreviewed)
+
+        duplicate = [*actions, copy.deepcopy(actions[0])]
+        with self.assertRaisesRegex(ValueError, "duplicate component"):
+            assurance.validated_workflow_actions(duplicate)
+
+    def test_sbom_validator_rejects_component_or_hash_divergence(self) -> None:
+        dependency_lock = assurance.validation_dependency_inventory()
+        actions = assurance.validated_workflow_actions()
+        sbom = assurance.build_sbom(
+            "2026-07-27T00:00:00Z",
+            "0" * 64,
+            dependency_lock=dependency_lock,
+            actions=actions,
+        )
+
+        missing_hash = copy.deepcopy(sbom)
+        component = next(
+            row
+            for row in missing_hash["components"]
+            if row["purl"].startswith("pkg:pypi/")
+        )
+        component["hashes"].pop()
+        with self.assertRaisesRegex(ValueError, "SBOM/lock divergence"):
+            assurance.validate_sbom_lock_alignment(
+                missing_hash,
+                dependency_lock,
+                actions,
+            )
+
+        duplicate_component = copy.deepcopy(sbom)
+        duplicate_component["components"].append(
+            copy.deepcopy(duplicate_component["components"][0])
+        )
+        with self.assertRaisesRegex(ValueError, "duplicate component"):
+            assurance.validate_sbom_lock_alignment(
+                duplicate_component,
+                dependency_lock,
+                actions,
+            )
+
+        missing_component = copy.deepcopy(sbom)
+        missing_component["components"] = [
+            row
+            for row in missing_component["components"]
+            if row["bom-ref"] != dependency_lock.requirements[0].purl
+        ]
+        with self.assertRaisesRegex(ValueError, "component set differs"):
+            assurance.validate_sbom_lock_alignment(
+                missing_component,
+                dependency_lock,
+                actions,
+            )
+
+    def test_sbom_builder_rejects_malformed_or_incomplete_lock(self) -> None:
+        with tempfile.TemporaryDirectory() as raw_directory:
+            directory = Path(raw_directory)
+            direct = directory / "requirements-validation.in"
+            lock = directory / "requirements-validation.txt"
+            direct.write_text("alpha==1.0\n", encoding="utf-8")
+            lock.write_text("alpha==1.0\n", encoding="utf-8")
+            with (
+                mock.patch.object(
+                    assurance,
+                    "VALIDATION_REQUIREMENTS_DIRECT",
+                    direct,
+                ),
+                mock.patch.object(
+                    assurance,
+                    "VALIDATION_REQUIREMENTS_LOCK",
+                    lock,
+                ),
+                self.assertRaises(ValueError),
+            ):
+                assurance.validation_dependency_inventory()
         cost = json.loads(self.files[Path("model-cost-report.json")])
         self.assertEqual("okf-model-cost-report.v2", cost["schema"])
         self.assertEqual(0.0, cost["incremental_cost"]["usd"])

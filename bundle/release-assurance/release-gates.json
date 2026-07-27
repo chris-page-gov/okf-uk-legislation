@@ -4,9 +4,9 @@
       "evidence_plane": "embedded",
       "group": "candidate",
       "id": "GATE-01",
-      "observed_reason": "One or more implementation clauses remain proposed, started or merely implemented.",
+      "observed_reason": "Every implementation clause is verified, explicitly deferred, superseded or externally blocked.",
       "requirement": "Every originating requirement has an explicit lifecycle disposition and evidence appropriate to the pre-freeze state; no embedded pre-freeze must-have is unclassified or merely accepted, and post-freeze requirements are identified as external finalization obligations.",
-      "status": "pending"
+      "status": "passed"
     },
     {
       "evidence_plane": "embedded",
@@ -103,7 +103,7 @@
           {
             "bytes": 22602,
             "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-            "sha256": "e5f8b992daa45a477433d71af47eb04001bab0ce3da77b29e27baea4246a60be"
+            "sha256": "6b498a1009de8d1ba0f83b72dacc68c3d9f0fbeb9d62b72a1dcbfb1c053c7e51"
           },
           {
             "bytes": 96352,
@@ -227,6 +227,6 @@
       "status": "pending"
     }
   ],
-  "generated_at": "2026-07-25T23:30:00Z",
+  "generated_at": "2026-07-26T20:54:40Z",
   "schema": "okf-release-gates.v1"
 }

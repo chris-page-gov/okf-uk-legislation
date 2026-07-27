@@ -37,6 +37,16 @@ Open the federation in
 Follow the descriptor's declared alternatives rather than guessing repository
 paths.
 
+## Semantic representations
+
+- [Authored YAML-LD](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.yamlld)
+- [Generated JSON-LD](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.jsonld)
+- [Canonical Turtle](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.ttl)
+
+The three representations describe the same bounded Federation and governed
+SourceRegister graph. The semantic-conformance receipt verifies RDF
+isomorphism and a common canonical dataset digest.
+
 ## Official sources and examples
 
 - [legislation.gov.uk](https://www.legislation.gov.uk/)

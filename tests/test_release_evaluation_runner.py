@@ -21,6 +21,171 @@ def load_runner():
 runner = load_runner()
 
 
+def claude_journey_fixture():
+    suite = json.loads(
+        (
+            ROOT
+            / "whole-law"
+            / "evaluation"
+            / "claude-access-suite.json"
+        ).read_text(encoding="utf-8")
+    )
+    root_descriptor = {
+        "repository_subpath": "bundle",
+        "snapshot": "root-snapshot",
+        "discovery": {
+            "repository": "https://github.com/example/repo",
+            "documentation": "https://example.test/docs/",
+            "raw_subpath": "bundle",
+            "release_archive": "https://github.com/example/repo/releases",
+            "semantic_descriptor": "https://example.test/okf-bundle.yamlld",
+            "routes": [
+                {"kind": "published"},
+                {"kind": "raw"},
+            ],
+        },
+        "alternate_access": [
+            {"kind": "pages", "url": "https://example.test/root.json"},
+            {
+                "kind": "raw",
+                "url": (
+                    "https://raw.githubusercontent.com/example/repo/main/"
+                    "bundle/root.json"
+                ),
+            },
+            {
+                "kind": "archive",
+                "url": "https://github.com/example/repo/archive/main.tar.gz",
+            },
+            {
+                "kind": "jsonld-fallback",
+                "url": "https://example.test/root.jsonld",
+            },
+        ],
+    }
+    whole_descriptor = {
+        "snapshot": "whole-snapshot",
+        "discovery": {
+            "repository": "https://github.com/example/repo",
+            "documentation": "https://example.test/whole-law/",
+            "raw_subpath": "bundle/whole-law",
+            "release_archive": "https://github.com/example/repo/releases",
+            "semantic_descriptor": (
+                "https://example.test/whole-law/okf-bundle.yamlld"
+            ),
+            "routes": [
+                {"kind": "published"},
+                {"kind": "raw"},
+            ],
+        },
+        "entrypoints": {"semantic_turtle": "okf-bundle.ttl"},
+        "alternate_access": [
+            {"kind": "pages", "url": "https://example.test/whole.json"},
+            {
+                "kind": "raw",
+                "url": (
+                    "https://raw.githubusercontent.com/example/repo/main/"
+                    "bundle/whole.json"
+                ),
+            },
+            {
+                "kind": "archive",
+                "url": "https://github.com/example/repo/archive/main.tar.gz",
+            },
+            {
+                "kind": "jsonld-fallback",
+                "url": "https://example.test/whole-law/okf-bundle.jsonld",
+            },
+            {
+                "kind": "turtle",
+                "url": "https://example.test/whole-law/okf-bundle.ttl",
+            },
+        ],
+        "children": [
+            {
+                "status": "available",
+                "freshness": {
+                    "observed_at": "2026-07-25T00:00:00Z",
+                    "snapshot": "root-snapshot",
+                },
+            }
+        ],
+        "notices": [
+            "GitHub Pages serves YAML-LD as application/octet-stream."
+        ],
+    }
+    effects_manifest = {
+        "counts": {"assertions": 1},
+        "acquisition": {
+            "reconciliation": "data/effects/reconciliation.json"
+        },
+    }
+    effects_reconciliation = {
+        "states": {
+            "agreement_at_acquisition": 1,
+            "inaccessible_at_acquisition": 0,
+        },
+        "live_routes": [{"snapshot_state": "agreement-at-acquisition"}],
+    }
+    access_summary = {
+        "coverage": {"complete_register_attempt": True},
+        "result_counts": {"observed_access_state": {"reachable": 1}},
+        "limitations": ["point-in-time only"],
+    }
+    json_ld = {
+        "@context": {
+            "hasSourceRegister": {
+                "@id": "urn:hasSourceRegister",
+                "@type": "@id",
+            }
+        },
+        "@id": "urn:whole-law",
+        "hasSourceRegister": "urn:source-register",
+    }
+    snapshot = {
+        "bundle/whole-law/okf-bundle.yamlld": b"@context: {}",
+        "bundle/whole-law/okf-bundle.jsonld": json.dumps(
+            json_ld,
+            sort_keys=True,
+        ).encode("utf-8"),
+        "bundle/whole-law/okf-bundle.ttl": (
+            b"<urn:whole-law> <urn:hasSourceRegister> "
+            b"<urn:source-register> .\n"
+        ),
+    }
+    origin_base = ROOT / "whole-law" / "evaluation"
+    for origin in suite["origin_evidence"]:
+        path = (origin_base / origin["path"]).resolve()
+        snapshot[runner.relative(path)] = path.read_bytes()
+    return {
+        "suite": suite,
+        "root_descriptor": root_descriptor,
+        "whole_descriptor": whole_descriptor,
+        "effects_manifest": effects_manifest,
+        "effects_reconciliation": effects_reconciliation,
+        "access_summary": access_summary,
+        "snapshot": snapshot,
+    }
+
+
+def analyze_claude_fixture(fixture):
+    return runner.analyze_claude_access_journey(
+        fixture["suite"],
+        fixture["root_descriptor"],
+        fixture["whole_descriptor"],
+        fixture["effects_manifest"],
+        fixture["effects_reconciliation"],
+        fixture["access_summary"],
+        fixture["snapshot"],
+    )
+
+
+def claude_scenario(result, identifier):
+    return next(
+        row for row in result["scenarios"] if row["id"] == identifier
+    )
+
+
 class ReleaseEvaluationRunnerTest(unittest.TestCase):
     def test_challenge_seeds_are_reproducible_domain_separated_commitments(self):
         context = {
@@ -560,102 +725,8 @@ class ReleaseEvaluationRunnerTest(unittest.TestCase):
         self.assertIn("non-empty-citations", result["failures"])
 
     def test_claude_journey_keeps_public_and_browser_receipts_blocked(self):
-        suite = json.loads(
-            (
-                ROOT
-                / "whole-law"
-                / "evaluation"
-                / "claude-access-suite.json"
-            ).read_text(encoding="utf-8")
-        )
-        root_descriptor = {
-            "repository_subpath": "bundle",
-            "snapshot": "root-snapshot",
-            "discovery": {
-                "repository": "https://github.com/example/repo",
-                "documentation": "https://example.test/docs/",
-                "raw_subpath": "bundle",
-                "release_archive": "https://github.com/example/repo/releases",
-                "semantic_descriptor": "https://example.test/okf-bundle.yamlld",
-                "routes": [
-                    {"kind": "published"},
-                    {"kind": "raw"},
-                ],
-            },
-            "alternate_access": [
-                {"kind": "pages", "url": "https://example.test/root.json"},
-                {"kind": "raw", "url": "https://raw.githubusercontent.com/example/repo/main/bundle/root.json"},
-                {"kind": "archive", "url": "https://github.com/example/repo/archive/main.tar.gz"},
-                {"kind": "jsonld-fallback", "url": "https://example.test/root.jsonld"},
-            ],
-        }
-        whole_descriptor = {
-            "snapshot": "whole-snapshot",
-            "discovery": {
-                "repository": "https://github.com/example/repo",
-                "documentation": "https://example.test/whole-law/",
-                "raw_subpath": "bundle/whole-law",
-                "release_archive": "https://github.com/example/repo/releases",
-                "semantic_descriptor": "https://example.test/whole-law/okf-bundle.yamlld",
-                "routes": [
-                    {"kind": "published"},
-                    {"kind": "raw"},
-                ],
-            },
-            "alternate_access": [
-                {"kind": "pages", "url": "https://example.test/whole.json"},
-                {"kind": "raw", "url": "https://raw.githubusercontent.com/example/repo/main/bundle/whole.json"},
-                {"kind": "archive", "url": "https://github.com/example/repo/archive/main.tar.gz"},
-                {"kind": "jsonld-fallback", "url": "https://example.test/whole.jsonld"},
-            ],
-            "children": [
-                {
-                    "status": "available",
-                    "freshness": {
-                        "observed_at": "2026-07-25T00:00:00Z",
-                        "snapshot": "root-snapshot",
-                    },
-                }
-            ],
-            "notices": [
-                "GitHub Pages serves YAML-LD as application/octet-stream."
-            ],
-        }
-        effects_manifest = {
-            "counts": {"assertions": 1},
-            "acquisition": {
-                "reconciliation": "data/effects/reconciliation.json"
-            },
-        }
-        effects_reconciliation = {
-            "states": {
-                "agreement_at_acquisition": 1,
-                "inaccessible_at_acquisition": 0,
-            },
-            "live_routes": [{"snapshot_state": "agreement-at-acquisition"}],
-        }
-        access_summary = {
-            "coverage": {"complete_register_attempt": True},
-            "result_counts": {"observed_access_state": {"reachable": 1}},
-            "limitations": ["point-in-time only"],
-        }
-        snapshot = {
-            "bundle/whole-law/okf-bundle.yamlld": b"@context: {}",
-            "bundle/whole-law/okf-bundle.jsonld": b"{}",
-        }
-        origin_base = ROOT / "whole-law" / "evaluation"
-        for origin in suite["origin_evidence"]:
-            path = (origin_base / origin["path"]).resolve()
-            snapshot[runner.relative(path)] = path.read_bytes()
-        result = runner.analyze_claude_access_journey(
-            suite,
-            root_descriptor,
-            whole_descriptor,
-            effects_manifest,
-            effects_reconciliation,
-            access_summary,
-            snapshot,
-        )
+        fixture = claude_journey_fixture()
+        result = analyze_claude_fixture(fixture)
         self.assertEqual("passed", result["local_status"])
         self.assertEqual(2, result["origin_evidence_verified"])
         self.assertEqual(0, result["external_receipts_completed"])
@@ -663,6 +734,101 @@ class ReleaseEvaluationRunnerTest(unittest.TestCase):
         self.assertEqual(
             "blocked-pending-deployed-journey-receipts",
             result["overall_status"],
+        )
+        fixture["snapshot"].pop("bundle/whole-law/okf-bundle.ttl")
+        failed = analyze_claude_fixture(fixture)
+        self.assertEqual("failed", failed["local_status"])
+        scenario = claude_scenario(failed, "CLAUDE-ACCESS-05")
+        self.assertEqual("failed", scenario["local_status"])
+
+    def test_claude_journey_rejects_wrong_authored_local_contract(self):
+        fixture = claude_journey_fixture()
+        scenario = next(
+            row
+            for row in fixture["suite"]["scenarios"]
+            if row["id"] == "CLAUDE-ACCESS-05"
+        )
+        scenario["local_contract"] = "yaml-ld-json-ld-fallback-declared"
+        result = analyze_claude_fixture(fixture)
+        failed = claude_scenario(result, "CLAUDE-ACCESS-05")
+        self.assertEqual("failed", failed["local_status"])
+        self.assertIn("local_contract mismatch", failed["local_evidence"])
+
+    def test_claude_journey_rejects_missing_or_wrong_turtle_entrypoint(self):
+        for label, entrypoints in (
+            ("missing", {}),
+            ("wrong", {"semantic_turtle": "data/whole-law.ttl"}),
+        ):
+            fixture = claude_journey_fixture()
+            fixture["whole_descriptor"]["entrypoints"] = entrypoints
+            with self.subTest(entrypoint=label):
+                result = analyze_claude_fixture(fixture)
+                failed = claude_scenario(result, "CLAUDE-ACCESS-05")
+                self.assertEqual("failed", failed["local_status"])
+                self.assertIn(
+                    "entrypoints.semantic_turtle",
+                    failed["local_evidence"],
+                )
+
+    def test_claude_journey_rejects_wrong_turtle_alternate_url(self):
+        for label, url in (
+            (
+                "wrong-directory",
+                "https://example.test/other/okf-bundle.ttl",
+            ),
+            (
+                "wrong-origin",
+                "https://other.example/whole-law/okf-bundle.ttl",
+            ),
+        ):
+            fixture = claude_journey_fixture()
+            alternate = next(
+                row
+                for row in fixture["whole_descriptor"]["alternate_access"]
+                if row["kind"] == "turtle"
+            )
+            alternate["url"] = url
+            with self.subTest(alternate=label):
+                result = analyze_claude_fixture(fixture)
+                failed = claude_scenario(result, "CLAUDE-ACCESS-05")
+                self.assertEqual("failed", failed["local_status"])
+                self.assertIn(
+                    "same-origin, same-directory",
+                    failed["local_evidence"],
+                )
+
+    def test_claude_journey_rejects_malformed_or_non_isomorphic_turtle(self):
+        mutations = (
+            ("malformed", b"this is not valid Turtle"),
+            (
+                "non-isomorphic",
+                (
+                    b"<urn:whole-law> <urn:differentPredicate> "
+                    b"<urn:source-register> .\n"
+                ),
+            ),
+        )
+        for label, turtle in mutations:
+            fixture = claude_journey_fixture()
+            fixture["snapshot"][
+                "bundle/whole-law/okf-bundle.ttl"
+            ] = turtle
+            with self.subTest(turtle=label):
+                result = analyze_claude_fixture(fixture)
+                failed = claude_scenario(result, "CLAUDE-ACCESS-05")
+                self.assertEqual("failed", failed["local_status"])
+
+    def test_turtle_byte_mutation_changes_input_receipt_and_fingerprint(self):
+        path = "bundle/whole-law/okf-bundle.ttl"
+        first_receipts = runner.input_receipts({path: b"first Turtle"})
+        second_receipts = runner.input_receipts({path: b"second Turtle"})
+        self.assertNotEqual(
+            first_receipts[0]["sha256"],
+            second_receipts[0]["sha256"],
+        )
+        self.assertNotEqual(
+            runner.execution_fingerprint(first_receipts),
+            runner.execution_fingerprint(second_receipts),
         )
 
 

@@ -13,6 +13,12 @@
 |---|---|---|---|
 | [GitHub](https://github.com/chris-page-gov/okf-uk-legislation) | [federation descriptor](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json) | `bundle/whole-law` | [immutable releases](https://github.com/chris-page-gov/okf-uk-legislation/releases) |
 
+## Semantic representations
+
+- [Authored YAML-LD](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.yamlld)
+- [Generated JSON-LD](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.jsonld)
+- [Canonical Turtle](https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.ttl)
+
 ## Official sources and examples
 
 - [legislation.gov.uk](https://www.legislation.gov.uk/)

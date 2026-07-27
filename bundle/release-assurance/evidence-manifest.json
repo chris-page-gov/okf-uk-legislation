@@ -14,7 +14,7 @@
     "research_integrity_manifests": 1,
     "research_validations_passed": 40
   },
-  "generated_at": "2026-07-25T23:30:00Z",
+  "generated_at": "2026-07-26T20:54:40Z",
   "immutability_rule": "The 24-file research package (23 content artefacts plus its integrity manifest) and Claude DOCX are read-only evidence. Corrections, transcripts and reviews must be separate artefacts.",
   "items": [
     {
