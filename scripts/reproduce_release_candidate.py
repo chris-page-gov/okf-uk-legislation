@@ -605,10 +605,61 @@ def dependency_lock_identity(
     }
 
 
+def active_python_executable() -> str:
+    """Return the exact interpreter entry point running this controller.
+
+    A virtual environment commonly exposes Python through a symlink. Resolving
+    that symlink selects the base interpreter and discards the virtual
+    environment's pinned site-packages in child processes. Keep the absolute
+    entry-point path while still failing closed if it is not executable.
+    """
+
+    if not isinstance(sys.executable, str) or not sys.executable:
+        raise ReproductionError(
+            "the active Python executable path is unavailable"
+        )
+    executable = Path(sys.executable)
+    if not executable.is_absolute():
+        raise ReproductionError(
+            "the active Python executable path is not absolute"
+        )
+    if not executable.is_file() or not os.access(executable, os.X_OK):
+        raise ReproductionError(
+            "the active Python executable is missing or not executable"
+        )
+    return str(executable)
+
+
+def python_executable_identity(executable: str) -> tuple[int, ...]:
+    """Capture the entry point and target identity without resolving its path."""
+
+    try:
+        link = os.lstat(executable)
+        target = os.stat(executable)
+    except OSError as exc:
+        raise ReproductionError(
+            "the active Python executable identity cannot be read"
+        ) from exc
+    return (
+        link.st_dev,
+        link.st_ino,
+        link.st_mode,
+        link.st_size,
+        link.st_mtime_ns,
+        target.st_dev,
+        target.st_ino,
+        target.st_mode,
+        target.st_size,
+        target.st_mtime_ns,
+    )
+
+
 def verify_environment(
     checkout: Path,
     profile: dict[str, Any],
 ) -> dict[str, Any]:
+    python_executable = active_python_executable()
+    python_identity = python_executable_identity(python_executable)
     python_pin = profile["python"]
     actual_python = {
         "major": sys.version_info.major,
@@ -731,7 +782,8 @@ def verify_environment(
         )
     return {
         "python": actual_python,
-        "python_executable": str(Path(sys.executable).resolve()),
+        "python_executable": python_executable,
+        "python_executable_identity": python_identity,
         "dependencies": installed,
         "dependencies_exact": comparison.matches,
         "dependency_direct_requirements": material(
@@ -1447,6 +1499,8 @@ def execute_commands(
     output_dir: Path,
     profile: dict[str, Any],
     env: dict[str, str],
+    python_executable: str,
+    expected_python_identity: tuple[int, ...],
 ) -> list[dict[str, Any]]:
     logs = output_dir / "logs"
     logs.mkdir(parents=True, exist_ok=True)
@@ -1455,8 +1509,16 @@ def execute_commands(
     for category in ("build_commands", "validation_commands"):
         for configured in profile[category]:
             command_number += 1
+            if (
+                python_executable_identity(python_executable)
+                != expected_python_identity
+            ):
+                raise ReproductionError(
+                    "the verified Python executable changed before command "
+                    f"{command_number}"
+                )
             argv = [
-                str(Path(sys.executable).resolve())
+                python_executable
                 if token == "{python}"
                 else token
                 for token in configured
@@ -1469,6 +1531,14 @@ def execute_commands(
                     env=env,
                     stdout=log,
                     stderr=subprocess.STDOUT,
+                )
+            if (
+                python_executable_identity(python_executable)
+                != expected_python_identity
+            ):
+                raise ReproductionError(
+                    "the verified Python executable changed during command "
+                    f"{command_number}"
                 )
             if log_path.stat().st_size > 16 * 1024 * 1024:
                 raise ReproductionError(
@@ -1939,6 +2009,8 @@ def run_reproduction(
             output_dir,
             profile,
             command_env,
+            environment["python_executable"],
+            environment["python_executable_identity"],
         )
 
         rebuilt_inventory = inventory_publication(
@@ -2339,6 +2411,7 @@ def create_fixture_repository(root: Path) -> tuple[Path, str, Path]:
 import argparse
 import hashlib
 import json
+import jsonschema
 import socket
 from pathlib import Path
 

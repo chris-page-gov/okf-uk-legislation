@@ -894,6 +894,120 @@ class ReleaseReproductionTests(unittest.TestCase):
         )
         self.assertTrue(result["representations_equivalent"])
 
+    def test_active_python_entrypoint_preserves_virtualenv_symlink(
+        self,
+    ) -> None:
+        executable = self.root / "virtualenv" / "bin" / "python"
+        executable.parent.mkdir(parents=True, exist_ok=True)
+        executable.symlink_to(Path(sys.executable).resolve())
+        with mock.patch.object(
+            reproduction.sys,
+            "executable",
+            str(executable),
+        ):
+            self.assertEqual(
+                str(executable),
+                reproduction.active_python_executable(),
+            )
+            self.assertNotEqual(
+                str(executable.resolve()),
+                reproduction.active_python_executable(),
+            )
+
+    def test_active_python_entrypoint_fails_closed(self) -> None:
+        for value in (None, "", "relative/python"):
+            with self.subTest(value=value), mock.patch.object(
+                reproduction.sys,
+                "executable",
+                value,
+            ):
+                with self.assertRaises(reproduction.ReproductionError):
+                    reproduction.active_python_executable()
+
+        missing = self.root / "missing-python"
+        with mock.patch.object(
+            reproduction.sys,
+            "executable",
+            str(missing),
+        ):
+            with self.assertRaises(reproduction.ReproductionError):
+                reproduction.active_python_executable()
+
+        non_executable = self.root / "non-executable-python"
+        non_executable.write_bytes(b"not executable\n")
+        non_executable.chmod(0o600)
+        with mock.patch.object(
+            reproduction.sys,
+            "executable",
+            str(non_executable),
+        ):
+            with self.assertRaises(reproduction.ReproductionError):
+                reproduction.active_python_executable()
+
+    def test_execute_commands_uses_verified_python_entrypoint(self) -> None:
+        checkout = Path(
+            tempfile.mkdtemp(prefix="python-command-", dir=self.root)
+        )
+        output = checkout / "output"
+        script = checkout / "scripts" / "fixture.py"
+        script.parent.mkdir()
+        script.write_text("raise SystemExit(0)\n", encoding="utf-8")
+        executable = self.root / "command-venv" / "bin" / "python"
+        executable.parent.mkdir(parents=True)
+        executable.symlink_to(Path(sys.executable).resolve())
+        identity = reproduction.python_executable_identity(str(executable))
+        profile = {
+            "build_commands": [
+                ["{python}", "scripts/fixture.py"],
+            ],
+            "validation_commands": [],
+        }
+        completed = mock.Mock(returncode=0)
+        with mock.patch.object(
+            reproduction,
+            "run",
+            return_value=completed,
+        ) as run_mock:
+            receipts = reproduction.execute_commands(
+                checkout,
+                output,
+                profile,
+                {},
+                str(executable),
+                identity,
+            )
+        self.assertEqual(1, len(receipts))
+        self.assertEqual(
+            [str(executable), "scripts/fixture.py"],
+            run_mock.call_args.args[0],
+        )
+
+        def replace_entrypoint(*_args: object, **_kwargs: object) -> mock.Mock:
+            executable.unlink()
+            executable.symlink_to("/usr/bin/false")
+            return completed
+
+        executable.unlink()
+        executable.symlink_to(Path(sys.executable).resolve())
+        identity = reproduction.python_executable_identity(str(executable))
+        with mock.patch.object(
+            reproduction,
+            "run",
+            side_effect=replace_entrypoint,
+        ):
+            with self.assertRaisesRegex(
+                reproduction.ReproductionError,
+                "changed during command",
+            ):
+                reproduction.execute_commands(
+                    checkout,
+                    checkout / "mutated-output",
+                    profile,
+                    {},
+                    str(executable),
+                    identity,
+                )
+
     def test_promotion_asset_name_must_match_archive(self) -> None:
         profile = json.loads(self.profile.read_text(encoding="utf-8"))
         profile["promotion"]["asset_filename"] = "renamed.tar.zst"
