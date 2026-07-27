@@ -25326,7 +25326,7 @@
     },
     "release-assurance/checksums.json": {
       "bytes": 6886,
-      "sha256": "d58c5dc02230e8107c8cad931e1863032cedd76e3e5834058b3fcb7a22b694b1"
+      "sha256": "938a3456c355ca98ee82c16c39b73e365d2931f69b23d070f92c9bedffcb247c"
     },
     "release-assurance/claude-observed-access-test.json": {
       "bytes": 2251,
@@ -25386,7 +25386,7 @@
     },
     "release-assurance/provenance.json": {
       "bytes": 27291,
-      "sha256": "bf4b26c3ac5c177deaec56a5045b76ee33faff72d682d21f5c3e214f362624ae"
+      "sha256": "b375762a10200094a1f07f21a446c8689ef50acce8b5e9a6237a9b704a7b7cc9"
     },
     "release-assurance/release-gates.json": {
       "bytes": 10884,
@@ -25402,19 +25402,19 @@
     },
     "release-assurance/release-state.json": {
       "bytes": 13161,
-      "sha256": "227ccca6f4c6e02d97c70324ce663ffdf5c8edf0dd92fdef625e555b593eed4b"
+      "sha256": "a7cbb2a1df43d786b8c09b7c49f7f7ab01b681b663399b699865b9f5456e8fa9"
     },
     "release-assurance/reproduction.json": {
       "bytes": 8277,
-      "sha256": "031d5c669f6cf36931bd6267a44a29ca1fd6b861c4f8a6891683ee9b8c180aca"
+      "sha256": "ef95a7fe24d15bfd42f454cb2219f4c1f9d4e6c9f8bb5725f1b803d2ae44d939"
     },
     "release-assurance/rights.spdx.json": {
       "bytes": 2378,
-      "sha256": "b1a8cdf77f675346bad8b9efb0f6503f894bb68e8e3a63e94771fb9fcf087f20"
+      "sha256": "01a709b1d150e148648066acc056cfcef1119c6cf8795b7346b49bbe7cbfbceb"
     },
     "release-assurance/sbom.cdx.json": {
       "bytes": 189459,
-      "sha256": "197bda1477d9953bddb2f50e954c97de34bbf2fbebc53d702ba375f96efbfdb2"
+      "sha256": "b7ff0d6801a1467dbfdb405bc29909f0a432724e5c2e9a3f9c80dc035cc6a630"
     },
     "release-assurance/schemas/accessibility-assurance-receipt.schema.json": {
       "bytes": 4268,
@@ -25437,8 +25437,8 @@
       "sha256": "633c3f3513df8eefb02ad89482c6f957d40f809fff3dde1f7d052ccc0ad039a3"
     },
     "release-assurance/schemas/explorer-runtime-receipt.schema.json": {
-      "bytes": 14164,
-      "sha256": "44bfb392c1d158edee5d0d8ce4c94fb5312b5eae468f252d2b6998af323e3d4a"
+      "bytes": 19628,
+      "sha256": "b018f626c3399c5595816526870e62d2f8e46d7d2581bcb1c30a1e7dfd2eb3ad"
     },
     "release-assurance/schemas/external-finalization-receipt.schema.json": {
       "bytes": 9773,

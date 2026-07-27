@@ -455,9 +455,25 @@ class FinalizationFixture:
 
     def _runtime_document(self) -> dict[str, object]:
         browsers = ["chrome", "firefox", "webkit"]
-        pass_summary = {
-            "checks_total": 1,
-            "checks_passed": 1,
+        runtime_checks = [
+            {"id": gate_id, "status": "passed"}
+            for gate_id in finalization.EXPECTED_RUNTIME_GATE_IDS
+        ]
+        performance_checks = [
+            {"id": gate_id, "status": "passed"}
+            for gate_id in finalization.EXPECTED_PERFORMANCE_GATE_IDS
+        ]
+        runtime_summary = {
+            "checks": runtime_checks,
+            "checks_total": len(runtime_checks),
+            "checks_passed": len(runtime_checks),
+            "checks_failed": 0,
+            "all_passed": True,
+        }
+        performance_summary = {
+            "checks": performance_checks,
+            "checks_total": len(performance_checks),
+            "checks_passed": len(performance_checks),
             "checks_failed": 0,
             "all_passed": True,
         }
@@ -621,7 +637,7 @@ class FinalizationFixture:
                 "tag": self.contract["explorer"]["required_tag"],
                 "commit": self.explorer_commit,
             },
-            "runtime": {"status": "passed", "summary": pass_summary},
+            "runtime": {"status": "passed", "summary": runtime_summary},
             "cross_engine": {
                 "status": "passed",
                 "required": browsers,
@@ -641,12 +657,7 @@ class FinalizationFixture:
             },
             "performance": {
                 "status": "passed",
-                "summary": {
-                    "checks_total": 4,
-                    "checks_passed": 4,
-                    "checks_failed": 0,
-                    "all_passed": True,
-                },
+                "summary": performance_summary,
             },
             "integrity": {
                 "status": "passed",
@@ -1988,6 +1999,60 @@ class ReleaseFinalizationTests(unittest.TestCase):
         self.assertEqual("validated", receipt["embedded_validation"]["current_state"])
         for gate_id in finalization.EMBEDDED_RC_GATES:
             self.assertEqual("passed", receipt["gates"][gate_id])
+
+    def test_runtime_summary_checks_are_exactly_reconstructed(self) -> None:
+        def reconstruct(runtime: dict[str, Any]) -> dict[str, Any]:
+            return finalization.reconstruct_explorer_runtime(
+                runtime,
+                contract=self.fixture.contract,
+                commit=self.fixture.commit,
+                tree=self.fixture.tree,
+                inventory=self.fixture.inventory,
+                explorer_commit=self.fixture.explorer_commit,
+            )
+
+        baseline = copy.deepcopy(self.fixture.runtime)
+        self.assertTrue(
+            reconstruct(copy.deepcopy(baseline))["keyboard_operable"],
+        )
+
+        candidates: dict[str, dict[str, Any]] = {}
+        missing = copy.deepcopy(baseline)
+        missing["runtime"]["summary"].pop("checks")
+        candidates["missing"] = missing
+        unknown = copy.deepcopy(baseline)
+        unknown["runtime"]["summary"]["checks"][0]["id"] = "unknown_gate"
+        candidates["unknown"] = unknown
+        duplicate = copy.deepcopy(baseline)
+        duplicate["runtime"]["summary"]["checks"][1] = copy.deepcopy(
+            duplicate["runtime"]["summary"]["checks"][0]
+        )
+        candidates["duplicate"] = duplicate
+        reordered = copy.deepcopy(baseline)
+        checks = reordered["runtime"]["summary"]["checks"]
+        checks[0], checks[1] = checks[1], checks[0]
+        candidates["reordered"] = reordered
+        extra_property = copy.deepcopy(baseline)
+        extra_property["runtime"]["summary"]["checks"][0][
+            "detail"
+        ] = "untrusted"
+        candidates["extra-property"] = extra_property
+        failed = copy.deepcopy(baseline)
+        failed["runtime"]["summary"]["checks"][0]["status"] = "failed"
+        candidates["failed"] = failed
+        count_mismatch = copy.deepcopy(baseline)
+        count_mismatch["runtime"]["summary"]["checks_total"] -= 1
+        candidates["count-mismatch"] = count_mismatch
+        wrong_performance = copy.deepcopy(baseline)
+        wrong_performance["performance"]["summary"]["checks"][-1][
+            "id"
+        ] = "federation_and_child"
+        candidates["wrong-performance-gate"] = wrong_performance
+
+        for label, candidate in candidates.items():
+            with self.subTest(label=label):
+                with self.assertRaises(finalization.FinalizationError):
+                    reconstruct(candidate)
 
     def test_external_v2_runtime_candidate_mismatch_is_rejected(self) -> None:
         runtime_path = self.fixture.runtime_paths["explorer"]

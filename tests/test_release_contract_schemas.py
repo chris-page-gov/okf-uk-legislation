@@ -279,6 +279,104 @@ class ReleaseContractSchemaTests(unittest.TestCase):
             )
         )
 
+    def test_runtime_summaries_match_the_v054_producer_contract(self) -> None:
+        schema = load(SCHEMAS / "explorer-runtime-receipt.schema.json")
+        runtime_ids = [
+            "startup_transfer",
+            "cold_search",
+            "warm_search",
+            "browser_memory",
+            "federation_and_child",
+            "graph_relationship_rendering",
+            "model_assisted_styling_and_filtering",
+            "live_reconciliation_states",
+            "facet_count_colour_and_space",
+            "cross_browser",
+            "keyboard",
+            "accessibility",
+        ]
+        performance_ids = runtime_ids[:4]
+
+        def summary(ids: list[str]) -> dict:
+            return {
+                "checks": [
+                    {"id": gate_id, "status": "passed"}
+                    for gate_id in ids
+                ],
+                "checks_total": len(ids),
+                "checks_passed": len(ids),
+                "checks_failed": 0,
+                "all_passed": True,
+            }
+
+        def validator(definition: str) -> Draft202012Validator:
+            return Draft202012Validator(
+                {
+                    "$schema": schema["$schema"],
+                    "$defs": schema["$defs"],
+                    "$ref": f"#/$defs/{definition}",
+                }
+            )
+
+        runtime_validator = validator("runtimePassSummary")
+        canonical_runtime = summary(runtime_ids)
+        self.assertFalse(
+            list(runtime_validator.iter_errors(canonical_runtime))
+        )
+
+        invalid_runtime = []
+        missing = copy.deepcopy(canonical_runtime)
+        missing.pop("checks")
+        invalid_runtime.append(missing)
+        unknown = copy.deepcopy(canonical_runtime)
+        unknown["checks"][0]["id"] = "unknown_gate"
+        invalid_runtime.append(unknown)
+        duplicate = copy.deepcopy(canonical_runtime)
+        duplicate["checks"][1] = copy.deepcopy(duplicate["checks"][0])
+        invalid_runtime.append(duplicate)
+        reordered = copy.deepcopy(canonical_runtime)
+        reordered["checks"][0], reordered["checks"][1] = (
+            reordered["checks"][1],
+            reordered["checks"][0],
+        )
+        invalid_runtime.append(reordered)
+        extra_row = copy.deepcopy(canonical_runtime)
+        extra_row["checks"].append(
+            {"id": "extra_gate", "status": "passed"}
+        )
+        invalid_runtime.append(extra_row)
+        extra_property = copy.deepcopy(canonical_runtime)
+        extra_property["checks"][0]["detail"] = "untrusted"
+        invalid_runtime.append(extra_property)
+        failed = copy.deepcopy(canonical_runtime)
+        failed["checks"][0]["status"] = "failed"
+        invalid_runtime.append(failed)
+        count_mismatch = copy.deepcopy(canonical_runtime)
+        count_mismatch["checks_total"] -= 1
+        invalid_runtime.append(count_mismatch)
+        for candidate in invalid_runtime:
+            self.assertTrue(
+                list(runtime_validator.iter_errors(candidate)),
+                candidate,
+            )
+
+        performance_validator = validator("performancePassSummary")
+        canonical_performance = summary(performance_ids)
+        self.assertFalse(
+            list(performance_validator.iter_errors(canonical_performance))
+        )
+        wrong_performance_gate = copy.deepcopy(canonical_performance)
+        wrong_performance_gate["checks"][-1]["id"] = (
+            "federation_and_child"
+        )
+        self.assertTrue(
+            list(
+                performance_validator.iter_errors(
+                    wrong_performance_gate
+                )
+            )
+        )
+
     def test_traceability_schema_requires_exact_frozen_population(self) -> None:
         schema = load(SCHEMAS / "traceability-closure-receipt.schema.json")
         self.assertEqual(
