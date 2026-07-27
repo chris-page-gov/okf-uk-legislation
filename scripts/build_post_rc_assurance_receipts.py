@@ -1042,7 +1042,7 @@ def build_security_files(
         "security scan scope excludePaths",
     )
     for key, expected in (
-        ("mode", "commit"),
+        ("mode", "repository"),
         ("inventoryStrategy", "repository"),
         ("includePaths", ["."]),
         ("excludePaths", []),
@@ -1062,22 +1062,25 @@ def build_security_files(
         identity["repository"],
         "security scan target repository",
     )
-    finalization.require_equal(
-        target.get("headRevision"),
-        identity["commit"],
-        "security scan target commit",
-    )
-    if target.get("kind") not in {"git_diff", "git_worktree"}:
+    if target.get("kind") != "git_revision":
         raise ReceiptBuildError(
-            "security scan target must be a commit-bound Git snapshot"
+            "security scan target must be the exact immutable Git revision"
         )
-    prefix = "codex-security-snapshot/v1:sha256:"
-    snapshot = target.get("snapshotDigest")
-    if not isinstance(snapshot, str) or not snapshot.startswith(prefix):
-        raise ReceiptBuildError("security snapshot digest is not canonical")
-    snapshot_digest = snapshot.removeprefix(prefix)
-    if not HEX64.fullmatch(snapshot_digest):
-        raise ReceiptBuildError("security snapshot digest is invalid")
+    incompatible_coordinates = sorted(
+        field
+        for field in ("baseRevision", "headRevision", "snapshotDigest")
+        if field in target
+    )
+    if incompatible_coordinates:
+        raise ReceiptBuildError(
+            "security Git revision target contains inapplicable coordinates: "
+            + ", ".join(incompatible_coordinates)
+        )
+    finalization.require_equal(
+        target.get("revision"),
+        identity["commit"],
+        "security scan target revision",
+    )
     finding_rows = finalization.require_array(
         findings.get("findings"),
         "security findings",
@@ -1140,9 +1143,9 @@ def build_security_files(
             "tree": identity["tree"],
         },
         "scan_target": {
+            "kind": "git_revision",
             "repository": identity["repository"],
-            "commit": identity["commit"],
-            "snapshot_digest": snapshot_digest,
+            "revision": identity["commit"],
         },
         "checks": list(identity["contract"]["required_security_checks"]),
         "finding_summary": {

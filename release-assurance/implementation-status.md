@@ -156,6 +156,12 @@ is a declared hosting exception, not transport conformance.
 
 No qualified legal-practitioner, accessibility-expert, third-party legal or
 final security assurance is claimed. The security scan is intentionally ordered
-after the exact release-candidate snapshot is frozen. LibreOffice/`soffice` and
-other GUI-backed document renderers are prohibited for this repository because
-the observed macOS launch path repeatedly aborted before rendering.
+after the exact release-candidate snapshot is frozen. It is a standard
+whole-repository scan whose canonical target is the immutable `git_revision`
+and whose coverage mode is `repository`; working-tree/diff snapshot
+coordinates are not used. The corrected
+`okf-security-assurance-receipt.v2` shape remains an unreleased v0.3.0
+pre-candidate contract; no RC or final release sealed the superseded shape.
+LibreOffice/`soffice` and other GUI-backed document renderers are prohibited
+for this repository because the observed macOS launch path repeatedly aborted
+before rendering.

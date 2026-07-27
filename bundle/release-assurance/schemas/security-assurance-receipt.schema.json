@@ -38,21 +38,20 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
+        "kind",
         "repository",
-        "commit",
-        "snapshot_digest"
+        "revision"
       ],
       "properties": {
+        "kind": {
+          "const": "git_revision"
+        },
         "repository": {
           "const": "https://github.com/chris-page-gov/okf-uk-legislation"
         },
-        "commit": {
+        "revision": {
           "type": "string",
           "pattern": "^[0-9a-f]{40}$"
-        },
-        "snapshot_digest": {
-          "type": "string",
-          "pattern": "^[0-9a-f]{64}$"
         }
       }
     },

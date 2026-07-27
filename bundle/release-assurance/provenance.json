@@ -153,9 +153,9 @@
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
-      "bytes": 209001,
+      "bytes": 208992,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "6a2eafdf1bec4c7f0b16765b0127a0fdf309b3c0aef288ba8849113d51c31bb6"
+      "sha256": "a6118059c97166ad0bac558a78303ef5e7331e6c572e78fcfaec1e6ddbf29c4b"
     },
     "invariants": {
       "archive_rebuild_prohibited": true,
@@ -267,10 +267,10 @@
         "sha256": "4316800bbe8020d159ff5d1b58865d84ed9ca370ef86887c06a2054010d0caa3"
       },
       {
-        "bytes": 6146,
+        "bytes": 6096,
         "path": "release-assurance/schemas/security-assurance-receipt.schema.json",
         "projected_path": "schemas/security-assurance-receipt.schema.json",
-        "sha256": "aa63077e3306cba0f909e86a0b3cdb09a2228db695b3b1e89ab231155ba58dd9"
+        "sha256": "6c519b3d68bbf8eec33d42ffbd588f209a31d38f0735b6cef999efe5becd5aea"
       },
       {
         "bytes": 4741,
@@ -320,9 +320,9 @@
       "sha256": "642325a2b95505ea8fef16070bbb18e010dd229dd3d103a4b06efbb9229162d1"
     },
     {
-      "bytes": 209001,
+      "bytes": 208992,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "6a2eafdf1bec4c7f0b16765b0127a0fdf309b3c0aef288ba8849113d51c31bb6"
+      "sha256": "a6118059c97166ad0bac558a78303ef5e7331e6c572e78fcfaec1e6ddbf29c4b"
     },
     {
       "bytes": 35620,
@@ -350,9 +350,9 @@
       "sha256": "87d9b06e9e417d98bbe1a972d1cfc5a741180498bb83b68c3d92c396cf0464a1"
     },
     {
-      "bytes": 9234,
+      "bytes": 9583,
       "path": "release-assurance/implementation-status.md",
-      "sha256": "b8e91a7dad3aeb2e24329abc172d2f8d97e6db126589783b9d6a9226212c3824"
+      "sha256": "0b521de923529f63a5a9d3b9131dc64d1ad9035334ef54a887bb9b3d8c869417"
     },
     {
       "bytes": 8741,
@@ -570,9 +570,9 @@
       "sha256": "4316800bbe8020d159ff5d1b58865d84ed9ca370ef86887c06a2054010d0caa3"
     },
     {
-      "bytes": 6146,
+      "bytes": 6096,
       "path": "release-assurance/schemas/security-assurance-receipt.schema.json",
-      "sha256": "aa63077e3306cba0f909e86a0b3cdb09a2228db695b3b1e89ab231155ba58dd9"
+      "sha256": "6c519b3d68bbf8eec33d42ffbd588f209a31d38f0735b6cef999efe5becd5aea"
     },
     {
       "bytes": 4741,
@@ -620,7 +620,7 @@
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
     }
   ],
-  "materials_digest": "sha256:5c548168077bfd950dcc3dfc6ed6810580a6862456caf3baf9990699d2237d5a",
+  "materials_digest": "sha256:8614606e893700f16945bde55da8e80f6f3fe36f0df7ccf9705d1b48059fa445",
   "optional_direct_api_model_governance": {
     "authored_run": null,
     "current_release_required": false,

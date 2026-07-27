@@ -2500,15 +2500,15 @@ def reconstruct_security_scan(
         "security scan repository",
     )
     require_equal(
-        wrapper_target.get("commit"), commit, "security scan target commit"
+        wrapper_target.get("kind"),
+        "git_revision",
+        "security scan target kind",
     )
-    snapshot_digest = wrapper_target.get("snapshot_digest")
-    if (
-        not isinstance(snapshot_digest, str)
-        or len(snapshot_digest) != 64
-        or any(character not in "0123456789abcdef" for character in snapshot_digest)
-    ):
-        raise FinalizationError("security scan snapshot digest is invalid")
+    require_equal(
+        wrapper_target.get("revision"),
+        commit,
+        "security scan target revision",
+    )
     scan_id = receipt.get("scan_id")
     if not isinstance(scan_id, str) or not scan_id:
         raise FinalizationError("security scan id is invalid")
@@ -2552,25 +2552,30 @@ def reconstruct_security_scan(
         contract["candidate"]["repository"],
         "security scan manifest remote",
     )
-    require_equal(
-        target.get("headRevision"),
-        commit,
-        "security scan manifest head revision",
-    )
-    require_equal(
-        target.get("snapshotDigest"),
-        f"codex-security-snapshot/v1:sha256:{snapshot_digest}",
-        "security scan manifest snapshot digest",
-    )
-    if target.get("kind") not in {"git_diff", "git_worktree"}:
+    if target.get("kind") != "git_revision":
         raise FinalizationError(
-            "security scan target must be a commit-bound Git snapshot"
+            "security scan target must be the exact immutable Git revision"
         )
+    incompatible_coordinates = sorted(
+        field
+        for field in ("baseRevision", "headRevision", "snapshotDigest")
+        if field in target
+    )
+    if incompatible_coordinates:
+        raise FinalizationError(
+            "security Git revision target contains inapplicable coordinates: "
+            + ", ".join(incompatible_coordinates)
+        )
+    require_equal(
+        target.get("revision"),
+        commit,
+        "security scan manifest revision",
+    )
     scope = require_object(scan.get("scope"), "security scan manifest scope")
     require_equal(scope.get("includePaths"), ["."], "security scan include paths")
     require_equal(scope.get("excludePaths"), [], "security scan exclude paths")
     for key, expected in (
-        ("mode", "commit"),
+        ("mode", "repository"),
         ("inventoryStrategy", "repository"),
         ("includePaths", ["."]),
         ("excludePaths", []),

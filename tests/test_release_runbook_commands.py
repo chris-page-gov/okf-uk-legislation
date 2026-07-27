@@ -299,6 +299,20 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
         self.assertIn("--output-dir", traceability)
         self.assertNotIn("--output", traceability)
 
+    def test_security_step_requires_standard_revision_contract(self) -> None:
+        self.assertIn("`kind: git_revision`", self.document)
+        self.assertIn("`mode: repository`", self.document)
+        self.assertIn(
+            "has(\"snapshotDigest\") or has(\"baseRevision\") or "
+            "has(\"headRevision\")",
+            self.document,
+        )
+        self.assertIn(
+            "'.scan.target.revision' "
+            "\"$SECURITY_SCAN_DIR/scan-manifest.json\"",
+            self.document,
+        )
+
     def test_runtime_screenshot_source_is_outside_receipt_evidence_root(
         self,
     ) -> None:

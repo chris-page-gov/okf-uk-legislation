@@ -313,11 +313,21 @@ $EVIDENCE/pre-rc-assurance/performance-assurance-receipt.json
 
 Only now run the pre-approved standard Codex Security scan against
 `LEGISLATION_ROOT` at exactly `CANDIDATE_COMMIT`/`CANDIDATE_TREE`. Its target
-snapshot must be this frozen tree; do not scan an earlier worktree and do not
-change the candidate after the scan. The completed canonical scan directory
+revision must be `CANDIDATE_COMMIT`, whose independently reproduced tree is
+`CANDIDATE_TREE`; do not scan an earlier worktree and do not change the
+candidate after the scan. The completed canonical scan directory
 must contain regular `scan-manifest.json`, `findings.json`, `coverage.json` and
 `report.md` files, complete coverage of every required security capability,
 and no unresolved reportable finding. Set its actual durable path:
+
+This is a standard whole-repository scan, not a diff scan. The canonical
+manifest target must therefore be `kind: git_revision`, its `revision` must
+equal `CANDIDATE_COMMIT`, and its sanitized `remote` must equal
+`LEGISLATION_REPOSITORY`. `snapshotDigest`, `baseRevision` and `headRevision`
+are inapplicable and must be omitted. The canonical coverage contract is
+`mode: repository`, `inventoryStrategy: repository`, `includePaths: ["."]`
+and `excludePaths: []`. The exact clean checkout and independently reproduced
+candidate bind that revision to `CANDIDATE_TREE`.
 
 ```sh
 export SECURITY_SCAN_DIR="/absolute/path/from-the-completed-codex-security-scan-context"
@@ -330,6 +340,15 @@ test ! -L "$SECURITY_SCAN_DIR/scan-manifest.json"
 test ! -L "$SECURITY_SCAN_DIR/findings.json"
 test ! -L "$SECURITY_SCAN_DIR/coverage.json"
 test ! -L "$SECURITY_SCAN_DIR/report.md"
+
+test "$(jq -r '.scan.target.kind' "$SECURITY_SCAN_DIR/scan-manifest.json")" = "git_revision"
+test "$(jq -r '.scan.target.revision' "$SECURITY_SCAN_DIR/scan-manifest.json")" = "$CANDIDATE_COMMIT"
+test "$(jq -r '.scan.target.remote' "$SECURITY_SCAN_DIR/scan-manifest.json")" = "$LEGISLATION_REPOSITORY"
+test "$(jq -r '.mode' "$SECURITY_SCAN_DIR/coverage.json")" = "repository"
+test "$(jq -r '.inventoryStrategy' "$SECURITY_SCAN_DIR/coverage.json")" = "repository"
+jq -e '.scan.target
+  | has("snapshotDigest") or has("baseRevision") or has("headRevision")
+  | not' "$SECURITY_SCAN_DIR/scan-manifest.json" >/dev/null
 ```
 
 Derive the candidate-bound security assurance directory with the pinned
