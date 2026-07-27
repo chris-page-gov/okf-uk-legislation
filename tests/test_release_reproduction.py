@@ -854,6 +854,46 @@ class ReleaseReproductionTests(unittest.TestCase):
         ):
             reproduction.semantic_digests(checkout, [pair], [])
 
+    def test_turtle_preserves_canonical_utc_z_lexical_form(self) -> None:
+        checkout = Path(
+            tempfile.mkdtemp(prefix="whole-law-turtle-", dir=self.root)
+        )
+        bundle = checkout / "bundle" / "whole-law"
+        bundle.mkdir(parents=True)
+        for name in (
+            "okf-bundle.yamlld",
+            "okf-bundle.jsonld",
+            "okf-bundle.ttl",
+        ):
+            shutil.copyfile(
+                ROOT / "bundle" / "whole-law" / name,
+                bundle / name,
+            )
+        turtle_path = bundle / "okf-bundle.ttl"
+        turtle_body = turtle_path.read_text(encoding="utf-8")
+        self.assertIn(
+            '"2026-07-25T22:54:00Z"'
+            "^^<http://www.w3.org/2001/XMLSchema#dateTime>",
+            turtle_body,
+        )
+        result = reproduction.semantic_digests(
+            checkout,
+            [
+                {
+                    "id": "whole-law-utc-z",
+                    "yaml_ld": "bundle/whole-law/okf-bundle.yamlld",
+                    "json_ld": "bundle/whole-law/okf-bundle.jsonld",
+                    "turtle": "bundle/whole-law/okf-bundle.ttl",
+                }
+            ],
+            [],
+        )[0]
+        self.assertEqual(
+            reproduction.sha256(turtle_path),
+            result["canonical_nquads_sha256"],
+        )
+        self.assertTrue(result["representations_equivalent"])
+
     def test_promotion_asset_name_must_match_archive(self) -> None:
         profile = json.loads(self.profile.read_text(encoding="utf-8"))
         profile["promotion"]["asset_filename"] = "renamed.tar.zst"
