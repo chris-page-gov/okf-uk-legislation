@@ -15,6 +15,31 @@ break published identifiers, bookmarks and downstream users. Whole-Law is an
 additive publication, not a claim that every catalogued legal source has
 already been ingested.
 
+## Published release
+
+| Item | Value |
+|---|---|
+| Legislation/Whole-Law bundle release | **[v0.3.0][release-v030]** |
+| Published | **27 July 2026 at 15:40:30 UTC** |
+| Release commit | `3fd2700f275fff53d8605f38eb3257780ea591fa` |
+| Immutable archive | 277,647,814 bytes; SHA-256 `27bc8cb09f683132d3966108629c3416f8b8d0ad58f6c922862cdbfc7bde8e5e` |
+| OKF specification used | **OKF 0.2** (this is the format version, not the bundle release) |
+| Legislation catalogue snapshot | 11 July 2026 at 18:00 UTC |
+| Whole-Law source-access snapshot | 25 July 2026 |
+| Explorer release used | `v0.5.4` |
+
+The release candidate and final release use the same commit and byte-identical
+archive. There is no UK Legislation or Whole-Law `v0.4.0` release. The separate
+UK Government APIs exemplar used a `0.4.0` preview value, while OKF Explorer
+subsequently reached `v0.5.4`; neither is the version of this bundle.
+
+The frozen `v0.3.0` machine representations retain some pre-promotion
+`candidate`/`preview` lifecycle labels, and the root YAML-LD/JSON-LD descriptor
+retains the earlier `0.2.0` bundle value. These are known metadata defects in
+the immutable release, not evidence that the long-run work was lost. The
+GitHub release record above is the authoritative publication record; the
+frozen release is not being rewritten retrospectively.
+
 ## Open the publications
 
 | Publication | Explorer | Descriptor | Documentation |
@@ -59,9 +84,9 @@ redirects instead of silently disappearing. Clients should follow each
 descriptor’s declared repository, `raw_subpath`, documentation and alternate
 routes; they should not guess raw paths.
 
-## Current candidate
+## Published v0.3.0 contents
 
-The checked candidate contains:
+The published release contains:
 
 - **365,786** legislation works;
 - **835,563** core relationships after fail-closed removal of the rejected
@@ -248,6 +273,7 @@ Its durable Pages release asset is
 [whole-law-turtle]: https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.ttl
 [repository]: https://github.com/chris-page-gov/okf-uk-legislation
 [releases]: https://github.com/chris-page-gov/okf-uk-legislation/releases
+[release-v030]: https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0
 [whole-law-guide]: https://chris-page-gov.github.io/okf-uk-legislation/whole-law/docs/
 [compat-repository]: https://github.com/chris-page-gov/ai-infrastructure-wiki
 [compat-docs]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/

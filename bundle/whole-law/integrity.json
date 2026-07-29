@@ -857,14 +857,14 @@
       "sha256": "9444613faca25b5e539eb44f8ee7b28d88a86e421602d98227cc24f214a04066"
     },
     {
-      "bytes": 1683,
+      "bytes": 2322,
       "path": "index.html",
-      "sha256": "a39657fd7fd7506dbaf2d2ccf85eecf83458794d4cd29a4b95412dba6debcab9"
+      "sha256": "f901ba651e9868a6efeeb41d9ef6088d1ade20fb32af74d177d701f36720b60c"
     },
     {
-      "bytes": 2805,
+      "bytes": 3376,
       "path": "index.md",
-      "sha256": "f173326d629d454b0585611e0584034fbc8e0253fc2f5b9c7706c8711e66f19d"
+      "sha256": "f0ee914590d1e40691771a24ea3b965558f4f4f19f6a1debb04c55d16516356c"
     },
     {
       "bytes": 845,

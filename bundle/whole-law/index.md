@@ -14,6 +14,18 @@ advice, a claim that every source is complete, or a substitute for checking the
 controlling source, jurisdiction, date, extent, version and subsequent
 treatment.
 
+## Published release
+
+This publication is part of
+[Legislation/Whole-Law v0.3.0](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0),
+published on **27 July 2026**. It uses the **OKF 0.2** specification. Its
+source-access snapshot is dated 25 July 2026; the implemented Legislation
+child's catalogue snapshot is dated 11 July 2026.
+
+The immutable release retains pre-promotion `candidate` labels in some machine
+representations. The GitHub release record is the authoritative publication
+status. There is no Legislation/Whole-Law `v0.4.0` release.
+
 ## Start here
 
 - [Source catalogue](sources/index.md)

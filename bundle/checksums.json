@@ -19253,12 +19253,12 @@
       "sha256": "4febf436f1fcee5407316456d18bd4cb7c3879e20f473fd42e77c5a75a302773"
     },
     "docs/index.html": {
-      "bytes": 2311,
-      "sha256": "08d70e8ab179c5b0d75cdb4e5305d341bf91921ae28730fb1bc819fbbf2affb6"
+      "bytes": 2936,
+      "sha256": "d77eb110342090e73a7f3488dcc180a097c74c0ccc4eea36f3d4d61eaff75948"
     },
     "docs/index.md": {
-      "bytes": 5184,
-      "sha256": "7f33f9400093935310b341573b95a5df788b248c42171a8a572c1b104302cf37"
+      "bytes": 5818,
+      "sha256": "788ccdb296f1599a0fcdb3daf5ea6dbb45c174162de0430e60d1abf023574746"
     },
     "docs/maintenance.md": {
       "bytes": 13543,
@@ -25268,9 +25268,13 @@
       "bytes": 407159,
       "sha256": "c18d0113c6f447589fa00c74ee7cb8551d69fa28a581b2c5d2f3596ede49fd8c"
     },
+    "index.html": {
+      "bytes": 4651,
+      "sha256": "90b53e4e617e13fe7d6923cbd1de9c1aab18c6320b40060d426285c469543311"
+    },
     "index.md": {
-      "bytes": 2485,
-      "sha256": "11252bbb8ebc47bb29ecc72d2948e0d089dd9475f2556343a7b6983821460faf"
+      "bytes": 3037,
+      "sha256": "dc2e9276bda66bad708d138e7266cf8fd9a6103530096b85544ac12269d634e9"
     },
     "log.md": {
       "bytes": 385,
@@ -26401,16 +26405,16 @@
       "sha256": "9444613faca25b5e539eb44f8ee7b28d88a86e421602d98227cc24f214a04066"
     },
     "whole-law/index.html": {
-      "bytes": 1683,
-      "sha256": "a39657fd7fd7506dbaf2d2ccf85eecf83458794d4cd29a4b95412dba6debcab9"
+      "bytes": 2322,
+      "sha256": "f901ba651e9868a6efeeb41d9ef6088d1ade20fb32af74d177d701f36720b60c"
     },
     "whole-law/index.md": {
-      "bytes": 2805,
-      "sha256": "f173326d629d454b0585611e0584034fbc8e0253fc2f5b9c7706c8711e66f19d"
+      "bytes": 3376,
+      "sha256": "f0ee914590d1e40691771a24ea3b965558f4f4f19f6a1debb04c55d16516356c"
     },
     "whole-law/integrity.json": {
       "bytes": 74911,
-      "sha256": "bde7ff734d9532c6105a66a6fe606d894fbd9c65c1988407d082788ed7165cd6"
+      "sha256": "3f143fbaae0f2d95556d4d06abbf4730eddcd56f05f61b73c292109727856649"
     },
     "whole-law/log.md": {
       "bytes": 845,
