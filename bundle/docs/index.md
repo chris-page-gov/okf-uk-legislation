@@ -3,6 +3,20 @@
 This is the maintained documentation spine for the UK Legislation OKF, its
 legislation-specific Explorer behaviour and the additive Whole-Law federation.
 
+## Current publication
+
+The current published Legislation/Whole-Law bundle is
+[v0.3.0](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0),
+published on **27 July 2026** from commit
+`3fd2700f275fff53d8605f38eb3257780ea591fa`. It uses the **OKF 0.2**
+specification. The legislation catalogue snapshot is dated 11 July 2026 and
+the Whole-Law source-access snapshot is dated 25 July 2026.
+
+Some machine descriptors in the immutable release still carry their
+pre-promotion `candidate`/`preview` labels; the release record is the
+authoritative publication status. There is no Legislation/Whole-Law `v0.4.0`
+release.
+
 - [Open the hosted UK Legislation Explorer](https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview)
 - [Open the hosted Whole-Law federation](https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fwhole-law%2Fokf-explorer.json&view=reader#overview)
 

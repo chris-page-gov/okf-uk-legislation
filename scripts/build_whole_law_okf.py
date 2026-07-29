@@ -1249,12 +1249,21 @@ artefacts are promoted by digest without rebuilding.
 <title>UK Whole-Law OKF</title>
 <main><h1>UK Whole-Law OKF</h1>
 <p>A federated, evidence-led map of authoritative and supporting UK legal sources.</p>
+<h2>Published release</h2>
+<dl>
+<dt>Bundle release</dt><dd><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0"><strong>v0.3.0</strong></a></dd>
+<dt>Published</dt><dd>27 July 2026 at 15:40:30 UTC</dd>
+<dt>OKF specification</dt><dd>OKF 0.2</dd>
+<dt>Source-access snapshot</dt><dd>25 July 2026</dd>
+<dt>Legislation child snapshot</dt><dd>11 July 2026 at 18:00 UTC</dd>
+</dl>
+<p>The immutable release retains pre-promotion <code>candidate</code> labels in some machine representations. The GitHub release record is the authoritative publication status. There is no Legislation/Whole-Law <code>v0.4.0</code> release.</p>
 <ul>
 <li><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Canonical Explorer descriptor</a></li>
 <li><a href="okf-bundle.yamlld">YAML-LD</a></li>
 <li><a href="okf-bundle.jsonld">JSON-LD</a></li>
 <li><a href="okf-bundle.ttl">Turtle</a></li>
-<li><a href="docs/index.md">Documentation</a></li>
+<li><a href="docs/">Documentation</a></li>
 <li><a href="data/source-register.json">Source register</a></li>
 <li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
 <li>Declared raw subpath: <code>bundle/whole-law</code></li>

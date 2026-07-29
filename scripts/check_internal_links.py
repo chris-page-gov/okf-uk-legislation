@@ -92,6 +92,14 @@ LANDING_REQUIREMENTS = {
     + (LEGISLATION_DESCRIPTOR, WHOLE_LAW_DESCRIPTOR, "`bundle`", "`bundle/whole-law`"),
     Path("bundle/docs/index.html"): COMMON_LANDING_REQUIREMENTS
     + (LEGISLATION_DESCRIPTOR, WHOLE_LAW_DESCRIPTOR, "bundle", "bundle/whole-law"),
+    Path("bundle/index.html"): COMMON_LANDING_REQUIREMENTS
+    + (
+        LEGISLATION_DESCRIPTOR,
+        WHOLE_LAW_DESCRIPTOR,
+        "v0.3.0",
+        "27 July 2026",
+        "OKF 0.2",
+    ),
     Path("bundle/evaluation/index.html"): COMMON_LANDING_REQUIREMENTS
     + (LEGISLATION_DESCRIPTOR, "bundle"),
     Path("bundle/whole-law/index.md"): COMMON_LANDING_REQUIREMENTS
