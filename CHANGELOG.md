@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Added the OKF build and publication lifecycle contract, repository-specific
+  contract and documentation-lockstep checks, and a maintained methodology
+  guide.
+- Removed duplicate feature-push and protected-main validation while
+  preserving the required pull-request `validate` gate and Pages pre-deploy
+  validation.
+- Added per-step validator timings and bounded, per-pull-request cancellation
+  so later dependency-aware optimisation can use measured evidence.
 - Added a public HTML landing page and prominent release/version record after
   the published Pages root was found to return 404.
 - Documented the frozen `v0.3.0` machine-metadata discrepancy without

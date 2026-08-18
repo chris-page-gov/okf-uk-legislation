@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Check out the candidate
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 2
       - name: Set up Python
         uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
@@ -31,7 +33,14 @@ jobs:
           --disable-pip-version-check
           --require-hashes
           --requirement requirements-validation.txt
+      - name: Check publication contract and documentation lockstep
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          python3 scripts/check_publication_contract.py
+          python3 scripts/check_documentation_lockstep.py --base HEAD^
       - name: Run complete offline publication validation
+        env:
+          OKF_VALIDATION_TIMINGS: ${{ runner.temp }}/okf-validation-timings.tsv
         run: sh scripts/validate_publication.sh
 
   deploy:
