@@ -159,6 +159,19 @@ remove prototype functionality or authorise authentication bypass.
 
 ## Build and validate
 
+The repository's
+[`okf.publication.json`](okf.publication.json) records the source families,
+authored and generated boundaries, dependency planes, lockstep policy, CI
+routing, publication authority and current live-verification gap. Read the
+[build and publication method](PUBLICATION-METHOD.md) before changing
+workflows, generated projections or release evidence.
+
+Pull requests run the complete validator once. Feature pushes do not duplicate
+that pull-request run, and protected-main validation is owned by the Pages
+workflow rather than repeated in general CI. The validator checks the tracked
+publication without rebuilding it and emits per-step timings to support a
+future, evidence-led dependency split.
+
 The machine-readable
 [`reproduction-profile.json`](release-assurance/reproduction-profile.json) is
 the source of truth for the ordered, offline build and validation sequences.
@@ -194,7 +207,14 @@ materials bind the post-v2, post-effects data manifest, so reversing those
 stages invalidates the independent review receipt even when the work corpus
 and semantic candidate population are unchanged.
 
-Validate without changing the publication with exactly the profile's
+Check the lifecycle contract and local documentation lockstep separately:
+
+```sh
+.venv/bin/python scripts/check_publication_contract.py
+.venv/bin/python scripts/check_documentation_lockstep.py
+```
+
+Then validate without changing the publication with exactly the profile's
 `validation_commands`:
 
 ```sh

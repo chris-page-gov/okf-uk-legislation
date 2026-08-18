@@ -1,0 +1,464 @@
+{
+  "schema": "okf-repository-publication-contract.v1",
+  "modified": "2026-08-18",
+  "locale": "en-GB",
+  "time_zone": "Europe/London",
+  "repository": {
+    "name": "okf-uk-legislation",
+    "url": "https://github.com/chris-page-gov/okf-uk-legislation",
+    "role": "large-corpus-producer",
+    "root_index": "README.md",
+    "lifecycle": "migration"
+  },
+  "semantic_contract": {
+    "path": "bundle/okf-bundle.yamlld",
+    "profile": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/"
+  },
+  "source_families": [
+    {
+      "id": "governed-snapshot-inputs",
+      "label": "Governed legislation and Whole-Law snapshot inputs",
+      "description": "The checked-in evidence, enrichment governance, research and authored Whole-Law materials from which the frozen publication was produced.",
+      "kind": "mixed",
+      "paths": [
+        "evidence/**",
+        "enrichment/**",
+        "research/**",
+        "whole-law/**"
+      ],
+      "formats": [
+        "application/json",
+        "application/ld+yaml",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "text/csv",
+        "text/markdown",
+        "text/turtle"
+      ],
+      "origin": "mixed",
+      "authority": "mixed",
+      "snapshot_policy": "immutable-checksummed",
+      "inventory": {
+        "method": "deterministic-file-inventory",
+        "manifest_path": "research/whole-law-okf-research/integrity.json",
+        "identity": [
+          "relative-path",
+          "bytes",
+          "sha256",
+          "media-type",
+          "source-identifier",
+          "source-version"
+        ]
+      },
+      "rights": {
+        "status": "mixed",
+        "evidence": [
+          "https://github.com/chris-page-gov/okf-uk-legislation/blob/main/LICENSE.md",
+          "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        ],
+        "limitations": [
+          "Item-level terms and recorded source constraints take precedence over the repository-level licence summary."
+        ]
+      },
+      "sensitivity": {
+        "status": "potentially-sensitive",
+        "assessment": "The repository retains research, source constraints and immutable acquisition evidence; publication review must not assume that every input is suitable for direct public projection.",
+        "evidence": []
+      },
+      "extraction": {
+        "mode": "manual-reviewed",
+        "network_access": "separate-authorised-step",
+        "command_ids": [],
+        "limitations": [
+          "Network acquisition creates a separately identified immutable attempt and is never part of routine validation or Pages deployment.",
+          "The preserved direct-API enrichment prototype is not an authorised extraction path."
+        ]
+      },
+      "invalidates": [
+        "source",
+        "semantic",
+        "runtime",
+        "documentation",
+        "release",
+        "deployment",
+        "browser"
+      ],
+      "limitations": [
+        "Model-assisted discovery metadata is non-official and must not be presented as legal classification or legal advice."
+      ]
+    }
+  ],
+  "boundaries": {
+    "authored": [
+      {
+        "path": "evidence/**",
+        "role": "source-envelope",
+        "source_family_id": "governed-snapshot-inputs"
+      },
+      {
+        "path": "enrichment/**",
+        "role": "policy",
+        "source_family_id": "governed-snapshot-inputs"
+      },
+      {
+        "path": "research/**",
+        "role": "source-register",
+        "source_family_id": "governed-snapshot-inputs"
+      },
+      {
+        "path": "whole-law/**",
+        "role": "content",
+        "source_family_id": "governed-snapshot-inputs"
+      },
+      {
+        "path": "scripts/**",
+        "role": "generator"
+      },
+      {
+        "path": "tests/**",
+        "role": "test"
+      },
+      {
+        "path": "release-assurance/**",
+        "role": "release-authorisation"
+      },
+      {
+        "path": "requirements-validation.in",
+        "role": "policy"
+      },
+      {
+        "path": "requirements-validation.txt",
+        "role": "policy"
+      },
+      {
+        "path": "okf.publication.json",
+        "role": "publication-contract"
+      },
+      {
+        "path": "README.md",
+        "role": "documentation"
+      },
+      {
+        "path": "PUBLICATION-METHOD.md",
+        "role": "documentation"
+      },
+      {
+        "path": "docs/**",
+        "role": "documentation"
+      },
+      {
+        "path": "AGENTS.md",
+        "role": "documentation"
+      },
+      {
+        "path": "CHANGELOG.md",
+        "role": "changelog"
+      },
+      {
+        "path": ".github/workflows/**",
+        "role": "workflow"
+      }
+    ],
+    "generated": [
+      {
+        "path": "bundle/okf-bundle.yamlld",
+        "role": "semantic-yaml-ld",
+        "plane": "semantic",
+        "required": true,
+        "build_command_ids": [],
+        "check_command_ids": [
+          "validate-publication"
+        ]
+      },
+      {
+        "path": "bundle/okf-bundle.jsonld",
+        "role": "semantic-json-ld",
+        "plane": "semantic",
+        "required": true,
+        "build_command_ids": [],
+        "check_command_ids": [
+          "validate-publication"
+        ]
+      },
+      {
+        "path": "bundle/data/**",
+        "role": "semantic-shards",
+        "plane": "runtime",
+        "required": true,
+        "build_command_ids": [],
+        "check_command_ids": [
+          "validate-publication"
+        ]
+      },
+      {
+        "path": "bundle/checksums.json",
+        "role": "checksum-manifest",
+        "plane": "release",
+        "required": true,
+        "build_command_ids": [],
+        "check_command_ids": [
+          "validate-publication"
+        ]
+      },
+      {
+        "path": "bundle/**",
+        "role": "site",
+        "plane": "deployment",
+        "required": true,
+        "build_command_ids": [],
+        "check_command_ids": [
+          "validate-publication"
+        ]
+      }
+    ]
+  },
+  "planes": [
+    {
+      "id": "source",
+      "depends_on": [],
+      "paths": [
+        "evidence/**",
+        "enrichment/**",
+        "research/**",
+        "whole-law/**"
+      ],
+      "command_ids": [
+        "validate-publication"
+      ]
+    },
+    {
+      "id": "semantic",
+      "depends_on": [
+        "source"
+      ],
+      "paths": [
+        "bundle/okf-bundle.yamlld",
+        "bundle/okf-bundle.jsonld",
+        "scripts/build_legislation_okf.py",
+        "scripts/build_whole_law_okf.py",
+        "scripts/run_semantic_conformance.py"
+      ],
+      "command_ids": [
+        "validate-publication"
+      ]
+    },
+    {
+      "id": "runtime",
+      "depends_on": [
+        "semantic"
+      ],
+      "paths": [
+        "bundle/data/**",
+        "bundle/okf-explorer.json",
+        "scripts/rebuild_legislation_discovery.py"
+      ],
+      "command_ids": [
+        "validate-publication"
+      ]
+    },
+    {
+      "id": "documentation",
+      "depends_on": [
+        "source",
+        "semantic"
+      ],
+      "paths": [
+        "AGENTS.md",
+        "CHANGELOG.md",
+        "PUBLICATION-METHOD.md",
+        "README.md",
+        "docs/**",
+        "okf.publication.json"
+      ],
+      "command_ids": [
+        "check-contract",
+        "check-lockstep",
+        "validate-publication"
+      ]
+    },
+    {
+      "id": "release",
+      "depends_on": [
+        "source",
+        "semantic",
+        "runtime",
+        "documentation"
+      ],
+      "paths": [
+        ".github/workflows/**",
+        "release-assurance/**",
+        "requirements-validation.in",
+        "requirements-validation.txt",
+        "scripts/**",
+        "tests/**"
+      ],
+      "command_ids": [
+        "check-contract",
+        "validate-publication"
+      ]
+    },
+    {
+      "id": "deployment",
+      "depends_on": [
+        "release"
+      ],
+      "paths": [
+        ".github/workflows/pages.yml",
+        "bundle/**"
+      ],
+      "command_ids": [
+        "validate-publication"
+      ]
+    },
+    {
+      "id": "browser",
+      "depends_on": [
+        "deployment"
+      ],
+      "paths": [
+        "release-assurance/deployed-entrypoints-manifest.json",
+        "release-assurance/public-entrypoint-smoke.md",
+        "scripts/probe_deployed_entrypoints.py"
+      ],
+      "command_ids": []
+    }
+  ],
+  "tooling": {
+    "commands": [
+      {
+        "id": "check-contract",
+        "kind": "check",
+        "planes": [
+          "documentation",
+          "release"
+        ],
+        "command": "python3 scripts/check_publication_contract.py",
+        "source": "AGENTS.md",
+        "review_status": "reviewed-local-guidance",
+        "network": "none",
+        "mutates": "none",
+        "timeout_minutes": 2
+      },
+      {
+        "id": "check-lockstep",
+        "kind": "check",
+        "planes": [
+          "documentation"
+        ],
+        "command": "python3 scripts/check_documentation_lockstep.py",
+        "source": "AGENTS.md",
+        "review_status": "reviewed-local-guidance",
+        "network": "none",
+        "mutates": "none",
+        "timeout_minutes": 2
+      },
+      {
+        "id": "validate-publication",
+        "kind": "test",
+        "planes": [
+          "source",
+          "semantic",
+          "runtime",
+          "documentation",
+          "release",
+          "deployment"
+        ],
+        "command": "sh scripts/validate_publication.sh",
+        "source": "AGENTS.md",
+        "review_status": "reviewed-local-guidance",
+        "network": "none",
+        "mutates": "none",
+        "timeout_minutes": 60
+      }
+    ]
+  },
+  "lockstep": {
+    "controlled_paths": [
+      ".github/workflows/**",
+      "AGENTS.md",
+      "bundle/**",
+      "evidence/**",
+      "enrichment/**",
+      "okf.publication.json",
+      "release-assurance/**",
+      "requirements-validation.in",
+      "requirements-validation.txt",
+      "research/**",
+      "scripts/**",
+      "tests/**",
+      "whole-law/**"
+    ],
+    "documentation_paths": [
+      "README.md",
+      "PUBLICATION-METHOD.md",
+      "docs/**"
+    ],
+    "changelog_path": "CHANGELOG.md",
+    "check_command_id": "check-lockstep",
+    "dependency_update_policy": "assess-release-bound-bytes-no-blanket-exemption",
+    "unknown_path_policy": "fail-closed"
+  },
+  "ci": {
+    "provider": "github-actions",
+    "workflow_paths": [
+      ".github/workflows/ci.yml",
+      ".github/workflows/drift.yml",
+      ".github/workflows/pages.yml"
+    ],
+    "impact_routing": "full-suite",
+    "parallelism": "serial",
+    "unknown_path_policy": "full-suite",
+    "browser": {
+      "ordinary": {
+        "policy": "not-applicable",
+        "engines": [],
+        "command_ids": []
+      },
+      "cross_engine": {
+        "policy": "not-applicable",
+        "engines": [],
+        "command_ids": [],
+        "installation": {
+          "policy": "none",
+          "command_ids": []
+        }
+      }
+    }
+  },
+  "publication": {
+    "mode": "automatic-protected-main",
+    "scope": "public-release",
+    "authority": {
+      "decision": "GitHub Pages may publish only the protected-main candidate after the repository's complete offline validator passes; frozen GitHub Releases retain their separate manual promotion authority.",
+      "evidence_paths": [
+        ".github/workflows/pages.yml",
+        "release-assurance/release-policy.json"
+      ]
+    },
+    "candidate_policy": "promote-exact-assured-bytes-without-rebuild",
+    "targets": [
+      {
+        "id": "github-pages",
+        "kind": "github-pages",
+        "workflow_path": ".github/workflows/pages.yml",
+        "public_base_url": "https://chris-page-gov.github.io/okf-uk-legislation/",
+        "exact_commit_required": true,
+        "promote_without_rebuild": true
+      }
+    ]
+  },
+  "verification": {
+    "required": false,
+    "browser": "not-applicable",
+    "exact_commit_required": false,
+    "identity_checks": [],
+    "journeys": [],
+    "console_policy": "not-applicable",
+    "command_ids": []
+  },
+  "limitations": [
+    "The current release-assurance probe is bounded HTTP evidence, not a real-browser, console-clean journey bound to the exact deployed commit; that verification remains an explicit publication-method backlog item.",
+    "The repository predates a standalone okf.semantic.json contract, so this lifecycle contract points to the governed YAML-LD descriptor while that migration is reviewed separately.",
+    "The complete validator remains one fail-closed serial gate. Per-step timings are emitted, but dependency-safe sharding and documentation-only impact routing require measured evidence before adoption.",
+    "GitHub Pages serves YAML-LD as application/octet-stream; strict JSON-LD remains the transport fallback."
+  ]
+}

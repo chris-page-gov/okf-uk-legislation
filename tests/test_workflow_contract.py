@@ -1,4 +1,4 @@
-"""Verify that CI and Pages share one fail-closed publication gate."""
+"""Verify the non-duplicating, fail-closed CI and Pages publication gates."""
 
 from __future__ import annotations
 
@@ -69,9 +69,40 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn(VALIDATION_COMMAND, job_block(self.ci, "validate"))
         self.assertIn(VALIDATION_COMMAND, job_block(self.pages, "validate"))
 
+    def test_ci_validates_pull_requests_without_duplicating_feature_pushes(self) -> None:
+        trigger = self.ci.split("\npermissions:\n", 1)[0]
+        self.assertIn("  pull_request:", trigger)
+        self.assertIn("  workflow_dispatch:", trigger)
+        self.assertNotIn("  push:", trigger)
+
+    def test_pages_is_the_only_main_push_validation(self) -> None:
+        trigger = self.pages.split("\npermissions:\n", 1)[0]
+        self.assertIn("  push:\n    branches: [main]", trigger)
+        self.assertNotIn("branches: [main]", self.ci)
+
+    def test_only_read_only_ci_cancels_superseded_runs(self) -> None:
+        self.assertIn(
+            "group: okf-bundle-ci-${{ github.event.pull_request.number || github.ref }}",
+            self.ci,
+        )
+        self.assertIn("cancel-in-progress: true", self.ci)
+        self.assertIn("group: pages", self.pages)
+        self.assertIn("cancel-in-progress: false", self.pages)
+
+    def test_lockstep_compares_the_complete_candidate_change(self) -> None:
+        self.assertIn("fetch-depth: 2", self.ci)
+        self.assertIn("check_documentation_lockstep.py --base HEAD^1", self.ci)
+        self.assertIn("fetch-depth: 2", self.pages)
+        self.assertIn("check_documentation_lockstep.py --base HEAD^", self.pages)
+
     def test_shared_entrypoint_covers_the_complete_validation_sequence(self) -> None:
         for command in REQUIRED_VALIDATION_COMMANDS:
             self.assertIn(command, self.validation)
+
+    def test_shared_entrypoint_emits_per_step_and_total_timings(self) -> None:
+        self.assertIn('run_step "unit suite"', self.validation)
+        self.assertIn("VALIDATION TIMING", self.validation)
+        self.assertIn("VALIDATION TOTAL", self.validation)
 
     def test_pages_deploy_requires_validation(self) -> None:
         self.assertRegex(
