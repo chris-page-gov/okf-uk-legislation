@@ -1,0 +1,11 @@
+{
+  "schema": "okf-validation-hold.v1",
+  "reason": "Graph gate requires a fresh Explorer browser observation for the changed descriptors. The historical receipt must not be relabelled. Dependent release-assurance validation exited with code 1 before the unit suite started; current validated release metadata cannot be promoted over a candidate-only evidence state.",
+  "completed_semantic_conformance": "passed",
+  "graph_gate_attempt": {
+    "path": "release-assurance/profile-reconcile-20260927/graph-gate-attempt-02.json",
+    "sha256": "5138fde5adc38b78287d12f5e3ce725ec3c45ba8a6fa08c0824a68667b02de8b"
+  },
+  "status": "awaiting-final-consumer-build-and-runtime-observation",
+  "dependent_assurance_status": "failed; original log retained"
+}

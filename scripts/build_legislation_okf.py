@@ -44,6 +44,18 @@ UKM = "http://www.legislation.gov.uk/namespaces/metadata"
 NS = {"atom": ATOM, "open": OPEN_SEARCH, "leg": LEG, "ukm": UKM}
 BASE = "https://www.legislation.gov.uk"
 OGL = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+RELATIONSHIP_SEMANTIC_MANIFEST = (
+    "https://chris-page-gov.github.io/okf-uk-legislation/"
+    "data/semantic/manifest.yamlld"
+)
+RELATIONSHIP_SEMANTIC_MANIFEST_JSON = (
+    "https://chris-page-gov.github.io/okf-uk-legislation/"
+    "data/semantic/manifest.jsonld"
+)
+WHOLE_LAW_NAMESPACE = (
+    "https://chris-page-gov.github.io/okf-uk-legislation/"
+    "profile/whole-law/v1#"
+)
 DATA_DOCS = "https://legislation.github.io/data-documentation/"
 URI_DOCS = f"{DATA_DOCS}model/uris.html"
 MODEL_DOCS = f"{DATA_DOCS}model/legislation.html"
@@ -2544,6 +2556,11 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
             "record_locator": "data/records/manifest.json",
             "relationship_adjacency": "data/adjacency/manifest.json",
             "relationship_composition": "data/relationship-composition.json",
+            "relationship_semantics": "data/semantic/manifest.yamlld",
+            "relationship_semantics_jsonld": "data/semantic/manifest.jsonld",
+            "relationship_runtime": "data/semantic/runtime-manifest.json",
+            "predicate_registry": "data/semantic/predicate-registry.json",
+            "iri_route_registry": "data/semantic/iri-route-registry.json",
             "markdown_index": "index.md",
             "notes": "methodology/index.md",
             "ontology": "ontology/index.md",
@@ -2605,6 +2622,23 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
                 "records": "fnv1a32-route-locator",
                 "compression": "pre-compressed-gzip",
                 "full_corpus_browser_hydration": False,
+            },
+            "okf-rich-directed-relationships.v1": {
+                "mode": "bounded-json-ld-shards-with-yaml-ld-control-plane",
+                "entrypoint": "relationship_semantics",
+                "jsonld_fallback": "relationship_semantics_jsonld",
+                "runtime_entrypoint": "relationship_runtime",
+                "direct_triple_policy": "generated-with-evidence-bearing-reification",
+                "authority_planes_preserved": True,
+                "active_planes": [
+                    "core",
+                    "official-effects",
+                    "model-assisted-v3",
+                ],
+                "historical_planes": [
+                    "model-assisted-v2-historical",
+                    "model-assisted-v1-rejected",
+                ],
             },
         },
         "discovery": {
@@ -2799,9 +2833,43 @@ def record_chunk_metadata(
     return rows
 
 
-def output_files(corpus: dict[str, Any], source_meta: dict[str, Any]) -> dict[Path, str | bytes]:
+def output_files(
+    corpus: dict[str, Any],
+    source_meta: dict[str, Any],
+    *,
+    runtime_manifest_path: Path | None = None,
+) -> dict[Path, str | bytes]:
+    descriptor = json.loads(json.dumps(corpus["descriptor"]))
+    descriptor.setdefault("performance", {})[
+        "route_relationship_hydration"
+    ] = (
+        "sha256-prefix rich relationship route locator; legacy FNV-1a "
+        "adjacency retained as the compact-core fallback"
+    )
+    if runtime_manifest_path is not None and runtime_manifest_path.is_file():
+        runtime_body = runtime_manifest_path.read_bytes()
+        descriptor.setdefault("entrypoint_integrity", {})[
+            "relationship_runtime"
+        ] = {
+            "path": "data/semantic/runtime-manifest.json",
+            "bytes": len(runtime_body),
+            "sha256": hashlib.sha256(runtime_body).hexdigest(),
+            "content_encoding": "identity",
+        }
     semantic_descriptor = {
-        "@context": corpus["descriptor"]["@context"],
+        "@context": [
+            corpus["descriptor"]["@context"],
+            {
+                "relationshipManifest": {
+                    "@id": f"{WHOLE_LAW_NAMESPACE}relationshipManifest",
+                    "@type": "@id",
+                },
+                "relationshipManifestJson": {
+                    "@id": f"{WHOLE_LAW_NAMESPACE}relationshipManifestJson",
+                    "@type": "@id",
+                },
+            },
+        ],
         "@id": "https://chris-page-gov.github.io/okf-uk-legislation/",
         "@type": "okf:Bundle",
         "okf_version": "0.2",
@@ -2814,11 +2882,15 @@ def output_files(corpus: dict[str, Any], source_meta: dict[str, Any]) -> dict[Pa
         "publisher": {"@id": corpus["descriptor"]["publisher"]},
         "license": {"@id": corpus["descriptor"]["license"]},
         "generatedAt": corpus["descriptor"]["generated_at"],
+        "relationshipManifest": {"@id": RELATIONSHIP_SEMANTIC_MANIFEST},
+        "relationshipManifestJson": {
+            "@id": RELATIONSHIP_SEMANTIC_MANIFEST_JSON
+        },
     }
     files: dict[Path, str | bytes] = {
         Path("okf-bundle.yamlld"): json.dumps(semantic_descriptor, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         Path("okf-bundle.jsonld"): large_corpus.render_json(semantic_descriptor),
-        Path("okf-explorer.json"): large_corpus.render_json(corpus["descriptor"]),
+        Path("okf-explorer.json"): large_corpus.render_json(descriptor),
         Path("data/manifest.json"): large_corpus.render_json(corpus["manifest"]),
         Path("data/overview.json"): large_corpus.render_json(corpus["overview"]),
         Path("data/analysis/overview.json"): large_corpus.render_json(corpus["analysis"]),
@@ -3005,7 +3077,13 @@ def main(argv: list[str] | None = None) -> int:
         or now_utc()
     )
     corpus = build_corpus(records, source_meta, generated_at)
-    files = output_files(corpus, source_meta)
+    files = output_files(
+        corpus,
+        source_meta,
+        runtime_manifest_path=(
+            output / "data" / "semantic" / "runtime-manifest.json"
+        ),
+    )
     if args.check:
         errors = large_corpus.check_files(output, files)
         if errors:

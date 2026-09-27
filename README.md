@@ -186,6 +186,8 @@ authored and generated layers with exactly its `build_commands`:
 .venv/bin/python scripts/build_codex_semantic_enrichment_v3.py build
 .venv/bin/python scripts/audit_codex_semantic_enrichment_v3.py audit
 .venv/bin/python scripts/rebuild_legislation_discovery.py
+.venv/bin/python scripts/build_relationship_semantics.py
+.venv/bin/python scripts/build_bounded_relationship_navigation.py
 .venv/bin/python scripts/build_legislation_evaluation.py
 .venv/bin/python scripts/build_whole_law_evaluation.py
 .venv/bin/python scripts/run_yaml_ld_conformance.py
@@ -222,6 +224,8 @@ Then validate without changing the publication with exactly the profile's
 .venv/bin/python scripts/build_publication_docs.py --check
 .venv/bin/python scripts/check_internal_links.py
 .venv/bin/python scripts/rebuild_legislation_discovery.py --check
+.venv/bin/python scripts/build_relationship_semantics.py --check
+.venv/bin/python scripts/build_bounded_relationship_navigation.py --check
 .venv/bin/python scripts/check_legislation_okf.py
 .venv/bin/python scripts/legislation_effects_evidence_archive.py check --snapshot-id legislation-effects-2026-07-25
 .venv/bin/python scripts/build_legislation_effects.py --check
@@ -308,3 +312,5 @@ Its durable Pages release asset is
 [legislation-data-docs]: https://legislation.github.io/data-documentation/
 [govuk-data-docs]: https://guidance.data.gov.uk/get_data/api_documentation/
 [ogl]: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+
+The separate [format-reconciliation candidate](docs/profile-reconciliation-2026-09.md) records its implemented changes, failed checks and remaining release gates. Its [bounded graph alternatives](docs/bounded-relationship-navigation.md) preserve the Explorer limits and offer individually scoped work routes. The candidate has not replaced `v0.3.0`.

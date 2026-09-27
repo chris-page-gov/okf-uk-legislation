@@ -27,6 +27,16 @@ class PublicSemanticEntrypointTests(unittest.TestCase):
         self.temporary_directory.cleanup()
 
     def write_valid_publication(self) -> None:
+        semantic_root = self.pack.parent / "data" / "semantic"
+        semantic_root.mkdir(parents=True)
+        for name in (
+            "manifest.yamlld",
+            "manifest.jsonld",
+            "runtime-manifest.json",
+            "predicate-registry.json",
+            "iri-route-registry.json",
+        ):
+            (semantic_root / name).write_text("{}\n", encoding="utf-8")
         descriptor = {
             "semantic_descriptor": checker.SEMANTIC_REPRESENTATIONS[
                 "yaml_ld"
@@ -36,7 +46,35 @@ class PublicSemanticEntrypointTests(unittest.TestCase):
                     "yaml_ld"
                 ]["url"],
             },
-            "entrypoints": {"semantic_turtle": "okf-bundle.ttl"},
+            "entrypoints": {
+                "semantic_turtle": "okf-bundle.ttl",
+                "relationship_semantics": "../data/semantic/manifest.yamlld",
+                "relationship_semantics_jsonld": "../data/semantic/manifest.jsonld",
+                "relationship_runtime": "../data/semantic/runtime-manifest.json",
+                "predicate_registry": "../data/semantic/predicate-registry.json",
+                "iri_route_registry": "../data/semantic/iri-route-registry.json",
+            },
+            "entrypoint_integrity": {
+                "relationship_runtime": {
+                    "path": "../data/semantic/runtime-manifest.json",
+                    "bytes": 3,
+                    "sha256": hashlib.sha256(b"{}\n").hexdigest(),
+                    "content_encoding": "identity",
+                }
+            },
+            "performance": {
+                "route_relationship_hydration": (
+                    "sha256-prefix rich relationship route locator"
+                )
+            },
+            "children": [
+                {
+                    "extensions": {"okf-whole-law.v1": {
+                        "relationship_manifest": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.yamlld",
+                        "relationship_manifest_jsonld": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.jsonld",
+                    }},
+                }
+            ],
             "alternate_access": [
                 {
                     "kind": checker.SEMANTIC_REPRESENTATIONS[name][
@@ -211,3 +249,27 @@ class CompetencyQuestionValidationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LocatorPathConfinementTests(unittest.TestCase):
+    def test_valid_nested_path_remains_in_bundle(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            self.assertEqual(checker.confined_bundle_path("data/00.json.gz", root), root / "data/00.json.gz")
+
+    def test_absolute_and_parent_paths_are_rejected_before_reading(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            for value in (str(root / "outside.json.gz"), "../outside.json.gz", "data/../../outside.json.gz", ""):
+                with self.subTest(value=value), self.assertRaises(ValueError):
+                    checker.confined_bundle_path(value, root)
+
+    def test_symlink_escape_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve() / "bundle"
+            root.mkdir()
+            outside = root.parent / "outside.json.gz"
+            outside.write_bytes(b"private test fixture")
+            (root / "linked.json.gz").symlink_to(outside)
+            with self.assertRaises(ValueError):
+                checker.confined_bundle_path("linked.json.gz", root)

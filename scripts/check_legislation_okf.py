@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 import legislation_effects_evidence_archive as effects_evidence
+import build_relationship_semantics as relationship_semantics
 
 ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / "bundle"
@@ -682,7 +683,20 @@ def main() -> int:
             != 0
         ):
             errors.append("legacy v1 audit permits governed assertions")
-    for name in ("data_manifest", "overview_index", "analysis_overview", "search_manifest", "markdown_index", "ontology", "evaluation"):
+    for name in (
+        "data_manifest",
+        "overview_index",
+        "analysis_overview",
+        "search_manifest",
+        "markdown_index",
+        "ontology",
+        "evaluation",
+        "relationship_semantics",
+        "relationship_semantics_jsonld",
+        "relationship_runtime",
+        "predicate_registry",
+        "iri_route_registry",
+    ):
         target = descriptor.get("entrypoints", {}).get(name)
         if not target:
             errors.append(f"descriptor entrypoint {name} is missing")
@@ -690,6 +704,32 @@ def main() -> int:
         resolved = (PACK / target).resolve()
         if not resolved.is_file():
             errors.append(f"descriptor entrypoint {name} does not resolve: {target}")
+
+    runtime_relative = descriptor.get("entrypoints", {}).get(
+        "relationship_runtime"
+    )
+    runtime_integrity = descriptor.get("entrypoint_integrity", {}).get(
+        "relationship_runtime"
+    )
+    if not isinstance(runtime_integrity, dict):
+        errors.append("relationship runtime entrypoint has no integrity binding")
+    elif runtime_relative:
+        runtime_path = PACK / runtime_relative
+        runtime_body = runtime_path.read_bytes() if runtime_path.is_file() else b""
+        if (
+            runtime_integrity.get("path") != runtime_relative
+            or runtime_integrity.get("bytes") != len(runtime_body)
+            or runtime_integrity.get("sha256")
+            != hashlib.sha256(runtime_body).hexdigest()
+            or runtime_integrity.get("content_encoding") != "identity"
+        ):
+            errors.append("relationship runtime entrypoint integrity differs")
+    if "sha256-prefix" not in str(
+        descriptor.get("performance", {}).get(
+            "route_relationship_hydration", ""
+        )
+    ):
+        errors.append("relationship runtime does not declare SHA-256 route lookup")
 
     work_files = manifest.get("chunks", {}).get("datasets", [])
     works = 0
@@ -788,6 +828,18 @@ def main() -> int:
             errors.append(f"required progressive-discovery facet is empty: {key}")
     check_discovery_publication(errors, descriptor, manifest, routes)
     check_effects_evidence(errors)
+    try:
+        semantic_summary = relationship_semantics.build(check=True)
+        if semantic_summary["active_assertions"] != int(
+            descriptor.get("counts", {}).get(
+                "relationships_with_external_datapacks", -1
+            )
+        ):
+            errors.append(
+                "rich semantic active count differs from the descriptor"
+            )
+    except Exception as exc:
+        errors.append(f"rich relationship semantic validation failed: {exc}")
     for required in ("ontology/index.md", "access/index.md", "methodology/index.md", "topics/index.md", "types/index.md"):
         if not (PACK / required).is_file():
             errors.append(f"required Markdown concept index missing: {required}")

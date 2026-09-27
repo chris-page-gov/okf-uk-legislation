@@ -70,6 +70,7 @@ performs network access. See the
 | official effect snapshot | immutable request/response envelopes and effects config | `bundle/data/effects/` |
 | governed Codex-assisted discovery | hash-bound prompts, rules, per-work outcomes and independent review | `bundle/enrichment/codex-assisted-v3/` and the active `bundle/data/enrichment-v3/` projection |
 | historical Codex v2 discovery | preserved rules, calibration and independent audit | `bundle/enrichment/codex-assisted-v2.json` |
+| rich directed relationship semantics | the governed work, effects, accepted v3, historical v2 and rejected v1 source planes | `bundle/data/semantic/` direct/reified JSON-LD, Reader runtime arrays, hash-bucket route locator and registries |
 | optional direct API discovery profile | `enrichment/model-assisted-paid-v2/` observed evidence | optional `bundle/enrichment/model-assisted-paid-v2.json`; not a release prerequisite |
 | Whole-Law contracts and ontology | `whole-law/` | `bundle/whole-law/` |
 | answer benchmarks | evaluation builders | root and Whole-Law evaluation routes |
@@ -85,6 +86,7 @@ python3 scripts/build_legislation_effects.py --offline
 python3 scripts/build_codex_semantic_enrichment_v3.py
 python3 scripts/audit_codex_semantic_enrichment_v3.py
 python3 scripts/rebuild_legislation_discovery.py
+python3 scripts/build_relationship_semantics.py
 python3 scripts/build_legislation_evaluation.py
 python3 scripts/build_whole_law_evaluation.py
 python3 scripts/run_yaml_ld_conformance.py
@@ -144,6 +146,7 @@ python3 scripts/build_legislation_effects.py --check
 python3 scripts/build_codex_semantic_enrichment_v3.py check
 python3 scripts/audit_codex_semantic_enrichment_v3.py check
 python3 scripts/rebuild_legislation_discovery.py --check
+python3 scripts/build_relationship_semantics.py --check
 python3 scripts/build_whole_law_evaluation.py --check
 python3 scripts/run_release_evaluation.py --check
 python3 scripts/build_publication_docs.py --check
@@ -161,12 +164,15 @@ excluded from the active build and validation sequences, requires a new
 explicit decision, and must not request an API key or block this Codex-only
 release.
 
-Validation includes OKF 0.2 Markdown, YAML-LD/JSON-LD RDF equivalence, complete
+Validation includes OKF 0.2 Markdown, YAML-LD/JSON-LD RDF equivalence, Reader
+runtime row/manifest reconciliation, bounded route-locator integrity, complete
 descriptor-graph SHACL, exhaustive JSON Schema checks over all core/provider
-relationship rows, CSVW, federation and source contracts, source/effect/model
-coverage reconciliation, links and checksums. The semantic receipt explicitly
-distinguishes the two-node RDF descriptor from the 365,786-work JSON data
-plane; it does not claim that the work corpus is materialised as RDF.
+source rows, CSVW, federation and source contracts, source/effect/model
+coverage reconciliation, links and checksums. It also recomputes all bounded
+relationship semantic shards and reconciles one direct triple with one rich
+reified assertion for every active or explicitly historical source row. The
+startup descriptor remains bounded; the sharded semantic plane is separately
+and accurately reported as RDF materialisation.
 
 ## Immutable refresh attempts
 

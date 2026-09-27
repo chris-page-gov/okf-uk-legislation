@@ -730,22 +730,44 @@ def main(argv: list[str] | None = None) -> int:
             "model_enrichment_v2_historical_manifest": historical_v2[
                 "manifest"
             ],
+            "official_effects": "data/effects/manifest.json",
             "presentation": "data/presentation.json",
             "record_locator": "data/records/manifest.json",
             "performance": "data/performance.json",
             "publication_contract": "docs/uk-legislation-okf.md",
             "relationship_composition": "data/relationship-composition.json",
+            "relationship_summary": "data/relationship-summary.json",
             "search_manifest": "data/search/manifest.json",
         }
     )
     descriptor["entrypoints"].pop("model_enrichment_v2", None)
     descriptor["performance"] = manifest["performance"]
+    descriptor["performance"]["route_relationship_hydration"] = (
+        "sha256-prefix rich relationship route locator; legacy FNV-1a "
+        "adjacency retained as the compact-core fallback"
+    )
     descriptor["counts"].pop("model_assisted_relationships_v2", None)
     descriptor["counts"].update(active_relationship_counts)
     descriptor.setdefault("extensions", {}).pop(
         "okf-model-enrichment.v2",
         None,
     )
+    effects_manifest_path = DATA / "effects" / "manifest.json"
+    if effects_manifest_path.is_file():
+        effects_manifest = load_json(effects_manifest_path)
+        descriptor["extensions"]["okf-official-effects.v1"] = {
+            "mode": "external-provider-datapack",
+            "entrypoint": "official_effects",
+            "snapshot_id": effects_manifest["snapshot_id"],
+            "assertions": int(effects_manifest["counts"]["assertions"]),
+            "authority": effects_manifest["acquisition"]["authority"],
+            "coverage_status": effects_manifest["acquisition"][
+                "coverage_status"
+            ],
+            "reconciliation": effects_manifest["acquisition"][
+                "reconciliation"
+            ],
+        }
     descriptor["extensions"]["okf-model-enrichment.v3"] = {
         "mode": "external-provider-datapack",
         "entrypoint": "model_enrichment_v3",

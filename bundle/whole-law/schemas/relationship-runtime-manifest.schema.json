@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:okf:uk-legislation:schema:rich-relationship-runtime-manifest:v1",
+  "title": "OKF rich relationship runtime manifest v1",
+  "description": "Bounded Reader delivery manifest for authority-preserving relationship planes and a hash-bucket route locator.",
+  "type": "object",
+  "required": [
+    "@id",
+    "schema",
+    "snapshot",
+    "generated_at",
+    "semantic_manifest",
+    "assertion_contract",
+    "row_contract",
+    "default_planes",
+    "route_locator",
+    "planes",
+    "totals",
+    "loading_policy"
+  ],
+  "properties": {
+    "@id": {"$ref": "#/$defs/absoluteIri"},
+    "schema": {"const": "okf-rich-relationship-runtime-manifest.v1"},
+    "snapshot": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "semantic_manifest": {"$ref": "#/$defs/safePath"},
+    "assertion_contract": {"$ref": "#/$defs/safePath"},
+    "row_contract": {"$ref": "#/$defs/safePath"},
+    "default_planes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "route_locator": {
+      "type": "object",
+      "required": [
+        "path",
+        "id",
+        "routes",
+        "buckets",
+        "sha256",
+        "max_incident_assertions_per_route",
+        "max_active_incident_assertions_per_route",
+        "max_chunk_references_per_route",
+        "max_active_chunk_references_per_route"
+      ],
+      "properties": {
+        "path": {"$ref": "#/$defs/safePath"},
+        "id": {"$ref": "#/$defs/absoluteIri"},
+        "routes": {"type": "integer", "minimum": 1},
+        "buckets": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "max_incident_assertions_per_route": {"type": "integer", "minimum": 1},
+        "max_active_incident_assertions_per_route": {"type": "integer", "minimum": 1},
+        "max_chunk_references_per_route": {"type": "integer", "minimum": 1},
+        "max_active_chunk_references_per_route": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "planes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "active",
+          "lifecycle",
+          "authority_classes",
+          "assertions",
+          "chunks"
+        ],
+        "properties": {
+          "id": {"$ref": "#/$defs/absoluteIri"},
+          "name": {"type": "string", "minLength": 1},
+          "active": {"type": "boolean"},
+          "lifecycle": {"enum": ["active", "historical", "rejected"]},
+          "authority_classes": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": ["official", "derived", "model-assisted", "synthetic", "unclassified"]
+            }
+          },
+          "assertions": {"type": "integer", "minimum": 0},
+          "chunks": {
+            "type": "array",
+            "items": {"$ref": "#/$defs/chunk"}
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {"active": {"const": true}},
+              "required": ["active"]
+            },
+            "then": {"properties": {"lifecycle": {"const": "active"}}},
+            "else": {
+              "properties": {
+                "lifecycle": {"enum": ["historical", "rejected"]}
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    "totals": {
+      "type": "object",
+      "required": [
+        "active_assertions",
+        "historical_assertions",
+        "rejected_assertions",
+        "all_assertions",
+        "chunks"
+      ],
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "loading_policy": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "absoluteIri": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]+$"
+    },
+    "safePath": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\]+$"
+    },
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "chunk": {
+      "type": "object",
+      "required": [
+        "path",
+        "id",
+        "media_type",
+        "content_encoding",
+        "bytes",
+        "sha256",
+        "count"
+      ],
+      "properties": {
+        "path": {"$ref": "#/$defs/safePath"},
+        "id": {"$ref": "#/$defs/absoluteIri"},
+        "media_type": {"const": "application/json"},
+        "content_encoding": {"const": "gzip"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "count": {"type": "integer", "minimum": 0},
+        "records": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    }
+  }
+}

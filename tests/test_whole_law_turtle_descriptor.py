@@ -43,7 +43,7 @@ class WholeLawTurtleDescriptorTests(unittest.TestCase):
         json_ld_graph = rdflib.Graph()
         json_ld_graph.parse(data=json.dumps(document), format="json-ld")
         self.assertTrue(isomorphic(json_ld_graph, turtle_graph))
-        self.assertEqual(21, len(turtle_graph))
+        self.assertEqual(23, len(turtle_graph))
 
     def test_generator_publishes_and_integrity_binds_turtle_alternate(
         self,

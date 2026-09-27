@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1/relationship-runtime-row.schema.json",
+  "title": "OKF Reader relationship runtime row v1",
+  "description": "A lossless Reader delivery projection of one rich relationship assertion. Local source and target routes remain compatible with the bounded large-corpus loader; absolute RDF identities and the stable assertion identifier remain explicit.",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "assertion_id",
+    "source",
+    "target",
+    "source_iri",
+    "target_iri",
+    "predicate",
+    "predicate_iri",
+    "kind",
+    "label",
+    "inverse_label",
+    "direction",
+    "assertion_status",
+    "assertion_scope",
+    "authority",
+    "derivation",
+    "observed_at",
+    "evidence",
+    "rights",
+    "plane",
+    "lifecycle",
+    "active"
+  ],
+  "properties": {
+    "schema": {"const": "okf-relationship-runtime-row.v1"},
+    "id": {"$ref": "#/$defs/absoluteIri"},
+    "assertion_id": {"$ref": "#/$defs/absoluteIri"},
+    "source": {"$ref": "#/$defs/localRoute"},
+    "target": {"$ref": "#/$defs/localRoute"},
+    "source_iri": {"$ref": "#/$defs/absoluteIri"},
+    "target_iri": {"$ref": "#/$defs/absoluteIri"},
+    "predicate": {"$ref": "#/$defs/absoluteIri"},
+    "predicate_iri": {"$ref": "#/$defs/absoluteIri"},
+    "kind": {"type": "string", "minLength": 1},
+    "label": {"type": "string", "minLength": 1},
+    "inverse_label": {"type": "string", "minLength": 1},
+    "direction": {"const": "source-to-target"},
+    "assertion_status": {
+      "enum": ["official", "normalized", "inferred", "model-derived"]
+    },
+    "assertion_scope": {"enum": ["real-world", "synthetic-fixture"]},
+    "authority": {
+      "type": "object",
+      "required": ["class", "label", "source"],
+      "properties": {
+        "class": {
+          "enum": ["official", "derived", "model-assisted", "synthetic", "unclassified"]
+        },
+        "label": {"type": "string", "minLength": 1},
+        "source": {"$ref": "#/$defs/httpIri"}
+      },
+      "additionalProperties": true
+    },
+    "derivation": {"$ref": "#/$defs/absoluteIri"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "@id",
+          "type",
+          "url",
+          "source_field",
+          "source_value_sha256",
+          "retrieved_at"
+        ]
+      }
+    },
+    "rights": {"type": "object", "required": ["source", "assertion"]},
+    "plane": {"$ref": "#/$defs/absoluteIri"},
+    "lifecycle": {"enum": ["active", "historical", "rejected"]},
+    "active": {"type": "boolean"},
+    "derivation_activity": {"$ref": "#/$defs/absoluteIri"},
+    "rule": {"$ref": "#/$defs/absoluteIri"},
+    "supporting_assertions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/absoluteIri"}
+    },
+    "confidence_score": {"type": "number", "minimum": 0, "maximum": 1},
+    "review_status": {"type": "string", "minLength": 1},
+    "confidence": {},
+    "freshness": {"enum": ["current", "stale", "unknown", "historical"]}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"active": {"const": true}},
+        "required": ["active"]
+      },
+      "then": {"properties": {"lifecycle": {"const": "active"}}},
+      "else": {
+        "properties": {
+          "lifecycle": {"enum": ["historical", "rejected"]}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"assertion_status": {"const": "inferred"}},
+        "required": ["assertion_status"]
+      },
+      "then": {
+        "required": [
+          "rule",
+          "supporting_assertions",
+          "confidence_score",
+          "derivation_activity"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {"assertion_status": {"const": "model-derived"}},
+        "required": ["assertion_status"]
+      },
+      "then": {
+        "required": [
+          "confidence_score",
+          "derivation_activity",
+          "review_status"
+        ]
+      }
+    }
+  ],
+  "additionalProperties": true,
+  "$defs": {
+    "absoluteIri": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]+$"
+    },
+    "httpIri": {
+      "type": "string",
+      "pattern": "^https?://[^\\s]+$"
+    },
+    "localRoute": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*(?:/[A-Za-z0-9._~-]+)+$"
+    }
+  }
+}
