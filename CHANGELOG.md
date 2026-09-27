@@ -1,7 +1,5 @@
 # Changelog
 
-- Candidate-only follow-up: all three browser journeys and exact staged-material checks pass diagnostically, but current release pins are incompatible. Retain the complete validation and checksum failures; the profile reconciliation is not release-ready. Historical Explorer and legislation tags are unchanged.
-
 ## Unreleased
 
 - Added the OKF build and publication lifecycle contract, repository-specific
@@ -53,6 +51,12 @@
   explicit quota constraint and $0.00 rejected-call cost record.
 
 ## Unreleased — profile reconciliation candidate
+
+- Register the bounded-navigation producer’s exact HTML/JavaScript outputs with the documentation builder; preserve strict byte checks and refusal of unknown files. Retain the failed locked-reproduction attempt that exposed the missing ownership integration.
+
+- Candidate-only follow-up: all three browser journeys and exact staged-material checks pass diagnostically, but current release pins are incompatible. Retain the complete validation and checksum failures; the profile reconciliation is not release-ready. Historical Explorer and legislation tags are unchanged.
+
+- Recheck the repaired candidate: 486 tests, 11 failures and one skip; checksums, publication contract and documentation lockstep pass. Retain the failed complete-validator log and keep publication blocked.
 
 - Retain a beginner-readable candidate status, failed browser/unit observations and a separate adoption sequence; no new legislation release is claimed.
 

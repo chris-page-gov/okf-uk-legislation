@@ -1077,8 +1077,8 @@
       "sha256": "0142d59acbcddfa63edadadc767c14e7ae0610fba4fad7fac0e55b0deeb98acc"
     },
     "data/bounded-relationship-navigation.json": {
-      "bytes": 931323,
-      "sha256": "0b824b3ec13a98d5a746e2ceadca7678309435b42abecf1c7aae23d10350e71f"
+      "bytes": 856881,
+      "sha256": "27a5788769eb485e23442184bb1e272506143d0109b956cf162e633abd27c387"
     },
     "data/categories-0.json": {
       "bytes": 1684,
@@ -29101,12 +29101,20 @@
       "sha256": "f8ca8b9520d6709e6c4b934544f8b12588d5be43706562a5bbc5a48c06d2828f"
     },
     "docs/bounded-relationship-navigation.html": {
-      "bytes": 215022,
-      "sha256": "8f7e31e9ab3de0b9e509e5d5ffd88c85370abf4e0df3972227790820fc1f67a1"
+      "bytes": 143303,
+      "sha256": "d530a03b3092a32857826991ef247bca070458cffc078a59fd7aa57fb9296b3a"
+    },
+    "docs/bounded-relationship-navigation.md": {
+      "bytes": 1430,
+      "sha256": "feec820717de84af823967d32fa9c1bfd1ead2978b3a5ce7cf24072a31898ca9"
+    },
+    "docs/bounded-relationship-navigation.mjs": {
+      "bytes": 1108,
+      "sha256": "b7d8e7a1ce03de4d9aa35dcfd239d6d790b1255f07767f341cb969c3ba655f6e"
     },
     "docs/effects-and-enrichment.md": {
-      "bytes": 3870,
-      "sha256": "2c5fb8d509c49467ff4f1880c8b5292ec480881d36aa5e6d6d97b40b4f982350"
+      "bytes": 4323,
+      "sha256": "dc26687cf79f0b2b0e1aabf282fcb8bff7d6de8e3ef6eb00c12c8814c1305f1f"
     },
     "docs/evaluation-and-quality.md": {
       "bytes": 4676,
@@ -29125,12 +29133,12 @@
       "sha256": "d77eb110342090e73a7f3488dcc180a097c74c0ccc4eea36f3d4d61eaff75948"
     },
     "docs/index.md": {
-      "bytes": 5818,
-      "sha256": "788ccdb296f1599a0fcdb3daf5ea6dbb45c174162de0430e60d1abf023574746"
+      "bytes": 5932,
+      "sha256": "13278fd63436974bd79f5144e6355bd9209b854a6e03335b885f599f284a3dca"
     },
     "docs/maintenance.md": {
-      "bytes": 13543,
-      "sha256": "78bf520c364349135bf98f48750983487ded049ef2a385d18314ec2edb156ccb"
+      "bytes": 14092,
+      "sha256": "dd45046153405f451771cb81d3d31f3bd723f394508bfda4c9a0996d676c55db"
     },
     "docs/model-assisted-enrichment-governance.md": {
       "bytes": 13324,
@@ -29140,13 +29148,29 @@
       "bytes": 3535,
       "sha256": "04100c7f34818afe5b2fb2c227cbeabecb0bf4e467ccea80e1be939c940f555f"
     },
+    "docs/okf-0.2-yaml-ld-semantic-authoring.md": {
+      "bytes": 778,
+      "sha256": "d31877db388b65c17e079993b3270070e0548b156fff5d25e4018860efcb82bd"
+    },
     "docs/personas-and-user-journeys.md": {
       "bytes": 4989,
       "sha256": "23af532a07799a4b2606157ec87eef7cecb307516f4a2d30110122c7bbdb6874"
     },
+    "docs/profile-reconciliation-2026-09.md": {
+      "bytes": 8482,
+      "sha256": "239e2dab12345ed7b33c1fad03f7a46a651e5c555b671cfd2f573a0052f4dbbc"
+    },
+    "docs/provider-datapacks.md": {
+      "bytes": 749,
+      "sha256": "80b5d87d85878ee2f7ac2b90c51a4673de607faac4280b3112654935a2dfd471"
+    },
     "docs/relationships.md": {
-      "bytes": 2193,
-      "sha256": "857b837805e182787aada91197ae33c491d049f59b75f852614e2286eb741d86"
+      "bytes": 2855,
+      "sha256": "a079ac5d507042e0a5570271c14684205dcf0f3c2683f11479289b4d129cda95"
+    },
+    "docs/rich-relationship-semantics.md": {
+      "bytes": 9150,
+      "sha256": "f39703c297960d3d7856935c46076aef1074d6f874a660bcb70e88eb95e81944"
     },
     "docs/roles/agent.md": {
       "bytes": 892,
@@ -35806,7 +35830,7 @@
     },
     "whole-law/assurance/semantic-conformance.json": {
       "bytes": 15222,
-      "sha256": "8fbe87cb295d2dc5c56b635b98951a096b1718de2062dec8ae2816172b894c30"
+      "sha256": "ea5c3cdf0b21aa3ec7f8f90d3ef330b36571b44bb6d418969ebd92aa2a76b45f"
     },
     "whole-law/assurance/source-acquisition-gate-20260726.json": {
       "bytes": 18684,
@@ -36282,7 +36306,7 @@
     },
     "whole-law/integrity.json": {
       "bytes": 76326,
-      "sha256": "88b013a05040baeae8fb3699b45dd139618737edbce73b96b5eef4bfd7187bcf"
+      "sha256": "f9236a1dcce9d89cce9822f0028138f5d59f01f7f3ebd0edf796f5d0af778d36"
     },
     "whole-law/log.md": {
       "bytes": 845,
@@ -36301,8 +36325,8 @@
       "sha256": "3f293d671e72efe6ef2f2b828538563945f7bab9673f36e03a10be483f2abc4e"
     },
     "whole-law/okf-explorer.json": {
-      "bytes": 113510,
-      "sha256": "681c12c77b349144f399353f63fa9d4506398f6821d9af5d33949f93a1630847"
+      "bytes": 113832,
+      "sha256": "d8273153f024a7827c29e1dfd557c6b419f6c51f24a64000b0c74b84858ea9e0"
     },
     "whole-law/ontology/competency-questions.json": {
       "bytes": 6686,

@@ -123,3 +123,24 @@ on it. Do not promote the diagnostic receipt, relabel a failure, move a tag or
 raise a resource limit to close this work. After the additive release-contract
 work, regenerate and check graph, assurance and checksums, then run the complete
 validator and locked reproduction from the exact clean candidate.
+
+### Locked reproduction defect and bounded repair
+
+The exact-commit attempt at `6e3eec0bf2bb8e9de33dc8eb7c470f392f8e7746`
+completed the catalogue and semantic rebuilds, then failed at documentation:
+the docs builder correctly refused two files it did not own. Those files belong
+to the new bounded-navigation producer. Its output contract is now integrated
+explicitly: only the exact generated HTML and JavaScript are admitted, authored
+collisions are rejected, and unknown files are still refused. Three focused
+regression tests pass. The original failed attempt and its command logs remain
+retained; this repair alone does not claim a full reproduction pass.
+
+### Latest validation checkpoint
+
+After the documentation ownership repair, the complete validator ran **486
+tests: 11 failures and one existing skip**. It stopped at the unit gate. The
+checksum check passed for 9,313 files; the publication contract and documentation
+lockstep checks also passed. This supersedes the earlier checksum failure without
+erasing that observation. The [latest retained log and receipt](../release-assurance/profile-reconcile-20260927/validation-attempt-04/receipt.json)
+keep the unresolved current-release bindings visible. No complete fresh locked
+reproduction pass or new legislation release is claimed.

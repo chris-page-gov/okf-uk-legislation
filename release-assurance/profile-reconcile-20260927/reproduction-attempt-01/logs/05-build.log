@@ -1,0 +1,27 @@
+{
+  "counts": {
+    "candidate_support": {
+      "metadata-only": 0,
+      "multi-field": 13002,
+      "notes-only": 5003,
+      "title-only": 38474
+    },
+    "candidates": {
+      "concept": 31874,
+      "entity": 1136,
+      "topic": 23469,
+      "total": 56479
+    },
+    "records": {
+      "attempted": 365786,
+      "terminal_outcomes": 365786,
+      "with_candidates": 28635,
+      "without_supported_candidates": 337151
+    }
+  },
+  "materials_sha256": "9b1597e158dd4f90bb3fe8c38ce6d10c6d8355e12dd1f44d9d138819cbfad758",
+  "reused_chunks": 366,
+  "source_chunks": 366,
+  "source_corpus_semantic_sha256": "33272f76d4db5bb90332dffed3f4a7cab991dc78b0c9752a5324222b8fa7a121",
+  "status": "generated"
+}
