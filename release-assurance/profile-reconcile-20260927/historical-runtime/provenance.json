@@ -1,0 +1,21 @@
+{
+  "schema": "okf-runtime-receipt-history.v1",
+  "source_commit": "93e072f0010af26c383381c0c59ea1ed66ff381a",
+  "receipt_sha256": "5bfa975b1a19d3beeaf8260da29e86dcaf80e7d66b0bc7a659dd9dec0f7b125b",
+  "receipt_bytes": 77151,
+  "reason": "Preserve historical receipt without changing its identity before obtaining a new candidate observation.",
+  "screenshots": [
+    {
+      "path": "output/playwright/legislation-runtime-graph-chrome.png",
+      "bytes": 294995,
+      "sha256": "d1a942bb6b3e80cd97496be464ccd354d28107cdff7b533dccd6c07cb730455a",
+      "present_in_candidate_checkout": false
+    },
+    {
+      "path": "output/playwright/legislation-runtime-chrome.png",
+      "bytes": 325927,
+      "sha256": "cd263982f9c2f41c0cd2009e0ad79efa392cead0f7f322c8b6407975a36260ad",
+      "present_in_candidate_checkout": false
+    }
+  ]
+}

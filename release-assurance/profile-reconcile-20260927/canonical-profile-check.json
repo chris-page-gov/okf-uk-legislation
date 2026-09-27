@@ -1,0 +1,28 @@
+{
+  "contract_schema": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/repository-contract.schema.json",
+  "profile": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/",
+  "repositories": [
+    {
+      "errors": [],
+      "migration_warning_count": 0,
+      "path": "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f",
+      "relationship_files_declared": 1101,
+      "relationship_rows_sampled": 300,
+      "relationship_schemas_checked": 2,
+      "repository": "okf-uk-legislation-v0.3.0-3fd2700f275f",
+      "semantic_assertions_sampled": 300,
+      "semantic_documents_checked": 8,
+      "semantic_state": "generated-yaml-ld-sharded-graph",
+      "status": "conformant",
+      "validation_error_count": 0,
+      "warnings": []
+    }
+  ],
+  "schema": "okf-repository-reconciliation-report.v1",
+  "summary": {
+    "conformant": 1,
+    "migration": 0,
+    "non_conformant": 0,
+    "repositories": 1
+  }
+}

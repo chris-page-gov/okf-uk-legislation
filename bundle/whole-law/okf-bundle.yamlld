@@ -24,6 +24,12 @@
   sourceRegister:
     "@id": "okflaw:sourceRegister"
     "@type": "@id"
+  relationshipManifest:
+    "@id": "okflaw:relationshipManifest"
+    "@type": "@id"
+  relationshipManifestJson:
+    "@id": "okflaw:relationshipManifestJson"
+    "@type": "@id"
   registerSchema: "okflaw:registerSchema"
   recordCount:
     "@id": "okflaw:recordCount"
@@ -66,3 +72,5 @@ sourceRegister:
   accessMethodCount: 108
   accessTestDate: "2026-07-25"
   sourceHash: "sha256:575c62fab383a2c9444d3480640a086c4970b88c3ecafe9929f401969a84cdfe"
+relationshipManifest: "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.yamlld"
+relationshipManifestJson: "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.jsonld"

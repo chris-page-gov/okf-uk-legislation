@@ -1,0 +1,4 @@
+Release-assurance inputs are invalid:
+- release report cannot pass with model-cost validation errors
+- release report requires a candidate-ready governed Codex enrichment and cost receipt
+- current release state validated exceeds evidenced state candidate

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,6 +19,35 @@ EFFECTS_EVIDENCE_SOURCE = (
 EFFECTS_EVIDENCE_OUTPUT = (
     ROOT / "bundle" / "evidence" / "source-acquisitions" / "legislation-effects"
 )
+NAVIGATION_OUTPUTS = {
+    "bundle/data/bounded-relationship-navigation.json",
+    "bundle/docs/bounded-relationship-navigation.html",
+    "bundle/docs/bounded-relationship-navigation.mjs",
+}
+
+
+def build_navigation_outputs() -> dict[str, str]:
+    """Regenerate the navigation producer's exact outputs from bound inputs."""
+    script = ROOT / "scripts" / "build_bounded_relationship_navigation.py"
+    spec = importlib.util.spec_from_file_location("bounded_relationship_navigation", script)
+    if spec is None or spec.loader is None:
+        raise ValueError("Cannot load bounded navigation producer")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.build()
+
+
+def navigation_docs(outputs: dict[str, str]) -> dict[Path, bytes]:
+    """Give the docs builder ownership of only the two producer-derived docs."""
+    if not isinstance(outputs, dict) or set(outputs) != NAVIGATION_OUTPUTS or not all(
+        isinstance(body, str) for body in outputs.values()
+    ):
+        raise ValueError("Unexpected bounded navigation producer outputs")
+    return {
+        Path(relative).relative_to("bundle/docs"): outputs[relative].encode("utf-8")
+        for relative in sorted(NAVIGATION_OUTPUTS)
+        if relative.startswith("bundle/docs/")
+    }
 
 
 def files() -> dict[Path, bytes]:
@@ -57,6 +87,10 @@ def files() -> dict[Path, bytes]:
 <li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
 </ul></main></html>
 """
+    generated = navigation_docs(build_navigation_outputs())
+    if set(result) & set(generated):
+        raise ValueError("Authored documentation conflicts with bounded navigation output")
+    result.update(generated)
     return result
 
 

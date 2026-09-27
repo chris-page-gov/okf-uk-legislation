@@ -26,12 +26,21 @@ for successful routes in the declared 11-work seed acquisition; it is partial
 against the 365,786-work corpus. Application state, evidence route, observation
 time and source-native effect type are retained on each effect.
 
-Two explicitly scoped contracts are published. Compact core rows use
+Three explicitly scoped contracts are published. Compact core source rows use
 [`okf-core-relationship-row.v1`](../whole-law/schemas/core-relationship-row.schema.json)
-and are exhaustively validated as a legacy Explorer projection. Official
-effects and audited enrichment use the richer
+and remain an exhaustively validated legacy Explorer/source projection.
+Official effects and audited enrichment retain their governed
 [`okf-relationship-assertion.v2`](../whole-law/schemas/relationship-assertion.schema.json).
-The v2 contract is not claimed for legacy core rows.
+The relationship-authoritative Reader plane projects every active and
+historical source row to
+[`okf-relationship-assertion.v3`](../whole-law/schemas/relationship-assertion-v3.schema.json),
+with matching direct triples and reified assertions. The same compiler emits
+[`okf-relationship-runtime-row.v1`](../whole-law/schemas/relationship-runtime-row.schema.json)
+arrays with local source/target routes and unchanged absolute identities for
+bounded Reader hydration. Historical runtime planes are opt-in. The v2
+contract is not retroactively claimed for legacy core rows, and neither v3
+projection rewrites its frozen inputs. See the
+[rich relationship guide](rich-relationship-semantics.md).
 
 Freshness is derived separately for each datapack from its observation time and
 declared refresh window. In this context `current` means only that the frozen

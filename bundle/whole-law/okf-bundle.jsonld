@@ -127,6 +127,14 @@
       "@type": "xsd:integer"
     },
     "registerSchema": "okflaw:registerSchema",
+    "relationshipManifest": {
+      "@id": "okflaw:relationshipManifest",
+      "@type": "@id"
+    },
+    "relationshipManifestJson": {
+      "@id": "okflaw:relationshipManifestJson",
+      "@type": "@id"
+    },
     "retrievedAt": {
       "@id": "okflaw:retrievedAt",
       "@type": "xsd:dateTime"
@@ -198,6 +206,8 @@
     "@id": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
   },
   "okf_version": "0.2",
+  "relationshipManifest": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.yamlld",
+  "relationshipManifestJson": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.jsonld",
   "sourceRegister": {
     "@id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/data/source-register.json",
     "@type": "okflaw:SourceRegister",

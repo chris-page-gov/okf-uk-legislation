@@ -49,3 +49,20 @@
   route-scoped adjacency shards.
 - Added governed model-assisted enrichment provenance, reproducible API runner,
   explicit quota constraint and $0.00 rejected-call cost record.
+
+## Unreleased — profile reconciliation candidate
+
+- Register the bounded-navigation producer’s exact HTML/JavaScript outputs with the documentation builder; preserve strict byte checks and refusal of unknown files. Retain the failed locked-reproduction attempt that exposed the missing ownership integration.
+
+- Candidate-only follow-up: all three browser journeys and exact staged-material checks pass diagnostically, but current release pins are incompatible. Retain the complete validation and checksum failures; the profile reconciliation is not release-ready. Historical Explorer and legislation tags are unchanged.
+
+- Recheck the repaired candidate: 486 tests, 11 failures and one skip; checksums, publication contract and documentation lockstep pass. Retain the failed complete-validator log and keep publication blocked.
+
+- Retain a beginner-readable candidate status, failed browser/unit observations and a separate adoption sequence; no new legislation release is claimed.
+
+- Reconcile a copy of the unfinished migration with current main; preserve the original checkout and v0.3.0.
+- Vendor the exact canonical profile, validate every retained semantic assertion, and move legislation-specific descriptor fields into a namespaced extension with absolute child routes.
+- Preserve the old dormant policy/schema bytes and bind its existing digest to the historical archive. No API permission, model setting or cost cap changes.
+- Offer bounded work-level alternatives for broad graph routes without increasing loading limits.
+- Distinguish correction notices from newly observed legal works in freshness reports.
+- Release reproduction, current candidate receipts and public browser acceptance remain gates; a generated projection is not a published release.

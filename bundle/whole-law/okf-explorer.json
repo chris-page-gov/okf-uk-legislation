@@ -57,7 +57,7 @@
         "status": "available"
       },
       "description": "Complete work-level index of legislation.gov.uk with ELI/Schema.org normalization, corpus facets, official full-text search, and live CLML provision-level progressive discovery.",
-      "descriptor": "../okf-explorer.json",
+      "descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
       "discovery": {
         "documentation": "https://chris-page-gov.github.io/okf-uk-legislation/",
         "raw_subpath": "bundle",
@@ -68,7 +68,7 @@
             "kind": "descriptor-relative",
             "priority": 0,
             "purpose": "descriptor",
-            "url": "../okf-explorer.json"
+            "url": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"
           },
           {
             "kind": "published",
@@ -85,6 +85,17 @@
         ],
         "semantic_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.yamlld"
       },
+      "extensions": {
+        "okf-federation-relative-child.v1": {
+          "descriptor": "../okf-explorer.json",
+          "semantic_descriptor": "../okf-bundle.yamlld"
+        },
+        "okf-whole-law.v1": {
+          "discovery_relationship_manifest": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.yamlld",
+          "relationship_manifest": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.yamlld",
+          "relationship_manifest_jsonld": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.jsonld"
+        }
+      },
       "freshness": {
         "observed_at": "2026-07-11T18:00:00Z",
         "snapshot": "legislation-work-index-2026-07-11T18:00:00Z",
@@ -93,7 +104,7 @@
       },
       "id": "uk-legislation",
       "role": "legislation-source-family",
-      "semantic_descriptor": "../okf-bundle.yamlld",
+      "semantic_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.yamlld",
       "status": "available",
       "title": "UK Legislation OKF"
     }
@@ -128,7 +139,7 @@
         "status": "available"
       },
       "description": "Complete work-level index of legislation.gov.uk with ELI/Schema.org normalization, corpus facets, official full-text search, and live CLML provision-level progressive discovery.",
-      "descriptor": "../okf-explorer.json",
+      "descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
       "discovery": {
         "documentation": "https://chris-page-gov.github.io/okf-uk-legislation/",
         "raw_subpath": "bundle",
@@ -139,7 +150,7 @@
             "kind": "descriptor-relative",
             "priority": 0,
             "purpose": "descriptor",
-            "url": "../okf-explorer.json"
+            "url": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"
           },
           {
             "kind": "published",
@@ -156,6 +167,17 @@
         ],
         "semantic_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.yamlld"
       },
+      "extensions": {
+        "okf-federation-relative-child.v1": {
+          "descriptor": "../okf-explorer.json",
+          "semantic_descriptor": "../okf-bundle.yamlld"
+        },
+        "okf-whole-law.v1": {
+          "discovery_relationship_manifest": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.yamlld",
+          "relationship_manifest": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.yamlld",
+          "relationship_manifest_jsonld": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.jsonld"
+        }
+      },
       "freshness": {
         "observed_at": "2026-07-11T18:00:00Z",
         "snapshot": "legislation-work-index-2026-07-11T18:00:00Z",
@@ -164,7 +186,7 @@
       },
       "id": "uk-legislation",
       "role": "legislation-source-family",
-      "semantic_descriptor": "../okf-bundle.yamlld",
+      "semantic_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.yamlld",
       "status": "available",
       "title": "UK Legislation OKF"
     }
@@ -216,6 +238,14 @@
     ],
     "semantic_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.yamlld"
   },
+  "entrypoint_integrity": {
+    "relationship_runtime": {
+      "bytes": 531281,
+      "content_encoding": "identity",
+      "path": "../data/semantic/runtime-manifest.json",
+      "sha256": "d075841a86387bd00a4ee0305d9c5cfa7d72e553bdb4353b4aeed3684cea8254"
+    }
+  },
   "entrypoints": {
     "constraints": "data/source-constraint-ledger.json",
     "coverage": "data/coverage.json",
@@ -224,6 +254,7 @@
     "evaluation_coverage": "evaluation/coverage.json",
     "evaluation_executions": "evaluation/executions/index.json",
     "integrity": "integrity.json",
+    "iri_route_registry": "../data/semantic/iri-route-registry.json",
     "markdown_index": "index.md",
     "model_enrichment_v2_historical": "../enrichment/codex-assisted-v2.json",
     "model_enrichment_v3": "../data/enrichment-v3/manifest.json",
@@ -233,6 +264,10 @@
     "model_enrichment_v3_reviewer": "assurance/enrichment-v3-reviewer-task-receipt.json",
     "official_effects": "../data/effects/manifest.json",
     "ontology": "ontology/index.md",
+    "predicate_registry": "../data/semantic/predicate-registry.json",
+    "relationship_runtime": "../data/semantic/runtime-manifest.json",
+    "relationship_semantics": "../data/semantic/manifest.yamlld",
+    "relationship_semantics_jsonld": "../data/semantic/manifest.jsonld",
     "relationship_summary": "data/relationship-summary.json",
     "semantic_conformance": "assurance/semantic-conformance.json",
     "semantic_turtle": "okf-bundle.ttl",
@@ -247,9 +282,56 @@
       "entrypoint": "coverage",
       "mode": "external"
     },
+    "okf-rich-directed-relationships.v1": {
+      "authority_planes_preserved": true,
+      "direct_triple_policy": "generated-with-evidence-bearing-reification",
+      "entrypoint": "relationship_semantics",
+      "mode": "bounded-json-ld-shards-with-yaml-ld-control-plane",
+      "runtime_entrypoint": "relationship_runtime"
+    },
     "okf-whole-law.v1": {
       "authority_model_required": true,
       "coverage_ledger_required": true,
+      "relationship_summary_details": {
+        "by_datapack": {
+          "codex-assisted-v3": {
+            "assertion_contract": "okf-relationship-assertion.v2",
+            "count": 56479,
+            "freshness": "current",
+            "notes": "Only independently accepted topic, concept and entity-link assertions are active. Candidate and historical v2 rows are excluded.",
+            "observed_at": "2026-07-26T12:30:00Z",
+            "refresh_window": "governed-v3-assertion-window",
+            "stale_after": "2026-10-26T00:00:00Z"
+          },
+          "core": {
+            "assertion_contract": "okf-core-relationship-row.v1",
+            "count": 835563,
+            "freshness": "current",
+            "notes": "Legacy compact core rows are a versioned projection. Snapshot currency is not a claim that every provision is current law.",
+            "observed_at": "2026-07-11T18:00:00Z",
+            "refresh_window": "P31D",
+            "stale_after": "2026-08-11T18:00:00Z"
+          },
+          "legislation-effects": {
+            "assertion_contract": "okf-relationship-assertion.v2",
+            "count": 14712,
+            "freshness": "current",
+            "notes": "Only assertions materialised from successful frozen official routes are counted; inaccessible reconciliation routes are reported separately.",
+            "observed_at": "2026-07-25T21:30:00Z",
+            "refresh_window": "P7D",
+            "stale_after": "2026-08-01T21:30:00Z"
+          }
+        },
+        "freshness_semantics": "`current` means the frozen datapack is inside its declared refresh window. It does not mean that every legal provision is in force, unamended or suitable for reliance without live verification.",
+        "reconciliation_routes": {
+          "agreement_at_acquisition": 16,
+          "inaccessible_at_acquisition": 6,
+          "post_build_agreement": 16,
+          "post_build_inaccessible_consistent": 6,
+          "post_build_live_additions": 0,
+          "truncated_static_routes": 0
+        }
+      },
       "source_native_identifiers": true,
       "unknown_or_restricted_sources_are_not_omitted": true
     }
@@ -263,6 +345,9 @@
     "GitHub Pages serves YAML-LD as application/octet-stream; JSON-LD is the strict transport fallback."
   ],
   "okf_version": "0.2",
+  "performance": {
+    "route_relationship_hydration": "sha256-prefix rich relationship route locator; legacy FNV-1a adjacency retained as the compact-core fallback"
+  },
   "profile": "https://chris-page-gov.github.io/okf-explorer/profile/federation/v1/",
   "publisher": "https://github.com/chris-page-gov",
   "relationship_summary": {
@@ -270,35 +355,6 @@
       "derived": 469777,
       "model-assisted": 56479,
       "official": 380498
-    },
-    "by_datapack": {
-      "codex-assisted-v3": {
-        "assertion_contract": "okf-relationship-assertion.v2",
-        "count": 56479,
-        "freshness": "current",
-        "notes": "Only independently accepted topic, concept and entity-link assertions are active. Candidate and historical v2 rows are excluded.",
-        "observed_at": "2026-07-26T12:30:00Z",
-        "refresh_window": "governed-v3-assertion-window",
-        "stale_after": "2026-10-26T00:00:00Z"
-      },
-      "core": {
-        "assertion_contract": "okf-core-relationship-row.v1",
-        "count": 835563,
-        "freshness": "current",
-        "notes": "Legacy compact core rows are a versioned projection. Snapshot currency is not a claim that every provision is current law.",
-        "observed_at": "2026-07-11T18:00:00Z",
-        "refresh_window": "P31D",
-        "stale_after": "2026-08-11T18:00:00Z"
-      },
-      "legislation-effects": {
-        "assertion_contract": "okf-relationship-assertion.v2",
-        "count": 14712,
-        "freshness": "current",
-        "notes": "Only assertions materialised from successful frozen official routes are counted; inaccessible reconciliation routes are reported separately.",
-        "observed_at": "2026-07-25T21:30:00Z",
-        "refresh_window": "P7D",
-        "stale_after": "2026-08-01T21:30:00Z"
-      }
     },
     "by_freshness": {
       "current": 906754,
@@ -1235,16 +1291,7 @@
       "official effect: words substituted in earlier amending provision s.i. 2019/419, sch. 2 para. 85(4)": 1,
       "official effect: words substituted in earlier amending provision s.i. 2019/419, sch. 2 para. 85(7)": 1
     },
-    "freshness_semantics": "`current` means the frozen datapack is inside its declared refresh window. It does not mean that every legal provision is in force, unamended or suitable for reliance without live verification.",
     "observed_at": "2026-07-25T22:54:00Z",
-    "reconciliation_routes": {
-      "agreement_at_acquisition": 16,
-      "inaccessible_at_acquisition": 6,
-      "post_build_agreement": 16,
-      "post_build_inaccessible_consistent": 6,
-      "post_build_live_additions": 0,
-      "truncated_static_routes": 0
-    },
     "scope": "federated-data-plane",
     "snapshot": "whole-law-2026-07-25",
     "total": 906754

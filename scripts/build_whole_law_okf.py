@@ -424,6 +424,39 @@ def relationship_summary() -> dict[str, Any]:
     }
 
 
+def canonical_descriptor(native: dict[str, Any]) -> dict[str, Any]:
+    """Project the extended Whole-Law descriptor into Explorer's supported shape."""
+    import copy
+    import jsonschema
+    result = copy.deepcopy(native)
+    base = result['@id']
+    extensions = result.setdefault('extensions', {}).setdefault('okf-whole-law.v1', {})
+    summary = result['relationship_summary']
+    allowed_summary = {'scope', 'total', 'by_predicate', 'by_authority', 'by_freshness', 'observed_at', 'snapshot'}
+    extensions['relationship_summary_details'] = {k: summary.pop(k) for k in list(summary) if k not in allowed_summary}
+    for child in result['children']:
+        # Canonical HTTP identities and the fetched snapshot's transport are
+        # distinct. Consumers supporting this versioned extension must not fall
+        # back to public main when the matching local/pinned sibling is absent.
+        child.setdefault('extensions', {})['okf-federation-relative-child.v1'] = {
+            'descriptor': child['descriptor'],
+            'semantic_descriptor': child['semantic_descriptor'],
+        }
+        extra = child['extensions'].setdefault('okf-whole-law.v1', {})
+        for key in ['relationship_manifest', 'relationship_manifest_jsonld']:
+            if key in child: extra[key] = urljoin(base, child.pop(key))
+        for key in ['descriptor', 'semantic_descriptor']:
+            if key in child: child[key] = urljoin(base, child[key])
+        discovery = child.get('discovery', {})
+        if 'relationship_manifest' in discovery:
+            extra['discovery_relationship_manifest'] = discovery.pop('relationship_manifest')
+        for route in discovery.get('routes', []): route['url'] = urljoin(base, route['url'])
+    result['bundles'] = result['children']
+    schema = load(ROOT / 'profiles/federation/v1/descriptor.schema.json')
+    jsonschema.Draft202012Validator(schema).validate(result)
+    return result
+
+
 def descriptor(
     source_register: dict[str, Any],
     taxonomy: dict[str, Any],
@@ -446,6 +479,8 @@ def descriptor(
         # public/raw routes remain explicit fallbacks below.
         "descriptor": "../okf-explorer.json",
         "semantic_descriptor": "../okf-bundle.yamlld",
+        "relationship_manifest": "../data/semantic/manifest.yamlld",
+        "relationship_manifest_jsonld": "../data/semantic/manifest.jsonld",
         "authority": {
             "class": "official",
             "label": "Official publication identities and source-derived legal effects",
@@ -478,6 +513,9 @@ def descriptor(
             "raw_subpath": "bundle",
             "release_archive": "https://github.com/chris-page-gov/okf-uk-legislation/releases",
             "semantic_descriptor": f"{PUBLIC}/okf-bundle.yamlld",
+            "relationship_manifest": (
+                f"{PUBLIC}/data/semantic/manifest.yamlld"
+            ),
             "routes": [
                 {
                     "kind": "descriptor-relative",
@@ -534,6 +572,15 @@ def descriptor(
             ),
         },
     }
+    runtime_manifest_path = (
+        ROOT / "bundle" / "data" / "semantic" / "runtime-manifest.json"
+    )
+    if not runtime_manifest_path.is_file():
+        raise ValueError(
+            "rich relationship runtime manifest must be built before the "
+            "Whole-Law descriptor"
+        )
+    runtime_manifest_body = runtime_manifest_path.read_bytes()
     return {
         "@context": f"{PUBLIC}/whole-law/ontology/context.jsonld",
         "@id": f"{PUBLIC}/whole-law/okf-explorer.json",
@@ -594,6 +641,13 @@ def descriptor(
             "coverage": "data/coverage.json",
             "constraints": "data/source-constraint-ledger.json",
             "relationship_summary": "data/relationship-summary.json",
+            "relationship_semantics": "../data/semantic/manifest.yamlld",
+            "relationship_semantics_jsonld": (
+                "../data/semantic/manifest.jsonld"
+            ),
+            "relationship_runtime": "../data/semantic/runtime-manifest.json",
+            "predicate_registry": "../data/semantic/predicate-registry.json",
+            "iri_route_registry": "../data/semantic/iri-route-registry.json",
             "standards": "ontology/standards.json",
             "ontology": "ontology/index.md",
             "shapes": "ontology/shapes.ttl",
@@ -620,6 +674,20 @@ def descriptor(
             ),
             "integrity": "integrity.json",
             "docs": "docs/index.md",
+        },
+        "entrypoint_integrity": {
+            "relationship_runtime": {
+                "path": "../data/semantic/runtime-manifest.json",
+                "bytes": len(runtime_manifest_body),
+                "sha256": hashlib.sha256(runtime_manifest_body).hexdigest(),
+                "content_encoding": "identity",
+            }
+        },
+        "performance": {
+            "route_relationship_hydration": (
+                "sha256-prefix rich relationship route locator; legacy "
+                "FNV-1a adjacency retained as the compact-core fallback"
+            )
         },
         "counts": {
             "children": 1,
@@ -656,6 +724,17 @@ def descriptor(
             "okf-explorer-analysis.v1": {
                 "mode": "external",
                 "entrypoint": "coverage",
+            },
+            "okf-rich-directed-relationships.v1": {
+                "mode": (
+                    "bounded-json-ld-shards-with-yaml-ld-control-plane"
+                ),
+                "entrypoint": "relationship_semantics",
+                "runtime_entrypoint": "relationship_runtime",
+                "direct_triple_policy": (
+                    "generated-with-evidence-bearing-reification"
+                ),
+                "authority_planes_preserved": True,
             },
         },
         "notices": [
@@ -818,7 +897,8 @@ def build_files() -> dict[Path, bytes]:
     family_by_id = {row["id"]: row for row in families}
     constraints = build_constraints(source_register)
     relations = relationship_summary()
-    desc = descriptor(source_register, taxonomy, families, relations)
+    native_desc = descriptor(source_register, taxonomy, families, relations)
+    desc = canonical_descriptor(native_desc)
     execution_rows: list[dict[str, Any]] = []
     execution_root = SOURCE / "evaluation" / "executions"
     if execution_root.is_dir():
@@ -895,6 +975,12 @@ def build_files() -> dict[Path, bytes]:
             "accessTestDate": source_register["access_test_date"],
             "sourceHash": f"sha256:{source_register_sha256}",
         },
+        "relationshipManifest": (
+            f"{PUBLIC}/data/semantic/manifest.yamlld"
+        ),
+        "relationshipManifestJson": (
+            f"{PUBLIC}/data/semantic/manifest.jsonld"
+        ),
         "generatedAt": GENERATED_AT,
         "license": {"@id": OGL},
     }
@@ -1198,18 +1284,24 @@ documented compatibility decision.
 
 ## Authored and generated representations
 
-`okf-bundle.yamlld` is the authored semantic publication. The builder emits
+`okf-bundle.yamlld` is the authored semantic control publication. The builder emits
 `okf-bundle.jsonld` and canonical N-Triples-compatible
 `okf-bundle.ttl` from the same governed values. Validation exercises YAML-LD
 expansion, JSON-LD compaction, flattening and framing, RDF conversion,
 RDF-to-JSON-LD-to-RDF round-trip, three-way graph isomorphism and canonical
 dataset-digest equivalence. SHACL validates all three complete semantic
-descriptor graphs and the example/entity contract. The semantic descriptor
-contains the Federation and its hash-bound SourceRegister contract node; it
-does not materialise the 365,786 catalogued legal works as RDF. The
+descriptor graphs and the example/entity contract. The bounded descriptor
+contains the Federation, its hash-bound SourceRegister contract node and a
+link to the relationship-authoritative YAML-LD manifest. Separate bounded
+JSON-LD shards materialise matching direct triples and evidence-bearing
+`rdf:Statement`/`okf:RelationshipAssertion` nodes without forcing all 365,786
+works into the startup descriptor graph. A separately generated runtime
+manifest lists active default planes, opt-in historical planes, local-route
+assertion arrays and a hash-bucket route locator for bounded Reader hydration.
+The
 [deterministic conformance receipt](../assurance/semantic-conformance.json)
-separately records exhaustive JSON Schema validation of every compact core and
-provider relationship row.
+separately records exhaustive source-row validation and direct/reified
+reconciliation for every active and historical semantic assertion shard.
 
 These checks establish conformance of this publication to its declared basic
 profile. They do not claim that the selected third-party processor passes

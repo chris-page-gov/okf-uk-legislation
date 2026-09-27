@@ -1,0 +1,224 @@
+{
+  "okf_core": {
+    "specification": "https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md",
+    "status": "conformant",
+    "version": "0.2"
+  },
+  "reader": {
+    "consumer": "https://chris-page-gov.github.io/okf-explorer/",
+    "delivery": "federation-control-plane-plus-bounded-rich-relationship-runtime",
+    "preserves": [
+      "direction",
+      "semantic-identities",
+      "local-routes",
+      "predicate",
+      "relationship-kind",
+      "preferred-and-inverse-labels",
+      "assertion-status-and-scope",
+      "authority",
+      "derivation",
+      "supporting-assertions",
+      "confidence",
+      "review-status",
+      "evidence",
+      "rights",
+      "freshness",
+      "lifecycle"
+    ]
+  },
+  "relationship_contract": {
+    "authoring": "generated-yaml-ld-sharded-assertion-graph",
+    "direct_triple_policy": "generated-from-one-assertion-source-across-pinned-shards",
+    "predicate_policy": "absolute-iri",
+    "required_fields": [
+      "id",
+      "source",
+      "target",
+      "source_iri",
+      "target_iri",
+      "predicate",
+      "kind",
+      "label",
+      "inverse_label",
+      "assertion_status",
+      "assertion_scope",
+      "authority",
+      "derivation",
+      "observed_at",
+      "evidence",
+      "rights"
+    ],
+    "schema": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/semantic-assertion.schema.json"
+  },
+  "repository": {
+    "name": "okf-uk-legislation",
+    "role": "federation",
+    "root_index": "whole-law/index.md"
+  },
+  "schema": "okf-repository-semantic-contract.v1",
+  "semantic_layer": {
+    "authoritative_inputs": [
+      "bundle/data/works-*.json.gz",
+      "bundle/data/effects/assertions.json.gz",
+      "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+      "bundle/data/enrichment/manifest.json",
+      "enrichment/model-assisted-v1.json",
+      "enrichment/model-assisted-v1-independent-audit.json",
+      "whole-law/ontology/",
+      "whole-law/schemas/semantic-assertion.schema.json",
+      "scripts/build_relationship_semantics.py"
+    ],
+    "context_policy": "pinned-local-contexts-no-browser-remote-expansion",
+    "identity_policy": "absolute-semantic-iri-plus-validated-local-route",
+    "limitations": [
+      "The immutable published v0.3.0 release predates this semantic projection. These new bytes require a separately frozen candidate and all normal release gates before publication.",
+      "bundle/data/manifest.json is immutable accepted-v3 input evidence and is not rewritten to advertise the additive relationship runtime. The root and Whole-Law descriptors independently bind that runtime by exact path, SHA-256 and byte count.",
+      "High-degree aggregate topic/type routes can exceed the Reader's 64-chunk or 100,000-row browser hydration ceiling. The Reader fails before shard fetch and reports the committed fan-out; use a paginated or offline analytical query rather than raising the bounded browser ceiling.",
+      "Whole-Law extension details are projected into namespaced extensions; the public child descriptors use canonical absolute URLs."
+    ],
+    "outputs": [
+      {
+        "generated": true,
+        "path": "bundle/okf-bundle.yamlld",
+        "required": true,
+        "role": "semantic-yaml-ld"
+      },
+      {
+        "generated": true,
+        "path": "bundle/okf-bundle.jsonld",
+        "required": true,
+        "role": "semantic-json-ld"
+      },
+      {
+        "generated": true,
+        "path": "bundle/okf-explorer.json",
+        "required": true,
+        "role": "explorer-runtime"
+      },
+      {
+        "generated": true,
+        "path": "bundle/whole-law/okf-bundle.yamlld",
+        "required": true,
+        "role": "semantic-yaml-ld"
+      },
+      {
+        "generated": true,
+        "path": "bundle/whole-law/okf-explorer.json",
+        "required": true,
+        "role": "explorer-runtime"
+      },
+      {
+        "generated": true,
+        "path": "bundle/data/semantic/manifest.yamlld",
+        "required": true,
+        "role": "semantic-yaml-ld"
+      },
+      {
+        "generated": true,
+        "path": "bundle/data/semantic/manifest.jsonld",
+        "required": true,
+        "role": "semantic-manifest"
+      },
+      {
+        "generated": true,
+        "path": "bundle/data/semantic/**/*.jsonld.gz",
+        "required": true,
+        "role": "semantic-json-ld-shards"
+      },
+      {
+        "generated": true,
+        "path": "bundle/data/semantic/runtime/**/relationships-*.json.gz",
+        "required": true,
+        "role": "relationship-runtime"
+      },
+      {
+        "generated": true,
+        "path": "bundle/data/semantic/runtime-manifest.json",
+        "required": true,
+        "role": "relationship-runtime-manifest"
+      },
+      {
+        "generated": true,
+        "path": "bundle/data/semantic/runtime/route-locator/manifest.json",
+        "required": true,
+        "role": "relationship-route-locator"
+      },
+      {
+        "generated": true,
+        "path": "bundle/data/semantic/runtime/route-locator/bucket-*.json.gz",
+        "required": true,
+        "role": "relationship-route-locator"
+      },
+      {
+        "generated": true,
+        "path": "bundle/data/semantic/context.jsonld",
+        "required": true,
+        "role": "semantic-context"
+      },
+      {
+        "generated": false,
+        "path": "whole-law/schemas/relationship-assertion-v3.schema.json",
+        "required": true,
+        "role": "relationship-schema"
+      },
+      {
+        "generated": false,
+        "path": "whole-law/schemas/semantic-assertion.schema.json",
+        "required": true,
+        "role": "relationship-schema"
+      },
+      {
+        "generated": false,
+        "path": "whole-law/schemas/relationship-runtime-row.schema.json",
+        "required": true,
+        "role": "relationship-runtime-schema"
+      },
+      {
+        "generated": false,
+        "path": "whole-law/schemas/relationship-runtime-manifest.schema.json",
+        "required": true,
+        "role": "relationship-runtime-schema"
+      },
+      {
+        "generated": false,
+        "path": "whole-law/schemas/relationship-route-locator*.schema.json",
+        "required": true,
+        "role": "relationship-runtime-schema"
+      },
+      {
+        "generated": true,
+        "path": "bundle/data/semantic/predicate-registry.json",
+        "required": true,
+        "role": "predicate-registry"
+      },
+      {
+        "generated": true,
+        "path": "bundle/data/semantic/iri-route-registry.json",
+        "required": true,
+        "role": "iri-route-registry"
+      },
+      {
+        "generated": true,
+        "path": "whole-law/assurance/semantic-conformance.json",
+        "required": true,
+        "role": "semantic-validation"
+      }
+    ],
+    "profile": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/",
+    "state": "generated-yaml-ld-sharded-graph"
+  },
+  "tooling": {
+    "build": [
+      "python3 scripts/rebuild_legislation_discovery.py",
+      "python3 scripts/build_relationship_semantics.py",
+      "python3 scripts/build_whole_law_okf.py"
+    ],
+    "check": [
+      "python3 scripts/check_legislation_okf.py",
+      "python3 scripts/build_relationship_semantics.py --check",
+      "python3 scripts/check_whole_law_okf.py",
+      "python3 scripts/run_semantic_conformance.py --check",
+      "python3 ../okf-explorer/scripts/reconcile_okf_repositories.py --repo . --strict"
+    ]
+  }
+}

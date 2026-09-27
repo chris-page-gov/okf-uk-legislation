@@ -884,7 +884,7 @@ def audit_descriptors(
         and extensions["okf-model-enrichment.v1-historical"]["governed_assertions"]
         == 0
         and federation_descriptor["children"][0]["descriptor"]
-        == "../okf-explorer.json"
+        == "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"
         and federation_descriptor["children"][0]["counts"]["relationships"]
         == observed["total"]
         and federation_descriptor["children"][0]["counts"][

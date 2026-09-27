@@ -80,97 +80,337 @@
     }
   ],
   "build_commands": [
-    ["{python}", "scripts/build_legislation_okf.py", "--from-existing"],
-    ["{python}", "scripts/build_model_enrichment_input_evidence.py"],
-    ["{python}", "scripts/build_codex_semantic_enrichment.py"],
-    ["{python}", "scripts/build_legislation_effects.py", "--offline"],
-    ["{python}", "scripts/build_codex_semantic_enrichment_v3.py", "build"],
-    ["{python}", "scripts/audit_codex_semantic_enrichment_v3.py", "audit"],
-    ["{python}", "scripts/rebuild_legislation_discovery.py"],
-    ["{python}", "scripts/build_legislation_evaluation.py"],
-    ["{python}", "scripts/build_whole_law_evaluation.py"],
-    ["{python}", "scripts/run_yaml_ld_conformance.py"],
-    ["{python}", "scripts/run_ontology_competency_questions.py"],
-    ["{python}", "scripts/build_publication_docs.py"],
-    ["{python}", "scripts/build_whole_law_okf.py"],
-    ["{python}", "scripts/run_release_evaluation.py", "--check"],
-    ["{python}", "scripts/run_semantic_conformance.py"],
-    ["{python}", "scripts/build_whole_law_okf.py"],
-    ["{python}", "scripts/audit_graph_enrichment_gate.py", "build"],
-    ["{python}", "scripts/build_whole_law_okf.py"],
-    ["{python}", "scripts/build_checksums.py"],
-    ["{python}", "scripts/build_release_assurance.py"],
-    ["{python}", "scripts/build_checksums.py"]
+    [
+      "{python}",
+      "scripts/build_legislation_okf.py",
+      "--from-existing"
+    ],
+    [
+      "{python}",
+      "scripts/build_model_enrichment_input_evidence.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_codex_semantic_enrichment.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_legislation_effects.py",
+      "--offline"
+    ],
+    [
+      "{python}",
+      "scripts/build_codex_semantic_enrichment_v3.py",
+      "build"
+    ],
+    [
+      "{python}",
+      "scripts/audit_codex_semantic_enrichment_v3.py",
+      "audit"
+    ],
+    [
+      "{python}",
+      "scripts/rebuild_legislation_discovery.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_relationship_semantics.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_bounded_relationship_navigation.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_legislation_evaluation.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_whole_law_evaluation.py"
+    ],
+    [
+      "{python}",
+      "scripts/run_yaml_ld_conformance.py"
+    ],
+    [
+      "{python}",
+      "scripts/run_ontology_competency_questions.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_publication_docs.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_whole_law_okf.py"
+    ],
+    [
+      "{python}",
+      "scripts/run_release_evaluation.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/run_semantic_conformance.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_whole_law_okf.py"
+    ],
+    [
+      "{python}",
+      "scripts/audit_graph_enrichment_gate.py",
+      "build"
+    ],
+    [
+      "{python}",
+      "scripts/build_whole_law_okf.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_checksums.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_release_assurance.py"
+    ],
+    [
+      "{python}",
+      "scripts/build_checksums.py"
+    ]
   ],
   "validation_commands": [
-    ["{python}", "-m", "unittest", "discover", "-s", "tests", "-v"],
-    ["{python}", "scripts/build_publication_docs.py", "--check"],
-    ["{python}", "scripts/check_internal_links.py"],
-    ["{python}", "scripts/rebuild_legislation_discovery.py", "--check"],
-    ["{python}", "scripts/check_legislation_okf.py"],
-    ["{python}", "scripts/legislation_effects_evidence_archive.py", "check", "--snapshot-id", "legislation-effects-2026-07-25"],
-    ["{python}", "scripts/build_legislation_effects.py", "--check"],
-    ["{python}", "scripts/build_model_enrichment_input_evidence.py", "--check"],
-    ["{python}", "scripts/build_codex_semantic_enrichment.py", "--check"],
-    ["{python}", "scripts/build_codex_semantic_enrichment_v3.py", "check"],
-    ["{python}", "scripts/audit_codex_semantic_enrichment_v3.py", "check"],
-    ["{python}", "scripts/audit_model_assisted_v2_independent.py", "--check"],
-    ["{python}", "scripts/build_whole_law_evaluation.py", "--check"],
-    ["{python}", "scripts/run_release_evaluation.py", "--check"],
-    ["{python}", "scripts/run_yaml_ld_conformance.py", "--check"],
-    ["{python}", "scripts/run_ontology_competency_questions.py", "--check"],
-    ["{python}", "scripts/build_whole_law_okf.py", "--check"],
-    ["{python}", "scripts/run_semantic_conformance.py", "--check"],
-    ["{python}", "scripts/check_whole_law_okf.py"],
-    ["{python}", "scripts/audit_graph_enrichment_gate.py", "check"],
-    ["{python}", "scripts/build_release_assurance.py", "--check"],
-    ["{python}", "scripts/build_checksums.py", "--check"],
-    ["{python}", "scripts/reconcile_legislation_effects_live.py", "check"],
-    ["{python}", "scripts/source_access_evidence_archive.py", "check", "--run-id", "20260725T203207Z-dd7315c3"],
-    ["{python}", "scripts/capture_whole_law_route_replacements.py", "check", "--run", "20260726T005115Z-04a20f01"],
-    ["{python}", "scripts/capture_whole_law_route_replacements.py", "check", "--run", "20260726T005723Z-c0f5a002"],
-    ["{python}", "scripts/capture_whole_law_route_replacements.py", "check", "--run", "20260726T010545Z-c0f5a003"],
-    ["{python}", "scripts/audit_source_acquisition_gate.py", "check"],
-    ["{python}", "scripts/check_implementation_traceability.py", "--check"]
+    [
+      "{python}",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    [
+      "{python}",
+      "scripts/build_publication_docs.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/check_internal_links.py"
+    ],
+    [
+      "{python}",
+      "scripts/rebuild_legislation_discovery.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/build_relationship_semantics.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/build_bounded_relationship_navigation.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/check_legislation_okf.py"
+    ],
+    [
+      "{python}",
+      "scripts/legislation_effects_evidence_archive.py",
+      "check",
+      "--snapshot-id",
+      "legislation-effects-2026-07-25"
+    ],
+    [
+      "{python}",
+      "scripts/build_legislation_effects.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/build_model_enrichment_input_evidence.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/build_codex_semantic_enrichment.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/build_codex_semantic_enrichment_v3.py",
+      "check"
+    ],
+    [
+      "{python}",
+      "scripts/audit_codex_semantic_enrichment_v3.py",
+      "check"
+    ],
+    [
+      "{python}",
+      "scripts/audit_model_assisted_v2_independent.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/build_whole_law_evaluation.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/run_release_evaluation.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/run_yaml_ld_conformance.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/run_ontology_competency_questions.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/build_whole_law_okf.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/run_semantic_conformance.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/check_whole_law_okf.py"
+    ],
+    [
+      "{python}",
+      "scripts/audit_graph_enrichment_gate.py",
+      "check"
+    ],
+    [
+      "{python}",
+      "scripts/build_release_assurance.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/build_checksums.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/reconcile_legislation_effects_live.py",
+      "check"
+    ],
+    [
+      "{python}",
+      "scripts/source_access_evidence_archive.py",
+      "check",
+      "--run-id",
+      "20260725T203207Z-dd7315c3"
+    ],
+    [
+      "{python}",
+      "scripts/capture_whole_law_route_replacements.py",
+      "check",
+      "--run",
+      "20260726T005115Z-04a20f01"
+    ],
+    [
+      "{python}",
+      "scripts/capture_whole_law_route_replacements.py",
+      "check",
+      "--run",
+      "20260726T005723Z-c0f5a002"
+    ],
+    [
+      "{python}",
+      "scripts/capture_whole_law_route_replacements.py",
+      "check",
+      "--run",
+      "20260726T010545Z-c0f5a003"
+    ],
+    [
+      "{python}",
+      "scripts/audit_source_acquisition_gate.py",
+      "check"
+    ],
+    [
+      "{python}",
+      "scripts/check_implementation_traceability.py",
+      "--check"
+    ]
   ],
   "explicit_offline_invocations": [
     {
       "script": "scripts/reconcile_legislation_effects_live.py",
-      "arguments": ["check"],
+      "arguments": [
+        "check"
+      ],
       "reason": "The check subcommand validates the already sealed receipt and archive and never invokes the capture path."
     },
     {
       "script": "scripts/capture_whole_law_route_replacements.py",
-      "arguments": ["check", "--run", "20260726T005115Z-04a20f01"],
+      "arguments": [
+        "check",
+        "--run",
+        "20260726T005115Z-04a20f01"
+      ],
       "reason": "The exact primary replacement archive is validated offline."
     },
     {
       "script": "scripts/capture_whole_law_route_replacements.py",
-      "arguments": ["check", "--run", "20260726T005723Z-c0f5a002"],
+      "arguments": [
+        "check",
+        "--run",
+        "20260726T005723Z-c0f5a002"
+      ],
       "reason": "The exact retained R02 failure-evidence supplement is validated offline."
     },
     {
       "script": "scripts/capture_whole_law_route_replacements.py",
-      "arguments": ["check", "--run", "20260726T010545Z-c0f5a003"],
+      "arguments": [
+        "check",
+        "--run",
+        "20260726T010545Z-c0f5a003"
+      ],
       "reason": "The exact reachable R03 system-trust supplement is validated offline."
     }
   ],
   "subsumed_checks": [
     {
       "capability": "independent-answer-verification",
-      "command": ["{python}", "scripts/run_release_evaluation.py", "--check"],
+      "command": [
+        "{python}",
+        "scripts/run_release_evaluation.py",
+        "--check"
+      ],
       "implementation": "scripts/verify_release_evaluation_answers.py",
       "reason": "The release evaluation imports and executes the independent answer verifier over the complete bound answer set."
     },
     {
       "capability": "governed-v3-independent-enrichment-audit",
-      "command": ["{python}", "scripts/audit_codex_semantic_enrichment_v3.py", "check"],
+      "command": [
+        "{python}",
+        "scripts/audit_codex_semantic_enrichment_v3.py",
+        "check"
+      ],
       "implementation": "scripts/audit_codex_semantic_enrichment_v3.py",
       "reason": "The active independent audit reconstructs all 365,786 terminal outcomes and all 56,479 governed v3 reviewer verdicts and accepted assertions, verifies exact zero direct-API calls, tokens and spend, and fails closed on any material, schema, population or semantic mismatch."
     },
     {
       "capability": "historical-v1-rejection-and-v2-preservation",
-      "command": ["{python}", "scripts/audit_model_assisted_v2_independent.py", "--check"],
+      "command": [
+        "{python}",
+        "scripts/audit_model_assisted_v2_independent.py",
+        "--check"
+      ],
       "implementation": "scripts/audit_model_assisted_v2_independent.py",
       "reason": "This preservation-only check retains the rejected v1 decision and independently audited 22,299-assertion v2 publication as historical evidence; neither is the active enrichment release gate."
     }

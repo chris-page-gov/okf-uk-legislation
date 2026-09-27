@@ -1,7 +1,7 @@
 {
   "errors": [],
   "generated_at": "2026-07-25T22:54:00Z",
-  "input_fingerprint_sha256": "8f5753622c62ac4cd989fa255695e46cdf74dc35669c8170e18ec18808151309",
+  "input_fingerprint_sha256": "84d080529314caa7b76a1f83aac61a16d199b9d52ef3cf7969f5323c96f73ea9",
   "json_schema": {
     "core_relationships": {
       "chunk_inventory_sha256": "ed5f90e8805686fb6f6a7df3112df5b1e4da3223fecb47d86c76f5ff0da47981",
@@ -60,14 +60,14 @@
   },
   "materials": {
     "authored_yaml_ld": {
-      "bytes": 2392,
+      "bytes": 2784,
       "path": "whole-law/okf-bundle.yamlld",
-      "sha256": "03bcd567b8aae8c505641796ae8ef91bfb4e847c1c13619cca2bbb00eea4e942"
+      "sha256": "3f293d671e72efe6ef2f2b828538563945f7bab9673f36e03a10be483f2abc4e"
     },
     "context": {
-      "bytes": 4470,
+      "bytes": 4682,
       "path": "whole-law/ontology/context.jsonld",
-      "sha256": "cb089e41cca2518d64d41b96c2318967b4a4ee700ecd408fe64948c41912b188"
+      "sha256": "e3a400b5a7b81aaca38d3d258090b3b95ff23f375a38e0c74d136a9a8e60258f"
     },
     "contract_examples": {
       "bytes": 8949,
@@ -75,24 +75,54 @@
       "sha256": "37a6b79ff45984f659bfab0e92013f19edd9091fbfc228fc8317ad771f05d0eb"
     },
     "federation_descriptor": {
-      "bytes": 110999,
+      "bytes": 113832,
       "path": "bundle/whole-law/okf-explorer.json",
-      "sha256": "18297c95e172b1af4a15eb4332851f09ab04a981ea9aa53e57f74f6ec82d96eb"
+      "sha256": "d8273153f024a7827c29e1dfd557c6b419f6c51f24a64000b0c74b84858ea9e0"
     },
     "generated_json_ld": {
-      "bytes": 5737,
+      "bytes": 6175,
       "path": "bundle/whole-law/okf-bundle.jsonld",
-      "sha256": "0ef7adcea9faad120f8dad6ff6fd0d03d410d51b05a4acb6371882b576e6bee8"
+      "sha256": "4231846520a6cb1506b8796e99f0931e4370e4602dd048cbe8d4d5781df28913"
     },
     "generated_turtle": {
-      "bytes": 4176,
+      "bytes": 4674,
       "path": "bundle/whole-law/okf-bundle.ttl",
-      "sha256": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a"
+      "sha256": "efdeaafd91258e05d28561f378c4388ed1bd31ca1234ee4df73f5abfa5247b6b"
     },
     "published_yaml_ld": {
-      "bytes": 2392,
+      "bytes": 2784,
       "path": "bundle/whole-law/okf-bundle.yamlld",
-      "sha256": "03bcd567b8aae8c505641796ae8ef91bfb4e847c1c13619cca2bbb00eea4e942"
+      "sha256": "3f293d671e72efe6ef2f2b828538563945f7bab9673f36e03a10be483f2abc4e"
+    },
+    "relationship_context": {
+      "bytes": 2104,
+      "path": "bundle/data/semantic/context.jsonld",
+      "sha256": "a8132346644bc374bf469b353b7c1c99c2f9f998104e248db5356fe29c685384"
+    },
+    "relationship_iri_route_registry": {
+      "bytes": 95669,
+      "path": "bundle/data/semantic/iri-route-registry.json",
+      "sha256": "6833280a07518afaebe0b4ba9a5ee3d842f516bec511e6392de0d8617ffb2a34"
+    },
+    "relationship_manifest_json_ld": {
+      "bytes": 1429795,
+      "path": "bundle/data/semantic/manifest.jsonld",
+      "sha256": "e9a8440ca182c0be3ec883834aa7dcb6a7c3b449a4a548e38437d7cec4466f9b"
+    },
+    "relationship_manifest_yaml_ld": {
+      "bytes": 1429795,
+      "path": "bundle/data/semantic/manifest.yamlld",
+      "sha256": "e9a8440ca182c0be3ec883834aa7dcb6a7c3b449a4a548e38437d7cec4466f9b"
+    },
+    "relationship_predicate_registry": {
+      "bytes": 357646,
+      "path": "bundle/data/semantic/predicate-registry.json",
+      "sha256": "67f34530fc94bd377687fc85c36e296ee192ad7cede2e15577fda24ffac54c7d"
+    },
+    "relationship_semantic_builder": {
+      "bytes": 86983,
+      "path": "scripts/build_relationship_semantics.py",
+      "sha256": "5ed6ffb07c4f93aa4e2a175d2a3294e1b859ca7524ed0b7e8f0fb141bbf0249b"
     },
     "schemas": {
       "core_relationship_row": {
@@ -101,9 +131,9 @@
         "sha256": "c81458b9d78607e7adbcb5f4e67b548455a2d94e38a1d5579c5d97e81bb3b995"
       },
       "federation": {
-        "bytes": 11776,
-        "path": "whole-law/schemas/federation.schema.json",
-        "sha256": "e8e775d80f32770ff6793935e445d0002731e1ef0c76f3874320c2a57cae0c33"
+        "bytes": 9658,
+        "path": "whole-law/schemas/canonical-federation-descriptor.schema.json",
+        "sha256": "03edb4d2e0e1ad9252866bfadbcf00f2999b78abb44d1d52b9b33b18c6f1f3e0"
       },
       "provider_datapack": {
         "bytes": 1363,
@@ -111,15 +141,45 @@
         "sha256": "5710786b90afea23162054ae939960215fa800dd8a2b015d9b9432197580f799"
       },
       "provider_relationship_assertion": {
-        "bytes": 4937,
+        "bytes": 4942,
         "path": "whole-law/schemas/relationship-assertion.schema.json",
-        "sha256": "1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4"
+        "sha256": "6117dc4f8cb51c12dbe3f78d0e1bb523270b8c3e15f0ad4e22c8137fe3b876ba"
+      },
+      "rich_relationship_assertion": {
+        "bytes": 5958,
+        "path": "whole-law/schemas/relationship-assertion-v3.schema.json",
+        "sha256": "993d6dd2001373ceabe0b79259f175ccc5573329399788e20be1b44c23541fb4"
+      },
+      "rich_relationship_route_locator": {
+        "bytes": 2503,
+        "path": "whole-law/schemas/relationship-route-locator.schema.json",
+        "sha256": "c73dfcee889a0e34ae1ca59d3cf82919a6297e7db7b48d90ec718c1a6bc874a2"
+      },
+      "rich_relationship_route_locator_bucket": {
+        "bytes": 2678,
+        "path": "whole-law/schemas/relationship-route-locator-bucket.schema.json",
+        "sha256": "c174af26cd722d4e8eaded5011e072ac82689188a0b9665a2a6bfe49c2afe2eb"
+      },
+      "rich_relationship_runtime_manifest": {
+        "bytes": 4913,
+        "path": "whole-law/schemas/relationship-runtime-manifest.schema.json",
+        "sha256": "82c4e81fd7c3583e6dba2c68230049700ed5395d99c4b1b8cf4d1ab5c44d0e96"
+      },
+      "rich_relationship_runtime_row": {
+        "bytes": 4536,
+        "path": "whole-law/schemas/relationship-runtime-row.schema.json",
+        "sha256": "35e4a7634f45525fcb769a5aceced7defc986e98ae7cf50ca3c9ba59d95a9741"
+      },
+      "shared_semantic_assertion": {
+        "bytes": 7308,
+        "path": "whole-law/schemas/semantic-assertion.schema.json",
+        "sha256": "f69480328db4b64d678d9c50b6534d808000f7fb50a30e8cc9e3bf2facbcb8bc"
       }
     },
     "shapes": {
-      "bytes": 10862,
+      "bytes": 11120,
       "path": "whole-law/ontology/shapes.ttl",
-      "sha256": "5fe646674af3d237049722efcb1750fef1d258464cf6d6cfcb8f32b4855ce6b3"
+      "sha256": "44d02101e5b48317df224295599af908c530697c33840aa256829e73b16b99b0"
     },
     "source_register": {
       "bytes": 219607,
@@ -127,14 +187,14 @@
       "sha256": "575c62fab383a2c9444d3480640a086c4970b88c3ecafe9929f401969a84cdfe"
     },
     "validator": {
-      "bytes": 38861,
+      "bytes": 42484,
       "path": "scripts/run_semantic_conformance.py",
-      "sha256": "e043de665217be02138e61d968c98de57ac921912c547e0a0b5de7952900a65e"
+      "sha256": "d359cf4bfd78fe05e2430914d758183d24523228a9b6a876ebfecaf02f569320"
     },
     "vocabulary": {
-      "bytes": 5972,
+      "bytes": 6622,
       "path": "whole-law/ontology/vocabulary.ttl",
-      "sha256": "fec52841a2062e2137234b1b4de9ab4be5bbd1677f703fb1d4e05509443df9aa"
+      "sha256": "ae637f48e021b8b901838eeeaecbdeed2c3895708816d56155e6367e4ddbe53a"
     }
   },
   "processors": {
@@ -144,25 +204,54 @@
     "rdflib": "7.6.0",
     "yaml-ld": "1.1.22"
   },
+  "rich_relationship_semantics": {
+    "active_assertions": 906754,
+    "all_assertions": 929053,
+    "historical_assertions": 22299,
+    "plane_counts": {
+      "core": 835563,
+      "model-assisted-v2-historical": 22299,
+      "model-assisted-v3": 56479,
+      "official-effects": 14712
+    },
+    "route_locator_bounds": {
+      "max_active_chunk_references_per_route": 674,
+      "max_active_incident_assertions_per_route": 162281,
+      "max_chunk_references_per_route": 979,
+      "max_incident_assertions_per_route": 162649
+    },
+    "route_locator_buckets": 256,
+    "runtime_rows": 929053,
+    "runtime_shards": 1101,
+    "semantic_routes": 449,
+    "shards": 1101,
+    "shared_assertion_schema": {
+      "assertions_validated": 929053,
+      "path": "whole-law/schemas/semantic-assertion.schema.json",
+      "sha256": "f69480328db4b64d678d9c50b6534d808000f7fb50a30e8cc9e3bf2facbcb8bc"
+    }
+  },
   "schema": "okf-semantic-conformance.v1",
   "scope": {
+    "active_relationship_direct_triples": 906754,
     "catalogued_legal_works": 365786,
-    "claim_boundary": "The 365,786 catalogued legal works and relationship data plane are not materialised as RDF in this publication. SHACL covers the complete two-node semantic descriptor graph; JSON Schema covers every compact core and provider relationship row.",
+    "claim_boundary": "The startup descriptor remains bounded to the federation control graph. The relationship-authoritative manifest links bounded JSON-LD shards containing one direct triple and one evidence-bearing rdf:Statement/okf:RelationshipAssertion for every active or explicitly historical row. Authority and lifecycle planes remain separate.",
+    "historical_relationship_direct_triples": 22299,
     "rdf_materialized_legal_works": 0,
     "relationship_rows_exhaustively_validated_as_json": 906754,
-    "relationship_rows_materialized_as_rdf": 0,
+    "relationship_rows_materialized_as_rdf": 929053,
     "semantic_graph": "The complete authored/generated Whole-Law federation descriptor graph in YAML-LD, JSON-LD and canonical Turtle: one Federation and its governed SourceRegister contract node."
   },
   "semantic_equivalence": {
     "canonical_digest_by_representation": {
-      "json_ld": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a",
-      "turtle": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a",
-      "yaml_ld": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a"
+      "json_ld": "efdeaafd91258e05d28561f378c4388ed1bd31ca1234ee4df73f5abfa5247b6b",
+      "turtle": "efdeaafd91258e05d28561f378c4388ed1bd31ca1234ee4df73f5abfa5247b6b",
+      "yaml_ld": "efdeaafd91258e05d28561f378c4388ed1bd31ca1234ee4df73f5abfa5247b6b"
     },
-    "canonical_nquads_sha256": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a",
+    "canonical_nquads_sha256": "efdeaafd91258e05d28561f378c4388ed1bd31ca1234ee4df73f5abfa5247b6b",
     "canonical_serializations_equal": true,
     "graphs_isomorphic": true,
-    "json_graph_triples": 21,
+    "json_graph_triples": 23,
     "json_ld_api_operations": {
       "authored_yaml_ld": {
         "compaction_non_empty": true,
@@ -181,9 +270,9 @@
     },
     "json_ld_expanded_non_empty": true,
     "json_ld_rdf_round_trip": true,
-    "turtle_graph_triples": 21,
+    "turtle_graph_triples": 23,
     "turtle_rdf_round_trip": true,
-    "yaml_graph_triples": 21,
+    "yaml_graph_triples": 23,
     "yaml_ld_expanded_non_empty": true,
     "yaml_ld_rdf_round_trip": true
   },

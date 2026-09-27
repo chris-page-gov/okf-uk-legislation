@@ -1,0 +1,3160 @@
+{
+  "schema": "okf-explorer-runtime-acceptance.v1",
+  "measured_at": "2026-09-27T03:03:49.000Z",
+  "status": "failed",
+  "runtime": {
+    "status": "passed",
+    "summary": {
+      "checks": [
+        {
+          "id": "startup_transfer",
+          "status": "passed"
+        },
+        {
+          "id": "cold_search",
+          "status": "passed"
+        },
+        {
+          "id": "warm_search",
+          "status": "passed"
+        },
+        {
+          "id": "browser_memory",
+          "status": "passed"
+        },
+        {
+          "id": "federation_and_child",
+          "status": "passed"
+        },
+        {
+          "id": "graph_relationship_rendering",
+          "status": "passed"
+        },
+        {
+          "id": "model_assisted_styling_and_filtering",
+          "status": "passed"
+        },
+        {
+          "id": "live_reconciliation_states",
+          "status": "passed"
+        },
+        {
+          "id": "facet_count_colour_and_space",
+          "status": "passed"
+        },
+        {
+          "id": "cross_browser",
+          "status": "passed"
+        },
+        {
+          "id": "keyboard",
+          "status": "passed"
+        },
+        {
+          "id": "accessibility",
+          "status": "passed"
+        }
+      ],
+      "checks_total": 12,
+      "checks_passed": 12,
+      "checks_failed": 0,
+      "all_passed": true
+    }
+  },
+  "cross_engine": {
+    "status": "passed",
+    "required": [
+      "chrome",
+      "firefox",
+      "webkit"
+    ],
+    "completed": [
+      "chrome",
+      "firefox",
+      "webkit"
+    ]
+  },
+  "accessibility": {
+    "status": "passed",
+    "serious_or_critical_total": 0,
+    "browsers": [
+      {
+        "browser": "chrome",
+        "run_status": "passed",
+        "serious_or_critical": 0
+      },
+      {
+        "browser": "firefox",
+        "run_status": "passed",
+        "serious_or_critical": 0
+      },
+      {
+        "browser": "webkit",
+        "run_status": "passed",
+        "serious_or_critical": 0
+      }
+    ]
+  },
+  "performance": {
+    "status": "passed",
+    "summary": {
+      "checks": [
+        {
+          "id": "startup_transfer",
+          "status": "passed"
+        },
+        {
+          "id": "cold_search",
+          "status": "passed"
+        },
+        {
+          "id": "warm_search",
+          "status": "passed"
+        },
+        {
+          "id": "browser_memory",
+          "status": "passed"
+        }
+      ],
+      "checks_total": 4,
+      "checks_passed": 4,
+      "checks_failed": 0,
+      "all_passed": true
+    }
+  },
+  "integrity": {
+    "status": "passed",
+    "summary": {
+      "checks_total": 8,
+      "checks_passed": 8,
+      "checks_failed": 0,
+      "all_passed": true
+    },
+    "checks": [
+      {
+        "id": "federation_descriptor",
+        "status": "passed",
+        "path": "whole-law/okf-explorer.json",
+        "bytes": 113832,
+        "sha256": "d8273153f024a7827c29e1dfd557c6b419f6c51f24a64000b0c74b84858ea9e0"
+      },
+      {
+        "id": "legislation_descriptor",
+        "status": "passed",
+        "path": "okf-explorer.json",
+        "bytes": 8901,
+        "sha256": "09cb2ef343d7fdac4b613865b1ecc6db1f3f24f53e9ce4db63f2fea4fbc2558d"
+      },
+      {
+        "id": "explorer_build_manifest",
+        "status": "passed",
+        "path": "explorer-build/okf-explorer-build-manifest.json",
+        "bytes": 7056,
+        "sha256": "fa2d1cb63ebc5754043b7036db544085b1837fbd1003a415b5df25bb11caf145"
+      },
+      {
+        "id": "explorer_build_materials",
+        "status": "passed",
+        "files": 41
+      },
+      {
+        "id": "explorer_build_index",
+        "status": "passed",
+        "sha256": "110dbd3f5a6b46288940429311520505aaaa92af0fea68827e11f7a1e8d344c1"
+      },
+      {
+        "id": "explorer_build_tree",
+        "status": "passed",
+        "algorithm": "sha256-canonical-json-materials-v1",
+        "files": 41,
+        "sha256": "8bbe483b01d2f96f7d8c6351ec96408b27868c77246d146bd921101bed068caa",
+        "computed_sha256": "8bbe483b01d2f96f7d8c6351ec96408b27868c77246d146bd921101bed068caa"
+      },
+      {
+        "id": "screenshot:output/playwright/legislation-runtime-graph-chrome.png",
+        "status": "passed",
+        "path": "output/playwright/legislation-runtime-graph-chrome.png",
+        "bytes": 353609,
+        "sha256": "cb1e32bdad058a3fc6a1bd1e4676e0e69e8e8e9fdb7d4cf96fe81964ad2d53ce"
+      },
+      {
+        "id": "screenshot:output/playwright/legislation-runtime-chrome.png",
+        "status": "passed",
+        "path": "output/playwright/legislation-runtime-chrome.png",
+        "bytes": 330779,
+        "sha256": "a92c62bc8a31d1bc426e5ca7a0ededf9ae7845f9960cbdcbda5b41dafc672092"
+      }
+    ]
+  },
+  "scope": "Production Explorer build and final local UK legislation publication served only from private byte-copy snapshots whose complete source and snapshot identities were verified before and after the browser journeys.",
+  "runner": {
+    "path": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs",
+    "bytes": 98093,
+    "sha256": "d4558927e4038b2b76c76ea18ae6e4d4bb6366bf62562acd857888f3238db6cd"
+  },
+  "invocation": {
+    "mode": "checkout-scoped-single-writer-wrapper",
+    "evidence_class": "diagnostic",
+    "release_eligible": false,
+    "purpose": "legislation OKF Explorer acceptance",
+    "owner_pid": 19523,
+    "acquired_at": "2026-09-27T03:03:15.654Z",
+    "parent_pid_verified": true,
+    "deterministic_build_precedes_runner": true,
+    "completed_build_reverified_after_browsers": true,
+    "completed_build": {
+      "schema": "okf-explorer-completed-build-attestation.v1",
+      "completed_at": "2026-09-27T03:03:23.380Z",
+      "command_sha256": "25e679cac1a35134de0a849e3d2b2e77d3f8a3e552ab6dfa73a0de7ed32c1b75",
+      "deterministic_build_script": {
+        "path": "apps/okf-explorer/scripts/check_deterministic_build.mjs",
+        "bytes": 3309,
+        "sha256": "a4ee3e440aef1732da4e8b2de277c4cfe11573e4f35d16cb4c4348e84a6ff3e6"
+      },
+      "canonical_build": {
+        "root": "apps/okf-explorer/build",
+        "manifest_path": "apps/okf-explorer/build/okf-explorer-build-manifest.json",
+        "manifest_bytes": 7056,
+        "manifest_sha256": "fa2d1cb63ebc5754043b7036db544085b1837fbd1003a415b5df25bb11caf145",
+        "manifest_schema": "okf-explorer-app-build-manifest.v1",
+        "algorithm": "sha256-canonical-json-materials-v1",
+        "files": 41,
+        "tree_sha256": "8bbe483b01d2f96f7d8c6351ec96408b27868c77246d146bd921101bed068caa"
+      }
+    },
+    "executable_materials": {
+      "runner": {
+        "path": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs",
+        "bytes": 98093,
+        "sha256": "d4558927e4038b2b76c76ea18ae6e4d4bb6366bf62562acd857888f3238db6cd"
+      },
+      "runtime_acceptance_contract": {
+        "path": "apps/okf-explorer/scripts/runtime_acceptance_contract.mjs",
+        "bytes": 25697,
+        "sha256": "cba47c29c83922113eef46f732b41d76513cfdede1a7d859fec4ba0470b18c46"
+      },
+      "app_build_manifest": {
+        "path": "apps/okf-explorer/scripts/app_build_manifest.mjs",
+        "bytes": 22932,
+        "sha256": "6750dfe9ab09eeea945525473c9919e4d308e7f9a87f748244cbcd13e8b1d867"
+      },
+      "invocation_wrapper": {
+        "path": "apps/okf-explorer/scripts/run_acceptance_invocation.mjs",
+        "bytes": 2489,
+        "sha256": "95b2d3287f16698f221221b615392421b5654c17c98b909b205727dfa55c3772"
+      },
+      "invocation_lock": {
+        "path": "apps/okf-explorer/scripts/acceptance_invocation_lock.mjs",
+        "bytes": 30724,
+        "sha256": "1f4741365c3a61c4d11f0e3844aff05bdc8aa3e9e71ff0b426667abe6050e4e7"
+      },
+      "deterministic_build": {
+        "path": "apps/okf-explorer/scripts/check_deterministic_build.mjs",
+        "bytes": 3309,
+        "sha256": "a4ee3e440aef1732da4e8b2de277c4cfe11573e4f35d16cb4c4348e84a6ff3e6"
+      },
+      "package": {
+        "path": "apps/okf-explorer/package.json",
+        "bytes": 2726,
+        "sha256": "c9a10ca679d9101cee27d940f786e89b7762edc078ac1fbda1bc3c9efc6041c7"
+      },
+      "dependency_lock": {
+        "path": "apps/okf-explorer/pnpm-lock.yaml",
+        "bytes": 45509,
+        "sha256": "fca24d49c50990db91355fcdf326af47ee24c8aceb6240a3f97d5fd338fcbfee"
+      }
+    },
+    "repository_identity": {
+      "explorer": {
+        "commit": "26af7231c8350d123bbd72324dfbfeca9feaa497",
+        "tree": "78f57aa456e7f1b3d97ce4da56f068d8bf7d7238",
+        "clean": true,
+        "dirty_entries": 0,
+        "tag": "v0.6.2",
+        "tag_object": "43e53f36d869ba7ca2420990191a0834a969dcd2",
+        "tag_commit": "9430b3931f96bd9e6e06165c15b522742611f3e9",
+        "tag_type": "tag",
+        "package_name": "@okf/explorer",
+        "package_version": "0.7.0"
+      },
+      "candidate": {
+        "commit": "93e072f0010af26c383381c0c59ea1ed66ff381a",
+        "tree": "ca6906b1e0e229e319cd639fc2395143d1c3f7c8",
+        "clean": false,
+        "dirty_entries": 2585,
+        "bundle_tree": {
+          "algorithm": "sha256-canonical-json-inventory-v1",
+          "files": 9311,
+          "bytes": 881847165,
+          "sha256": "db9b6ca73a8e9ff67f6c3cd4d22e2dd533157284862db2c4b6da870ec69b22ed"
+        }
+      }
+    },
+    "snapshots": {
+      "mode": "private-byte-copy-read-only-files",
+      "source_and_snapshot_reverified": true,
+      "cleanup_completed_before_receipt": true,
+      "bundle": {
+        "entries": 9401,
+        "algorithm": "sha256-canonical-json-inventory-v1",
+        "files": 9311,
+        "bytes": 881847165,
+        "sha256": "db9b6ca73a8e9ff67f6c3cd4d22e2dd533157284862db2c4b6da870ec69b22ed"
+      },
+      "explorer_build": {
+        "entries": 54,
+        "algorithm": "sha256-canonical-json-inventory-v1",
+        "files": 42,
+        "bytes": 3079063,
+        "sha256": "e64fc003f4f1a79c1ffa01923816d46e5ef2b61c03de3e7b4a97be813ac80e91"
+      }
+    },
+    "resources": {
+      "limits": {
+        "run_ms": 1140000,
+        "cleanup_ms": 15000,
+        "git_ms": 10000,
+        "max_path_bytes": 4096,
+        "max_tree_depth": 32,
+        "max_bundle_entries": 20000,
+        "max_bundle_files": 12000,
+        "max_bundle_bytes": 2147483648,
+        "max_build_entries": 2000,
+        "max_build_files": 1000,
+        "max_build_bytes": 134217728,
+        "max_file_bytes": 134217728,
+        "max_executable_bytes": 33554432,
+        "max_transfer_rows": 50000,
+        "max_transfer_wire_bytes": 8589934592,
+        "max_transfer_decoded_bytes": 8589934592,
+        "max_telemetry_bytes": 8388608,
+        "max_retained_string_bytes": 65536,
+        "max_inflight_requests": 16,
+        "max_inflight_decoded_bytes": 268435456,
+        "max_graph_edges": 10000,
+        "max_screenshot_bytes": 20971520,
+        "max_screenshots": 2,
+        "max_receipt_bytes": 33554432,
+        "receipt_publication_budget_ms": 10000,
+        "io_chunk_bytes": 1048576
+      },
+      "observed": {
+        "duration_ms": 25440,
+        "transfer_rows": 385,
+        "transfer_wire_bytes": 72394804,
+        "transfer_decoded_bytes": 84400003,
+        "telemetry_bytes": 131553,
+        "peak_inflight_requests": 6,
+        "peak_inflight_decoded_bytes": 8594725,
+        "screenshots": 2,
+        "screenshot_bytes": 684388
+      }
+    }
+  },
+  "inputs": {
+    "bundle_root": "bundle",
+    "federation_descriptor": {
+      "path": "whole-law/okf-explorer.json",
+      "bytes": 113832,
+      "sha256": "d8273153f024a7827c29e1dfd557c6b419f6c51f24a64000b0c74b84858ea9e0"
+    },
+    "legislation_descriptor": {
+      "path": "okf-explorer.json",
+      "bytes": 8901,
+      "sha256": "09cb2ef343d7fdac4b613865b1ecc6db1f3f24f53e9ce4db63f2fea4fbc2558d"
+    },
+    "explorer_build": {
+      "root": "explorer-build",
+      "manifest": {
+        "path": "explorer-build/okf-explorer-build-manifest.json",
+        "bytes": 7056,
+        "sha256": "fa2d1cb63ebc5754043b7036db544085b1837fbd1003a415b5df25bb11caf145"
+      },
+      "index": {
+        "path": "explorer-build/index.html",
+        "bytes": 17199,
+        "sha256": "110dbd3f5a6b46288940429311520505aaaa92af0fea68827e11f7a1e8d344c1"
+      },
+      "files": 41,
+      "sha256": "8bbe483b01d2f96f7d8c6351ec96408b27868c77246d146bd921101bed068caa",
+      "algorithm": "sha256-canonical-json-materials-v1",
+      "materials": [
+        {
+          "path": "explorer-build/404.html",
+          "bytes": 1561,
+          "sha256": "9a152f8b6668b38d891bb52528585e32b8ae4fff4fb66c629a596e75445bd135"
+        },
+        {
+          "path": "explorer-build/_app/immutable/assets/10.UWV3nQZi.css",
+          "bytes": 3444,
+          "sha256": "084bb4ffd31d72ab7ea51bf05a7df240a37e2a4be4ae147e01d6428206c03b41"
+        },
+        {
+          "path": "explorer-build/_app/immutable/assets/11.ZOyRSG1D.css",
+          "bytes": 2675,
+          "sha256": "da848279e730cd80994574890b76c280ef73ec611fc9944d5a204a95079f9bbe"
+        },
+        {
+          "path": "explorer-build/_app/immutable/assets/6.-L698N5w.css",
+          "bytes": 10041,
+          "sha256": "e893d044ccd23ff83a24fd38c03fe7d15603e58017c158ceb78133d2fa99ba18"
+        },
+        {
+          "path": "explorer-build/_app/immutable/assets/7.DF1R0fMb.css",
+          "bytes": 8001,
+          "sha256": "c15c76df307372e73202db9699f50db2c8dceaa93157ad7a9ca3d13a60d5bff4"
+        },
+        {
+          "path": "explorer-build/_app/immutable/assets/8.CsDtSv47.css",
+          "bytes": 3818,
+          "sha256": "954bca258659247f5f2800fb8658e5ad89fa95c57a156edad4a31764caa0dc2b"
+        },
+        {
+          "path": "explorer-build/_app/immutable/assets/9.DqwH0wdQ.css",
+          "bytes": 104863,
+          "sha256": "57c02b6ba68947fadc2ba553d9e8bfee583893bd2bc43c033828b8590d3a514a"
+        },
+        {
+          "path": "explorer-build/_app/immutable/assets/pdf.worker.min.Dswkl-cV.mjs",
+          "bytes": 1265413,
+          "sha256": "8ab0e5e30031b4a06ecfddd5ae9562f0227f830ee7ec9ed1a968b134243d2386"
+        },
+        {
+          "path": "explorer-build/_app/immutable/chunks/AlwHAjQD.js",
+          "bytes": 51270,
+          "sha256": "d52d37930f7548a2041e9a83e302d87cd497f98af4c25f838f152895059f71f1"
+        },
+        {
+          "path": "explorer-build/_app/immutable/chunks/Bjy-W4x2.js",
+          "bytes": 1365,
+          "sha256": "f07424758318dd6b5f32b0fe8de9d2ffb8d97a17c841758626d18ba0faa0456a"
+        },
+        {
+          "path": "explorer-build/_app/immutable/chunks/CLNn816V.js",
+          "bytes": 152,
+          "sha256": "53fcc98df16f4ca32113c9dd0d23580b6c19c0a91c066a0e0b5957912cbe46b7"
+        },
+        {
+          "path": "explorer-build/_app/immutable/chunks/CNDyI767.js",
+          "bytes": 15833,
+          "sha256": "7b3d86b4693254c9df0d32c166a5e9034474e01e3b8400bb6eef884c5e755e1b"
+        },
+        {
+          "path": "explorer-build/_app/immutable/chunks/DxhId6dF.js",
+          "bytes": 430941,
+          "sha256": "0d5d937fa3b6e9dcd26b8201ba7c3e3432d2d3bddc2ebe1256199308c7e58a81"
+        },
+        {
+          "path": "explorer-build/_app/immutable/chunks/dvbtP5nc.js",
+          "bytes": 63885,
+          "sha256": "cd4b7d71f8f2887c60a5b67adc2636fd21fdd1ab219eca68c8cf26f539bc54cd"
+        },
+        {
+          "path": "explorer-build/_app/immutable/chunks/prOePLLl.js",
+          "bytes": 29270,
+          "sha256": "de4c2516a80b206c69ff6531462d6ea014e180e09825ff9c87ae3e62870f97d2"
+        },
+        {
+          "path": "explorer-build/_app/immutable/chunks/uBIymjUX.js",
+          "bytes": 1233,
+          "sha256": "e1a22f3f73566f21ff932e058d32243e4a118f3491b91e96893aa5ab7eb49a00"
+        },
+        {
+          "path": "explorer-build/_app/immutable/chunks/xihTtKlq.js",
+          "bytes": 65,
+          "sha256": "0214edcff77242079f540507a53803aa22d857b6ad673e60e39748b6c7aa08c1"
+        },
+        {
+          "path": "explorer-build/_app/immutable/entry/app.DknEP8E3.js",
+          "bytes": 5328,
+          "sha256": "f6840391270667d7c38d82188cbac51438903b94b40d80c5bd141b933323e865"
+        },
+        {
+          "path": "explorer-build/_app/immutable/entry/start.BGQBuB7x.js",
+          "bytes": 82,
+          "sha256": "6400a4d1827de86cb75d0e350e2845bdbd052c04318105f7853635dc9dca7729"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/0.DSQV_b3a.js",
+          "bytes": 146,
+          "sha256": "66401aa1d977a4db50b3205b61b56f9bdf5ae5f4ce8c23ae016d492751efb34f"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/1.B81wntNV.js",
+          "bytes": 578,
+          "sha256": "98d42cbef3ac9a585d2bee1b000906493a5a967346ae49c4b30265ae7b0303ab"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/10.UWjLRz7v.js",
+          "bytes": 19676,
+          "sha256": "77ddabdbf400275002c90305018c0d71b716cc2f79c87a0c4d53b4c2b36819ba"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/11.D92opVEN.js",
+          "bytes": 31643,
+          "sha256": "96c3af11dcc6d472cd2fe75bbd3e5a9e0cd183d6e3dcdffb74b80c0a00c9ba90"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/2.Dyrl2qj0.js",
+          "bytes": 188,
+          "sha256": "a9dc2817fdce640db463bc25dd163dfa3d08116aed8b50af171c58f30e733c4c"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/3.Dyrl2qj0.js",
+          "bytes": 188,
+          "sha256": "a9dc2817fdce640db463bc25dd163dfa3d08116aed8b50af171c58f30e733c4c"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/4.Dyrl2qj0.js",
+          "bytes": 188,
+          "sha256": "a9dc2817fdce640db463bc25dd163dfa3d08116aed8b50af171c58f30e733c4c"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/5.Dyrl2qj0.js",
+          "bytes": 188,
+          "sha256": "a9dc2817fdce640db463bc25dd163dfa3d08116aed8b50af171c58f30e733c4c"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/6.DPVirPiH.js",
+          "bytes": 25862,
+          "sha256": "86f1edc5bb46692384b8c1752f1c115d6e3264f3127dfd793f7b6113fccc3548"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/7.7MWSoUSP.js",
+          "bytes": 75646,
+          "sha256": "2d8d168d613c141a9b45624111800069ec699c89cd9cdf979692ed285d94e975"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/8.Ckz6pulQ.js",
+          "bytes": 44776,
+          "sha256": "f070ce8bcc942372b648ce241407839f7a0fb83dd734b3171ed3f0b1b3d2ed97"
+        },
+        {
+          "path": "explorer-build/_app/immutable/nodes/9.BlcE7kGJ.js",
+          "bytes": 763160,
+          "sha256": "24fc28dfcbdf372c86a8b210bf5c5d1708e9cf60006f7de920bbf751579bb7e1"
+        },
+        {
+          "path": "explorer-build/_app/immutable/workers/largeSearch.worker-DXfO4p3x.js",
+          "bytes": 72408,
+          "sha256": "6ed6259ea76a77d570abe429804326b16b7de85585d9d45a2b8671c6b9698b2c"
+        },
+        {
+          "path": "explorer-build/_app/version.json",
+          "bytes": 19,
+          "sha256": "47deec71c490e4aaed041316ff7c3377f40b937f6d7cf9e24010c3d2c76dbab3"
+        },
+        {
+          "path": "explorer-build/evidence/index.html",
+          "bytes": 2311,
+          "sha256": "b55d12d185999f2925acc31cba3cfb281c31a7afaf49eab7ddabefaff5042e4f"
+        },
+        {
+          "path": "explorer-build/evidence/passages/index.html",
+          "bytes": 2439,
+          "sha256": "696adc589b99bf90d4677a10aff16d31b3bd41ca8ca55e74621eeea0161ecfef"
+        },
+        {
+          "path": "explorer-build/explore/index.html",
+          "bytes": 2238,
+          "sha256": "372f789c2237c8361c4b51a87861cf590eb75917a8e5cde731ac73e62b111a8d"
+        },
+        {
+          "path": "explorer-build/favicon.svg",
+          "bytes": 300,
+          "sha256": "b13175f4b33ebf5759702efe154d463f3e1d30d4c1cb07334c394b677ae80cb9"
+        },
+        {
+          "path": "explorer-build/index.html",
+          "bytes": 17199,
+          "sha256": "110dbd3f5a6b46288940429311520505aaaa92af0fea68827e11f7a1e8d344c1"
+        },
+        {
+          "path": "explorer-build/okf-registry.json",
+          "bytes": 8937,
+          "sha256": "27018c67a14af9a943a74ba65a174010fc6f0e2133c2e6871eb2b10f19602909"
+        },
+        {
+          "path": "explorer-build/reading-help/corpus/index.html",
+          "bytes": 2364,
+          "sha256": "a3c16b9cc251a31442d9de8bbaaaf7348c62d75a48b8e26a903e1e0415e732a2"
+        },
+        {
+          "path": "explorer-build/reading-help/index.html",
+          "bytes": 2313,
+          "sha256": "363af330a4992f2386d7837b77cd292034edb8cbf9d4d749d0784aaf217a755d"
+        }
+      ]
+    }
+  },
+  "outputs": {
+    "receipt": "explorer-runtime-acceptance.json",
+    "screenshots": [
+      {
+        "path": "output/playwright/legislation-runtime-graph-chrome.png",
+        "bytes": 353609,
+        "sha256": "cb1e32bdad058a3fc6a1bd1e4676e0e69e8e8e9fdb7d4cf96fe81964ad2d53ce"
+      },
+      {
+        "path": "output/playwright/legislation-runtime-chrome.png",
+        "bytes": 330779,
+        "sha256": "a92c62bc8a31d1bc426e5ca7a0ededf9ae7845f9960cbdcbda5b41dafc672092"
+      }
+    ]
+  },
+  "gates": {
+    "startup_transfer": {
+      "status": "passed",
+      "limit_bytes": 1048576,
+      "observed_max_bytes": 568160,
+      "browser_values": {
+        "chrome": 568160,
+        "firefox": 523388,
+        "webkit": 522972
+      }
+    },
+    "cold_search": {
+      "status": "passed",
+      "limit_ms": 3000,
+      "observed_max_ms": 1327.724,
+      "browser_values": {
+        "chrome": 799.845,
+        "firefox": 1327.724,
+        "webkit": 811.52
+      }
+    },
+    "warm_search": {
+      "status": "passed",
+      "limit_ms": 1000,
+      "observed_max_ms": 900.742,
+      "browser_values": {
+        "chrome": 836.553,
+        "firefox": 900.742,
+        "webkit": 859.72
+      }
+    },
+    "browser_memory": {
+      "status": "passed",
+      "limit_bytes": 268435456,
+      "nominated_metric": "Chrome DevTools Protocol Performance.JSHeapUsedSize",
+      "observed_max_bytes": 74231588,
+      "firefox": "unavailable",
+      "webkit": "unavailable",
+      "note": "Firefox and WebKit are explicitly unavailable for this Chromium-only metric and are not represented as memory passes."
+    },
+    "federation_and_child": {
+      "status": "passed"
+    },
+    "graph_relationship_rendering": {
+      "status": "passed"
+    },
+    "model_assisted_styling_and_filtering": {
+      "status": "passed"
+    },
+    "live_reconciliation_states": {
+      "status": "passed"
+    },
+    "facet_count_colour_and_space": {
+      "status": "passed"
+    },
+    "cross_browser": {
+      "status": "passed",
+      "required": [
+        "chrome",
+        "firefox",
+        "webkit"
+      ],
+      "completed": [
+        "chrome",
+        "firefox",
+        "webkit"
+      ]
+    },
+    "keyboard": {
+      "status": "passed"
+    },
+    "accessibility": {
+      "status": "passed",
+      "standard": "WCAG 2.2 AA"
+    }
+  },
+  "browsers": [
+    {
+      "browser": "chrome",
+      "version": "154.0.8037.57",
+      "status": "passed",
+      "federation": {
+        "overview_elapsed_ms": 117.363,
+        "child_elapsed_ms": 167.018,
+        "child_load_completed": true,
+        "source_classes_rendered": 36,
+        "child_hash_reset_to_overview": true,
+        "overview_transfer": {
+          "wire_bytes": 361891,
+          "decoded_bytes": 1286475,
+          "requests": 29,
+          "explorer_wire_bytes": 347386,
+          "bundle_wire_bytes": 14505,
+          "resources": [
+            {
+              "path": "/",
+              "source": "explorer-build",
+              "wire_bytes": 5929,
+              "decoded_bytes": 17199,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/entry/start.BGQBuB7x.js",
+              "source": "explorer-build",
+              "wire_bytes": 92,
+              "decoded_bytes": 82,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/prOePLLl.js",
+              "source": "explorer-build",
+              "wire_bytes": 11158,
+              "decoded_bytes": 29270,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/AlwHAjQD.js",
+              "source": "explorer-build",
+              "wire_bytes": 19390,
+              "decoded_bytes": 51270,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/entry/app.DknEP8E3.js",
+              "source": "explorer-build",
+              "wire_bytes": 1734,
+              "decoded_bytes": 5328,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/uBIymjUX.js",
+              "source": "explorer-build",
+              "wire_bytes": 688,
+              "decoded_bytes": 1233,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/xihTtKlq.js",
+              "source": "explorer-build",
+              "wire_bytes": 79,
+              "decoded_bytes": 65,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/assets/6.-L698N5w.css",
+              "source": "explorer-build",
+              "wire_bytes": 2810,
+              "decoded_bytes": 10041,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/explore/",
+              "source": "explorer-build",
+              "wire_bytes": 874,
+              "decoded_bytes": 2238,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/0.DSQV_b3a.js",
+              "source": "explorer-build",
+              "wire_bytes": 136,
+              "decoded_bytes": 146,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/CLNn816V.js",
+              "source": "explorer-build",
+              "wire_bytes": 147,
+              "decoded_bytes": 152,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/6.DPVirPiH.js",
+              "source": "explorer-build",
+              "wire_bytes": 8746,
+              "decoded_bytes": 25862,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/entry/start.BGQBuB7x.js",
+              "source": "explorer-build",
+              "wire_bytes": 92,
+              "decoded_bytes": 82,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/prOePLLl.js",
+              "source": "explorer-build",
+              "wire_bytes": 11158,
+              "decoded_bytes": 29270,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/entry/app.DknEP8E3.js",
+              "source": "explorer-build",
+              "wire_bytes": 1734,
+              "decoded_bytes": 5328,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/AlwHAjQD.js",
+              "source": "explorer-build",
+              "wire_bytes": 19390,
+              "decoded_bytes": 51270,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/uBIymjUX.js",
+              "source": "explorer-build",
+              "wire_bytes": 688,
+              "decoded_bytes": 1233,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/xihTtKlq.js",
+              "source": "explorer-build",
+              "wire_bytes": 79,
+              "decoded_bytes": 65,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/CLNn816V.js",
+              "source": "explorer-build",
+              "wire_bytes": 147,
+              "decoded_bytes": 152,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/0.DSQV_b3a.js",
+              "source": "explorer-build",
+              "wire_bytes": 136,
+              "decoded_bytes": 146,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/assets/9.DqwH0wdQ.css",
+              "source": "explorer-build",
+              "wire_bytes": 19567,
+              "decoded_bytes": 104863,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/4.Dyrl2qj0.js",
+              "source": "explorer-build",
+              "wire_bytes": 167,
+              "decoded_bytes": 188,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/9.BlcE7kGJ.js",
+              "source": "explorer-build",
+              "wire_bytes": 219488,
+              "decoded_bytes": 763160,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/dvbtP5nc.js",
+              "source": "explorer-build",
+              "wire_bytes": 20549,
+              "decoded_bytes": 63885,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/1.B81wntNV.js",
+              "source": "explorer-build",
+              "wire_bytes": 326,
+              "decoded_bytes": 578,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/favicon.svg",
+              "source": "explorer-build",
+              "wire_bytes": 208,
+              "decoded_bytes": 300,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-registry.json",
+              "source": "explorer-build",
+              "wire_bytes": 1666,
+              "decoded_bytes": 8937,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/whole-law/okf-explorer.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 14505,
+              "decoded_bytes": 113832,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/favicon.svg",
+              "source": "explorer-build",
+              "wire_bytes": 208,
+              "decoded_bytes": 300,
+              "content_encoding": "gzip",
+              "range": null
+            }
+          ]
+        },
+        "child_transfer": {
+          "wire_bytes": 221190,
+          "decoded_bytes": 1082770,
+          "requests": 11,
+          "explorer_wire_bytes": 23558,
+          "bundle_wire_bytes": 197632,
+          "resources": [
+            {
+              "path": "/okf-uk-legislation/okf-explorer.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 3091,
+              "decoded_bytes": 8901,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/favicon.svg",
+              "source": "explorer-build",
+              "wire_bytes": 208,
+              "decoded_bytes": 300,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/manifest.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 2275,
+              "decoded_bytes": 16322,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/overview.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 5261,
+              "decoded_bytes": 36975,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/analysis/overview.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 5809,
+              "decoded_bytes": 34116,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/presentation.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 868,
+              "decoded_bytes": 2611,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/effects/reconciliation.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 960,
+              "decoded_bytes": 6660,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/workers/largeSearch.worker-DXfO4p3x.js",
+              "source": "explorer-build",
+              "wire_bytes": 23350,
+              "decoded_bytes": 72408,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/facets.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 5122,
+              "decoded_bytes": 43286,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/search/manifest.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 14826,
+              "decoded_bytes": 122728,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/search/shards.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 159420,
+              "decoded_bytes": 738463,
+              "content_encoding": "gzip",
+              "range": null
+            }
+          ]
+        }
+      },
+      "startup_transfer": {
+        "wire_bytes": 568160,
+        "decoded_bytes": 2254813,
+        "requests": 37,
+        "explorer_wire_bytes": 370528,
+        "bundle_wire_bytes": 197632,
+        "resources": [
+          {
+            "path": "/",
+            "source": "explorer-build",
+            "wire_bytes": 5929,
+            "decoded_bytes": 17199,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/entry/start.BGQBuB7x.js",
+            "source": "explorer-build",
+            "wire_bytes": 92,
+            "decoded_bytes": 82,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/AlwHAjQD.js",
+            "source": "explorer-build",
+            "wire_bytes": 19390,
+            "decoded_bytes": 51270,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/prOePLLl.js",
+            "source": "explorer-build",
+            "wire_bytes": 11158,
+            "decoded_bytes": 29270,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/entry/app.DknEP8E3.js",
+            "source": "explorer-build",
+            "wire_bytes": 1734,
+            "decoded_bytes": 5328,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/uBIymjUX.js",
+            "source": "explorer-build",
+            "wire_bytes": 688,
+            "decoded_bytes": 1233,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/xihTtKlq.js",
+            "source": "explorer-build",
+            "wire_bytes": 79,
+            "decoded_bytes": 65,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/assets/6.-L698N5w.css",
+            "source": "explorer-build",
+            "wire_bytes": 2810,
+            "decoded_bytes": 10041,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/explore/",
+            "source": "explorer-build",
+            "wire_bytes": 874,
+            "decoded_bytes": 2238,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/0.DSQV_b3a.js",
+            "source": "explorer-build",
+            "wire_bytes": 136,
+            "decoded_bytes": 146,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/CLNn816V.js",
+            "source": "explorer-build",
+            "wire_bytes": 147,
+            "decoded_bytes": 152,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/6.DPVirPiH.js",
+            "source": "explorer-build",
+            "wire_bytes": 8746,
+            "decoded_bytes": 25862,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/prOePLLl.js",
+            "source": "explorer-build",
+            "wire_bytes": 11158,
+            "decoded_bytes": 29270,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/entry/start.BGQBuB7x.js",
+            "source": "explorer-build",
+            "wire_bytes": 92,
+            "decoded_bytes": 82,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/AlwHAjQD.js",
+            "source": "explorer-build",
+            "wire_bytes": 19390,
+            "decoded_bytes": 51270,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/uBIymjUX.js",
+            "source": "explorer-build",
+            "wire_bytes": 688,
+            "decoded_bytes": 1233,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/entry/app.DknEP8E3.js",
+            "source": "explorer-build",
+            "wire_bytes": 1734,
+            "decoded_bytes": 5328,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/xihTtKlq.js",
+            "source": "explorer-build",
+            "wire_bytes": 79,
+            "decoded_bytes": 65,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/assets/9.DqwH0wdQ.css",
+            "source": "explorer-build",
+            "wire_bytes": 19567,
+            "decoded_bytes": 104863,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/0.DSQV_b3a.js",
+            "source": "explorer-build",
+            "wire_bytes": 136,
+            "decoded_bytes": 146,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/CLNn816V.js",
+            "source": "explorer-build",
+            "wire_bytes": 147,
+            "decoded_bytes": 152,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/4.Dyrl2qj0.js",
+            "source": "explorer-build",
+            "wire_bytes": 167,
+            "decoded_bytes": 188,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/9.BlcE7kGJ.js",
+            "source": "explorer-build",
+            "wire_bytes": 219488,
+            "decoded_bytes": 763160,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/dvbtP5nc.js",
+            "source": "explorer-build",
+            "wire_bytes": 20549,
+            "decoded_bytes": 63885,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/favicon.svg",
+            "source": "explorer-build",
+            "wire_bytes": 208,
+            "decoded_bytes": 300,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/1.B81wntNV.js",
+            "source": "explorer-build",
+            "wire_bytes": 326,
+            "decoded_bytes": 578,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-registry.json",
+            "source": "explorer-build",
+            "wire_bytes": 1666,
+            "decoded_bytes": 8937,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/okf-explorer.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 3091,
+            "decoded_bytes": 8901,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/manifest.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 2275,
+            "decoded_bytes": 16322,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/overview.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 5261,
+            "decoded_bytes": 36975,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/analysis/overview.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 5809,
+            "decoded_bytes": 34116,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/presentation.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 868,
+            "decoded_bytes": 2611,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/effects/reconciliation.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 960,
+            "decoded_bytes": 6660,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/facets.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 5122,
+            "decoded_bytes": 43286,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/workers/largeSearch.worker-DXfO4p3x.js",
+            "source": "explorer-build",
+            "wire_bytes": 23350,
+            "decoded_bytes": 72408,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/search/manifest.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 14826,
+            "decoded_bytes": 122728,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/search/shards.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 159420,
+            "decoded_bytes": 738463,
+            "content_encoding": "gzip",
+            "range": null
+          }
+        ]
+      },
+      "search": {
+        "cold": {
+          "query": "Consumer Credit Act 1974",
+          "elapsed_ms": 799.845
+        },
+        "warm": {
+          "query": "The Air Navigation (Amendment) Order 2026",
+          "elapsed_ms": 836.553
+        }
+      },
+      "facets": {
+        "inventory": "11 of 14 facets shown",
+        "shown": 11,
+        "available": 14,
+        "rendered_sections": 11,
+        "coloured_segments": 140,
+        "distinct_segment_colours": [
+          "rgb(0, 48, 120)",
+          "rgb(255, 221, 0)",
+          "rgb(61, 19, 79)",
+          "rgb(177, 225, 245)",
+          "rgb(6, 75, 56)",
+          "rgb(245, 198, 223)",
+          "rgb(11, 12, 12)",
+          "rgb(213, 232, 176)"
+        ],
+        "layout": {
+          "workspace_width": 1440,
+          "left_panel_width": 320,
+          "stage_width": 1064,
+          "right_panel_width": 44,
+          "stage_share": 0.7389,
+          "left_horizontal_overflow_pixels": 0,
+          "facet_overflow_count": 0
+        }
+      },
+      "graph": {
+        "summary": "20 nodes · 21 relationships",
+        "edge_count": 21,
+        "authorities": [
+          "derived",
+          "official",
+          "unclassified"
+        ],
+        "styles": [
+          {
+            "authority": "derived",
+            "stroke": "rgb(87, 124, 168)",
+            "stroke_dasharray": "7px, 4px",
+            "stroke_width": "3px",
+            "path_length": 173.81240844726562
+          },
+          {
+            "authority": "derived",
+            "stroke": "rgb(87, 124, 168)",
+            "stroke_dasharray": "7px, 4px",
+            "stroke_width": "3px",
+            "path_length": 197.05589294433594
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 198.04473876953125
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 165.43702697753906
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 164.1302947998047
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 165.43702697753906
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 229.97695922851562
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 193.2983856201172
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 157.18479919433594
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 124.90361022949219
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 98.8393325805664
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 82.49573516845703
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 79.38677978515625
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 90.34699249267578
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 112.687255859375
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 186.83847045898438
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 190.2994384765625
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 163.18927001953125
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 227.33103942871094
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 213.78768920898438
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 78.87225341796875
+          }
+        ],
+        "keyboard_edge_activation": "passed"
+      },
+      "model_relationships": {
+        "status": "passed",
+        "authorities": [
+          "derived",
+          "model-assisted",
+          "official"
+        ],
+        "styles": {
+          "derived": {
+            "authority": "derived",
+            "stroke": "rgb(87, 124, 168)",
+            "stroke_dasharray": "7px, 4px"
+          },
+          "model-assisted": {
+            "authority": "model-assisted",
+            "stroke": "rgb(138, 100, 168)",
+            "stroke_dasharray": "3px, 4px"
+          },
+          "official": {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none"
+          }
+        },
+        "filter": {
+          "authority": "model-assisted",
+          "hidden_model_edge_count": 0,
+          "official_edges_preserved": 1,
+          "derived_edges_preserved": 1,
+          "url_round_trip": "passed",
+          "restored": true
+        }
+      },
+      "reconciliation": {
+        "status": "passed",
+        "states": {
+          "agreement": 16,
+          "live-addition": 0,
+          "superseded": 0,
+          "inaccessible": 6
+        },
+        "explicit_zero_states": [
+          "live-addition",
+          "superseded"
+        ]
+      },
+      "keyboard": {
+        "view_activation": "passed",
+        "search_input": "passed",
+        "graph_edge_activation": "passed"
+      },
+      "accessibility": {
+        "serious_or_critical": [],
+        "all_violation_count": 0,
+        "passes": 31,
+        "incomplete": 2
+      },
+      "memory": {
+        "status": "measured",
+        "metric": "Chrome DevTools Protocol Performance.JSHeapUsedSize",
+        "scope": "Explorer renderer JavaScript heap during normal startup, search and graph exploration",
+        "samples": [
+          {
+            "label": "startup",
+            "status": "measured",
+            "used_js_heap_bytes": 16682764,
+            "total_js_heap_bytes": 26869760
+          },
+          {
+            "label": "cold-search",
+            "status": "measured",
+            "used_js_heap_bytes": 18833056,
+            "total_js_heap_bytes": 33423360
+          },
+          {
+            "label": "graph",
+            "status": "measured",
+            "used_js_heap_bytes": 39319712,
+            "total_js_heap_bytes": 135921664
+          },
+          {
+            "label": "warm-search",
+            "status": "measured",
+            "used_js_heap_bytes": 53199108,
+            "total_js_heap_bytes": 136183808
+          },
+          {
+            "label": "model-relationship-graph",
+            "status": "measured",
+            "used_js_heap_bytes": 74231588,
+            "total_js_heap_bytes": 138805248
+          }
+        ],
+        "maximum_used_js_heap_bytes": 74231588
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "status": "passed",
+      "federation": {
+        "overview_elapsed_ms": 325.405,
+        "child_elapsed_ms": 213.321,
+        "child_load_completed": true,
+        "source_classes_rendered": 36,
+        "child_hash_reset_to_overview": true,
+        "overview_transfer": {
+          "wire_bytes": 316911,
+          "decoded_bytes": 1163026,
+          "requests": 19,
+          "explorer_wire_bytes": 302406,
+          "bundle_wire_bytes": 14505,
+          "resources": [
+            {
+              "path": "/",
+              "source": "explorer-build",
+              "wire_bytes": 5929,
+              "decoded_bytes": 17199,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/explore/",
+              "source": "explorer-build",
+              "wire_bytes": 874,
+              "decoded_bytes": 2238,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/entry/start.BGQBuB7x.js",
+              "source": "explorer-build",
+              "wire_bytes": 92,
+              "decoded_bytes": 82,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/prOePLLl.js",
+              "source": "explorer-build",
+              "wire_bytes": 11158,
+              "decoded_bytes": 29270,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/AlwHAjQD.js",
+              "source": "explorer-build",
+              "wire_bytes": 19390,
+              "decoded_bytes": 51270,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/entry/app.DknEP8E3.js",
+              "source": "explorer-build",
+              "wire_bytes": 1734,
+              "decoded_bytes": 5328,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/uBIymjUX.js",
+              "source": "explorer-build",
+              "wire_bytes": 688,
+              "decoded_bytes": 1233,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/0.DSQV_b3a.js",
+              "source": "explorer-build",
+              "wire_bytes": 136,
+              "decoded_bytes": 146,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/xihTtKlq.js",
+              "source": "explorer-build",
+              "wire_bytes": 79,
+              "decoded_bytes": 65,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/CLNn816V.js",
+              "source": "explorer-build",
+              "wire_bytes": 147,
+              "decoded_bytes": 152,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/4.Dyrl2qj0.js",
+              "source": "explorer-build",
+              "wire_bytes": 167,
+              "decoded_bytes": 188,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/9.BlcE7kGJ.js",
+              "source": "explorer-build",
+              "wire_bytes": 219488,
+              "decoded_bytes": 763160,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/dvbtP5nc.js",
+              "source": "explorer-build",
+              "wire_bytes": 20549,
+              "decoded_bytes": 63885,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/assets/9.DqwH0wdQ.css",
+              "source": "explorer-build",
+              "wire_bytes": 19567,
+              "decoded_bytes": 104863,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/1.B81wntNV.js",
+              "source": "explorer-build",
+              "wire_bytes": 326,
+              "decoded_bytes": 578,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/favicon.svg",
+              "source": "explorer-build",
+              "wire_bytes": 208,
+              "decoded_bytes": 300,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-registry.json",
+              "source": "explorer-build",
+              "wire_bytes": 1666,
+              "decoded_bytes": 8937,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/whole-law/okf-explorer.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 14505,
+              "decoded_bytes": 113832,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/favicon.svg",
+              "source": "explorer-build",
+              "wire_bytes": 208,
+              "decoded_bytes": 300,
+              "content_encoding": "gzip",
+              "range": null
+            }
+          ]
+        },
+        "child_transfer": {
+          "wire_bytes": 220982,
+          "decoded_bytes": 1082470,
+          "requests": 10,
+          "explorer_wire_bytes": 23350,
+          "bundle_wire_bytes": 197632,
+          "resources": [
+            {
+              "path": "/okf-uk-legislation/okf-explorer.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 3091,
+              "decoded_bytes": 8901,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/manifest.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 2275,
+              "decoded_bytes": 16322,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/overview.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 5261,
+              "decoded_bytes": 36975,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/analysis/overview.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 5809,
+              "decoded_bytes": 34116,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/presentation.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 868,
+              "decoded_bytes": 2611,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/effects/reconciliation.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 960,
+              "decoded_bytes": 6660,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/facets.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 5122,
+              "decoded_bytes": 43286,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/workers/largeSearch.worker-DXfO4p3x.js",
+              "source": "explorer-build",
+              "wire_bytes": 23350,
+              "decoded_bytes": 72408,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/search/manifest.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 14826,
+              "decoded_bytes": 122728,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/search/shards.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 159420,
+              "decoded_bytes": 738463,
+              "content_encoding": "gzip",
+              "range": null
+            }
+          ]
+        }
+      },
+      "startup_transfer": {
+        "wire_bytes": 523388,
+        "decoded_bytes": 2131664,
+        "requests": 28,
+        "explorer_wire_bytes": 325756,
+        "bundle_wire_bytes": 197632,
+        "resources": [
+          {
+            "path": "/",
+            "source": "explorer-build",
+            "wire_bytes": 5929,
+            "decoded_bytes": 17199,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/explore/",
+            "source": "explorer-build",
+            "wire_bytes": 874,
+            "decoded_bytes": 2238,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/entry/start.BGQBuB7x.js",
+            "source": "explorer-build",
+            "wire_bytes": 92,
+            "decoded_bytes": 82,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/prOePLLl.js",
+            "source": "explorer-build",
+            "wire_bytes": 11158,
+            "decoded_bytes": 29270,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/AlwHAjQD.js",
+            "source": "explorer-build",
+            "wire_bytes": 19390,
+            "decoded_bytes": 51270,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/entry/app.DknEP8E3.js",
+            "source": "explorer-build",
+            "wire_bytes": 1734,
+            "decoded_bytes": 5328,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/uBIymjUX.js",
+            "source": "explorer-build",
+            "wire_bytes": 688,
+            "decoded_bytes": 1233,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/CLNn816V.js",
+            "source": "explorer-build",
+            "wire_bytes": 147,
+            "decoded_bytes": 152,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/xihTtKlq.js",
+            "source": "explorer-build",
+            "wire_bytes": 79,
+            "decoded_bytes": 65,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/0.DSQV_b3a.js",
+            "source": "explorer-build",
+            "wire_bytes": 136,
+            "decoded_bytes": 146,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/4.Dyrl2qj0.js",
+            "source": "explorer-build",
+            "wire_bytes": 167,
+            "decoded_bytes": 188,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/9.BlcE7kGJ.js",
+            "source": "explorer-build",
+            "wire_bytes": 219488,
+            "decoded_bytes": 763160,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/dvbtP5nc.js",
+            "source": "explorer-build",
+            "wire_bytes": 20549,
+            "decoded_bytes": 63885,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/assets/9.DqwH0wdQ.css",
+            "source": "explorer-build",
+            "wire_bytes": 19567,
+            "decoded_bytes": 104863,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/1.B81wntNV.js",
+            "source": "explorer-build",
+            "wire_bytes": 326,
+            "decoded_bytes": 578,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/favicon.svg",
+            "source": "explorer-build",
+            "wire_bytes": 208,
+            "decoded_bytes": 300,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-registry.json",
+            "source": "explorer-build",
+            "wire_bytes": 1666,
+            "decoded_bytes": 8937,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/okf-explorer.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 3091,
+            "decoded_bytes": 8901,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/manifest.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 2275,
+            "decoded_bytes": 16322,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/overview.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 5261,
+            "decoded_bytes": 36975,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/analysis/overview.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 5809,
+            "decoded_bytes": 34116,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/presentation.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 868,
+            "decoded_bytes": 2611,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/effects/reconciliation.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 960,
+            "decoded_bytes": 6660,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/facets.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 5122,
+            "decoded_bytes": 43286,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/workers/largeSearch.worker-DXfO4p3x.js",
+            "source": "explorer-build",
+            "wire_bytes": 23350,
+            "decoded_bytes": 72408,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/search/manifest.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 14826,
+            "decoded_bytes": 122728,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/search/shards.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 159420,
+            "decoded_bytes": 738463,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/favicon.svg",
+            "source": "explorer-build",
+            "wire_bytes": 208,
+            "decoded_bytes": 300,
+            "content_encoding": "gzip",
+            "range": null
+          }
+        ]
+      },
+      "search": {
+        "cold": {
+          "query": "Consumer Credit Act 1974",
+          "elapsed_ms": 1327.724
+        },
+        "warm": {
+          "query": "The Air Navigation (Amendment) Order 2026",
+          "elapsed_ms": 900.742
+        }
+      },
+      "facets": {
+        "inventory": "11 of 14 facets shown",
+        "shown": 11,
+        "available": 14,
+        "rendered_sections": 11,
+        "coloured_segments": 140,
+        "distinct_segment_colours": [
+          "rgb(0, 48, 120)",
+          "rgb(255, 221, 0)",
+          "rgb(61, 19, 79)",
+          "rgb(177, 225, 245)",
+          "rgb(6, 75, 56)",
+          "rgb(245, 198, 223)",
+          "rgb(11, 12, 12)",
+          "rgb(213, 232, 176)"
+        ],
+        "layout": {
+          "workspace_width": 1440,
+          "left_panel_width": 320,
+          "stage_width": 1064,
+          "right_panel_width": 44,
+          "stage_share": 0.7389,
+          "left_horizontal_overflow_pixels": 0,
+          "facet_overflow_count": 0
+        }
+      },
+      "graph": {
+        "summary": "20 nodes · 21 relationships",
+        "edge_count": 21,
+        "authorities": [
+          "derived",
+          "official",
+          "unclassified"
+        ],
+        "styles": [
+          {
+            "authority": "derived",
+            "stroke": "rgb(87, 124, 168)",
+            "stroke_dasharray": "7px, 4px",
+            "stroke_width": "3px",
+            "path_length": 173.81240844726562
+          },
+          {
+            "authority": "derived",
+            "stroke": "rgb(87, 124, 168)",
+            "stroke_dasharray": "7px, 4px",
+            "stroke_width": "3px",
+            "path_length": 197.05589294433594
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 198.04473876953125
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 165.4369354248047
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 164.1302947998047
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 165.43702697753906
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 229.97695922851562
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 193.2983856201172
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 157.18479919433594
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 124.90361022949219
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 98.8393325805664
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 82.49573516845703
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 79.38677978515625
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 90.34699249267578
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 112.687255859375
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 186.83847045898438
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 190.2994384765625
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 163.18927001953125
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 227.33103942871094
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 213.78768920898438
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 78.87225341796875
+          }
+        ],
+        "keyboard_edge_activation": "passed"
+      },
+      "model_relationships": {
+        "status": "passed",
+        "authorities": [
+          "derived",
+          "model-assisted",
+          "official"
+        ],
+        "styles": {
+          "derived": {
+            "authority": "derived",
+            "stroke": "rgb(87, 124, 168)",
+            "stroke_dasharray": "7px, 4px"
+          },
+          "model-assisted": {
+            "authority": "model-assisted",
+            "stroke": "rgb(138, 100, 168)",
+            "stroke_dasharray": "3px, 4px"
+          },
+          "official": {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none"
+          }
+        },
+        "filter": {
+          "authority": "model-assisted",
+          "hidden_model_edge_count": 0,
+          "official_edges_preserved": 1,
+          "derived_edges_preserved": 1,
+          "url_round_trip": "passed",
+          "restored": true
+        }
+      },
+      "reconciliation": {
+        "status": "passed",
+        "states": {
+          "agreement": 16,
+          "live-addition": 0,
+          "superseded": 0,
+          "inaccessible": 6
+        },
+        "explicit_zero_states": [
+          "live-addition",
+          "superseded"
+        ]
+      },
+      "keyboard": {
+        "view_activation": "passed",
+        "search_input": "passed",
+        "graph_edge_activation": "passed"
+      },
+      "accessibility": {
+        "serious_or_critical": [],
+        "all_violation_count": 0,
+        "passes": 31,
+        "incomplete": 2
+      },
+      "memory": {
+        "status": "unavailable",
+        "metric": "Chrome DevTools Protocol Performance.JSHeapUsedSize",
+        "reason": "This browser engine does not expose the nominated CDP memory metric",
+        "samples": [
+          {
+            "label": "startup",
+            "status": "unavailable",
+            "reason": "CDP Performance metrics are Chromium-only"
+          },
+          {
+            "label": "cold-search",
+            "status": "unavailable",
+            "reason": "CDP Performance metrics are Chromium-only"
+          },
+          {
+            "label": "graph",
+            "status": "unavailable",
+            "reason": "CDP Performance metrics are Chromium-only"
+          },
+          {
+            "label": "warm-search",
+            "status": "unavailable",
+            "reason": "CDP Performance metrics are Chromium-only"
+          },
+          {
+            "label": "model-relationship-graph",
+            "status": "unavailable",
+            "reason": "CDP Performance metrics are Chromium-only"
+          }
+        ]
+      }
+    },
+    {
+      "browser": "webkit",
+      "version": "26.6",
+      "status": "passed",
+      "federation": {
+        "overview_elapsed_ms": 213.063,
+        "child_elapsed_ms": 171.997,
+        "child_load_completed": true,
+        "source_classes_rendered": 36,
+        "child_hash_reset_to_overview": true,
+        "overview_transfer": {
+          "wire_bytes": 316495,
+          "decoded_bytes": 1162426,
+          "requests": 17,
+          "explorer_wire_bytes": 301990,
+          "bundle_wire_bytes": 14505,
+          "resources": [
+            {
+              "path": "/",
+              "source": "explorer-build",
+              "wire_bytes": 5929,
+              "decoded_bytes": 17199,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/explore/",
+              "source": "explorer-build",
+              "wire_bytes": 874,
+              "decoded_bytes": 2238,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/entry/start.BGQBuB7x.js",
+              "source": "explorer-build",
+              "wire_bytes": 92,
+              "decoded_bytes": 82,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/prOePLLl.js",
+              "source": "explorer-build",
+              "wire_bytes": 11158,
+              "decoded_bytes": 29270,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/0.DSQV_b3a.js",
+              "source": "explorer-build",
+              "wire_bytes": 136,
+              "decoded_bytes": 146,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/AlwHAjQD.js",
+              "source": "explorer-build",
+              "wire_bytes": 19390,
+              "decoded_bytes": 51270,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/uBIymjUX.js",
+              "source": "explorer-build",
+              "wire_bytes": 688,
+              "decoded_bytes": 1233,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/entry/app.DknEP8E3.js",
+              "source": "explorer-build",
+              "wire_bytes": 1734,
+              "decoded_bytes": 5328,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/xihTtKlq.js",
+              "source": "explorer-build",
+              "wire_bytes": 79,
+              "decoded_bytes": 65,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/CLNn816V.js",
+              "source": "explorer-build",
+              "wire_bytes": 147,
+              "decoded_bytes": 152,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/4.Dyrl2qj0.js",
+              "source": "explorer-build",
+              "wire_bytes": 167,
+              "decoded_bytes": 188,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/9.BlcE7kGJ.js",
+              "source": "explorer-build",
+              "wire_bytes": 219488,
+              "decoded_bytes": 763160,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/chunks/dvbtP5nc.js",
+              "source": "explorer-build",
+              "wire_bytes": 20549,
+              "decoded_bytes": 63885,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/assets/9.DqwH0wdQ.css",
+              "source": "explorer-build",
+              "wire_bytes": 19567,
+              "decoded_bytes": 104863,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/nodes/1.B81wntNV.js",
+              "source": "explorer-build",
+              "wire_bytes": 326,
+              "decoded_bytes": 578,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-registry.json",
+              "source": "explorer-build",
+              "wire_bytes": 1666,
+              "decoded_bytes": 8937,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/whole-law/okf-explorer.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 14505,
+              "decoded_bytes": 113832,
+              "content_encoding": "gzip",
+              "range": null
+            }
+          ]
+        },
+        "child_transfer": {
+          "wire_bytes": 220982,
+          "decoded_bytes": 1082470,
+          "requests": 10,
+          "explorer_wire_bytes": 23350,
+          "bundle_wire_bytes": 197632,
+          "resources": [
+            {
+              "path": "/okf-uk-legislation/okf-explorer.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 3091,
+              "decoded_bytes": 8901,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/manifest.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 2275,
+              "decoded_bytes": 16322,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/overview.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 5261,
+              "decoded_bytes": 36975,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/analysis/overview.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 5809,
+              "decoded_bytes": 34116,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/presentation.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 868,
+              "decoded_bytes": 2611,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/effects/reconciliation.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 960,
+              "decoded_bytes": 6660,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/facets.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 5122,
+              "decoded_bytes": 43286,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/_app/immutable/workers/largeSearch.worker-DXfO4p3x.js",
+              "source": "explorer-build",
+              "wire_bytes": 23350,
+              "decoded_bytes": 72408,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/search/manifest.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 14826,
+              "decoded_bytes": 122728,
+              "content_encoding": "gzip",
+              "range": null
+            },
+            {
+              "path": "/okf-uk-legislation/data/search/shards.json",
+              "source": "legislation-bundle",
+              "wire_bytes": 159420,
+              "decoded_bytes": 738463,
+              "content_encoding": "gzip",
+              "range": null
+            }
+          ]
+        }
+      },
+      "startup_transfer": {
+        "wire_bytes": 522972,
+        "decoded_bytes": 2131064,
+        "requests": 26,
+        "explorer_wire_bytes": 325340,
+        "bundle_wire_bytes": 197632,
+        "resources": [
+          {
+            "path": "/",
+            "source": "explorer-build",
+            "wire_bytes": 5929,
+            "decoded_bytes": 17199,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/explore/",
+            "source": "explorer-build",
+            "wire_bytes": 874,
+            "decoded_bytes": 2238,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/entry/start.BGQBuB7x.js",
+            "source": "explorer-build",
+            "wire_bytes": 92,
+            "decoded_bytes": 82,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/prOePLLl.js",
+            "source": "explorer-build",
+            "wire_bytes": 11158,
+            "decoded_bytes": 29270,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/0.DSQV_b3a.js",
+            "source": "explorer-build",
+            "wire_bytes": 136,
+            "decoded_bytes": 146,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/AlwHAjQD.js",
+            "source": "explorer-build",
+            "wire_bytes": 19390,
+            "decoded_bytes": 51270,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/entry/app.DknEP8E3.js",
+            "source": "explorer-build",
+            "wire_bytes": 1734,
+            "decoded_bytes": 5328,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/uBIymjUX.js",
+            "source": "explorer-build",
+            "wire_bytes": 688,
+            "decoded_bytes": 1233,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/xihTtKlq.js",
+            "source": "explorer-build",
+            "wire_bytes": 79,
+            "decoded_bytes": 65,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/4.Dyrl2qj0.js",
+            "source": "explorer-build",
+            "wire_bytes": 167,
+            "decoded_bytes": 188,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/CLNn816V.js",
+            "source": "explorer-build",
+            "wire_bytes": 147,
+            "decoded_bytes": 152,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/9.BlcE7kGJ.js",
+            "source": "explorer-build",
+            "wire_bytes": 219488,
+            "decoded_bytes": 763160,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/chunks/dvbtP5nc.js",
+            "source": "explorer-build",
+            "wire_bytes": 20549,
+            "decoded_bytes": 63885,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/assets/9.DqwH0wdQ.css",
+            "source": "explorer-build",
+            "wire_bytes": 19567,
+            "decoded_bytes": 104863,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/nodes/1.B81wntNV.js",
+            "source": "explorer-build",
+            "wire_bytes": 326,
+            "decoded_bytes": 578,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-registry.json",
+            "source": "explorer-build",
+            "wire_bytes": 1666,
+            "decoded_bytes": 8937,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/okf-explorer.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 3091,
+            "decoded_bytes": 8901,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/manifest.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 2275,
+            "decoded_bytes": 16322,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/overview.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 5261,
+            "decoded_bytes": 36975,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/analysis/overview.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 5809,
+            "decoded_bytes": 34116,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/presentation.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 868,
+            "decoded_bytes": 2611,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/effects/reconciliation.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 960,
+            "decoded_bytes": 6660,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/facets.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 5122,
+            "decoded_bytes": 43286,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/_app/immutable/workers/largeSearch.worker-DXfO4p3x.js",
+            "source": "explorer-build",
+            "wire_bytes": 23350,
+            "decoded_bytes": 72408,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/search/manifest.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 14826,
+            "decoded_bytes": 122728,
+            "content_encoding": "gzip",
+            "range": null
+          },
+          {
+            "path": "/okf-uk-legislation/data/search/shards.json",
+            "source": "legislation-bundle",
+            "wire_bytes": 159420,
+            "decoded_bytes": 738463,
+            "content_encoding": "gzip",
+            "range": null
+          }
+        ]
+      },
+      "search": {
+        "cold": {
+          "query": "Consumer Credit Act 1974",
+          "elapsed_ms": 811.52
+        },
+        "warm": {
+          "query": "The Air Navigation (Amendment) Order 2026",
+          "elapsed_ms": 859.72
+        }
+      },
+      "facets": {
+        "inventory": "11 of 14 facets shown",
+        "shown": 11,
+        "available": 14,
+        "rendered_sections": 11,
+        "coloured_segments": 140,
+        "distinct_segment_colours": [
+          "rgb(0, 48, 120)",
+          "rgb(255, 221, 0)",
+          "rgb(61, 19, 79)",
+          "rgb(177, 225, 245)",
+          "rgb(6, 75, 56)",
+          "rgb(245, 198, 223)",
+          "rgb(11, 12, 12)",
+          "rgb(213, 232, 176)"
+        ],
+        "layout": {
+          "workspace_width": 1440,
+          "left_panel_width": 320,
+          "stage_width": 1064,
+          "right_panel_width": 44,
+          "stage_share": 0.7389,
+          "left_horizontal_overflow_pixels": 0,
+          "facet_overflow_count": 0
+        }
+      },
+      "graph": {
+        "summary": "20 nodes · 21 relationships",
+        "edge_count": 21,
+        "authorities": [
+          "derived",
+          "official",
+          "unclassified"
+        ],
+        "styles": [
+          {
+            "authority": "derived",
+            "stroke": "rgb(87, 124, 168)",
+            "stroke_dasharray": "7px, 4px",
+            "stroke_width": "3px",
+            "path_length": 173.81240844726562
+          },
+          {
+            "authority": "derived",
+            "stroke": "rgb(87, 124, 168)",
+            "stroke_dasharray": "7px, 4px",
+            "stroke_width": "3px",
+            "path_length": 197.05587768554688
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 198.04473876953125
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 165.4371795654297
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 164.1302947998047
+          },
+          {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 165.43719482421875
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 229.97695922851562
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 193.2983856201172
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 157.18479919433594
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 124.90361022949219
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 98.8393325805664
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 82.49573516845703
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 79.38677978515625
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 90.34699249267578
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 112.687255859375
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 186.83847045898438
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 190.2994384765625
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 163.18927001953125
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 227.33103942871094
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 213.78768920898438
+          },
+          {
+            "authority": "unclassified",
+            "stroke": "rgb(154, 170, 186)",
+            "stroke_dasharray": "none",
+            "stroke_width": "3px",
+            "path_length": 78.87225341796875
+          }
+        ],
+        "keyboard_edge_activation": "passed"
+      },
+      "model_relationships": {
+        "status": "passed",
+        "authorities": [
+          "derived",
+          "model-assisted",
+          "official"
+        ],
+        "styles": {
+          "derived": {
+            "authority": "derived",
+            "stroke": "rgb(87, 124, 168)",
+            "stroke_dasharray": "7px, 4px"
+          },
+          "model-assisted": {
+            "authority": "model-assisted",
+            "stroke": "rgb(138, 100, 168)",
+            "stroke_dasharray": "3px, 4px"
+          },
+          "official": {
+            "authority": "official",
+            "stroke": "rgb(45, 125, 77)",
+            "stroke_dasharray": "none"
+          }
+        },
+        "filter": {
+          "authority": "model-assisted",
+          "hidden_model_edge_count": 0,
+          "official_edges_preserved": 1,
+          "derived_edges_preserved": 1,
+          "url_round_trip": "passed",
+          "restored": true
+        }
+      },
+      "reconciliation": {
+        "status": "passed",
+        "states": {
+          "agreement": 16,
+          "live-addition": 0,
+          "superseded": 0,
+          "inaccessible": 6
+        },
+        "explicit_zero_states": [
+          "live-addition",
+          "superseded"
+        ]
+      },
+      "keyboard": {
+        "view_activation": "passed",
+        "search_input": "passed",
+        "graph_edge_activation": "passed"
+      },
+      "accessibility": {
+        "serious_or_critical": [],
+        "all_violation_count": 0,
+        "passes": 31,
+        "incomplete": 2
+      },
+      "memory": {
+        "status": "unavailable",
+        "metric": "Chrome DevTools Protocol Performance.JSHeapUsedSize",
+        "reason": "This browser engine does not expose the nominated CDP memory metric",
+        "samples": [
+          {
+            "label": "startup",
+            "status": "unavailable",
+            "reason": "CDP Performance metrics are Chromium-only"
+          },
+          {
+            "label": "cold-search",
+            "status": "unavailable",
+            "reason": "CDP Performance metrics are Chromium-only"
+          },
+          {
+            "label": "graph",
+            "status": "unavailable",
+            "reason": "CDP Performance metrics are Chromium-only"
+          },
+          {
+            "label": "warm-search",
+            "status": "unavailable",
+            "reason": "CDP Performance metrics are Chromium-only"
+          },
+          {
+            "label": "model-relationship-graph",
+            "status": "unavailable",
+            "reason": "CDP Performance metrics are Chromium-only"
+          }
+        ]
+      }
+    }
+  ],
+  "failures": [],
+  "limitations": [
+    "The nominated browser-memory measure is the Explorer renderer JavaScript heap exposed by Chrome CDP; Firefox and WebKit do not expose that metric and are recorded unavailable, not passed.",
+    "Live official full-text search is deliberately stubbed so network availability cannot alter search latency or results.",
+    "A diagnostic invocation is deliberately release-ineligible even when its individual browser and integrity checks pass."
+  ]
+}

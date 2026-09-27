@@ -1,0 +1,89 @@
+{
+  "schema": "okf-legislation-reproduction-observation.v1",
+  "status": "failed",
+  "candidate_commit": "6e3eec0bf2bb8e9de33dc8eb7c470f392f8e7746",
+  "profile": "release-assurance/profile-reconcile-20260927/reproduction-profile.json",
+  "failed_command": [
+    "{python}",
+    "scripts/build_publication_docs.py"
+  ],
+  "reason": "Documentation builder refused two producer-owned navigation files as unexpected. No archive or release acceptance was produced.",
+  "files": [
+    {
+      "path": "logs/01-build.log",
+      "bytes": 52,
+      "sha256": "6f03f5f42c5122496c37c4a4e89dcf126ae8e165dab00da3edc654ed43dc0e37"
+    },
+    {
+      "path": "logs/02-build.log",
+      "bytes": 122,
+      "sha256": "3f95a84dab86a400a0ac67b6f1ad54f38d78a0dc458cf8865f221fddabf26c2e"
+    },
+    {
+      "path": "logs/03-build.log",
+      "bytes": 82,
+      "sha256": "9e787a10ad99730edfc70378c9368b6f0733c2a3435160e6072b35aabea77fab"
+    },
+    {
+      "path": "logs/04-build.log",
+      "bytes": 85,
+      "sha256": "547fd942590dd504896d674b69a47df648656a23df04c953d652009a39087bdb"
+    },
+    {
+      "path": "logs/05-build.log",
+      "bytes": 706,
+      "sha256": "03fa93affa3a7985a5e001af1a7038a9d7c9e10a3f32f3a33e4e01d13c4483a7"
+    },
+    {
+      "path": "logs/06-build.log",
+      "bytes": 671,
+      "sha256": "d71843b47c91a58ddccdd96c6752326b16f925611e6924421970785064b0e26b"
+    },
+    {
+      "path": "logs/07-build.log",
+      "bytes": 142,
+      "sha256": "e7cc6f84a0178df91f2e9ba293f0a585bd00ba2bf76b3e124df3884e93c09708"
+    },
+    {
+      "path": "logs/08-build.log",
+      "bytes": 133,
+      "sha256": "ba3925d7c7c44a52026298a94432f1a24a0b1664a8fbfc5410b925ad8ac12bfd"
+    },
+    {
+      "path": "logs/09-build.log",
+      "bytes": 67,
+      "sha256": "1f74161055dc86a7abaa55167ff1cf77650eeaddd9efd66f471f12d683401a05"
+    },
+    {
+      "path": "logs/10-build.log",
+      "bytes": 63,
+      "sha256": "ee4e7bee7328a31517f971b8f2dced50932be0e517f8cfc39fdf9e66a1268e3d"
+    },
+    {
+      "path": "logs/11-build.log",
+      "bytes": 81,
+      "sha256": "971566336ef863cf87b0c8105b05809ebca9a9b00e7668bac6b216286a7fdac8"
+    },
+    {
+      "path": "logs/12-build.log",
+      "bytes": 48,
+      "sha256": "62ad7a2fa5c3aa31c1f988073f593ad0dcfe34e9f865e299d9bced31eedb89ff"
+    },
+    {
+      "path": "logs/13-build.log",
+      "bytes": 51,
+      "sha256": "207211f2b6835d6dff276cccd558e2ec5de07fc42b37e4c22e58e2dab1ff0cdc"
+    },
+    {
+      "path": "logs/14-build.log",
+      "bytes": 131,
+      "sha256": "bb618a220105cb2ca255d9ea41ea0def04ae1978a82829caea12647f66fc6565"
+    },
+    {
+      "path": "run.log",
+      "bytes": 254,
+      "sha256": "1754b3192e29b04726fea153d1e61a84401e17b1df8544065843e1afc4217292"
+    }
+  ],
+  "boundary": "Offline exact-commit reproduction attempt. Historical releases and source files were not changed."
+}

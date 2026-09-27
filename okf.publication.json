@@ -1,6 +1,6 @@
 {
   "schema": "okf-repository-publication-contract.v1",
-  "modified": "2026-08-18",
+  "modified": "2026-09-27",
   "locale": "en-GB",
   "time_zone": "Europe/London",
   "repository": {
@@ -156,6 +156,14 @@
       {
         "path": ".github/workflows/**",
         "role": "workflow"
+      },
+      {
+        "path": "okf.semantic.json",
+        "role": "policy"
+      },
+      {
+        "path": "profiles/**",
+        "role": "policy"
       }
     ],
     "generated": [
@@ -385,7 +393,9 @@
       "research/**",
       "scripts/**",
       "tests/**",
-      "whole-law/**"
+      "whole-law/**",
+      "okf.semantic.json",
+      "profiles/**"
     ],
     "documentation_paths": [
       "README.md",
@@ -457,8 +467,8 @@
   },
   "limitations": [
     "The current release-assurance probe is bounded HTTP evidence, not a real-browser, console-clean journey bound to the exact deployed commit; that verification remains an explicit publication-method backlog item.",
-    "The repository predates a standalone okf.semantic.json contract, so this lifecycle contract points to the governed YAML-LD descriptor while that migration is reviewed separately.",
     "The complete validator remains one fail-closed serial gate. Per-step timings are emitted, but dependency-safe sharding and documentation-only impact routing require measured evidence before adoption.",
-    "GitHub Pages serves YAML-LD as application/octet-stream; strict JSON-LD remains the transport fallback."
+    "GitHub Pages serves YAML-LD as application/octet-stream; strict JSON-LD remains the transport fallback.",
+    "The reviewed migration introduces okf.semantic.json and an exact canonical profile mirror; the independent v0.3.0 release remains frozen."
   ]
 }

@@ -31,6 +31,7 @@ release.
 | design an agent that answers with passage-level provenance | [Agent research guide](agent-research-guide.md) |
 | understand completeness, ontology and official access methods | [Architecture and data model](uk-legislation-okf.md) |
 | understand relationship composition | [Relationships](relationships.md) |
+| author or consume directed YAML-LD assertions | [Rich relationship semantics](rich-relationship-semantics.md) |
 | inspect official effects and model-assisted enrichment | [Effects and enrichment](effects-and-enrichment.md) |
 | understand Whole-Law sources, rights and access state | [Source coverage](source-coverage.md) |
 | assess an AI answer or the Explorer itself | [Evaluation and quality](evaluation-and-quality.md) |

@@ -1,0 +1,90 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#",
+    "authority": {
+      "@id": "okf:authority",
+      "@type": "@json"
+    },
+    "counts": {
+      "@id": "okf:counts",
+      "@type": "@json"
+    },
+    "dcterms": "http://purl.org/dc/terms/",
+    "evidence": {
+      "@id": "okf:evidence",
+      "@type": "@json"
+    },
+    "generated_at": {
+      "@id": "prov:generatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "lifecycle": "okf:lifecycle",
+    "observed_at": {
+      "@id": "okf:observedAt",
+      "@type": "xsd:dateTime"
+    },
+    "okf": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#",
+    "plane": {
+      "@id": "okf:relationshipPlane",
+      "@type": "@id"
+    },
+    "predicate": {
+      "@id": "rdf:predicate",
+      "@type": "@id"
+    },
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "relationshipManifest": {
+      "@id": "okf:relationshipManifest",
+      "@type": "@id"
+    },
+    "relationshipManifestJson": {
+      "@id": "okf:relationshipManifestJson",
+      "@type": "@id"
+    },
+    "relationshipRuntimeManifest": {
+      "@id": "okf:relationshipRuntimeManifest",
+      "@type": "@id"
+    },
+    "rights": {
+      "@id": "dcterms:rights",
+      "@type": "@json"
+    },
+    "runtimeShard": {
+      "@container": "@set",
+      "@id": "okf:runtimeShard",
+      "@type": "@id"
+    },
+    "shard": {
+      "@container": "@set",
+      "@id": "okf:shard",
+      "@type": "@id"
+    },
+    "source": {
+      "@id": "rdf:subject",
+      "@type": "@id"
+    },
+    "sourceMaterial": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id"
+    },
+    "source_assertion": {
+      "@id": "okf:sourceAssertion",
+      "@type": "@json"
+    },
+    "source_iri": {
+      "@id": "okf:sourceIri",
+      "@type": "@id"
+    },
+    "target": {
+      "@id": "rdf:object",
+      "@type": "@id"
+    },
+    "target_iri": {
+      "@id": "okf:targetIri",
+      "@type": "@id"
+    },
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  }
+}

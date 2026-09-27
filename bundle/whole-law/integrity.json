@@ -2,6 +2,11 @@
   "algorithm": "sha256",
   "files": [
     {
+      "bytes": 8196,
+      "path": ".DS_Store",
+      "sha256": "4da57974514f6b9b6357aba327aaf4fd6978ac38decf12e653471bb01d21fc8f"
+    },
+    {
       "bytes": 5921,
       "path": "acquisition/README.md",
       "sha256": "5984e256d6288d708da0b38fcee8a892a16c989e5cc65ee82802f5e9eea7882a"
@@ -252,14 +257,14 @@
       "sha256": "ad64e2367623f7a8af972ae0edff310269dc4664fae92e96d5c350af5fb868a8"
     },
     {
-      "bytes": 22602,
+      "bytes": 25622,
       "path": "assurance/graph-enrichment-gate-20260726.json",
-      "sha256": "6b498a1009de8d1ba0f83b72dacc68c3d9f0fbeb9d62b72a1dcbfb1c053c7e51"
+      "sha256": "5138fde5adc38b78287d12f5e3ce725ec3c45ba8a6fa08c0824a68667b02de8b"
     },
     {
-      "bytes": 2890,
+      "bytes": 5910,
       "path": "assurance/graph-enrichment-gate-20260726.md",
-      "sha256": "a12e31b89d80217eaa94960732503d8e26ce5e3707c9d840dcd07e37d7ec31e8"
+      "sha256": "bad3cfdab33b0eb93ccc8841d05cdd2aaf8e9b9dbd4a81eb6a3419b9fb4ad1ea"
     },
     {
       "bytes": 616217,
@@ -272,9 +277,9 @@
       "sha256": "c9f170216ac5ea7b2cd0a4b4f2eaefd19eb6212dcc9b6e6415ad0b9dd8a0c3c0"
     },
     {
-      "bytes": 11440,
+      "bytes": 15222,
       "path": "assurance/semantic-conformance.json",
-      "sha256": "5248e6af727afd49253a13808abb9f8ad69ebb43d49b6e3120c8630e6cbd501f"
+      "sha256": "ea5c3cdf0b21aa3ec7f8f90d3ef330b36571b44bb6d418969ebd92aa2a76b45f"
     },
     {
       "bytes": 18684,
@@ -382,9 +387,9 @@
       "sha256": "f0a461b5ae82b7fedf4bc7412888c7e2ad9e974d1097c3af4098b203426f112c"
     },
     {
-      "bytes": 3075,
+      "bytes": 3506,
       "path": "docs/standards-and-validation.md",
-      "sha256": "27a91d034955635e9cb666c8ea2b77de78572f80ebfb63ae42ef7e3c75a8fd25"
+      "sha256": "e0f554e0a244bd77737613aea794cb496c6a1ecbb29027cd498a36c0ff314927"
     },
     {
       "bytes": 2452,
@@ -872,24 +877,24 @@
       "sha256": "0bbd713a06efad53128313f414be96c7943e6d8cd1e98793edd404e0ac65e141"
     },
     {
-      "bytes": 5737,
+      "bytes": 6175,
       "path": "okf-bundle.jsonld",
-      "sha256": "0ef7adcea9faad120f8dad6ff6fd0d03d410d51b05a4acb6371882b576e6bee8"
+      "sha256": "4231846520a6cb1506b8796e99f0931e4370e4602dd048cbe8d4d5781df28913"
     },
     {
-      "bytes": 4176,
+      "bytes": 4674,
       "path": "okf-bundle.ttl",
-      "sha256": "157f300bfa08cdf8c3db28b4b3f0dacb8bbbb4109c67a827b3328cc6c6d43b2a"
+      "sha256": "efdeaafd91258e05d28561f378c4388ed1bd31ca1234ee4df73f5abfa5247b6b"
     },
     {
-      "bytes": 2392,
+      "bytes": 2784,
       "path": "okf-bundle.yamlld",
-      "sha256": "03bcd567b8aae8c505641796ae8ef91bfb4e847c1c13619cca2bbb00eea4e942"
+      "sha256": "3f293d671e72efe6ef2f2b828538563945f7bab9673f36e03a10be483f2abc4e"
     },
     {
-      "bytes": 110999,
+      "bytes": 113832,
       "path": "okf-explorer.json",
-      "sha256": "18297c95e172b1af4a15eb4332851f09ab04a981ea9aa53e57f74f6ec82d96eb"
+      "sha256": "d8273153f024a7827c29e1dfd557c6b419f6c51f24a64000b0c74b84858ea9e0"
     },
     {
       "bytes": 6686,
@@ -897,9 +902,9 @@
       "sha256": "f24117bf3b42481318988e38b79d598439ec69c06f37fd9466da2d4e9994532f"
     },
     {
-      "bytes": 4470,
+      "bytes": 4682,
       "path": "ontology/context.jsonld",
-      "sha256": "cb089e41cca2518d64d41b96c2318967b4a4ee700ecd408fe64948c41912b188"
+      "sha256": "e3a400b5a7b81aaca38d3d258090b3b95ff23f375a38e0c74d136a9a8e60258f"
     },
     {
       "bytes": 8949,
@@ -907,14 +912,14 @@
       "sha256": "37a6b79ff45984f659bfab0e92013f19edd9091fbfc228fc8317ad771f05d0eb"
     },
     {
-      "bytes": 2843,
+      "bytes": 3656,
       "path": "ontology/index.md",
-      "sha256": "7f1488573ab9c957fa5b428dad43ddbaa1b10ede55291b438ab263aa6d1da3d5"
+      "sha256": "007bc687f3580abd0ee631504a1a00eef501011359395af7beb21565358bf9a1"
     },
     {
-      "bytes": 10862,
+      "bytes": 11120,
       "path": "ontology/shapes.ttl",
-      "sha256": "5fe646674af3d237049722efcb1750fef1d258464cf6d6cfcb8f32b4855ce6b3"
+      "sha256": "44d02101e5b48317df224295599af908c530697c33840aa256829e73b16b99b0"
     },
     {
       "bytes": 5508,
@@ -922,9 +927,9 @@
       "sha256": "e3279b123dfd7c4f0dfe366e509e53bf76b55f9532767d95fec62db1ae7934bb"
     },
     {
-      "bytes": 5972,
+      "bytes": 6622,
       "path": "ontology/vocabulary.ttl",
-      "sha256": "fec52841a2062e2137234b1b4de9ab4be5bbd1677f703fb1d4e05509443df9aa"
+      "sha256": "ae637f48e021b8b901838eeeaecbdeed2c3895708816d56155e6367e4ddbe53a"
     },
     {
       "bytes": 3126,
@@ -1207,6 +1212,11 @@
       "sha256": "ff8e8f8f7ae66c123136041807b9b22ca86d34ef3982a4f60a2c9d4fd10659df"
     },
     {
+      "bytes": 9658,
+      "path": "schemas/canonical-federation-descriptor.schema.json",
+      "sha256": "03edb4d2e0e1ad9252866bfadbcf00f2999b78abb44d1d52b9b33b18c6f1f3e0"
+    },
+    {
       "bytes": 1345,
       "path": "schemas/core-relationship-row.schema.json",
       "sha256": "c81458b9d78607e7adbcb5f4e67b548455a2d94e38a1d5579c5d97e81bb3b995"
@@ -1217,9 +1227,9 @@
       "sha256": "7f085b16d777db4cd035202a7a81940e03b5a6315771c7325b981ead9a47c39e"
     },
     {
-      "bytes": 11776,
+      "bytes": 12052,
       "path": "schemas/federation.schema.json",
-      "sha256": "e8e775d80f32770ff6793935e445d0002731e1ef0c76f3874320c2a57cae0c33"
+      "sha256": "25969d2fab519185686c4fb8413b1304c06a4638d7b2610aee200ceb50915672"
     },
     {
       "bytes": 3487,
@@ -1347,9 +1357,39 @@
       "sha256": "5710786b90afea23162054ae939960215fa800dd8a2b015d9b9432197580f799"
     },
     {
-      "bytes": 4937,
+      "bytes": 5958,
+      "path": "schemas/relationship-assertion-v3.schema.json",
+      "sha256": "993d6dd2001373ceabe0b79259f175ccc5573329399788e20be1b44c23541fb4"
+    },
+    {
+      "bytes": 4942,
       "path": "schemas/relationship-assertion.schema.json",
-      "sha256": "1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4"
+      "sha256": "6117dc4f8cb51c12dbe3f78d0e1bb523270b8c3e15f0ad4e22c8137fe3b876ba"
+    },
+    {
+      "bytes": 2678,
+      "path": "schemas/relationship-route-locator-bucket.schema.json",
+      "sha256": "c174af26cd722d4e8eaded5011e072ac82689188a0b9665a2a6bfe49c2afe2eb"
+    },
+    {
+      "bytes": 2503,
+      "path": "schemas/relationship-route-locator.schema.json",
+      "sha256": "c73dfcee889a0e34ae1ca59d3cf82919a6297e7db7b48d90ec718c1a6bc874a2"
+    },
+    {
+      "bytes": 4913,
+      "path": "schemas/relationship-runtime-manifest.schema.json",
+      "sha256": "82c4e81fd7c3583e6dba2c68230049700ed5395d99c4b1b8cf4d1ab5c44d0e96"
+    },
+    {
+      "bytes": 4536,
+      "path": "schemas/relationship-runtime-row.schema.json",
+      "sha256": "35e4a7634f45525fcb769a5aceced7defc986e98ae7cf50ca3c9ba59d95a9741"
+    },
+    {
+      "bytes": 7308,
+      "path": "schemas/semantic-assertion.schema.json",
+      "sha256": "f69480328db4b64d678d9c50b6534d808000f7fb50a30e8cc9e3bf2facbcb8bc"
     },
     {
       "bytes": 1291,

@@ -133,7 +133,7 @@
       "sha256": "2f5952f68291877d3f44865fd302b65f9caf12e9188a52abcf954448c621fad0"
     },
     "relationship_assertion": {
-      "path": "whole-law/schemas/relationship-assertion.schema.json",
+      "path": "enrichment/historical-contracts/v1/relationship-assertion.schema.json",
       "sha256": "1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4"
     },
     "acceptance_proof": {

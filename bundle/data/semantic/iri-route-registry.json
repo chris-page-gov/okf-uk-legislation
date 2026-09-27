@@ -1,0 +1,3648 @@
+{
+  "counts": {
+    "catalogue_work_routes": 365786,
+    "semantic_and_external_routes": 449
+  },
+  "generated_at": "2026-08-09T00:00:00Z",
+  "identity_policy": "absolute-semantic-iri-plus-validated-local-route",
+  "schema": "okf-iri-route-registry.v1",
+  "semantic_and_external_routes": [
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-advice-and-assistance",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/advice-and-assistance"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-air-navigation",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/air-navigation"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-births-deaths-and-marriages",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/births-deaths-and-marriages"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-building-societies",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/building-societies"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-civil-legal-services",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/civil-legal-services"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-credit-unions",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/credit-unions"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-diseases-of-animals",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/diseases-of-animals"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-double-taxation-relief",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/double-taxation-relief"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-driving-licences",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/driving-licences"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-environmentally-sensitive-areas",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/environmentally-sensitive-areas"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-european-communities",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/european-communities"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-feeding-stuffs",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/feeding-stuffs"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-financial-services",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/financial-services"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-firearms-control",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/firearms-control"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-foot-and-mouth-disease",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/foot-and-mouth-disease"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-friendly-societies",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/friendly-societies"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-homelessness",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/homelessness"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-housing-benefit",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/housing-benefit"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-import-duties",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/import-duties"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-industrial-training",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/industrial-training"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-legal-aid",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/legal-aid"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-magistrates-courts-civil-procedure",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/magistrates-courts-civil-procedure"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-marriage-validity",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/marriage-validity"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-medicines",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/medicines"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-misuse-of-drugs",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/misuse-of-drugs"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-motor-vehicles",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/motor-vehicles"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-national-assistance",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/national-assistance"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-naval-discipline",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/naval-discipline"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-non-domestic-rating",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/non-domestic-rating"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-offshore-installations",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/offshore-installations"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-parking-places",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/parking-places"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-poisons-regulation",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/poisons-regulation"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-primary-care-trusts",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/primary-care-trusts"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-product-safety",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/product-safety"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-public-interest-disclosure",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/public-interest-disclosure"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-representation-of-the-people",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/representation-of-the-people"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-restriction-of-flying",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/restriction-of-flying"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-sea-fishing",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/sea-fishing"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-secondary-schools",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/secondary-schools"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-smoke-control",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/smoke-control"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-social-fund",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/social-fund"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-speed-limits",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/speed-limits"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-student-support",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/student-support"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-superannuation",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/superannuation"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-taxation-relief",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/taxation-relief"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-teachers-salaries",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/teachers-salaries"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-telecommunication-systems",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/telecommunication-systems"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-television-licence-fees",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/television-licence-fees"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-trade-unions",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/trade-unions"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-training-levy",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/training-levy"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-vehicle-construction-and-use",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/vehicle-construction-and-use"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-veterinary-surgeons",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/veterinary-surgeons"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-wages-regulation",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/wages-regulation"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-weights-and-measures",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/weights-and-measures"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#concept-wireless-telegraphy",
+      "kind": "concept",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "concept/wireless-telegraphy"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/anaw/2014/4",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/anaw-2014-4"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/anaw/2017/3",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/anaw-2017-3"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/anaw/2018/2",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/anaw-2018-2"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/aosp/1696/25",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/aosp-1696-25"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/apni/1945/15",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/apni-1945-15"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/apni/1969/24",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/apni-1969-24"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/asp/2000/1",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/asp-2000-1"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/asp/2002/11",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/asp-2002-11"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/asp/2002/13",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/asp-2002-13"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/asp/2003/13",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/asp-2003-13"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/asp/2004/4",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/asp-2004-4"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/asp/2007/4",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/asp-2007-4"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/asp/2008/5",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/asp-2008-5"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/asp/2010/10",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/asp-2010-10"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/asp/2010/5",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/asp-2010-5"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/mwa/2011/1",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/mwa-2011-1"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2001/3",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2001-3"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2002/12",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2002-12"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2002/13",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2002-13"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2009/1",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2009-1"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2011/7",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2011-7"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2013/10",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2013-10"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2015/2",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2015-2"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2015/9",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2015-9"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2016/12",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2016-12"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2016/18",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2016-18"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2016/21",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2016-21"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nia/2016/4",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nia-2016-4"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1976/1213",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1976-1213"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1981/1675",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1981-1675"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1986/1032",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1986-1032"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1986/1033",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1986-1033"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1986/1035",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1986-1035"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1987/936",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1987-936"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1989/2404",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1989-2404"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1989/2405",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1989-2405"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1990/1504",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1990-1504"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1990/593",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1990-593"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1993/1250",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1993-1250"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1993/1252",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1993-1252"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1995/3213",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1995-3213"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/1996/1632",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-1996-1632"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/2002/3150",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-2002-3150"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/2005/1452",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-2005-1452"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisi/2005/1967",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisi-2005-1967"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisr/1989/216",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisr-1989-216"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisr/2004/417",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisr-2004-417"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisr/2004/418",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisr-2004-418"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisr/2007/43",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisr-2007-43"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisr/2008/3",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisr-2008-3"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisr/2009/225",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisr-2009-225"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisr/2014/224",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisr-2014-224"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/nisr/2016/123",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/nisr-2016-123"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ssi/2003/581",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ssi-2003-581"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ssi/2004/520",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ssi-2004-520"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ssi/2005/494",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ssi-2005-494"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ssi/2007/170",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ssi-2007-170"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ssi/2007/264",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ssi-2007-264"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ssi/2009/440",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ssi-2009-440"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ssi/2011/141",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ssi-2011-141"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ssi/2015/425",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ssi-2015-425"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ssi/2018/66",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ssi-2018-66"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ssi/2018/67",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ssi-2018-67"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukla/2009/1",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukla-2009-1"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1964/19",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1964-19"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1965/12",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1965-12"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1966/36",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1966-36"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1967/13",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1967-13"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1969/57",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1969-57"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1970/41",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1970-41"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1972/68",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1972-68"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1973/51",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1973-51"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1974/39",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1974-39"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1974/7",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1974-7"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1975/65",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1975-65"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1976/74",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1976-74"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1978/30",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1978-30"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1980/43",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1980-43"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1983/2",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1983-2"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1983/54",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1983-54"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1984/24",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1984-24"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1984/60",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1984-60"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1985/6",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1985-6"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1985/65",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1985-65"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1985/66",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1985-66"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1985/67",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1985-67"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1985/7",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1985-7"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1985/9",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1985-9"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1986/45",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1986-45"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1986/46",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1986-46"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1986/53",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1986-53"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1986/59",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1986-59"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1988/28",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1988-28"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1988/36",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1988-36"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1988/39",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1988-39"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1988/48",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1988-48"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1988/9",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1988-9"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1989/15",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1989-15"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1989/24",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1989-24"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1989/34",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1989-34"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1989/38",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1989-38"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1989/40",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1989-40"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1989/44",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1989-44"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1990/18",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1990-18"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1990/23",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1990-23"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1990/37",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1990-37"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1991/50",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1991-50"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1991/60",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1991-60"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1992/41",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1992-41"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1992/52",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1992-52"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1992/53",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1992-53"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1993/10",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1993-10"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1993/28",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1993-28"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1993/36",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1993-36"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1993/38",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1993-38"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1993/46",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1993-46"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1993/48",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1993-48"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1993/51",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1993-51"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1994/26",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1994-26"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1994/40",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1994-40"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1995/26",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1995-26"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1995/40",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1995-40"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1995/46",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1995-46"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1995/50",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1995-50"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1995/7",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1995-7"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1996/14",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1996-14"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1996/23",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1996-23"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1996/56",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1996-56"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1998/29",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1998-29"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1998/37",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1998-37"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1998/42",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1998-42"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1998/46",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1998-46"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1998/47",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1998-47"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1999/23",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1999-23"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1999/28",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1999-28"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1999/29",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1999-29"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/1999/33",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-1999-33"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2000/11",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2000-11"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2000/12",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2000-12"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2000/36",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2000-36"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2000/41",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2000-41"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2000/8",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2000-8"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2001/16",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2001-16"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2001/24",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2001-24"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2002/15",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2002-15"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2002/2",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2002-2"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2002/24",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2002-24"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2002/26",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2002-26"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2002/29",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2002-29"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2002/40",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2002-40"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2003/39",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2003-39"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2003/42",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2003-42"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2003/44",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2003-44"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2003/7",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2003-7"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2004/23",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2004-23"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2004/27",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2004-27"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2004/28",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2004-28"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2004/31",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2004-31"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2004/33",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2004-33"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2004/35",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2004-35"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2005/10",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2005-10"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2005/11",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2005-11"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2005/19",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2005-19"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2005/4",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2005-4"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2005/9",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2005-9"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2006/3",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2006-3"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2006/30",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2006-30"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2006/32",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2006-32"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2006/41",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2006-41"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2006/42",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2006-42"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2006/46",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2006-46"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2007/15",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2007-15"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2007/18",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2007-18"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2007/27",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2007-27"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2007/29",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2007-29"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2008/12",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2008-12"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2008/13",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2008-13"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2008/14",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2008-14"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2008/28",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2008-28"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2008/4",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2008-4"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2008/7",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2008-7"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2009/1",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2009-1"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2009/11",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2009-11"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2009/23",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2009-23"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2009/25",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2009-25"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2010/15",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2010-15"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2010/38",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2010-38"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2011/12",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2011-12"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2011/25",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2011-25"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2012/15",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2012-15"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2012/7",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2012-7"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2012/9",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2012-9"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2013/22",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2013-22"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2013/24",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2013-24"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2013/7",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2013-7"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2013/9",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2013-9"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2014/12",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2014-12"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2014/2",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2014-2"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2014/22",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2014-22"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2014/23",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2014-23"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2014/3",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2014-3"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2015/26",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2015-26"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2015/30",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2015-30"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2015/32",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2015-32"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2015/37",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2015-37"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2015/6",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2015-6"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2015/9",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2015-9"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2016/19",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2016-19"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2016/25",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2016-25"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2017/16",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2017-16"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2017/29",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2017-29"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2017/3",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2017-3"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2017/30",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2017-30"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2018/12",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2018-12"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2018/16",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2018-16"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2020/27",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-2020-27"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/Edw7/7/24",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-edw7-7-24"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/Eliz2/1-2/37",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-eliz2-1-2-37"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/Geo5/15-16/86",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-geo5-15-16-86"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/Geo6/10-11/44",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-geo6-10-11-44"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/Geo6/9-10/36",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-geo6-9-10-36"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/Vict/1-2/110",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-vict-1-2-110"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/Vict/10-11/89",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/ukpga-vict-10-11-89"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/1989/638",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-1989-638"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/1991/1091",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-1991-1091"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/1993/1813",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-1993-1813"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/1994/1405",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-1994-1405"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/1995/3183",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-1995-3183"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/1996/2827",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-1996-2827"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/1998/811",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-1998-811"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/1999/3145",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-1999-3145"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/1999/677",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-1999-677"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/1139",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-1139"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/184",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-184"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/185",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-185"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/186",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-186"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/1864",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-1864"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/1865",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-1865"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/187",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-187"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/188",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-188"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/190",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-190"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/191",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-191"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/290",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-290"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/413",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-413"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/414",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-414"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/415",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-415"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/416",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-416"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/417",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-417"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2000/419",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2000-419"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2001/1090",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2001-1090"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2001/2188",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2001-2188"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2001/3214",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2001-3214"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2001/3223",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2001-3223"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2001/341",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2001-341"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2001/497",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2001-497"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2002/2013",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2002-2013"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2002/253",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2002-253"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2002/2905",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2002-2905"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2003/1660",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2003-1660"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2003/1661",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2003-1661"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2003/2426",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2003-2426"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2003/2770",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2003-2770"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2003/2818",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2003-2818"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2004/1168",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2004-1168"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2004/1267",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2004-1267"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2004/2326",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2004-2326"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2004/2407",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2004-2407"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2004/3244",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2004-3244"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2004/3391",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2004-3391"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2005/1437",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2005-1437"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2005/1923",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2005-1923"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2005/2042",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2005-2042"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2005/3595",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2005-3595"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2005/41",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2005-41"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2005/467",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2005-467"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2006/1031",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2006-1031"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2006/2068",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2006-2068"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2007/1118",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2007-1118"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2007/1263",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2007-1263"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2007/236",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2007-236"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2007/679",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2007-679"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2008/1741",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2008-1741"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2008/3122",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2008-3122"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2008/963",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2008-963"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2009/1677",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2009-1677"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2009/1801",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2009-1801"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2009/1811",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2009-1811"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2009/214",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2009-214"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2009/2999",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2009-2999"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2009/3157",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2009-3157"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2010/231",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2010-231"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2010/2977",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2010-2977"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2010/31",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2010-31"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2010/910",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2010-910"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2010/917",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2010-917"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2011/1034",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2011-1034"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2012/1917",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2012-1917"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2012/1978",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2012-1978"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2012/2031",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2012-2031"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2013/373",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2013-373"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2014/1825",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2014-1825"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2014/3141",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2014-3141"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2014/3282",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2014-3282"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2015/1694",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2015-1694"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2015/1945",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2015-1945"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2015/2059",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2015-2059"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2015/966",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2015-966"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2016/295",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2016-295"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2016/339",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2016-339"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2016/696",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2016-696"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2017/692",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2017-692"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2017/694",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2017-694"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2018/480",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/uksi-2018-480"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/wsi/2007/837",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/wsi-2007-837"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/wsi/2008/3239",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/wsi-2008-3239"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/wsi/2011/1942",
+      "kind": "legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "dataset/wsi-2011-1942"
+    },
+    {
+      "iri": "https://www.bankofengland.co.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/bank-of-england"
+    },
+    {
+      "iri": "https://www.cqc.org.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/care-quality-commission"
+    },
+    {
+      "iri": "https://www.gov.uk/government/organisations/charity-commission",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/charity-commission-england-and-wales"
+    },
+    {
+      "iri": "https://www.charitycommissionni.org.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/charity-commission-for-northern-ireland"
+    },
+    {
+      "iri": "https://www.caa.co.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/civil-aviation-authority"
+    },
+    {
+      "iri": "https://www.gov.uk/government/organisations/competition-and-markets-authority",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/competition-and-markets-authority"
+    },
+    {
+      "iri": "https://www.gov.uk/government/organisations/driver-and-vehicle-licensing-agency",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/driver-and-vehicle-licensing-agency"
+    },
+    {
+      "iri": "https://www.electoralcommission.org.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/electoral-commission"
+    },
+    {
+      "iri": "https://www.gov.uk/government/organisations/environment-agency",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/environment-agency-england"
+    },
+    {
+      "iri": "https://www.eea.europa.eu/en",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/european-environment-agency"
+    },
+    {
+      "iri": "https://www.fca.org.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/financial-conduct-authority"
+    },
+    {
+      "iri": "https://www.hseni.gov.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/health-and-safety-executive-for-northern-ireland"
+    },
+    {
+      "iri": "https://www.hse.gov.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/health-and-safety-executive-great-britain"
+    },
+    {
+      "iri": "https://www.nationalcrimeagency.gov.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/national-crime-agency"
+    },
+    {
+      "iri": "https://www.nice.org.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/national-institute-for-health-and-care-excellence"
+    },
+    {
+      "iri": "https://www.daera-ni.gov.uk/articles/northern-ireland-environment-agency",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/northern-ireland-environment-agency"
+    },
+    {
+      "iri": "https://www.officeforstudents.org.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/office-for-students"
+    },
+    {
+      "iri": "https://www.ofcom.org.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/office-of-communications"
+    },
+    {
+      "iri": "https://www.thepensionsregulator.gov.uk/",
+      "kind": "entity",
+      "planes": [
+        "model-assisted-v3"
+      ],
+      "route": "entity/the-pensions-regulator"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/ukpga/2026/27",
+      "kind": "external-legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "external-legislation/ukpga-2026-27"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2026/778",
+      "kind": "external-legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "external-legislation/uksi-2026-778"
+    },
+    {
+      "iri": "https://www.legislation.gov.uk/id/uksi/2026/833",
+      "kind": "external-legal-work",
+      "planes": [
+        "official-effects"
+      ],
+      "route": "external-legislation/uksi-2026-833"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/aep",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/aep"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/aip",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/aip"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/anaw",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/anaw"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/aosp",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/aosp"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/apgb",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/apgb"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/apni",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/apni"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/asc",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/asc"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/asp",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/asp"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/eudn",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/eudn"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/eudr",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/eudr"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/eur",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/eur"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/gbla",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/gbla"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/mnia",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/mnia"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/mwa",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/mwa"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/nia",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/nia"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/nidsr",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/nidsr"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/nisi",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/nisi"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/nisr",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/nisr"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/nisro",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/nisro"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/sdsi",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/sdsi"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/ssi",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/ssi"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/ukci",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/ukci"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/ukcm",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/ukcm"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/ukdsi",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/ukdsi"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/ukla",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/ukla"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/ukmd",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/ukmd"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/ukmo",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/ukmo"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/ukpga",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/ukpga"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/ukppa",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/ukppa"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/uksi",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/uksi"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/uksro",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/uksro"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/legislation-type/wsi",
+      "kind": "legislation-type",
+      "planes": [
+        "core"
+      ],
+      "route": "legislation-type/wsi"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/civil-justice-and-procedure",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/civil-justice-and-procedure"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/communications-data-and-technology",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/communications-data-and-technology"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/companies-insolvency-and-financial-services",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/companies-insolvency-and-financial-services"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/constitutional-and-administrative-law",
+      "kind": "topic",
+      "planes": [
+        "core"
+      ],
+      "route": "topic/constitutional-and-administrative-law"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/consumer-and-commercial-law",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/consumer-and-commercial-law"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/criminal-law-and-policing",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/criminal-law-and-policing"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/defence-and-national-security",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/defence-and-national-security"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/education-and-children",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/education-and-children"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/elections-and-political-parties",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/elections-and-political-parties"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/employment-and-industrial-relations",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/employment-and-industrial-relations"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/environment-energy-and-agriculture",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/environment-energy-and-agriculture"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/european-union-and-retained-eu-law",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/european-union-and-retained-eu-law"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/family-and-succession",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/family-and-succession"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/health-and-social-care",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/health-and-social-care"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/human-rights-and-equality",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/human-rights-and-equality"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/immigration-nationality-and-asylum",
+      "kind": "topic",
+      "planes": [
+        "core"
+      ],
+      "route": "topic/immigration-nationality-and-asylum"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/intellectual-property-and-media",
+      "kind": "topic",
+      "planes": [
+        "core"
+      ],
+      "route": "topic/intellectual-property-and-media"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/land-housing-and-planning",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/land-housing-and-planning"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/local-government",
+      "kind": "topic",
+      "planes": [
+        "core"
+      ],
+      "route": "topic/local-government"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/professional-regulation",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/professional-regulation"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/social-security-and-welfare",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/social-security-and-welfare"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/taxation-and-customs",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/taxation-and-customs"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/transport-and-infrastructure",
+      "kind": "topic",
+      "planes": [
+        "core",
+        "model-assisted-v2-historical",
+        "model-assisted-v3"
+      ],
+      "route": "topic/transport-and-infrastructure"
+    },
+    {
+      "iri": "https://chris-page-gov.github.io/okf-uk-legislation/id/topic/unclassified-title-only-heuristic",
+      "kind": "topic",
+      "planes": [
+        "core"
+      ],
+      "route": "topic/unclassified-title-only-heuristic"
+    }
+  ],
+  "work_routes": {
+    "path": "bundle/data/manifest.json",
+    "records": 365786,
+    "route_index": "bundle/data/records/manifest.json",
+    "route_index_sha256": "159318b7871956851feffab85bb6538194f119acff97a17f1544d21cb3308bb7",
+    "sha256": "35d971c619a770e800f3c1b7588ecd46c59aeae1658bfc1574691815af74a4b6"
+  }
+}

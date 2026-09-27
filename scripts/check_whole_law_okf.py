@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import csv
+import gzip
 import hashlib
 import json
 import re
@@ -65,6 +66,18 @@ def load(path: Path) -> Any:
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def confined_bundle_path(relative: str, bundle_root: Path | None = None) -> Path:
+    """Confine manifest-selected files before any read, stat or decompression."""
+    root = (bundle_root or ROOT / "bundle").resolve()
+    value = Path(relative)
+    if not relative or value.is_absolute() or ".." in value.parts:
+        raise ValueError("relationship route-locator bucket path is not relative")
+    target = (root / value).resolve()
+    if not target.is_relative_to(root):
+        raise ValueError("relationship route-locator bucket escapes the bundle")
+    return target
 
 
 def check_research(errors: list[str]) -> None:
@@ -240,6 +253,67 @@ def check_public_semantic_entrypoints(errors: list[str]) -> None:
         errors.append(
             "Whole-Law descriptor does not expose the Turtle entrypoint"
         )
+    relationship_entrypoints = {
+        "relationship_semantics": "../data/semantic/manifest.yamlld",
+        "relationship_semantics_jsonld": "../data/semantic/manifest.jsonld",
+        "relationship_runtime": "../data/semantic/runtime-manifest.json",
+        "predicate_registry": "../data/semantic/predicate-registry.json",
+        "iri_route_registry": "../data/semantic/iri-route-registry.json",
+    }
+    for name, relative in relationship_entrypoints.items():
+        if entrypoints.get(name) != relative:
+            errors.append(
+                "Whole-Law descriptor does not expose the bounded rich "
+                f"relationship entrypoint {name}"
+            )
+            continue
+        target = (PACK / relative).resolve()
+        expected_root = (PACK.parent / "data" / "semantic").resolve()
+        if expected_root not in target.parents or not target.is_file():
+            errors.append(
+                "Whole-Law rich relationship entrypoint is missing or "
+                f"escapes the governed semantic directory: {name}"
+            )
+
+    runtime_relative = relationship_entrypoints["relationship_runtime"]
+    runtime_path = (PACK / runtime_relative).resolve()
+    runtime_body = runtime_path.read_bytes() if runtime_path.is_file() else b""
+    runtime_sha256 = sha256(runtime_path) if runtime_path.is_file() else None
+    runtime_integrity = descriptor.get("entrypoint_integrity", {}).get(
+        "relationship_runtime"
+    )
+    if (
+        not isinstance(runtime_integrity, dict)
+        or runtime_integrity.get("path") != runtime_relative
+        or runtime_integrity.get("bytes") != len(runtime_body)
+        or runtime_integrity.get("sha256") != runtime_sha256
+        or runtime_integrity.get("content_encoding") != "identity"
+    ):
+        errors.append("Whole-Law relationship runtime integrity differs")
+    if "sha256-prefix" not in str(
+        descriptor.get("performance", {}).get(
+            "route_relationship_hydration", ""
+        )
+    ):
+        errors.append("Whole-Law descriptor omits SHA-256 route lookup")
+
+    children = descriptor.get("children")
+    if isinstance(children, list) and children:
+        child = children[0] if isinstance(children[0], dict) else {}
+        if child.get("extensions", {}).get("okf-whole-law.v1", {}).get("relationship_manifest") != (
+            "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.yamlld"
+        ):
+            errors.append(
+                "Whole-Law child does not declare its canonical relationship "
+                "manifest"
+            )
+        if child.get("extensions", {}).get("okf-whole-law.v1", {}).get("relationship_manifest_jsonld") != (
+            "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.jsonld"
+        ):
+            errors.append(
+                "Whole-Law child does not declare its JSON-LD relationship "
+                "manifest fallback"
+            )
 
     alternate_access = descriptor.get("alternate_access")
     if not isinstance(alternate_access, list):
@@ -307,6 +381,55 @@ def check_contracts(errors: list[str]) -> None:
         PACK / "data" / "source-constraint-ledger.json",
         schemas / "source-constraint-ledger.schema.json",
     )
+    validate_schema(
+        errors,
+        ROOT / "bundle" / "data" / "semantic" / "runtime-manifest.json",
+        schemas / "relationship-runtime-manifest.schema.json",
+    )
+    locator_manifest_path = (
+        ROOT
+        / "bundle"
+        / "data"
+        / "semantic"
+        / "runtime"
+        / "route-locator"
+        / "manifest.json"
+    )
+    validate_schema(
+        errors,
+        locator_manifest_path,
+        schemas / "relationship-route-locator.schema.json",
+    )
+    if locator_manifest_path.is_file():
+        locator_manifest = load(locator_manifest_path)
+        bucket_validator = jsonschema.Draft202012Validator(
+            load(schemas / "relationship-route-locator-bucket.schema.json"),
+            format_checker=jsonschema.Draft202012Validator.FORMAT_CHECKER,
+        )
+        for binding in locator_manifest.get("buckets", []):
+            try:
+                bucket_path = confined_bundle_path(str(binding.get("path") or ""))
+            except ValueError as error:
+                errors.append(str(error))
+                continue
+            if (
+                not bucket_path.is_file()
+                or bucket_path.stat().st_size != binding.get("bytes")
+                or sha256(bucket_path) != binding.get("sha256")
+            ):
+                errors.append(
+                    "relationship route-locator bucket binding differs: "
+                    f"{binding.get('path')}"
+                )
+                continue
+            with gzip.open(bucket_path, "rt", encoding="utf-8") as handle:
+                bucket = json.load(handle)
+            violations = list(bucket_validator.iter_errors(bucket))
+            if violations:
+                errors.append(
+                    "relationship route-locator bucket schema differs: "
+                    f"{binding.get('path')}: {violations[0].message}"
+                )
     optional = [
         (
             ROOT / "bundle" / "data" / "effects" / "manifest.json",
