@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Pin urllib3 2.8.0 as a narrow security exception to the frozen validation
+  closure, retain hash enforcement and test bounded chunk-size parsing with
+  synthetic HTTP responses. Publication and semantic evidence stay unchanged.
+
 - Added the OKF build and publication lifecycle contract, repository-specific
   contract and documentation-lockstep checks, and a maintained methodology
   guide.

@@ -55,8 +55,8 @@ class ValidationDependencyLockTests(unittest.TestCase):
 
         dependency_lock = load_validation_dependency_lock(LOCK, DIRECT)
         self.assertEqual(len(dependency_lock.requirements), 52)
-        self.assertEqual(len(dependency_lock.direct_requirements), 7)
-        self.assertEqual(len(dependency_lock.transitive_names), 45)
+        self.assertEqual(len(dependency_lock.direct_requirements), 8)
+        self.assertEqual(len(dependency_lock.transitive_names), 44)
         self.assertEqual(len(dependency_lock.artifact_hashes), 1159)
         self.assertEqual(
             dependency_lock.direct_names,
@@ -66,6 +66,7 @@ class ValidationDependencyLockTests(unittest.TestCase):
                 "pyshacl",
                 "pyyaml",
                 "rdflib",
+                "urllib3",
                 "yaml-ld",
                 "zstandard",
             ),
@@ -95,11 +96,11 @@ class ValidationDependencyLockTests(unittest.TestCase):
         self.assertEqual(inventory["artifact_hash_count"], 1159)
         self.assertEqual(
             dependency_lock.identity_digest,
-            "9542649bd62f7064e1bf6bfc82b4db0bc3260015649fd20cc804077076bc0c97",
+            "0d2b93dd93d38df69634f314863dcbca4c6b89f877de9ceed1e0c57a02568245",
         )
         self.assertEqual(
             dependency_lock.artifact_hash_digest,
-            "e8a43fc379630e059925a1a892476a23b7bccd0ca459d07da2015594755a191c",
+            "bb66cadd7963bfeb51af815ec0d6e124f26965c01a62ed93b4d1476508c001dc",
         )
 
         components = dependency_lock.sbom_components()
@@ -117,7 +118,7 @@ class ValidationDependencyLockTests(unittest.TestCase):
             for component in components
             if component["properties"][0]["value"] == "direct"
         ]
-        self.assertEqual(len(direct_components), 7)
+        self.assertEqual(len(direct_components), 8)
 
     def test_installed_environment_comparison(self) -> None:
         dependency_lock = load_validation_dependency_lock(LOCK, DIRECT)

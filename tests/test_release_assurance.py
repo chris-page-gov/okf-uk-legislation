@@ -308,7 +308,7 @@ class ReleaseAssuranceTests(unittest.TestCase):
             for row in python_components
         )
         self.assertEqual(
-            {"direct": 7, "transitive": 45},
+            {"direct": 8, "transitive": 44},
             dict(dependency_kinds),
         )
         for component in python_components:
@@ -383,17 +383,17 @@ class ReleaseAssuranceTests(unittest.TestCase):
         provenance = json.loads(self.files[Path("provenance.json")])
         environment = provenance["validation_dependency_environment"]
         self.assertEqual(52, environment["package_count"])
-        self.assertEqual(7, environment["direct_count"])
-        self.assertEqual(45, environment["transitive_count"])
+        self.assertEqual(8, environment["direct_count"])
+        self.assertEqual(44, environment["transitive_count"])
         self.assertEqual(1159, environment["artifact_hash_count"])
         self.assertEqual(
             "sha256:"
-            "9542649bd62f7064e1bf6bfc82b4db0bc3260015649fd20cc804077076bc0c97",
+            "0d2b93dd93d38df69634f314863dcbca4c6b89f877de9ceed1e0c57a02568245",
             environment["identity_digest"],
         )
         self.assertEqual(
             "sha256:"
-            "e8a43fc379630e059925a1a892476a23b7bccd0ca459d07da2015594755a191c",
+            "bb66cadd7963bfeb51af815ec0d6e124f26965c01a62ed93b4d1476508c001dc",
             environment["artifact_hash_digest"],
         )
 

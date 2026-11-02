@@ -11,15 +11,15 @@
         },
         {
           "name": "okf:artifact-hash-digest",
-          "value": "sha256:e8a43fc379630e059925a1a892476a23b7bccd0ca459d07da2015594755a191c"
+          "value": "sha256:bb66cadd7963bfeb51af815ec0d6e124f26965c01a62ed93b4d1476508c001dc"
         },
         {
           "name": "okf:direct-dependency-count",
-          "value": "7"
+          "value": "8"
         },
         {
           "name": "okf:identity-digest",
-          "value": "sha256:9542649bd62f7064e1bf6bfc82b4db0bc3260015649fd20cc804077076bc0c97"
+          "value": "sha256:0d2b93dd93d38df69634f314863dcbca4c6b89f877de9ceed1e0c57a02568245"
         },
         {
           "name": "okf:package-count",
@@ -27,7 +27,7 @@
         },
         {
           "name": "okf:transitive-dependency-count",
-          "value": "45"
+          "value": "44"
         }
       ],
       "purl": "pkg:generic/okf-validation-environment@1",
@@ -4650,27 +4650,27 @@
       "version": "3.0.0"
     },
     {
-      "bom-ref": "pkg:pypi/urllib3@2.7.0",
+      "bom-ref": "pkg:pypi/urllib3@2.8.0",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "231e0ec3b63ceb14667c67be60f2f2c40a518cb38b03af60abc813da26505f4c"
+          "content": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3"
         },
         {
           "alg": "SHA-256",
-          "content": "9fb4c81ebbb1ce9531cce37674bbc6f1360472bc18ca9a553ede278ef7276897"
+          "content": "63bf2ead4c879426ebf22ef2a781eeb4aa3b4ae798a0435506f8687fd5bb9b63"
         }
       ],
       "name": "urllib3",
       "properties": [
         {
           "name": "uk.gov.okf.validation-dependency-kind",
-          "value": "transitive"
+          "value": "direct"
         }
       ],
-      "purl": "pkg:pypi/urllib3@2.7.0",
+      "purl": "pkg:pypi/urllib3@2.8.0",
       "type": "library",
-      "version": "2.7.0"
+      "version": "2.8.0"
     },
     {
       "bom-ref": "pkg:pypi/wcwidth@0.8.2",
@@ -5615,7 +5615,7 @@
         "pkg:pypi/typing-extensions@4.16.0",
         "pkg:pypi/typing-inspection@0.4.2",
         "pkg:pypi/url-normalize@3.0.0",
-        "pkg:pypi/urllib3@2.7.0",
+        "pkg:pypi/urllib3@2.8.0",
         "pkg:pypi/wcwidth@0.8.2",
         "pkg:pypi/yaml-ld@1.1.22",
         "pkg:pypi/yarl@1.24.5",
@@ -5837,7 +5837,7 @@
     },
     {
       "dependsOn": [],
-      "ref": "pkg:pypi/urllib3@2.7.0"
+      "ref": "pkg:pypi/urllib3@2.8.0"
     },
     {
       "dependsOn": [],
@@ -5881,7 +5881,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:23bf7857-3bac-58e0-af5c-edbe4dadc19d",
+  "serialNumber": "urn:uuid:97492851-aa2c-5a53-89ad-4f721919af60",
   "specVersion": "1.6",
   "version": 1
 }

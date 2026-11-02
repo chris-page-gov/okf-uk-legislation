@@ -6,7 +6,9 @@ closure used by CI, Pages validation and scheduled drift checks.
 
 The lock targets CPython 3.12 on Linux x86-64 with a manylinux 2.28 baseline.
 It was generated with `uv 0.11.8` and excludes releases uploaded after
-2026-07-27T00:00:00Z:
+2026-07-27T00:00:00Z, with a narrow security exception for urllib3 through
+2 November 2026. The direct input pins urllib3 2.8.0 to fix unbounded chunk
+size lines and deflate streaming. No other dependency is refreshed:
 
 ```sh
 uv pip compile requirements-validation.in \
@@ -16,6 +18,7 @@ uv pip compile requirements-validation.in \
   --generate-hashes \
   --only-binary :all: \
   --exclude-newer 2026-07-27T00:00:00Z \
+  --exclude-newer-package urllib3=2026-11-02T00:00:00Z \
   --no-sources
 ```
 
