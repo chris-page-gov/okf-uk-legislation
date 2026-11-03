@@ -16,3 +16,13 @@ python3 scripts/evaluate_legislation_answers.py answers.jsonl --out results.json
 Answers must conform to [answer-schema.json](answer-schema.json). `questions.json` is generated deterministically by `scripts/build_legislation_evaluation.py` and contains the full rubric, source passages and expected concepts.
 
 The suite tests statutory research rather than providing legal advice. A high score is evidence about performance on this fixed suite, not assurance for an unseen matter. Expert reviewers should verify every cited passage and record disagreements.
+
+## Publication and source routes
+
+- [UK Legislation repository](https://github.com/chris-page-gov/okf-uk-legislation)
+- [Canonical descriptor](https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json), with declared raw subpath `bundle`
+- [Immutable releases](https://github.com/chris-page-gov/okf-uk-legislation/releases)
+- [legislation.gov.uk](https://www.legislation.gov.uk/) and its [official data/API documentation](https://legislation.github.io/data-documentation/)
+- [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
+- [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
+- [OKF Foundry authoring and domain profiles](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html)

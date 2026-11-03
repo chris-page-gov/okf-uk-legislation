@@ -38,6 +38,7 @@ run_step() {
 
 run_step "publication contract" python3 scripts/check_publication_contract.py
 run_step "unit suite" python3 -m unittest discover -s tests -v
+run_step "release metadata" python3 scripts/build_release_metadata.py --check
 run_step "publication documentation" python3 scripts/build_publication_docs.py --check
 run_step "internal links" python3 scripts/check_internal_links.py
 run_step "legislation discovery" python3 scripts/rebuild_legislation_discovery.py --check

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entity-model coverage assessment – UK Whole-Law OKF</title>
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../">Home</a> <a href="../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Entity-model coverage assessment</h1>
+<p>P04-01 is <strong>implemented at declared catalogue/schema grain</strong>.</p>
+<p>The versioned context, vocabulary, SHACL shapes, source-grounded examples and
+executable competency questions now cover legal works, expressions,
+manifestations, provisions/evidential passages, cases, courts, organisations,
+publications, source records, jurisdictions and temporal states. Every added
+SHACL target has an explicit conformant example and a required-property
+constraint; focused tests remove each required property and confirm that the
+shape fails closed.</p>
+<p>The current publication materialises 365,786 legislation works using
+legislation.gov.uk identities, represents 1,691,403 format manifestations on
+those work records, and governs 72 source records at federation-catalogue
+grain. Official effect assertions also preserve source-native work, provision
+and effect identifiers where the source supplies them.</p>
+<p>This contract completion does not support a claim that every named entity
+class has been fully ingested. Expressions and temporal states are embedded rather than
+independently inventoried; provision identifiers cover acquired effects and
+on-demand CLML discovery rather than the complete corpus; organisations,
+publications and jurisdictions remain partial projections; and no case or
+court entity corpus has been ingested.</p>
+<p>Deterministic projection cannot safely manufacture unavailable source-native
+identifiers. The Whole-Law federation therefore continues to present
+non-legislation source families as catalogue coverage with explicit
+availability states, not as implemented child corpora.</p>
+<p>See
+<a href="entity-model-coverage-assessment-20260726.json"><code>entity-model-coverage-assessment-20260726.json</code></a>
+for the class-by-class evidence and disposition.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

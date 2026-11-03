@@ -1,6 +1,17 @@
 # Changelog
 
-## Unreleased
+## 0.4.0 — 2026-11-03
+
+- Consolidated the reconciled OKF 0.2 and YAML-LD semantic profile, bounded
+  relationship navigation, v3 governed enrichment and official-effects graph
+  into the current release contract.
+- Added an accessible Pages home, HTML projections for every maintained guide,
+  machine interface discovery and five feature-detected, read-only WebMCP page
+  tools over the frozen publication snapshot.
+- Updated Legislation and Whole-Law descriptors to v0.4.0 while retaining the
+  July 2026 source-snapshot identities and explicit authority boundaries.
+- Bound the publication to OKF Explorer v0.8.0 and its current federation,
+  search, facets, graph, provenance and bounded-adjacency behaviour.
 
 - Pin certifi 2026.10.19 as a second bounded security exception to the frozen
   validation closure. Remove the compromised emSign root, retain unaffected
@@ -22,8 +33,8 @@
   so later dependency-aware optimisation can use measured evidence.
 - Added a public HTML landing page and prominent release/version record after
   the published Pages root was found to return 404.
-- Documented the frozen `v0.3.0` machine-metadata discrepancy without
-  rewriting or rebuilding the immutable release.
+- Preserved the frozen v0.3.0 metadata discrepancy as historical evidence;
+  v0.4.0 corrects the current descriptors without rewriting that release.
 
 ## 0.3.0 — 2026-07-27
 
@@ -60,7 +71,7 @@
 - Added governed model-assisted enrichment provenance, reproducible API runner,
   explicit quota constraint and $0.00 rejected-call cost record.
 
-## Unreleased — profile reconciliation candidate
+## Historical development record — profile reconciliation candidate
 
 - Register the bounded-navigation producer’s exact HTML/JavaScript outputs with the documentation builder; preserve strict byte checks and refusal of unknown files. Retain the failed locked-reproduction attempt that exposed the missing ownership integration.
 

@@ -175,10 +175,9 @@ python3 scripts/run_semantic_conformance.py --check
 python3 ../okf-explorer/scripts/reconcile_okf_repositories.py --repo . --strict
 ```
 
-The published `v0.3.0` archive predates this projection and remains immutable.
-These outputs require a new frozen candidate and the repository's normal
-security, reproduction, browser, accessibility, performance and publication
-gates before they can be described as deployed.
+The historical `v0.3.0` archive predates this projection and remains immutable.
+Release `v0.4.0` publishes this projection after the repository's security,
+reproduction, browser, accessibility, performance and publication gates.
 
 ## Candidate transport identity
 
@@ -187,5 +186,6 @@ Canonical child URLs are publication identities. The versioned
 relative to the fetched federation. Compatible Explorer consumers preserve a
 local or immutable raw revision and do not fall back to public main when that
 child is absent. Earlier consumers that ignore this extension cannot establish
-local/pinned continuity. Use the exact tested consumer named by the candidate
-receipt; the historical v0.3.0 receipt is not proof for this migration.
+local/pinned continuity. Use the exact v0.4 release receipt and its bound
+Explorer consumer; historical v0.3 evidence is not proof for the current
+publication.

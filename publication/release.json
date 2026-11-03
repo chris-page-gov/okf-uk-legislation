@@ -1,0 +1,19 @@
+{
+  "schema": "okf-publication-release.v1",
+  "bundle_version": "0.4.0",
+  "release_tag": "v0.4.0",
+  "release_candidate_tag": "v0.4.0-rc.1",
+  "release_date": "2026-11-03",
+  "release_date_label": "3 November 2026",
+  "status": "stable",
+  "okf_version": "0.2",
+  "explorer_version": "0.8.0",
+  "legislation_snapshot": "legislation-work-index-2026-07-11T18:00:00Z",
+  "legislation_snapshot_label": "11 July 2026 at 18:00 UTC",
+  "whole_law_snapshot": "whole-law-2026-07-25",
+  "whole_law_snapshot_label": "25 July 2026",
+  "repository": "https://github.com/chris-page-gov/okf-uk-legislation",
+  "pages": "https://chris-page-gov.github.io/okf-uk-legislation/",
+  "legislation_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+  "whole_law_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json"
+}

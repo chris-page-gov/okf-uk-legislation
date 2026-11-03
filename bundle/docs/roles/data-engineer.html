@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data-engineer guide – UK Legislation and Whole-Law OKF</title>
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Legislation and Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../">Home</a> <a href="../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Data-engineer guide</h1>
+<p><a href="index.html">Role guides</a> · <a href="../uk-legislation-okf.html">Architecture</a> ·
+<a href="../maintenance.html">Maintenance</a> ·
+<a href="../../whole-law/docs/standards-and-validation.html">Standards</a></p>
+<p>Start from a canonical descriptor, not a repository-root guess. The
+legislation descriptor declares <code>raw_subpath: bundle</code>; the federation
+descriptor declares <code>raw_subpath: bundle/whole-law</code>. Both declare Pages,
+raw-content and <a href="https://github.com/chris-page-gov/okf-uk-legislation/releases" rel="noopener noreferrer">release/archive</a>
+routes.</p>
+<p>Validate hashes before hydration. Treat source envelopes, provider datapacks
+and release artefacts as immutable inputs. Keep official, derived and
+model-assisted assertions distinct, and retain authority, confidence,
+evidence, temporal validity, rights and replacement lineage.</p>
+<p>YAML-LD is the authored semantic form. JSON-LD is the universal strict-HTTP
+fallback while GitHub Pages serves <code>.yamlld</code> as
+<code>application/octet-stream</code>. Do not infer transport conformance from semantic
+round-trip conformance.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

@@ -212,12 +212,24 @@ def contract_errors(contract: Any, root: Path = ROOT) -> list[str]:
     limitations = contract.get("limitations")
     if not isinstance(verification, dict):
         errors.append("verification must be an object")
-    elif verification.get("required") is not False:
-        errors.append("do not claim real-browser assurance until exact deployed evidence exists")
+    else:
+        if verification.get("required") is not True:
+            errors.append("release publication must require real-browser assurance")
+        if verification.get("exact_commit_required") is not True:
+            errors.append("real-browser assurance must bind the exact deployed commit")
+        if verification.get("status") not in {
+            "required-pending-deployment",
+            "passed",
+        }:
+            errors.append("verification status must be pending deployment or passed")
+        if verification.get("status") == "passed" and not verification.get(
+            "evidence_paths"
+        ):
+            errors.append("passed browser verification must name its evidence paths")
     if not isinstance(limitations, list) or not any(
-        isinstance(item, str) and "real-browser" in item for item in limitations
+        isinstance(item, str) and "WebMCP" in item for item in limitations
     ):
-        errors.append("limitations must disclose the real-browser verification gap")
+        errors.append("limitations must distinguish WebMCP registration from host invocation")
 
     return errors
 

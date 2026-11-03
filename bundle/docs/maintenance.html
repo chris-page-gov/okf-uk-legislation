@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maintenance, validation and recovery – UK Legislation and Whole-Law OKF</title>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Legislation and Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../">Home</a> <a href="../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Maintenance, validation and recovery</h1>
+<p><a href="index.html">Documentation spine</a> · <a href="getting-started.html">Getting started</a> · <a href="personas-and-user-journeys.html">Personas and journeys</a> · <a href="illustrated-manual.html">Illustrated manual</a> · <a href="agent-research-guide.html">Agent guide</a> · <a href="evaluation-and-quality.html">Evaluation</a></p>
+<p>The release lifecycle is fail-closed:</p>
+<p><code>draft → candidate → validated → rc → published</code></p>
+<p>An RC is built once and promoted by identical digest. Historical source
+evidence, research packages and audits are immutable. New checks create a new
+attempt and replacement lineage.</p>
+<p>The
+<a href="../release-assurance/reproduction-and-promotion.html">reproduction and promotion contract</a>
+keeps the literal asset name <code>okf-uk-legislation-v0.4.0.tar.zst</code> on both
+<code>v0.4.0-rc.1</code> and <code>v0.4.0</code>. Promotion reuses the sealed bytes and SHA-256;
+rebuilding or renaming the asset is prohibited.</p>
+<p>Release policy v2 separates embedded pre-freeze evidence from a write-once
+external evidence plane. The deterministic assurance projection publishes the
+<a href="../release-assurance/release-policy.json">policy</a>,
+<a href="../release-assurance/external-finalization-contract.json">external finalization contract</a>,
+referenced receipt schemas, finalizer hash, frozen GitHub
+release-observation-controller hash and embedded GATE-12
+<code>release-report.json</code>. The report must bind relationship composition by
+predicate, authority, confidence and freshness; coverage and snapshot currency;
+unresolved gaps; licence/access escalations; executed evaluation; model cost in
+USD and GBP with its assurance boundary; and the declared YAML-LD MIME
+exception.</p>
+<p>Post-freeze evidence never goes back into the frozen checkout. Store every
+receipt, deployed attempt, GitHub release observation and downloaded release
+asset as a regular, non-symbolic-link file outside the repository. The offline
+pre- and post-RC receipt controllers derive the wrapper receipts and locked
+probe manifest from verified sources; do not hand-author those JSON
+documents. The offline finalizer enforces this sequence:</p>
+<ol>
+<li><code>authorize-rc</code> writes the pre-RC authorization from clean-room
+reproduction, Explorer release, security, accessibility and performance
+evidence;</li>
+<li><code>verify-rc</code> reconstructs that receipt before the RC is published;</li>
+<li>after RC publication and public-route validation,
+<code>authorize-final-promotion</code> closes GATE-09, binds the downloaded RC asset
+and authorizes uploading those already sealed bytes under the final tag;</li>
+<li>after the final asset and its release observation are available, create
+the terminal GATE-14 traceability receipt; <code>finalize</code> verifies those final
+materials, rehashes the sealed, RC and final copies, reconstructs GATE-14
+and writes the external finalization receipt; and</li>
+<li><code>verify-final</code> reconstructs the terminal receipt without writing.</li>
+</ol>
+<p>The frozen ledger is never rewritten to claim post-freeze work. Only the nine
+release obligations explicitly named by
+<code>traceability.externally_closable_ids</code> may move from a frozen <code>started</code> or
+<code>blocked</code> status to <code>passed</code> in the external receipt, and only with non-empty
+hash-verified evidence. Every other passage still requires frozen
+<code>verified</code> status.</p>
+<p>The authorizing commands are atomic and write-once: an identical rerun is
+idempotent, while different bytes at an existing output path fail closed.
+Neither the finalizer nor a verification command publishes a GitHub release or
+performs network access. See the
+<a href="../release-assurance/reproduction-and-promotion.html">complete command workflow</a>.</p>
+<h2>Source-of-truth map</h2>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Source of truth</th>
+<th>Generated or maintained output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>work catalogue and facets</td>
+<td>official Atom feeds and legislation builders</td>
+<td><code>bundle/</code></td>
+</tr>
+<tr>
+<td>provision normalization</td>
+<td>Explorer CLML loader</td>
+<td>live browser CLML tree</td>
+</tr>
+<tr>
+<td>official effect snapshot</td>
+<td>immutable request/response envelopes and effects config</td>
+<td><code>bundle/data/effects/</code></td>
+</tr>
+<tr>
+<td>governed Codex-assisted discovery</td>
+<td>hash-bound prompts, rules, per-work outcomes and independent review</td>
+<td><code>bundle/enrichment/codex-assisted-v3/</code> and the active <code>bundle/data/enrichment-v3/</code> projection</td>
+</tr>
+<tr>
+<td>historical Codex v2 discovery</td>
+<td>preserved rules, calibration and independent audit</td>
+<td><code>bundle/enrichment/codex-assisted-v2.json</code></td>
+</tr>
+<tr>
+<td>rich directed relationship semantics</td>
+<td>the governed work, effects, accepted v3, historical v2 and rejected v1 source planes</td>
+<td><code>bundle/data/semantic/</code> direct/reified JSON-LD, Reader runtime arrays, hash-bucket route locator and registries</td>
+</tr>
+<tr>
+<td>optional direct API discovery profile</td>
+<td><code>enrichment/model-assisted-paid-v2/</code> observed evidence</td>
+<td>optional <code>bundle/enrichment/model-assisted-paid-v2.json</code>; not a release prerequisite</td>
+</tr>
+<tr>
+<td>Whole-Law contracts and ontology</td>
+<td><code>whole-law/</code></td>
+<td><code>bundle/whole-law/</code></td>
+</tr>
+<tr>
+<td>answer benchmarks</td>
+<td>evaluation builders</td>
+<td>root and Whole-Law evaluation routes</td>
+</tr>
+<tr>
+<td>documentation</td>
+<td><code>docs/</code>, <code>whole-law/</code> and preserved compatibility docs</td>
+<td>Pages documentation routes</td>
+</tr>
+</tbody>
+</table>
+<h2>Deterministic rebuild</h2>
+<pre><code class="language-sh">python3 scripts/build_legislation_okf.py --from-existing
+python3 scripts/build_model_enrichment_input_evidence.py
+python3 scripts/build_codex_semantic_enrichment.py
+python3 scripts/build_legislation_effects.py --offline
+python3 scripts/build_codex_semantic_enrichment_v3.py
+python3 scripts/audit_codex_semantic_enrichment_v3.py
+python3 scripts/rebuild_legislation_discovery.py
+python3 scripts/build_relationship_semantics.py
+python3 scripts/build_legislation_evaluation.py
+python3 scripts/build_whole_law_evaluation.py
+python3 scripts/run_yaml_ld_conformance.py
+python3 scripts/run_ontology_competency_questions.py
+python3 scripts/build_publication_docs.py
+python3 scripts/build_whole_law_okf.py
+python3 scripts/run_release_evaluation.py --check
+python3 scripts/run_semantic_conformance.py
+python3 scripts/build_whole_law_okf.py
+python3 scripts/audit_graph_enrichment_gate.py build
+python3 scripts/build_whole_law_okf.py
+python3 scripts/build_checksums.py
+python3 scripts/build_release_assurance.py
+python3 scripts/build_checksums.py
+</code></pre>
+<p>The first command performs a complete offline base-publication rebuild from
+the checked-in corpus shards and preserves the descriptor's existing
+<code>generated_at</code> value. This makes a clean checkout byte-reproducible while
+still allowing an explicitly supplied <code>--generated-at</code> value for a genuinely
+new snapshot. The first checksum pass bootstraps the integrity input consumed
+by the release-assurance projection; the final pass then binds that projection
+itself. Omitting either pass is not an equivalent release build.</p>
+<p>The model-enrichment input-evidence build is ordered immediately after the base
+corpus. It fixes the complete work order and credential-free eligibility
+projection before the governed Codex v3 build. The official-effects projection
+must follow v2 and precede v3 because the v3 governed materials bind the
+post-v2, post-effects data manifest. Reversing those stages invalidates the
+independent reviewer binding even when the source-corpus semantic digest is
+unchanged. The v3 terminal ledger then records exactly one outcome for each of
+all 365,786 works. The historical v2 and optional direct API publication checks
+remain preservation/contract checks; neither an API key nor a direct API call
+is required by the current release.</p>
+<p>Network refreshes are separate and create immutable acquisition attempts. They
+must not overwrite the evidence used by an existing release candidate.</p>
+<p><code>rebuild_legislation_discovery.py</code> is the narrow offline recovery path when
+the complete work and relationship shards already exist. It reads those
+published shards and the declared effects/enrichment datapacks, then replaces
+only <code>bundle/data/search/</code> and <code>bundle/data/records/</code> and synchronizes the
+facets, overview, presentation, performance, exact relationship-composition,
+manifest and Explorer descriptor control files. It performs no network
+acquisition and fails if research, evidence, effects or enrichment inputs
+change during the run. Run enrichment/effects first so its exact composition
+reflects their current immutable chunks.</p>
+<h2>Validation</h2>
+<pre><code class="language-sh">python3 -m unittest discover -s tests -v
+python3 scripts/check_legislation_okf.py
+python3 scripts/build_model_enrichment_input_evidence.py --check
+python3 scripts/build_codex_semantic_enrichment.py --check
+python3 scripts/build_legislation_effects.py --check
+python3 scripts/build_codex_semantic_enrichment_v3.py check
+python3 scripts/audit_codex_semantic_enrichment_v3.py check
+python3 scripts/rebuild_legislation_discovery.py --check
+python3 scripts/build_relationship_semantics.py --check
+python3 scripts/build_whole_law_evaluation.py --check
+python3 scripts/run_release_evaluation.py --check
+python3 scripts/build_publication_docs.py --check
+python3 scripts/build_whole_law_okf.py --check
+.venv/bin/python scripts/run_semantic_conformance.py --check
+.venv/bin/python scripts/check_whole_law_okf.py
+python3 scripts/audit_graph_enrichment_gate.py check
+python3 scripts/build_release_assurance.py --check
+python3 scripts/check_internal_links.py
+python3 scripts/build_checksums.py --check
+</code></pre>
+<p>The direct-API/paid-model profile remains preserved historical evidence. It is
+excluded from the active build and validation sequences, requires a new
+explicit decision, and must not request an API key or block this Codex-only
+release.</p>
+<p>Validation includes OKF 0.2 Markdown, YAML-LD/JSON-LD RDF equivalence, Reader
+runtime row/manifest reconciliation, bounded route-locator integrity, complete
+descriptor-graph SHACL, exhaustive JSON Schema checks over all core/provider
+source rows, CSVW, federation and source contracts, source/effect/model
+coverage reconciliation, links and checksums. It also recomputes all bounded
+relationship semantic shards and reconciles one direct triple with one rich
+reified assertion for every active or explicitly historical source row. The
+startup descriptor remains bounded; the sharded semantic plane is separately
+and accurately reported as RDF materialisation.</p>
+<h2>Immutable refresh attempts</h2>
+<p><code>.github/workflows/drift.yml</code> runs every Monday and can be dispatched manually.
+Its observation stage validates the checked-in checksums and latest immutable
+access evidence, probes the declared Pages/raw entrypoints, and compares the 20
+most recently published legislation.gov.uk feed entries with the route
+locator. The probe uses no credentials, follows only bounded HTTPS redirects
+between declared hosts, reads at most 1 MiB per response, and never writes to
+the checkout.</p>
+<p>The workflow then seals the observation using the
+<a href="../release-assurance/refresh-attempt-policy.json">refresh-attempt policy</a>, the
+<a href="../release-assurance/schemas/refresh-attempt-manifest.schema.json">manifest schema</a>
+and the
+<a href="../release-assurance/schemas/refresh-attempt-datapack.schema.json">datapack schema</a>.
+Each attempt has a content-derived identifier binding the exact observation
+and source commit. Its five uncompressed, bounded files are published as a
+uniquely tagged prerelease:</p>
+<ul>
+<li><code>manifest.json</code> records all five probe outcomes and persistence policy;</li>
+<li><code>datapack.json</code> binds the frozen observation;</li>
+<li><code>observation.json</code> is the exact drift-probe output;</li>
+<li><code>checksums.json</code> binds every other asset;</li>
+<li><code>README.md</code> is a fixed human handoff.</li>
+</ul>
+<p>The release is the persistent record. Its tag is
+<code>refresh-attempt-&lt;attempt-id&gt;</code> and must never be edited, overwritten or
+deleted. A 90-day workflow artifact is retained only as a secondary
+convenience copy. If a tag already exists, the workflow compares all five
+downloaded assets byte-for-byte and never edits the release. Drift and failed
+access are still sealed before the job fails closed, so failed observations
+remain visible rather than disappearing with the job.</p>
+<p>Run the same observation manually without changing the publication:</p>
+<pre><code class="language-sh">python3 scripts/check_release_drift.py --output /tmp/okf-drift-report.json
+</code></pre>
+<p>Seal it to a staging directory outside the checkout:</p>
+<pre><code class="language-sh">python3 scripts/seal_refresh_attempt.py seal \
+  --observation /tmp/okf-drift-report.json \
+  --output-root /tmp/okf-refresh-attempts \
+  --source-commit "$(git rev-parse HEAD)"
+python3 scripts/seal_refresh_attempt.py verify \
+  /tmp/okf-refresh-attempts/&lt;attempt-id&gt;
+</code></pre>
+<p>Sealing is offline, rejects output below the repository, rejects symbolic
+links, limits the raw observation to 4 MiB, validates both JSON Schemas and
+refuses to mutate an existing package. Values from public responses remain
+untrusted JSON data and are never interpolated into Markdown, HTML or an
+executable asset. Each later refresh creates another attempt; it never replaces
+historical evidence or rewrites a release-candidate snapshot.</p>
+<h2>Namespace continuity</h2>
+<p>The current Whole-Law v1 namespace remains canonical until a permanent
+government domain and operating model are approved. The
+<a href="../whole-law/governance/architecture-decisions/ADR-016-namespace-migration.html">namespace-migration ADR</a>
+defines the prerequisites, reviewed mapping, dual-publication, redirect,
+rollback and backwards-compatibility contract. A new domain must not cause an
+in-place identifier or evidence rewrite.</p>
+<h2>Documentation and access review</h2>
+<p>After changes:</p>
+<ol>
+<li>verify the legislation and Whole-Law descriptors;</li>
+<li>verify <code>/docs/</code>, <code>/evaluation/</code>, <code>/whole-law/docs/</code> and
+<code>/whole-law/evaluation/</code>;</li>
+<li>verify that the repository, canonical descriptor, declared <code>raw_subpath</code>
+and release/archive fallback appear on each publication landing page;</li>
+<li>review all five <a href="roles/index.html">role guides</a> and run
+<code>python3 scripts/check_internal_links.py</code>;</li>
+<li>run the Claude adversarial access suite;</li>
+<li>verify compatibility redirects and the preserved CKAN/authoring links;</li>
+<li>confirm the official legislation.gov.uk and data.gov.uk documentation
+routes remain directly discoverable;</li>
+<li>confirm source constraints and failed access attempts remain visible;</li>
+<li>update the release report and changelog.</li>
+</ol>
+<p>GitHub Pages’ <code>.yamlld</code> <code>application/octet-stream</code> response is a declared
+hosting constraint. Explorer may safely content-sniff YAML-LD; JSON-LD remains
+the strict transport fallback until a permanent host returns
+<code>application/ld+yaml</code>.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

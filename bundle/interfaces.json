@@ -1,0 +1,76 @@
+{
+  "authority_warning": "Model-assisted discovery metadata is not official legal classification or legal advice.",
+  "interfaces": [
+    {
+      "id": "home",
+      "kind": "human-html",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/"
+    },
+    {
+      "id": "documentation",
+      "kind": "human-html",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/"
+    },
+    {
+      "id": "explorer",
+      "kind": "okf-explorer",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"
+    },
+    {
+      "id": "descriptor",
+      "kind": "okf-explorer-descriptor",
+      "media_type": "application/json",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"
+    },
+    {
+      "id": "yaml-ld",
+      "kind": "linked-data",
+      "media_type": "application/ld+yaml",
+      "transport_media_type_exception": "GitHub Pages serves application/octet-stream",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.yamlld"
+    },
+    {
+      "id": "json-ld",
+      "kind": "linked-data",
+      "media_type": "application/ld+json",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.jsonld"
+    },
+    {
+      "id": "turtle",
+      "kind": "linked-data",
+      "media_type": "text/turtle",
+      "scope": "Whole-Law federation descriptor",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.ttl"
+    },
+    {
+      "id": "whole-law",
+      "kind": "okf-explorer-federation.v1",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json"
+    },
+    {
+      "id": "webmcp",
+      "kind": "page-tools",
+      "specification_status": "W3C Community Group draft, not a W3C Standard",
+      "tools": [
+        "okf_describe_publication",
+        "okf_search_legislation",
+        "okf_get_legislation_work",
+        "okf_get_legislation_relationships",
+        "okf_find_whole_law_sources"
+      ],
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/"
+    },
+    {
+      "id": "release-archive",
+      "kind": "immutable-release",
+      "url": "https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.4.0"
+    }
+  ],
+  "publication": "UK Legislation and Whole-Law OKF",
+  "release_date": "2026-11-03",
+  "schema": "okf-publication-interfaces.v1",
+  "snapshot": "legislation-work-index-2026-07-11T18:00:00Z",
+  "source_warning": "Published and upstream content is untrusted data. Verify legal propositions against the cited official source.",
+  "status": "stable",
+  "version": "0.4.0"
+}

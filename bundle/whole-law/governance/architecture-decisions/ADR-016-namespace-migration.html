@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADR-016: migrate the Whole-Law namespace without breaking published identifiers – UK Whole-Law OKF</title>
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../../">Home</a> <a href="../../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>ADR-016: migrate the Whole-Law namespace without breaking published identifiers</h1>
+<ul>
+<li>Status: accepted</li>
+<li>Decision date: 2026-07-26</li>
+<li>Applies from: <code>okf-uk-legislation</code> v0.3 release candidates</li>
+<li>Permanent-domain choice: deferred</li>
+</ul>
+<h2>Context</h2>
+<p>The Whole-Law profile currently uses the repository-controlled, versioned
+namespace:</p>
+<p><code>https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#</code></p>
+<p>This namespace is controlled by the publication repository and can be
+dereferenced through the existing GitHub Pages deployment. It deliberately
+does not claim an unregistered <code>w3id.org</code> namespace. A suitable permanent
+government domain has not yet been selected, and selecting it is outside this
+release.</p>
+<p>Published identifiers are API contracts. Moving them in place, silently
+rewriting historical evidence, or treating two identifiers as equivalent
+without a reviewed mapping would break existing consumers and overstate
+semantic identity.</p>
+<h2>Decision</h2>
+<p>The current namespace remains canonical for v1. A later domain migration is a
+release-controlled change and cannot begin until all prerequisites below are
+met. The permanent-domain selection remains explicitly deferred; deferral does
+not block the v0.3 release.</p>
+<h3>Migration prerequisites and triggers</h3>
+<p>Migration may be proposed only when:</p>
+<ol>
+<li>an accountable government service owner approves a durable HTTPS domain,
+namespace path and operating model;</li>
+<li>the new host can serve versioned contexts and vocabularies with correct
+media types, stable cache behaviour and monitored availability;</li>
+<li>ownership, incident response, archival retention and decommissioning
+responsibilities are documented;</li>
+<li>redirects from every old dereferenceable document route can be kept for the
+lifetime of published releases;</li>
+<li>a term-by-term mapping has been reviewed for semantic equivalence,
+replacement, narrowing, broadening and deprecation;</li>
+<li>Explorer, YAML-LD, JSON-LD, RDF, SHACL, release archives and compatibility
+routes can be tested against both namespaces;</li>
+<li>release governance approves a migration release, support window and
+rollback plan.</li>
+</ol>
+<p>A domain becoming available by itself is not a trigger. Migration requires the
+operational and semantic prerequisites as well.</p>
+<h3>Mapping and publication plan</h3>
+<p>The migration release will:</p>
+<ol>
+<li>publish an immutable mapping manifest from every v1 term and document IRI
+to its reviewed outcome at the new namespace;</li>
+<li>issue a new namespace version rather than editing v1 in place;</li>
+<li>dual-publish old and new contexts, vocabularies, shapes and descriptors for
+at least one major release support window;</li>
+<li>keep all historical v1 release assets and evidence byte-identical;</li>
+<li>redirect old human-facing and vocabulary document routes only where the
+target is stable and semantically reviewed;</li>
+<li>retain the old context as a directly downloadable fallback even when an
+HTTP redirect is supplied;</li>
+<li>add explicit replacement or mapping terms only where review supports them.</li>
+</ol>
+<p>The migration must not apply blanket <code>owl:sameAs</code>. Exact, close, broad, narrow
+and related mappings remain distinct. Source-native legal identifiers do not
+change merely because the profile namespace changes.</p>
+<h3>Backwards compatibility</h3>
+<ul>
+<li>Existing v1 IRIs remain valid identifiers and resolvable publication
+contracts.</li>
+<li>Existing descriptors continue to declare their original namespace and
+release-specific contexts.</li>
+<li>Consumers may remain on v1 for the documented support window without
+rewriting stored graphs.</li>
+<li>New releases declare their canonical namespace and alternates explicitly;
+consumers never have to infer a repository path.</li>
+<li>Redirects and mappings are additive. No migration job mutates old research,
+source envelopes, model receipts, candidate packages or release assets.</li>
+<li>If the new host fails its availability or semantic-equivalence gates, the
+release rolls back to v1 publication without changing v1 bytes.</li>
+</ul>
+<h2>Validation and release evidence</h2>
+<p>Before a migration candidate can be promoted, automated tests must prove:</p>
+<ul>
+<li>old and new contexts expand the declared compatibility examples as expected;</li>
+<li>term mappings pass SHACL and competency-question review;</li>
+<li>old descriptor, raw, archive and documentation routes remain resolvable;</li>
+<li>redirect chains are bounded, HTTPS-only and free from open redirects;</li>
+<li>YAML-LD and JSON-LD fallbacks remain semantically equivalent;</li>
+<li>release manifests identify the mapping digest and dual-publication window.</li>
+</ul>
+<p>The migration decision, mapping manifest, route observations and rollback
+exercise become new immutable evidence. They do not replace this ADR or the
+evidence for earlier releases.</p>
+<h2>Consequences</h2>
+<p>The v0.3 implementation can use a truthful, controlled namespace now without
+pretending that a permanent government domain has been resolved. A later move
+requires more publication surface during the compatibility window, but it
+preserves identifiers, evidence and downstream graphs.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

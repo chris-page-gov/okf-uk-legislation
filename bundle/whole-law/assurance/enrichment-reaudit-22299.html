@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Independent re-audit of the 22,299-assertion enrichment candidate – UK Whole-Law OKF</title>
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../">Home</a> <a href="../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Independent re-audit of the 22,299-assertion enrichment candidate</h1>
+<p><strong>Audit date:</strong> 25 July 2026</p>
+<p><strong>Decision:</strong> Accepted for promotion after publication regeneration and the
+repository-wide release gates</p>
+<blockquote>
+<p><strong>Hash-bound evidence:</strong> This report applies only to the 22,299-assertion
+candidate identified below. Any enrichment rebuild requires a separately
+named independent audit.</p>
+</blockquote>
+<h2>Outcome</h2>
+<p>The corrected candidate passes the enrichment assurance gates:</p>
+<ul>
+<li>all 365,786 works were evaluated;</li>
+<li>all 366 source/output chunks, hashes, byte counts and attempt-ledger entries
+reconciled;</li>
+<li>an independent implementation reconstructed all 22,299 ordered assertion
+objects exactly;</li>
+<li>all 22,299 identifiers are unique and every source and topic target resolves;</li>
+<li>every assertion validates against the byte-identical legislation and
+OKF Explorer <code>relationship-assertion.v2</code> schemas;</li>
+<li>the run validates against the corrected authored
+<code>model-enrichment-run.v1</code> schema;</li>
+<li>literal evidence support is 100%;</li>
+<li>55 of 55 rule positives, 55 of 55 near-miss negatives, 58 of 58 end-to-end
+cases and 16 of 16 actual-corpus hard negatives pass;</li>
+<li>a 451-assertion semantic sample covers all 46 emitting rules and all 19
+topics with no clear false positive; and</li>
+<li>whole-output adversarial scans find none of the known R008/R009 defence,
+R010 <code>Civilian</code>, R033 veterinary/animal-use/feed, R034 Cruel Poisons or R041
+European Social Fund collisions.</li>
+</ul>
+<p>This is approval of non-official discovery metadata. It is not legal advice,
+official legal classification, qualified-practitioner assurance or a claim that
+title-only enrichment has exhaustive recall.</p>
+<h2>Fail-closed review intervention</h2>
+<p>The independent review initially encountered a transient 22,305-assertion
+candidate. Its original named remediations were successful, but an adjacent
+corpus scan found six further R033 outputs concerning <code>Feeding Stuffs</code>:</p>
+<ol>
+<li><a href="https://www.legislation.gov.uk/id/uksi/1990/567" rel="noopener noreferrer"><code>uksi/1990/567</code></a> —
+<em>The Medicines (Exemptions from Licences) (Intermediate Medicated Feeding
+Stuffs) (Amendment) Order 1990</em>;</li>
+<li><a href="https://www.legislation.gov.uk/id/uksi/1989/2442" rel="noopener noreferrer"><code>uksi/1989/2442</code></a> —
+<em>The Medicines (Intermediate Medicated Feeding Stuffs) Order 1989</em>;</li>
+<li><a href="https://www.legislation.gov.uk/id/uksi/1989/2325" rel="noopener noreferrer"><code>uksi/1989/2325</code></a> —
+<em>The Medicines (Exemptions from Licences) (Intermediate Medicated Feeding
+Stuffs) Order 1989</em>;</li>
+<li><a href="https://www.legislation.gov.uk/id/uksi/1976/31" rel="noopener noreferrer"><code>uksi/1976/31</code></a> —
+<em>The Medicines (Feeding Stuffs Limits of Variation) Order 1976</em>;</li>
+<li><a href="https://www.legislation.gov.uk/id/uksi/1975/1349" rel="noopener noreferrer"><code>uksi/1975/1349</code></a> —
+<em>The Medicines (Feeding Stuffs Additives) Order 1975</em>; and</li>
+<li><a href="https://www.legislation.gov.uk/id/uksi/1973/1164" rel="noopener noreferrer"><code>uksi/1973/1164</code></a> —
+<em>The Medicines (Feeding Stuffs Additives) Order 1973</em>.</li>
+</ol>
+<p>All six already support the Environment/agriculture topic through the separate
+<code>Feeding Stuffs</code> rule. The producer therefore excluded every feeding-stuffs
+context from the human-medicines rule, added six actual-corpus hard negatives
+and rebuilt. This audit restarted against the resulting 22,299 assertions. The
+transient candidate was not accepted.</p>
+<h2>Hash binding</h2>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enrichment/codex-assisted-v2-rules.json</code></td>
+<td><code>f936398e3ed9bc59ebca69391a41809b5af8fe4e9f49c16dfee38d984ebb2d8a</code></td>
+</tr>
+<tr>
+<td><code>enrichment/codex-assisted-v2-calibration.json</code></td>
+<td><code>f31f3204926927ea49eb839e629987b4a3f5e98e72f85e9a7f0981d794028fb3</code></td>
+</tr>
+<tr>
+<td><code>scripts/build_codex_semantic_enrichment.py</code></td>
+<td><code>a6ee550a2fc4a186e2ace6b4a928688287dc345d06b8be08c58ae38ebfacbec6</code></td>
+</tr>
+<tr>
+<td><code>bundle/enrichment/codex-assisted-v2.json</code></td>
+<td><code>14007262b620b95c080228dd1b6d250b0d76f66f876efe131c40dbbf1850dbe4</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/manifest.json</code></td>
+<td><code>a62ca1a23d06d4d11b688a5e947e1a533e6029e060ff41679194cbbc85730f84</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/coverage.json</code></td>
+<td><code>67ac8dd487ea7a5b1e61c288f3f1cc9a682efeac7441fb44f9b503f513094da1</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/attempt-ledger.json</code></td>
+<td><code>124128ce7cbdff1eeb055e9d4cbb534f298426e615f378b280e7b8ce60c8bfc1</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/calibration.json</code></td>
+<td><code>d4b65d6449ab4ae50eec7893dcfbf92b6cb94583441e003ff4859bed3ab9f539</code></td>
+</tr>
+<tr>
+<td>Legislation and Explorer relationship schema</td>
+<td><code>4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006</code></td>
+</tr>
+<tr>
+<td>Authored model-run schema</td>
+<td><code>c57e8edc91babc948852e94fd6fecbe813f89e26ae00c4bc5bee2fe1a4dd884b</code></td>
+</tr>
+</tbody>
+</table>
+<p>The source semantic digest is:</p>
+<pre><code class="language-text">a2f3e65772f33d339825cb2d94923671ce2f1fec87ae4e63647da9ba4b362b36
+</code></pre>
+<p>The ordered manifest chunk root is:</p>
+<pre><code class="language-text">cbc44653b91230bf7d85f575aac24daceb7da25958d3ea384b3ebf73a72bf087
+</code></pre>
+<p>It hashes, in manifest order, each UTF-8
+<code>path NUL sha256 NUL bytes NUL records LF</code> row.</p>
+<p>The sorted assertion-ID-set hash is:</p>
+<pre><code class="language-text">90996c49be205c93c0efc82249947894123303961f8982ebf6531212bb22e83c
+</code></pre>
+<h2>Independent method</h2>
+<p>The reviewer did not import the production builder. A separate read-only
+implementation:</p>
+<ol>
+<li>loaded every source work and aligned assertion chunk;</li>
+<li>recomputed input/output hashes, compressed bytes, counts and attempt-ledger
+values;</li>
+<li>recompiled every include and exclusion expression;</li>
+<li>reconstructed exclusion, existing-topic suppression, same-topic suppression,
+evidence and assertion IDs;</li>
+<li>compared every expected and actual ordered assertion object;</li>
+<li>validated each assertion against the Explorer federation contract and the
+run against the authored run contract;</li>
+<li>checked source/topic joins, evidence, authority, derivation, review status,
+verification, rights and freshness;</li>
+<li>replayed every rule and end-to-end calibration case;</li>
+<li>selected ten hash-ranked assertions per emitting rule, or all outputs for a
+smaller rule; and</li>
+<li>scanned every affected output for the known and adjacent collision families.</li>
+</ol>
+<p>The deterministic semantic sample contains 451 assertions. It covers all 46
+emitting rules and all 19 emitted topics. No clear false positive was found.
+This is stronger slice coverage than an aggregate-only sample, but it is not a
+binomial random sample or an exhaustive expert legal opinion.</p>
+<h2>Named remediation checks</h2>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th style="text-align:right">Current emitted collisions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R008 criminal-subject LASPO suffixes</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>R008/R009 police-station, prisoner-defence or defence-certificate contexts</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>R010 <code>Civilian</code> prefix</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>R033 veterinary, animal-use or feeding-stuffs contexts</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>R034 Animals (Cruel Poisons)</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>R041 European Social Fund</td>
+<td style="text-align:right">0</td>
+</tr>
+</tbody>
+</table>
+<p>All 19 R010 outputs were inspected. R033 has ten residual animal-adjacent
+titles; they concern animal tests or certificates for otherwise human-medicines
+regulation rather than veterinary or animal-only medicines. R034 has two
+animal-adjacent shellfish-poison records; both concern detection/food-safety
+limits and support Health discovery. R041 has no EU structural/cohesion
+adjacency after exclusion.</p>
+<p>Forty R008 outputs cite the multi-subject <em>Legal Aid, Sentencing and Punishment
+of Offenders Act 2012</em>. Clear criminal-subject suffixes are excluded. Some
+generic commencement or consequential instruments do not state which
+provisions they operate. Their Civil link is accepted only as non-exclusive,
+literal discovery of a work under the named Act; it is not represented as an
+official or provision-level classification.</p>
+<h2>Coverage and recall</h2>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th style="text-align:right">Count</th>
+<th style="text-align:right">Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Works attempted</td>
+<td style="text-align:right">365,786</td>
+<td style="text-align:right">100.000%</td>
+</tr>
+<tr>
+<td>Records with an assertion</td>
+<td style="text-align:right">22,284</td>
+<td style="text-align:right">6.092%</td>
+</tr>
+<tr>
+<td>Assertions</td>
+<td style="text-align:right">22,299</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>Raw post-exclusion match records</td>
+<td style="text-align:right">25,402</td>
+<td style="text-align:right">6.944%</td>
+</tr>
+<tr>
+<td>Multiple-rule match records</td>
+<td style="text-align:right">3,768</td>
+<td style="text-align:right">1.030%</td>
+</tr>
+<tr>
+<td>Multiple-topic match records</td>
+<td style="text-align:right">22</td>
+<td style="text-align:right">0.006%</td>
+</tr>
+</tbody>
+</table>
+<p>The 97,899 previously unclassified records divide into:</p>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th style="text-align:right">Count</th>
+<th style="text-align:right">Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received a new topic</td>
+<td style="text-align:right">16,224</td>
+<td style="text-align:right">16.572%</td>
+</tr>
+<tr>
+<td>Human title, no new match</td>
+<td style="text-align:right">74,996</td>
+<td style="text-align:right">76.606%</td>
+</tr>
+<tr>
+<td>URL instead of title</td>
+<td style="text-align:right">6,679</td>
+<td style="text-align:right">6.822%</td>
+</tr>
+</tbody>
+</table>
+<p>No-match is not automatically an error and is not evidence that a work has no
+topic. Excluded records are not silently rerouted without support. Known recall
+choices include:</p>
+<ul>
+<li>147 European Social Fund records excluded without an invented welfare link;</li>
+<li>21 criminal-defence-context records excluded without an invented Criminal
+link; and</li>
+<li>seven mixed Civil/Criminal Legal Aid titles conservatively excluded.</li>
+</ul>
+<p>Nine rules emit no current assertion:</p>
+<pre><code class="language-text">R002 R007 R014 R017 R024 R036 R042 R045 R047
+</code></pre>
+<p>The coverage ledger correctly separates raw include hits, exclusions,
+existing/same-topic suppression and emitted assertions. Synthetic rule coverage
+is not presented as current-corpus output.</p>
+<h2>Provenance and cost</h2>
+<p>The run now:</p>
+<ul>
+<li>uses <code>prompt_basis_hash</code> rather than claiming the governed basis is the
+unavailable original transcript;</li>
+<li>groups record and assertion counts at their correct grains;</li>
+<li>records the exact rule and calibration hashes;</li>
+<li>states that the interactive transcript, exact deployment, parameters and
+Codex task usage were not exposed; and</li>
+<li>records zero API calls and <strong>US$0 / GBP0 incremental API cost</strong>.</li>
+</ul>
+<p>The deterministic production builder imports no network or API client. That
+supports the zero-API claim for the production pass. Repository evidence cannot
+independently inspect external billing or recover unexposed Codex task usage,
+so the final programme cost report must retain that limitation.</p>
+<p>No fair-use or licence constraint was triggered by this audit.</p>
+<h2>Remaining integration gate</h2>
+<p>At audit time, the authored model-run schema validates the corrected run, but
+the generated file
+<code>bundle/whole-law/schemas/model-enrichment-run.schema.json</code> still mirrors the
+preceding schema. The Whole-Law publication must be regenerated so the public
+schema mirror equals the authored schema. The integrated legislation,
+Whole-Law, checksum and release-assurance validators must then pass.</p>
+<p>This is a publication-integration condition, not a rejection of the hash-bound
+22,299 enrichment candidate.</p>
+<h2>Decision</h2>
+<p>The 22,299 candidate is <strong>accepted</strong> as independently reviewed, non-official
+discovery metadata. Mechanical integrity, contract conformance, literal
+evidence, calibration, named remediations, empirical semantic precision,
+authority, rights, freshness and declared zero API cost pass within the stated
+limits.</p>
+<p>Promotion is conditional on regenerating the public Whole-Law mirror and
+passing the repository-wide release gates. Any change to the enrichment inputs
+or generated data invalidates this decision and requires a new audit.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

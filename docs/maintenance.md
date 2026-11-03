@@ -12,8 +12,8 @@ attempt and replacement lineage.
 
 The
 [reproduction and promotion contract](../release-assurance/reproduction-and-promotion.md)
-keeps the literal asset name `okf-uk-legislation-v0.3.0.tar.zst` on both
-`v0.3.0-rc.1` and `v0.3.0`. Promotion reuses the sealed bytes and SHA-256;
+keeps the literal asset name `okf-uk-legislation-v0.4.0.tar.zst` on both
+`v0.4.0-rc.1` and `v0.4.0`. Promotion reuses the sealed bytes and SHA-256;
 rebuilding or renaming the asset is prohibited.
 
 Release policy v2 separates embedded pre-freeze evidence from a write-once

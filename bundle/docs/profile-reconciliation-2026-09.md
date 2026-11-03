@@ -1,8 +1,15 @@
-# Legislation format reconciliation candidate
+# Profile reconciliation history (September 2026)
 
-This is an independent experimental publication. The changes below are a
-candidate for technical review; the published `v0.3.0` release remains unchanged.
-They are separate from the September DWP reading-help demonstration.
+> **Historical and superseded.** Release v0.4.0 adopted the reconciled profile,
+> bounded navigation, repaired validation and current Explorer contract on
+> 3 November 2026. The observations below record the candidate state at the
+> time they were made. They are retained as evidence and must not be read as
+> the current publication or release status.
+
+This was an independent experimental candidate for technical review, separate
+from the September DWP reading-help demonstration. References below to an
+unchanged v0.3.0 release, failed gates or work not being merge-ready describe
+that historical checkpoint only.
 
 ## What changed
 

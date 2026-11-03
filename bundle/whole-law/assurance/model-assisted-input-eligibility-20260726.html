@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model-assisted enrichment input and eligibility evidence – UK Whole-Law OKF</title>
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../">Home</a> <a href="../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Model-assisted enrichment input and eligibility evidence</h1>
+<p>Observed date: <strong>2026-07-26</strong></p>
+<p>This credential-free preflight reconciles all <strong>365,786 works</strong> in <strong>366 source chunks</strong>. It performs and authorizes no model call, credential read or billing action.</p>
+<h2>Decision</h2>
+<p>Evidence status: <strong>passed</strong>. Current workflow: <strong>Codex, no direct API calls</strong>. Optional direct API profile authorized: <strong>no</strong>.</p>
+<p>This receipt establishes the frozen local work-chunk denominator and evidence availability only. Every source-advertised or derived CLML route still lacks a frozen body binding, and the separate governed model, review, cost and credential gates must pass before any paid call.</p>
+<h2>Frozen input coverage</h2>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>State</th>
+<th style="text-align:right">Works</th>
+<th style="text-align:right">Share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td>Substantive</td>
+<td style="text-align:right">359,107</td>
+<td style="text-align:right">98.174%</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>URI fallback</td>
+<td style="text-align:right">6,679</td>
+<td style="text-align:right">1.826%</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>Missing/non-substantive</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0.000%</td>
+</tr>
+<tr>
+<td>Notes/synopsis</td>
+<td>Substantive source prose</td>
+<td style="text-align:right">85,638</td>
+<td style="text-align:right">23.412%</td>
+</tr>
+<tr>
+<td>Notes/synopsis</td>
+<td>Generated boilerplate excluded</td>
+<td style="text-align:right">35,156</td>
+<td style="text-align:right">9.611%</td>
+</tr>
+<tr>
+<td>Notes/synopsis</td>
+<td>Non-prose source value excluded</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0.001%</td>
+</tr>
+<tr>
+<td>Notes/synopsis</td>
+<td>Empty</td>
+<td style="text-align:right">244,990</td>
+<td style="text-align:right">66.976%</td>
+</tr>
+<tr>
+<td>CLML</td>
+<td>Source-advertised manifestation, body unfrozen</td>
+<td style="text-align:right">137,119</td>
+<td style="text-align:right">37.486%</td>
+</tr>
+<tr>
+<td>CLML</td>
+<td>Derived structure route, unverified/body unfrozen</td>
+<td style="text-align:right">228,667</td>
+<td style="text-align:right">62.514%</td>
+</tr>
+<tr>
+<td>CLML</td>
+<td>Frozen body bound</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0.000%</td>
+</tr>
+</tbody>
+</table>
+<p>The 35,156 full-form <code>Official … record for … number ….</code> builder fallbacks are excluded. The remaining 85,640 nonempty source values contain 85,638 substantive prose values and two non-prose remnants. Notes are not asserted to be exact statutory long titles. Neither CLML route class is a successful access or content receipt.</p>
+<h2>Preflight outcomes</h2>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th style="text-align:right">Works</th>
+<th style="text-align:center">Terminal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>candidate-local-semantic-evidence</code></td>
+<td style="text-align:right">359,140</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td><code>deferred-frozen-clml-required</code></td>
+<td style="text-align:right">6,646</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td><code>terminal-insufficient-input-evidence</code></td>
+<td style="text-align:right">0</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td><code>terminal-invalid-input-record</code></td>
+<td style="text-align:right">0</td>
+<td style="text-align:center">yes</td>
+</tr>
+</tbody>
+</table>
+<p>Insufficient frozen evidence always means abstention: no model call, default classification or semantic assertion. Re-entry requires newly frozen official evidence and a changed canonical input-projection hash.</p>
+<h2>Evidence-resolution priority strata</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th style="text-align:right">Works</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>P1-fallback-resolve-derived-structure-route</code></td>
+<td style="text-align:right">2,091</td>
+<td>Highest evidence-resolution priority: verify the deterministically derived structure route, then freeze the CLML body or record immutable unavailability.</td>
+</tr>
+<tr>
+<td><code>P2-fallback-resolve-advertised-clml-route</code></td>
+<td style="text-align:right">4,555</td>
+<td>Resolve a source-advertised CLML manifestation for a URI-title record with no substantive local notes.</td>
+</tr>
+<tr>
+<td><code>P3-fallback-with-substantive-notes</code></td>
+<td style="text-align:right">33</td>
+<td>High-review-risk candidates whose title is a URI but whose notes contain substantive local evidence.</td>
+</tr>
+<tr>
+<td><code>P4-substantive-title-and-notes</code></td>
+<td style="text-align:right">85,605</td>
+<td>Richest local frozen text candidates for governed calibration and evidence-support checks.</td>
+</tr>
+<tr>
+<td><code>P5-substantive-title-without-notes</code></td>
+<td style="text-align:right">273,502</td>
+<td>Substantive-title candidates with thinner local prose evidence and recorded but unfrozen CLML routes.</td>
+</tr>
+<tr>
+<td><code>P6-no-semantic-text-and-no-recorded-route</code></td>
+<td style="text-align:right">0</td>
+<td>Terminal insufficiency unless new frozen official evidence is added.</td>
+</tr>
+<tr>
+<td><code>P7-invalid-input-record</code></td>
+<td style="text-align:right">0</td>
+<td>Terminal invalid-source outcome.</td>
+</tr>
+</tbody>
+</table>
+<p>Priority is for evidence resolution and review planning, not automatic paid-call order.</p>
+<h2>Stable roots</h2>
+<ul>
+<li>Source snapshot: <code>legislation-work-index-2026-07-11T18:00:00Z</code></li>
+<li>Raw source chunk root: <code>0faf9585e6dc0333107dbe30101c3b710ecc26251e406cb589a5df030bd892fa</code></li>
+<li>Source-input compatibility root: <code>88774344579e6d18572f981a1fc240a6452311e642fcf42fed95eafdfa5bc341</code></li>
+<li>Ordered work identity root: <code>8c8d65057485e9e0ebf5426964ae7ee0d72a7acaff93da4de2d660ccfd289332</code></li>
+<li>Ordered canonical input-projection root: <code>f68c2130d2019f0958e705afc43a4f358e5da353c6d4e23baf9f9429ed6ef5cf</code></li>
+<li>Fixed calibration case-set root: <code>d34a63f21267aeefef6bd6ddc19c57239e494e5205819ee17f89f8273f39849a</code></li>
+</ul>
+<h2>Checks</h2>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Dimension</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MEI-001</code></td>
+<td>snapshot-binding</td>
+<td>passed</td>
+</tr>
+<tr>
+<td><code>MEI-002</code></td>
+<td>complete-denominator</td>
+<td>passed</td>
+</tr>
+<tr>
+<td><code>MEI-003</code></td>
+<td>chunk-reconciliation</td>
+<td>passed</td>
+</tr>
+<tr>
+<td><code>MEI-004</code></td>
+<td>field-partitions</td>
+<td>passed</td>
+</tr>
+<tr>
+<td><code>MEI-005</code></td>
+<td>outcome-and-priority-partitions</td>
+<td>passed</td>
+</tr>
+<tr>
+<td><code>MEI-006</code></td>
+<td>core-source-metadata</td>
+<td>passed</td>
+</tr>
+<tr>
+<td><code>MEI-007</code></td>
+<td>clml-claim-boundary</td>
+<td>passed</td>
+</tr>
+<tr>
+<td><code>MEI-008</code></td>
+<td>notes-boilerplate-boundary</td>
+<td>passed</td>
+</tr>
+<tr>
+<td><code>MEI-009</code></td>
+<td>fixed-calibration</td>
+<td>passed</td>
+</tr>
+</tbody>
+</table>
+<h2>Limitations</h2>
+<ul>
+<li>No OpenAI API request, model selection, secret read or billing action is performed or authorized by this evidence.</li>
+<li>137,119 works source-advertise a CLML manifestation and 228,667 have only a deterministically derived structure route. This snapshot binds zero retrieved CLML bodies; neither route class proves live availability or annotation coverage.</li>
+<li>The notes field contains 35,156 deterministic <code>Official … record for …</code> fallback strings, which are excluded from semantic evidence. Remaining prose can be explanatory or synopsis text; it is not represented as an exact statutory long title.</li>
+<li>This is deterministic input and eligibility evidence, not legal-semantic classification, legal advice or independent validation of future model outputs.</li>
+<li>The current governed Codex workflow must record its own terminal outcome for every work; these preflight outcomes must not be substituted for that terminal ledger. Any separately authorised future direct API profile would also need its own independent outcome ledger.</li>
+</ul>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

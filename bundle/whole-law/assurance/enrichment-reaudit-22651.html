@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Independent re-audit of the 22,651-assertion enrichment candidate – UK Whole-Law OKF</title>
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../">Home</a> <a href="../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Independent re-audit of the 22,651-assertion enrichment candidate</h1>
+<p><strong>Audit date:</strong> 25 July 2026</p>
+<p><strong>Decision:</strong> Changes required</p>
+<blockquote>
+<p><strong>Historical evidence:</strong> This report is bound to the superseded 22,651-assertion candidate and the exact hashes below. It must not be used as the decision for a later rebuilt candidate.</p>
+</blockquote>
+<h2>Outcome</h2>
+<p>The first remediation fixed the original candidate’s mechanical and contract defects:</p>
+<ul>
+<li>all 365,786 works were evaluated;</li>
+<li>all 366 input/output chunks and ledger entries reconciled;</li>
+<li>the independently reconstructed assertion multiset exactly matched all 22,651 outputs;</li>
+<li>all targets used canonical <code>topic/&lt;slug&gt;</code> identifiers and joined published topics;</li>
+<li>all assertions passed the synchronized OKF Explorer <code>relationship-assertion.v2</code> schema;</li>
+<li>all evidence, authority, derivation, rights, freshness and pending-review metadata were internally consistent;</li>
+<li>55 of 55 rule positives, 55 of 55 near-miss negatives and 40 of 40 end-to-end cases passed with independently recomputed metrics; and</li>
+<li>no Civil assertion contained the explicit whole words <code>criminal</code>, <code>crime</code> or <code>prosecution</code>.</li>
+</ul>
+<p>Semantic assurance still failed. Actual-corpus rule sampling exposed two collision families omitted by the authored tests:</p>
+<ol>
+<li>R041 classified 147 <strong>European Social Fund</strong> records as <strong>Social security and welfare</strong>.</li>
+<li>Civil rules retained 17 police-station legal-advice records and four prisoner-defence/defence-certificate records.</li>
+</ol>
+<p>The 22,651 candidate is therefore <code>changes-required</code>. Its conservative no-match population is a disclosed recall limitation, not a failure.</p>
+<h2>Hash binding</h2>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enrichment/codex-assisted-v2-rules.json</code></td>
+<td><code>380f91265b8ab9d1b7e17b78638ea3ade4172feeaceeebdc4cf112efa15e4cd7</code></td>
+</tr>
+<tr>
+<td><code>enrichment/codex-assisted-v2-calibration.json</code></td>
+<td><code>ac0d9fc0603d74f8003901ab83eacd54ad45767efdaf7825e56de61f4fcc767a</code></td>
+</tr>
+<tr>
+<td><code>scripts/build_codex_semantic_enrichment.py</code></td>
+<td><code>b5babea3e2f8f9b48907ca0ebdf6844115a048922bcffb58f3ab274c011a27bd</code></td>
+</tr>
+<tr>
+<td><code>bundle/enrichment/codex-assisted-v2.json</code></td>
+<td><code>6d9faced5f32071b94b9f48e032c77c5223842d61d4d59834064cfe50147c698</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/manifest.json</code></td>
+<td><code>083ae8f1065d3ac08367b990970ac43d5e79dd28f4e1b76c44af035362912d23</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/coverage.json</code></td>
+<td><code>c1003918e5990ab54a08ff65427077ea4b3f2fc4d79eaa63de8c556e88aa7be2</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/attempt-ledger.json</code></td>
+<td><code>d82587d18646e2e16156a31e283f577ffa9af7b52fdf35edaa2363f1fee2c662</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/calibration.json</code></td>
+<td><code>7af4f70d1dd9f8d31937b2b667969afb4b65b4fc871409f5539f5a8b0825a050</code></td>
+</tr>
+<tr>
+<td>Legislation and Explorer relationship schema</td>
+<td><code>4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006</code></td>
+</tr>
+</tbody>
+</table>
+<p>The ordered manifest chunk-root SHA-256 was:</p>
+<pre><code class="language-text">b5069cfbff952c8aa512c652052d2270d2f68501b91807729e7e505e563b6f47
+</code></pre>
+<p>The input semantic SHA-256 was:</p>
+<pre><code class="language-text">a2f3e65772f33d339825cb2d94923671ce2f1fec87ae4e63647da9ba4b362b36
+</code></pre>
+<h2>Commands</h2>
+<pre><code class="language-sh">python3 -m py_compile scripts/build_codex_semantic_enrichment.py
+python3 scripts/build_codex_semantic_enrichment.py --check
+.venv/bin/python scripts/check_whole_law_okf.py
+python3 scripts/check_legislation_okf.py
+</code></pre>
+<p>The enrichment synchronization check passed:</p>
+<pre><code class="language-text">Codex enrichment synchronized: 365,786 attempts, 22,651 accepted assertions, $0 API cost
+</code></pre>
+<p>The Whole-Law and complete legislation validators encountered independent, in-progress authored/generated publication errors. Those did not identify an enrichment assertion error and are not treated as evidence for or against this candidate’s semantic precision.</p>
+<p>The all-assertion Explorer contract check reported:</p>
+<pre><code class="language-text">Explorer relationship-assertion.v2 validation: 22,651 checked, 0 failures
+</code></pre>
+<h2>Independent method</h2>
+<p>The reviewer:</p>
+<ol>
+<li>Loaded every source work and aligned assertion chunk.</li>
+<li>Recomputed source/output hashes, byte counts and ledger counts.</li>
+<li>Recompiled all include and exclude regular expressions.</li>
+<li>Reconstructed every expected post-suppression assertion.</li>
+<li>Compared exact expected and actual multisets.</li>
+<li>Validated every assertion directly against the Explorer profile.</li>
+<li>Checked source and topic referential integrity.</li>
+<li>Checked evidence, authority, derivation, review, verification, rights and freshness.</li>
+<li>Replayed all rule and end-to-end calibration cases.</li>
+<li>Sampled actual emitted records independently by every topic and emitting rule.</li>
+<li>Ran adversarial scans suggested by observed sample failures.</li>
+</ol>
+<p>Sampling was deterministic:</p>
+<ul>
+<li>five records per emitted topic by ascending <code>SHA-256(topic + NUL + source)</code> — 95 records;</li>
+<li>three records per emitting rule by ascending <code>SHA-256(rule + NUL + source)</code>, or every record if fewer — 136 records; and</li>
+<li>229 unique records after overlap.</li>
+</ul>
+<p>All 19 topics and all 46 emitting rules were represented. Nine additional rules were exercised by positive and near-miss unit cases but emitted no current assertion.</p>
+<h2>Profile</h2>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th style="text-align:right">Count</th>
+<th style="text-align:right">Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Works attempted</td>
+<td style="text-align:right">365,786</td>
+<td style="text-align:right">100.000%</td>
+</tr>
+<tr>
+<td>Records with an assertion</td>
+<td style="text-align:right">22,611</td>
+<td style="text-align:right">6.182%</td>
+</tr>
+<tr>
+<td>Assertions</td>
+<td style="text-align:right">22,651</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>Raw-match records</td>
+<td style="text-align:right">25,733</td>
+<td style="text-align:right">7.035%</td>
+</tr>
+<tr>
+<td>Multiple-rule records</td>
+<td style="text-align:right">3,793</td>
+<td style="text-align:right">1.037%</td>
+</tr>
+<tr>
+<td>Multiple-topic records</td>
+<td style="text-align:right">47</td>
+<td style="text-align:right">0.013%</td>
+</tr>
+</tbody>
+</table>
+<p>The 97,899 previously unclassified records divided into:</p>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th style="text-align:right">Count</th>
+<th style="text-align:right">Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received a new topic</td>
+<td style="text-align:right">16,374</td>
+<td style="text-align:right">16.725%</td>
+</tr>
+<tr>
+<td>Human title, no new match</td>
+<td style="text-align:right">74,846</td>
+<td style="text-align:right">76.452%</td>
+</tr>
+<tr>
+<td>URL instead of title</td>
+<td style="text-align:right">6,679</td>
+<td style="text-align:right">6.822%</td>
+</tr>
+</tbody>
+</table>
+<p>The 74,846 no-matches are not automatically errors. The published limitations correctly state that literal title evidence is incomplete and that no-match is not evidence of no topic.</p>
+<h2>Checks passed</h2>
+<ul>
+<li>Zero chunk, byte, hash or ledger discrepancies.</li>
+<li>Zero deterministic reconstruction discrepancies.</li>
+<li>Zero duplicate assertion IDs or source-target-predicate tuples.</li>
+<li>Zero missing source records.</li>
+<li>Zero noncanonical or unregistered topic targets.</li>
+<li>Zero Explorer schema errors across 22,651 assertions.</li>
+<li>Zero evidence-literal or evidence-URL discrepancies.</li>
+<li>Zero authority, derivation, review, verification, rights or freshness discrepancies.</li>
+<li>55 unique rule positives passed.</li>
+<li>55 unique rule near-miss negatives passed.</li>
+<li>40 of 40 end-to-end cases passed.</li>
+<li>Generated precision, recall, evidence-support and structural-validity values agreed with independent recomputation.</li>
+<li>Zero API requests and US$0 incremental API cost; Codex task billing remains unavailable.</li>
+</ul>
+<h2>Findings</h2>
+<h3>REA-22651-F001 — High: European Social Fund collision</h3>
+<p>R041 treats every <code>social fund</code> phrase as the UK social-security fund. Of its 341 assertions, 147 concern the <strong>European Social Fund</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Source type</th>
+<th style="text-align:right">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>eur</code></td>
+<td style="text-align:right">48</td>
+</tr>
+<tr>
+<td><code>eudn</code></td>
+<td style="text-align:right">98</td>
+</tr>
+<tr>
+<td><code>uksi</code></td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table>
+<p>That is 43.109% of R041 and 24.378% of the entire <strong>Social security and welfare</strong> topic output.</p>
+<p>An example is Commission Delegated Regulation (EU) 2019/697, whose title identifies the European Social Fund and EU reimbursement of member-state expenditure. It concerns the EU structural/employment/cohesion fund, not the UK discretionary Social Fund welfare scheme.</p>
+<p>Required correction:</p>
+<ul>
+<li>exclude <code>European Social Fund</code> from R041;</li>
+<li>use an actual European Social Fund title as its hard negative; and</li>
+<li>if useful, represent that named entity under an appropriate EU/employment/cohesion concept.</li>
+</ul>
+<h3>REA-22651-F002 — Medium: residual criminal-defence Civil matches</h3>
+<p>The explicit exclusion worked: no Civil assertion contained <code>criminal</code>, <code>crime</code> or <code>prosecution</code>.</p>
+<p>However, other vocabulary still identified criminal-defence contexts:</p>
+<ul>
+<li>17 <code>Legal Advice and Assistance at Police Stations</code> records; and</li>
+<li>four poor-prisoner defence or defence-certificate records.</li>
+</ul>
+<p>Examples include:</p>
+<ul>
+<li>“The Legal Advice and Assistance at Police Stations (Remuneration) (Amendment) Regulations 2001”; and</li>
+<li>“The Poor Prisoners’ Defence (Legal Aid Certificate) Regulations 1963”.</li>
+</ul>
+<p>These 21 records are 1.743% of the 1,205 Civil assertions. They should be excluded from Civil or routed to Criminal law and policing. Actual examples should become rule-level hard negatives.</p>
+<p>Seven mixed Civil-and-Criminal Legal Aid titles were conservatively excluded. That is an acceptable recall choice provided it remains visible.</p>
+<h3>REA-22651-F003 — Medium: model-authoring provenance remains partial</h3>
+<p><code>prompt_hash</code> is a hash of a synthetic prompt basis assembled by the generator, not the actual Codex rule-authoring transcript. The exact model deployment, exposed parameters and Codex task usage are unavailable.</p>
+<p>Deterministic rule execution is reproducible; model-assisted rule authorship is not fully reproducible from the run manifest. The field should be named <code>prompt_basis_hash</code>, or linked to a hash-bound governance transcript with explicit unavailable reasons.</p>
+<h3>REA-22651-F004 — Low: count grains differ in the run record</h3>
+<p><code>accepted_assertions = 22,651</code> is assertion-grain, while <code>rejected_records = 343,175</code> is record-grain. The provider manifest correctly supplies <code>records_with_accepted_assertions = 22,611</code>.</p>
+<p>The run should use explicit record and assertion metric groups and rename <code>rejected_records</code> to <code>records_without_new_supported_assertions</code>.</p>
+<h3>REA-22651-F005 — Low: nine rules emit no current assertion</h3>
+<p>The zero-output rules were:</p>
+<pre><code class="language-text">R002 R007 R014 R017 R024 R036 R042 R045 R047
+</code></pre>
+<p>This does not harm emitted data, but synthetic rule-test coverage should not be mistaken for actual-corpus output coverage. Zero raw, suppressed and emitted counts should remain visible.</p>
+<h2>Decision</h2>
+<p>Mechanical integrity, Explorer conformance, literal evidence and authority/review metadata passed. Conservative recall was honestly disclosed and accepted.</p>
+<p>Semantic precision did not pass because R041 had a systematic named-entity collision and Civil rules retained clear criminal-defence contexts. Do not promote the 22,651 candidate.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

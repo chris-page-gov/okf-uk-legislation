@@ -1,9 +1,67 @@
 <!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title>Official effects acquisition evidence</title>
-<main><h1>Official effects acquisition evidence</h1><ul>
-<li><a href="README.md">Recovery and validation guide</a></li>
-<li><a href="archive-receipts/legislation-effects-2026-07-25.json">Immutable archive receipt</a></li>
-<li><a href="publication-projections/legislation-effects-2026-07-25.json">Safe publication projection</a></li>
-</ul><p>The untrusted source archive is distributed only as an integrity-bound release asset, not served loose by Pages.</p>
-</main></html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Official effects acquisition evidence – UK Legislation and Whole-Law OKF</title>
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Legislation and Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../../">Home</a> <a href="../../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Official effects acquisition evidence</h1>
+<p>This directory separates immutable downloaded evidence from its safe
+publication metadata.</p>
+<ul>
+<li><code>archives/&lt;snapshot-id&gt;.tar.xz</code> preserves every original XML response and
+envelope byte in a deterministic archive with normalized tar metadata.</li>
+<li><code>archive-receipts/&lt;snapshot-id&gt;.json</code> binds the archive, original integrity
+manifest, byte counts, digests and bounded-read policy.</li>
+<li><code>publication-projections/&lt;snapshot-id&gt;.json</code> exposes request and response
+status metadata, source paths, byte counts and digests without response
+bodies or response headers.</li>
+</ul>
+<p>The 25 July 2026 source documents contain official public identifiers whose
+lexical form triggers a GitHub credential detector. They are not credentials.
+The values are not repeated in receipts or projections and are not stored as
+loose Git blobs. Their exact source bytes remain recoverable from the sealed
+archive, and official identifiers required by the derived relationship graph
+remain inside its compressed datapack.</p>
+<p>Loose capture directories are local staging inputs and are ignored by Git.
+They are never the governed publication object.</p>
+<p>GitHub Pages publishes this guide, the archive receipt and the safe projection.
+It does not serve the untrusted archive itself. The archive is retained in the
+source repository and must be distributed as an integrity-bound release asset.</p>
+<h2>Validate offline</h2>
+<pre><code class="language-sh">python3 scripts/legislation_effects_evidence_archive.py check \
+  --snapshot-id legislation-effects-2026-07-25
+python3 scripts/build_legislation_effects.py --check
+</code></pre>
+<p>Both commands fail if an archive member, original body digest, envelope,
+receipt, projection or published assertion lineage differs.</p>
+<h2>Seal a completed capture</h2>
+<pre><code class="language-sh">python3 scripts/legislation_effects_evidence_archive.py create \
+  --snapshot-dir evidence/source-acquisitions/legislation-effects/legislation-effects-YYYY-MM-DD \
+  --archived-at YYYY-MM-DDTHH:MM:SSZ
+</code></pre>
+<p>An existing archive or receipt cannot be replaced with different bytes. A
+later observation therefore requires a new snapshot ID.</p>
+<h2>Explicit recovery</h2>
+<p>Recovery materializes downloaded, untrusted XML and requires an explicit
+acknowledgement:</p>
+<pre><code class="language-sh">python3 scripts/legislation_effects_evidence_archive.py extract \
+  --snapshot-id legislation-effects-2026-07-25 \
+  --destination /secure/recovery/path \
+  --acknowledge-untrusted-content
+</code></pre>
+<p>Normal builds and validation read members in memory under bounded archive
+limits and do not extract them into the working tree.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

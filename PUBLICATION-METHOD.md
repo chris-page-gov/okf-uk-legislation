@@ -22,11 +22,15 @@ check or Pages deployment.
 
 The `bundle/` tree is generated publication data. Routine validation checks
 the tracked bytes without rebuilding them. Pages uploads that same tree from
-the protected-main commit after validation. A documentation or workflow
-change therefore does not trigger a corpus, semantic or release-archive
-rebuild. Workflow changes do require the small workflow-bound assurance and
-checksum projections to be refreshed because those files record the exact CI
-materials.
+the protected-main commit after validation. During correction, run only the
+producer and focused checks for the files being changed. Once the candidate is
+frozen, run the complete validator once. A documentation or UI correction must
+not trigger repeated corpus, semantic or release-archive rebuilds.
+
+`scripts/build_release_metadata.py` is the bounded release-metadata producer.
+It updates five small root publication files without rebuilding the
+365,786-work corpus. `build_publication_docs.py` and
+`build_whole_law_okf.py` own the HTML projections and interface discovery.
 
 ## Dependency planes
 
@@ -35,11 +39,10 @@ The contract records this order:
 `source → semantic → runtime → documentation → release → deployment → browser`
 
 Some planes also depend directly on earlier evidence. This repository keeps
-the complete offline validator as one serial gate because its checks share a
-large corpus and overlapping assurance inputs. The validator now emits a
-duration for every step and a total duration. Use those timings to establish
-dependencies and costs before proposing parallel jobs or a documentation-only
-path. Unknown changes continue to receive the full suite.
+the complete offline validator as one serial freeze gate because its checks
+share a large corpus and overlapping assurance inputs. The validator emits a
+duration for every step and a total duration. Focused checks support
+development, but do not replace the one complete frozen-candidate run.
 
 ## CI and Pages routing
 
@@ -94,15 +97,16 @@ GitHub Pages deployment promotes the checked-in `bundle/` tree after the
 complete gate. Frozen GitHub Releases keep their existing, separate manual
 authorisation and identical-byte promotion rules.
 
-The existing deployed-entrypoint controller provides bounded HTTP evidence.
-It is not a real-browser check and does not prove a console-clean Explorer
-journey bound to the exact newly deployed commit. The publication contract
-therefore records real-browser verification as an open migration gap rather
-than claiming it has passed. Before that gate is standardised, reviewers must
-continue to treat a new public URL as unverified unless the exact deployment
-has separate browser evidence.
+The deployed-entrypoint controller provides bounded HTTP evidence. Release
+v0.4 also requires Chrome, Firefox and WebKit journeys bound to the exact
+deployed commit, including a console-clean Pages landing, HTML documentation,
+Explorer catalogue search, a selected work's bounded relationships and the
+WebMCP registration boundary. Page registration and host invocation remain
+separate claims: the site may prove that five read-only tools registered when
+`document.modelContext` is present, but it must not claim that every AI host
+can discover or call them.
 
-## Backlog before further optimisation
+## Further optimisation
 
 - collect step timings from representative green runs;
 - map shared fixture, corpus and assurance dependencies;
@@ -110,5 +114,5 @@ has separate browser evidence.
   shortcut;
 - split only proven-independent validator groups, preserving the `validate`
   convergence gate; and
-- add an exact-commit, real-browser and console-clean Pages journey without
-  rebuilding the deployed candidate.
+- preserve the exact-commit, real-browser and console-clean Pages journey
+  without rebuilding the deployed candidate.

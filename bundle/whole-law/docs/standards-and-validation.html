@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standards and validation – UK Whole-Law OKF</title>
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../">Home</a> <a href="../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Standards and validation</h1>
+<h2>Versioned profile</h2>
+<p>The machine-readable <a href="../ontology/standards.json">standards applicability
+register</a> distinguishes <code>normative</code>, <code>projection</code>,
+<code>source-native</code>, <code>conditional</code>, <code>reference-only</code> and <code>not-applicable</code> use. The
+core pins are:</p>
+<ul>
+<li>OKF 0.2 at repository revision
+<code>3fcbb9f828c2f23d109c855ee403c3a4c81f3a96</code>;</li>
+<li>YAML 1.2.2;</li>
+<li>the 23 July 2026 YAML-LD 1.0 Working Draft;</li>
+<li><code>yaml-ld==1.1.22</code>, with the local standards checkout and test-manifest
+revisions recorded in the register;</li>
+<li>JSON-LD 1.1/API/Framing with <code>PyLD==2.0.4</code>;</li>
+<li>RDF 1.1, RDF Dataset Canonicalization 1.0, SHACL 1.0, JSON Schema
+2020-12 and CSVW.</li>
+</ul>
+<p>The repository-controlled namespace is
+<code>https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#</code>.
+It is intentionally versioned and does not claim an unregistered <code>w3id.org</code>
+identifier. A later permanent government-domain migration is a separate,
+documented compatibility decision.</p>
+<h2>Authored and generated representations</h2>
+<p><code>okf-bundle.yamlld</code> is the authored semantic control publication. The builder emits
+<code>okf-bundle.jsonld</code> and canonical N-Triples-compatible
+<code>okf-bundle.ttl</code> from the same governed values. Validation exercises YAML-LD
+expansion, JSON-LD compaction, flattening and framing, RDF conversion,
+RDF-to-JSON-LD-to-RDF round-trip, three-way graph isomorphism and canonical
+dataset-digest equivalence. SHACL validates all three complete semantic
+descriptor graphs and the example/entity contract. The bounded descriptor
+contains the Federation, its hash-bound SourceRegister contract node and a
+link to the relationship-authoritative YAML-LD manifest. Separate bounded
+JSON-LD shards materialise matching direct triples and evidence-bearing
+<code>rdf:Statement</code>/<code>okf:RelationshipAssertion</code> nodes without forcing all 365,786
+works into the startup descriptor graph. A separately generated runtime
+manifest lists active default planes, opt-in historical planes, local-route
+assertion arrays and a hash-bucket route locator for bounded Reader hydration.
+The
+<a href="../assurance/semantic-conformance.json">deterministic conformance receipt</a>
+separately records exhaustive source-row validation and direct/reified
+reconciliation for every active and historical semantic assertion shard.</p>
+<p>These checks establish conformance of this publication to its declared basic
+profile. They do not claim that the selected third-party processor passes
+every upstream processor test. The upstream YAML-LD, JSON-LD API and Framing
+test suites remain processor-level dependencies; their exact revisions and
+the subset exercised here are retained as release evidence.</p>
+<h2>Legal and catalogue projections</h2>
+<p>ELI, ELI-DL/ELI-I, ECLI, Akoma Ntoso/LegalDocML, CLML, LRM/WEMI, PROV-O,
+Dublin Core Terms, DCAT 3/DCAT-AP, SKOS, OWL-Time, Web Annotation, CiTO,
+ODRL, DQV and Schema.org Legislation are applied only in the roles declared by
+the register. Conditional mappings are not emitted when source evidence does
+not support them. LegalRuleML is conditional on reviewed rule extraction and
+LKIF remains reference-only.</p>
+<h2>Known transport exception</h2>
+<p>GitHub Pages currently serves <code>.yamlld</code> as <code>application/octet-stream</code>, not
+<code>application/ld+yaml</code>. The document remains semantically conformant, but this
+deployment is not described as transport-conformant. JSON-LD and release
+downloads are universal fallbacks; Explorer may safely content-sniff a
+declared <code>.yamlld</code> route. The exception remains open until a permanent host can
+set the registered media type.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

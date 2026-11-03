@@ -249,11 +249,14 @@
   "entrypoints": {
     "constraints": "data/source-constraint-ledger.json",
     "coverage": "data/coverage.json",
-    "docs": "docs/index.md",
+    "docs": "docs/index.html",
+    "documentation_html": "docs/index.html",
     "evaluation": "evaluation/release-questions.json",
     "evaluation_coverage": "evaluation/coverage.json",
     "evaluation_executions": "evaluation/executions/index.json",
+    "html_index": "index.html",
     "integrity": "integrity.json",
+    "interfaces": "../interfaces.json",
     "iri_route_registry": "../data/semantic/iri-route-registry.json",
     "markdown_index": "index.md",
     "model_enrichment_v2_historical": "../enrichment/codex-assisted-v2.json",
@@ -275,7 +278,8 @@
     "source_classes": "data/legal-source-taxonomy.json",
     "source_register": "data/source-register.json",
     "standards": "ontology/standards.json",
-    "viewer": "https://chris-page-gov.github.io/okf-explorer/"
+    "viewer": "https://chris-page-gov.github.io/okf-explorer/",
+    "webmcp": "../interfaces.json#webmcp"
   },
   "extensions": {
     "okf-explorer-analysis.v1": {
@@ -2033,7 +2037,7 @@
       "title": "Secondary reporting and commentary"
     }
   ],
-  "status": "candidate",
+  "status": "stable",
   "title": "UK Whole-Law OKF",
-  "version": "0.3.0"
+  "version": "0.4.0"
 }

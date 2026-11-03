@@ -88,20 +88,39 @@ class InternalLinkTests(unittest.TestCase):
             any("stale or guessed machine route" in failure for failure in failures)
         )
 
-    def test_labelled_compatibility_document_is_allowed(self) -> None:
+    def test_current_foundry_authoring_document_is_allowed(self) -> None:
         text = (
-            "This preserved compatibility guide is "
-            f"{links.BUNDLE_AUTHORING}."
+            "Use the current OKF Foundry guide at "
+            f"{links.FOUNDRY_AUTHORING}."
         )
         self.assertEqual(links.url_policy_failures(self.source, text), [])
 
     def test_unlabelled_compatibility_document_fails(self) -> None:
+        legacy = (
+            "https://chris-page-gov.github.io/ai-infrastructure-wiki/"
+            "docs/use-okf-explorer.html"
+        )
         failures = links.url_policy_failures(
             self.source,
-            f"Guide: {links.BUNDLE_AUTHORING}",
+            f"Guide: {legacy}",
         )
         self.assertEqual(len(failures), 1)
         self.assertIn("not labelled", failures[0])
+
+    def test_generated_html_must_not_link_to_raw_markdown(self) -> None:
+        failures = links.generated_html_failures(
+            links.ROOT / "bundle" / "docs" / "example.html",
+            '<a href="guide.md">Guide</a>',
+        )
+        self.assertEqual(len(failures), 1)
+        self.assertIn("public HTML links to raw Markdown", failures[0])
+        self.assertEqual(
+            links.generated_html_failures(
+                links.ROOT / "bundle" / "docs" / "example.html",
+                '<a href="guide.html">Guide</a>',
+            ),
+            [],
+        )
 
     def test_landing_page_requires_all_declared_routes(self) -> None:
         required = ("repository", "descriptor", "bundle/whole-law")

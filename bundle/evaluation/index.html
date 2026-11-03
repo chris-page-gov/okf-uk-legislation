@@ -1,21 +1,40 @@
 <!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title>UK legislation evaluation</title>
-<main><h1>UK legislation evaluation</h1><ul>
-<li><a href="README.md">Evaluation guide</a></li>
-<li><a href="questions.json">100-question baseline</a></li>
-<li><a href="answer-schema.json">Answer schema</a></li>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK legislation AI-answer evaluation – UK Legislation and Whole-Law OKF</title>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Legislation and Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../">Home</a> <a href="../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>UK legislation AI-answer evaluation</h1>
+<p>This suite measures whether an AI can produce a useful, source-grounded answer for counsel—not merely retrieve a title. Its 100 questions span primary and secondary legislation, retained-EU material, devolution, public and private law, criminal law, procedure, employment, family, housing, planning, data and commercial law.</p>
+<p>Every material proposition must appear in <code>propositions[]</code> with one or more citations. Each citation names the authority, links directly to a selected official passage, supplies the supporting passage and records the retrieval date. The separate <code>temporal_context</code> forces the answer to address version, commencement, territorial extent and amendments rather than silently treating the latest displayed text as universally operative.</p>
+<p>The 100-point rubric is deliberately capped below 50 when an answer has no official citation, omits its proposition ledger, leaves a proposition uncited or fails to cite the expected selected passage. Automated checks cover 60 points; the remaining 40 require expert review because legal correctness, completeness and forensic utility cannot safely be inferred from keyword matching.</p>
+<p>Run:</p>
+<pre><code class="language-bash">python3 scripts/build_legislation_evaluation.py
+python3 scripts/evaluate_legislation_answers.py answers.jsonl --out results.json
+</code></pre>
+<p>Answers must conform to <a href="answer-schema.json">answer-schema.json</a>. <code>questions.json</code> is generated deterministically by <code>scripts/build_legislation_evaluation.py</code> and contains the full rubric, source passages and expected concepts.</p>
+<p>The suite tests statutory research rather than providing legal advice. A high score is evidence about performance on this fixed suite, not assurance for an unseen matter. Expert reviewers should verify every cited passage and record disagreements.</p>
+<h2>Publication and source routes</h2>
+<ul>
+<li><a href="https://github.com/chris-page-gov/okf-uk-legislation" rel="noopener noreferrer">UK Legislation repository</a></li>
+<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json" rel="noopener noreferrer">Canonical descriptor</a>, with declared raw subpath <code>bundle</code></li>
+<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases" rel="noopener noreferrer">Immutable releases</a></li>
+<li><a href="https://www.legislation.gov.uk/" rel="noopener noreferrer">legislation.gov.uk</a> and its <a href="https://legislation.github.io/data-documentation/" rel="noopener noreferrer">official data/API documentation</a></li>
+<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/" rel="noopener noreferrer">Official data.gov.uk API documentation</a></li>
+<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json" rel="noopener noreferrer">GOV.UK CKAN example descriptor</a></li>
+<li><a href="https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html" rel="noopener noreferrer">OKF Foundry authoring and domain profiles</a></li>
 </ul>
-<h2>Canonical publication access</h2><ul>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
-<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json">Canonical descriptor</a></li>
-<li>Declared raw subpath: <code>bundle</code></li>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
-</ul>
-<h2>Official sources and examples</h2><ul>
-<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
-<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
-<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
-</ul></main></html>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

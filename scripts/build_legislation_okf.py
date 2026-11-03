@@ -34,6 +34,7 @@ from urllib.request import Request, urlopen
 import build_uk_government_api_okf as large_corpus
 
 ROOT = Path(__file__).resolve().parents[1]
+RELEASE = json.loads((ROOT / "publication" / "release.json").read_text(encoding="utf-8"))
 DEFAULT_OUTPUT = ROOT / "bundle"
 DEFAULT_CACHE = ROOT / "tmp" / "legislation-okf-source"
 USER_AGENT = "OKF-Legislation-Explorer/1.0 (public-interest research; chris-page-gov)"
@@ -2314,9 +2315,9 @@ This pack indexes **{len(records):,} legal works** returned by the official legi
 
 # Published release
 
-This catalogue is included in [Legislation/Whole-Law v0.3.0](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0), published on **27 July 2026**. The bundle uses the **OKF 0.2** specification and this legislation catalogue snapshot is dated 11 July 2026.
+This catalogue is included in [Legislation/Whole-Law v{RELEASE['bundle_version']}](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/{RELEASE['release_tag']}), published on **{RELEASE['release_date_label']}**. The bundle uses the **OKF {RELEASE['okf_version']}** specification and this legislation catalogue snapshot is dated 11 July 2026.
 
-The immutable release retains pre-promotion `candidate`/`preview` labels and an earlier bundle value in some machine representations. The GitHub release record is the authoritative publication status. There is no Legislation/Whole-Law `v0.4.0` release.
+The release version and the OKF specification version are independent: this is bundle release **v{RELEASE['bundle_version']}**, authored to the **OKF {RELEASE['okf_version']}** profile. The source snapshot remains dated July 2026; publishing the corrected semantics and interfaces in November does not imply that upstream source data was refreshed.
 
 # Progressive discovery
 
@@ -2345,7 +2346,7 @@ The immutable release retains pre-promotion `candidate`/`preview` labels and an 
 * [Official legislation data/API documentation]({DATA_DOCS})
 * [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
 * [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
-* [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
+* [OKF Foundry authoring and domain profiles](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html)
 
 {citations(("Legislation.gov.uk data reuse documentation", DATA_DOCS), ("Legislation document data model", MODEL_DOCS), ("ELI ontology", ELI), ("Schema.org Legislation", SCHEMA_ORG), ("CLML User Guide", CLML_DOCS))}""")
     files[Path("log.md")] = f"# Legislation OKF generation log\n\n## {generated_at[:10]}\n\n* **Generation**: indexed {len(records):,} official works and {sum(row['resource_count'] for row in records):,} advertised manifestations.\n* **Normalization**: mapped works and subdivisions to ELI 1.5, ELI-I, Schema.org Legislation, CLML and Akoma Ntoso.\n* **Access**: retained Atom, CLML, AKN, RDF/XML, HTML, PDF, CSV, effects and publication-log routes where supplied or documented.\n"
@@ -2476,6 +2477,12 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
         "title": "legislation.gov.uk complete corpus",
         "generated_at": generated_at,
         "snapshot": snapshot,
+        "release": {
+            "version": RELEASE["bundle_version"],
+            "tag": RELEASE["release_tag"],
+            "date": RELEASE["release_date"],
+            "source_snapshot_refreshed": False,
+        },
         "counts": counts,
         "top_publishers": [{"name": row["name"], "title": row["title"], "dataset_count": row["dataset_count"], "resource_count": row["resource_count"]} for row in publishers],
         "recent_datasets": [
@@ -2538,14 +2545,20 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
         "core_conformance": "Markdown concept layer",
         "title": "UK Legislation OKF",
         "description": "Complete work-level index of legislation.gov.uk with ELI/Schema.org normalization, corpus facets, official full-text search, and live CLML provision-level progressive discovery.",
-        "version": "0.2.0",
-        "status": "preview",
+        "version": RELEASE["bundle_version"],
+        "status": RELEASE["status"],
         "profile": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/",
         "publisher": "https://github.com/chris-page-gov",
         "license": OGL,
         "semantic_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.yamlld",
         "generated_at": generated_at,
         "snapshot": snapshot,
+        "release": {
+            "version": RELEASE["bundle_version"],
+            "tag": RELEASE["release_tag"],
+            "date": RELEASE["release_date"],
+            "source_snapshot_refreshed": False,
+        },
         "entrypoints": {
             "viewer": "https://chris-page-gov.github.io/okf-explorer/",
             "data_manifest": "data/manifest.json",
@@ -2562,9 +2575,13 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
             "predicate_registry": "data/semantic/predicate-registry.json",
             "iri_route_registry": "data/semantic/iri-route-registry.json",
             "markdown_index": "index.md",
+            "html_index": "index.html",
+            "documentation_html": "docs/index.html",
+            "interfaces": "interfaces.json",
+            "webmcp": "interfaces.json#webmcp",
             "notes": "methodology/index.md",
             "ontology": "ontology/index.md",
-            "evaluation": "evaluation/README.md",
+            "evaluation": "evaluation/index.html",
             "model_enrichment": "enrichment/model-assisted-v1.json",
             "model_enrichment_v1_audit": (
                 "enrichment/model-assisted-v1-independent-audit.json"
@@ -2573,6 +2590,13 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
                 "enrichment/model-assisted-v1-independent-audit.md"
             ),
         },
+        "alternate_access": [
+            {"kind": "pages", "url": RELEASE["legislation_descriptor"]},
+            {"kind": "repository", "url": RELEASE["repository"]},
+            {"kind": "raw", "url": "https://raw.githubusercontent.com/chris-page-gov/okf-uk-legislation/main/bundle/okf-explorer.json"},
+            {"kind": "archive", "url": f"{RELEASE['repository']}/releases/tag/{RELEASE['release_tag']}"},
+            {"kind": "jsonld-fallback", "url": f"{RELEASE['pages']}okf-bundle.jsonld"},
+        ],
         "counts": counts,
         "performance": manifest["performance"],
         "source": {"title": "legislation.gov.uk public API", "url": BASE, "data_url": f"{BASE}/all/data.feed", "license": "Open Government Licence v3.0 unless additional terms apply", "source_adapter": "legislation_gov_uk_atom", "request_count": len(source_meta.get("requests", [])), "fair_use": FAIR_USE_DOCS},

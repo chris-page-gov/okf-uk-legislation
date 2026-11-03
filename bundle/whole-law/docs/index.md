@@ -25,4 +25,4 @@
 - [Official legislation data/API documentation](https://legislation.github.io/data-documentation/)
 - [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
 - [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
-- [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
+- [OKF Foundry authoring and domain profiles](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html)

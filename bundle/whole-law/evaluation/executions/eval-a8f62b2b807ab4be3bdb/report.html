@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK Whole-Law OKF evaluation execution – UK Whole-Law OKF</title>
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../../../">Home</a> <a href="../../../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>UK Whole-Law OKF evaluation execution</h1>
+<p>Run <code>eval-a8f62b2b807ab4be3bdb</code> was executed at 2026-07-26T00:00:00Z against corpus
+binding <code>e10abef20f7f5dfee0bf38f509393c70691ee27b06754e0366bd344f18654d3c</code>.</p>
+<h2>Executed result</h2>
+<p>The release suite was executed for its refined
+<code>corpus-navigation-metadata</code> scope. Broad legal-task prompts are retained as context;
+the evaluated propositions are source/evidence navigation facts that the
+frozen OKF can prove.</p>
+<ul>
+<li>Whole-Law answers executed: 415/415.</li>
+<li>Independently verified corpus-navigation answers:
+415/415.</li>
+<li>Schema-valid answers: 415/415.</li>
+<li>Answers with resolvable hash-bound citations:
+415/415.</li>
+<li>Executed hard failures: 0.</li>
+<li>Minimum critical persona/task family score:
+100/100.</li>
+<li>Held-out challenge passes: 2;
+<strong>passed</strong>.</li>
+<li>Legislation historical suite: 100 questions;
+structural assurance 100.00/100;
+legal-answer score: <strong>not measured</strong>.</li>
+<li>Historical non-gold sources: 100 questions;
+hash verification: <strong>failed</strong>.</li>
+<li>Answer-schema contract: 11/
+11; answers validated:
+415.</li>
+<li>Applicable pair/high-risk coverage:
+2334/
+2334.</li>
+</ul>
+<h2>OKF/Explorer workflow and direct-source baseline</h2>
+<p>The local OKF/Explorer workflow passed 7/
+9 descriptor, child, entrypoint and publication-mirror
+checks. <code>answers.json</code> was generated from the published source register and
+access projection declared by the descriptor.</p>
+<p><code>direct-source-baseline.json</code> independently reconstructs 72 source records and
+108 route observations from the sealed acquisition archive. The verifier
+compared every answer proposition and citation with that reconstruction;
+baseline status is <strong>passed</strong>.</p>
+<p><code>verification.json</code>, <code>scores.json</code>, <code>challenge-pass-1.json</code> and
+<code>challenge-pass-2.json</code> are separate receipts. The held-out partitions are
+disjoint and each covers all 38 critical personas and all 20 critical task
+families.</p>
+<h2>Claude adversarial access journey</h2>
+<p>The named Claude journey passed 7 deterministic
+local contracts with 0 failures. Its deployed
+journey remains <strong>blocked-pending-deployed-journey-receipts</strong>:
+0/8
+public HTTP, compatibility-host and browser receipts are complete.</p>
+<h2>Release gates</h2>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Status</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>phase8-structural-and-corpus-binding</code></td>
+<td>failed</td>
+<td>100 legislation and 415 Whole-Law questions checked; 0 structural hard failures.</td>
+</tr>
+<tr>
+<td><code>phase8-persona-task-source-access-coverage</code></td>
+<td>met</td>
+<td>38 personas, 20 tasks, 36 source classes and all five declared access states represented; 2334/2334 applicable pair/high-risk combinations covered.</td>
+</tr>
+<tr>
+<td><code>phase8-historical-non-gold-baselines</code></td>
+<td>failed</td>
+<td>100 historical questions hash-verified; 100-question legislation and 360-question research sources remain non-gold.</td>
+</tr>
+<tr>
+<td><code>phase8-deterministic-okf-explorer-workflow</code></td>
+<td>failed</td>
+<td>7/9 local descriptor, child, entrypoint and publication-mirror checks passed.</td>
+</tr>
+<tr>
+<td><code>phase8-answer-schema-contract</code></td>
+<td>met</td>
+<td>11/11 fail-closed answer-schema contract checks passed; 415 answers validated.</td>
+</tr>
+<tr>
+<td><code>phase8-claude-local-contract-journey</code></td>
+<td>met</td>
+<td>7 local Claude access contracts passed; 0 failed.</td>
+</tr>
+<tr>
+<td><code>phase8-claude-deployed-access-journey</code></td>
+<td>blocked</td>
+<td>0/8 public HTTP, compatibility-host and browser receipts completed.</td>
+</tr>
+<tr>
+<td><code>phase8-independent-gold-evidence</code></td>
+<td>met</td>
+<td>415/415 refined corpus-navigation questions independently reconstructed from immutable evidence.</td>
+</tr>
+<tr>
+<td><code>phase8-executed-answer-schema-and-citations</code></td>
+<td>met</td>
+<td>415/415 answers executed; 415 schema-valid; 415 have fully resolvable hash-bound citations; 0 hard failures.</td>
+</tr>
+<tr>
+<td><code>phase8-critical-persona-task-minimum-85</code></td>
+<td>met</td>
+<td>Minimum critical persona/task family corpus-navigation score is 100/100.</td>
+</tr>
+<tr>
+<td><code>phase8-two-successive-held-out-challenge-passes</code></td>
+<td>met</td>
+<td>2 disjoint held-out corpus-fact challenge passes; status=passed.</td>
+</tr>
+<tr>
+<td><code>phase8-frozen-direct-source-access-baseline</code></td>
+<td>met</td>
+<td>72/72 source records have frozen route envelopes; 215/215 integrity receipts verified.</td>
+</tr>
+<tr>
+<td><code>phase8-direct-source-answer-baseline</code></td>
+<td>met</td>
+<td>The Explorer/publication answer corpus was compared item by item with source facts reconstructed directly from the sealed archive; status=passed.</td>
+</tr>
+</tbody>
+</table>
+<h2>Timings</h2>
+<p>Timing is execution evidence and is excluded from the deterministic run
+identity.</p>
+<ul>
+<li><code>answer_schema_contract_ms</code>: 0.072 ms</li>
+<li><code>claude_access_journey_ms</code>: 0.589 ms</li>
+<li><code>executed_corpus_navigation_evaluation_ms</code>: 3923.439 ms</li>
+<li><code>historical_baselines_ms</code>: 0.556 ms</li>
+<li><code>legislation_suite_ms</code>: 68.964 ms</li>
+<li><code>okf_explorer_workflow_ms</code>: 4.088 ms</li>
+<li><code>verify_frozen_evidence_ms</code>: 0.001 ms</li>
+<li><code>whole_law_suite_ms</code>: 55.094 ms</li>
+<li><code>total_ms</code>: 4159.125 ms</li>
+</ul>
+<h2>Assurance boundary</h2>
+<ul>
+<li>Verified gold covers exact corpus-navigation metadata: source records, route
+observations, immutable hashes, coverage and limitations.</li>
+<li>The retained original prompts were not answered as legal questions.</li>
+<li>Independent review is a deterministic second implementation, not a model
+review, qualified-practitioner opinion, external legal assurance or legal
+advice.</li>
+<li>Public HTTP, compatibility-host and browser receipts remain separate from
+this local execution.</li>
+</ul>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

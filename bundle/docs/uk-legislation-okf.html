@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK Legislation OKF – UK Legislation and Whole-Law OKF</title>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Legislation and Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../">Home</a> <a href="../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>UK Legislation OKF</h1>
+<p>This is the architecture and data-model volume of the <a href="index.html">UK Legislation documentation spine</a>. For task guidance use <a href="getting-started.html">Getting started</a>; for worked interfaces use the <a href="illustrated-manual.html">illustrated manual</a>.</p>
+<h2>Public viewer</h2>
+<p><a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&amp;view=reader#overview" rel="noopener noreferrer">Open the UK Legislation OKF Explorer</a>.</p>
+<p>The bundle descriptor is <code>https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json</code>. It is an overview-first, chunked catalogue designed for browser navigation and agent progressive discovery. The checked-in work index is complete against the official Atom year facets at generation time; document subdivisions are complete on demand because the Explorer reads the selected work's authoritative CLML rather than freezing hundreds of millions of provision nodes into Git.</p>
+<p>Work and search-result chunks use deterministic gzip files. The v2 search
+contract has bounded token postings, deterministic sort values and exact
+postings for all 14 published facets, including an explicit missing-value
+bucket. A 256-way integrity-bound route locator resolves a selected work to one
+work shard. The Explorer therefore streams only the control plane, selected
+search shards and selected work shard; it never falls back to decoding the
+1.7 GB work index in the browser. Manifests, facets, ontology pages and
+search shards remain directly inspectable. This keeps the complete publication
+within practical GitHub/Pages limits without dropping records.</p>
+<p>If two case-distinct official identifiers collapse to the same historical
+lower-case Explorer route, the locator preserves that route for the first
+record and publishes a deterministic hash-suffixed discovery alias for the
+other. The alias ledger points back to the unchanged record route, so record
+hydration and route-scoped relationships remain verifiable without rewriting
+the source work shards.</p>
+<h2>What “complete” means</h2>
+<p>The generator first reads the <code>/all/data.feed</code> facets, then retrieves every year with <code>results-count=10000</code> and checks that each response count exactly equals the official year-facet count. It separately retrieves <code>/draft/data.feed</code>. Work IDs are deduplicated by the official <code>/id/{type}/{year}/{number}</code> identifier. The corpus validator requires at least 300,000 unique works and representative primary, secondary, devolved and EU-origin type codes.</p>
+<p>For each selected work, the browser obtains the official <code>application/xml</code> manifestation and walks every recognized CLML structural element:</p>
+<ul>
+<li>preliminaries, Body and EUBody;</li>
+<li>Group, Part, Chapter, Division, Title, Section and Subsection containers;</li>
+<li>Pblock, PsubBlock, P1group-P3group and P1-P7 nested provisions;</li>
+<li>Schedules, Schedule, Appendix, Annex, Attachments and explanatory/signed sections.</li>
+</ul>
+<p>Each node retains the CLML element name and ID, receives a normalized human type such as Section, Article, Regulation, Rule or Paragraph where the ID supports it, records number/title/text/extent/status, retains its parent/depth and links to the official selected passage. This is progressive completeness: discovery metadata is local; authoritative text is fetched only for the work being researched.</p>
+<h2>Ontology decision</h2>
+<p>No single vocabulary covers identity, versions, manifestations, subdivisions and legal effects well enough. The pack uses a layered model:</p>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Vocabulary</th>
+<th>Use in this pack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>legal identity and versions</td>
+<td><a href="https://op.europa.eu/en/web/eu-vocabularies/eli" rel="noopener noreferrer">European Legislation Identifier 1.5</a></td>
+<td><code>eli:LegalResource</code> work identity, with the legislation.gov.uk FRBR Work/Expression/Manifestation interpretation</td>
+</tr>
+<tr>
+<td>changes and legal effects</td>
+<td><a href="https://interoperable-europe.ec.europa.eu/collection/eli-european-legislation-identifier/solution/eli-i" rel="noopener noreferrer">ELI-I</a></td>
+<td>target vocabulary for amendments, commencements, repeals and other effects</td>
+</tr>
+<tr>
+<td>web interoperability</td>
+<td><a href="https://schema.org/Legislation" rel="noopener noreferrer">Schema.org Legislation</a></td>
+<td>searchable <code>schema:Legislation</code> class and familiar identifier/type/date/jurisdiction/change properties</td>
+</tr>
+<tr>
+<td>authoritative UK structure</td>
+<td><a href="https://legislation.github.io/data-documentation/model/legislation.html" rel="noopener noreferrer">legislation.gov.uk model</a> and <a href="https://legislation.github.io/clml-schema/userguide.html" rel="noopener noreferrer">CLML 2.6</a></td>
+<td>native work IDs, versions, manifestations, Parts, sections, articles, regulations, schedules and nested provisions</td>
+</tr>
+<tr>
+<td>international document interchange</td>
+<td><a href="https://docs.oasis-open.org/legaldocml/akn-core/v1.0/" rel="noopener noreferrer">Akoma Ntoso 1.0</a></td>
+<td>supported official manifestation and cross-jurisdiction interchange target</td>
+</tr>
+</tbody>
+</table>
+<p>ELI is the primary semantic spine. Schema.org is a compatibility layer, not a replacement for ELI or CLML. CLML is authoritative for UK subdivision shape. The official <a href="https://op.europa.eu/documents/3938058/11669184/eli-sdo.ttl" rel="noopener noreferrer">ELI-to-Schema.org mapping</a> informs the crosswalk.</p>
+<h2>Normalized categories, types and topics</h2>
+<p>Official type codes are retained. They are also grouped into <code>primary</code>, <code>secondary</code>, <code>draft</code>, <code>eu-origin</code> and <code>other</code>, with separate jurisdiction and document-type facets. This preserves Church Measures, local/private Acts, old Parliament material, ministerial directions and other uncommon families rather than forcing them into a misleading primary/secondary binary.</p>
+<p>Topics and concepts are conservative discovery aids derived from frozen
+official titles and, where present, substantive source notes. Entity links
+require an exact controlled literal and a jurisdictionally compatible target.
+Category, document type, publisher and tag fields are still inspected, but the
+current policy abstains from turning those coarse metadata fields into subject
+or entity assertions. All resulting links are explicitly labelled
+non-authoritative. An agent must never treat one as a legal proposition,
+official classification or legal advice.</p>
+<p>The complete core catalogue emits provenance-bearing <code>classified as</code> and <code>has document type</code> relationships. Route-scoped FNV-1a adjacency shards let the
+Explorer load the selected work's relationships without hydrating the
+corpus-wide edge table.</p>
+<p>The original <a href="../enrichment/model-assisted-v1.json"><code>model-assisted-v1</code> rule file</a>
+is preserved unchanged as historical evidence. Its self-labelled
+<code>governed-accepted</code> state is not treated as review evidence. The
+<a href="../enrichment/model-assisted-v1-independent-audit.html">independent hash-bound audit</a>
+reconstructed 18,135 entity and 562 topic assertions. Although all entity
+strings occur literally in their source titles, seven exhaustively reviewed
+false-positive populations prove that precision can be no higher than
+94.7836%, below the 95% release gate. The builder therefore applies none of
+those v1 rules and excludes all 18,697 v1 assertions from the core graph and
+governed-model totals.</p>
+<p>The v1 runner's first direct API attempt was rejected for project quota before
+output and recorded $0.00 API cost. It is preserved only as historical
+evidence. The current governed enrichment is Codex-assisted and makes no direct
+API calls. It records a terminal outcome for every work and for every inspected
+evidence field, then publishes only independently reviewed, deterministically
+reconstructable topic, concept and entity-link candidates. Evidence support is
+reported as <code>title-only</code>, <code>notes-only</code> or <code>multi-field</code>; unavailable frozen
+CLML bodies are an explicit abstention, not silently inferred coverage. Exact
+direct API spend is USD 0 / GBP 0; unexposed Codex subscription and allowance
+usage is reported as unavailable rather than guessed.</p>
+<h2>Official access methods</h2>
+<p>Every record carries the URLs available from its Atom entry and documents the wider interfaces:</p>
+<ul>
+<li>website and stable identifier URIs;</li>
+<li>Atom search/browse feeds, including official full-text search;</li>
+<li>CLML/XML, Akoma Ntoso XML, HTML/XHTML, PDF and RDF manifestations where supplied;</li>
+<li>content negotiation and linked-data URIs;</li>
+<li>table-of-contents and publication-log feeds;</li>
+<li>changes made and changes received feeds for legal effects;</li>
+<li>point-in-time/version and extent controls exposed by legislation.gov.uk;</li>
+<li>bulk and SPARQL surfaces documented by the <a href="https://research.legislation.gov.uk/data" rel="noopener noreferrer">Legislation Research service</a>.</li>
+</ul>
+<p>At the 2026-07-10 generation checkpoint, the advertised Research bulk downloads and SPARQL endpoint returned HTTP 401 with a “By Invitation Only” authentication challenge to an anonymous client, even though their documentation describes public access. The pack records this unresolved live-access conflict and uses the working public Atom/CLML interfaces. It does not silently claim that the restricted surfaces were harvested.</p>
+<p>The builder identifies itself, caches every response, retries transient server errors and starts requests conservatively under the <a href="https://legislation.github.io/data-documentation/fair-use.html" rel="noopener noreferrer">official fair-use guidance</a>. Source response hashes, byte counts and cache status are written into provenance metadata.</p>
+<h2>Agent workflow for counsel-grade answers</h2>
+<ol>
+<li>Read the descriptor, overview, counts and notices; do not hydrate the whole corpus.</li>
+<li>Narrow by category, type, year, jurisdiction, legal status and topic.</li>
+<li>Search locally for titles and let the Explorer add official remote full-text matches.</li>
+<li>Select the work and load its official CLML subdivision tree.</li>
+<li>Identify the exact Part/section/article/regulation/schedule nodes and open their official passage links.</li>
+<li>Check the displayed version, commencement, extent and changes made/received before drawing a conclusion.</li>
+<li>Build an answer as discrete propositions. For each proposition record source title, direct passage URL, supporting passage, version and retrieval date.</li>
+<li>Separate statutory text, inference, missing facts and any need for case law or other authority. This pack is legislation-complete, not a case-law database and not legal advice.</li>
+</ol>
+<p>An answer that cites only an Act landing page is not provenance-complete. A direct passage link and supporting passage are required for every material proposition.</p>
+<h2>Evaluation</h2>
+<p><code>evaluation/legislation/questions.json</code> contains 100 questions across 25 authorities and four common research modes: rule extraction, application, temporal/currency analysis and counsel-style synthesis. The 100-point rubric weights substantive correctness, authoritative sourcing, proposition provenance, pinpoint passages, temporal/jurisdictional context, completeness/uncertainty and clarity.</p>
+<p>Automated checks cover evidence structure and observable source properties. Expert review supplies the legal judgment that an automated keyword score cannot. Missing official citations, missing proposition ledgers, uncited propositions or failure to cite the expected passage cap an answer below 50.</p>
+<h2>Rebuild and validate</h2>
+<pre><code class="language-sh">python3 scripts/build_legislation_okf.py --refresh
+python3 scripts/rebuild_legislation_discovery.py
+python3 scripts/check_legislation_okf.py
+python3 scripts/build_legislation_evaluation.py
+python3 scripts/check_internal_links.py
+python3 scripts/build_publication_docs.py --check
+python3 scripts/build_whole_law_okf.py --check
+python3 scripts/build_checksums.py --check
+</code></pre>
+<p>OKF Explorer is a separate repository. Its unit, browser and accessibility
+checks run in
+<a href="https://github.com/chris-page-gov/okf-explorer" rel="noopener noreferrer"><code>chris-page-gov/okf-explorer</code></a>
+against this publication's canonical descriptors.</p>
+<p>The source cache under <code>tmp/legislation-okf-source/</code> is intentionally untracked. The generated <code>bundle/</code> pack is checked in so Pages deployment and review do not depend on live upstream availability. Its Markdown hierarchy conforms to OKF v0.2; JSON/YAML-LD descriptors, static search, adjacency and live CLML resolution remain additive Explorer extensions.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

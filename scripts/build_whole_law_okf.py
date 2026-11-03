@@ -12,10 +12,10 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
-import html
 import json
 import re
 import shutil
+import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -25,7 +25,11 @@ from urllib.parse import urljoin
 import rdflib
 from pyld import jsonld
 
+SCRIPTS = Path(__file__).resolve().parent
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
 import build_legislation_okf as legislation_builder
+from publication_html import render_markdown_page
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "whole-law"
@@ -60,6 +64,9 @@ RESEARCH_EXPORTS = {
 
 def load(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+RELEASE = load(ROOT / "publication" / "release.json")
 
 
 def render_json(value: Any) -> str:
@@ -589,8 +596,8 @@ def descriptor(
         "okf_version": "0.2",
         "title": "UK Whole-Law OKF",
         "description": "A federated, evidence-led map of authoritative and supporting UK legal sources.",
-        "version": "0.3.0",
-        "status": "candidate",
+        "version": RELEASE["bundle_version"],
+        "status": RELEASE["status"],
         "generated_at": GENERATED_AT,
         "snapshot": "whole-law-2026-07-25",
         "publisher": "https://github.com/chris-page-gov",
@@ -636,6 +643,10 @@ def descriptor(
         "entrypoints": {
             "viewer": "https://chris-page-gov.github.io/okf-explorer/",
             "markdown_index": "index.md",
+            "html_index": "index.html",
+            "documentation_html": "docs/index.html",
+            "interfaces": "../interfaces.json",
+            "webmcp": "../interfaces.json#webmcp",
             "source_register": "data/source-register.json",
             "source_classes": "data/legal-source-taxonomy.json",
             "coverage": "data/coverage.json",
@@ -673,7 +684,7 @@ def descriptor(
                 "../enrichment/codex-assisted-v2.json"
             ),
             "integrity": "integrity.json",
-            "docs": "docs/index.md",
+            "docs": "docs/index.html",
         },
         "entrypoint_integrity": {
             "relationship_runtime": {
@@ -957,7 +968,7 @@ def build_files() -> dict[Path, bytes]:
         "description": desc["description"],
         "version": desc["version"],
         "status": desc["status"],
-        "issued": "2026-07-25",
+        "issued": RELEASE["release_date"],
         "descriptor": {"@id": desc["@id"]},
         "childBundle": [
             {"@id": urljoin(desc["@id"], bundle["descriptor"])}
@@ -1093,42 +1104,7 @@ binding, coverage strata, evidence and independent verification state.
 - [Official legislation data/API documentation](https://legislation.github.io/data-documentation/)
 - [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
 - [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
-- [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
-""")
-    latest_execution_html = (
-        "<li><a href=\"executions/"
-        + html.escape(latest_execution["report"])
-        + "\">Latest executed assurance report</a> — "
-        + html.escape(latest_execution["decision"])
-        + "</li>"
-        if latest_execution
-        else "<li>No release evaluation execution has been recorded.</li>"
-    )
-    put("evaluation/index.html", f"""<!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title>Whole-Law evaluation</title>
-<main><h1>Whole-Law evaluation</h1><ul>
-{latest_execution_html}
-<li><a href="release-questions.json">Release questions</a></li>
-<li><a href="coverage.json">Coverage</a></li>
-<li><a href="historical-baselines.json">Historical baselines</a></li>
-<li><a href="answer-schema.json">Answer schema</a></li>
-<li><a href="claude-access-suite.json">Claude access suite</a></li>
-<li><a href="executions/index.json">All immutable evaluation executions</a></li>
-</ul>
-<h2>Canonical publication access</h2><ul>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
-<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Canonical federation descriptor</a></li>
-<li>Declared raw subpath: <code>bundle/whole-law</code></li>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
-</ul>
-<h2>Official sources and examples</h2><ul>
-<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
-<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
-<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
-</ul></main></html>
+- [OKF Foundry authoring and domain profiles](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html)
 """)
     put(
         "evaluation/executions/index.json",
@@ -1184,38 +1160,7 @@ binding, coverage strata, evidence and independent verification state.
 - [Official legislation data/API documentation](https://legislation.github.io/data-documentation/)
 - [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
 - [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
-- [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
-""")
-    put("docs/index.html", """<!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title>UK Whole-Law OKF documentation</title>
-<main><h1>UK Whole-Law OKF documentation</h1><ul>
-<li><a href="getting-started.md">Getting started</a></li>
-<li><a href="authority-and-evidence.md">Authority and evidence</a></li>
-<li><a href="sources-and-coverage.md">Sources and coverage</a></li>
-<li><a href="standards-and-validation.md">Standards and validation</a></li>
-<li><a href="maintenance.md">Maintenance and recovery</a></li>
-<li><a href="../evaluation/">Evaluation</a></li>
-<li><a href="../../docs/roles/">Role guides</a></li>
-</ul>
-<h2>Canonical access</h2><ul>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
-<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Canonical federation descriptor</a></li>
-<li>Declared raw subpath: <code>bundle/whole-law</code></li>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
-</ul>
-<h2>Semantic representations</h2><ul>
-<li><a href="../okf-bundle.yamlld">Authored YAML-LD</a></li>
-<li><a href="../okf-bundle.jsonld">Generated JSON-LD</a></li>
-<li><a href="../okf-bundle.ttl">Canonical Turtle</a></li>
-</ul>
-<h2>Official sources and examples</h2><ul>
-<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
-<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
-<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
-</ul></main></html>
+- [OKF Foundry authoring and domain profiles](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html)
 """)
     put("docs/getting-started.md", f"""# Getting started
 
@@ -1336,41 +1281,21 @@ the dated snapshot remains available without being described as current.
 The release state is draft, candidate, validated, RC and published. RC
 artefacts are promoted by digest without rebuilding.
 """)
-    put("index.html", f"""<!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title>UK Whole-Law OKF</title>
-<main><h1>UK Whole-Law OKF</h1>
-<p>A federated, evidence-led map of authoritative and supporting UK legal sources.</p>
-<h2>Published release</h2>
-<dl>
-<dt>Bundle release</dt><dd><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0"><strong>v0.3.0</strong></a></dd>
-<dt>Published</dt><dd>27 July 2026 at 15:40:30 UTC</dd>
-<dt>OKF specification</dt><dd>OKF 0.2</dd>
-<dt>Source-access snapshot</dt><dd>25 July 2026</dd>
-<dt>Legislation child snapshot</dt><dd>11 July 2026 at 18:00 UTC</dd>
-</dl>
-<p>The immutable release retains pre-promotion <code>candidate</code> labels in some machine representations. The GitHub release record is the authoritative publication status. There is no Legislation/Whole-Law <code>v0.4.0</code> release.</p>
-<ul>
-<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Canonical Explorer descriptor</a></li>
-<li><a href="okf-bundle.yamlld">YAML-LD</a></li>
-<li><a href="okf-bundle.jsonld">JSON-LD</a></li>
-<li><a href="okf-bundle.ttl">Turtle</a></li>
-<li><a href="docs/">Documentation</a></li>
-<li><a href="data/source-register.json">Source register</a></li>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
-<li>Declared raw subpath: <code>bundle/whole-law</code></li>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
-</ul>
-<h2>Official sources and examples</h2><ul>
-<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
-<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
-<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
-</ul>
-<p>Coverage and authority state are explicit. This prototype is not legal advice.</p>
-</main></html>
-""")
+    # Every maintained Markdown page has a deterministic HTML projection.
+    # Markdown remains available as source; public navigation uses HTML.
+    for markdown_path, body in list(files.items()):
+        if markdown_path.suffix != ".md":
+            continue
+        html_path = markdown_path.with_suffix(".html")
+        put(
+            html_path,
+            render_markdown_page(
+                body.decode("utf-8"),
+                output_relative=Path("whole-law") / html_path,
+                fallback_title=markdown_path.stem.replace("-", " ").title(),
+                publication_label="UK Whole-Law OKF",
+            ),
+        )
 
     integrity_rows = []
     for path, body in sorted(files.items(), key=lambda item: item[0].as_posix()):
