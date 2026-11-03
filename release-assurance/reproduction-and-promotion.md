@@ -29,7 +29,7 @@ The checked-in
 mutable-candidate v1 receipt. It cannot satisfy this runbook. Step 2 creates a
 different `okf-explorer-runtime-acceptance.v2` receipt outside the frozen
 checkout, bound to the exact Legislation commit/tree/publication inventory and
-the exact Explorer `v0.8.0` commit.
+the exact Explorer `v0.8.1` commit.
 
 Explorer `v0.5.2` remains an immutable historical release, but it is
 superseded as the Legislation finalization prerequisite because
@@ -39,7 +39,7 @@ observation of its Actions TAR found a 159-byte `404.html` after assembly,
 while the canonical app-build manifest declared 1,122 bytes. `v0.5.4`
 preserves the built `404.html`, verifies the assembled application against the
 canonical public build manifest, and binds the complete build-tree digest.
-Explorer `v0.8.0` is the active Legislation v0.4 prerequisite. It preserves
+Explorer `v0.8.1` is the active Legislation v0.4 prerequisite. It preserves
 those controls, publishes the current 43-file application tree and records its
 two accepted non-hard public limitations in the release verification asset.
 This does not rewrite the historical `v0.5.0` through `v0.5.4` observations.
@@ -49,12 +49,12 @@ This does not rewrite the historical `v0.5.0` through `v0.5.4` observations.
 Required inputs:
 
 - `LEGISLATION_ROOT`: an exact, clean checkout of the merged candidate;
-- `EXPLORER_ROOT`: an exact, clean checkout at the published `v0.8.0` tag;
+- `EXPLORER_ROOT`: an exact, clean checkout at the published `v0.8.1` tag;
 - `EVIDENCE`: a new durable directory outside both repositories;
 - installed dependencies pinned by `requirements-validation.txt`;
 - the Explorer workspace's pinned pnpm dependencies and Playwright browsers;
 - authenticated `git` and `gh` access for the two approved repositories; and
-- the installed Codex Security `0.1.13` schemas.
+- the installed Codex Security `0.1.32` schemas.
 
 Set the roots once. `/tmp` is illustrative; use durable storage for the real
 release:
@@ -69,9 +69,9 @@ export LEGISLATION_REPOSITORY="https://github.com/chris-page-gov/okf-uk-legislat
 export EXPLORER_REPOSITORY="https://github.com/chris-page-gov/okf-explorer"
 export RC_TAG="v0.4.0-rc.1"
 export FINAL_TAG="v0.4.0"
-export EXPLORER_TAG="v0.8.0"
+export EXPLORER_TAG="v0.8.1"
 export ASSET_NAME="okf-uk-legislation-v0.4.0.tar.zst"
-export CODEX_SECURITY_SCHEMA_DIR="$HOME/.codex/plugins/cache/openai-curated-remote/codex-security/0.1.13/schemas"
+export CODEX_SECURITY_SCHEMA_DIR="$HOME/.codex/plugins/cache/openai-curated-remote/codex-security/0.1.32/schemas"
 
 test ! -e "$EVIDENCE"
 mkdir -p "$EVIDENCE"
@@ -178,11 +178,11 @@ captures originate in the distinct fresh
 stages their write-once copies beneath
 `$EVIDENCE/explorer-runtime/output/playwright`.
 
-## 3. Supply the published Explorer v0.8.0 release and Pages deployment
+## 3. Supply the published Explorer v0.8.1 release and Pages deployment
 
 Choose exactly one of the two routes below. A fresh bounded capture is the
 default. Offline reuse is permitted only for a previously completed,
-candidate-independent Explorer v0.8.0 closure whose complete 18-file
+candidate-independent Explorer v0.8.1 closure whose complete 18-file
 checkpoint still verifies. Both routes supply the same immutable inputs to
 step 4; neither changes or refreshes the Explorer release.
 
@@ -198,9 +198,9 @@ declared Explorer release asset:
   --tag "$EXPLORER_TAG" \
   --expected-commit "$EXPLORER_COMMIT" \
   --output-dir "$EVIDENCE/explorer-observation" \
-  --asset-name "okf-explorer-v0.8.0-pages-artifact.zip" \
-  --expected-asset-bytes 189109176 \
-  --expected-asset-sha256 940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff \
+  --asset-name "okf-explorer-v0.8.1-pages-artifact.zip" \
+  --expected-asset-bytes 189110263 \
+  --expected-asset-sha256 6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1 \
   --allow-network
 ```
 
@@ -208,8 +208,8 @@ Expected output:
 `$EVIDENCE/explorer-observation/explorer-release-observation.json` plus its
 write-once attempt manifest, raw bounded GitHub responses and the exact
 189,109,176-byte release asset. The observation must bind asset ID
-`705881421`, filename `okf-explorer-v0.8.0-pages-artifact.zip`, and SHA-256
-`940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff`.
+`706118888`, filename `okf-explorer-v0.8.1-pages-artifact.zip`, and SHA-256
+`6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1`.
 
 Independently capture the immutable Actions run, artifact metadata, exact
 Pages ZIP, contained TAR inventory and manifest-bound application tree. This
@@ -237,11 +237,11 @@ $EVIDENCE/explorer-pages-observation/raw/github-pages-artifact.zip
 $EVIDENCE/explorer-pages-observation/inventory/tar-files.json
 ```
 
-The observation must bind run `41650465220`, artifact `13237507227`, exact
-Explorer commit `99f9e809fc17ee458f68eb742e8f440422b63432`, the same
+The observation must bind run `41663805875`, artifact `13245490839`, exact
+Explorer commit `dcd0c43e29593436b13c59271c75d37d06e2b754`, the same
 189,109,176-byte/`940e02c4…4ff` release asset observed above, and the
 43-file app tree
-`9787cd40d9a2b2ea252189d000b4e2fe8c1f4f605c26ba8a9a5ace96757eb585`.
+`5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4`.
 The Pages transport contains 10,734 files. GitHub's Pages action excluded one
 1,004-byte nested research `.github/workflows` file counted by the pre-deploy
 site receipt; this accepted non-hard limitation does not affect a public
@@ -265,8 +265,8 @@ hashed, verify every recorded file, reject links and unexpected file counts,
 then bind step 4 directly to the immutable source closure:
 
 ```sh
-export EXPLORER_OBSERVATION_SOURCE="/absolute/path/to/explorer-v0.8.0-observations"
-export EXPLORER_OBSERVATION_CHECKPOINT="/absolute/path/to/explorer-v0.8.0-observations.sha256"
+export EXPLORER_OBSERVATION_SOURCE="/absolute/path/to/explorer-v0.8.1-observations"
+export EXPLORER_OBSERVATION_CHECKPOINT="/absolute/path/to/explorer-v0.8.1-observations.sha256"
 export EXPLORER_OBSERVATION_CHECKPOINT_ROOT="/absolute/path/used-when-the-checkpoint-was-authored"
 
 test -d "$EXPLORER_OBSERVATION_SOURCE"

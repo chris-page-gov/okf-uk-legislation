@@ -9,8 +9,8 @@
   ],
   "candidate": {
     "bundle_tree_sha256": "__BUNDLE_TREE_SHA256__",
-    "explorer_commit": "99f9e809fc17ee458f68eb742e8f440422b63432",
-    "explorer_release": "v0.8.0",
+    "explorer_commit": "dcd0c43e29593436b13c59271c75d37d06e2b754",
+    "explorer_release": "v0.8.1",
     "git_commit": "__CANDIDATE_COMMIT__",
     "release_tag": "__RC_TAG__",
     "repository": "https://github.com/chris-page-gov/okf-uk-legislation"
@@ -89,8 +89,8 @@
         "document_kind": "json",
         "json_fields": {
           "/conclusion": "success",
-          "/head_sha": "99f9e809fc17ee458f68eb742e8f440422b63432",
-          "/id": 41650465220,
+          "/head_sha": "dcd0c43e29593436b13c59271c75d37d06e2b754",
+          "/id": 41663805875,
           "/status": "completed"
         },
         "media_types": [
@@ -101,7 +101,7 @@
         ]
       },
       "id": "explorer-pages-deployment",
-      "url": "https://api.github.com/repos/chris-page-gov/okf-explorer/actions/runs/41650465220"
+      "url": "https://api.github.com/repos/chris-page-gov/okf-explorer/actions/runs/41663805875"
     },
     {
       "allowed_redirect_hosts": [

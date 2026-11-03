@@ -588,7 +588,7 @@ class ReleaseReproductionTests(unittest.TestCase):
                 / "external-finalization-contract.json"
             ).read_text(encoding="utf-8")
         )
-        self.assertEqual("v0.8.0", contract["explorer"]["required_tag"])
+        self.assertEqual("v0.8.1", contract["explorer"]["required_tag"])
         self.assertEqual(
             "release-assurance/schemas/explorer-runtime-receipt.schema.json",
             contract["input_schemas"]["explorer_runtime_receipt"],

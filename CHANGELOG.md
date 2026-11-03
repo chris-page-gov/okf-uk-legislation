@@ -10,11 +10,14 @@
   tools over the frozen publication snapshot.
 - Updated Legislation and Whole-Law descriptors to v0.4.0 while retaining the
   July 2026 source-snapshot identities and explicit authority boundaries.
-- Bound the publication to OKF Explorer v0.8.0 and its current federation,
+- Bound the publication to OKF Explorer v0.8.1 and its current federation,
   search, facets, graph, provenance and bounded-adjacency behaviour.
 - Reworked the successor-release assurance contracts so historical runtime
   receipts remain immutable while the active Explorer, reproduction and
   promotion identities fail closed against the exact new release.
+- Rebound the headless security gate to the installed Codex Security 0.1.32
+  producer and its canonical coverage, findings and scan-manifest schemas;
+  the known-broken Desktop Security workspace remains expressly prohibited.
 - Switched the WebMCP relationship tool from the legacy core-only adjacency to
   the digest-bound rich route locator. It now reports current core,
   official-effects and model-assisted v3 plane totals and hydrates a bounded

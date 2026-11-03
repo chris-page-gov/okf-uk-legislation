@@ -140,10 +140,10 @@
               "const": "v0.4.0-rc.1"
             },
             "explorer_commit": {
-              "const": "99f9e809fc17ee458f68eb742e8f440422b63432"
+              "const": "dcd0c43e29593436b13c59271c75d37d06e2b754"
             },
             "explorer_release": {
-              "const": "v0.8.0"
+              "const": "v0.8.1"
             }
           }
         },

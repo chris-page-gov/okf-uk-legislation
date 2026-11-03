@@ -2,9 +2,9 @@
   "builder": {
     "command": "python3 scripts/build_release_assurance.py",
     "material": {
-      "bytes": 168444,
+      "bytes": 168561,
       "path": "scripts/build_release_assurance.py",
-      "sha256": "aa3d68a7ec1ca0e194cd810152eba3f120bf080e56fba77ddc1f122527e76af1"
+      "sha256": "bf59385e54aba0fdfb2b8bb4697b05733a20ae95d04522a38f2e1169bee0750f"
     },
     "name": "build_release_assurance.py",
     "version": "1.2.0"
@@ -87,9 +87,9 @@
           "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
         },
         {
-          "bytes": 22602,
+          "bytes": 23901,
           "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-          "sha256": "6b498a1009de8d1ba0f83b72dacc68c3d9f0fbeb9d62b72a1dcbfb1c053c7e51"
+          "sha256": "f89cbd703b65ee603cd6fc5ba7f605bec8ea65f8375c48b35fcfcb9a831fcf68"
         },
         {
           "bytes": 96352,
@@ -146,10 +146,10 @@
   },
   "external_finalization": {
     "contract": {
-      "bytes": 12293,
+      "bytes": 12275,
       "path": "release-assurance/external-finalization-contract.json",
       "projected_path": "external-finalization-contract.json",
-      "sha256": "642325a2b95505ea8fef16070bbb18e010dd229dd3d103a4b06efbb9229162d1"
+      "sha256": "11f591f1100f3812df27c76c435ad28b7a64c93c9344e056f5d9b941614525e4"
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
@@ -171,16 +171,16 @@
       "sha256": "aaae2690ab1b421ea775625a96a4c8b36939e0c7060ed9531b973a432a1865b0"
     },
     "release_observation_controller": {
-      "bytes": 35620,
+      "bytes": 36974,
       "path": "scripts/capture_github_release_observation.py",
-      "sha256": "ba67e9a49b107da553e791ddee37105f43bbdea26966d998e540d33d5dc141a7"
+      "sha256": "9e891757ec9f37a0d22d9fb022e8c522d8fb30c66ba9192d3d899a45ae58cbf4"
     },
     "schemas": [
       {
         "bytes": 4268,
         "path": "release-assurance/schemas/accessibility-assurance-receipt.schema.json",
         "projected_path": "schemas/accessibility-assurance-receipt.schema.json",
-        "sha256": "7ed0e9202e8d114589d357cb79c7fc52f0b3f9185f9b9478eca6e1bbae3f5b11"
+        "sha256": "93a0ae89e42bf09d4c66c1f44c9e2ae7972dc0a89a27c8e0d8d5f43e2c473c60"
       },
       {
         "bytes": 1422,
@@ -204,55 +204,55 @@
         "bytes": 3793,
         "path": "release-assurance/schemas/explorer-release-receipt.schema.json",
         "projected_path": "schemas/explorer-release-receipt.schema.json",
-        "sha256": "633c3f3513df8eefb02ad89482c6f957d40f809fff3dde1f7d052ccc0ad039a3"
+        "sha256": "05a9d8dd33638dd7180da352b954c7c8f824d50c6fdc0e1391217f44e7ffc55f"
       },
       {
         "bytes": 19628,
         "path": "release-assurance/schemas/explorer-runtime-receipt.schema.json",
         "projected_path": "schemas/explorer-runtime-receipt.schema.json",
-        "sha256": "b018f626c3399c5595816526870e62d2f8e46d7d2581bcb1c30a1e7dfd2eb3ad"
+        "sha256": "0fd5dad8a753d6d00633e7a5a147612c0085af797802a766b9dc2a8c9924945a"
       },
       {
         "bytes": 9773,
         "path": "release-assurance/schemas/external-finalization-receipt.schema.json",
         "projected_path": "schemas/external-finalization-receipt.schema.json",
-        "sha256": "dafff1d1b687cb4e112714d827c07915aff5f61710ee28fb423ecc08fdaa9540"
+        "sha256": "7b3bc7d333f92f15de0492425949611a9102e026e3db88bbaaed29e3a31bf661"
       },
       {
         "bytes": 6303,
         "path": "release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
         "projected_path": "schemas/final-promotion-authorization-receipt.schema.json",
-        "sha256": "a85b4748d2f6efdc0a29e0622690a6df7dd34a66a4dc449cbb7a1e1c7df6855a"
+        "sha256": "230b1ab52aa9a1c67f41e062e74655b154f7fe87748036dbceaa3448c2363a38"
       },
       {
         "bytes": 17408,
         "path": "release-assurance/schemas/github-pages-observation.schema.json",
         "projected_path": "schemas/github-pages-observation.schema.json",
-        "sha256": "9dd0b8b0a78e99d229d573f3018f75ce7e33f03d1d1ebae70ece6617076cda70"
+        "sha256": "4d4ddacf0adbba720d8e13fea68e87e7aee4366b5762af1d6364d040b62fee8f"
       },
       {
-        "bytes": 5755,
+        "bytes": 6129,
         "path": "release-assurance/schemas/github-release-observation.schema.json",
         "projected_path": "schemas/github-release-observation.schema.json",
-        "sha256": "a35b8ff496ec80ee70e2aa5c36f1a11881383696e4eda83e9b78aa3611174451"
+        "sha256": "047851609b1f6268b58df13090df32e647b5d9c551954fa8e6c05e5d9ef1fa78"
       },
       {
         "bytes": 4003,
         "path": "release-assurance/schemas/performance-assurance-receipt.schema.json",
         "projected_path": "schemas/performance-assurance-receipt.schema.json",
-        "sha256": "3e2574b001fbda817c10f8fe6701afe386756c4ecf0d37abb9dcf0a221d1df02"
+        "sha256": "520821b3440bdd55cbc7b52d32ad8f1a0ee5736695cd9a0b713f676b836e908d"
       },
       {
         "bytes": 5997,
         "path": "release-assurance/schemas/pre-rc-authorization-receipt.schema.json",
         "projected_path": "schemas/pre-rc-authorization-receipt.schema.json",
-        "sha256": "e5b7b7f6dcd77a51bd795f72a08feeed9e10c1b472a7b9ec0787dc9c1374e091"
+        "sha256": "920ceffea08bfc7a4eb38bc789d33ced98a801406094eb5fb0bdf1ca95604e97"
       },
       {
-        "bytes": 18430,
+        "bytes": 18400,
         "path": "release-assurance/schemas/provenance-inputs.schema.json",
         "projected_path": "schemas/provenance-inputs.schema.json",
-        "sha256": "f388d13ec09950ffed9675ea4b2378635be09ec599059b109132905969c47658"
+        "sha256": "fc1c5e99191bc04bf1b9a3aaf97980393668a654682ef561403037ea0b78322d"
       },
       {
         "bytes": 6167,
@@ -315,9 +315,9 @@
       "sha256": "4ae427a5e488bea43a899e8414124f57844873b4933f9e845747841f9e45a92a"
     },
     {
-      "bytes": 12293,
+      "bytes": 12275,
       "path": "release-assurance/external-finalization-contract.json",
-      "sha256": "642325a2b95505ea8fef16070bbb18e010dd229dd3d103a4b06efbb9229162d1"
+      "sha256": "11f591f1100f3812df27c76c435ad28b7a64c93c9344e056f5d9b941614525e4"
     },
     {
       "bytes": 208992,
@@ -325,14 +325,14 @@
       "sha256": "a6118059c97166ad0bac558a78303ef5e7331e6c572e78fcfaec1e6ddbf29c4b"
     },
     {
-      "bytes": 35620,
+      "bytes": 36974,
       "path": "scripts/capture_github_release_observation.py",
-      "sha256": "ba67e9a49b107da553e791ddee37105f43bbdea26966d998e540d33d5dc141a7"
+      "sha256": "9e891757ec9f37a0d22d9fb022e8c522d8fb30c66ba9192d3d899a45ae58cbf4"
     },
     {
-      "bytes": 96737,
+      "bytes": 97686,
       "path": "release-assurance/implementation-traceability.json",
-      "sha256": "37040d0065af9ee2fd90090c33c2f1ca1a0082953ca6325c77adc3c4e77acf23"
+      "sha256": "2f31325f22b7a0c3e5b0bbf429ca8c111a775bf804c72e0eeb0db7b7b79fbef9"
     },
     {
       "bytes": 17718,
@@ -345,14 +345,14 @@
       "sha256": "e3331dcf99ae781fb7b25a84248c890de4cc234113e5eb3f0ac2bd2be70215bf"
     },
     {
-      "bytes": 23290,
+      "bytes": 23568,
       "path": "release-assurance/gap-register.json",
-      "sha256": "87d9b06e9e417d98bbe1a972d1cfc5a741180498bb83b68c3d92c396cf0464a1"
+      "sha256": "a588e54f6e67589a93e84a59125a26c06197a95acfbc62511a5b850357b4ee6c"
     },
     {
-      "bytes": 9583,
+      "bytes": 10144,
       "path": "release-assurance/implementation-status.md",
-      "sha256": "0b521de923529f63a5a9d3b9131dc64d1ad9035334ef54a887bb9b3d8c869417"
+      "sha256": "7b9bb03ec291989a7dc1486c7016ba331a40c040ea172f0a8cb1f1230d21c2b7"
     },
     {
       "bytes": 8741,
@@ -375,9 +375,9 @@
       "sha256": "102a5babf7208a0149926852706573d4b19dea6ef327226b2355734c6a070734"
     },
     {
-      "bytes": 168444,
+      "bytes": 168561,
       "path": "scripts/build_release_assurance.py",
-      "sha256": "aa3d68a7ec1ca0e194cd810152eba3f120bf080e56fba77ddc1f122527e76af1"
+      "sha256": "bf59385e54aba0fdfb2b8bb4697b05733a20ae95d04522a38f2e1169bee0750f"
     },
     {
       "bytes": 517,
@@ -410,9 +410,9 @@
       "sha256": "55309248b57c3988c2298b110b94e35a92471fa956820080d750cfeb621d5b85"
     },
     {
-      "bytes": 15715,
+      "bytes": 15732,
       "path": "enrichment/model-assisted-paid-governance-v1.json",
-      "sha256": "93dd4e2930c00c12428e5a1fba3f295b3d7777ba2a9bfccc1ac306482bece223"
+      "sha256": "fbeadf1d24540237d2d9265bbd8270b8ad75fd1b1c6eb1e6e289cd2a52de7824"
     },
     {
       "bytes": 3234,
@@ -465,9 +465,9 @@
       "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
     },
     {
-      "bytes": 22602,
+      "bytes": 23901,
       "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-      "sha256": "6b498a1009de8d1ba0f83b72dacc68c3d9f0fbeb9d62b72a1dcbfb1c053c7e51"
+      "sha256": "f89cbd703b65ee603cd6fc5ba7f605bec8ea65f8375c48b35fcfcb9a831fcf68"
     },
     {
       "bytes": 3254,
@@ -497,7 +497,7 @@
     {
       "bytes": 4268,
       "path": "release-assurance/schemas/accessibility-assurance-receipt.schema.json",
-      "sha256": "7ed0e9202e8d114589d357cb79c7fc52f0b3f9185f9b9478eca6e1bbae3f5b11"
+      "sha256": "93a0ae89e42bf09d4c66c1f44c9e2ae7972dc0a89a27c8e0d8d5f43e2c473c60"
     },
     {
       "bytes": 1422,
@@ -517,47 +517,47 @@
     {
       "bytes": 3793,
       "path": "release-assurance/schemas/explorer-release-receipt.schema.json",
-      "sha256": "633c3f3513df8eefb02ad89482c6f957d40f809fff3dde1f7d052ccc0ad039a3"
+      "sha256": "05a9d8dd33638dd7180da352b954c7c8f824d50c6fdc0e1391217f44e7ffc55f"
     },
     {
       "bytes": 19628,
       "path": "release-assurance/schemas/explorer-runtime-receipt.schema.json",
-      "sha256": "b018f626c3399c5595816526870e62d2f8e46d7d2581bcb1c30a1e7dfd2eb3ad"
+      "sha256": "0fd5dad8a753d6d00633e7a5a147612c0085af797802a766b9dc2a8c9924945a"
     },
     {
       "bytes": 9773,
       "path": "release-assurance/schemas/external-finalization-receipt.schema.json",
-      "sha256": "dafff1d1b687cb4e112714d827c07915aff5f61710ee28fb423ecc08fdaa9540"
+      "sha256": "7b3bc7d333f92f15de0492425949611a9102e026e3db88bbaaed29e3a31bf661"
     },
     {
       "bytes": 6303,
       "path": "release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
-      "sha256": "a85b4748d2f6efdc0a29e0622690a6df7dd34a66a4dc449cbb7a1e1c7df6855a"
+      "sha256": "230b1ab52aa9a1c67f41e062e74655b154f7fe87748036dbceaa3448c2363a38"
     },
     {
       "bytes": 17408,
       "path": "release-assurance/schemas/github-pages-observation.schema.json",
-      "sha256": "9dd0b8b0a78e99d229d573f3018f75ce7e33f03d1d1ebae70ece6617076cda70"
+      "sha256": "4d4ddacf0adbba720d8e13fea68e87e7aee4366b5762af1d6364d040b62fee8f"
     },
     {
-      "bytes": 5755,
+      "bytes": 6129,
       "path": "release-assurance/schemas/github-release-observation.schema.json",
-      "sha256": "a35b8ff496ec80ee70e2aa5c36f1a11881383696e4eda83e9b78aa3611174451"
+      "sha256": "047851609b1f6268b58df13090df32e647b5d9c551954fa8e6c05e5d9ef1fa78"
     },
     {
       "bytes": 4003,
       "path": "release-assurance/schemas/performance-assurance-receipt.schema.json",
-      "sha256": "3e2574b001fbda817c10f8fe6701afe386756c4ecf0d37abb9dcf0a221d1df02"
+      "sha256": "520821b3440bdd55cbc7b52d32ad8f1a0ee5736695cd9a0b713f676b836e908d"
     },
     {
       "bytes": 5997,
       "path": "release-assurance/schemas/pre-rc-authorization-receipt.schema.json",
-      "sha256": "e5b7b7f6dcd77a51bd795f72a08feeed9e10c1b472a7b9ec0787dc9c1374e091"
+      "sha256": "920ceffea08bfc7a4eb38bc789d33ced98a801406094eb5fb0bdf1ca95604e97"
     },
     {
-      "bytes": 18430,
+      "bytes": 18400,
       "path": "release-assurance/schemas/provenance-inputs.schema.json",
-      "sha256": "f388d13ec09950ffed9675ea4b2378635be09ec599059b109132905969c47658"
+      "sha256": "fc1c5e99191bc04bf1b9a3aaf97980393668a654682ef561403037ea0b78322d"
     },
     {
       "bytes": 6167,
@@ -620,15 +620,15 @@
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
     }
   ],
-  "materials_digest": "sha256:c1e252aa72fafafae4ca167cb14a55c86244478c620ecefe6232fcaf3061fea5",
+  "materials_digest": "sha256:db62ea9daceab4ca49f3bdfce64de5fa7aae64d17aefe52e8575e0421e55b009",
   "optional_direct_api_model_governance": {
     "authored_run": null,
     "current_release_required": false,
     "inputs": [
       {
-        "bytes": 15715,
+        "bytes": 15732,
         "path": "enrichment/model-assisted-paid-governance-v1.json",
-        "sha256": "93dd4e2930c00c12428e5a1fba3f295b3d7777ba2a9bfccc1ac306482bece223"
+        "sha256": "fbeadf1d24540237d2d9265bbd8270b8ad75fd1b1c6eb1e6e289cd2a52de7824"
       },
       {
         "bytes": 3234,
@@ -687,9 +687,9 @@
     "package_count": 52,
     "sources": {
       "controller": {
-        "bytes": 168444,
+        "bytes": 168561,
         "path": "scripts/build_release_assurance.py",
-        "sha256": "aa3d68a7ec1ca0e194cd810152eba3f120bf080e56fba77ddc1f122527e76af1"
+        "sha256": "bf59385e54aba0fdfb2b8bb4697b05733a20ae95d04522a38f2e1169bee0750f"
       },
       "direct_requirements": {
         "bytes": 589,

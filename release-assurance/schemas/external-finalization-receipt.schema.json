@@ -48,9 +48,9 @@
       "required": ["repository", "tag", "commit", "release_url", "receipt", "release_observation", "pages_observation", "runtime_receipt", "materials"],
       "properties": {
         "repository": {"const": "https://github.com/chris-page-gov/okf-explorer"},
-        "tag": {"const": "v0.8.0"},
+        "tag": {"const": "v0.8.1"},
         "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
-        "release_url": {"const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.8.0"},
+        "release_url": {"const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.8.1"},
         "receipt": {"$ref": "#/$defs/material"},
         "release_observation": {"$ref": "#/$defs/material"},
         "pages_observation": {"$ref": "#/$defs/material"},
@@ -77,8 +77,8 @@
             "git_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
             "bundle_tree_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
             "release_tag": {"const": "v0.4.0-rc.1"},
-            "explorer_commit": {"const": "99f9e809fc17ee458f68eb742e8f440422b63432"},
-            "explorer_release": {"const": "v0.8.0"}
+            "explorer_commit": {"const": "dcd0c43e29593436b13c59271c75d37d06e2b754"},
+            "explorer_release": {"const": "v0.8.1"}
           }
         },
         "executed_at": {"type": "string", "format": "date-time"},

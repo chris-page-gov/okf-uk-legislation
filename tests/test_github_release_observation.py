@@ -286,6 +286,7 @@ class GithubReleaseObservationTests(unittest.TestCase):
         return Path(temporary).resolve() / name
 
     def test_target_registry_preserves_historical_explorer_release(self) -> None:
+        self.assertIn((EXPLORER, "v0.8.1"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.8.0"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.5.4"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.5.3"), capture.TARGETS)

@@ -369,30 +369,30 @@ class GithubPagesObservationTests(unittest.TestCase):
 
     def test_fixed_production_target_records_all_authoritative_facts(self) -> None:
         profile = capture.DEFAULT_PROFILE
-        self.assertEqual(41650465220, profile.run_id)
+        self.assertEqual(41663805875, profile.run_id)
         self.assertEqual(1, profile.run_attempt)
-        self.assertEqual(13237507227, profile.artifact_id)
-        self.assertEqual(189109176, profile.zip_bytes)
+        self.assertEqual(13245490839, profile.artifact_id)
+        self.assertEqual(189110263, profile.zip_bytes)
         self.assertEqual(
-            "940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff",
+            "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
             profile.zip_sha256,
         )
         self.assertEqual(834416640, profile.tar_bytes)
         self.assertEqual(10908, profile.tar_member_count)
-        self.assertEqual(823633275, profile.tar_total_file_bytes)
+        self.assertEqual(823634678, profile.tar_total_file_bytes)
         self.assertEqual(
-            "d51bcaa28d2126e45cd65a3b1358b7195aae24c65dad1f9057058c26020231c2",
+            "dfccde90f6ec44c28fb727b6187391739bda118a85914103aa9e692bf10d691b",
             profile.tar_inventory_sha256,
         )
         self.assertEqual(
-            "99f9e809fc17ee458f68eb742e8f440422b63432",
+            "dcd0c43e29593436b13c59271c75d37d06e2b754",
             profile.head_sha,
         )
         self.assertEqual(
-            "eb9991832f6f9b3b7f5fe4116b794b16bc242397",
+            "87487a50c10f0dce144b1530b6a97de6e1277aff",
             profile.git_tree,
         )
-        self.assertEqual(705881421, profile.alternate_asset_id)
+        self.assertEqual(706118888, profile.alternate_asset_id)
 
     def test_capture_validates_schema_and_closes_raw_evidence(self) -> None:
         profile, zipped = fixture_archive()

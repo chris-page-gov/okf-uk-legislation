@@ -25,7 +25,7 @@ already been ingested.
 | OKF specification used | **OKF 0.2** (this is the format version, not the bundle release) |
 | Legislation catalogue snapshot | 11 July 2026 at 18:00 UTC |
 | Whole-Law source-access snapshot | 25 July 2026 |
-| Explorer release used | `v0.8.0` |
+| Explorer release used | `v0.8.1` |
 
 Bundle version **v0.4.0** and format version **OKF 0.2** are independent.
 Release v0.4.0 consolidates the completed semantic-profile, dependency,
@@ -272,7 +272,7 @@ The [reproduction and promotion contract](release-assurance/reproduction-and-pro
 keeps `okf-uk-legislation-v0.4.0.tar.zst` byte-identical and identically named
 across the `v0.4.0-rc.1` and `v0.4.0` releases.
 
-OKF Explorer `v0.8.0` is the release consumer for this publication. The
+OKF Explorer `v0.8.1` is the release consumer for this publication. The
 release receipt binds its exact commit and deployed Pages identity before the
 Legislation release is promoted. Historical Explorer releases remain in their
 own changelog and immutable GitHub releases; they are not the active contract

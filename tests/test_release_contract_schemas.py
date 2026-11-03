@@ -75,7 +75,7 @@ class ReleaseContractSchemaTests(unittest.TestCase):
         self.assertEqual(
             {
                 "name": "codex-security-plugin",
-                "version": "0.1.13",
+                "version": "0.1.32",
             },
             self.contract["codex_security"]["producer"],
         )
@@ -114,9 +114,9 @@ class ReleaseContractSchemaTests(unittest.TestCase):
                     "apps/okf-explorer/scripts/"
                     "run_legislation_runtime_acceptance.mjs"
                 ),
-                "bytes": 98093,
+                "bytes": 98104,
                 "sha256": (
-                    "d4558927e4038b2b76c76ea18ae6e4d4bb6366bf62562acd857888f3238db6cd"
+                    "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281"
                 ),
             },
             provenance["runner"],
@@ -188,15 +188,15 @@ class ReleaseContractSchemaTests(unittest.TestCase):
             "afcf0b17d2700fed35664b33a4d6ca7ef8cd3b982b69c2ea1ad0687dcc9eadf0",
             pages["workflow_sha256"],
         )
-        self.assertEqual(41650465220, pages["run_id"])
+        self.assertEqual(41663805875, pages["run_id"])
         self.assertEqual(1, pages["run_attempt"])
-        self.assertEqual(13237507227, pages["artifact_id"])
+        self.assertEqual(13245490839, pages["artifact_id"])
         self.assertEqual("github-pages", pages["artifact_name"])
         self.assertEqual(
             {
-                "bytes": 189109176,
+                "bytes": 189110263,
                 "sha256": (
-                    "940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff"
+                    "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1"
                 ),
             },
             pages["artifact_zip"],
@@ -205,24 +205,24 @@ class ReleaseContractSchemaTests(unittest.TestCase):
             {
                 "bytes": 834416640,
                 "sha256": (
-                    "c920c04a3b74c20714664015a5d98365fdbab1d25009936ba4ca9fa212029af9"
+                    "1cb52fe47e6568447cfc35d50f6e6c8d997459a4e73d85341d38a7409b04fb81"
                 ),
             },
             pages["artifact_tar"],
         )
         self.assertEqual(7398, pages["build_manifest"]["bytes"])
         self.assertEqual(
-            "bba465d8427d5d760fa97ebbc863199d99663976dcd6ec6be4aeba1ec7fd8aba",
+            "8c1c0394806ed4d466f5adee7084a807543664e2dde776eef7fab26998c56a69",
             pages["build_manifest"]["sha256"],
         )
         self.assertEqual(17696, pages["build_index"]["bytes"])
         self.assertEqual(
-            "88387788e948cc80a5b4d5503abef2038bd75c34938ba71d8ff797693af473b2",
+            "b1224b22be0ee8659ae928d0abd9b56c2d124600a3cc77deecb1c494d967d027",
             pages["build_index"]["sha256"],
         )
         self.assertEqual(43, pages["build_tree"]["files"])
         self.assertEqual(
-            "9787cd40d9a2b2ea252189d000b4e2fe8c1f4f605c26ba8a9a5ace96757eb585",
+            "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4",
             pages["build_tree"]["sha256"],
         )
         observed_tree = self.contract["pages_observation"]["archive"][
@@ -479,33 +479,33 @@ class ReleaseContractSchemaTests(unittest.TestCase):
         self,
     ) -> None:
         explorer = self.contract["explorer"]
-        self.assertEqual("v0.8.0", explorer["required_tag"])
+        self.assertEqual("v0.8.1", explorer["required_tag"])
         self.assertEqual(
-            "81dec80cd14c1acc63f92ece5c51e7f1fe3279c2",
+            "ad3ec81c40dd128da75eeabb4325a65b060048b0",
             explorer["required_tag_object"],
         )
         self.assertEqual(
-            "99f9e809fc17ee458f68eb742e8f440422b63432",
+            "dcd0c43e29593436b13c59271c75d37d06e2b754",
             explorer["required_commit"],
         )
         self.assertEqual(
-            "eb9991832f6f9b3b7f5fe4116b794b16bc242397",
+            "87487a50c10f0dce144b1530b6a97de6e1277aff",
             explorer["git_tree"],
         )
-        self.assertEqual(41646267903, explorer["ci_workflow_run_id"])
-        self.assertEqual(41650465220, explorer["pages_workflow_run_id"])
+        self.assertEqual(41659154521, explorer["ci_workflow_run_id"])
+        self.assertEqual(41663805875, explorer["pages_workflow_run_id"])
         self.assertEqual(
             {
-                "asset_id": 705881421,
-                "name": "okf-explorer-v0.8.0-pages-artifact.zip",
-                "bytes": 189109176,
+                "asset_id": 706118888,
+                "name": "okf-explorer-v0.8.1-pages-artifact.zip",
+                "bytes": 189110263,
                 "sha256": (
-                    "940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff"
+                    "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1"
                 ),
                 "url": (
                     "https://github.com/chris-page-gov/okf-explorer/releases/"
-                    "download/v0.8.0/"
-                    "okf-explorer-v0.8.0-pages-artifact.zip"
+                    "download/v0.8.1/"
+                    "okf-explorer-v0.8.1-pages-artifact.zip"
                 ),
             },
             explorer["release_asset"],
@@ -521,7 +521,7 @@ class ReleaseContractSchemaTests(unittest.TestCase):
         )
         for name in active_schema_names:
             serialized = json.dumps(load(SCHEMAS / name), sort_keys=True)
-            self.assertIn("v0.8.0", serialized, name)
+            self.assertIn("v0.8.1", serialized, name)
             self.assertNotIn("v0.5.3", serialized, name)
             self.assertNotIn("v0.5.2", serialized, name)
             self.assertNotIn("v0.5.1", serialized, name)
@@ -530,7 +530,7 @@ class ReleaseContractSchemaTests(unittest.TestCase):
             SCHEMAS / "github-release-observation.schema.json"
         )
         allowed_tags = set(observation["properties"]["tag"]["enum"])
-        self.assertIn("v0.8.0", allowed_tags)
+        self.assertIn("v0.8.1", allowed_tags)
         self.assertIn("v0.5.3", allowed_tags)
         self.assertIn("v0.5.2", allowed_tags)
         self.assertIn("v0.5.1", allowed_tags)

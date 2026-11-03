@@ -23,7 +23,7 @@ The 25 explicit routes cover:
 - Explorer shell URLs carrying the exact legislation, Whole-Law and GOV.UK
   CKAN descriptor queries;
 - the public GitHub Pages workflow result for Explorer, pinned to the exact
-  v0.8.0 commit and successful deployment run;
+  v0.8.1 commit and successful deployment run;
 - the compatibility documentation index, bundle-authoring instructions and
   CKAN/Explorer guide;
 - compatibility moved descriptors for legislation, Whole-Law and CKAN;
@@ -44,11 +44,11 @@ cannot prevent normal Pages, raw-content or release-archive fallback use.
 Browser loading, CORS behaviour, interaction completion, accessibility and
 runtime performance remain separately evidenced by GATE-07 and GATE-08.
 Explorer v0.5.2 through v0.5.4 remain historical releases and are not the
-active smoke-test binding. Explorer v0.8.0 is the current prerequisite. Its
-annotated tag peels to commit `99f9e809fc17ee458f68eb742e8f440422b63432`;
-CI run `41646267903` and Pages run `41650465220` passed. The published
+active smoke-test binding. Explorer v0.8.1 is the current prerequisite. Its
+annotated tag peels to commit `dcd0c43e29593436b13c59271c75d37d06e2b754`;
+CI run `41659154521` and Pages run `41663805875` passed. The published
 43-file application tree has SHA-256
-`9787cd40d9a2b2ea252189d000b4e2fe8c1f4f605c26ba8a9a5ace96757eb585`.
+`5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4`.
 Its release verification also records the accepted non-hard omission of one
 nested research workflow from the Pages transport and one reproducible
 narrow-viewport deep-link detail failure; neither changes this manifest's

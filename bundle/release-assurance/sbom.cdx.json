@@ -5868,7 +5868,7 @@
       ],
       "name": "okf-uk-legislation",
       "type": "application",
-      "version": "0.3.0-candidate"
+      "version": "0.4.0"
     },
     "timestamp": "2026-07-26T20:54:40Z",
     "tools": {
@@ -5881,7 +5881,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:56a4e404-b52b-5270-95a1-59db62ca93a7",
+  "serialNumber": "urn:uuid:9ead7ef9-c2be-55f8-bc17-61b816df5fc8",
   "specVersion": "1.6",
   "version": 1
 }

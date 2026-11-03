@@ -55,7 +55,7 @@ SHELL_VALUES = {
     ),
     "EXPLORER_REPOSITORY": EXPLORER_REPOSITORY,
     "EXPLORER_ROOT": "/checkout/okf-explorer",
-    "EXPLORER_TAG": "v0.8.0",
+    "EXPLORER_TAG": "v0.8.1",
     "FINAL_ASSET": (
         "/external/okf-v0.4.0/final-download/"
         "okf-uk-legislation-v0.4.0.tar.zst"
@@ -367,15 +367,15 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             and row[row.index("--repository") + 1] == EXPLORER_REPOSITORY
         )
         self.assertEqual(
-            "okf-explorer-v0.8.0-pages-artifact.zip",
+            "okf-explorer-v0.8.1-pages-artifact.zip",
             command[command.index("--asset-name") + 1],
         )
         self.assertEqual(
-            "189109176",
+            "189110263",
             command[command.index("--expected-asset-bytes") + 1],
         )
         self.assertEqual(
-            "940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff",
+            "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
             command[command.index("--expected-asset-sha256") + 1],
         )
 

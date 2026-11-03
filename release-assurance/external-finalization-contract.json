@@ -9,20 +9,20 @@
   "codex_security": {
     "producer": {
       "name": "codex-security-plugin",
-      "version": "0.1.13"
+      "version": "0.1.32"
     },
     "schemas": {
       "coverage": {
         "filename": "coverage.schema.json",
-        "sha256": "7964b132998ca4dcdd19c75f5d92483e1d44cb71462237709b968ec548c10652"
+        "sha256": "6ac14e659e884e9582d8bd9ba480f6364ca17309e1a3dee9469ab025a3380b11"
       },
       "findings": {
         "filename": "findings.schema.json",
-        "sha256": "bd16dfe9a68c9b0485cad15b4ea3b037b0006dfb76a0549ed65a60ab8b062ac4"
+        "sha256": "a480337cc0fa4c48c44fc7be17c6c4348767815570775cda80f2aaf797b8e56c"
       },
       "scan_manifest": {
         "filename": "scan-manifest.schema.json",
-        "sha256": "20d6801775ae1b056d10114c3af5e07c5edfef27468218611411231a95c7c55e"
+        "sha256": "c621d4136ac81741ac8da1960c7f5e92ade22c0b5490e378ea4339b09e45b6f3"
       }
     }
   },
@@ -38,26 +38,26 @@
   },
   "evidence_plane": "external-write-once",
   "explorer": {
-    "ci_workflow_run_id": 41646267903,
-    "git_tree": "eb9991832f6f9b3b7f5fe4116b794b16bc242397",
+    "ci_workflow_run_id": 41659154521,
+    "git_tree": "87487a50c10f0dce144b1530b6a97de6e1277aff",
     "pages_workflow": "pages.yml",
-    "pages_workflow_run_id": 41650465220,
+    "pages_workflow_run_id": 41663805875,
     "repository": "https://github.com/chris-page-gov/okf-explorer",
     "release_asset": {
-      "asset_id": 705881421,
-      "bytes": 189109176,
-      "name": "okf-explorer-v0.8.0-pages-artifact.zip",
-      "sha256": "940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff",
-      "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.8.0/okf-explorer-v0.8.0-pages-artifact.zip"
+      "asset_id": 706118888,
+      "bytes": 189110263,
+      "name": "okf-explorer-v0.8.1-pages-artifact.zip",
+      "sha256": "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
+      "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.8.1/okf-explorer-v0.8.1-pages-artifact.zip"
     },
-    "required_commit": "99f9e809fc17ee458f68eb742e8f440422b63432",
-    "required_tag": "v0.8.0",
-    "required_tag_object": "81dec80cd14c1acc63f92ece5c51e7f1fe3279c2",
+    "required_commit": "dcd0c43e29593436b13c59271c75d37d06e2b754",
+    "required_tag": "v0.8.1",
+    "required_tag_object": "ad3ec81c40dd128da75eeabb4325a65b060048b0",
     "runtime_provenance": {
       "runner": {
         "path": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs",
-        "bytes": 98093,
-        "sha256": "d4558927e4038b2b76c76ea18ae6e4d4bb6366bf62562acd857888f3238db6cd"
+        "bytes": 98104,
+        "sha256": "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281"
       },
       "site_assembly": {
         "app_manifest_module": {
@@ -80,33 +80,33 @@
         "workflow_path": ".github/workflows/pages.yml",
         "workflow_bytes": 9283,
         "workflow_sha256": "afcf0b17d2700fed35664b33a4d6ca7ef8cd3b982b69c2ea1ad0687dcc9eadf0",
-        "run_id": 41650465220,
+        "run_id": 41663805875,
         "run_attempt": 1,
-        "commit": "99f9e809fc17ee458f68eb742e8f440422b63432",
-        "artifact_id": 13237507227,
+        "commit": "dcd0c43e29593436b13c59271c75d37d06e2b754",
+        "artifact_id": 13245490839,
         "artifact_name": "github-pages",
         "artifact_zip": {
-          "bytes": 189109176,
-          "sha256": "940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff"
+          "bytes": 189110263,
+          "sha256": "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1"
         },
         "artifact_tar": {
           "bytes": 834416640,
-          "sha256": "c920c04a3b74c20714664015a5d98365fdbab1d25009936ba4ca9fa212029af9"
+          "sha256": "1cb52fe47e6568447cfc35d50f6e6c8d997459a4e73d85341d38a7409b04fb81"
         },
         "build_manifest": {
           "path": "okf-explorer-build-manifest.json",
           "bytes": 7398,
-          "sha256": "bba465d8427d5d760fa97ebbc863199d99663976dcd6ec6be4aeba1ec7fd8aba"
+          "sha256": "8c1c0394806ed4d466f5adee7084a807543664e2dde776eef7fab26998c56a69"
         },
         "build_index": {
           "path": "index.html",
           "bytes": 17696,
-          "sha256": "88387788e948cc80a5b4d5503abef2038bd75c34938ba71d8ff797693af473b2"
+          "sha256": "b1224b22be0ee8659ae928d0abd9b56c2d124600a3cc77deecb1c494d967d027"
         },
         "build_tree": {
           "algorithm": "sha256-canonical-json-materials-v1",
           "files": 43,
-          "sha256": "9787cd40d9a2b2ea252189d000b4e2fe8c1f4f605c26ba8a9a5ace96757eb585"
+          "sha256": "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4"
         }
       }
     }
@@ -170,28 +170,28 @@
     "output": "github-pages-observation.json",
     "target": {
       "repository": "https://github.com/chris-page-gov/okf-explorer",
-      "run_id": 41650465220,
+      "run_id": 41663805875,
       "run_attempt": 1,
-      "head_sha": "99f9e809fc17ee458f68eb742e8f440422b63432",
-      "git_tree": "eb9991832f6f9b3b7f5fe4116b794b16bc242397",
+      "head_sha": "dcd0c43e29593436b13c59271c75d37d06e2b754",
+      "git_tree": "87487a50c10f0dce144b1530b6a97de6e1277aff",
       "workflow_path": ".github/workflows/pages.yml",
-      "artifact_id": 13237507227,
+      "artifact_id": 13245490839,
       "artifact_name": "github-pages"
     },
     "archive": {
       "zip": {
         "path": "raw/github-pages-artifact.zip",
-        "bytes": 189109176,
-        "sha256": "940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff"
+        "bytes": 189110263,
+        "sha256": "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1"
       },
       "tar": {
         "name": "artifact.tar",
         "bytes": 834416640,
-        "sha256": "c920c04a3b74c20714664015a5d98365fdbab1d25009936ba4ca9fa212029af9",
+        "sha256": "1cb52fe47e6568447cfc35d50f6e6c8d997459a4e73d85341d38a7409b04fb81",
         "member_count": 10908,
         "file_count": 10734,
         "directory_count": 174,
-        "total_file_bytes": 823633275,
+        "total_file_bytes": 823634678,
         "retained_separately": false,
         "raw_header_census": {
           "raw_headers": 13326,
@@ -204,21 +204,21 @@
       "inventory": {
         "path": "inventory/tar-files.json",
         "bytes": 2096446,
-        "sha256": "98ff14359ff7abf025df00ddcdbce9accc3fe18325430dfc10b7f8714e4ade15",
+        "sha256": "3afe6d8c16ef4ef85254433c241117433dd809ec1f7591a1782694f2327fb810",
         "file_count": 10734,
-        "total_file_bytes": 823633275,
-        "materials_sha256": "d51bcaa28d2126e45cd65a3b1358b7195aae24c65dad1f9057058c26020231c2"
+        "total_file_bytes": 823634678,
+        "materials_sha256": "dfccde90f6ec44c28fb727b6187391739bda118a85914103aa9e692bf10d691b"
       },
       "build": {
         "manifest": {
           "path": "okf-explorer-build-manifest.json",
           "bytes": 7398,
-          "sha256": "bba465d8427d5d760fa97ebbc863199d99663976dcd6ec6be4aeba1ec7fd8aba"
+          "sha256": "8c1c0394806ed4d466f5adee7084a807543664e2dde776eef7fab26998c56a69"
         },
         "index": {
           "path": "index.html",
           "bytes": 17696,
-          "sha256": "88387788e948cc80a5b4d5503abef2038bd75c34938ba71d8ff797693af473b2"
+          "sha256": "b1224b22be0ee8659ae928d0abd9b56c2d124600a3cc77deecb1c494d967d027"
         },
         "not_found": {
           "path": "404.html",
@@ -228,18 +228,18 @@
         "tree": {
           "algorithm": "sha256-canonical-json-materials-v1",
           "files": 43,
-          "sha256": "9787cd40d9a2b2ea252189d000b4e2fe8c1f4f605c26ba8a9a5ace96757eb585",
-          "computed_sha256": "9787cd40d9a2b2ea252189d000b4e2fe8c1f4f605c26ba8a9a5ace96757eb585"
+          "sha256": "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4",
+          "computed_sha256": "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4"
         }
       }
     },
     "durable_alternate": {
-      "asset_id": 705881421,
-      "name": "okf-explorer-v0.8.0-pages-artifact.zip",
-      "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.8.0/okf-explorer-v0.8.0-pages-artifact.zip",
-      "bytes": 189109176,
-      "sha256": "940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff",
-      "github_digest": "sha256:940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff",
+      "asset_id": 706118888,
+      "name": "okf-explorer-v0.8.1-pages-artifact.zip",
+      "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.8.1/okf-explorer-v0.8.1-pages-artifact.zip",
+      "bytes": 189110263,
+      "sha256": "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
+      "github_digest": "sha256:6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
       "cross_binding": "required-from-github-release-observation"
     }
   },
@@ -284,7 +284,7 @@
       "D-07", "D-08", "D-09", "D-10", "D-11", "D-12", "D-13"
     ],
     "frozen_ledger_path": "release-assurance/implementation-traceability.json",
-    "frozen_ledger_sha256": "1849bd7b2be6be4e3f2b68e9a6471917f6e878d7dbe79d85dc8f6037b9e9864f",
+    "frozen_ledger_sha256": "2f31325f22b7a0c3e5b0bbf429ca8c111a775bf804c72e0eeb0db7b7b79fbef9",
     "terminal_dispositions": ["passed", "deferred", "blocked", "superseded"]
   },
   "schema": "okf-external-finalization-contract.v3",

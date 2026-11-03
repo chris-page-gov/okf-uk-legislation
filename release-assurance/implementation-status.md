@@ -4,7 +4,7 @@
 > position observed on 26 July 2026. It is retained for provenance and must not
 > be read as the current publication status. The current publication contract
 > is bundle version 0.4.0, dated 3 November 2026, using OKF 0.2 and Explorer
-> v0.8.0. See [`../publication/release.json`](../publication/release.json), the
+> v0.8.1. See [`../publication/release.json`](../publication/release.json), the
 > repository [`README.md`](../README.md) and the generated current release
 > assurance projection. All v0.3.0 and Explorer v0.5.x references below are
 > historical.
