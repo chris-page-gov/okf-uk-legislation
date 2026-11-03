@@ -22,8 +22,7 @@ DIRECT = ROOT / "requirements-validation.in"
 LOCK = ROOT / "requirements-validation.txt"
 GUIDE = ROOT / "docs" / "validation-dependency-lock.md"
 WORKFLOWS = (
-    ROOT / ".github" / "workflows" / "ci.yml",
-    ROOT / ".github" / "workflows" / "pages.yml",
+    ROOT / ".github" / "workflows" / "validation-phase.yml",
     ROOT / ".github" / "workflows" / "drift.yml",
 )
 
