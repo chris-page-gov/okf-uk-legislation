@@ -38,33 +38,38 @@ The contract records this order:
 
 `source → semantic → runtime → documentation → release → deployment → browser`
 
-Some planes also depend directly on earlier evidence. This repository keeps
-the complete offline validator as one serial freeze gate because its checks
-share a large corpus and overlapping assurance inputs. The validator emits a
-duration for every step and a total duration. Focused checks support
-development, but do not replace the one complete frozen-candidate run.
+Some planes also depend directly on earlier evidence. The complete offline
+validator remains one logical freeze gate, but protected CI and Pages execute
+four read-only phase jobs in parallel: `core`, `legislation`, `semantics` and
+`federation`. A stable job named `validate` uses `if: always()` and fails unless
+all four phase results are `success`. Focused checks support development, but
+do not replace this complete frozen-candidate gate.
 
 ## CI and Pages routing
 
 | Event | What runs | Cancellation and publication |
 |---|---|---|
-| pull request | required `validate` job and complete offline validator | a newer run for the same pull request cancels the older read-only run |
+| pull request | four bounded phase jobs and required fail-closed `validate` convergence job | a newer run for the same pull request cancels the older read-only run |
 | feature-branch push | no duplicate run | the pull request is the review boundary |
-| protected-main push | Pages validation, then deployment | publication runs are not cancelled |
-| manual dispatch | the selected workflow's complete validator | no change to release authority |
+| protected-main push | four Pages phase jobs, fail-closed `validate`, then deployment | publication runs are not cancelled |
+| manual dispatch | the selected workflow's four-phase complete validator | no change to release authority |
 
 This removes the former duplicate feature push and pull-request run. It also
 removes the second main-branch CI run because Pages already performs the same
 validation before deployment. The required pull-request job remains named
 `validate` so branch protection does not lose its existing gate.
 
-Both complete-validation jobs have an 80-minute ceiling. GitHub-hosted run
-`41705607815` showed why the former 60-minute ceiling was too narrow: the
-runner completed 502 tests, discovery and the 43-minute legislation graph
-check, then cancelled during the later enrichment audit after 58 minutes 20
-seconds in the shared validator. The extra 20 minutes is bounded runner
-variance; it does not weaken, split or bypass the complete release gate, and a
-timeout remains a failed check rather than evidence of validation.
+GitHub-hosted run `41705607815` showed that the former 60-minute serial ceiling
+was too narrow. Run `41719576058` then reached the Whole-Law build after 63
+minutes 35 seconds, while the retained local timing receipt showed another 14
+minutes 37 seconds of checks and the large CI stages were running at about
+twice local duration. Repeating the serial topology would therefore be a
+predictable timeout loop.
+
+Each phase job now has a 55-minute ceiling and invokes the same shared script
+with one explicit phase. The convergence job has no shortcut: a failure,
+cancellation or skipped result in any phase makes `validate` fail. Pages uses
+the identical topology and deploys only after that aggregator succeeds.
 
 ## Documentation lockstep
 
@@ -96,8 +101,9 @@ sh scripts/validate_publication.sh
 The script is check-only apart from a disposable fixture beneath the system
 temporary directory. Each line beginning `VALIDATION TIMING` records the
 elapsed seconds for one step. `VALIDATION TOTAL` records the complete wall
-time. Retain several successful CI samples before splitting the suite; a
-timing hotspot alone does not prove that its inputs are independent.
+time. With no environment override it runs all phases serially. CI and Pages
+set `OKF_VALIDATION_PHASE` to one of the four declared phase names; unknown
+values fail before a check runs.
 
 ## Publication and live verification boundary
 
@@ -116,11 +122,11 @@ can discover or call them.
 
 ## Further optimisation
 
-- collect step timings from representative green runs;
-- map shared fixture, corpus and assurance dependencies;
+- retain phase timings from representative green runs;
+- keep shared fixture, corpus and assurance dependencies explicit;
 - introduce a fail-closed impact classifier before any documentation-only
   shortcut;
-- split only proven-independent validator groups, preserving the `validate`
-  convergence gate; and
+- preserve the four mandatory phase groups and the `validate` convergence
+  gate; and
 - preserve the exact-commit, real-browser and console-clean Pages journey
   without rebuilding the deployed candidate.

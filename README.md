@@ -159,11 +159,14 @@ routing, publication authority and current live-verification gap. Read the
 [build and publication method](PUBLICATION-METHOD.md) before changing
 workflows, generated projections or release evidence.
 
-Pull requests run the complete validator once. Feature pushes do not duplicate
-that pull-request run, and protected-main validation is owned by the Pages
-workflow rather than repeated in general CI. The validator checks the tracked
-publication without rebuilding it and emits per-step timings to support a
-future, evidence-led dependency split.
+Pull requests run the complete validation contract as four mandatory,
+read-only jobs: core, legislation, semantics and federation. A stable
+fail-closed `validate` job succeeds only when all four jobs succeed. Feature
+pushes do not duplicate that pull-request run, and protected-main validation
+is owned by the Pages workflow rather than repeated in general CI. Pages
+deployment depends on the same `validate` gate. The shared validator checks
+the tracked publication without rebuilding it; its default local mode still
+runs every phase serially and emits per-step timings.
 
 The [validation dependency lock](docs/validation-dependency-lock.md) keeps the
 52-package closure frozen except for reviewed urllib3 and certifi security

@@ -182,6 +182,19 @@ acquisition and fails if research, evidence, effects or enrichment inputs
 change during the run. Run enrichment/effects first so its exact composition
 reflects their current immutable chunks.</p>
 <h2>Validation</h2>
+<p>GitHub Actions executes the complete validation contract through four
+mandatory, read-only jobs: core, legislation, semantics and federation. The
+stable <code>validate</code> gate fails unless every phase succeeds, and Pages deployment
+cannot start before that gate passes. This is a runtime-bound split of one
+full-suite contract, not impact-based test selection. Run
+<code>sh scripts/validate_publication.sh</code> without <code>OKF_VALIDATION_PHASE</code> for the
+same complete contract in serial local mode.</p>
+<p>The Whole-Law builder excludes Finder <code>.DS_Store</code> files and AppleDouble
+<code>._*</code> sidecars from authored and generated publication inventories. These are
+operating-system metadata, not OKF content. If a clean runner reports a stale
+Whole-Law integrity manifest, remove neither governed source data nor checks:
+regenerate the projection with the builder and confirm that the manifest does
+not contain those metadata paths.</p>
 <pre><code class="language-sh">python3 -m unittest discover -s tests -v
 python3 scripts/check_legislation_okf.py
 python3 scripts/build_model_enrichment_input_evidence.py --check

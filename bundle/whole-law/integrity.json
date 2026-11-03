@@ -2,16 +2,6 @@
   "algorithm": "sha256",
   "files": [
     {
-      "bytes": 8196,
-      "path": ".DS_Store",
-      "sha256": "21e39f05dddb0d8f04c8fc81ab5ea41d2f413792142e7975e0fb06ea00e7f83e"
-    },
-    {
-      "bytes": 6148,
-      "path": "acquisition/.DS_Store",
-      "sha256": "829edb9c739da9e59bc39a309abda42aa94810a1a1d32a37bed76f8907591b8c"
-    },
-    {
       "bytes": 6864,
       "path": "acquisition/README.html",
       "sha256": "b0f57abbb964bc9344387b907dbd00ad260357e16e7f187301cd44395637b49f"

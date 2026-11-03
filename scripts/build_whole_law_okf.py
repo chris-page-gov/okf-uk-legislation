@@ -77,6 +77,15 @@ def sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
 
+def is_authored_publication_file(relative: Path) -> bool:
+    """Exclude operating-system metadata without hiding valid dot paths."""
+
+    return not any(
+        part == ".DS_Store" or part.startswith("._")
+        for part in relative.parts
+    )
+
+
 def render_canonical_turtle(document: dict[str, Any]) -> bytes:
     """Render the JSON-LD dataset as deterministic canonical N-Triples.
 
@@ -1004,6 +1013,8 @@ def build_files() -> dict[Path, bytes]:
     for source_path in SOURCE.rglob("*"):
         if source_path.is_file():
             relative = source_path.relative_to(SOURCE)
+            if not is_authored_publication_file(relative):
+                continue
             put(relative, source_path.read_bytes())
     put(
         "assurance/enrichment-v3-reviewer-task-receipt.json",

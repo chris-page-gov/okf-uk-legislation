@@ -17,6 +17,26 @@ import build_whole_law_okf as builder  # noqa: E402
 
 
 class WholeLawTurtleDescriptorTests(unittest.TestCase):
+    def test_operating_system_metadata_is_not_published(self) -> None:
+        for path in (
+            Path(".DS_Store"),
+            Path("acquisition/.DS_Store"),
+            Path("acquisition/._capture.json"),
+        ):
+            self.assertFalse(builder.is_authored_publication_file(path))
+        self.assertTrue(
+            builder.is_authored_publication_file(
+                Path(".well-known/okf.json")
+            )
+        )
+        self.assertFalse(
+            any(
+                ".DS_Store" in path.parts
+                or any(part.startswith("._") for part in path.parts)
+                for path in builder.build_files()
+            )
+        )
+
     def test_canonical_turtle_is_deterministic_valid_and_isomorphic(self) -> None:
         document = json.loads(
             (ROOT / "bundle" / "whole-law" / "okf-bundle.jsonld").read_text(

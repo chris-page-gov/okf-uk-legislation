@@ -26,6 +26,15 @@
   after GitHub-hosted run 41705607815 completed every preceding check but was
   cancelled during the v3 audit at the former timeout. The complete gate and
   fail-closed timeout semantics are unchanged.
+- Excluded macOS Finder `.DS_Store` and AppleDouble metadata from authored
+  Whole-Law publication inputs. A bounded Linux diagnostic for run
+  41719576058 proved that two untracked Finder files had leaked only into the
+  integrity manifest; no legal, semantic or research content differed.
+- Divided protected CI and Pages validation into `core`, `legislation`,
+  `semantics` and `federation` jobs behind the same fail-closed `validate`
+  status. Every existing check remains mandatory; cancellation, failure or a
+  skipped phase fails the aggregator. The local default still runs all phases
+  serially.
 
 - Pin certifi 2026.10.19 as a second bounded security exception to the frozen
   validation closure. Remove the compromised emSign root, retain unaffected

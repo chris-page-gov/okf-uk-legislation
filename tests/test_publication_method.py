@@ -36,6 +36,20 @@ class PublicationMethodTests(unittest.TestCase):
     def test_repository_contract_invariants_pass(self) -> None:
         self.assertEqual(contract_check.contract_errors(self.contract, ROOT), [])
 
+    def test_ci_contract_is_complete_and_fail_closed(self) -> None:
+        ci = self.contract["ci"]
+        self.assertEqual(ci["impact_routing"], "full-suite")
+        self.assertEqual(ci["parallelism"], "four-phase-fail-closed")
+        self.assertEqual(
+            ci["validation_phases"],
+            ["core", "legislation", "semantics", "federation"],
+        )
+        self.assertEqual(ci["phase_timeout_minutes"], 55)
+        self.assertEqual(ci["aggregator_job"], "validate")
+        self.assertIn(
+            ".github/workflows/validation-phase.yml", ci["workflow_paths"]
+        )
+
     def test_controlled_change_requires_docs_and_changelog(self) -> None:
         errors, controlled, documentation = lockstep_check.lockstep_errors(
             self.contract, {"scripts/build_checksums.py"}

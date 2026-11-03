@@ -137,6 +137,21 @@ reflects their current immutable chunks.
 
 ## Validation
 
+GitHub Actions executes the complete validation contract through four
+mandatory, read-only jobs: core, legislation, semantics and federation. The
+stable `validate` gate fails unless every phase succeeds, and Pages deployment
+cannot start before that gate passes. This is a runtime-bound split of one
+full-suite contract, not impact-based test selection. Run
+`sh scripts/validate_publication.sh` without `OKF_VALIDATION_PHASE` for the
+same complete contract in serial local mode.
+
+The Whole-Law builder excludes Finder `.DS_Store` files and AppleDouble
+`._*` sidecars from authored and generated publication inventories. These are
+operating-system metadata, not OKF content. If a clean runner reports a stale
+Whole-Law integrity manifest, remove neither governed source data nor checks:
+regenerate the projection with the builder and confirm that the manifest does
+not contain those metadata paths.
+
 ```sh
 python3 -m unittest discover -s tests -v
 python3 scripts/check_legislation_okf.py

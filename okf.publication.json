@@ -433,7 +433,7 @@
         "review_status": "reviewed-local-guidance",
         "network": "none",
         "mutates": "none",
-        "timeout_minutes": 60
+        "timeout_minutes": 80
       }
     ]
   },
@@ -472,10 +472,19 @@
     "workflow_paths": [
       ".github/workflows/ci.yml",
       ".github/workflows/drift.yml",
-      ".github/workflows/pages.yml"
+      ".github/workflows/pages.yml",
+      ".github/workflows/validation-phase.yml"
     ],
     "impact_routing": "full-suite",
-    "parallelism": "serial",
+    "parallelism": "four-phase-fail-closed",
+    "validation_phases": [
+      "core",
+      "legislation",
+      "semantics",
+      "federation"
+    ],
+    "phase_timeout_minutes": 55,
+    "aggregator_job": "validate",
     "unknown_path_policy": "full-suite",
     "browser": {
       "ordinary": {

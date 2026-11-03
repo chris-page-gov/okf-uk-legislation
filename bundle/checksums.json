@@ -29169,12 +29169,12 @@
       "sha256": "76a2026bda1d742e2db1bfcec6b363ae55001101f15c2d6ea35921840f2541a6"
     },
     "docs/maintenance.html": {
-      "bytes": 16632,
-      "sha256": "2bfedcaff639623121353f8599b90b1cfc861430054db8ef45ed5dfd752f34fa"
+      "bytes": 17598,
+      "sha256": "5d652da84dc64d09f970df0bbda1658ac17c84b3cdfd194699cc269148a24f24"
     },
     "docs/maintenance.md": {
-      "bytes": 14092,
-      "sha256": "9bcd46acab58b2caf3e325e81e15d2ea13c023311ccabca9167c35cf9737184a"
+      "bytes": 14991,
+      "sha256": "a32dd5bcecb8161bdde856def28f0a9f84caf6e3097e72c9cb581e56f88a0257"
     },
     "docs/model-assisted-enrichment-governance.html": {
       "bytes": 15005,
@@ -35342,7 +35342,7 @@
     },
     "release-assurance/checksums.json": {
       "bytes": 6887,
-      "sha256": "48c605c1a94294d3928ed5ff0eaee77e3a6c91d390273223e5ceef6294f58a2b"
+      "sha256": "12d15e33231ceffc107e04300e72b442709c7ebb09cd7c97c120d56d73eebcff"
     },
     "release-assurance/claude-observed-access-test.json": {
       "bytes": 2251,
@@ -35401,8 +35401,8 @@
       "sha256": "7c91e5a5e03873656fee8c2a97541e43e703dcf21f5b0714788c514c66350e29"
     },
     "release-assurance/provenance.json": {
-      "bytes": 27327,
-      "sha256": "a3905997baf3c185b1e1db81edaf98703887dfba8844e1de8af1b47f92a13f49"
+      "bytes": 27500,
+      "sha256": "02ea24b4c7dc95319ce3126d3513673cf32bbc79415614c24a1b297bf27a005d"
     },
     "release-assurance/release-gates.json": {
       "bytes": 10884,
@@ -35422,15 +35422,15 @@
     },
     "release-assurance/reproduction.json": {
       "bytes": 8277,
-      "sha256": "99256d2d8c02833b259adb1788e9f4d8833ca37c4ff8fe477df1a3e88d69cfef"
+      "sha256": "705e6e24caa07a116b9c043325fd5790475e6cbbbdeee1e62c16ec09770a06a5"
     },
     "release-assurance/rights.spdx.json": {
       "bytes": 2368,
-      "sha256": "fa1813e71f310def6d67119151a7f449438f15b6ed4f38ac52a136b2671852b2"
+      "sha256": "83f59931735fedefdd4b753cbd63eca93231b5e940bd0de03e16b9bead4a7676"
     },
     "release-assurance/sbom.cdx.json": {
-      "bytes": 189446,
-      "sha256": "5163e71002d401e80186148ee511db30ee6e32df20861f94042048ae15975ded"
+      "bytes": 189445,
+      "sha256": "2d8dee05f85972e7b7afd3f79637b4c12a03d465100b3dea724a879e16603715"
     },
     "release-assurance/schemas/accessibility-assurance-receipt.schema.json": {
       "bytes": 4268,
@@ -36661,8 +36661,8 @@
       "sha256": "15cfb511528684f7a11cc9277897b53ba9088f1084190285fd949a53448260f1"
     },
     "whole-law/integrity.json": {
-      "bytes": 120140,
-      "sha256": "18d2988071e43fd9263f859b86179cf28f1f93d96fcc45c9eb27b7221fd48f09"
+      "bytes": 119840,
+      "sha256": "975f45f983279c05bd28dc9d5b01c2b0ec99d8ad6970e2430d53889bf3dbde3d"
     },
     "whole-law/log.html": {
       "bytes": 1892,

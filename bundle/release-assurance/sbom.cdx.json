@@ -40,7 +40,7 @@
       "properties": [
         {
           "name": "okf:workflow",
-          "value": ".github/workflows/ci.yml, .github/workflows/drift.yml, .github/workflows/pages.yml"
+          "value": ".github/workflows/drift.yml, .github/workflows/pages.yml, .github/workflows/validation-phase.yml"
         },
         {
           "name": "okf:ref-kind",
@@ -91,7 +91,7 @@
       "properties": [
         {
           "name": "okf:workflow",
-          "value": ".github/workflows/ci.yml, .github/workflows/drift.yml, .github/workflows/pages.yml"
+          "value": ".github/workflows/drift.yml, .github/workflows/validation-phase.yml"
         },
         {
           "name": "okf:ref-kind",
@@ -5881,7 +5881,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:487f6f12-54f0-570c-8553-0c86001cd1f4",
+  "serialNumber": "urn:uuid:ac03ef62-03d2-598d-b051-864c30cdba20",
   "specVersion": "1.6",
   "version": 1
 }
