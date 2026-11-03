@@ -172,6 +172,12 @@ workflow rather than repeated in general CI. The validator checks the tracked
 publication without rebuilding it and emits per-step timings to support a
 future, evidence-led dependency split.
 
+The [validation dependency lock](docs/validation-dependency-lock.md) keeps the
+52-package closure frozen except for reviewed urllib3 and certifi security
+updates. Certifi 2026.10.19 removes the compromised emSign trust root while
+preserving unaffected roots. The dependency-bound release evidence is regenerated;
+the immutable source snapshots and published release are preserved.
+
 The machine-readable
 [`reproduction-profile.json`](release-assurance/reproduction-profile.json) is
 the source of truth for the ordered, offline build and validation sequences.

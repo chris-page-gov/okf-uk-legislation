@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- Pin certifi 2026.10.19 as a second bounded security exception to the frozen
+  validation closure. Remove the compromised emSign root, retain unaffected
+  roots and TLS verification, and test the installed trust store. Regenerate
+  the SBOM, provenance, reproduction contract, projected guide and checksums;
+  preserve all other package versions and immutable publication evidence.
+
+- Pin urllib3 2.8.0 as a narrow security exception to the frozen validation
+  closure, retain hash enforcement and test bounded chunk-size parsing with
+  synthetic HTTP responses. Publication and semantic evidence stay unchanged.
+
 - Added the OKF build and publication lifecycle contract, repository-specific
   contract and documentation-lockstep checks, and a maintained methodology
   guide.
