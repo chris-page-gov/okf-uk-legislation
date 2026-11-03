@@ -385,9 +385,9 @@
       "sha256": "4a5ea450ea9564ae0ed8c3493017a63c1594dc75ccaa23166bc8382557b45460"
     },
     {
-      "bytes": 1376,
+      "bytes": 1600,
       "path": ".github/workflows/ci.yml",
-      "sha256": "924f13018563546fa274796bc680168a29f14678646bdf430ab4ff244f088c49"
+      "sha256": "204ce1f4045db07de8123927bdb5c40143b0212105f3bf996d31184dfb004bbb"
     },
     {
       "bytes": 4023,
@@ -395,9 +395,9 @@
       "sha256": "61ed08d0409689b0c52df3c6aecb108584e64d4d6c56c72462236cc2c9abfb5d"
     },
     {
-      "bytes": 2129,
+      "bytes": 2260,
       "path": ".github/workflows/pages.yml",
-      "sha256": "112bc7df36e6d18f030d6cf72ef3d81e15459168e22ef85aa05f16ab7e171ce1"
+      "sha256": "daa656f9f84d9fd79ce88c074004efcc3867dcef17a79b4115874118ca2127a3"
     },
     {
       "bytes": 141234,
@@ -620,7 +620,7 @@
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
     }
   ],
-  "materials_digest": "sha256:a0a61aa2eba70a3ba3ad45b2924d126c0f82cc66ed24e3a9b7276705324932aa",
+  "materials_digest": "sha256:fb2411291ce3ccaddd6e9c7c49437928c166277e793e0dde427e8d9d8798ea30",
   "optional_direct_api_model_governance": {
     "authored_run": null,
     "current_release_required": false,

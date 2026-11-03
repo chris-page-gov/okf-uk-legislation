@@ -35342,7 +35342,7 @@
     },
     "release-assurance/checksums.json": {
       "bytes": 6887,
-      "sha256": "e97c7dcb47b17239f2961f432d598fbab5e7440294d2cfc280bd2fc259a0d4bb"
+      "sha256": "48c605c1a94294d3928ed5ff0eaee77e3a6c91d390273223e5ceef6294f58a2b"
     },
     "release-assurance/claude-observed-access-test.json": {
       "bytes": 2251,
@@ -35402,7 +35402,7 @@
     },
     "release-assurance/provenance.json": {
       "bytes": 27327,
-      "sha256": "9046e258ff0e3eebfe4cdc6958a493b99e67f67db496949c654fb39bbf29dd37"
+      "sha256": "a3905997baf3c185b1e1db81edaf98703887dfba8844e1de8af1b47f92a13f49"
     },
     "release-assurance/release-gates.json": {
       "bytes": 10884,
@@ -35422,15 +35422,15 @@
     },
     "release-assurance/reproduction.json": {
       "bytes": 8277,
-      "sha256": "ce648e27fb9f11e50ea64e353bb115f540b72fb5780751303c6e1b3e746ac588"
+      "sha256": "99256d2d8c02833b259adb1788e9f4d8833ca37c4ff8fe477df1a3e88d69cfef"
     },
     "release-assurance/rights.spdx.json": {
       "bytes": 2368,
-      "sha256": "2e1b78751be4419927c720ac30d16d612ae3099d601a89724b0bfbdcf9cd0215"
+      "sha256": "fa1813e71f310def6d67119151a7f449438f15b6ed4f38ac52a136b2671852b2"
     },
     "release-assurance/sbom.cdx.json": {
       "bytes": 189446,
-      "sha256": "8d819af16dc009bc9a09ee91cdef2c187193aef0285c2b1f57efe86448657019"
+      "sha256": "5163e71002d401e80186148ee511db30ee6e32df20861f94042048ae15975ded"
     },
     "release-assurance/schemas/accessibility-assurance-receipt.schema.json": {
       "bytes": 4268,
