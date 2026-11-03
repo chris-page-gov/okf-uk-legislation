@@ -872,8 +872,7 @@ def analyze_claude_access_journey(
         )
     )
     raw_subpaths_ok = (
-        root_descriptor.get("repository_subpath")
-        == root_descriptor.get("discovery", {}).get("raw_subpath")
+        root_descriptor.get("discovery", {}).get("raw_subpath") == "bundle"
         and whole_descriptor.get("discovery", {}).get("raw_subpath")
         == "bundle/whole-law"
     )

@@ -7,7 +7,7 @@
     "release_report": {
       "bytes": 148905,
       "path": "bundle/release-assurance/release-report.json",
-      "sha256": "68dd1e31024325f041bb781bec590499bf9ccd29a35ede32259235273d9f4a5e"
+      "sha256": "02ac9069403f36f63199db9c40ee4e5669746df1999517102eda52085b7718be"
     }
   },
   "external_finalization": {
@@ -15,7 +15,7 @@
       "bytes": 12275,
       "path": "release-assurance/external-finalization-contract.json",
       "projected_path": "external-finalization-contract.json",
-      "sha256": "11f591f1100f3812df27c76c435ad28b7a64c93c9344e056f5d9b941614525e4"
+      "sha256": "83b83908f49b1c9236c19121c03409060d6f8dce61221932d5ad4c8eff59b8eb"
     },
     "evidence_plane": "external-write-once",
     "finalizer": {

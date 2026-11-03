@@ -284,7 +284,7 @@
       "D-07", "D-08", "D-09", "D-10", "D-11", "D-12", "D-13"
     ],
     "frozen_ledger_path": "release-assurance/implementation-traceability.json",
-    "frozen_ledger_sha256": "2f31325f22b7a0c3e5b0bbf429ca8c111a775bf804c72e0eeb0db7b7b79fbef9",
+    "frozen_ledger_sha256": "f26c1d5d238a623334abc0b9fdfcf316db2d06b6433b4aeae27d89aece8845d7",
     "terminal_dispositions": ["passed", "deferred", "blocked", "superseded"]
   },
   "schema": "okf-external-finalization-contract.v3",

@@ -247,6 +247,13 @@ class CompetencyQuestionValidationTests(unittest.TestCase):
         self.assertIn("all 3 authored questions", errors[0])
 
 
+class FederationDescriptorContractTests(unittest.TestCase):
+    def test_public_projection_and_native_source_use_their_own_schemas(self) -> None:
+        errors: list[str] = []
+        checker.check_federation_descriptor_contract(errors)
+        self.assertEqual([], errors)
+
+
 if __name__ == "__main__":
     unittest.main()
 

@@ -217,27 +217,27 @@
         "No browser, public HTTP or compatibility-host result was inferred from a local descriptor check."
       ],
       "corpus_navigation_score": 100,
-      "executed_at": "2026-07-27T02:38:39Z",
+      "executed_at": "2026-11-03T18:48:19Z",
       "hard_failures": [],
       "materials": [
         {
-          "bytes": 6189,
+          "bytes": 7085,
           "path": "bundle/whole-law/evaluation/executions/index.json",
-          "sha256": "5a8e7254a5d3882563d5f8a19f185f4f68a002311d7067fbb445f24ad19fb002"
+          "sha256": "8ca0ac6bbd90209e3697fe4c315a0dff058228afe1924019c62ad1aecf142bc4"
         },
         {
-          "bytes": 3125384,
-          "path": "bundle/whole-law/evaluation/executions/eval-7d891e153705f9991f2e/results.json",
-          "sha256": "812a3e06a36909f2808c8e2acb21cf9e6644afea7cc88f326ce56e9360691d2c"
+          "bytes": 3125672,
+          "path": "bundle/whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/results.json",
+          "sha256": "320f271b03b8c487f3e4e26463d914db07191e89500f23224a0d0c0f330dd36d"
         },
         {
           "bytes": 10678,
-          "path": "bundle/whole-law/evaluation/executions/eval-7d891e153705f9991f2e/scores.json",
+          "path": "bundle/whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/scores.json",
           "sha256": "8228f85adbf098493e28892d5901c15d2f7ce11ea2e84d82b97281b778a3642c"
         }
       ],
       "minimum_critical_family_score": 100,
-      "run_id": "eval-7d891e153705f9991f2e",
+      "run_id": "eval-a8b12d5facb86443fd21",
       "scope": "corpus-navigation-metadata",
       "status": "passed"
     },
@@ -252,7 +252,7 @@
       "source": {
         "bytes": 23568,
         "path": "release-assurance/gap-register.json",
-        "sha256": "a588e54f6e67589a93e84a59125a26c06197a95acfbc62511a5b850357b4ee6c"
+        "sha256": "3aa64f6613ea1e8e78423eb8d369e1dc6cd9b568ea2ebbb6b6e4acd206e47ccd"
       },
       "unresolved": [
         {

@@ -31,7 +31,6 @@ def claude_journey_fixture():
         ).read_text(encoding="utf-8")
     )
     root_descriptor = {
-        "repository_subpath": "bundle",
         "snapshot": "root-snapshot",
         "discovery": {
             "repository": "https://github.com/example/repo",

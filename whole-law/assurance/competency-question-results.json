@@ -467,13 +467,13 @@
     },
     "shapes": {
       "path": "whole-law/ontology/shapes.ttl",
-      "sha256": "5fe646674af3d237049722efcb1750fef1d258464cf6d6cfcb8f32b4855ce6b3",
-      "triples": 416
+      "sha256": "44d02101e5b48317df224295599af908c530697c33840aa256829e73b16b99b0",
+      "triples": 426
     },
     "vocabulary": {
       "path": "whole-law/ontology/vocabulary.ttl",
-      "sha256": "fec52841a2062e2137234b1b4de9ab4be5bbd1677f703fb1d4e05509443df9aa",
-      "triples": 149
+      "sha256": "ae637f48e021b8b901838eeeaecbdeed2c3895708816d56155e6367e4ddbe53a",
+      "triples": 162
     }
   },
   "status": "passed",

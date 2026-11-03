@@ -130,8 +130,8 @@
   "evidence": [
     "whole-law/evaluation/README.md",
     "whole-law/evaluation/release-questions.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/verification.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/integrity.json"
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/verification.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json"
   ],
   "id": "IMP-GAP-010",
   "next_action": "Preserve the explicit distinction between the independently verified corpus-navigation gold suite and the retained non-gold broad legal prompts; do not present the navigation score as legal-answer correctness.",
@@ -143,11 +143,11 @@
       "area": "evaluation execution",
   "evidence": [
     "whole-law/evaluation/README.md",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/results.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/scores.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/challenge-discovery-calibration.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/challenge-pass-1.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/challenge-pass-2.json"
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/results.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/scores.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-discovery-calibration.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-1.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-2.json"
   ],
   "id": "IMP-GAP-011",
   "next_action": "Bind this immutable evaluation execution into the final candidate and retain its corpus-navigation-only assurance boundary.",

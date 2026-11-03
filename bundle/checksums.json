@@ -2626,7 +2626,7 @@
     },
     "data/performance.json": {
       "bytes": 1330,
-      "sha256": "f31b7650bf10e9e0b4a968a6a85f1a49aad3f1595a9c80d8286fb4a75e1a006f"
+      "sha256": "ad67042b37731f0757251162f8414516fee052a9b0b0117d77e3541a0a4f35a9"
     },
     "data/presentation.json": {
       "bytes": 2611,
@@ -35342,7 +35342,7 @@
     },
     "release-assurance/checksums.json": {
       "bytes": 6887,
-      "sha256": "3f01655707af4f4b5e0526212381611630e7765ece9d88817052d95a5ca0f347"
+      "sha256": "e97c7dcb47b17239f2961f432d598fbab5e7440294d2cfc280bd2fc259a0d4bb"
     },
     "release-assurance/claude-observed-access-test.json": {
       "bytes": 2251,
@@ -35366,11 +35366,11 @@
     },
     "release-assurance/external-finalization-contract.json": {
       "bytes": 12275,
-      "sha256": "11f591f1100f3812df27c76c435ad28b7a64c93c9344e056f5d9b941614525e4"
+      "sha256": "83b83908f49b1c9236c19121c03409060d6f8dce61221932d5ad4c8eff59b8eb"
     },
     "release-assurance/gap-register.json": {
       "bytes": 23568,
-      "sha256": "a588e54f6e67589a93e84a59125a26c06197a95acfbc62511a5b850357b4ee6c"
+      "sha256": "3aa64f6613ea1e8e78423eb8d369e1dc6cd9b568ea2ebbb6b6e4acd206e47ccd"
     },
     "release-assurance/github-operation-environment.json": {
       "bytes": 1049,
@@ -35386,7 +35386,7 @@
     },
     "release-assurance/implementation-status.json": {
       "bytes": 98447,
-      "sha256": "a7e6bf0a3d9f45b0a45fdcb2f2c8db69fbec8a4593a4344d756a4235b3cb4db2"
+      "sha256": "c8b4a4c7416e804971631e70eab9fd98f9773c80e405b4273a994d5771988e44"
     },
     "release-assurance/implementation-status.md": {
       "bytes": 1076,
@@ -35394,7 +35394,7 @@
     },
     "release-assurance/implementation-traceability.json": {
       "bytes": 97686,
-      "sha256": "2f31325f22b7a0c3e5b0bbf429ca8c111a775bf804c72e0eeb0db7b7b79fbef9"
+      "sha256": "f26c1d5d238a623334abc0b9fdfcf316db2d06b6433b4aeae27d89aece8845d7"
     },
     "release-assurance/model-cost-report.json": {
       "bytes": 6778,
@@ -35402,7 +35402,7 @@
     },
     "release-assurance/provenance.json": {
       "bytes": 27327,
-      "sha256": "e78498ea66097c17d57bb6f30afed60048b430b51f59b3502507e14d40d99b52"
+      "sha256": "9046e258ff0e3eebfe4cdc6958a493b99e67f67db496949c654fb39bbf29dd37"
     },
     "release-assurance/release-gates.json": {
       "bytes": 10884,
@@ -35414,23 +35414,23 @@
     },
     "release-assurance/release-report.json": {
       "bytes": 148905,
-      "sha256": "68dd1e31024325f041bb781bec590499bf9ccd29a35ede32259235273d9f4a5e"
+      "sha256": "02ac9069403f36f63199db9c40ee4e5669746df1999517102eda52085b7718be"
     },
     "release-assurance/release-state.json": {
       "bytes": 13161,
-      "sha256": "ed2d4c2d65b49f354c75e19a7d6595eb45967de5c5fac98e7aef1daecb558006"
+      "sha256": "f017f645e4d2104b5dec1cf084245fe4ebc2a7a0dbc547272892cdb4aec65d94"
     },
     "release-assurance/reproduction.json": {
       "bytes": 8277,
-      "sha256": "43aefb92fa672af345b62a2cde22770f0ad3dc386036431e0496ccfaa2d45f40"
+      "sha256": "ce648e27fb9f11e50ea64e353bb115f540b72fb5780751303c6e1b3e746ac588"
     },
     "release-assurance/rights.spdx.json": {
       "bytes": 2368,
-      "sha256": "7ff04d5b9a44f69eb0d47467605ce04d86da21126c925c4be09787d111bb3962"
+      "sha256": "2e1b78751be4419927c720ac30d16d612ae3099d601a89724b0bfbdcf9cd0215"
     },
     "release-assurance/sbom.cdx.json": {
       "bytes": 189446,
-      "sha256": "52be93809c36fe5725d6111c1d40719d5d45ca0d9ff84560ded72e2206076d80"
+      "sha256": "8d819af16dc009bc9a09ee91cdef2c187193aef0285c2b1f57efe86448657019"
     },
     "release-assurance/schemas/accessibility-assurance-receipt.schema.json": {
       "bytes": 4268,
@@ -35882,7 +35882,7 @@
     },
     "whole-law/assurance/competency-question-results.json": {
       "bytes": 16331,
-      "sha256": "b377d6fb5101970edbb5510489c3c02f7de093123580ee86d01f2465d5572864"
+      "sha256": "fe7839153b2227c195556dc430650c406eb3557d5df781caf0a95d3f37181752"
     },
     "whole-law/assurance/effects-live-reconciliation-20260726.json": {
       "bytes": 16929,
@@ -36137,8 +36137,8 @@
       "sha256": "57a02ed6eac73d1ff1948b71aae1571adc6514e418aa9fecb5beae6c59eef674"
     },
     "whole-law/evaluation/claude-access-suite.json": {
-      "bytes": 3699,
-      "sha256": "72b9b3e6f3f964de83f40419c1b03684b0680c6d96e59da136d4f20cbacf56fa"
+      "bytes": 3705,
+      "sha256": "a831e4c2df10abf78a95ff36b407483b6ec5695f71128a9e181ee4de7aba9d11"
     },
     "whole-law/evaluation/coverage.json": {
       "bytes": 10237,
@@ -36219,6 +36219,50 @@
     "whole-law/evaluation/executions/eval-3618fd20c40e54e9e565/results.json": {
       "bytes": 55389,
       "sha256": "3a76764b90e33b82078c894fa4ee7431ff515ec86f35a244d4922000cc3c2be0"
+    },
+    "whole-law/evaluation/executions/eval-4609b04d4f94664dac57/answers.json": {
+      "bytes": 21453753,
+      "sha256": "5a3bc14cd99c26fac79f5de6013f94351dcefc8b12f7c1f4df81487d59a7486f"
+    },
+    "whole-law/evaluation/executions/eval-4609b04d4f94664dac57/challenge-discovery-calibration.json": {
+      "bytes": 2841073,
+      "sha256": "02dab7fca78dbfbcef10b546c36a5d3fbeab1c6cbe914aef39ee190594d8b982"
+    },
+    "whole-law/evaluation/executions/eval-4609b04d4f94664dac57/challenge-pass-1.json": {
+      "bytes": 1084148,
+      "sha256": "c56bf93381b5a0e692e7ac2b3617c3871b2857c9c4657891bed3f3ec9bbfdb1d"
+    },
+    "whole-law/evaluation/executions/eval-4609b04d4f94664dac57/challenge-pass-2.json": {
+      "bytes": 1081540,
+      "sha256": "602b2dff089106da910c3c0cacef7221cd86db917010c4e6fb91b3f90c4b0caf"
+    },
+    "whole-law/evaluation/executions/eval-4609b04d4f94664dac57/direct-source-baseline.json": {
+      "bytes": 203082,
+      "sha256": "a12a0133a0e8c1bb9bab5ef986d88dd27751bd4c368efea7e410d50f79da7694"
+    },
+    "whole-law/evaluation/executions/eval-4609b04d4f94664dac57/integrity.json": {
+      "bytes": 9295,
+      "sha256": "7de53f0c6a98a19b32579a818bdbbe4f375ca62e28107c515a7e4a27d56e3356"
+    },
+    "whole-law/evaluation/executions/eval-4609b04d4f94664dac57/report.html": {
+      "bytes": 7929,
+      "sha256": "85d06915378ce1569befee0fb9980119f485be51492e3eb4998161e13b8e60c4"
+    },
+    "whole-law/evaluation/executions/eval-4609b04d4f94664dac57/report.md": {
+      "bytes": 5787,
+      "sha256": "0506f40fc7793dbde93e1de6e3bf65688ead16cc7d532b7b902f43d183ab0437"
+    },
+    "whole-law/evaluation/executions/eval-4609b04d4f94664dac57/results.json": {
+      "bytes": 3126116,
+      "sha256": "dd333881f24074006a115e554ccae1ad4ac84f3518f0b365fc0be49d1e41b83f"
+    },
+    "whole-law/evaluation/executions/eval-4609b04d4f94664dac57/scores.json": {
+      "bytes": 10678,
+      "sha256": "8228f85adbf098493e28892d5901c15d2f7ce11ea2e84d82b97281b778a3642c"
+    },
+    "whole-law/evaluation/executions/eval-4609b04d4f94664dac57/verification.json": {
+      "bytes": 430839,
+      "sha256": "0ea5217f4f66e222fa04a5e4dfc49903007a037c7b2dddc85aaa17fd0941a741"
     },
     "whole-law/evaluation/executions/eval-4f0df195a6fa4e73da62/answers.json": {
       "bytes": 21453753,
@@ -36380,6 +36424,50 @@
       "bytes": 3121127,
       "sha256": "b77389c28cd01535b1655f0e687c61c06036782afb6504a79e067f78bcc20da3"
     },
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/answers.json": {
+      "bytes": 21453753,
+      "sha256": "5a3bc14cd99c26fac79f5de6013f94351dcefc8b12f7c1f4df81487d59a7486f"
+    },
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-discovery-calibration.json": {
+      "bytes": 2841073,
+      "sha256": "02dab7fca78dbfbcef10b546c36a5d3fbeab1c6cbe914aef39ee190594d8b982"
+    },
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-1.json": {
+      "bytes": 1084148,
+      "sha256": "c56bf93381b5a0e692e7ac2b3617c3871b2857c9c4657891bed3f3ec9bbfdb1d"
+    },
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-2.json": {
+      "bytes": 1081540,
+      "sha256": "602b2dff089106da910c3c0cacef7221cd86db917010c4e6fb91b3f90c4b0caf"
+    },
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/direct-source-baseline.json": {
+      "bytes": 203082,
+      "sha256": "a12a0133a0e8c1bb9bab5ef986d88dd27751bd4c368efea7e410d50f79da7694"
+    },
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json": {
+      "bytes": 9295,
+      "sha256": "84ea255f3faf9b5ba638427a411acfde32d1095fcaa28ca6715b73578c22517f"
+    },
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/report.html": {
+      "bytes": 7926,
+      "sha256": "5a2f347066d19534850ebf67e51b4bb3bca7e344ebf911d3fc05ae78d2fc39c3"
+    },
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/report.md": {
+      "bytes": 5784,
+      "sha256": "e4804a7387d3063bfa7307d19c4f68439bebb6cceb0a30b3718df76d1302a3d9"
+    },
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/results.json": {
+      "bytes": 3125672,
+      "sha256": "320f271b03b8c487f3e4e26463d914db07191e89500f23224a0d0c0f330dd36d"
+    },
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/scores.json": {
+      "bytes": 10678,
+      "sha256": "8228f85adbf098493e28892d5901c15d2f7ce11ea2e84d82b97281b778a3642c"
+    },
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/verification.json": {
+      "bytes": 430839,
+      "sha256": "0ea5217f4f66e222fa04a5e4dfc49903007a037c7b2dddc85aaa17fd0941a741"
+    },
     "whole-law/evaluation/executions/eval-a8f62b2b807ab4be3bdb/answers.json": {
       "bytes": 21453753,
       "sha256": "cbe7f18c25562a9058350310545f125e4f024f1c1a13a6ad6b8b443e349e8676"
@@ -36513,8 +36601,8 @@
       "sha256": "0ea5217f4f66e222fa04a5e4dfc49903007a037c7b2dddc85aaa17fd0941a741"
     },
     "whole-law/evaluation/executions/index.json": {
-      "bytes": 6189,
-      "sha256": "5a8e7254a5d3882563d5f8a19f185f4f68a002311d7067fbb445f24ad19fb002"
+      "bytes": 7085,
+      "sha256": "8ca0ac6bbd90209e3697fe4c315a0dff058228afe1924019c62ad1aecf142bc4"
     },
     "whole-law/evaluation/historical-baselines.json": {
       "bytes": 845,
@@ -36534,11 +36622,11 @@
     },
     "whole-law/evaluation/index.html": {
       "bytes": 3308,
-      "sha256": "69de0c8bdb3a9d1a9851dece90287c64cb4e4b9546c06eda52d13ccca288eefe"
+      "sha256": "c52e3d7791e343dc241cda29963a63248e1c71549461ffc04540c671538655f3"
     },
     "whole-law/evaluation/index.md": {
       "bytes": 1633,
-      "sha256": "cd17bed0c5bc3abea9d7855309e11f3d48eb51c06d711e3df538a6ee0b8cf781"
+      "sha256": "eba92b9a5bad70a36967df330a33f9214bd81cf9eeed6c27f837780e8fbbdae4"
     },
     "whole-law/evaluation/questions.json": {
       "bytes": 12105848,
@@ -36573,8 +36661,8 @@
       "sha256": "15cfb511528684f7a11cc9277897b53ba9088f1084190285fd949a53448260f1"
     },
     "whole-law/integrity.json": {
-      "bytes": 115690,
-      "sha256": "da5baac384c75d640af225d1610ab05a1acee50ee23df770cec18f43d098f836"
+      "bytes": 120140,
+      "sha256": "18d2988071e43fd9263f859b86179cf28f1f93d96fcc45c9eb27b7221fd48f09"
     },
     "whole-law/log.html": {
       "bytes": 1892,

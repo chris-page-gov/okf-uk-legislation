@@ -1074,9 +1074,9 @@
   "implementation_evidence": [
     "whole-law/evaluation/README.md",
     "scripts/evaluation_challenge_discovery.py",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/challenge-discovery-calibration.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/challenge-pass-1.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/challenge-pass-2.json"
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-discovery-calibration.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-1.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-2.json"
   ],
       "phase": 8,
   "release_disposition": {
@@ -1093,7 +1093,7 @@
       },
   "status": "verified",
   "validation_evidence": [
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/integrity.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json",
     "tests/test_release_evaluation_runner.py"
       ]
     },
@@ -1106,7 +1106,7 @@
   "implementation_evidence": [
     "whole-law/evaluation/release-questions.json",
     "whole-law/evaluation/answer-schema.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/answers.json"
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/answers.json"
   ],
       "phase": 8,
   "release_disposition": {
@@ -1123,8 +1123,8 @@
       },
   "status": "verified",
   "validation_evidence": [
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/verification.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/integrity.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/verification.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json",
     "tests/test_release_evaluation_runner.py"
       ]
     },
@@ -1138,8 +1138,8 @@
     "whole-law/evaluation/README.md",
     "scripts/run_release_evaluation.py",
     "scripts/verify_release_evaluation_answers.py",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/results.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/direct-source-baseline.json"
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/results.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/direct-source-baseline.json"
   ],
       "phase": 8,
   "release_disposition": {
@@ -1156,9 +1156,9 @@
       },
   "status": "verified",
   "validation_evidence": [
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/verification.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/scores.json",
-    "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/integrity.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/verification.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/scores.json",
+    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json",
     "tests/test_release_evaluation_runner.py"
       ]
     },
@@ -1215,7 +1215,7 @@
       "status": "verified",
       "validation_evidence": [
         "whole-law/evaluation/README.md",
-        "whole-law/evaluation/executions/eval-7d891e153705f9991f2e/report.md"
+        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/report.md"
       ]
     },
     {
