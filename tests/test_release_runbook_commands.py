@@ -378,6 +378,10 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
             command[command.index("--expected-asset-sha256") + 1],
         )
+        self.assertIn("189,110,263-byte release asset", self.document)
+        self.assertIn("`6142f63f…eac1` release asset", self.document)
+        self.assertNotIn("189,109,176-byte", self.document)
+        self.assertNotIn("`940e02c4…4ff` release asset", self.document)
 
     def test_pages_observation_is_a_distinct_pre_rc_input(self) -> None:
         pages_capture = next(

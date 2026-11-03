@@ -207,7 +207,7 @@ declared Explorer release asset:
 Expected output:
 `$EVIDENCE/explorer-observation/explorer-release-observation.json` plus its
 write-once attempt manifest, raw bounded GitHub responses and the exact
-189,109,176-byte release asset. The observation must bind asset ID
+189,110,263-byte release asset. The observation must bind asset ID
 `706118888`, filename `okf-explorer-v0.8.1-pages-artifact.zip`, and SHA-256
 `6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1`.
 
@@ -239,7 +239,7 @@ $EVIDENCE/explorer-pages-observation/inventory/tar-files.json
 
 The observation must bind run `41663805875`, artifact `13245490839`, exact
 Explorer commit `dcd0c43e29593436b13c59271c75d37d06e2b754`, the same
-189,109,176-byte/`940e02c4…4ff` release asset observed above, and the
+189,110,263-byte/`6142f63f…eac1` release asset observed above, and the
 43-file app tree
 `5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4`.
 The Pages transport contains 10,734 files. GitHub's Pages action excluded one
@@ -257,7 +257,7 @@ export EXPLORER_PAGES_OBSERVATION_PATH="$EVIDENCE/explorer-pages-observation/git
 
 ### Route B: verified offline reuse
 
-This route avoids downloading two identical 189,109,176-byte assets again. It
+This route avoids downloading two identical 189,110,263-byte assets again. It
 does not accept a partial directory, a convenience copy without its original
 checkpoint, or an observation of a different Explorer release or Pages run.
 Set the checkpoint root to the directory from which its recorded paths were
