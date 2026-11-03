@@ -58,6 +58,14 @@ removes the second main-branch CI run because Pages already performs the same
 validation before deployment. The required pull-request job remains named
 `validate` so branch protection does not lose its existing gate.
 
+Both complete-validation jobs have an 80-minute ceiling. GitHub-hosted run
+`41705607815` showed why the former 60-minute ceiling was too narrow: the
+runner completed 502 tests, discovery and the 43-minute legislation graph
+check, then cancelled during the later enrichment audit after 58 minutes 20
+seconds in the shared validator. The extra 20 minutes is bounded runner
+variance; it does not weaken, split or bypass the complete release gate, and a
+timeout remains a failed check rather than evidence of validation.
+
 ## Documentation lockstep
 
 Changes to workflows, scripts, tests, requirements, source/evidence,

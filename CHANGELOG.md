@@ -22,6 +22,10 @@
   the digest-bound rich route locator. It now reports current core,
   official-effects and model-assisted v3 plane totals and hydrates a bounded
   sample under explicit browser-memory ceilings.
+- Raised the complete CI and Pages validation ceilings from 60 to 80 minutes
+  after GitHub-hosted run 41705607815 completed every preceding check but was
+  cancelled during the v3 audit at the former timeout. The complete gate and
+  fail-closed timeout semantics are unchanged.
 
 - Pin certifi 2026.10.19 as a second bounded security exception to the frozen
   validation closure. Remove the compromised emSign root, retain unaffected
