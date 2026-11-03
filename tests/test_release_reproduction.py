@@ -303,14 +303,14 @@ class ReleaseReproductionTests(unittest.TestCase):
         self.assertEqual(
             {
                 "package_count": 52,
-                "direct_count": 8,
-                "transitive_count": 44,
+                "direct_count": 9,
+                "transitive_count": 43,
                 "artifact_hash_count": 1159,
                 "identity_sha256": (
-                    "0d2b93dd93d38df69634f314863dcbca4c6b89f877de9ceed1e0c57a02568245"
+                    "d66bdd006f5f3d69a0137aab0a0f5e5cf9b0d57c8e0dba3a1763d5fe2a33b57c"
                 ),
                 "artifact_hash_sha256": (
-                    "bb66cadd7963bfeb51af815ec0d6e124f26965c01a62ed93b4d1476508c001dc"
+                    "fae29d9f671559dd53991cfd2dc673799764bf2f650ab01f73b8a5f0a60d1909"
                 ),
             },
             identity,

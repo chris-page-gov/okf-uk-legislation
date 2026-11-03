@@ -11,15 +11,15 @@
         },
         {
           "name": "okf:artifact-hash-digest",
-          "value": "sha256:bb66cadd7963bfeb51af815ec0d6e124f26965c01a62ed93b4d1476508c001dc"
+          "value": "sha256:fae29d9f671559dd53991cfd2dc673799764bf2f650ab01f73b8a5f0a60d1909"
         },
         {
           "name": "okf:direct-dependency-count",
-          "value": "8"
+          "value": "9"
         },
         {
           "name": "okf:identity-digest",
-          "value": "sha256:0d2b93dd93d38df69634f314863dcbca4c6b89f877de9ceed1e0c57a02568245"
+          "value": "sha256:d66bdd006f5f3d69a0137aab0a0f5e5cf9b0d57c8e0dba3a1763d5fe2a33b57c"
         },
         {
           "name": "okf:package-count",
@@ -27,7 +27,7 @@
         },
         {
           "name": "okf:transitive-dependency-count",
-          "value": "44"
+          "value": "43"
         }
       ],
       "purl": "pkg:generic/okf-validation-environment@1",
@@ -275,27 +275,27 @@
       "version": "26.1.0"
     },
     {
-      "bom-ref": "pkg:pypi/certifi@2026.7.22",
+      "bom-ref": "pkg:pypi/certifi@2026.10.19",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775"
+          "content": "035c1e85572b141bf1c3a3eff0e33a8eb74917522f2559075ff8d2fea780a1ae"
         },
         {
           "alg": "SHA-256",
-          "content": "741e2c3b351ddf169a738da9f2c048608ff7f2c5cc02f1ebc6b118bb090d5d55"
+          "content": "42d35340cc5b9ba78e818ddbff0c5b1c2b779de448a340fd1b989f5fa8670e1b"
         }
       ],
       "name": "certifi",
       "properties": [
         {
           "name": "uk.gov.okf.validation-dependency-kind",
-          "value": "transitive"
+          "value": "direct"
         }
       ],
-      "purl": "pkg:pypi/certifi@2026.7.22",
+      "purl": "pkg:pypi/certifi@2026.10.19",
       "type": "library",
-      "version": "2026.7.22"
+      "version": "2026.10.19"
     },
     {
       "bom-ref": "pkg:pypi/charset-normalizer@3.4.9",
@@ -5574,7 +5574,7 @@
         "pkg:pypi/beautifulsoup4@4.15.0",
         "pkg:pypi/cachetools@7.1.6",
         "pkg:pypi/cattrs@26.1.0",
-        "pkg:pypi/certifi@2026.7.22",
+        "pkg:pypi/certifi@2026.10.19",
         "pkg:pypi/charset-normalizer@3.4.9",
         "pkg:pypi/documented@0.1.4",
         "pkg:pypi/frozendict@2.4.7",
@@ -5673,7 +5673,7 @@
     },
     {
       "dependsOn": [],
-      "ref": "pkg:pypi/certifi@2026.7.22"
+      "ref": "pkg:pypi/certifi@2026.10.19"
     },
     {
       "dependsOn": [],
@@ -5881,7 +5881,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:97492851-aa2c-5a53-89ad-4f721919af60",
+  "serialNumber": "urn:uuid:56a4e404-b52b-5270-95a1-59db62ca93a7",
   "specVersion": "1.6",
   "version": 1
 }

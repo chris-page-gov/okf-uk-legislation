@@ -8,9 +8,9 @@
     "network_required": false,
     "python": ">=3.12",
     "requirements": {
-      "bytes": 101508,
+      "bytes": 101608,
       "path": "requirements-validation.txt",
-      "sha256": "213b46283824618e45aaba41a4d16ebf54e7caa0695da10e0752c7ec072488c4"
+      "sha256": "d3f0734f3880558a95549ac6e6f26d8edd79136285dc6d971fb79f3ecad2fbcf"
     }
   },
   "external_finalization": {
@@ -174,7 +174,7 @@
   },
   "generated_at": "2026-07-26T20:54:40Z",
   "inputs": {
-    "materials_digest": "sha256:efbc773b7ae67ea4a5e8b87c74aefe4d07e5ad564f6324997922173e1470dca9",
+    "materials_digest": "sha256:c1e252aa72fafafae4ca167cb14a55c86244478c620ecefe6232fcaf3061fea5",
     "research_evidence_verified": true
   },
   "limitations": [

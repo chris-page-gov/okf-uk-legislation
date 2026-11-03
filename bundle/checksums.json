@@ -19313,8 +19313,8 @@
       "sha256": "78f649521a5b45e89358ed84a913b715ca7388da11590877d0e13897ba97a650"
     },
     "docs/validation-dependency-lock.md": {
-      "bytes": 1578,
-      "sha256": "725dcc8062107fe55af94f96338f4e6837481146c2918975115a36c82b3f3104"
+      "bytes": 2756,
+      "sha256": "803f88aa4d7ed3327ab7e9c0b5c99072d83d93ae38382a8f5da6705ae583b101"
     },
     "effects/legislation-gov-uk-2026-07-25.json": {
       "bytes": 992,
@@ -25330,7 +25330,7 @@
     },
     "release-assurance/checksums.json": {
       "bytes": 6886,
-      "sha256": "687ceecf57499c6841f85eb7c6b7e597d0909f591977df9bab8492624771e540"
+      "sha256": "e06eb54926f900e8359ff56cdb3864826104d89798d4473506a6fd731fbd1dc9"
     },
     "release-assurance/claude-observed-access-test.json": {
       "bytes": 2251,
@@ -25389,8 +25389,8 @@
       "sha256": "cebe51171d4cb670302f5ae21efce6c57f47f66959aa9606fcb97fee6cd15e43"
     },
     "release-assurance/provenance.json": {
-      "bytes": 27309,
-      "sha256": "12dcf707ef20e55410afdbd3fea6561dcb1e329903289856e054d0022399ef1b"
+      "bytes": 27326,
+      "sha256": "7750bea5cb7077dc09c97138d32c916b6140eed456edb89873981ce042c92706"
     },
     "release-assurance/release-gates.json": {
       "bytes": 10884,
@@ -25410,15 +25410,15 @@
     },
     "release-assurance/reproduction.json": {
       "bytes": 8277,
-      "sha256": "52fca7785c3e6f871656e638e612739d6b925be0e30e631b342e4b3e3a7d4bf8"
+      "sha256": "6c721913b3e6a21c5b3e15fbff83a5d83a45dfea92a9d501cc84075294e0fc0f"
     },
     "release-assurance/rights.spdx.json": {
       "bytes": 2378,
-      "sha256": "89555cf54be1dc785dfbace3a2c882a11af244b9296eac17885e027eb0e78470"
+      "sha256": "c486940b2f3cdb5483754cffb0fbb9797a979d0e6db0b1fd1b329509ddb58d05"
     },
     "release-assurance/sbom.cdx.json": {
-      "bytes": 189455,
-      "sha256": "c4cb01f9a3b3a3dbf3f010dc9e53ca7dd76b8aba89ea0c2b744ca31c433a7c50"
+      "bytes": 189456,
+      "sha256": "fe9b5fb49a4a04e20cfcd32d0b49ac085c2692cf2302a9532c5c7797cf6d9dd0"
     },
     "release-assurance/schemas/accessibility-assurance-receipt.schema.json": {
       "bytes": 4268,

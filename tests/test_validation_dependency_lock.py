@@ -55,12 +55,13 @@ class ValidationDependencyLockTests(unittest.TestCase):
 
         dependency_lock = load_validation_dependency_lock(LOCK, DIRECT)
         self.assertEqual(len(dependency_lock.requirements), 52)
-        self.assertEqual(len(dependency_lock.direct_requirements), 8)
-        self.assertEqual(len(dependency_lock.transitive_names), 44)
+        self.assertEqual(len(dependency_lock.direct_requirements), 9)
+        self.assertEqual(len(dependency_lock.transitive_names), 43)
         self.assertEqual(len(dependency_lock.artifact_hashes), 1159)
         self.assertEqual(
             dependency_lock.direct_names,
             (
+                "certifi",
                 "jsonschema",
                 "pyld",
                 "pyshacl",
@@ -96,11 +97,11 @@ class ValidationDependencyLockTests(unittest.TestCase):
         self.assertEqual(inventory["artifact_hash_count"], 1159)
         self.assertEqual(
             dependency_lock.identity_digest,
-            "0d2b93dd93d38df69634f314863dcbca4c6b89f877de9ceed1e0c57a02568245",
+            "d66bdd006f5f3d69a0137aab0a0f5e5cf9b0d57c8e0dba3a1763d5fe2a33b57c",
         )
         self.assertEqual(
             dependency_lock.artifact_hash_digest,
-            "bb66cadd7963bfeb51af815ec0d6e124f26965c01a62ed93b4d1476508c001dc",
+            "fae29d9f671559dd53991cfd2dc673799764bf2f650ab01f73b8a5f0a60d1909",
         )
 
         components = dependency_lock.sbom_components()
@@ -118,7 +119,7 @@ class ValidationDependencyLockTests(unittest.TestCase):
             for component in components
             if component["properties"][0]["value"] == "direct"
         ]
-        self.assertEqual(len(direct_components), 8)
+        self.assertEqual(len(direct_components), 9)
 
     def test_installed_environment_comparison(self) -> None:
         dependency_lock = load_validation_dependency_lock(LOCK, DIRECT)
