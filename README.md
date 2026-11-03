@@ -179,6 +179,7 @@ authored and generated layers with exactly its `build_commands`:
 
 ```sh
 .venv/bin/python scripts/build_legislation_okf.py --from-existing
+.venv/bin/python scripts/build_release_metadata.py
 .venv/bin/python scripts/build_model_enrichment_input_evidence.py
 .venv/bin/python scripts/build_codex_semantic_enrichment.py
 .venv/bin/python scripts/build_legislation_effects.py --offline
@@ -221,6 +222,7 @@ Then validate without changing the publication with exactly the profile's
 ```sh
 .venv/bin/python -m unittest discover -s tests -v
 .venv/bin/python scripts/build_publication_docs.py --check
+.venv/bin/python scripts/build_release_metadata.py --check
 .venv/bin/python scripts/check_internal_links.py
 .venv/bin/python scripts/rebuild_legislation_discovery.py --check
 .venv/bin/python scripts/build_relationship_semantics.py --check

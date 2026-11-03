@@ -12,6 +12,13 @@
   July 2026 source-snapshot identities and explicit authority boundaries.
 - Bound the publication to OKF Explorer v0.8.0 and its current federation,
   search, facets, graph, provenance and bounded-adjacency behaviour.
+- Reworked the successor-release assurance contracts so historical runtime
+  receipts remain immutable while the active Explorer, reproduction and
+  promotion identities fail closed against the exact new release.
+- Switched the WebMCP relationship tool from the legacy core-only adjacency to
+  the digest-bound rich route locator. It now reports current core,
+  official-effects and model-assisted v3 plane totals and hydrates a bounded
+  sample under explicit browser-memory ceilings.
 
 - Pin certifi 2026.10.19 as a second bounded security exception to the frozen
   validation closure. Remove the compromised emSign root, retain unaffected

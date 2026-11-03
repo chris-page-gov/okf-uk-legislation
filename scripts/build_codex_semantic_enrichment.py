@@ -20,6 +20,9 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+PUBLICATION_RELEASE = json.loads(
+    (ROOT / "publication" / "release.json").read_text(encoding="utf-8")
+)
 BUNDLE = ROOT / "bundle"
 DATA = BUNDLE / "data"
 OUTPUT = DATA / "enrichment"
@@ -713,8 +716,8 @@ def update_publication(manifest: dict[str, Any], run: dict[str, Any]) -> None:
     accepted = manifest["counts"]["assertions"]
 
     def descriptor(value: dict[str, Any]) -> None:
-        value["version"] = "0.3.0"
-        value["status"] = "candidate"
+        value["version"] = PUBLICATION_RELEASE["bundle_version"]
+        value["status"] = PUBLICATION_RELEASE["status"]
         value["repository"] = "https://github.com/chris-page-gov/okf-uk-legislation"
         value["repository_subpath"] = "bundle"
         value["alternate_access"] = [

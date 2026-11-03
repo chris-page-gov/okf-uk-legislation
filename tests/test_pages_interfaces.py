@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import gzip
 import subprocess
 import unittest
 from html.parser import HTMLParser
@@ -59,6 +60,10 @@ class PagesInterfaceTests(unittest.TestCase):
         ):
             self.assertIn(annotation, source)
         self.assertIn("credentials: 'same-origin'", source)
+        self.assertIn("data/semantic/runtime-manifest.json", source)
+        self.assertIn("okf-rich-relationship-route-locator.v1", source)
+        self.assertIn("maximumCompressedBytes = 16 * 1024 * 1024", source)
+        self.assertNotIn("data/adjacency/manifest.json", source)
         self.assertNotIn("eval(", source)
         completed = subprocess.run(
             ["node", "--check", str(BUNDLE / "pages.mjs")],
@@ -67,6 +72,69 @@ class PagesInterfaceTests(unittest.TestCase):
             check=False,
         )
         self.assertEqual(completed.returncode, 0, completed.stderr)
+
+    def test_webmcp_relationship_tool_reads_digest_bound_current_planes(self) -> None:
+        runtime = json.loads((BUNDLE / "data/semantic/runtime-manifest.json").read_text())
+        locator = json.loads((BUNDLE / runtime["route_locator"]["path"]).read_text())
+        route = None
+        expected = None
+        expected_planes: set[str] = set()
+        for metadata in locator["buckets"]:
+            bucket_path = BUNDLE / metadata["path"]
+            bucket = json.loads(gzip.decompress(bucket_path.read_bytes()))
+            for candidate in bucket["routes"]:
+                active = [
+                    plane
+                    for plane in candidate["planes"]
+                    if plane["name"] in runtime["default_planes"]
+                ]
+                count = sum(plane["assertions"] for plane in active)
+                if 0 < count <= 10 and len(active) >= 2 and len(candidate["chunks"]) <= 4:
+                    route = candidate["route"]
+                    expected = count
+                    expected_planes = {plane["name"] for plane in active}
+                    break
+            if route:
+                break
+        self.assertIsNotNone(route)
+        program = f"""
+            import {{ readFile }} from 'node:fs/promises';
+            import {{ pathToFileURL }} from 'node:url';
+            const root = {json.dumps(str(BUNDLE))};
+            const state = {{ textContent: '', classList: {{ add() {{}} }} }};
+            globalThis.document = {{
+              body: {{ dataset: {{ snapshot: {json.dumps(runtime['snapshot'])}, version: '0.4.0' }} }},
+              modelContext: undefined,
+              getElementById: (id) => id === 'catalogue-search' ? null : state
+            }};
+            globalThis.addEventListener = () => {{}};
+            globalThis.fetch = async (reference) => {{
+              const raw = await readFile(`${{root}}/${{String(reference)}}`);
+              return {{ ok: true, status: 200, arrayBuffer: async () => raw }};
+            }};
+            const module = await import(pathToFileURL(`${{root}}/pages.mjs`));
+            const result = await module.getRelationships({{
+              route: {json.dumps(route)}, limit: 10,
+              expected_snapshot: {json.dumps(runtime['snapshot'])}
+            }});
+            console.log(JSON.stringify(result));
+        """
+        completed = subprocess.run(
+            ["node", "--input-type=module", "--eval", program],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        result = json.loads(completed.stdout)
+        self.assertEqual(expected, result["total"])
+        self.assertEqual(expected, result["returned"])
+        self.assertFalse(result["truncated"])
+        self.assertEqual(
+            {row["plane"] for row in result["composition"]},
+            expected_planes,
+        )
+        self.assertTrue(all(row["schema"] == "okf-relationship-runtime-row.v1" for row in result["relationships"]))
 
     def test_generated_pages_do_not_link_to_pages_markdown(self) -> None:
         failures: list[str] = []

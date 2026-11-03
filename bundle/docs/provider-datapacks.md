@@ -8,5 +8,6 @@ profile. It is not a copy of the upstream specification. Read the
 for the exact version associated with the
 [vendor lock](../profiles/bundle-wiki/v1.vendor-lock.json).
 
-See the [legislation candidate status](profile-reconciliation-2026-09.md) for
-this repository’s validation and publication limits.
+See the [historical profile-reconciliation record](profile-reconciliation-2026-09.md)
+for superseded migration evidence and earlier gate results; it is not the
+current v0.4.0 publication status.

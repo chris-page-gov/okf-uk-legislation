@@ -77,7 +77,7 @@ PROJECTION_SCHEMA_ID = "okf-deployed-entrypoint-projection.v1"
 ATTEMPT_SCHEMA_ID = "okf-deployed-entrypoint-attempt.v1"
 INTEGRITY_SCHEMA_ID = "okf-deployed-entrypoint-integrity.v1"
 TOOL_VERSION = "1.0.0"
-RELEASE_ASSET_NAME = "okf-uk-legislation-v0.3.0.tar.zst"
+RELEASE_ASSET_NAME = "okf-uk-legislation-v0.4.0.tar.zst"
 
 REDIRECT_STATUSES = {301, 302, 303, 307, 308}
 PLACEHOLDER = re.compile(r"__[A-Z0-9_]+__")

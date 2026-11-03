@@ -26,6 +26,9 @@ from typing import Any
 import legislation_effects_evidence_archive as effects_evidence
 
 ROOT = Path(__file__).resolve().parents[1]
+PUBLICATION_RELEASE = json.loads(
+    (ROOT / "publication" / "release.json").read_text(encoding="utf-8")
+)
 BUNDLE = ROOT / "bundle"
 DATA = BUNDLE / "data"
 OUTPUT = DATA / "effects"
@@ -736,8 +739,8 @@ def update_publication(manifest: dict[str, Any], run: dict[str, Any]) -> None:
     accepted = int(manifest["counts"]["assertions"])
 
     def descriptor(value: dict[str, Any]) -> None:
-        value["version"] = "0.3.0"
-        value["status"] = "candidate"
+        value["version"] = PUBLICATION_RELEASE["bundle_version"]
+        value["status"] = PUBLICATION_RELEASE["status"]
         value.setdefault("entrypoints", {})["official_effects"] = "data/effects/manifest.json"
         value["entrypoints"]["relationship_summary"] = "data/relationship-summary.json"
         value.setdefault("extensions", {})["okf-official-effects.v1"] = {

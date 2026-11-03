@@ -31,7 +31,7 @@ EXPLORER = "https://github.com/chris-page-gov/okf-explorer"
 LEGISLATION = (
     "https://github.com/chris-page-gov/okf-uk-legislation"
 )
-ASSET_NAME = "okf-uk-legislation-v0.3.0.tar.zst"
+ASSET_NAME = "okf-uk-legislation-v0.4.0.tar.zst"
 
 
 def json_body(value: Any) -> bytes:
@@ -197,11 +197,11 @@ def annotated_asset_responses(
 ) -> dict[str, Any]:
     release_url = (
         "https://api.github.com/repos/chris-page-gov/"
-        "okf-uk-legislation/releases/tags/v0.3.0"
+        "okf-uk-legislation/releases/tags/v0.4.0"
     )
     ref_url = (
         "https://api.github.com/repos/chris-page-gov/"
-        "okf-uk-legislation/git/ref/tags/v0.3.0"
+        "okf-uk-legislation/git/ref/tags/v0.4.0"
     )
     tag_object_url = (
         "https://api.github.com/repos/chris-page-gov/"
@@ -209,7 +209,7 @@ def annotated_asset_responses(
     )
     download_url = (
         "https://github.com/chris-page-gov/okf-uk-legislation/"
-        f"releases/download/v0.3.0/{ASSET_NAME}"
+        f"releases/download/v0.4.0/{ASSET_NAME}"
     )
     redirected_url = (
         "https://release-assets.githubusercontent.com/"
@@ -231,10 +231,10 @@ def annotated_asset_responses(
                     "draft": False,
                     "html_url": (
                         "https://github.com/chris-page-gov/"
-                        "okf-uk-legislation/releases/tag/v0.3.0"
+                        "okf-uk-legislation/releases/tag/v0.4.0"
                     ),
                     "id": 7001,
-                    "tag_name": "v0.3.0",
+                    "tag_name": "v0.4.0",
                 }
             )
         ),
@@ -246,7 +246,7 @@ def annotated_asset_responses(
                         "type": "tag",
                         "url": tag_object_url,
                     },
-                    "ref": "refs/tags/v0.3.0",
+                    "ref": "refs/tags/v0.4.0",
                 }
             )
         ),
@@ -286,11 +286,16 @@ class GithubReleaseObservationTests(unittest.TestCase):
         return Path(temporary).resolve() / name
 
     def test_target_registry_preserves_historical_explorer_release(self) -> None:
+        self.assertIn((EXPLORER, "v0.8.0"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.5.4"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.5.3"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.5.2"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.5.1"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.5.0"), capture.TARGETS)
+        self.assertIn((LEGISLATION, "v0.4.0-rc.1"), capture.TARGETS)
+        self.assertIn((LEGISLATION, "v0.4.0"), capture.TARGETS)
+        self.assertIn((LEGISLATION, "v0.3.0-rc.1"), capture.TARGETS)
+        self.assertIn((LEGISLATION, "v0.3.0"), capture.TARGETS)
 
     def test_v054_annotated_explorer_release_observation_is_supported(
         self,
@@ -472,7 +477,7 @@ class GithubReleaseObservationTests(unittest.TestCase):
             destination = self.new_destination(temporary)
             observation_path = capture.capture_observation(
                 repository=LEGISLATION,
-                tag="v0.3.0",
+                tag="v0.4.0",
                 expected_commit=COMMIT,
                 output_dir=destination,
                 asset_name=ASSET_NAME,

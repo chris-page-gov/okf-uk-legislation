@@ -71,7 +71,7 @@
     "context_policy": "pinned-local-contexts-no-browser-remote-expansion",
     "identity_policy": "absolute-semantic-iri-plus-validated-local-route",
     "limitations": [
-      "The immutable published v0.3.0 release predates this semantic projection. These new bytes require a separately frozen candidate and all normal release gates before publication.",
+      "Bundle version 0.4.0 publishes this semantic projection. The immutable v0.3.0 release predates it and remains unchanged.",
       "bundle/data/manifest.json is immutable accepted-v3 input evidence and is not rewritten to advertise the additive relationship runtime. The root and Whole-Law descriptors independently bind that runtime by exact path, SHA-256 and byte count.",
       "High-degree aggregate topic/type routes can exceed the Reader's 64-chunk or 100,000-row browser hydration ceiling. The Reader fails before shard fetch and reports the committed fan-out; use a paginated or offline analytical query rather than raising the bounded browser ceiling.",
       "Whole-Law extension details are projected into namespaced extensions; the public child descriptors use canonical absolute URLs."

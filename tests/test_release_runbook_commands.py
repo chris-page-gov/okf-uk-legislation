@@ -38,43 +38,43 @@ HEX64 = "2" * 64
 SHELL_VALUES = {
     "ARCHIVE_BYTES": "123",
     "ARCHIVE_SHA256": HEX64,
-    "ASSET_NAME": "okf-uk-legislation-v0.3.0.tar.zst",
+    "ASSET_NAME": "okf-uk-legislation-v0.4.0.tar.zst",
     "BUNDLE_TREE_SHA256": HEX64,
     "CANDIDATE_COMMIT": HEX40,
     "CANDIDATE_TREE": "3" * 40,
     "CODEX_SECURITY_SCHEMA_DIR": "/external/codex-security-schemas",
-    "EVIDENCE": "/external/okf-v0.3.0",
+    "EVIDENCE": "/external/okf-v0.4.0",
     "EXPLORER_COMMIT": "4" * 40,
     "EXPLORER_PAGES_OBSERVATION_PATH": (
-        "/external/okf-v0.3.0/explorer-pages-observation/"
+        "/external/okf-v0.4.0/explorer-pages-observation/"
         "github-pages-observation.json"
     ),
     "EXPLORER_RELEASE_OBSERVATION_PATH": (
-        "/external/okf-v0.3.0/explorer-observation/"
+        "/external/okf-v0.4.0/explorer-observation/"
         "explorer-release-observation.json"
     ),
     "EXPLORER_REPOSITORY": EXPLORER_REPOSITORY,
     "EXPLORER_ROOT": "/checkout/okf-explorer",
-    "EXPLORER_TAG": "v0.5.4",
+    "EXPLORER_TAG": "v0.8.0",
     "FINAL_ASSET": (
-        "/external/okf-v0.3.0/final-download/"
-        "okf-uk-legislation-v0.3.0.tar.zst"
+        "/external/okf-v0.4.0/final-download/"
+        "okf-uk-legislation-v0.4.0.tar.zst"
     ),
-    "FINAL_TAG": "v0.3.0",
+    "FINAL_TAG": "v0.4.0",
     "LEGISLATION_REPOSITORY": LEGISLATION_REPOSITORY,
     "LEGISLATION_ROOT": "/checkout/okf-uk-legislation",
-    "PUBLIC_ATTEMPT": "/external/okf-v0.3.0/public-attempt",
+    "PUBLIC_ATTEMPT": "/external/okf-v0.4.0/public-attempt",
     "RC_ASSET": (
-        "/external/okf-v0.3.0/rc-download/"
-        "okf-uk-legislation-v0.3.0.tar.zst"
+        "/external/okf-v0.4.0/rc-download/"
+        "okf-uk-legislation-v0.4.0.tar.zst"
     ),
-    "RC_TAG": "v0.3.0-rc.1",
+    "RC_TAG": "v0.4.0-rc.1",
     "SEALED_ARCHIVE": (
-        "/external/okf-v0.3.0/reproduction/"
-        "okf-uk-legislation-v0.3.0.tar.zst"
+        "/external/okf-v0.4.0/reproduction/"
+        "okf-uk-legislation-v0.4.0.tar.zst"
     ),
-    "SECURITY_SCAN_DIR": "/external/okf-v0.3.0/security-scan",
-    "TRACE_INPUT": "/external/okf-v0.3.0/traceability-input",
+    "SECURITY_SCAN_DIR": "/external/okf-v0.4.0/security-scan",
+    "TRACE_INPUT": "/external/okf-v0.4.0/traceability-input",
 }
 
 
@@ -338,7 +338,7 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             "write-once receipt evidence root",
         )
         self.assertEqual(
-            Path("/external/okf-v0.3.0/runtime-screenshot-source"),
+            Path("/external/okf-v0.4.0/runtime-screenshot-source"),
             screenshot_source,
         )
         self.assertIn(
@@ -367,15 +367,15 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             and row[row.index("--repository") + 1] == EXPLORER_REPOSITORY
         )
         self.assertEqual(
-            "okf-explorer-v0.5.4-pages-artifact.zip",
+            "okf-explorer-v0.8.0-pages-artifact.zip",
             command[command.index("--asset-name") + 1],
         )
         self.assertEqual(
-            "185023908",
+            "189109176",
             command[command.index("--expected-asset-bytes") + 1],
         )
         self.assertEqual(
-            "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0",
+            "940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff",
             command[command.index("--expected-asset-sha256") + 1],
         )
 
@@ -386,7 +386,7 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             if row[1] == "scripts/capture_github_pages_observation.py"
         )
         self.assertEqual(
-            "/external/okf-v0.3.0/explorer-pages-observation",
+            "/external/okf-v0.4.0/explorer-pages-observation",
             pages_capture[pages_capture.index("--output-dir") + 1],
         )
         self.assertIn("--allow-network", pages_capture)
@@ -398,14 +398,14 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
         )
         self.assertEqual(
             (
-                "/external/okf-v0.3.0/explorer-pages-observation/"
+                "/external/okf-v0.4.0/explorer-pages-observation/"
                 "github-pages-observation.json"
             ),
             builder[builder.index("--pages-observation") + 1],
         )
         self.assertEqual(
             (
-                "/external/okf-v0.3.0/explorer-observation/"
+                "/external/okf-v0.4.0/explorer-observation/"
                 "explorer-release-observation.json"
             ),
             builder[builder.index("--explorer-observation") + 1],

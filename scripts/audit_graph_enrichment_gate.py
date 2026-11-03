@@ -39,6 +39,22 @@ EXPECTED = {
     "official_effects": 14_712,
 }
 
+EXPLORER_QUERYABILITY_GATES = (
+    "startup_transfer",
+    "cold_search",
+    "warm_search",
+    "browser_memory",
+    "federation_and_child",
+    "graph_relationship_rendering",
+    "model_assisted_styling_and_filtering",
+    "live_reconciliation_states",
+    "facet_count_colour_and_space",
+    "cross_browser",
+    "keyboard",
+    "accessibility",
+)
+EXPLORER_REQUIRED_BROWSERS = ("chrome", "firefox", "webkit")
+
 
 def read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -101,6 +117,114 @@ def normalized_authority(value: Any) -> str:
         "official-source": "official",
         "derived-non-official": "derived",
     }.get(str(value), str(value))
+
+
+def explorer_queryability_contract(
+    receipt: dict[str, Any],
+) -> tuple[bool, dict[str, Any]]:
+    """Assess Explorer evidence for the embedded queryability gate only.
+
+    A release-bound v2 receipt remains the only evidence that can satisfy the
+    later release and promotion gates.  The graph audit may also use an
+    explicitly release-ineligible v1 diagnostic when every detailed browser,
+    accessibility, performance and integrity result passes.  This avoids a
+    circular dependency between building the candidate and binding the final
+    receipt without converting diagnostic evidence into release authority.
+    """
+
+    schema = receipt.get("schema")
+    status = receipt.get("status")
+    failures = receipt.get("failures")
+    invocation = receipt.get("invocation")
+    invocation = invocation if isinstance(invocation, dict) else {}
+    evidence_class = invocation.get("evidence_class")
+    release_eligible = invocation.get("release_eligible")
+
+    gates = receipt.get("gates")
+    gates = gates if isinstance(gates, dict) else {}
+    gate_statuses = {
+        identifier: gates.get(identifier, {}).get("status")
+        if isinstance(gates.get(identifier), dict)
+        else None
+        for identifier in EXPLORER_QUERYABILITY_GATES
+    }
+
+    browsers = receipt.get("browsers")
+    browsers = browsers if isinstance(browsers, list) else []
+    browser_statuses = {
+        str(row.get("browser")): row.get("status")
+        for row in browsers
+        if isinstance(row, dict) and row.get("browser")
+    }
+    browser_set_exact = (
+        len(browsers) == len(EXPLORER_REQUIRED_BROWSERS)
+        and len(browser_statuses) == len(EXPLORER_REQUIRED_BROWSERS)
+        and set(browser_statuses) == set(EXPLORER_REQUIRED_BROWSERS)
+    )
+    browsers_passed = browser_set_exact and all(
+        browser_statuses.get(browser) == "passed"
+        for browser in EXPLORER_REQUIRED_BROWSERS
+    )
+
+    integrity = receipt.get("integrity")
+    integrity = integrity if isinstance(integrity, dict) else {}
+    integrity_summary = integrity.get("summary")
+    integrity_summary = (
+        integrity_summary if isinstance(integrity_summary, dict) else {}
+    )
+    accessibility = receipt.get("accessibility")
+    accessibility = accessibility if isinstance(accessibility, dict) else {}
+    performance = receipt.get("performance")
+    performance = performance if isinstance(performance, dict) else {}
+    performance_summary = performance.get("summary")
+    performance_summary = (
+        performance_summary if isinstance(performance_summary, dict) else {}
+    )
+
+    no_failures = isinstance(failures, list) and not failures
+    details_passed = (
+        no_failures
+        and all(value == "passed" for value in gate_statuses.values())
+        and browsers_passed
+        and integrity.get("status") == "passed"
+        and integrity_summary.get("all_passed") is True
+        and accessibility.get("status") == "passed"
+        and accessibility.get("serious_or_critical_total") == 0
+        and performance.get("status") == "passed"
+        and performance_summary.get("all_passed") is True
+    )
+    release_receipt = (
+        schema == "okf-explorer-runtime-acceptance.v2"
+        and status == "passed"
+        and evidence_class == "release"
+        and release_eligible is True
+    )
+    diagnostic_receipt = (
+        schema == "okf-explorer-runtime-acceptance.v1"
+        and status == "failed"
+        and evidence_class == "diagnostic"
+        and release_eligible is False
+    )
+    accepted = details_passed and (release_receipt or diagnostic_receipt)
+    return accepted, {
+        "schema": schema,
+        "receipt_status": status,
+        "evidence_class": evidence_class,
+        "release_eligible": release_eligible,
+        "accepted_for": (
+            "embedded-explorer-queryability-only" if accepted else "none"
+        ),
+        "satisfies_final_release_gate": bool(accepted and release_receipt),
+        "failures_empty": no_failures,
+        "required_gate_statuses": gate_statuses,
+        "required_browser_statuses": browser_statuses,
+        "integrity_status": integrity.get("status"),
+        "accessibility_status": accessibility.get("status"),
+        "serious_or_critical_accessibility_violations": accessibility.get(
+            "serious_or_critical_total"
+        ),
+        "performance_status": performance.get("status"),
+    }
 
 
 class Audit:
@@ -970,9 +1094,11 @@ def audit_descriptors(
         inputs = explorer.get("inputs", {})
         expected_root_hash = sha256(root_descriptor_path)
         expected_federation_hash = sha256(federation_descriptor_path)
+        queryability_ok, queryability_evidence = explorer_queryability_contract(
+            explorer
+        )
         explorer_ok = (
-            explorer.get("status") == "passed"
-            and not explorer.get("failures")
+            queryability_ok
             and inputs.get("legislation_descriptor", {}).get("sha256")
             == expected_root_hash
             and inputs.get("federation_descriptor", {}).get("sha256")
@@ -987,7 +1113,7 @@ def audit_descriptors(
             == "passed"
         )
         explorer_evidence = {
-            "receipt_status": explorer.get("status"),
+            **queryability_evidence,
             "legislation_descriptor_current": inputs.get(
                 "legislation_descriptor", {}
             ).get("sha256")
@@ -1188,7 +1314,9 @@ def build_receipt() -> dict[str, Any]:
         "scope": (
             "Built UK Legislation graph, official-effects datapack, model-assisted "
             "v3 accepted datapack, historical v2 evidence, relationship summaries, "
-            "descriptors and bound Explorer runtime receipt."
+            "descriptors and digest-bound Explorer queryability evidence. A "
+            "release-ineligible diagnostic can satisfy only the embedded graph "
+            "gate; final release still requires the separate bound v2 receipt."
         ),
         "metrics": metrics,
         "checks": sorted(audit.checks, key=lambda item: item["id"]),

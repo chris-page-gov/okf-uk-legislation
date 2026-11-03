@@ -177,18 +177,80 @@ async function getRelationships(input = {}) {
   checkSnapshot(input.expected_snapshot);
   const route = safeRoute(input.route);
   const limit = boundedInteger(input.limit, 50, 1, 100);
-  const manifest = await fetchJson('data/adjacency/manifest.json', 'relationship adjacency manifest');
-  const rows = await fetchJson(manifest.buckets[fnvBucket(route)], 'relationship adjacency bucket');
-  const all = Array.isArray(rows[route]) ? rows[route] : [];
-  const counts = {};
-  for (const row of all) {
-    const key = `${row.authority || 'unknown'} | ${row.kind || 'relationship'}`;
-    counts[key] = (counts[key] || 0) + 1;
+  const runtime = await fetchJson('data/semantic/runtime-manifest.json', 'rich relationship runtime manifest');
+  if (runtime.schema !== 'okf-rich-relationship-runtime-manifest.v1' || runtime.snapshot !== SNAPSHOT) fail('The rich relationship runtime does not match this publication.');
+  if (!Array.isArray(runtime.default_planes) || !Array.isArray(runtime.planes) || !runtime.route_locator) fail('The rich relationship runtime is malformed.');
+  const activePlaneNames = new Set(runtime.default_planes);
+  const activePlanes = runtime.planes.filter(plane => plane.active === true && activePlaneNames.has(plane.name));
+  if (activePlanes.length !== activePlaneNames.size) fail('The rich relationship runtime active planes do not reconcile.');
+  const locator = await fetchJson(
+    { path: runtime.route_locator.path, sha256: runtime.route_locator.sha256 },
+    'rich relationship route locator'
+  );
+  if (locator.schema !== 'okf-rich-relationship-route-locator.v1' || locator.hash_algorithm !== 'sha256-utf8-first-byte-hex' || !Array.isArray(locator.buckets)) fail('The rich relationship route locator is malformed.');
+  const prefix = (await sha256(new TextEncoder().encode(route))).slice(0, 2);
+  const bucketMetadata = locator.buckets.find(row => row.bucket === prefix);
+  if (!bucketMetadata) fail('The rich relationship route locator has no declared bucket for this route.');
+  const bucket = await fetchJson(
+    { path: bucketMetadata.path, sha256: bucketMetadata.sha256 },
+    'rich relationship route bucket'
+  );
+  if (bucket.schema !== 'okf-rich-relationship-route-locator-bucket.v1' || bucket.hash_algorithm !== locator.hash_algorithm || bucket.bucket !== prefix || !Array.isArray(bucket.routes)) fail('The rich relationship route bucket is malformed.');
+  const located = bucket.routes.find(row => row.route === route);
+  if (!located) return {
+    schema: 'okf-page-tool-result.v1', operation: 'get-legislation-relationships', version: VERSION, snapshot: SNAPSHOT,
+    route, total: 0, returned: 0, truncated: false, composition: [], relationships: [],
+    authority_warning: 'No recorded relationship is not evidence that no legal effect or other relationship exists.',
+    untrusted_content: true
+  };
+  if (!Array.isArray(located.chunks) || !Array.isArray(located.planes)) fail('The rich relationship route record is malformed.');
+  const planesByName = new Map(activePlanes.map(plane => [plane.name, plane]));
+  const commitments = located.planes.filter(plane => activePlaneNames.has(plane.name));
+  const total = commitments.reduce((sum, plane) => sum + Number(plane.assertions || 0), 0);
+  if (!Number.isSafeInteger(total) || total < 0) fail('The rich relationship route total is malformed.');
+  const chunkIndex = new Map();
+  for (const plane of activePlanes) {
+    if (!Array.isArray(plane.chunks)) fail(`The ${plane.name} relationship plane has no chunk list.`);
+    for (const chunk of plane.chunks) chunkIndex.set(chunk.path, { ...chunk, plane: plane.name });
   }
+  const selected = located.chunks.map(path => chunkIndex.get(path)).filter(Boolean);
+  const relationships = [];
+  const seen = new Set();
+  const maximumChunks = 32;
+  const maximumCompressedBytes = 16 * 1024 * 1024;
+  let loadedChunks = 0;
+  let loadedCompressedBytes = 0;
+  for (const chunk of selected) {
+    if (!Number.isSafeInteger(chunk.bytes) || chunk.bytes < 1) fail('A rich relationship chunk has an invalid compressed size.');
+    if (relationships.length >= limit || loadedChunks >= maximumChunks || loadedCompressedBytes + chunk.bytes > maximumCompressedBytes) break;
+    if (chunk.content_encoding !== 'gzip' || chunk.media_type !== 'application/json') fail('A rich relationship chunk has an unsupported representation.');
+    const rows = await fetchJson({ path: chunk.path, sha256: chunk.sha256 }, `rich relationship ${chunk.plane} chunk`);
+    if (!Array.isArray(rows)) fail('A rich relationship chunk is not an array.');
+    loadedChunks += 1;
+    loadedCompressedBytes += chunk.bytes;
+    for (const row of rows) {
+      if (row.source !== route && row.target !== route) continue;
+      const identifier = row.assertion_id || row.id;
+      if (typeof identifier !== 'string' || !identifier || seen.has(identifier)) fail('A rich relationship assertion has a missing or duplicate identity.');
+      seen.add(identifier);
+      relationships.push(row);
+      if (relationships.length >= limit) break;
+    }
+  }
+  if (selected.length === loadedChunks && total <= limit && relationships.length !== total) fail('The rich relationship route does not match its declared assertion total.');
+  const composition = commitments.map(commitment => {
+    const plane = planesByName.get(commitment.name);
+    return {
+      plane: commitment.name,
+      assertions: commitment.assertions,
+      authority_classes: Array.isArray(plane?.authority_classes) ? plane.authority_classes : []
+    };
+  });
   return {
     schema: 'okf-page-tool-result.v1', operation: 'get-legislation-relationships', version: VERSION, snapshot: SNAPSHOT,
-    route, total: all.length, returned: Math.min(all.length, limit), truncated: all.length > limit,
-    composition: counts, relationships: all.slice(0, limit),
+    route, total, returned: relationships.length, truncated: relationships.length < total,
+    composition, relationships,
+    hydration: { loaded_chunks: loadedChunks, available_chunks: selected.length, loaded_compressed_bytes: loadedCompressedBytes, maximum_chunks: maximumChunks, maximum_compressed_bytes: maximumCompressedBytes },
     authority_warning: 'Inspect each relationship authority and evidence type. Derived and model-assisted relationships are not official legal effects.',
     untrusted_content: true
   };

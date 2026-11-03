@@ -42,8 +42,8 @@
     "write_dict_id": false
   },
   "archive": {
-    "prefix": "okf-uk-legislation-v0.3.0",
-    "filename": "okf-uk-legislation-v0.3.0.tar.zst",
+    "prefix": "okf-uk-legislation-v0.4.0",
+    "filename": "okf-uk-legislation-v0.4.0.tar.zst",
     "max_files": 10000,
     "max_file_bytes": 134217728,
     "max_total_file_bytes": 1073741824,
@@ -51,9 +51,9 @@
     "max_compression_ratio": 200
   },
   "promotion": {
-    "candidate_tag": "v0.3.0-rc.1",
-    "final_tag": "v0.3.0",
-    "asset_filename": "okf-uk-legislation-v0.3.0.tar.zst",
+    "candidate_tag": "v0.4.0-rc.1",
+    "final_tag": "v0.4.0",
+    "asset_filename": "okf-uk-legislation-v0.4.0.tar.zst",
     "asset_name_preserved": true,
     "archive_bytes_reused": true,
     "rebuild_prohibited": true,
@@ -84,6 +84,10 @@
       "{python}",
       "scripts/build_legislation_okf.py",
       "--from-existing"
+    ],
+    [
+      "{python}",
+      "scripts/build_release_metadata.py"
     ],
     [
       "{python}",
@@ -192,6 +196,11 @@
     [
       "{python}",
       "scripts/build_publication_docs.py",
+      "--check"
+    ],
+    [
+      "{python}",
+      "scripts/build_release_metadata.py",
       "--check"
     ],
     [

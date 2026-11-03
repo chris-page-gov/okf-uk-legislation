@@ -161,10 +161,10 @@
         "release-assurance/release-gates.json"
       ],
       "id": "IMP-GAP-012",
-      "next_action": "Bind and rerun the Chrome, Firefox and WebKit receipt against published Explorer v0.5.4 commit a23dfdea56fea0184b6d53f3163b292dd1a312ed and the frozen Legislation descriptor digests, then record that binding in external finalization evidence.",
+      "next_action": "Bind and rerun the Chrome, Firefox and WebKit receipt against published Explorer v0.8.0 commit 99f9e809fc17ee458f68eb742e8f440422b63432 and the frozen Legislation descriptor digests, then record that binding in external finalization evidence.",
       "release_effect": "blocks-GATE-07-and-GATE-08",
       "status": "blocked",
-      "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations. Explorer v0.5.0 remains the completed release-order milestone and v0.5.1 remains historical corrective work. Explorer v0.5.2 is historical and superseded because timestamp-derived SvelteKit build bytes were not reproducible. Explorer v0.5.3 is historical and superseded because an independent observation of its Actions TAR found a 159-byte 404.html after assembly where the canonical app-build manifest declared 1,122 bytes. Published v0.5.4 from protected-main commit a23dfdea56fea0184b6d53f3163b292dd1a312ed and tree 981d5c967b7017c78f37aab379edd95f44917cf5 preserves the built 404.html, adds a post-assembly manifest verifier, and supplies a durable 185,023,908-byte Pages release asset with SHA-256 357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0; binding it to the frozen Legislation candidate is externally closable only after exact freeze."
+      "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations. Explorer v0.5.0 remains the completed release-order milestone and v0.5.1 through v0.5.4 remain historical corrective releases. Published Explorer v0.8.0 uses annotated tag object 81dec80cd14c1acc63f92ece5c51e7f1fe3279c2, peeling to protected-main commit 99f9e809fc17ee458f68eb742e8f440422b63432 and tree eb9991832f6f9b3b7f5fe4116b794b16bc242397. CI run 41646267903 and Pages run 41650465220 passed. The durable 189,109,176-byte Pages release asset has SHA-256 940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff and asset ID 705881421; its 43-file application tree has SHA-256 9787cd40d9a2b2ea252189d000b4e2fe8c1f4f605c26ba8a9a5ace96757eb585. Binding v0.8.0 to the frozen Legislation candidate is externally closable only after exact freeze."
     },
     {
       "area": "public access and links",
@@ -280,10 +280,10 @@
         "release-assurance/implementation-traceability.json"
       ],
       "id": "IMP-GAP-022",
-      "next_action": "Future child bundles may acquire independently counted expression, provision, case, court, organisation, publication, jurisdiction and temporal-state inventories without changing or overstating the v0.3.0 federation catalogue.",
+      "next_action": "Future child bundles may acquire independently counted expression, provision, case, court, organisation, publication, jurisdiction and temporal-state inventories without changing or overstating the v0.4.0 federation catalogue.",
       "release_effect": "accepted-federation-population-boundary",
       "status": "deferred",
-      "summary": "The semantic contract represents every named class at the approved catalogue/schema grain. Complete population of every future source-family child bundle is explicitly outside the initial v0.3.0 federation claim."
+      "summary": "The semantic contract represents every named class at the approved catalogue/schema grain. Complete population of every future source-family child bundle is explicitly outside the v0.4.0 federation claim."
     },
     {
       "area": "Codex calibration thresholds and optional direct API profile",

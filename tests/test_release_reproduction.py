@@ -543,7 +543,7 @@ class ReleaseReproductionTests(unittest.TestCase):
             commands[-3:],
         )
 
-    def test_production_profile_uses_active_v3_audit_without_embedded_runtime(
+    def test_production_profile_uses_active_v3_audit_and_current_explorer(
         self,
     ) -> None:
         profile = json.loads(
@@ -588,7 +588,7 @@ class ReleaseReproductionTests(unittest.TestCase):
                 / "external-finalization-contract.json"
             ).read_text(encoding="utf-8")
         )
-        self.assertEqual("v0.5.4", contract["explorer"]["required_tag"])
+        self.assertEqual("v0.8.0", contract["explorer"]["required_tag"])
         self.assertEqual(
             "release-assurance/schemas/explorer-runtime-receipt.schema.json",
             contract["input_schemas"]["explorer_runtime_receipt"],

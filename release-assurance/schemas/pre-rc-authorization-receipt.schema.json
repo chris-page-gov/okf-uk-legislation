@@ -57,9 +57,9 @@
       "required": ["repository", "tag", "commit", "release_url", "receipt", "release_observation", "pages_observation", "runtime_receipt", "materials"],
       "properties": {
         "repository": {"const": "https://github.com/chris-page-gov/okf-explorer"},
-        "tag": {"const": "v0.5.4"},
+        "tag": {"const": "v0.8.0"},
         "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
-        "release_url": {"const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.4"},
+        "release_url": {"const": "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.8.0"},
         "receipt": {"$ref": "#/$defs/material"},
         "release_observation": {"$ref": "#/$defs/material"},
         "pages_observation": {"$ref": "#/$defs/material"},
@@ -123,7 +123,7 @@
       "additionalProperties": false,
       "required": ["path", "bytes", "sha256"],
       "properties": {
-        "path": {"const": "okf-uk-legislation-v0.3.0.tar.zst"},
+        "path": {"const": "okf-uk-legislation-v0.4.0.tar.zst"},
         "bytes": {"type": "integer", "minimum": 1},
         "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
       }

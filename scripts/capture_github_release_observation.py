@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Capture one immutable GitHub release observation in external evidence.
 
-Only the seven supported current-or-historical release/tag pairs are accepted.
+Only the ten supported current-or-historical release/tag pairs are accepted.
 The tool performs one bounded request per required GitHub
 endpoint, follows redirects manually through a fixed HTTPS host allowlist, and
 does not retry failed requests.  ``GITHUB_TOKEN`` is optional, is sent only to
@@ -76,6 +76,15 @@ class Target:
 TARGETS = {
     (
         "https://github.com/chris-page-gov/okf-explorer",
+        "v0.8.0",
+    ): Target(
+        repository="https://github.com/chris-page-gov/okf-explorer",
+        slug="chris-page-gov/okf-explorer",
+        tag="v0.8.0",
+        observation_filename="explorer-release-observation.json",
+    ),
+    (
+        "https://github.com/chris-page-gov/okf-explorer",
         "v0.5.4",
     ): Target(
         repository="https://github.com/chris-page-gov/okf-explorer",
@@ -118,6 +127,28 @@ TARGETS = {
         slug="chris-page-gov/okf-explorer",
         tag="v0.5.0",
         observation_filename="explorer-release-observation.json",
+    ),
+    (
+        "https://github.com/chris-page-gov/okf-uk-legislation",
+        "v0.4.0-rc.1",
+    ): Target(
+        repository="https://github.com/chris-page-gov/okf-uk-legislation",
+        slug="chris-page-gov/okf-uk-legislation",
+        tag="v0.4.0-rc.1",
+        observation_filename=(
+            "okf-uk-legislation-v0.4.0-rc.1-release-observation.json"
+        ),
+    ),
+    (
+        "https://github.com/chris-page-gov/okf-uk-legislation",
+        "v0.4.0",
+    ): Target(
+        repository="https://github.com/chris-page-gov/okf-uk-legislation",
+        slug="chris-page-gov/okf-uk-legislation",
+        tag="v0.4.0",
+        observation_filename=(
+            "okf-uk-legislation-v0.4.0-release-observation.json"
+        ),
     ),
     (
         "https://github.com/chris-page-gov/okf-uk-legislation",

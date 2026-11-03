@@ -29,6 +29,7 @@ from validation_dependency_lock import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
+PUBLICATION_RELEASE_PATH = ROOT / "publication" / "release.json"
 ASSURANCE_CONTROLLER = Path(__file__).resolve()
 SOURCE = ROOT / "release-assurance"
 OUTPUT = ROOT / "bundle" / "release-assurance"
@@ -268,40 +269,40 @@ def external_finalization_projection(
     else:
         expected_explorer = {
             "repository": "https://github.com/chris-page-gov/okf-explorer",
-            "required_tag": "v0.5.4",
+            "required_tag": "v0.8.0",
             "required_tag_object": (
-                "5f22de79e8521b9ca9314f6e3c92b097b9a23a5b"
+                "81dec80cd14c1acc63f92ece5c51e7f1fe3279c2"
             ),
             "required_commit": (
-                "a23dfdea56fea0184b6d53f3163b292dd1a312ed"
+                "99f9e809fc17ee458f68eb742e8f440422b63432"
             ),
-            "git_tree": "981d5c967b7017c78f37aab379edd95f44917cf5",
-            "ci_workflow_run_id": 30228300676,
-            "pages_workflow_run_id": 30228627196,
+            "git_tree": "eb9991832f6f9b3b7f5fe4116b794b16bc242397",
+            "ci_workflow_run_id": 41646267903,
+            "pages_workflow_run_id": 41650465220,
         }
         for field, expected in expected_explorer.items():
             if explorer.get(field) != expected:
                 errors.append(
-                    f"Explorer {field} must bind published v0.5.4 fact "
+                    f"Explorer {field} must bind published v0.8.0 fact "
                     f"{expected!r}"
                 )
         if explorer.get("pages_workflow") != "pages.yml":
             errors.append("Explorer Pages workflow binding is invalid")
         expected_release_asset = {
-            "asset_id": 490852327,
-            "name": "okf-explorer-v0.5.4-pages-artifact.zip",
-            "bytes": 185023908,
+            "asset_id": 705881421,
+            "name": "okf-explorer-v0.8.0-pages-artifact.zip",
+            "bytes": 189109176,
             "sha256": (
-                "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0"
+                "940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff"
             ),
             "url": (
                 "https://github.com/chris-page-gov/okf-explorer/releases/"
-                "download/v0.5.4/okf-explorer-v0.5.4-pages-artifact.zip"
+                "download/v0.8.0/okf-explorer-v0.8.0-pages-artifact.zip"
             ),
         }
         if explorer.get("release_asset") != expected_release_asset:
             errors.append(
-                "Explorer release asset must bind the exact durable v0.5.4 "
+                "Explorer release asset must bind the exact durable v0.8.0 "
                 "Pages artifact"
             )
         expected_runtime_provenance = {
@@ -310,9 +311,9 @@ def external_finalization_projection(
                     "apps/okf-explorer/scripts/"
                     "run_legislation_runtime_acceptance.mjs"
                 ),
-                "bytes": 42808,
+                "bytes": 98093,
                 "sha256": (
-                    "ede0f39d1421ab52eddc6e7c78fde8ca4f6a40770c188a9a36d1848efd6b4d1c"
+                    "d4558927e4038b2b76c76ea18ae6e4d4bb6366bf62562acd857888f3238db6cd"
                 ),
             },
             "site_assembly": {
@@ -320,16 +321,16 @@ def external_finalization_projection(
                     "path": (
                         "apps/okf-explorer/scripts/app_build_manifest.mjs"
                     ),
-                    "bytes": 15822,
+                    "bytes": 22932,
                     "sha256": (
-                        "387a2981711d5c890d47b644751eabd8e97b5bdd432fbf834f19537474478896"
+                        "6750dfe9ab09eeea945525473c9919e4d308e7f9a87f748244cbcd13e8b1d867"
                     ),
                 },
                 "assembler": {
                     "path": "scripts/build_site.py",
-                    "bytes": 6113,
+                    "bytes": 75971,
                     "sha256": (
-                        "6ba7746c5a2d71870585d21928fbde16612cfc69a8299eb4f2a9414d3e62ef30"
+                        "8aed583a894d1a9e6f511b2fb7980d41accf1e0423d1e81292f1a934332d3140"
                     ),
                 },
                 "verifier": {
@@ -344,49 +345,48 @@ def external_finalization_projection(
             },
             "pages": {
                 "workflow_path": ".github/workflows/pages.yml",
-                "workflow_bytes": 2529,
+                "workflow_bytes": 9283,
                 "workflow_sha256": (
-                    "e9af1abad43567826d5c611c0a57d2ced694cd3e925ed5c2eed5e85d80f470fd"
+                    "afcf0b17d2700fed35664b33a4d6ca7ef8cd3b982b69c2ea1ad0687dcc9eadf0"
                 ),
-                "run_id": 30228627196,
+                "run_id": 41650465220,
                 "run_attempt": 1,
-                "commit": "a23dfdea56fea0184b6d53f3163b292dd1a312ed",
-                "artifact_id": 8639352412,
+                "commit": "99f9e809fc17ee458f68eb742e8f440422b63432",
+                "artifact_id": 13237507227,
                 "artifact_name": "github-pages",
                 "artifact_zip": {
-                    "bytes": 185023908,
+                    "bytes": 189109176,
                     "sha256": (
-                        "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0"
+                        "940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff"
                     ),
                 },
                 "artifact_tar": {
-                    "bytes": 817694720,
+                    "bytes": 834416640,
                     "sha256": (
-                        "10565ce278f5386d736ac7396909d0213431f0c15c4086139302aba5702a01bc"
+                        "c920c04a3b74c20714664015a5d98365fdbab1d25009936ba4ca9fa212029af9"
                     ),
                 },
                 "build_manifest": {
                     "path": (
-                        "explorer-build/"
                         "okf-explorer-build-manifest.json"
                     ),
-                    "bytes": 2849,
+                    "bytes": 7398,
                     "sha256": (
-                        "62dd2b96fba2c832a61fcbccbc01fbe83dda83ffeab61dfb8544a60fa37310be"
+                        "bba465d8427d5d760fa97ebbc863199d99663976dcd6ec6be4aeba1ec7fd8aba"
                     ),
                 },
                 "build_index": {
-                    "path": "explorer-build/index.html",
-                    "bytes": 1318,
+                    "path": "index.html",
+                    "bytes": 17696,
                     "sha256": (
-                        "b40439d2c8f67447d80f583595197493a1c2a2fe12e61e6e632b74cb4d9b6cc9"
+                        "88387788e948cc80a5b4d5503abef2038bd75c34938ba71d8ff797693af473b2"
                     ),
                 },
                 "build_tree": {
                     "algorithm": "sha256-canonical-json-materials-v1",
-                    "files": 16,
+                    "files": 43,
                     "sha256": (
-                        "b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7"
+                        "9787cd40d9a2b2ea252189d000b4e2fe8c1f4f605c26ba8a9a5ace96757eb585"
                     ),
                 },
             },
@@ -394,7 +394,7 @@ def external_finalization_projection(
         if explorer.get("runtime_provenance") != expected_runtime_provenance:
             errors.append(
                 "Explorer runtime provenance must bind the exact published "
-                "v0.5.4 Pages build"
+                "v0.8.0 Pages build"
             )
         pages_declaration = contract.get("pages_observation")
         pages_tree = None
@@ -413,7 +413,7 @@ def external_finalization_projection(
         if pages_tree != expected_pages_tree:
             errors.append(
                 "Pages observation contract must bind both the declared and "
-                "independently computed Explorer v0.5.4 build-tree digest"
+                "independently computed Explorer v0.8.0 build-tree digest"
             )
     codex_security = contract.get("codex_security")
     if not isinstance(codex_security, dict):
@@ -1761,6 +1761,7 @@ def build_sbom(
     dependency_lock: ValidationDependencyLock | None = None,
     actions: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
+    release = load(PUBLICATION_RELEASE_PATH)
     lock_inventory = (
         validation_dependency_inventory()
         if dependency_lock is None
@@ -1834,7 +1835,7 @@ def build_sbom(
                 "licenses": [{"license": {"id": "MIT"}}],
                 "name": "okf-uk-legislation",
                 "type": "application",
-                "version": "0.3.0-candidate",
+                "version": release["bundle_version"],
             },
             "timestamp": generated_at,
             "tools": {
@@ -1856,6 +1857,7 @@ def build_sbom(
 
 
 def build_spdx(generated_at: str, materials_digest: str) -> dict[str, Any]:
+    release = load(PUBLICATION_RELEASE_PATH)
     namespace = (
         "https://chris-page-gov.github.io/okf-uk-legislation/"
         f"spdx/{materials_digest}"
@@ -1869,7 +1871,7 @@ def build_spdx(generated_at: str, materials_digest: str) -> dict[str, Any]:
             "licenseConcluded": "MIT",
             "licenseDeclared": "MIT",
             "name": "okf-uk-legislation code and original documentation",
-            "versionInfo": "0.3.0-candidate",
+            "versionInfo": release["bundle_version"],
         },
         {
             "SPDXID": "SPDXRef-Package-Government-Metadata",

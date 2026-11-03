@@ -63,13 +63,20 @@ five read-only tools when the browser supports that API:
 | `okf_describe_publication` | Return publication identity, snapshot, counts, interfaces and authority warnings. |
 | `okf_search_legislation` | Search the frozen static catalogue using bounded exact-token discovery. |
 | `okf_get_legislation_work` | Read one snapshot-bound work record. |
-| `okf_get_legislation_relationships` | Read bounded incident relationships and their authority composition. |
+| `okf_get_legislation_relationships` | Read bounded incident relationships from the current core, official-effects and model-assisted v3 planes, with per-plane totals and authority classes. |
 | `okf_find_whole_law_sources` | Search the dated Whole-Law source register. |
 
 All five tools declare read-only, non-consequential and untrusted-content
 annotations. Inputs are length-limited. Snapshot mismatches fail closed. The
 tools fetch only allowlisted same-origin publication paths; callers cannot
 supply URLs.
+
+Relationship hydration uses the same SHA-256 route locator and digest-bound
+runtime chunks as OKF Explorer. It returns complete per-plane incident counts
+and a bounded relationship sample. High-degree records remain deliberately
+truncated when the 32-chunk or 16 MiB compressed-data ceiling is reached; the
+response reports the applied ceiling instead of attempting an unsafe whole-
+graph browser load.
 
 Registration is not proof that an AI host can discover or call page tools. The
 human search, OKF Explorer, JSON descriptors and release archive remain the

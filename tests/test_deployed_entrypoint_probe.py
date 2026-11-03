@@ -18,7 +18,7 @@ import probe_deployed_entrypoints as probe  # noqa: E402
 
 COMMIT = "1" * 40
 TREE = "2" * 64
-TAG = "v0.3.0-rc.1"
+TAG = "v0.4.0-rc.1"
 PUBLIC_ADDRESS = "93.184.216.34"
 
 
@@ -292,7 +292,7 @@ class DeployedEntrypointProbeTests(unittest.TestCase):
         )
         self.assertTrue(
             release_asset["url"].endswith(
-                "/okf-uk-legislation-v0.3.0.tar.zst"
+                "/okf-uk-legislation-v0.4.0.tar.zst"
             )
         )
         transport = FakeTransport(manifest)
@@ -330,8 +330,8 @@ class DeployedEntrypointProbeTests(unittest.TestCase):
             if row["id"] == "github-candidate-release-asset"
         )
         wrong_asset["url"] = wrong_asset["url"].replace(
-            "okf-uk-legislation-v0.3.0.tar.zst",
-            "okf-uk-legislation-v0.3.0-rc.1.tar.zst",
+            "okf-uk-legislation-v0.4.0.tar.zst",
+            "okf-uk-legislation-v0.4.0-rc.1.tar.zst",
         )
         self.assertTrue(
             any(

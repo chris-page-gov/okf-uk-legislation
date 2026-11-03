@@ -1463,11 +1463,12 @@
         "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.2",
         "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.3",
         "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.4",
-        "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.5.4/okf-explorer-v0.5.4-pages-artifact.zip"
+        "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.8.0",
+        "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.8.0/okf-explorer-v0.8.0-pages-artifact.zip"
       ],
       "phase": 10,
       "release_disposition": {
-        "reason": "Blocked only at the validated pre-freeze boundary. Explorer v0.5.0 remains the verified historical release-first milestone; v0.5.1 remains historical corrective work; and v0.5.2 remains historical but is superseded because timestamp-derived SvelteKit build bytes were not reproducible. Explorer v0.5.3 remains historical but is superseded because an independent observation of its Actions TAR found a 159-byte 404.html after assembly where the canonical app-build manifest declared 1,122 bytes. Explorer v0.5.4 is published from annotated tag object 5f22de79e8521b9ca9314f6e3c92b097b9a23a5b, peeling to protected-main commit a23dfdea56fea0184b6d53f3163b292dd1a312ed and tree 981d5c967b7017c78f37aab379edd95f44917cf5, with green CI run 30228300676, Pages run 30228627196 attempt 1 and durable 185,023,908-byte release asset SHA-256 357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0. Binding v0.5.4 to the frozen Legislation candidate, publishing and deploying the immutable RC, running public smoke tests and promoting identical bytes are externally closable only after exact freeze; none of those later actions is claimed here.",
+        "reason": "Blocked only at the validated pre-freeze boundary. Explorer v0.5.0 remains the verified historical release-first milestone and v0.5.1 through v0.5.4 remain historical corrective releases. Explorer v0.8.0 is published from annotated tag object 81dec80cd14c1acc63f92ece5c51e7f1fe3279c2, peeling to protected-main commit 99f9e809fc17ee458f68eb742e8f440422b63432 and tree eb9991832f6f9b3b7f5fe4116b794b16bc242397, with green CI run 41646267903, Pages run 41650465220 attempt 1 and durable 189,109,176-byte release asset SHA-256 940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff. Binding v0.8.0 to the frozen Legislation candidate, publishing and deploying the immutable RC, running public smoke tests and promoting identical bytes are externally closable only after exact freeze; none of those later actions is claimed here.",
         "status": "blocked"
       },
       "requirement": "Release `okf-explorer v0.5.0` before `okf-uk-legislation v0.3.0-rc.1`; deploy the RC, run public smoke tests, then promote the same artefacts to `v0.3.0`.",
@@ -1488,7 +1489,9 @@
         "https://github.com/chris-page-gov/okf-explorer/actions/runs/30226282632",
         "https://github.com/chris-page-gov/okf-explorer/actions/runs/30228300676",
         "https://github.com/chris-page-gov/okf-explorer/actions/runs/30228627196",
-        "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.5.4/okf-explorer-v0.5.4-pages-artifact.zip"
+        "https://github.com/chris-page-gov/okf-explorer/actions/runs/41646267903",
+        "https://github.com/chris-page-gov/okf-explorer/actions/runs/41650465220",
+        "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.8.0/okf-explorer-v0.8.0-pages-artifact.zip"
       ]
     },
     {
@@ -1561,7 +1564,7 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "Verified as an implemented controlling authorization decision. Official public sources were acquired wherever accessible under the source-constraint ledger, repository and release operations are governed by credential-safe procedures, Explorer v0.5.0 through v0.5.4 were published, and the compatibility tranche was merged through a green protected PR. Explorer v0.5.2 and v0.5.3 remain historical but are superseded as the active prerequisite by corrected v0.5.4. This verifies use of the authorization within lawful accessible scope; it does not convert unavailable or restricted access into successful acquisition or claim unfinished Legislation release actions.",
+        "reason": "Verified as an implemented controlling authorization decision. Official public sources were acquired wherever accessible under the source-constraint ledger, repository and release operations are governed by credential-safe procedures, the historical Explorer v0.5.x releases and current v0.8.0 release were published, and the compatibility tranche was merged through a green protected PR. Explorer v0.8.0 is the active prerequisite. This verifies use of the authorization within lawful accessible scope; it does not convert unavailable or restricted access into successful acquisition or claim unfinished Legislation release actions.",
         "status": "verified"
       },
       "requirement": "You are authorised to create/rename repositories, publish and migrate releases, and use official sources fully.",
@@ -1582,6 +1585,7 @@
         "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.2",
         "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.3",
         "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.5.4",
+        "https://github.com/chris-page-gov/okf-explorer/releases/tag/v0.8.0",
         "https://github.com/chris-page-gov/ai-infrastructure-wiki/pull/2"
       ]
     },
@@ -1735,7 +1739,7 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "Explorer v0.5.0 was published on 26 July 2026 from annotated tag 62bd71e2bde0caf039f42475871592198ec252d5, peeling to green and deployed commit 903b38a13c1497fcfc6c519dc764fd0b23ba0572, before any Legislation v0.3.0 release candidate exists; this release-order decision remains verified. Later v0.5.1, v0.5.2 and v0.5.3 releases remain explicit history, while corrected v0.5.4 is the active finalization prerequisite tracked by P10-04; none rewrites the v0.5.0 release-order evidence.",
+        "reason": "Explorer v0.5.0 was published on 26 July 2026 from annotated tag 62bd71e2bde0caf039f42475871592198ec252d5, peeling to green and deployed commit 903b38a13c1497fcfc6c519dc764fd0b23ba0572, before any Legislation v0.3.0 release candidate existed; this historical release-order decision remains verified. Later v0.5.x releases remain explicit history, while v0.8.0 is the active finalization prerequisite tracked by P10-04; none rewrites the v0.5.0 release-order evidence.",
         "status": "verified"
       },
       "requirement": "Release `okf-explorer v0.5.0` before `okf-uk-legislation v0.3.0-rc.1`",
