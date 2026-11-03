@@ -7,7 +7,7 @@
     "release_report": {
       "bytes": 148905,
       "path": "bundle/release-assurance/release-report.json",
-      "sha256": "76b17ba92511b37be3c142ea561c21fbb2c3d23ec7fa70f293d604a50e60ed67"
+      "sha256": "68dd1e31024325f041bb781bec590499bf9ccd29a35ede32259235273d9f4a5e"
     }
   },
   "external_finalization": {
@@ -160,7 +160,7 @@
           {
             "bytes": 23901,
             "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-            "sha256": "f89cbd703b65ee603cd6fc5ba7f605bec8ea65f8375c48b35fcfcb9a831fcf68"
+            "sha256": "de2d2731fc51db37d894dbd637404757158e668136befacfd0c94f40848ec072"
           },
           {
             "bytes": 96352,

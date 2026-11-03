@@ -1447,7 +1447,7 @@
           {
             "bytes": 23901,
             "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-            "sha256": "f89cbd703b65ee603cd6fc5ba7f605bec8ea65f8375c48b35fcfcb9a831fcf68"
+            "sha256": "de2d2731fc51db37d894dbd637404757158e668136befacfd0c94f40848ec072"
           },
           {
             "bytes": 96352,
@@ -1516,7 +1516,7 @@
       "source": {
         "bytes": 6778,
         "path": "bundle/release-assurance/model-cost-report.json",
-        "sha256": "db5fe4930eb2a7d8b25ba1870dbcedf61d19e43e5713c8b0f0319da60e8464e8"
+        "sha256": "7c91e5a5e03873656fee8c2a97541e43e703dcf21f5b0714788c514c66350e29"
       },
       "source_kind": "governed-codex-assisted-v3",
       "usage": {
