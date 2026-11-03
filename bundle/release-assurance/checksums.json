@@ -79,7 +79,7 @@
     {
       "bytes": 27327,
       "path": "provenance.json",
-      "sha256": "acdc15ce8cf27b4aca4cf21dca97881075d46ded4e03e539d4242c5871937405"
+      "sha256": "9de5fdd4331c75cdd94af9b152abc71861f5b602897941bc8971dd5606c37fb3"
     },
     {
       "bytes": 10884,
@@ -99,22 +99,22 @@
     {
       "bytes": 13161,
       "path": "release-state.json",
-      "sha256": "01b7c8465cbaadc128ed0e27747dcd8ac5a341a0fe6f8cb1c8763ba4f8cb62af"
+      "sha256": "e22089c81486f1563d075553dda3838eba42ed67328993187ff28e44d251e793"
     },
     {
       "bytes": 8277,
       "path": "reproduction.json",
-      "sha256": "b55446a10d543562be2a4b039742be07418b23a672a8785cbd2c80c2a13c4a8d"
+      "sha256": "9959eb555f0dc094fa17d5620c3f0072f622508880a7f44d7b9d5987169384e9"
     },
     {
       "bytes": 2368,
       "path": "rights.spdx.json",
-      "sha256": "ddc69115e954b93fcc673f275063a0b61af67e71e744dde667178aeac24e928f"
+      "sha256": "32d4489ee61e0b1ca107dcafd0702e54472d0fca19a7e5c001f6068c70e649cc"
     },
     {
       "bytes": 189446,
       "path": "sbom.cdx.json",
-      "sha256": "b47e9ba44361293c1be2cd6da14cca3feef7016febb0cee93a16c76f0b8bff17"
+      "sha256": "ec6fec4ce7d02d35ea482052e98f452b55b93a2e0e4ae69420acd57001938980"
     },
     {
       "bytes": 4268,

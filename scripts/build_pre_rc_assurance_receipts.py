@@ -539,7 +539,7 @@ def _validate_explorer_build(
     )
     finalization.require_equal(
         contract_manifest["path"],
-        EXPLORER_BUILD_MANIFEST_PATH,
+        EXPLORER_BUILD_MANIFEST_NAME,
         "contract Explorer Pages build manifest path",
     )
     contract_index = _require_material_shape(
@@ -548,7 +548,7 @@ def _validate_explorer_build(
     )
     finalization.require_equal(
         contract_index["path"],
-        EXPLORER_BUILD_INDEX_PATH,
+        Path(EXPLORER_BUILD_INDEX_PATH).name,
         "contract Explorer Pages build index path",
     )
     contract_tree = finalization.require_object(
@@ -586,7 +586,10 @@ def _validate_explorer_build(
     )
     finalization.require_equal(
         manifest_material,
-        contract_manifest,
+        {
+            **contract_manifest,
+            "path": EXPLORER_BUILD_MANIFEST_PATH,
+        },
         "contract-bound Explorer Pages build manifest",
     )
     manifest_body = _read_runtime_evidence_file(
@@ -669,7 +672,10 @@ def _validate_explorer_build(
     )
     finalization.require_equal(
         build_index,
-        contract_index,
+        {
+            **contract_index,
+            "path": EXPLORER_BUILD_INDEX_PATH,
+        },
         "contract-bound Explorer Pages build index",
     )
 

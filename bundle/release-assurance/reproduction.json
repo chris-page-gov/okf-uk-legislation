@@ -23,9 +23,9 @@
     "evidence_plane": "external-write-once",
     "evidence_storage": "All authorization, deployed-attempt and finalization receipts are regular files outside the frozen repository. Each output is write-once; verification reconstructs it from the same external evidence without changing the checkout or archive.",
     "finalizer": {
-      "bytes": 208992,
+      "bytes": 209154,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "a6118059c97166ad0bac558a78303ef5e7331e6c572e78fcfaec1e6ddbf29c4b"
+      "sha256": "b3444f104ef5a3b38bbf515c81b0ece499fa6f4b4b0569522b91d173b958dc72"
     },
     "invariants": {
       "archive_rebuild_prohibited": true,
@@ -174,7 +174,7 @@
   },
   "generated_at": "2026-07-26T20:54:40Z",
   "inputs": {
-    "materials_digest": "sha256:db62ea9daceab4ca49f3bdfce64de5fa7aae64d17aefe52e8575e0421e55b009",
+    "materials_digest": "sha256:9e46f81d9c2b1394ee00732a383a9ba0ed668846604ccf16b3779e43828a7b1e",
     "research_evidence_verified": true
   },
   "limitations": [

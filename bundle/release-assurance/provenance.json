@@ -153,9 +153,9 @@
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
-      "bytes": 208992,
+      "bytes": 209154,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "a6118059c97166ad0bac558a78303ef5e7331e6c572e78fcfaec1e6ddbf29c4b"
+      "sha256": "b3444f104ef5a3b38bbf515c81b0ece499fa6f4b4b0569522b91d173b958dc72"
     },
     "invariants": {
       "archive_rebuild_prohibited": true,
@@ -320,9 +320,9 @@
       "sha256": "11f591f1100f3812df27c76c435ad28b7a64c93c9344e056f5d9b941614525e4"
     },
     {
-      "bytes": 208992,
+      "bytes": 209154,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "a6118059c97166ad0bac558a78303ef5e7331e6c572e78fcfaec1e6ddbf29c4b"
+      "sha256": "b3444f104ef5a3b38bbf515c81b0ece499fa6f4b4b0569522b91d173b958dc72"
     },
     {
       "bytes": 36974,
@@ -620,7 +620,7 @@
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
     }
   ],
-  "materials_digest": "sha256:db62ea9daceab4ca49f3bdfce64de5fa7aae64d17aefe52e8575e0421e55b009",
+  "materials_digest": "sha256:9e46f81d9c2b1394ee00732a383a9ba0ed668846604ccf16b3779e43828a7b1e",
   "optional_direct_api_model_governance": {
     "authored_run": null,
     "current_release_required": false,

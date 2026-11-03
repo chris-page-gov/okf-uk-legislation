@@ -366,8 +366,14 @@ class PreRcAssuranceReceiptBuilderTests(unittest.TestCase):
                     "bytes": 16384,
                     "sha256": "8" * 64,
                 },
-                "build_manifest": json.loads(json.dumps(build_manifest)),
-                "build_index": json.loads(json.dumps(build_index)),
+                "build_manifest": {
+                    **json.loads(json.dumps(build_manifest)),
+                    "path": builder.EXPLORER_BUILD_MANIFEST_NAME,
+                },
+                "build_index": {
+                    **json.loads(json.dumps(build_index)),
+                    "path": Path(builder.EXPLORER_BUILD_INDEX_PATH).name,
+                },
                 "build_tree": {
                     "algorithm": builder.EXPLORER_BUILD_ALGORITHM,
                     "files": len(build_source_materials),

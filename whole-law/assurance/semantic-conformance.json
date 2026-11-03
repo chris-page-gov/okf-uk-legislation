@@ -1,7 +1,7 @@
 {
   "errors": [],
   "generated_at": "2026-07-25T22:54:00Z",
-  "input_fingerprint_sha256": "84d080529314caa7b76a1f83aac61a16d199b9d52ef3cf7969f5323c96f73ea9",
+  "input_fingerprint_sha256": "ba54a184105a127a701c834d92e59e80629aff233d93a71abc950243d8303653",
   "json_schema": {
     "core_relationships": {
       "chunk_inventory_sha256": "ed5f90e8805686fb6f6a7df3112df5b1e4da3223fecb47d86c76f5ff0da47981",
@@ -60,9 +60,9 @@
   },
   "materials": {
     "authored_yaml_ld": {
-      "bytes": 2784,
+      "bytes": 2781,
       "path": "whole-law/okf-bundle.yamlld",
-      "sha256": "3f293d671e72efe6ef2f2b828538563945f7bab9673f36e03a10be483f2abc4e"
+      "sha256": "bab4ad94e4b73fdd98be183b9a807ba9295f6147e472c182910844977c82918c"
     },
     "context": {
       "bytes": 4682,
@@ -75,24 +75,24 @@
       "sha256": "37a6b79ff45984f659bfab0e92013f19edd9091fbfc228fc8317ad771f05d0eb"
     },
     "federation_descriptor": {
-      "bytes": 113832,
+      "bytes": 113991,
       "path": "bundle/whole-law/okf-explorer.json",
-      "sha256": "d8273153f024a7827c29e1dfd557c6b419f6c51f24a64000b0c74b84858ea9e0"
+      "sha256": "1d926b6b71850b678370d2cfff5f12f50b7cc0816ce11dccc782e767a137bd3c"
     },
     "generated_json_ld": {
-      "bytes": 6175,
+      "bytes": 6172,
       "path": "bundle/whole-law/okf-bundle.jsonld",
-      "sha256": "4231846520a6cb1506b8796e99f0931e4370e4602dd048cbe8d4d5781df28913"
+      "sha256": "fa3b59f617e6ad34bdb1440c76b62899d8630362dd093b3c38d9d17c4ec22709"
     },
     "generated_turtle": {
-      "bytes": 4674,
+      "bytes": 4671,
       "path": "bundle/whole-law/okf-bundle.ttl",
-      "sha256": "efdeaafd91258e05d28561f378c4388ed1bd31ca1234ee4df73f5abfa5247b6b"
+      "sha256": "5c090a8f88c0595b03bffa17cff7bfcc0206cc38f4b29c62f73f333e16fe526a"
     },
     "published_yaml_ld": {
-      "bytes": 2784,
+      "bytes": 2781,
       "path": "bundle/whole-law/okf-bundle.yamlld",
-      "sha256": "3f293d671e72efe6ef2f2b828538563945f7bab9673f36e03a10be483f2abc4e"
+      "sha256": "bab4ad94e4b73fdd98be183b9a807ba9295f6147e472c182910844977c82918c"
     },
     "relationship_context": {
       "bytes": 2104,
@@ -244,11 +244,11 @@
   },
   "semantic_equivalence": {
     "canonical_digest_by_representation": {
-      "json_ld": "efdeaafd91258e05d28561f378c4388ed1bd31ca1234ee4df73f5abfa5247b6b",
-      "turtle": "efdeaafd91258e05d28561f378c4388ed1bd31ca1234ee4df73f5abfa5247b6b",
-      "yaml_ld": "efdeaafd91258e05d28561f378c4388ed1bd31ca1234ee4df73f5abfa5247b6b"
+      "json_ld": "5c090a8f88c0595b03bffa17cff7bfcc0206cc38f4b29c62f73f333e16fe526a",
+      "turtle": "5c090a8f88c0595b03bffa17cff7bfcc0206cc38f4b29c62f73f333e16fe526a",
+      "yaml_ld": "5c090a8f88c0595b03bffa17cff7bfcc0206cc38f4b29c62f73f333e16fe526a"
     },
-    "canonical_nquads_sha256": "efdeaafd91258e05d28561f378c4388ed1bd31ca1234ee4df73f5abfa5247b6b",
+    "canonical_nquads_sha256": "5c090a8f88c0595b03bffa17cff7bfcc0206cc38f4b29c62f73f333e16fe526a",
     "canonical_serializations_equal": true,
     "graphs_isomorphic": true,
     "json_graph_triples": 23,
