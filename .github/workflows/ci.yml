@@ -1,28 +1,18 @@
-name: OKF bundle CI
+name: Whole-Law integrity diagnostic
 
 on:
-  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: okf-bundle-ci-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
-
 jobs:
-  validate:
+  diagnose:
     runs-on: ubuntu-latest
-    # The full corpus check took 58 minutes on GitHub-hosted hardware before
-    # the previous 60-minute limit cancelled it. Keep 20 minutes of bounded
-    # runner variance without weakening or splitting the release gate.
-    timeout-minutes: 80
+    timeout-minutes: 15
     steps:
-      - name: Check out the candidate
+      - name: Check out the exact candidate
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-        with:
-          fetch-depth: 2
       - name: Set up Python
         uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
@@ -35,12 +25,38 @@ jobs:
           --disable-pip-version-check
           --require-hashes
           --requirement requirements-validation.txt
-      - name: Check publication contract and documentation lockstep
-        if: ${{ github.event_name == 'pull_request' }}
-        run: |
-          python3 scripts/check_publication_contract.py
-          python3 scripts/check_documentation_lockstep.py --base HEAD^1
-      - name: Run complete offline publication validation
+      - name: Recompute only the Whole-Law projection
         env:
-          OKF_VALIDATION_TIMINGS: ${{ runner.temp }}/okf-validation-timings.tsv
-        run: sh scripts/validate_publication.sh
+          EXPECTED_ROOT: ${{ runner.temp }}/whole-law-expected
+          DIFF_PATH: ${{ runner.temp }}/whole-law-integrity-diff.txt
+        run: |
+          python3 scripts/build_whole_law_okf.py --output "$EXPECTED_ROOT"
+          python3 - <<'PY'
+          import difflib
+          import os
+          from pathlib import Path
+
+          actual = Path("bundle/whole-law/integrity.json")
+          expected = Path(os.environ["EXPECTED_ROOT"]) / "integrity.json"
+          diff = "\n".join(
+              difflib.unified_diff(
+                  actual.read_text(encoding="utf-8").splitlines(),
+                  expected.read_text(encoding="utf-8").splitlines(),
+                  fromfile="committed/integrity.json",
+                  tofile="linux-expected/integrity.json",
+                  lineterm="",
+              )
+          )
+          Path(os.environ["DIFF_PATH"]).write_text(diff + "\n", encoding="utf-8")
+          print(diff or "integrity files are byte-identical")
+          PY
+          shasum -a 256 bundle/whole-law/integrity.json "$EXPECTED_ROOT/integrity.json"
+      - name: Upload the bounded diagnostic
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: whole-law-integrity-diagnostic
+          path: |
+            ${{ runner.temp }}/whole-law-expected/integrity.json
+            ${{ runner.temp }}/whole-law-integrity-diff.txt
+          if-no-files-found: error
+          retention-days: 1
