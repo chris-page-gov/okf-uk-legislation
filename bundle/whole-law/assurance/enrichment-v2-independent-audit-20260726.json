@@ -69,7 +69,7 @@
       ],
       "parsed": true,
       "path": "scripts/build_codex_semantic_enrichment.py",
-      "sha256": "395fed5c9f26ef17daab736a5471ebb58106b87e817a6b67731c92aeb1725081"
+      "sha256": "43c3c1d39a221abdb680ec248b43c2e0e1ec32f690facc98caeceb66325afb49"
     },
     "rejected_v1": {
       "audit_path": "enrichment/model-assisted-v1-independent-audit.json",
@@ -82,7 +82,7 @@
     },
     "relationship_schema": {
       "path": "whole-law/schemas/relationship-assertion.schema.json",
-      "sha256": "1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4"
+      "sha256": "6117dc4f8cb51c12dbe3f78d0e1bb523270b8c3e15f0ad4e22c8137fe3b876ba"
     },
     "run_manifest": {
       "path": "bundle/enrichment/codex-assisted-v2.json",
