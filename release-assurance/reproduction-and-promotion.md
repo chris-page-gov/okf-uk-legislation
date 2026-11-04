@@ -151,12 +151,14 @@ exact bytes, both Legislation descriptors, the production Explorer index and
 two Chrome screenshots beside the external receipt. The release arguments are
 all mandatory as a set.
 
-```sh
-pnpm --dir "$EXPLORER_ROOT/apps/okf-explorer" build:determinism
+Use the single-writer invocation wrapper below. It acquires the checkout lock,
+performs the deterministic build and invokes its attested child runner. Do not
+run the inner runner directly or start a separate duplicate build.
 
+```sh
 test ! -e "$EVIDENCE/runtime-screenshot-source"
 
-node "$EXPLORER_ROOT/apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs" \
+node "$EXPLORER_ROOT/apps/okf-explorer/scripts/run_acceptance_invocation.mjs" legislation \
   --bundle-root "$LEGISLATION_ROOT/bundle" \
   --output "$EVIDENCE/explorer-runtime/explorer-runtime-acceptance.json" \
   --screenshot-root "$EVIDENCE/runtime-screenshot-source" \

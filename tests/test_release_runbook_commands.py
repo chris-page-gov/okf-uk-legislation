@@ -322,7 +322,7 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             for command in logical_shell_lines(block)
             if command.startswith(
                 'node "$EXPLORER_ROOT/apps/okf-explorer/scripts/'
-                'run_legislation_runtime_acceptance.mjs"'
+                'run_acceptance_invocation.mjs" legislation'
             )
         )
         tokens = [expand_shell_token(token) for token in shlex.split(runner)]
@@ -346,14 +346,19 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             self.document,
         )
 
-    def test_explorer_build_uses_deterministic_release_command(self) -> None:
+    def test_explorer_build_uses_single_writer_release_wrapper(self) -> None:
         self.assertIn(
-            'pnpm --dir "$EXPLORER_ROOT/apps/okf-explorer" '
-            "build:determinism",
+            'node "$EXPLORER_ROOT/apps/okf-explorer/scripts/'
+            'run_acceptance_invocation.mjs" legislation',
             self.document,
         )
         self.assertNotIn(
-            'pnpm --dir "$EXPLORER_ROOT/apps/okf-explorer" build\n',
+            'pnpm --dir "$EXPLORER_ROOT/apps/okf-explorer" build',
+            self.document,
+        )
+        self.assertNotIn(
+            'node "$EXPLORER_ROOT/apps/okf-explorer/scripts/'
+            'run_legislation_runtime_acceptance.mjs"',
             self.document,
         )
 

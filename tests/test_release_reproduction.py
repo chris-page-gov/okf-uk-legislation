@@ -1056,6 +1056,72 @@ class ReleaseReproductionTests(unittest.TestCase):
         ):
             reproduction.inventory_publication(root, limits)
 
+    def test_publication_inventory_uses_posix_path_string_order(self) -> None:
+        root = self.root / "path-string-order"
+        paths = (
+            "data/enrichment-v3/manifest.json",
+            "data/enrichment/assertions-000.json.gz",
+            "bundle-z.json",
+            "bundle/a.json",
+            "z.json",
+            "é.json",
+        )
+        for index, relative in enumerate(reversed(paths)):
+            path = root / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(f"payload-{index}".encode("ascii"))
+
+        limits = {
+            "max_files": 10,
+            "max_file_bytes": 1024,
+            "max_total_file_bytes": 4096,
+        }
+        inventory = reproduction.inventory_publication(root, limits)
+        actual_paths = [row["path"] for row in inventory["rows"]]
+        self.assertEqual(
+            [
+                "bundle-z.json",
+                "bundle/a.json",
+                "data/enrichment-v3/manifest.json",
+                "data/enrichment/assertions-000.json.gz",
+                "z.json",
+                "é.json",
+            ],
+            actual_paths,
+        )
+
+    def test_publication_inventory_is_creation_order_independent(self) -> None:
+        first = self.root / "inventory-created-first"
+        second = self.root / "inventory-created-second"
+        materials = {
+            "data/enrichment-v3/manifest.json": b"manifest bytes\n",
+            "data/enrichment/assertions-000.json.gz": b"assertion bytes\n",
+            "bundle-z.json": b"root prefix bytes\n",
+            "bundle/a.json": b"nested bytes\n",
+            "é.json": b"unicode bytes\n",
+        }
+        for root, ordered_paths in (
+            (first, list(materials)),
+            (second, list(reversed(materials))),
+        ):
+            for relative in ordered_paths:
+                path = root / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(materials[relative])
+
+        limits = {
+            "max_files": 10,
+            "max_file_bytes": 1024,
+            "max_total_file_bytes": 4096,
+        }
+        first_inventory = reproduction.inventory_publication(first, limits)
+        second_inventory = reproduction.inventory_publication(second, limits)
+        self.assertEqual(first_inventory, second_inventory)
+        self.assertEqual(
+            sorted(row["path"] for row in first_inventory["rows"]),
+            [row["path"] for row in first_inventory["rows"]],
+        )
+
     def test_archive_traversal_member_is_rejected(self) -> None:
         malicious = self.root / "malicious.tar"
         body = b"escape"

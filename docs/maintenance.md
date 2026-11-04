@@ -145,11 +145,15 @@ python3 scripts/preflight_release_toolchain.py \
   --baseline b323f257ef9861b7e7d3ab10eed02338699ec64a \
   --pages-zip /absolute/path/to/retained-pages.zip \
   --runtime /absolute/path/to/explorer-runtime-acceptance.json \
+  --explorer-root /absolute/path/to/clean-pinned-okf-explorer \
   --output /absolute/external/path/to/new-preflight-receipt.json
 ```
 
 This diagnostic compiles receipt schemas, checks the real Pages inventory and
-runtime fixture, exercises controller/finaliser regression round trips and
+runtime fixture, invokes the actual pinned Explorer canonical-inventory helper
+on the current production file inventory, proves its digest equals the Python
+producer's digest, exercises native finaliser binding with an explicitly
+synthetic diagnostic copy, runs controller/finaliser regression round trips and
 rehashes every protected publication file against the baseline. Only the
 explicit assurance and maintenance-guide projection paths may differ. It
 does not refresh evidence, authorise publication or replace exact-successor
@@ -157,6 +161,13 @@ reproduction, runtime, headless Security and public-release gates. The prior
 archive remains an immutable comparison baseline; the corrected assurance
 schema and its checksums require a new archive, promoted unchanged from RC to
 final. No legislation data or semantic graph is regenerated for this fix.
+
+The canonical inventory orders complete relative POSIX path strings by code
+point. Do not use Python `Path` component ordering: `enrichment-v3/` and
+`enrichment/` are a concrete counterexample. JSON object key order is a separate
+contract. Cross-language digest equivalence must pass before a candidate is
+frozen; schema validity alone cannot establish it. The diagnostic fixture is
+never release-bound browser evidence.
 
 GitHub Actions executes the complete validation contract through four
 mandatory, read-only jobs: core, legislation, semantics and federation. The
