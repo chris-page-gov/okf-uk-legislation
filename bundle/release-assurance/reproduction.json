@@ -23,9 +23,9 @@
     "evidence_plane": "external-write-once",
     "evidence_storage": "All authorization, deployed-attempt and finalization receipts are regular files outside the frozen repository. Each output is write-once; verification reconstructs it from the same external evidence without changing the checkout or archive.",
     "finalizer": {
-      "bytes": 209154,
+      "bytes": 220116,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "b3444f104ef5a3b38bbf515c81b0ece499fa6f4b4b0569522b91d173b958dc72"
+      "sha256": "21d32d89a6a9bdc8dba5a27ec95787c6537f2e4c95d1d79395ed7c767bee1ff5"
     },
     "invariants": {
       "archive_rebuild_prohibited": true,
@@ -77,10 +77,10 @@
         "sha256": "05a9d8dd33638dd7180da352b954c7c8f824d50c6fdc0e1391217f44e7ffc55f"
       },
       {
-        "bytes": 19628,
+        "bytes": 32580,
         "path": "release-assurance/schemas/explorer-runtime-receipt.schema.json",
         "projected_path": "schemas/explorer-runtime-receipt.schema.json",
-        "sha256": "0fd5dad8a753d6d00633e7a5a147612c0085af797802a766b9dc2a8c9924945a"
+        "sha256": "70393809c4a9e5f2de77978d5ef81c0055cbe885c54e9249f5d4a482c43fe40d"
       },
       {
         "bytes": 9773,
@@ -174,7 +174,7 @@
   },
   "generated_at": "2026-07-26T20:54:40Z",
   "inputs": {
-    "materials_digest": "sha256:d8839508ddf8feaf5e0fa3da4208c901d6528657e2db1a750a88c0d8f375a807",
+    "materials_digest": "sha256:9b64c4f8f1be6853aa31a3a93b1082f4b928bbdf0b5eb7f824cba7ccda2fa60e",
     "research_evidence_verified": true
   },
   "limitations": [

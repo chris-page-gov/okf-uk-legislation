@@ -270,13 +270,38 @@ def render_json(value: Any) -> bytes:
 
 
 def canonical_materials_bytes(materials: list[dict[str, Any]]) -> bytes:
+    """Reconstruct the app producer's path/bytes/sha256 v1 layout.
+
+    Object insertion order in an upstream inventory is not part of the app
+    tree identity. Array order remains significant and is checked separately.
+    """
+    ordered = [
+        {"path": row["path"], "bytes": row["bytes"], "sha256": row["sha256"]}
+        for row in materials
+    ]
     return (
         json.dumps(
-            materials,
+            ordered,
             ensure_ascii=False,
             separators=(",", ":"),
         )
         + "\n"
+    ).encode("utf-8")
+
+
+def canonical_tar_materials_bytes(materials: list[dict[str, Any]]) -> bytes:
+    """Reconstruct the pinned Pages TAR inventory's bytes/path/sha256 layout.
+
+    This historical inventory and the app manifest use distinct serialisation
+    layouts. Preserve their declared digests rather than silently migrating
+    either to another canonicalisation algorithm.
+    """
+    ordered = [
+        {"bytes": row["bytes"], "path": row["path"], "sha256": row["sha256"]}
+        for row in materials
+    ]
+    return (
+        json.dumps(ordered, ensure_ascii=False, separators=(",", ":")) + "\n"
     ).encode("utf-8")
 
 
@@ -2129,7 +2154,7 @@ def scan_pages_zip(path: Path, profile: TargetProfile) -> ArchiveScan:
     ):
         raise CaptureError("Explorer build manifest differs from target")
     file_rows.sort(key=lambda row: row["path"])
-    inventory_digest = sha256_bytes(canonical_materials_bytes(file_rows))
+    inventory_digest = sha256_bytes(canonical_tar_materials_bytes(file_rows))
     if (
         total_file_bytes != profile.tar_total_file_bytes
         or inventory_digest != profile.tar_inventory_sha256

@@ -137,6 +137,27 @@ reflects their current immutable chunks.
 
 ## Validation
 
+Before qualifying a release-tooling successor, run the bounded offline
+preflight with the retained real Explorer v0.8.1 evidence:
+
+```sh
+python3 scripts/preflight_release_toolchain.py \
+  --baseline b323f257ef9861b7e7d3ab10eed02338699ec64a \
+  --pages-zip /absolute/path/to/retained-pages.zip \
+  --runtime /absolute/path/to/explorer-runtime-acceptance.json \
+  --output /absolute/external/path/to/new-preflight-receipt.json
+```
+
+This diagnostic compiles receipt schemas, checks the real Pages inventory and
+runtime fixture, exercises controller/finaliser regression round trips and
+rehashes every protected publication file against the baseline. Only the
+explicit assurance and maintenance-guide projection paths may differ. It
+does not refresh evidence, authorise publication or replace exact-successor
+reproduction, runtime, headless Security and public-release gates. The prior
+archive remains an immutable comparison baseline; the corrected assurance
+schema and its checksums require a new archive, promoted unchanged from RC to
+final. No legislation data or semantic graph is regenerated for this fix.
+
 GitHub Actions executes the complete validation contract through four
 mandatory, read-only jobs: core, legislation, semantics and federation. The
 stable `validate` gate fails unless every phase succeeds, and Pages deployment

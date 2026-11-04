@@ -178,6 +178,7 @@ class ReleaseContractSchemaTests(unittest.TestCase):
             "index.html",
             pages["build_index"]["path"],
         )
+
         self.assertEqual(
             "sha256-canonical-json-materials-v1",
             pages["build_tree"]["algorithm"],
@@ -313,6 +314,47 @@ class ReleaseContractSchemaTests(unittest.TestCase):
                 pages_schema["required"]
             )
         )
+
+    def test_runtime_invocation_schema_is_strict_and_pinned_runner_requires_it(
+        self,
+    ) -> None:
+        schema = load(SCHEMAS / "explorer-runtime-receipt.schema.json")
+        invocation = schema["$defs"]["releaseInvocation"]
+        self.assertFalse(invocation["additionalProperties"])
+        self.assertEqual(
+            {
+                "mode",
+                "evidence_class",
+                "release_eligible",
+                "purpose",
+                "owner_pid",
+                "acquired_at",
+                "parent_pid_verified",
+                "deterministic_build_precedes_runner",
+                "completed_build_reverified_after_browsers",
+                "completed_build",
+                "executable_materials",
+                "repository_identity",
+                "snapshots",
+                "resources",
+            },
+            set(invocation["required"]),
+        )
+        pinned_runner = schema["allOf"][0]["if"]["properties"]["runner"]
+        self.assertEqual(
+            "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281",
+            pinned_runner["properties"]["sha256"]["const"],
+        )
+        self.assertEqual(["invocation"], schema["allOf"][0]["then"]["required"])
+        for name in (
+            "executableMaterials",
+            "repositoryIdentity",
+            "runtimeSnapshots",
+            "runtimeResources",
+            "runtimeLimits",
+            "runtimeObserved",
+        ):
+            self.assertFalse(schema["$defs"][name]["additionalProperties"])
 
     def test_runtime_summaries_match_the_v054_producer_contract(self) -> None:
         schema = load(SCHEMAS / "explorer-runtime-receipt.schema.json")

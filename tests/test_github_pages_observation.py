@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import io
+import itertools
 import json
 import os
 import shutil
@@ -173,7 +174,7 @@ def fixture_archive(
         key=lambda row: row["path"],
     )
     inventory_digest = hashlib.sha256(
-        capture.canonical_materials_bytes(inventory_rows)
+        capture.canonical_tar_materials_bytes(inventory_rows)
     ).hexdigest()
     profile = replace(
         capture.DEFAULT_PROFILE,
@@ -343,6 +344,45 @@ def resolver(_host: str, _port: int) -> list[dict[str, str]]:
 
 
 class GithubPagesObservationTests(unittest.TestCase):
+    def test_pages_observation_is_key_order_invariant(self) -> None:
+        row = {"path": "index.html", "bytes": 17, "sha256": "a" * 64}
+        app_expected = (
+            '[{"path":"index.html","bytes":17,"sha256":"'
+            + "a" * 64 + '"}]\n'
+        ).encode()
+        tar_expected = (
+            '[{"bytes":17,"path":"index.html","sha256":"'
+            + "a" * 64 + '"}]\n'
+        ).encode()
+        for keys in itertools.permutations(row):
+            permuted = {key: row[key] for key in keys}
+            with self.subTest(keys=keys):
+                self.assertEqual(app_expected, capture.canonical_materials_bytes([permuted]))
+                self.assertEqual(tar_expected, capture.canonical_tar_materials_bytes([permuted]))
+
+    def test_pages_observation_canonical_digest_preserves_values_and_array_order(self) -> None:
+        first = {"path": "a", "bytes": 1, "sha256": "a" * 64}
+        second = {"path": "b", "bytes": 2, "sha256": "b" * 64}
+        for serialise in (capture.canonical_materials_bytes, capture.canonical_tar_materials_bytes):
+            canonical = serialise([first, second])
+            self.assertNotEqual(canonical, serialise([second, first]))
+            self.assertNotEqual(canonical, serialise([{**first, "bytes": 3}, second]))
+
+    def test_app_tree_does_not_inherit_tar_inventory_key_order(self) -> None:
+        profile, _zipped = fixture_archive()
+        files = {
+            "assets/app.js": b"console.log('fixture');\n",
+            "index.html": b"<!doctype html><title>fixture</title>\n",
+        }
+        rows = sorted((archive_row(path, body) for path, body in files.items()), key=lambda row: row["path"])
+        body = canonical_manifest(rows, profile.build_tree_sha256)
+        inventory = {
+            row["path"]: {"bytes": row["bytes"], "sha256": row["sha256"], "path": row["path"]}
+            for row in rows
+        }
+        parsed = capture._parse_build_manifest(body, profile=profile, inventory_by_path=inventory)
+        self.assertEqual(profile.build_tree_sha256, parsed["tree"]["sha256"])
+
     def destination(self, temporary: str) -> Path:
         return Path(temporary).resolve() / "pages-observation"
 

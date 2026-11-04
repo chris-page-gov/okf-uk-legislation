@@ -1603,6 +1603,10 @@ def _validate_runtime_evidence(
     """Reconstruct the exact nested material closure omitted by the schema."""
 
     _reject_nonfinite_numbers(runtime, "Explorer runtime receipt")
+    invocation_materials = finalization.validate_explorer_runtime_invocation(
+        runtime,
+        {"explorer": explorer_contract},
+    )
     runtime_files: dict[str, bytes] = {}
 
     contract_provenance = finalization.require_object(
@@ -1760,6 +1764,19 @@ def _validate_runtime_evidence(
         ),
         "Explorer runtime runner",
     )
+    for material in invocation_materials:
+        if material["path"] == runner_material["path"]:
+            continue
+        _add_runtime_evidence_file(
+            runtime_files,
+            str(material["path"]),
+            _read_runtime_evidence_file(
+                base=runtime_path.parent,
+                material=material,
+                label=f"Explorer invocation material {material['path']}",
+            ),
+            f"Explorer invocation material {material['path']}",
+        )
 
     inputs = finalization.require_object(
         runtime.get("inputs"), "Explorer runtime inputs"
