@@ -139,6 +139,9 @@
       "type": "string",
       "minLength": 1
     },
+    "invocation": {
+      "$ref": "#/$defs/releaseInvocation"
+    },
     "runner": {
       "$ref": "#/$defs/material"
     },
@@ -332,6 +335,26 @@
       "type": "array"
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "runner": {
+            "properties": {
+              "sha256": {
+                "const": "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281"
+              }
+            },
+            "required": ["sha256"]
+          }
+        },
+        "required": ["runner"]
+      },
+      "then": {
+        "required": ["invocation"]
+      }
+    }
+  ],
   "$defs": {
     "sha256": {
       "type": "string",
@@ -362,6 +385,179 @@
         "sha256": {
           "$ref": "#/$defs/sha256"
         }
+      }
+    },
+    "releaseInvocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "evidence_class",
+        "release_eligible",
+        "purpose",
+        "owner_pid",
+        "acquired_at",
+        "parent_pid_verified",
+        "deterministic_build_precedes_runner",
+        "completed_build_reverified_after_browsers",
+        "completed_build",
+        "executable_materials",
+        "repository_identity",
+        "snapshots",
+        "resources"
+      ],
+      "properties": {
+        "mode": {"const": "checkout-scoped-single-writer-wrapper"},
+        "evidence_class": {"const": "release"},
+        "release_eligible": {"const": true},
+        "purpose": {"const": "legislation OKF Explorer acceptance"},
+        "owner_pid": {"type": "integer", "minimum": 1},
+        "acquired_at": {"type": "string", "format": "date-time"},
+        "parent_pid_verified": {"const": true},
+        "deterministic_build_precedes_runner": {"const": true},
+        "completed_build_reverified_after_browsers": {"const": true},
+        "completed_build": {"$ref": "#/$defs/completedBuild"},
+        "executable_materials": {"$ref": "#/$defs/executableMaterials"},
+        "repository_identity": {"$ref": "#/$defs/repositoryIdentity"},
+        "snapshots": {"$ref": "#/$defs/runtimeSnapshots"},
+        "resources": {"$ref": "#/$defs/runtimeResources"}
+      }
+    },
+    "completedBuild": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "completed_at", "command_sha256", "deterministic_build_script", "canonical_build"],
+      "properties": {
+        "schema": {"const": "okf-explorer-completed-build-attestation.v1"},
+        "completed_at": {"type": "string", "format": "date-time"},
+        "command_sha256": {"const": "48efd2a023a3eff6a832ca7a03cfe58b5ac3124d07407fa49320692eb07008cb"},
+        "deterministic_build_script": {"$ref": "#/$defs/deterministicBuildMaterial"},
+        "canonical_build": {"$ref": "#/$defs/canonicalBuild"}
+      }
+    },
+    "canonicalBuild": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "manifest_path", "manifest_bytes", "manifest_sha256", "manifest_schema", "algorithm", "files", "tree_sha256"],
+      "properties": {
+        "root": {"const": "apps/okf-explorer/build"},
+        "manifest_path": {"const": "apps/okf-explorer/build/okf-explorer-build-manifest.json"},
+        "manifest_bytes": {"const": 7398},
+        "manifest_sha256": {"const": "8c1c0394806ed4d466f5adee7084a807543664e2dde776eef7fab26998c56a69"},
+        "manifest_schema": {"const": "okf-explorer-app-build-manifest.v1"},
+        "algorithm": {"const": "sha256-canonical-json-materials-v1"},
+        "files": {"const": 43},
+        "tree_sha256": {"const": "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4"}
+      }
+    },
+    "executableMaterials": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runner", "runtime_acceptance_contract", "app_build_manifest", "invocation_wrapper", "invocation_lock", "deterministic_build", "package", "dependency_lock"],
+      "properties": {
+        "runner": {"$ref": "#/$defs/runnerMaterial"},
+        "runtime_acceptance_contract": {"$ref": "#/$defs/runtimeContractMaterial"},
+        "app_build_manifest": {"$ref": "#/$defs/appManifestMaterial"},
+        "invocation_wrapper": {"$ref": "#/$defs/invocationWrapperMaterial"},
+        "invocation_lock": {"$ref": "#/$defs/invocationLockMaterial"},
+        "deterministic_build": {"$ref": "#/$defs/deterministicBuildMaterial"},
+        "package": {"$ref": "#/$defs/packageMaterial"},
+        "dependency_lock": {"$ref": "#/$defs/dependencyLockMaterial"}
+      }
+    },
+    "runnerMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs"}, "bytes": {"const": 98104}, "sha256": {"const": "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281"}}},
+    "runtimeContractMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/runtime_acceptance_contract.mjs"}, "bytes": {"const": 25697}, "sha256": {"const": "b8575412d88796daa95e77d2cb45941730f90c82e57dfa9ec4b9bb8c01aefd41"}}},
+    "appManifestMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/app_build_manifest.mjs"}, "bytes": {"const": 22932}, "sha256": {"const": "6750dfe9ab09eeea945525473c9919e4d308e7f9a87f748244cbcd13e8b1d867"}}},
+    "invocationWrapperMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/run_acceptance_invocation.mjs"}, "bytes": {"const": 2489}, "sha256": {"const": "95b2d3287f16698f221221b615392421b5654c17c98b909b205727dfa55c3772"}}},
+    "invocationLockMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/acceptance_invocation_lock.mjs"}, "bytes": {"const": 30724}, "sha256": {"const": "1f4741365c3a61c4d11f0e3844aff05bdc8aa3e9e71ff0b426667abe6050e4e7"}}},
+    "deterministicBuildMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/check_deterministic_build.mjs"}, "bytes": {"const": 3309}, "sha256": {"const": "a4ee3e440aef1732da4e8b2de277c4cfe11573e4f35d16cb4c4348e84a6ff3e6"}}},
+    "packageMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/package.json"}, "bytes": {"const": 2872}, "sha256": {"const": "882534b3c8a800b7e2d0cf1dab5b7d5233283e039a6df99720ca0e6bb9d614d9"}}},
+    "dependencyLockMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/pnpm-lock.yaml"}, "bytes": {"const": 46184}, "sha256": {"const": "6b67ddb312bbd76e6658f902e61cbc6d4520afaa37ddf03a904c834751e0f5f3"}}},
+    "repositoryIdentity": {
+      "type": "object", "additionalProperties": false, "required": ["explorer", "candidate"],
+      "properties": {
+        "explorer": {"$ref": "#/$defs/explorerRepositoryIdentity"},
+        "candidate": {"$ref": "#/$defs/candidateRepositoryIdentity"}
+      }
+    },
+    "explorerRepositoryIdentity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["commit", "tree", "clean", "dirty_entries", "tag", "tag_object", "tag_commit", "tag_type", "package_name", "package_version"],
+      "properties": {
+        "commit": {"const": "dcd0c43e29593436b13c59271c75d37d06e2b754"},
+        "tree": {"const": "87487a50c10f0dce144b1530b6a97de6e1277aff"},
+        "clean": {"const": true}, "dirty_entries": {"const": 0},
+        "tag": {"const": "v0.8.1"},
+        "tag_object": {"const": "ad3ec81c40dd128da75eeabb4325a65b060048b0"},
+        "tag_commit": {"const": "dcd0c43e29593436b13c59271c75d37d06e2b754"},
+        "tag_type": {"const": "tag"}, "package_name": {"const": "@okf/explorer"}, "package_version": {"const": "0.8.1"}
+      }
+    },
+    "candidateRepositoryIdentity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["commit", "tree", "clean", "dirty_entries", "bundle_tree"],
+      "properties": {
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "clean": {"const": true}, "dirty_entries": {"const": 0},
+        "bundle_tree": {"$ref": "#/$defs/bundleInventory"}
+      }
+    },
+    "bundleInventory": {
+      "type": "object", "additionalProperties": false, "required": ["algorithm", "files", "bytes", "sha256"],
+      "properties": {
+        "algorithm": {"const": "sha256-canonical-json-inventory-v1"},
+        "files": {"type": "integer", "minimum": 1, "maximum": 12000},
+        "bytes": {"type": "integer", "minimum": 1, "maximum": 2147483648},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "bundleSnapshot": {
+      "type": "object", "additionalProperties": false, "required": ["entries", "algorithm", "files", "bytes", "sha256"],
+      "properties": {
+        "entries": {"type": "integer", "minimum": 1, "maximum": 20000},
+        "algorithm": {"const": "sha256-canonical-json-inventory-v1"},
+        "files": {"type": "integer", "minimum": 1, "maximum": 12000},
+        "bytes": {"type": "integer", "minimum": 1, "maximum": 2147483648},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "runtimeSnapshots": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode", "source_and_snapshot_reverified", "cleanup_completed_before_receipt", "bundle", "explorer_build"],
+      "properties": {
+        "mode": {"const": "private-byte-copy-read-only-files"},
+        "source_and_snapshot_reverified": {"const": true}, "cleanup_completed_before_receipt": {"const": true},
+        "bundle": {"$ref": "#/$defs/bundleSnapshot"}, "explorer_build": {"$ref": "#/$defs/buildSnapshot"}
+      }
+    },
+    "buildSnapshot": {
+      "type": "object", "additionalProperties": false, "required": ["entries", "algorithm", "files", "bytes", "sha256"],
+      "properties": {
+        "entries": {"type": "integer", "minimum": 1, "maximum": 2000}, "algorithm": {"const": "sha256-canonical-json-inventory-v1"},
+        "files": {"type": "integer", "minimum": 2, "maximum": 1000}, "bytes": {"type": "integer", "minimum": 1, "maximum": 134217728},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "runtimeResources": {
+      "type": "object", "additionalProperties": false, "required": ["limits", "observed"],
+      "properties": {"limits": {"$ref": "#/$defs/runtimeLimits"}, "observed": {"$ref": "#/$defs/runtimeObserved"}}
+    },
+    "runtimeLimits": {
+      "type": "object", "additionalProperties": false,
+      "required": ["run_ms", "cleanup_ms", "git_ms", "max_path_bytes", "max_tree_depth", "max_bundle_entries", "max_bundle_files", "max_bundle_bytes", "max_build_entries", "max_build_files", "max_build_bytes", "max_file_bytes", "max_executable_bytes", "max_transfer_rows", "max_transfer_wire_bytes", "max_transfer_decoded_bytes", "max_telemetry_bytes", "max_retained_string_bytes", "max_inflight_requests", "max_inflight_decoded_bytes", "max_graph_edges", "max_screenshot_bytes", "max_screenshots", "max_receipt_bytes", "receipt_publication_budget_ms", "io_chunk_bytes"],
+      "properties": {
+        "run_ms": {"const": 1140000}, "cleanup_ms": {"const": 15000}, "git_ms": {"const": 10000}, "max_path_bytes": {"const": 4096}, "max_tree_depth": {"const": 32}, "max_bundle_entries": {"const": 20000}, "max_bundle_files": {"const": 12000}, "max_bundle_bytes": {"const": 2147483648}, "max_build_entries": {"const": 2000}, "max_build_files": {"const": 1000}, "max_build_bytes": {"const": 134217728}, "max_file_bytes": {"const": 134217728}, "max_executable_bytes": {"const": 33554432}, "max_transfer_rows": {"const": 50000}, "max_transfer_wire_bytes": {"const": 8589934592}, "max_transfer_decoded_bytes": {"const": 8589934592}, "max_telemetry_bytes": {"const": 8388608}, "max_retained_string_bytes": {"const": 65536}, "max_inflight_requests": {"const": 16}, "max_inflight_decoded_bytes": {"const": 268435456}, "max_graph_edges": {"const": 10000}, "max_screenshot_bytes": {"const": 20971520}, "max_screenshots": {"const": 2}, "max_receipt_bytes": {"const": 33554432}, "receipt_publication_budget_ms": {"const": 10000}, "io_chunk_bytes": {"const": 1048576}
+      }
+    },
+    "runtimeObserved": {
+      "type": "object", "additionalProperties": false,
+      "required": ["duration_ms", "transfer_rows", "transfer_wire_bytes", "transfer_decoded_bytes", "telemetry_bytes", "peak_inflight_requests", "peak_inflight_decoded_bytes", "screenshots", "screenshot_bytes"],
+      "properties": {
+        "duration_ms": {"type": "integer", "minimum": 0, "maximum": 1140000}, "transfer_rows": {"type": "integer", "minimum": 0, "maximum": 50000},
+        "transfer_wire_bytes": {"type": "integer", "minimum": 0, "maximum": 8589934592}, "transfer_decoded_bytes": {"type": "integer", "minimum": 0, "maximum": 8589934592},
+        "telemetry_bytes": {"type": "integer", "minimum": 0, "maximum": 8388608}, "peak_inflight_requests": {"type": "integer", "minimum": 0, "maximum": 16},
+        "peak_inflight_decoded_bytes": {"type": "integer", "minimum": 0, "maximum": 268435456}, "screenshots": {"const": 2}, "screenshot_bytes": {"type": "integer", "minimum": 0, "maximum": 20971520}
       }
     },
     "graphScreenshotMaterial": {

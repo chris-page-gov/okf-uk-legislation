@@ -90,6 +90,9 @@ MAX_EMBEDDED_JSON_BYTES = 16 * 1024 * 1024
 MAX_EXPLORER_BUILD_FILES = 4096
 MAX_EXPLORER_BUILD_FILE_BYTES = 64 * 1024 * 1024
 MAX_EXPLORER_BUILD_TOTAL_BYTES = 256 * 1024 * 1024
+PINNED_EXPLORER_V081_RUNNER_SHA256 = (
+    "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281"
+)
 EXPLORER_BUILD_ROOT = "explorer-build"
 EXPLORER_BUILD_MANIFEST_NAME = "okf-explorer-build-manifest.json"
 EXPLORER_BUILD_MANIFEST_PATH = (
@@ -1167,6 +1170,7 @@ def reconstruct_explorer_runtime(
     inventory: str,
     explorer_commit: str,
 ) -> dict[str, Any]:
+    validate_explorer_runtime_invocation(runtime, contract)
     candidate = require_object(runtime.get("candidate"), "Explorer runtime candidate")
     require_equal(
         candidate,
@@ -1397,6 +1401,164 @@ def runtime_material(value: Any, label: str) -> dict[str, Any]:
     ):
         raise FinalizationError(f"{label} SHA-256 is invalid")
     return {"path": relative, "bytes": size, "sha256": digest}
+
+
+def validate_explorer_runtime_invocation(
+    runtime: dict[str, Any], contract: dict[str, Any]
+) -> list[dict[str, Any]]:
+    """Validate the pinned v0.8.1 invocation and return its material closure."""
+
+    explorer_contract = require_object(contract.get("explorer"), "contract Explorer")
+    provenance = require_object(explorer_contract.get("runtime_provenance"), "contract Explorer runtime provenance")
+    contract_runner = runtime_material(provenance.get("runner"), "contract Explorer runtime runner")
+    invocation = runtime.get("invocation")
+    if invocation is None:
+        if contract_runner["sha256"] == PINNED_EXPLORER_V081_RUNNER_SHA256:
+            raise FinalizationError("pinned Explorer v0.8.1 runtime receipt omits invocation attestation")
+        return []
+
+    invocation = require_object(invocation, "Explorer runtime invocation")
+    invocation_keys = {
+        "mode", "evidence_class", "release_eligible", "purpose", "owner_pid",
+        "acquired_at", "parent_pid_verified", "deterministic_build_precedes_runner",
+        "completed_build_reverified_after_browsers", "completed_build",
+        "executable_materials", "repository_identity", "snapshots", "resources",
+    }
+    require_equal(set(invocation), invocation_keys, "Explorer runtime invocation keys")
+    require_equal(contract_runner["sha256"], PINNED_EXPLORER_V081_RUNNER_SHA256, "invocation producer runner")
+    for key, expected in (
+        ("mode", "checkout-scoped-single-writer-wrapper"),
+        ("evidence_class", "release"),
+        ("release_eligible", True),
+        ("purpose", "legislation OKF Explorer acceptance"),
+        ("parent_pid_verified", True),
+        ("deterministic_build_precedes_runner", True),
+        ("completed_build_reverified_after_browsers", True),
+    ):
+        require_equal(invocation.get(key), expected, f"Explorer invocation {key}")
+    owner_pid = invocation.get("owner_pid")
+    if not isinstance(owner_pid, int) or isinstance(owner_pid, bool) or owner_pid <= 0:
+        raise FinalizationError("Explorer invocation owner PID is invalid")
+
+    paths = {
+        "runner": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs",
+        "runtime_acceptance_contract": "apps/okf-explorer/scripts/runtime_acceptance_contract.mjs",
+        "app_build_manifest": "apps/okf-explorer/scripts/app_build_manifest.mjs",
+        "invocation_wrapper": "apps/okf-explorer/scripts/run_acceptance_invocation.mjs",
+        "invocation_lock": "apps/okf-explorer/scripts/acceptance_invocation_lock.mjs",
+        "deterministic_build": "apps/okf-explorer/scripts/check_deterministic_build.mjs",
+        "package": "apps/okf-explorer/package.json",
+        "dependency_lock": "apps/okf-explorer/pnpm-lock.yaml",
+    }
+    declared = require_object(invocation.get("executable_materials"), "Explorer invocation executable materials")
+    require_equal(set(declared), set(paths), "Explorer invocation executable-material roles")
+    materials = {
+        role: runtime_material(declared[role], f"Explorer invocation {role}")
+        for role in paths
+    }
+    for role, path in paths.items():
+        require_equal(materials[role]["path"], path, f"Explorer invocation {role} path")
+    runtime_runner = runtime_material(runtime.get("runner"), "Explorer runtime runner")
+    require_equal(materials["runner"], runtime_runner, "Explorer invocation runner binding")
+    require_equal(runtime_runner, contract_runner, "contract-bound Explorer runtime runner")
+    site_assembly = require_object(provenance.get("site_assembly"), "Explorer site-assembly provenance")
+    require_equal(
+        materials["app_build_manifest"],
+        runtime_material(site_assembly.get("app_manifest_module"), "Explorer app-manifest module"),
+        "Explorer invocation app-manifest binding",
+    )
+
+    identities = require_object(invocation.get("repository_identity"), "Explorer invocation repository identities")
+    require_equal(set(identities), {"explorer", "candidate"}, "Explorer invocation repository-identity keys")
+    explorer = require_object(identities.get("explorer"), "Explorer invocation Explorer identity")
+    require_equal(
+        set(explorer),
+        {"commit", "tree", "clean", "dirty_entries", "tag", "tag_object", "tag_commit", "tag_type", "package_name", "package_version"},
+        "Explorer invocation Explorer-identity keys",
+    )
+    for key, expected in (
+        ("commit", explorer_contract.get("required_commit")),
+        ("tree", explorer_contract.get("git_tree")),
+        ("tag", explorer_contract.get("required_tag")),
+        ("tag_object", explorer_contract.get("required_tag_object")),
+        ("tag_type", "tag"),
+        ("package_name", "@okf/explorer"),
+        ("package_version", "0.8.1"),
+        ("clean", True),
+        ("dirty_entries", 0),
+    ):
+        require_equal(explorer.get(key), expected, f"Explorer invocation repository {key}")
+    require_equal(explorer.get("tag_commit"), explorer.get("commit"), "Explorer invocation peeled tag commit")
+
+    candidate_identity = require_object(identities.get("candidate"), "Explorer invocation candidate identity")
+    require_equal(set(candidate_identity), {"commit", "tree", "clean", "dirty_entries", "bundle_tree"}, "Explorer invocation candidate-identity keys")
+    candidate = require_object(runtime.get("candidate"), "Explorer runtime candidate")
+    for key in ("commit", "tree"):
+        require_equal(candidate_identity.get(key), candidate.get(key), f"Explorer invocation candidate {key}")
+    require_equal(candidate_identity.get("clean"), True, "Explorer invocation candidate clean state")
+    require_equal(candidate_identity.get("dirty_entries"), 0, "Explorer invocation candidate dirty-entry count")
+    bundle_tree = require_object(candidate_identity.get("bundle_tree"), "Explorer invocation bundle inventory")
+    require_equal(set(bundle_tree), {"algorithm", "files", "bytes", "sha256"}, "Explorer invocation bundle-inventory keys")
+    require_equal(bundle_tree.get("algorithm"), "sha256-canonical-json-inventory-v1", "Explorer invocation bundle algorithm")
+    require_equal(bundle_tree.get("sha256"), candidate.get("bundle_tree_sha256"), "Explorer invocation bundle digest")
+    snapshots = require_object(invocation.get("snapshots"), "Explorer invocation snapshots")
+    require_equal(set(snapshots), {"mode", "source_and_snapshot_reverified", "cleanup_completed_before_receipt", "bundle", "explorer_build"}, "Explorer invocation snapshot keys")
+    require_equal(snapshots.get("mode"), "private-byte-copy-read-only-files", "Explorer invocation snapshot mode")
+    require_equal(snapshots.get("source_and_snapshot_reverified"), True, "Explorer invocation snapshot revalidation")
+    require_equal(snapshots.get("cleanup_completed_before_receipt"), True, "Explorer invocation snapshot cleanup")
+    snapshot_bundle = require_object(snapshots.get("bundle"), "Explorer bundle snapshot")
+    require_equal(set(snapshot_bundle), {"entries", "algorithm", "files", "bytes", "sha256"}, "Explorer bundle-snapshot keys")
+    for key in ("algorithm", "files", "bytes", "sha256"):
+        require_equal(snapshot_bundle.get(key), bundle_tree.get(key), f"Explorer bundle snapshot {key}")
+    if not isinstance(snapshot_bundle.get("entries"), int) or snapshot_bundle["entries"] < bundle_tree.get("files", 0):
+        raise FinalizationError("Explorer bundle snapshot entry count is invalid")
+
+    completed = require_object(invocation.get("completed_build"), "Explorer completed-build attestation")
+    require_equal(set(completed), {"schema", "completed_at", "command_sha256", "deterministic_build_script", "canonical_build"}, "Explorer completed-build keys")
+    require_equal(completed.get("schema"), "okf-explorer-completed-build-attestation.v1", "Explorer completed-build schema")
+    require_equal(
+        runtime_material(completed.get("deterministic_build_script"), "Explorer deterministic-build script"),
+        materials["deterministic_build"],
+        "Explorer deterministic-build material binding",
+    )
+    build = require_object(require_object(runtime.get("inputs"), "Explorer runtime inputs").get("explorer_build"), "Explorer runtime build")
+    canonical = require_object(completed.get("canonical_build"), "Explorer canonical build attestation")
+    manifest = runtime_material(build.get("manifest"), "Explorer runtime build manifest")
+    for key, expected in (
+        ("root", "apps/okf-explorer/build"),
+        ("manifest_path", "apps/okf-explorer/build/okf-explorer-build-manifest.json"),
+        ("manifest_bytes", manifest["bytes"]),
+        ("manifest_sha256", manifest["sha256"]),
+        ("manifest_schema", EXPLORER_BUILD_MANIFEST_SCHEMA),
+        ("algorithm", build.get("algorithm")),
+        ("files", build.get("files")),
+        ("tree_sha256", build.get("sha256")),
+    ):
+        require_equal(canonical.get(key), expected, f"Explorer canonical build {key}")
+
+    build_snapshot = require_object(snapshots.get("explorer_build"), "Explorer build snapshot")
+    build_materials = [runtime_material(row, "Explorer build material") for row in require_array(build.get("materials"), "Explorer runtime build materials")]
+    rows = [
+        {"bytes": row["bytes"], "path": PurePosixPath(row["path"]).relative_to(EXPLORER_BUILD_ROOT).as_posix(), "sha256": row["sha256"]}
+        for row in build_materials
+    ]
+    rows.append({"bytes": manifest["bytes"], "path": EXPLORER_BUILD_MANIFEST_NAME, "sha256": manifest["sha256"]})
+    rows.sort(key=lambda row: row["path"])
+    inventory = {
+        "algorithm": "sha256-canonical-json-inventory-v1",
+        "files": len(rows),
+        "bytes": sum(row["bytes"] for row in rows),
+        "sha256": sha256_bytes(canonical_explorer_build_materials_bytes(rows)),
+    }
+    for key, expected in inventory.items():
+        require_equal(build_snapshot.get(key), expected, f"Explorer build snapshot {key}")
+    directories = {
+        "/".join(row["path"].split("/")[:depth])
+        for row in rows
+        for depth in range(1, len(row["path"].split("/")))
+    }
+    require_equal(build_snapshot.get("entries"), len(rows) + len(directories), "Explorer build snapshot entry count")
+    return [materials[role] for role in paths]
 
 
 def canonical_explorer_build_materials_bytes(
@@ -1906,6 +2068,16 @@ def reconstruct_runtime_evidence(
         contract_runner,
         "contract-bound Explorer runtime runner",
     )
+    invocation_materials = validate_explorer_runtime_invocation(
+        runtime, contract
+    )
+    for material in invocation_materials:
+        if material["path"] != runner["path"]:
+            read_stable_explorer_build_material(
+                base=explorer_receipt_path.parent,
+                declared=material,
+                label=f"Explorer invocation material {material['path']}",
+            )
     inputs = require_object(runtime.get("inputs"), "Explorer runtime inputs")
     require_equal(
         set(inputs),
@@ -2205,6 +2377,11 @@ def reconstruct_runtime_evidence(
     expected = sorted(
         [
             runner,
+            *[
+                material
+                for material in invocation_materials
+                if material["path"] != runner["path"]
+            ],
             beneath_bundle(
                 federation,
                 "Explorer runtime resolved federation descriptor",

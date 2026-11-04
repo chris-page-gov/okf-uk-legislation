@@ -2051,6 +2051,19 @@ class ReleaseFinalizationTests(unittest.TestCase):
                 with self.assertRaises(finalization.FinalizationError):
                     reconstruct(candidate)
 
+    def test_pinned_v081_runner_requires_invocation_attestation(self) -> None:
+        contract = copy.deepcopy(self.fixture.contract)
+        contract["explorer"]["runtime_provenance"]["runner"]["sha256"] = (
+            finalization.PINNED_EXPLORER_V081_RUNNER_SHA256
+        )
+        with self.assertRaisesRegex(
+            finalization.FinalizationError,
+            "pinned Explorer v0.8.1 runtime receipt omits invocation attestation",
+        ):
+            finalization.validate_explorer_runtime_invocation(
+                copy.deepcopy(self.fixture.runtime), contract
+            )
+
     def test_external_v2_runtime_candidate_mismatch_is_rejected(self) -> None:
         runtime_path = self.fixture.runtime_paths["explorer"]
         runtime = json.loads(runtime_path.read_text(encoding="utf-8"))

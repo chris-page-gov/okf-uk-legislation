@@ -2,6 +2,14 @@
 
 ## 0.4.0 — 2026-11-03
 
+- Corrected the pre-publication Pages evidence controller to reconstruct the
+  pinned TAR and application-manifest key layouts independently of Python
+  object insertion order. Added bounded real-evidence release-toolchain
+  preflight and preservation checks before expensive qualification.
+- Aligned runtime-receipt validation with the pinned Explorer v0.8.1
+  invocation provenance. The successor changes release assurance only;
+  legislation data, relationship evidence and semantic graphs are preserved.
+
 - Consolidated the reconciled OKF 0.2 and YAML-LD semantic profile, bounded
   relationship navigation, v3 governed enrichment and official-effects graph
   into the current release contract.
