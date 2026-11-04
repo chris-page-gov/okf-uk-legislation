@@ -1159,7 +1159,13 @@ def inventory_publication(
         raise ReproductionError("publication root is missing or is a symlink")
     rows: list[dict[str, Any]] = []
     total_bytes = 0
-    for path in sorted(publication_root.rglob("*")):
+    # Inventory order is the complete relative POSIX path, not Path's tuple
+    # ordering of components (which differs for e.g. enrichment-v3/ vs
+    # enrichment/). This is the pinned Explorer inventory contract.
+    for path in sorted(
+        publication_root.rglob("*"),
+        key=lambda member: member.relative_to(publication_root).as_posix(),
+    ):
         if path.is_symlink():
             raise ReproductionError(
                 f"publication contains a symlink: {path.relative_to(publication_root)}"

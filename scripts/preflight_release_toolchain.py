@@ -9,6 +9,7 @@ or modified. The only output is a new diagnostic receipt outside the checkout.
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 import re
@@ -23,6 +24,7 @@ from jsonschema import Draft202012Validator
 
 import capture_github_pages_observation as pages
 import finalize_release_candidate as finalization
+import reproduce_release_candidate as reproduction
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,7 +40,80 @@ TESTS = (
     "tests.test_release_contract_schemas",
     "tests.test_pre_rc_assurance_receipts",
     "tests.test_release_finalization",
+    "tests.test_release_reproduction",
+    "tests.test_release_runbook_commands",
 )
+
+
+def verify_inventory_interoperability(explorer_root: Path, runtime: dict) -> dict:
+    """Exercise the real producer-to-pinned-Explorer digest boundary offline.
+
+    The runtime copy is explicitly synthetic diagnostic evidence. It proves
+    that the native finaliser accepts the common inventory identity, not that
+    any new candidate has passed browser acceptance.
+    """
+    contract = json.loads((ROOT / "release-assurance/external-finalization-contract.json").read_text())
+    required = contract["explorer"]["required_commit"]
+    explorer_root = explorer_root.resolve(strict=True)
+    observed = subprocess.run(
+        ["git", "-C", str(explorer_root), "rev-parse", "HEAD"],
+        check=True, capture_output=True, text=True, timeout=30,
+    ).stdout.strip()
+    dirty = subprocess.run(
+        ["git", "-C", str(explorer_root), "status", "--porcelain=v1", "--untracked-files=all"],
+        check=True, capture_output=True, text=True, timeout=30,
+    ).stdout
+    if observed != required or dirty:
+        raise RuntimeError("cross-language preflight requires the exact clean pinned Explorer checkout")
+    declared = runtime["invocation"]["executable_materials"]["runtime_acceptance_contract"]
+    helper = explorer_root / declared["path"]
+    helper_material = material(helper)
+    if any(helper_material[key] != declared[key] for key in ("bytes", "sha256")):
+        raise RuntimeError("Explorer canonical-inventory helper differs from the retained pinned invocation")
+    profile = json.loads((ROOT / "release-assurance/reproduction-profile.json").read_text())
+    inventory = reproduction.inventory_publication(ROOT / "bundle", profile["archive"])
+    # Invoke the actual published implementation; do not imitate its digest in
+    # Python or accept a serializer-only fixture as interoperability evidence.
+    command = """
+import { readFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+const { canonicalPublicationInventory } = await import(pathToFileURL(process.argv[1]).href);
+const rows = JSON.parse(readFileSync(0, 'utf8'));
+console.log(JSON.stringify(canonicalPublicationInventory(rows)));
+"""
+    result = subprocess.run(
+        ["node", "--input-type=module", "-e", command, str(helper)],
+        input=json.dumps(inventory["rows"], ensure_ascii=False),
+        check=True, capture_output=True, text=True, timeout=60,
+    )
+    native = json.loads(result.stdout)
+    expected = {
+        "algorithm": "sha256-canonical-json-inventory-v1",
+        "files": inventory["files"], "bytes": inventory["bytes"],
+        "sha256": inventory["inventory_sha256"],
+    }
+    if native != expected:
+        raise RuntimeError(f"producer/Explorer publication inventory mismatch: {expected!r} != {native!r}")
+    synthetic = copy.deepcopy(runtime)
+    synthetic["candidate"]["bundle_tree_sha256"] = native["sha256"]
+    identity = synthetic["invocation"]["repository_identity"]["candidate"]
+    identity["bundle_tree"] = native.copy()
+    snapshot = synthetic["invocation"]["snapshots"]["bundle"]
+    snapshot.update(native)
+    snapshot["entries"] = len(list((ROOT / "bundle").rglob("*")))
+    binding = synthetic["candidate"]
+    finalization.reconstruct_explorer_runtime(
+        synthetic, contract=contract, commit=binding["commit"], tree=binding["tree"],
+        inventory=inventory["inventory_sha256"],
+        explorer_commit=synthetic["explorer"]["commit"],
+    )
+    return {
+        "id": "real-cross-language-publication-inventory", "status": "passed",
+        "explorer_commit": observed, "native_helper": helper_material,
+        "publication": native,
+        "native_finaliser_inventory_binding": "passed-synthetic-diagnostic-only",
+        "new_browser_acceptance_claimed": False,
+    }
 
 
 def git(*args: str) -> bytes:
@@ -125,6 +200,8 @@ def run(args: argparse.Namespace) -> dict:
     )
     checks.append({"id": "real-runtime-schema-and-reconstruction", "status": "passed", "fixture_candidate": binding, "receipt": material(args.runtime)})
 
+    checks.append(verify_inventory_interoperability(args.explorer_root, runtime))
+
     result = subprocess.run(
         [sys.executable, "-m", "unittest", *TESTS, "-q"], cwd=ROOT,
         capture_output=True, text=True, timeout=300,
@@ -155,6 +232,7 @@ def main() -> int:
     parser.add_argument("--baseline", required=True)
     parser.add_argument("--pages-zip", type=Path, required=True)
     parser.add_argument("--runtime", type=Path, required=True)
+    parser.add_argument("--explorer-root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     output = args.output.resolve()

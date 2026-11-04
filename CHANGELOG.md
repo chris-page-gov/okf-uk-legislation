@@ -2,6 +2,10 @@
 
 ## 0.4.0 — 2026-11-03
 
+- Corrected publication-inventory ordering to use complete relative POSIX
+  paths, matching the pinned Explorer v0.8.1 implementation. Added real
+  cross-language inventory and native finaliser-binding preflight before
+  expensive qualification; legal data and semantic graphs remain unchanged.
 - Corrected the pre-publication Pages evidence controller to reconstruct the
   pinned TAR and application-manifest key layouts independently of Python
   object insertion order. Added bounded real-evidence release-toolchain
