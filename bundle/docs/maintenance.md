@@ -223,6 +223,24 @@ and accurately reported as RDF materialisation.
 
 ## Immutable refresh attempts
 
+Fresh Whole-Law source, legislation-effects and catalogue-feed acquisitions
+use a shared bounded HTTPS transport. Every request and redirect must resolve
+to a public address and connect to the pinned address. Official effects
+pagination stays on the legislation.gov.uk host. Body and decoded-gzip
+ceilings are enforced
+before XML parsing or evidence retention. Unsafe or oversized responses are
+recorded as failed attempts, never substituted for the sealed July 2026
+snapshot. The catalogue producer rejects non-official work links, and the
+Pages search renderer independently declines unsafe click targets.
+
+These controls change future acquisition and the Pages runtime, not the
+existing legislation records, source envelopes or semantic graph. For a
+release successor, first compare the protected data and graph trees with the
+previous candidate. Run focused boundary tests and the required exact-head
+checks; do not refresh official feeds, rerun model enrichment or regenerate
+source evidence merely because acquisition code changed. The native release
+archive still needs a fresh byte identity when the Pages runtime changes.
+
 `.github/workflows/drift.yml` runs every Monday and can be dispatched manually.
 Its observation stage validates the checked-in checksums and latest immutable
 access evidence, probes the declared Pages/raw entrypoints, and compares the 20

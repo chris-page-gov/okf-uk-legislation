@@ -27,11 +27,10 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any
-from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
-from urllib.request import Request, urlopen
 
 import build_uk_government_api_okf as large_corpus
+import capture_whole_law_route_replacements as public_transport
 
 ROOT = Path(__file__).resolve().parents[1]
 RELEASE = json.loads((ROOT / "publication" / "release.json").read_text(encoding="utf-8"))
@@ -44,6 +43,9 @@ LEG = "http://www.legislation.gov.uk/namespaces/legislation"
 UKM = "http://www.legislation.gov.uk/namespaces/metadata"
 NS = {"atom": ATOM, "open": OPEN_SEARCH, "leg": LEG, "ukm": UKM}
 BASE = "https://www.legislation.gov.uk"
+OFFICIAL_LEGISLATION_HOSTS = {"www.legislation.gov.uk", "legislation.gov.uk"}
+MAX_ATOM_FEED_BYTES = 32 * 1024 * 1024
+UNSAFE_XML_DECLARATION = re.compile(rb"<!\s*(?:DOCTYPE|ENTITY)\b", re.IGNORECASE)
 OGL = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
 RELATIONSHIP_SEMANTIC_MANIFEST = (
     "https://chris-page-gov.github.io/okf-uk-legislation/"
@@ -1028,7 +1030,25 @@ def slugify(value: str) -> str:
 
 
 def https_url(value: str) -> str:
-    return re.sub(r"^http://", "https://", value.strip())
+    """Accept only official legislation links from an untrusted Atom feed."""
+
+    if any(ord(character) < 32 or ord(character) == 127 for character in value):
+        return ""
+    candidate = re.sub(r"^http://", "https://", value.strip())
+    try:
+        parsed = urlparse(candidate)
+        if (
+            parsed.scheme != "https"
+            or parsed.hostname not in OFFICIAL_LEGISLATION_HOSTS
+            or parsed.username is not None
+            or parsed.password is not None
+            or parsed.port not in {None, 443}
+            or parsed.fragment
+        ):
+            return ""
+    except ValueError:
+        return ""
+    return candidate
 
 
 def text(node: ET.Element, path: str) -> str:
@@ -1138,27 +1158,48 @@ class FeedClient:
     def get(self, url: str, name: str) -> bytes:
         path = self.cache / name
         if path.exists() and not self.refresh:
+            if path.stat().st_size > MAX_ATOM_FEED_BYTES:
+                raise ValueError("cached official Atom response exceeds the body limit")
             body = path.read_bytes()
+            if UNSAFE_XML_DECLARATION.search(body):
+                raise ValueError("cached official Atom response has a DTD/entity declaration")
             self.record_request({"url": url, "cache": True, "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest()})
             return body
         path.parent.mkdir(parents=True, exist_ok=True)
-        request = Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/atom+xml, application/xml;q=0.9"})
         error: Exception | None = None
         for attempt in range(6):
             try:
                 self.pace_request()
-                with urlopen(request, timeout=120) as response:
-                    body = response.read()
-                    status = response.status
-                    content_type = response.headers.get_content_type()
+                response = public_transport.fetch_public_request(
+                    url=url,
+                    allowed_hosts=OFFICIAL_LEGISLATION_HOSTS,
+                    headers={
+                        "User-Agent": USER_AGENT,
+                        "Accept": "application/atom+xml, application/xml;q=0.9",
+                        "Accept-Encoding": "identity",
+                    },
+                    request_method="GET",
+                    timeout_seconds=120,
+                    max_body_bytes=MAX_ATOM_FEED_BYTES,
+                )
+                status = response["status"]
+                if (
+                    status is None or not 200 <= status < 300
+                    or response["error"] or response["truncated"]
+                ):
+                    raise RuntimeError(
+                        f"official Atom response was not complete: {status}"
+                    )
+                body = response["body"]
+                if UNSAFE_XML_DECLARATION.search(body):
+                    raise ValueError("official Atom response has a DTD/entity declaration")
+                content_type = response["headers"].get("content-type", "").split(";", 1)[0]
                 ET.fromstring(body)
                 path.write_bytes(body)
                 self.record_request({"url": url, "cache": False, "status": status, "content_type": content_type, "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest()})
                 return body
-            except (HTTPError, URLError, TimeoutError, ET.ParseError) as exc:
+            except (RuntimeError, TimeoutError, ET.ParseError) as exc:
                 error = exc
-                if isinstance(exc, HTTPError) and exc.code in {301, 302, 307, 308}:
-                    break
                 time.sleep(2 ** attempt)
         raise RuntimeError(f"failed to fetch {url}: {error}")
 
@@ -1211,6 +1252,8 @@ def representation_links(entry: ET.Element) -> dict[str, str]:
 
 def parse_entry(entry: ET.Element) -> dict[str, Any]:
     id_uri = https_url(text(entry, "atom:id"))
+    if not id_uri:
+        raise ValueError("Atom work identifier is not an official HTTPS URL")
     parts = urlparse(id_uri).path.strip("/").split("/")
     code = parts[1] if len(parts) > 1 and parts[0] == "id" else "unknown"
     year = attr(entry, "ukm:Year", "Value") or (parts[2] if len(parts) > 2 else "")

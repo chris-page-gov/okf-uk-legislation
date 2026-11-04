@@ -83,7 +83,7 @@ RECEIPT_ROOT = EVIDENCE_ROOT / "archive-receipts"
 AUTHORING = ROOT / "whole-law" / "acquisition" / "replacements"
 BUNDLE = ROOT / "bundle" / "whole-law" / "acquisition" / "replacements"
 
-TOOL_VERSION = "1.1.0"
+TOOL_VERSION = "1.1.1"
 RUN_SCHEMA = "okf-source-route-replacement-run.v1"
 OBSERVATION_SCHEMA = "okf-source-route-replacement-observations.v1"
 PROJECTION_SCHEMA = "okf-source-route-replacement-projection.v1"
@@ -294,6 +294,10 @@ def validate_public_url(
     *,
     resolve: bool,
 ) -> dict[str, Any]:
+    if url != url.strip() or "\\" in url or any(
+        ord(character) < 32 or ord(character) == 127 for character in url
+    ):
+        raise UnsafeRouteError("control character or backslash in route URL")
     parsed = urllib.parse.urlsplit(url)
     hostname = normalize_hostname(parsed.hostname or "")
     if parsed.scheme != "https":
@@ -638,7 +642,10 @@ def build_curl_command(
     headers: dict[str, str],
     timeout_seconds: float,
     max_body_bytes: int,
+    request_method: str = "GET",
 ) -> tuple[list[str], str]:
+    if request_method not in {"GET", "HEAD"}:
+        raise UnsafeRouteError("only bounded GET and HEAD requests are supported")
     hostname = resolution["hostname"]
     pinned_address = select_pinned_address(resolution)
     resolve_address = (
@@ -649,10 +656,12 @@ def build_curl_command(
     command = [
         "/usr/bin/curl",
         "--disable",
+        "--noproxy",
+        "*",
         "--silent",
         "--show-error",
         "--request",
-        "GET",
+        request_method,
         "--proto",
         "=https",
         "--proto-redir",
@@ -663,10 +672,6 @@ def build_curl_command(
         str(timeout_seconds),
         "--max-time",
         str(timeout_seconds),
-        "--range",
-        f"0-{max_body_bytes - 1}",
-        "--max-filesize",
-        str(max_body_bytes),
         "--resolve",
         f"{hostname}:443:{resolve_address}",
         "--dump-header",
@@ -678,8 +683,17 @@ def build_curl_command(
             "%{ssl_verify_result}\\t%{size_download}\\n"
         ),
         "--output",
-        "-",
+        "-" if request_method == "GET" else "/dev/null",
     ]
+    if request_method == "GET":
+        # Observe one extra byte so an exactly-at-limit response remains valid.
+        # The caller receives at most max_body_bytes after curl returns.
+        command.extend([
+            "--range", f"0-{max_body_bytes}",
+            "--max-filesize", str(max_body_bytes + 1),
+        ])
+    else:
+        command.append("--head")
     for name, value in sorted(headers.items()):
         command.extend(["--header", f"{name}: {value}"])
     command.append(url)
@@ -759,6 +773,7 @@ def curl_hop(
     headers: dict[str, str],
     timeout_seconds: float,
     max_body_bytes: int,
+    request_method: str = "GET",
 ) -> dict[str, Any]:
     resolution = validate_public_url(
         url,
@@ -771,6 +786,7 @@ def curl_hop(
         headers=headers,
         timeout_seconds=timeout_seconds,
         max_body_bytes=max_body_bytes,
+        request_method=request_method,
     )
     forbidden = {"--insecure", "-k", "--location", "-L"}
     if forbidden & set(command):
@@ -808,8 +824,8 @@ def curl_hop(
             },
         }
     status, response_headers, metadata = parse_curl_stderr(result.stderr)
-    body = result.stdout
-    if len(body) > max_body_bytes:
+    fetched = result.stdout
+    if len(fetched) > max_body_bytes + 1:
         raise UnsafeRouteError("system curl exceeded the response-body bound")
     ssl_result = metadata["ssl_verify_result"]
     remote_ip = metadata["remote_ip"]
@@ -828,6 +844,7 @@ def curl_hop(
                 "system curl connected to an address other than the DNS pin"
             )
     size_limited = result.returncode == 63
+    body = fetched[:max_body_bytes]
     error = None
     if result.returncode != 0:
         error = {
@@ -847,7 +864,7 @@ def curl_hop(
         "status": status if status and status > 0 else None,
         "headers": response_headers,
         "body": body,
-        "truncated": size_limited or len(body) == max_body_bytes,
+        "truncated": size_limited or len(fetched) > max_body_bytes,
         "duration_ms": round((time.monotonic() - started) * 1000),
         "transport": {
             **curl_version_record(),
@@ -859,11 +876,55 @@ def curl_hop(
             "automatic_redirects_followed": False,
             "dns_pin_used": True,
             "cookie_engine_enabled": False,
-            "body_size_limit_bytes": max_body_bytes,
+            "body_size_limit_bytes": max_body_bytes + 1,
         },
         "metadata": metadata,
         "error": error,
     }
+
+
+def fetch_public_request(
+    *,
+    url: str,
+    allowed_hosts: set[str],
+    headers: dict[str, str],
+    request_method: str,
+    timeout_seconds: float,
+    max_body_bytes: int,
+    maximum_redirects: int = 5,
+) -> dict[str, Any]:
+    """Fetch bounded bytes with a checked, DNS-pinned HTTPS hop each time.
+
+    This shared acquisition boundary deliberately does not use urllib's
+    automatic redirects or proxies. Each redirect is independently checked
+    against the caller's approved hosts before another network request.
+    """
+
+    if request_method not in {"GET", "HEAD"}:
+        raise UnsafeRouteError("unsupported acquisition request method")
+    if max_body_bytes <= 0 or maximum_redirects < 0:
+        raise UnsafeRouteError("invalid acquisition limits")
+    current_url = url
+    redirects: list[str] = []
+    while True:
+        hop = curl_hop(
+            url=current_url,
+            allowed_hosts=allowed_hosts,
+            headers=headers,
+            timeout_seconds=timeout_seconds,
+            max_body_bytes=max_body_bytes,
+            request_method=request_method,
+        )
+        status = hop["status"]
+        location = hop["headers"].get("location")
+        if status is None or not 300 <= status < 400 or not location:
+            return {**hop, "final_url": current_url, "redirects": redirects}
+        if len(redirects) >= maximum_redirects:
+            raise UnsafeRouteError("acquisition redirect limit exceeded")
+        next_url = urllib.parse.urljoin(current_url, location)
+        validate_public_url(next_url, allowed_hosts, resolve=False)
+        redirects.append(next_url)
+        current_url = next_url
 
 
 def capture_route_system_curl(
