@@ -32,6 +32,21 @@ It updates five small root publication files without rebuilding the
 365,786-work corpus. `build_publication_docs.py` and
 `build_whole_law_okf.py` own the HTML projections and interface discovery.
 
+## Reproduction stability
+
+The active reproduction profile is bound to the complete pinned validation
+lock, including direct and transitive packages and every recorded hash. A
+production-profile regression test prevents a fixture-only check from hiding
+a stale dependency identity.
+
+Historical enrichment projectors must preserve current publication discovery
+metadata. Replaying the v2 model-assisted enrichment may refresh its own
+governed output and current independent-audit binding, but it must not replace
+the current repository, release archive, documentation or relationship-manifest
+routes in the root YAML-LD and JSON-LD descriptors. Downstream graph,
+integrity, release-assurance and checksum projections are regenerated only
+after that independent audit has accepted the exact producer and input bytes.
+
 ## Dependency planes
 
 The contract records this order:

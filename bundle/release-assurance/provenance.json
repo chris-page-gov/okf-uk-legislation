@@ -89,7 +89,7 @@
         {
           "bytes": 23901,
           "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-          "sha256": "de2d2731fc51db37d894dbd637404757158e668136befacfd0c94f40848ec072"
+          "sha256": "6da9de74f5a24d2c67eba25b88a8e5d49ae214496c3d6051e067c128b7d66f4a"
         },
         {
           "bytes": 96352,
@@ -472,7 +472,7 @@
     {
       "bytes": 23901,
       "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-      "sha256": "de2d2731fc51db37d894dbd637404757158e668136befacfd0c94f40848ec072"
+      "sha256": "6da9de74f5a24d2c67eba25b88a8e5d49ae214496c3d6051e067c128b7d66f4a"
     },
     {
       "bytes": 3254,
@@ -625,7 +625,7 @@
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
     }
   ],
-  "materials_digest": "sha256:43471673d0a08c9f39c49bf119ddee3a7b7ef78404dacd7d93b9c1e540b78098",
+  "materials_digest": "sha256:d8839508ddf8feaf5e0fa3da4208c901d6528657e2db1a750a88c0d8f375a807",
   "optional_direct_api_model_governance": {
     "authored_run": null,
     "current_release_required": false,

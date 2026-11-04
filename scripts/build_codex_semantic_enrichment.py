@@ -718,15 +718,10 @@ def update_publication(manifest: dict[str, Any], run: dict[str, Any]) -> None:
     def descriptor(value: dict[str, Any]) -> None:
         value["version"] = PUBLICATION_RELEASE["bundle_version"]
         value["status"] = PUBLICATION_RELEASE["status"]
-        value["repository"] = "https://github.com/chris-page-gov/okf-uk-legislation"
-        value["repository_subpath"] = "bundle"
-        value["alternate_access"] = [
-            {"kind": "pages", "url": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"},
-            {"kind": "raw", "url": "https://raw.githubusercontent.com/chris-page-gov/okf-uk-legislation/main/bundle/okf-explorer.json"},
-            {"kind": "archive", "url": "https://github.com/chris-page-gov/okf-uk-legislation/archive/refs/heads/main.tar.gz"},
-            {"kind": "jsonld-fallback", "url": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.jsonld"},
-        ]
-        value.setdefault("entrypoints", {})["docs"] = "docs/index.md"
+        # The base publication builder owns repository discovery and alternate
+        # access routes. This historical enrichment stage must add only its
+        # datapack metadata; overwriting those fields would silently discard
+        # the release archive, repository and HTML documentation routes.
         value["entrypoints"]["relationship_summary"] = "data/relationship-summary.json"
         value["entrypoints"]["model_enrichment_v2"] = "data/enrichment/manifest.json"
         value.setdefault("extensions", {})["okf-model-enrichment.v2"] = {

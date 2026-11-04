@@ -1,5 +1,17 @@
 {
-  "@context": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/context.jsonld",
+  "@context": [
+    "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/context.jsonld",
+    {
+      "relationshipManifest": {
+        "@id": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#relationshipManifest",
+        "@type": "@id"
+      },
+      "relationshipManifestJson": {
+        "@id": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#relationshipManifestJson",
+        "@type": "@id"
+      }
+    }
+  ],
   "@id": "https://chris-page-gov.github.io/okf-uk-legislation/",
   "@type": "okf:Bundle",
   "description": "Complete work-level index of legislation.gov.uk with ELI/Schema.org normalization, corpus facets, official full-text search, and live CLML provision-level progressive discovery.",
@@ -16,6 +28,12 @@
   },
   "publisher": {
     "@id": "https://github.com/chris-page-gov"
+  },
+  "relationshipManifest": {
+    "@id": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.yamlld"
+  },
+  "relationshipManifestJson": {
+    "@id": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.jsonld"
   },
   "status": "stable",
   "title": "UK Legislation OKF",

@@ -1,6 +1,6 @@
 {
   "schema": "okf-reproduction-profile.v2",
-  "profile_version": "2.1.0",
+  "profile_version": "2.1.1",
   "finalization_controller": "scripts/finalize_release_candidate.py",
   "finalization_contract": "release-assurance/external-finalization-contract.json",
   "release_observation_controller": "scripts/capture_github_release_observation.py",
@@ -18,11 +18,11 @@
   "dependency_lock_parser": "scripts/validation_dependency_lock.py",
   "dependency_lock_identity": {
     "package_count": 52,
-    "direct_count": 7,
-    "transitive_count": 45,
+    "direct_count": 9,
+    "transitive_count": 43,
     "artifact_hash_count": 1159,
-    "identity_sha256": "9542649bd62f7064e1bf6bfc82b4db0bc3260015649fd20cc804077076bc0c97",
-    "artifact_hash_sha256": "e8a43fc379630e059925a1a892476a23b7bccd0ca459d07da2015594755a191c"
+    "identity_sha256": "d66bdd006f5f3d69a0137aab0a0f5e5cf9b0d57c8e0dba3a1763d5fe2a33b57c",
+    "artifact_hash_sha256": "fae29d9f671559dd53991cfd2dc673799764bf2f650ab01f73b8a5f0a60d1909"
   },
   "bootstrap_distribution_allowlist": [
     "pip"

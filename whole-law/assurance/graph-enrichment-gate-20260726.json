@@ -34,7 +34,7 @@
     "enrichment_v2_historical_audit": {
       "bytes": 10752,
       "path": "whole-law/assurance/enrichment-v2-independent-audit-20260726.json",
-      "sha256": "1ec508b4739a6ef7e8e9d017114d0d4214ec0d8efacb16e150be57a50aa1e9d2"
+      "sha256": "bc2fae3806bbc278f48ced72ec570292a5e8f379571cc6747c0ad1cf3e5ddd5f"
     },
     "enrichment_v2_historical_run": {
       "bytes": 4766,

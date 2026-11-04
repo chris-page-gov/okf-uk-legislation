@@ -543,6 +543,23 @@ class ReleaseReproductionTests(unittest.TestCase):
             commands[-3:],
         )
 
+    def test_production_profile_binds_current_dependency_lock(self) -> None:
+        profile = json.loads(
+            (
+                ROOT
+                / "release-assurance"
+                / "reproduction-profile.json"
+            ).read_text(encoding="utf-8")
+        )
+        parsed = reproduction.parse_dependency_lock(
+            ROOT / reproduction.CANONICAL_DEPENDENCY_LOCK,
+            ROOT / reproduction.CANONICAL_DIRECT_REQUIREMENTS,
+        )
+        self.assertEqual(
+            reproduction.dependency_lock_identity(parsed),
+            profile["dependency_lock_identity"],
+        )
+
     def test_production_profile_uses_active_v3_audit_and_current_explorer(
         self,
     ) -> None:
