@@ -27,6 +27,16 @@ function safeRoute(value) {
   if (!/^dataset\/[A-Za-z0-9._~%-]+$/.test(route) || /%(?![0-9a-fA-F]{2})/.test(route)) fail('route must be a published dataset route.');
   return route;
 }
+function safeLegislationLink(value) {
+  if (typeof value !== 'string') return null;
+  try {
+    const url = new URL(value);
+    if (url.protocol !== 'https:' || !['www.legislation.gov.uk', 'legislation.gov.uk'].includes(url.hostname) || url.username || url.password || url.port || url.hash) return null;
+    return url.href;
+  } catch {
+    return null;
+  }
+}
 async function sha256(bytes) {
   const digest = await crypto.subtle.digest('SHA-256', bytes);
   return [...new Uint8Array(digest)].map(value => value.toString(16).padStart(2, '0')).join('');
@@ -321,8 +331,10 @@ function renderResults(result) {
   list.replaceChildren();
   for (const row of result.results) {
     const item = document.createElement('li');
-    const title = document.createElement('a');
-    title.className = 'result-title'; title.href = row.document_uri || row.legislation_id_uri; title.rel = 'noopener noreferrer';
+    const href = safeLegislationLink(row.document_uri) || safeLegislationLink(row.legislation_id_uri);
+    const title = document.createElement(href ? 'a' : 'span');
+    title.className = 'result-title';
+    if (href) { title.href = href; title.rel = 'noopener noreferrer'; }
     title.textContent = row.name || row.title || row.route; item.append(title);
     const meta = document.createElement('p'); meta.className = 'meta'; meta.textContent = [row.document_type, row.year, row.number, ...(row.jurisdiction || [])].filter(Boolean).join(' · '); item.append(meta);
     const route = document.createElement('code'); route.textContent = row.route; item.append(route);
@@ -346,4 +358,4 @@ document.getElementById('catalogue-search')?.addEventListener('submit', async ev
 const registration = await registerWebMcp();
 addEventListener('pagehide', () => registration.close(), { once: true });
 
-export { describePublication, searchLegislation, getWork, getRelationships, findWholeLawSources, fnvBucket, tools };
+export { describePublication, searchLegislation, getWork, getRelationships, findWholeLawSources, fnvBucket, safeLegislationLink, tools };

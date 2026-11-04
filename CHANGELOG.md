@@ -2,6 +2,11 @@
 
 ## 0.4.0 — 2026-11-03
 
+- Hardened fresh official-source acquisition: HTTPS public-address pinning,
+  checked redirects, bounded effects responses and bounded gzip decoding.
+  Catalogue links are checked at both Atom ingestion and the Pages click
+  target. Existing sealed source evidence, legal records and semantic graphs
+  are unchanged; the Pages runtime and release archive require fresh assurance.
 - Corrected publication-inventory ordering to use complete relative POSIX
   paths, matching the pinned Explorer v0.8.1 implementation. Added real
   cross-language inventory and native finaliser-binding preflight before

@@ -20,6 +20,7 @@ import datetime as dt
 import gzip
 import hashlib
 import html.parser
+import io
 import json
 import mimetypes
 import os
@@ -32,7 +33,6 @@ import threading
 import time
 import urllib.error
 import urllib.parse
-import urllib.request
 import uuid
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
@@ -57,7 +57,7 @@ AUTHORING = ROOT / "whole-law" / "acquisition"
 BUNDLE = ROOT / "bundle" / "whole-law" / "acquisition"
 
 TOOL_NAME = "capture_whole_law_source_access"
-TOOL_VERSION = "1.0.0"
+TOOL_VERSION = "1.1.0"
 EVIDENCE_SCHEMA = "okf-source-access-envelope.v1"
 RUN_SCHEMA = "okf-source-access-run.v1"
 OBSERVATION_SCHEMA = "okf-source-access-observations.v1"
@@ -115,6 +115,9 @@ CONSTRAINT_KINDS = {
     "hosting",
 }
 RUN_ID_RE = re.compile(r"^[0-9]{8}T[0-9]{6}Z-[a-f0-9]{8}$")
+UNSAFE_XML_DECLARATION = re.compile(
+    rb"<!\s*(?:DOCTYPE|ENTITY)\b", re.IGNORECASE
+)
 
 
 class _HTMLStructureParser(html.parser.HTMLParser):
@@ -322,7 +325,8 @@ def maybe_decoded_body(
     if encoding != "gzip" or not body.startswith(b"\x1f\x8b"):
         return body, "wire"
     try:
-        decompressed = gzip.decompress(body)
+        with gzip.GzipFile(fileobj=io.BytesIO(body)) as stream:
+            decompressed = stream.read(max_body_bytes + 1)
     except (EOFError, OSError):
         return body, "wire-gzip-partial"
     return decompressed[:max_body_bytes], "decoded-gzip"
@@ -416,16 +420,19 @@ def schema_fingerprint(
         or media_type.endswith("+xml")
         or stripped.startswith(b"<?xml")
     ):
-        try:
-            root = ET.fromstring(decoded)
-            children = sorted(
-                {child.tag for child in list(root)[:100]}
-            )
-            kind = "xml"
-            signals["root"] = root.tag
-            signals["direct_child_elements"] = children
-        except ET.ParseError:
-            kind = "xml-partial-or-invalid"
+        if UNSAFE_XML_DECLARATION.search(decoded):
+            kind = "xml-declaration-rejected"
+        else:
+            try:
+                root = ET.fromstring(decoded)
+                children = sorted(
+                    {child.tag for child in list(root)[:100]}
+                )
+                kind = "xml"
+                signals["root"] = root.tag
+                signals["direct_child_elements"] = children
+            except ET.ParseError:
+                kind = "xml-partial-or-invalid"
     elif media_type in {"text/html", "application/xhtml+xml"} or re.match(
         br"(?is)<!doctype\s+html|<html(?:\s|>)",
         stripped[:256],
@@ -558,14 +565,14 @@ def capture_one(
     max_body_bytes: int,
     user_agent: str,
     host_limiter: HostLimiter,
+    allowed_hosts: set[str],
 ) -> dict[str, Any]:
+    # Imported at use time because the replacement-route module reuses this
+    # module's envelope and fingerprint helpers.
+    import capture_whole_law_route_replacements as public_transport
+
     started = utc_now()
     headers = request_headers(method, max_body_bytes, user_agent)
-    request = urllib.request.Request(
-        method["url"],
-        headers=headers,
-        method=method["request_method"],
-    )
     status: int | None = None
     reason: str | None = None
     final_url = method["url"]
@@ -579,36 +586,29 @@ def capture_one(
     monotonic_start = time.monotonic()
     try:
         with limiter:
-            try:
-                with urllib.request.urlopen(
-                    request,
-                    timeout=timeout_seconds,
-                ) as response:
-                    status = response.status
-                    reason = str(response.reason) if response.reason else None
-                    final_url = response.geturl()
-                    (
-                        response_headers,
-                        received_header_names,
-                        sensitive_header_names,
-                    ) = safe_response_headers(response.headers)
-                    if method["request_method"] == "GET":
-                        fetched = response.read(max_body_bytes + 1)
-                        truncated = len(fetched) > max_body_bytes
-                        body = fetched[:max_body_bytes]
-            except urllib.error.HTTPError as http_error:
-                status = http_error.code
-                reason = str(http_error.reason) if http_error.reason else None
-                final_url = http_error.geturl()
-                (
-                    response_headers,
-                    received_header_names,
-                    sensitive_header_names,
-                ) = safe_response_headers(http_error.headers)
-                if method["request_method"] == "GET":
-                    fetched = http_error.read(max_body_bytes + 1)
-                    truncated = len(fetched) > max_body_bytes
-                    body = fetched[:max_body_bytes]
+            response = public_transport.fetch_public_request(
+                url=method["url"],
+                allowed_hosts=allowed_hosts,
+                headers=headers,
+                request_method=method["request_method"],
+                timeout_seconds=timeout_seconds,
+                max_body_bytes=max_body_bytes,
+            )
+            status = response["status"]
+            final_url = response["final_url"]
+            response_headers = response["headers"]
+            metadata = response.get("metadata", {})
+            received_header_names = metadata.get("received_header_names", [])
+            sensitive_header_names = metadata.get(
+                "sensitive_header_names_present_but_not_stored", []
+            )
+            body = response["body"] if method["request_method"] == "GET" else b""
+            truncated = response["truncated"]
+            if response["error"]:
+                error = {
+                    "type": response["error"]["type"],
+                    "message": response["error"]["message"][:500],
+                }
     except (
         urllib.error.URLError,
         TimeoutError,
@@ -1135,6 +1135,10 @@ def run_integrity(run_dir: Path) -> dict[str, Any]:
 def capture_run(args: argparse.Namespace) -> Path:
     source_register = load_json(REGISTER)
     methods = enumerate_access_methods(source_register)
+    allowed_hosts = {
+        urllib.parse.urlsplit(method["url"]).hostname or ""
+        for method in methods
+    }
     selected = set(args.only or [])
     if selected:
         unknown = selected - {method["method_id"] for method in methods}
@@ -1174,6 +1178,7 @@ def capture_run(args: argparse.Namespace) -> Path:
                     max_body_bytes=args.max_body_bytes,
                     user_agent=args.user_agent,
                     host_limiter=host_limiter,
+                    allowed_hosts=allowed_hosts,
                 ): method
                 for method in methods
             }

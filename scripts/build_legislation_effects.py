@@ -15,8 +15,6 @@ import hashlib
 import io
 import json
 import re
-import urllib.error
-import urllib.request
 import xml.etree.ElementTree as ET
 from collections import Counter
 from datetime import datetime, timezone
@@ -24,6 +22,7 @@ from pathlib import Path
 from typing import Any
 
 import legislation_effects_evidence_archive as effects_evidence
+import capture_whole_law_route_replacements as public_transport
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLICATION_RELEASE = json.loads(
@@ -48,6 +47,7 @@ LEG = "http://www.legislation.gov.uk/namespaces/legislation"
 UKM = "http://www.legislation.gov.uk/namespaces/metadata"
 NS = {"atom": ATOM, "leg": LEG, "ukm": UKM}
 USER_AGENT = "okf-uk-legislation/0.3 (+https://github.com/chris-page-gov/okf-uk-legislation)"
+OFFICIAL_EFFECT_HOSTS = {"www.legislation.gov.uk", "legislation.gov.uk"}
 
 
 def load(path: Path) -> Any:
@@ -124,52 +124,66 @@ def request_capture(
         }
 
     body_path.parent.mkdir(parents=True, exist_ok=True)
-    request = urllib.request.Request(
-        url,
-        headers={
-            "Accept": "application/atom+xml, application/xml;q=0.9",
-            "User-Agent": USER_AGENT,
-        },
-    )
     retrieved_at = timestamp()
     try:
-        with urllib.request.urlopen(request, timeout=60) as response:
-            body = response.read()
-            headers = {key.lower(): value for key, value in response.headers.items()}
-            status = int(response.status)
-            final_url = response.geturl()
-            success = 200 <= status < 300
-            error = None
-    except urllib.error.HTTPError as exc:
-        body = exc.read()
-        headers = {key.lower(): value for key, value in exc.headers.items()}
-        status = int(exc.code)
-        final_url = exc.geturl()
-        success = False
-        error = f"HTTP {exc.code}"
-    except urllib.error.URLError as exc:
+        response = public_transport.fetch_public_request(
+            url=url,
+            allowed_hosts=OFFICIAL_EFFECT_HOSTS,
+            headers={
+                "Accept": "application/atom+xml, application/xml;q=0.9",
+                "User-Agent": USER_AGENT,
+                "Accept-Encoding": "identity",
+            },
+            request_method="GET",
+            timeout_seconds=60,
+            max_body_bytes=effects_evidence.MAX_ARCHIVE_FILE_BYTES,
+        )
+        body = response["body"]
+        headers = response["headers"]
+        status = response["status"]
+        final_url = response["final_url"]
+        success = bool(
+            status is not None
+            and 200 <= status < 300
+            and not response["error"]
+            and not response["truncated"]
+        )
+        error = None
+        if response["error"]:
+            error = response["error"]["message"]
+        elif response["truncated"]:
+            error = "response exceeded the effects body limit"
+        elif not success and status is not None:
+            error = f"HTTP {status}"
+        if not success:
+            body = None
+    except (public_transport.UnsafeRouteError, OSError, ValueError) as exc:
         body = None
         headers = {}
         status = None
         final_url = url
         success = False
-        error = str(exc.reason)
+        error = str(exc)[:500]
 
     schema_fingerprint = None
     if body and success:
-        try:
-            root = ET.fromstring(body)
-            effect_keys = sorted({
-                key
-                for effect in root.findall(".//ukm:Effect", NS)
-                for key in effect.attrib
-            })
-            schema_fingerprint = "sha256:" + sha256(
-                render({"root": root.tag, "effect_attributes": effect_keys}).encode("utf-8")
-            )
-        except ET.ParseError:
+        if effects_evidence.UNSAFE_XML_DECLARATION.search(body):
             success = False
-            error = "response was not parseable XML"
+            error = "XML safety policy rejected a DTD/entity declaration"
+        else:
+            try:
+                root = ET.fromstring(body)
+                effect_keys = sorted({
+                    key
+                    for effect in root.findall(".//ukm:Effect", NS)
+                    for key in effect.attrib
+                })
+                schema_fingerprint = "sha256:" + sha256(
+                    render({"root": root.tag, "effect_attributes": effect_keys}).encode("utf-8")
+                )
+            except ET.ParseError:
+                success = False
+                error = "response was not parseable XML"
 
     envelope = {
         "schema": "okf-source-response-envelope.v1",
@@ -191,7 +205,7 @@ def request_capture(
         "body_sha256": sha256(body) if body is not None else None,
         "schema_fingerprint": schema_fingerprint,
         "tool": "scripts/build_legislation_effects.py",
-        "tool_version": "1.0.0",
+        "tool_version": "1.1.0",
         "error": error,
         "rights": OGL,
     }
@@ -320,7 +334,12 @@ def assertion_from_entry(
 def next_url(root: ET.Element) -> str | None:
     for link in root.findall("atom:link", NS):
         if link.attrib.get("rel") == "next":
-            return normalize_uri(link.attrib.get("href"))
+            url = normalize_uri(link.attrib.get("href"))
+            if url:
+                public_transport.validate_public_url(
+                    url, OFFICIAL_EFFECT_HOSTS, resolve=False
+                )
+            return url
     return None
 
 
@@ -451,7 +470,13 @@ def acquire(
                             )
                         else:
                             assertions[assertion["id"]] = assertion
-                last_next = next_url(root)
+                try:
+                    last_next = next_url(root)
+                except public_transport.UnsafeRouteError as exc:
+                    route_success = False
+                    route_error = f"unsafe pagination destination: {exc}"
+                    last_next = None
+                    break
                 url = last_next
             truncated = bool(last_next and pages >= page_limit)
             attempts.append({
