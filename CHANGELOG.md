@@ -38,6 +38,9 @@
 - Rebound reproduction profile v2.1.1 to the current nine-direct,
   43-transitive validation dependency closure. A production-profile test now
   prevents the executable release gate from retaining a stale lock identity.
+- Prevented the historical v2 enrichment projector from replacing current
+  repository, release-archive and HTML documentation discovery routes during
+  clean reproduction.
 
 - Pin certifi 2026.10.19 as a second bounded security exception to the frozen
   validation closure. Remove the compromised emSign root, retain unaffected
