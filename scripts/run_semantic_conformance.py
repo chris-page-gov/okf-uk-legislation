@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Execute and receipt the Whole-Law semantic and row-contract gates.
+"""Execute and receipt Whole-Law descriptor and relationship semantic gates.
 
-The RDF scope is deliberately bounded to the authored/generated Whole-Law
-semantic descriptor.  The legislation corpus is a chunked JSON data plane:
-every core and provider relationship row is validated exhaustively against its
-declared JSON Schema, but those rows are not misrepresented as RDF triples.
+The startup RDF descriptor remains bounded. The relationship-authoritative
+manifest links bounded JSON-LD shards; every source assertion is checked
+against one matching direct triple and evidence-bearing reified statement.
 """
 
 from __future__ import annotations
@@ -34,6 +33,8 @@ except ImportError as exc:  # pragma: no cover - CI reports dependency setup
         "requirements-validation.txt"
     ) from exc
 
+import build_relationship_semantics as relationship_semantics
+
 
 ROOT = Path(__file__).resolve().parents[1]
 BUNDLE = ROOT / "bundle"
@@ -54,13 +55,31 @@ SOURCE_REGISTER = PACK / "data" / "source-register.json"
 FEDERATION_DESCRIPTOR = PACK / "okf-explorer.json"
 
 SCHEMAS = {
-    "federation": SOURCE / "schemas" / "federation.schema.json",
+    "federation": SOURCE / "schemas" / "canonical-federation-descriptor.schema.json",
     "provider_datapack": SOURCE / "schemas" / "provider-datapack.schema.json",
     "core_relationship_row": (
         SOURCE / "schemas" / "core-relationship-row.schema.json"
     ),
     "provider_relationship_assertion": (
         SOURCE / "schemas" / "relationship-assertion.schema.json"
+    ),
+    "rich_relationship_assertion": (
+        SOURCE / "schemas" / "relationship-assertion-v3.schema.json"
+    ),
+    "rich_relationship_runtime_row": (
+        SOURCE / "schemas" / "relationship-runtime-row.schema.json"
+    ),
+    "rich_relationship_runtime_manifest": (
+        SOURCE / "schemas" / "relationship-runtime-manifest.schema.json"
+    ),
+    "shared_semantic_assertion": (
+        SOURCE / "schemas" / "semantic-assertion.schema.json"
+    ),
+    "rich_relationship_route_locator": (
+        SOURCE / "schemas" / "relationship-route-locator.schema.json"
+    ),
+    "rich_relationship_route_locator_bucket": (
+        SOURCE / "schemas" / "relationship-route-locator-bucket.schema.json"
     ),
 }
 PROVIDER_MANIFESTS = {
@@ -494,6 +513,24 @@ def semantic_materials() -> dict[str, Any]:
         "contract_examples": material(EXAMPLES),
         "source_register": material(SOURCE_REGISTER),
         "federation_descriptor": material(FEDERATION_DESCRIPTOR),
+        "relationship_semantic_builder": material(
+            ROOT / "scripts" / "build_relationship_semantics.py"
+        ),
+        "relationship_manifest_yaml_ld": material(
+            BUNDLE / "data" / "semantic" / "manifest.yamlld"
+        ),
+        "relationship_manifest_json_ld": material(
+            BUNDLE / "data" / "semantic" / "manifest.jsonld"
+        ),
+        "relationship_context": material(
+            BUNDLE / "data" / "semantic" / "context.jsonld"
+        ),
+        "relationship_predicate_registry": material(
+            BUNDLE / "data" / "semantic" / "predicate-registry.json"
+        ),
+        "relationship_iri_route_registry": material(
+            BUNDLE / "data" / "semantic" / "iri-route-registry.json"
+        ),
         "schemas": {
             name: material(path) for name, path in sorted(SCHEMAS.items())
         },
@@ -792,6 +829,14 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
                 "okf-explorer.json"
             ),
             OKFLAW.sourceRegister: expected_source_node,
+            OKFLAW.relationshipManifest: rdflib.URIRef(
+                "https://chris-page-gov.github.io/okf-uk-legislation/"
+                "data/semantic/manifest.yamlld"
+            ),
+            OKFLAW.relationshipManifestJson: rdflib.URIRef(
+                "https://chris-page-gov.github.io/okf-uk-legislation/"
+                "data/semantic/manifest.jsonld"
+            ),
         }
         for predicate, expected in expected_federation_links.items():
             actual = set(yaml_graph.objects(expected_federation, predicate))
@@ -847,6 +892,35 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
             "Whole-Law federation and legislation relationship summaries differ"
         )
 
+    relationship_semantic_summary: dict[str, Any] = {}
+    try:
+        relationship_semantic_summary = relationship_semantics.build(
+            check=True
+        )
+    except Exception as exc:
+        errors.append(f"rich relationship semantic layer failed: {exc}")
+    if relationship_semantic_summary:
+        if (
+            int(relationship_semantic_summary["active_assertions"])
+            != expected_all_rows
+        ):
+            errors.append(
+                "active rich semantic assertion count differs from the "
+                "relationship summary"
+            )
+        expected_historical = int(
+            load(BUNDLE / "data" / "enrichment" / "manifest.json")
+            ["counts"]["assertions"]
+        )
+        if (
+            int(relationship_semantic_summary["historical_assertions"])
+            != expected_historical
+        ):
+            errors.append(
+                "historical rich semantic assertion count differs from the "
+                "declared v2 snapshot"
+            )
+
     root_descriptor = load(BUNDLE / "okf-explorer.json")
     catalogued_works = int(root_descriptor["counts"]["works"])
     explicit_legal_work_types = {OKFLAW.LegalWork, OKFLAW.LegislationWork}
@@ -893,15 +967,27 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
             ),
             "catalogued_legal_works": catalogued_works,
             "rdf_materialized_legal_works": rdf_legal_works,
-            "relationship_rows_materialized_as_rdf": 0,
+            "relationship_rows_materialized_as_rdf": int(
+                relationship_semantic_summary.get("all_assertions", 0)
+            ),
+            "active_relationship_direct_triples": int(
+                relationship_semantic_summary.get("active_assertions", 0)
+            ),
+            "historical_relationship_direct_triples": int(
+                relationship_semantic_summary.get(
+                    "historical_assertions", 0
+                )
+            ),
             "relationship_rows_exhaustively_validated_as_json": (
                 all_relationship_rows
             ),
             "claim_boundary": (
-                "The 365,786 catalogued legal works and relationship data plane "
-                "are not materialised as RDF in this publication. SHACL covers "
-                "the complete two-node semantic descriptor graph; JSON Schema "
-                "covers every compact core and provider relationship row."
+                "The startup descriptor remains bounded to the federation "
+                "control graph. The relationship-authoritative manifest links "
+                "bounded JSON-LD shards containing one direct triple and one "
+                "evidence-bearing rdf:Statement/okf:RelationshipAssertion for "
+                "every active or explicitly historical row. Authority and "
+                "lifecycle planes remain separate."
             ),
         },
         "materials": materials,
@@ -988,6 +1074,7 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
                 + sum(row["schema_violations"] for row in provider_results),
             },
         },
+        "rich_relationship_semantics": relationship_semantic_summary,
         "source_contract": {
             "schema": source_register["schema"],
             "records": len(source_register["records"]),
@@ -1043,7 +1130,9 @@ def main() -> int:
         "Whole-Law semantic conformance passed: "
         f"{receipt['semantic_equivalence']['yaml_graph_triples']} descriptor "
         f"triples, {totals['core_rows']} core rows, "
-        f"{totals['provider_rows']} provider rows"
+        f"{totals['provider_rows']} active provider rows, "
+        f"{receipt['scope']['relationship_rows_materialized_as_rdf']} "
+        "direct + reified relationship assertions"
     )
     return 0
 

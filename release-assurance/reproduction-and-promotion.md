@@ -29,7 +29,7 @@ The checked-in
 mutable-candidate v1 receipt. It cannot satisfy this runbook. Step 2 creates a
 different `okf-explorer-runtime-acceptance.v2` receipt outside the frozen
 checkout, bound to the exact Legislation commit/tree/publication inventory and
-the exact Explorer `v0.5.4` commit.
+the exact Explorer `v0.8.1` commit.
 
 Explorer `v0.5.2` remains an immutable historical release, but it is
 superseded as the Legislation finalization prerequisite because
@@ -39,19 +39,22 @@ observation of its Actions TAR found a 159-byte `404.html` after assembly,
 while the canonical app-build manifest declared 1,122 bytes. `v0.5.4`
 preserves the built `404.html`, verifies the assembled application against the
 canonical public build manifest, and binds the complete build-tree digest.
-This does not rewrite the historical `v0.5.0` through `v0.5.3` observations.
+Explorer `v0.8.1` is the active Legislation v0.4 prerequisite. It preserves
+those controls, publishes the current 43-file application tree and records its
+two accepted non-hard public limitations in the release verification asset.
+This does not rewrite the historical `v0.5.0` through `v0.5.4` observations.
 
 ## 0. Establish the one-shell environment
 
 Required inputs:
 
 - `LEGISLATION_ROOT`: an exact, clean checkout of the merged candidate;
-- `EXPLORER_ROOT`: an exact, clean checkout at the published `v0.5.4` tag;
+- `EXPLORER_ROOT`: an exact, clean checkout at the published `v0.8.1` tag;
 - `EVIDENCE`: a new durable directory outside both repositories;
 - installed dependencies pinned by `requirements-validation.txt`;
 - the Explorer workspace's pinned pnpm dependencies and Playwright browsers;
 - authenticated `git` and `gh` access for the two approved repositories; and
-- the installed Codex Security `0.1.13` schemas.
+- the installed Codex Security `0.1.32` schemas.
 
 Set the roots once. `/tmp` is illustrative; use durable storage for the real
 release:
@@ -61,14 +64,14 @@ set -euo pipefail
 
 export LEGISLATION_ROOT="/absolute/path/to/okf-uk-legislation"
 export EXPLORER_ROOT="/absolute/path/to/okf-explorer"
-export EVIDENCE="/tmp/okf-v0.3.0"
+export EVIDENCE="/tmp/okf-v0.4.0"
 export LEGISLATION_REPOSITORY="https://github.com/chris-page-gov/okf-uk-legislation"
 export EXPLORER_REPOSITORY="https://github.com/chris-page-gov/okf-explorer"
-export RC_TAG="v0.3.0-rc.1"
-export FINAL_TAG="v0.3.0"
-export EXPLORER_TAG="v0.5.4"
-export ASSET_NAME="okf-uk-legislation-v0.3.0.tar.zst"
-export CODEX_SECURITY_SCHEMA_DIR="$HOME/.codex/plugins/cache/openai-curated-remote/codex-security/0.1.13/schemas"
+export RC_TAG="v0.4.0-rc.1"
+export FINAL_TAG="v0.4.0"
+export EXPLORER_TAG="v0.8.1"
+export ASSET_NAME="okf-uk-legislation-v0.4.0.tar.zst"
+export CODEX_SECURITY_SCHEMA_DIR="$HOME/.codex/plugins/cache/openai-curated-remote/codex-security/0.1.32/schemas"
 
 test ! -e "$EVIDENCE"
 mkdir -p "$EVIDENCE"
@@ -118,7 +121,7 @@ Required outputs:
 $EVIDENCE/reproduction/reproduction-receipt.json
 $EVIDENCE/reproduction/release-package-manifest.json
 $EVIDENCE/reproduction/provenance-inputs.json
-$EVIDENCE/reproduction/okf-uk-legislation-v0.3.0.tar.zst
+$EVIDENCE/reproduction/okf-uk-legislation-v0.4.0.tar.zst
 ```
 
 Bind the later commands to the reproduced publication and sealed archive:
@@ -137,7 +140,7 @@ test "${#ARCHIVE_SHA256}" -eq 64
 test "$ARCHIVE_BYTES" -gt 0
 ```
 
-The one archive is attached first to `v0.3.0-rc.1` and later to `v0.3.0`.
+The one archive is attached first to `v0.4.0-rc.1` and later to `v0.4.0`.
 Promotion reuses this exact regular file and literal filename. It never
 rebuilds, recompresses, renames or edits it.
 
@@ -175,11 +178,11 @@ captures originate in the distinct fresh
 stages their write-once copies beneath
 `$EVIDENCE/explorer-runtime/output/playwright`.
 
-## 3. Supply the published Explorer v0.5.4 release and Pages deployment
+## 3. Supply the published Explorer v0.8.1 release and Pages deployment
 
 Choose exactly one of the two routes below. A fresh bounded capture is the
 default. Offline reuse is permitted only for a previously completed,
-candidate-independent Explorer v0.5.4 closure whose complete 18-file
+candidate-independent Explorer v0.8.1 closure whose complete 18-file
 checkpoint still verifies. Both routes supply the same immutable inputs to
 step 4; neither changes or refreshes the Explorer release.
 
@@ -195,18 +198,18 @@ declared Explorer release asset:
   --tag "$EXPLORER_TAG" \
   --expected-commit "$EXPLORER_COMMIT" \
   --output-dir "$EVIDENCE/explorer-observation" \
-  --asset-name "okf-explorer-v0.5.4-pages-artifact.zip" \
-  --expected-asset-bytes 185023908 \
-  --expected-asset-sha256 357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0 \
+  --asset-name "okf-explorer-v0.8.1-pages-artifact.zip" \
+  --expected-asset-bytes 189110263 \
+  --expected-asset-sha256 6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1 \
   --allow-network
 ```
 
 Expected output:
 `$EVIDENCE/explorer-observation/explorer-release-observation.json` plus its
 write-once attempt manifest, raw bounded GitHub responses and the exact
-185,023,908-byte release asset. The observation must bind asset ID
-`490852327`, filename `okf-explorer-v0.5.4-pages-artifact.zip`, and SHA-256
-`357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0`.
+189,110,263-byte release asset. The observation must bind asset ID
+`706118888`, filename `okf-explorer-v0.8.1-pages-artifact.zip`, and SHA-256
+`6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1`.
 
 Independently capture the immutable Actions run, artifact metadata, exact
 Pages ZIP, contained TAR inventory and manifest-bound application tree. This
@@ -234,11 +237,16 @@ $EVIDENCE/explorer-pages-observation/raw/github-pages-artifact.zip
 $EVIDENCE/explorer-pages-observation/inventory/tar-files.json
 ```
 
-The observation must bind run `30228627196`, artifact `8639352412`, exact
-Explorer commit `a23dfdea56fea0184b6d53f3163b292dd1a312ed`, the same
-185,023,908-byte/`357c2fcf…c1c0` release asset observed above, and the
-16-file app tree
-`b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7`.
+The observation must bind run `41663805875`, artifact `13245490839`, exact
+Explorer commit `dcd0c43e29593436b13c59271c75d37d06e2b754`, the same
+189,110,263-byte/`6142f63f…eac1` release asset observed above, and the
+43-file app tree
+`5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4`.
+The Pages transport contains 10,734 files. GitHub's Pages action excluded one
+1,004-byte nested research `.github/workflows` file counted by the pre-deploy
+site receipt; this accepted non-hard limitation does not affect a public
+runtime, data, documentation or interface dependency and is recorded in the
+Explorer release verification asset.
 
 Bind step 4 to the newly captured observations:
 
@@ -249,7 +257,7 @@ export EXPLORER_PAGES_OBSERVATION_PATH="$EVIDENCE/explorer-pages-observation/git
 
 ### Route B: verified offline reuse
 
-This route avoids downloading two identical 185,023,908-byte assets again. It
+This route avoids downloading two identical 189,110,263-byte assets again. It
 does not accept a partial directory, a convenience copy without its original
 checkpoint, or an observation of a different Explorer release or Pages run.
 Set the checkpoint root to the directory from which its recorded paths were
@@ -257,8 +265,8 @@ hashed, verify every recorded file, reject links and unexpected file counts,
 then bind step 4 directly to the immutable source closure:
 
 ```sh
-export EXPLORER_OBSERVATION_SOURCE="/absolute/path/to/explorer-v0.5.4-observations"
-export EXPLORER_OBSERVATION_CHECKPOINT="/absolute/path/to/explorer-v0.5.4-observations.sha256"
+export EXPLORER_OBSERVATION_SOURCE="/absolute/path/to/explorer-v0.8.1-observations"
+export EXPLORER_OBSERVATION_CHECKPOINT="/absolute/path/to/explorer-v0.8.1-observations.sha256"
 export EXPLORER_OBSERVATION_CHECKPOINT_ROOT="/absolute/path/used-when-the-checkpoint-was-authored"
 
 test -d "$EXPLORER_OBSERVATION_SOURCE"
@@ -398,14 +406,14 @@ Create and push the annotated tag at the exact candidate. Both `git tag` and
 `gh release create` fail rather than replacing an existing object:
 
 ```sh
-git tag -a "$RC_TAG" "$CANDIDATE_COMMIT" -m "UK Whole-Law OKF v0.3.0 release candidate 1"
+git tag -a "$RC_TAG" "$CANDIDATE_COMMIT" -m "UK Whole-Law OKF v0.4.0 release candidate 1"
 git push origin "refs/tags/$RC_TAG"
 
 gh release create "$RC_TAG" "$SEALED_ARCHIVE" \
   --repo "$LEGISLATION_REPOSITORY" \
   --verify-tag \
   --prerelease \
-  --title "UK Whole-Law OKF v0.3.0-rc.1" \
+  --title "UK Whole-Law OKF v0.4.0-rc.1" \
   --notes-from-tag
 ```
 
@@ -446,7 +454,7 @@ and digest:
 ```
 
 Expected output:
-`$EVIDENCE/rc-observation/okf-uk-legislation-v0.3.0-rc.1-release-observation.json`.
+`$EVIDENCE/rc-observation/okf-uk-legislation-v0.4.0-rc.1-release-observation.json`.
 
 ## 8. Lock and execute the exact-RC public entry-point probe
 
@@ -501,9 +509,9 @@ promotion. It neither predicts a final asset nor closes GATE-14:
   --performance-receipt "$EVIDENCE/pre-rc-assurance/performance-assurance-receipt.json" \
   --pre-rc-authorization "$EVIDENCE/pre-rc-authorization-receipt.json" \
   --public-attempt "$PUBLIC_ATTEMPT" \
-  --rc-release-observation "$EVIDENCE/rc-observation/okf-uk-legislation-v0.3.0-rc.1-release-observation.json" \
+  --rc-release-observation "$EVIDENCE/rc-observation/okf-uk-legislation-v0.4.0-rc.1-release-observation.json" \
   --rc-asset "$RC_ASSET" \
-  --rc-release-url "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.3.0-rc.1/okf-uk-legislation-v0.3.0.tar.zst" \
+  --rc-release-url "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.4.0-rc.1/okf-uk-legislation-v0.4.0.tar.zst" \
   --receipt "$EVIDENCE/final-promotion-authorization-receipt.json"
 ```
 
@@ -519,13 +527,13 @@ not the RC download and not a rebuilt file:
 test "$(wc -c < "$SEALED_ARCHIVE" | tr -d ' ')" = "$ARCHIVE_BYTES"
 test "$(shasum -a 256 "$SEALED_ARCHIVE" | awk '{print $1}')" = "$ARCHIVE_SHA256"
 
-git tag -a "$FINAL_TAG" "$CANDIDATE_COMMIT" -m "UK Whole-Law OKF v0.3.0"
+git tag -a "$FINAL_TAG" "$CANDIDATE_COMMIT" -m "UK Whole-Law OKF v0.4.0"
 git push origin "refs/tags/$FINAL_TAG"
 
 gh release create "$FINAL_TAG" "$SEALED_ARCHIVE" \
   --repo "$LEGISLATION_REPOSITORY" \
   --verify-tag \
-  --title "UK Whole-Law OKF v0.3.0" \
+  --title "UK Whole-Law OKF v0.4.0" \
   --notes-from-tag
 
 export FINAL_DOWNLOAD_DIR="$EVIDENCE/final-download"
@@ -560,7 +568,7 @@ Capture the final release and exact asset:
 ```
 
 Expected output:
-`$EVIDENCE/final-observation/okf-uk-legislation-v0.3.0-release-observation.json`.
+`$EVIDENCE/final-observation/okf-uk-legislation-v0.4.0-release-observation.json`.
 
 ## 11. Build the exact nine-row traceability evidence map
 
@@ -593,8 +601,8 @@ legislation = Path(os.environ["LEGISLATION_ROOT"])
 
 sources = {
     "release-package-manifest.json": evidence / "reproduction/release-package-manifest.json",
-    "rc-release-observation.json": evidence / "rc-observation/okf-uk-legislation-v0.3.0-rc.1-release-observation.json",
-    "final-release-observation.json": evidence / "final-observation/okf-uk-legislation-v0.3.0-release-observation.json",
+    "rc-release-observation.json": evidence / "rc-observation/okf-uk-legislation-v0.4.0-rc.1-release-observation.json",
+    "final-release-observation.json": evidence / "final-observation/okf-uk-legislation-v0.4.0-release-observation.json",
     "explorer-runtime-acceptance.json": evidence / "explorer-runtime/explorer-runtime-acceptance.json",
     "public-projection.json": Path(os.environ["PUBLIC_ATTEMPT"]) / "projection.json",
     "public-route-manifest.json": Path(os.environ["PUBLIC_ATTEMPT"]) / "route-manifest.json",
@@ -684,13 +692,13 @@ performance and exact traceability evidence:
   --pre-rc-authorization "$EVIDENCE/pre-rc-authorization-receipt.json" \
   --public-attempt "$PUBLIC_ATTEMPT" \
   --traceability-receipt "$EVIDENCE/traceability-assurance/traceability-closure-receipt.json" \
-  --rc-release-observation "$EVIDENCE/rc-observation/okf-uk-legislation-v0.3.0-rc.1-release-observation.json" \
+  --rc-release-observation "$EVIDENCE/rc-observation/okf-uk-legislation-v0.4.0-rc.1-release-observation.json" \
   --rc-asset "$RC_ASSET" \
   --final-promotion-authorization "$EVIDENCE/final-promotion-authorization-receipt.json" \
-  --final-release-observation "$EVIDENCE/final-observation/okf-uk-legislation-v0.3.0-release-observation.json" \
+  --final-release-observation "$EVIDENCE/final-observation/okf-uk-legislation-v0.4.0-release-observation.json" \
   --final-asset "$FINAL_ASSET" \
-  --rc-release-url "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.3.0-rc.1/okf-uk-legislation-v0.3.0.tar.zst" \
-  --final-release-url "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.3.0/okf-uk-legislation-v0.3.0.tar.zst" \
+  --rc-release-url "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.4.0-rc.1/okf-uk-legislation-v0.4.0.tar.zst" \
+  --final-release-url "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.4.0/okf-uk-legislation-v0.4.0.tar.zst" \
   --receipt "$EVIDENCE/external-finalization-receipt.json"
 
 .venv/bin/python scripts/finalize_release_candidate.py verify-final \
@@ -702,13 +710,13 @@ performance and exact traceability evidence:
   --pre-rc-authorization "$EVIDENCE/pre-rc-authorization-receipt.json" \
   --public-attempt "$PUBLIC_ATTEMPT" \
   --traceability-receipt "$EVIDENCE/traceability-assurance/traceability-closure-receipt.json" \
-  --rc-release-observation "$EVIDENCE/rc-observation/okf-uk-legislation-v0.3.0-rc.1-release-observation.json" \
+  --rc-release-observation "$EVIDENCE/rc-observation/okf-uk-legislation-v0.4.0-rc.1-release-observation.json" \
   --rc-asset "$RC_ASSET" \
   --final-promotion-authorization "$EVIDENCE/final-promotion-authorization-receipt.json" \
-  --final-release-observation "$EVIDENCE/final-observation/okf-uk-legislation-v0.3.0-release-observation.json" \
+  --final-release-observation "$EVIDENCE/final-observation/okf-uk-legislation-v0.4.0-release-observation.json" \
   --final-asset "$FINAL_ASSET" \
-  --rc-release-url "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.3.0-rc.1/okf-uk-legislation-v0.3.0.tar.zst" \
-  --final-release-url "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.3.0/okf-uk-legislation-v0.3.0.tar.zst" \
+  --rc-release-url "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.4.0-rc.1/okf-uk-legislation-v0.4.0.tar.zst" \
+  --final-release-url "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.4.0/okf-uk-legislation-v0.4.0.tar.zst" \
   --receipt "$EVIDENCE/external-finalization-receipt.json"
 ```
 

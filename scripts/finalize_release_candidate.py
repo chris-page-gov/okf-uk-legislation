@@ -1848,7 +1848,7 @@ def reconstruct_runtime_evidence(
     )
     require_equal(
         contract_build_index["path"],
-        EXPLORER_BUILD_INDEX_PATH,
+        Path(EXPLORER_BUILD_INDEX_PATH).name,
         "contract Explorer Pages build index path",
     )
     contract_build_manifest = runtime_material(
@@ -1857,7 +1857,7 @@ def reconstruct_runtime_evidence(
     )
     require_equal(
         contract_build_manifest["path"],
-        EXPLORER_BUILD_MANIFEST_PATH,
+        EXPLORER_BUILD_MANIFEST_NAME,
         "contract Explorer Pages build manifest path",
     )
     contract_build_tree = require_object(
@@ -1978,7 +1978,10 @@ def reconstruct_runtime_evidence(
     )
     require_equal(
         build_manifest,
-        contract_build_manifest,
+        {
+            **contract_build_manifest,
+            "path": EXPLORER_BUILD_MANIFEST_PATH,
+        },
         "contract-bound Explorer Pages build manifest",
     )
     manifest_body = read_stable_explorer_build_material(
@@ -2079,7 +2082,10 @@ def reconstruct_runtime_evidence(
     )
     require_equal(
         build_index,
-        contract_build_index,
+        {
+            **contract_build_index,
+            "path": EXPLORER_BUILD_INDEX_PATH,
+        },
         "contract-bound Explorer Pages build index",
     )
 

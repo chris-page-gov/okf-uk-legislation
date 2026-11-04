@@ -158,6 +158,72 @@ def test_descriptor_entrypoints_and_explorer_receipt_are_digest_bound() -> None:
         "legislation_descriptor_current"
     ]
     assert checks["G05-EXPLORER"]["evidence"]["whole_law_descriptor_current"]
+    assert checks["G05-EXPLORER"]["evidence"]["accepted_for"] == (
+        "embedded-explorer-queryability-only"
+    )
+    assert checks["G05-EXPLORER"]["evidence"][
+        "satisfies_final_release_gate"
+    ] is False
+
+
+def passing_queryability_receipt() -> dict:
+    return {
+        "schema": "okf-explorer-runtime-acceptance.v1",
+        "status": "failed",
+        "failures": [],
+        "invocation": {
+            "evidence_class": "diagnostic",
+            "release_eligible": False,
+        },
+        "gates": {
+            identifier: {"status": "passed"}
+            for identifier in AUDITOR.EXPLORER_QUERYABILITY_GATES
+        },
+        "browsers": [
+            {"browser": browser, "status": "passed"}
+            for browser in AUDITOR.EXPLORER_REQUIRED_BROWSERS
+        ],
+        "integrity": {
+            "status": "passed",
+            "summary": {"all_passed": True},
+        },
+        "accessibility": {
+            "status": "passed",
+            "serious_or_critical_total": 0,
+        },
+        "performance": {
+            "status": "passed",
+            "summary": {"all_passed": True},
+        },
+    }
+
+
+def test_diagnostic_receipt_is_bounded_to_embedded_queryability() -> None:
+    diagnostic = passing_queryability_receipt()
+    passed, evidence = AUDITOR.explorer_queryability_contract(diagnostic)
+    assert passed is True
+    assert evidence["accepted_for"] == "embedded-explorer-queryability-only"
+    assert evidence["satisfies_final_release_gate"] is False
+
+    diagnostic["gates"]["model_assisted_styling_and_filtering"]["status"] = (
+        "failed"
+    )
+    passed, evidence = AUDITOR.explorer_queryability_contract(diagnostic)
+    assert passed is False
+    assert evidence["accepted_for"] == "none"
+
+
+def test_release_receipt_can_satisfy_both_queryability_and_release() -> None:
+    release = passing_queryability_receipt()
+    release["schema"] = "okf-explorer-runtime-acceptance.v2"
+    release["status"] = "passed"
+    release["invocation"] = {
+        "evidence_class": "release",
+        "release_eligible": True,
+    }
+    passed, evidence = AUDITOR.explorer_queryability_contract(release)
+    assert passed is True
+    assert evidence["satisfies_final_release_gate"] is True
 
 
 def test_compact_core_rows_inherit_datapack_snapshot_freshness() -> None:

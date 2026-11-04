@@ -1,0 +1,25 @@
+{
+  "audit": "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+  "counts": {
+    "accepted_assertions": 56479,
+    "accepted_by_kind": {
+      "concept": 31874,
+      "entity": 1136,
+      "topic": 23469
+    },
+    "accepted_by_support": {
+      "metadata-only": 0,
+      "multi-field": 13002,
+      "notes-only": 5003,
+      "title-only": 38474
+    },
+    "candidates": 56479,
+    "records_attempted": 365786,
+    "rejected_candidates": 0,
+    "review_verdicts": 56479,
+    "terminal_outcomes": 365786
+  },
+  "reused_chunks": 366,
+  "review_materials_sha256": "a28f1c2d0edf1e5859ed3a57ff2b55b77f36734b5c27bf5e57a650d05b1d090e",
+  "status": "passed"
+}

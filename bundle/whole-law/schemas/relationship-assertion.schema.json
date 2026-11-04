@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chris-page-gov.github.io/okf-explorer/profile/federation/v1/relationship-assertion.schema.json",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1/relationship-assertion.schema.json",
   "title": "OKF relationship assertion v2",
   "type": "object",
   "required": [

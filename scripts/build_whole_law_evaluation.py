@@ -881,7 +881,7 @@ def build() -> dict[Path, bytes]:
             {
                 "id": "CLAUDE-ACCESS-01",
                 "name": "Repository and canonical descriptor discovery",
-                "expected": "Landing metadata declares repository, repository_subpath, descriptor, docs and alternate routes.",
+                "expected": "Landing metadata declares repository, discovery.raw_subpath, descriptor, docs and alternate routes.",
                 "local_contract": "descriptor-discovery",
                 "external_receipt_required": "public-landing-and-descriptor-journey",
             },
@@ -895,7 +895,7 @@ def build() -> dict[Path, bytes]:
             {
                 "id": "CLAUDE-ACCESS-03",
                 "name": "Raw-root path mismatch",
-                "expected": "A raw 404 directs the client to repository_subpath; the client does not guess paths.",
+                "expected": "A raw 404 directs the client to discovery.raw_subpath; the client does not guess paths.",
                 "local_contract": "declared-raw-subpaths",
                 "external_receipt_required": "explorer-raw-404-behaviour",
             },

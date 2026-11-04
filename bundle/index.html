@@ -1,54 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UK Legislation and Whole-Law OKF</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231d70b8'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='30' fill='white'%3EOKF%3C/text%3E%3C/svg%3E">
-<style>
-body{font:1rem/1.55 system-ui,sans-serif;color:#17212b;max-width:70rem;margin:auto;padding:1.5rem}
-h1,h2{line-height:1.2}.release,.publication{border:1px solid #b1c5d6;border-radius:.5rem;padding:1rem;margin:1rem 0}
-.release{border-left:.4rem solid #1d70b8;background:#f3f8fc}dl{display:grid;grid-template-columns:minmax(12rem,18rem) 1fr;gap:.35rem 1rem}
-dt{font-weight:700}dd{margin:0}a{color:#005ea5}code{overflow-wrap:anywhere}.actions a{display:inline-block;margin:.25rem .5rem .25rem 0}
-@media(max-width:40rem){dl{display:block}dt{margin-top:.65rem}}
-</style>
+<meta name="description" content="UK Legislation and Whole-Law Open Knowledge Format publication">
+<title>UK Legislation and Whole-Law OKF v0.4.0</title>
+<link rel="stylesheet" href="assets/site.css">
+<link rel="alternate" type="application/json" href="okf-explorer.json" title="UK Legislation OKF descriptor">
+<link rel="alternate" type="application/ld+json" href="okf-bundle.jsonld" title="UK Legislation JSON-LD">
+<link rel="alternate" type="application/ld+yaml" href="okf-bundle.yamlld" title="UK Legislation YAML-LD">
+<link rel="alternate" type="application/json" href=".well-known/okf.json" title="OKF interface discovery">
+<script type="module" src="pages.mjs"></script>
 </head>
-<body>
-<main>
-<h1>UK Legislation and Whole-Law OKF</h1>
-<p>Open Knowledge Format publications for the complete recorded legislation.gov.uk work catalogue and the additive Whole-Law source federation.</p>
-<section class="release" aria-labelledby="release-heading">
-<h2 id="release-heading">Published release</h2>
-<dl>
-<dt>Bundle release</dt><dd><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0"><strong>v0.3.0</strong></a></dd>
-<dt>Published</dt><dd>27 July 2026 at 15:40:30 UTC</dd>
-<dt>Release commit</dt><dd><code>3fd2700f275fff53d8605f38eb3257780ea591fa</code></dd>
-<dt>OKF specification</dt><dd><strong>OKF 0.2</strong> (the format version, not the bundle release)</dd>
-<dt>Legislation snapshot</dt><dd>11 July 2026 at 18:00 UTC</dd>
-<dt>Whole-Law access snapshot</dt><dd>25 July 2026</dd>
-<dt>Release archive SHA-256</dt><dd><code>27bc8cb09f683132d3966108629c3416f8b8d0ad58f6c922862cdbfc7bde8e5e</code></dd>
-</dl>
-<p><strong>Version note:</strong> there is no UK Legislation or Whole-Law <code>v0.4.0</code> release. The separate UK Government APIs exemplar used a <code>0.4.0</code> preview value, and OKF Explorer reached <code>v0.5.4</code>.</p>
-<p><strong>Known metadata defect:</strong> some immutable <code>v0.3.0</code> machine representations retain pre-promotion <code>candidate</code>/<code>preview</code> labels, and the root YAML-LD/JSON-LD descriptor retains its earlier bundle value. The linked GitHub release is the authoritative publication record; the frozen release has not been rewritten.</p>
-</section>
-<section class="publication">
-<h2>UK Legislation OKF</h2>
-<p>365,786 legal works and 906,754 relationships, including 14,712 official effects and 56,479 independently reviewed model-assisted discovery assertions.</p>
-<p class="actions"><a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&amp;view=reader#overview">Open in OKF Explorer</a> <a href="https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json">JSON descriptor</a> <a href="docs/">HTML documentation</a></p>
-</section>
-<section class="publication">
-<h2>UK Whole-Law OKF</h2>
-<p>A governed map of 72 researched source records and 36 legal-source classes, with UK Legislation as its currently implemented child bundle.</p>
-<p class="actions"><a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fwhole-law%2Fokf-explorer.json&amp;view=reader#overview">Open in OKF Explorer</a> <a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Federation descriptor</a> <a href="whole-law/">HTML landing page</a></p>
-</section>
-<h2>Repository, sources and examples</h2>
-<ul>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">GitHub repository</a> and <a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">release/archive fallbacks</a></li>
-<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a> and its <a href="https://legislation.github.io/data-documentation/">official data/API documentation</a></li>
-<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
-</ul>
+<body data-snapshot="legislation-work-index-2026-07-11T18:00:00Z" data-version="0.4.0">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header"><p class="eyebrow">UK Legislation and Whole-Law OKF</p><nav aria-label="Publication"><a href="./" aria-current="page">Home</a><a href="docs/">Documentation</a><a href="whole-law/">Whole-Law</a><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></nav></header>
+<div class="hero">
+<p class="eyebrow">Published bundle v0.4.0 · OKF 0.2</p>
+<h1>Find UK legislation and inspect how it is connected</h1>
+<p class="lede">A governed, browser-safe publication of the complete recorded legislation.gov.uk work catalogue, official effect assertions and independently reviewed model-assisted discovery metadata.</p>
+<div class="actions"><a class="button" href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open the full OKF Explorer</a><a class="button secondary" href="docs/getting-started.html">Read the getting-started guide</a></div>
+<section class="status-bar" aria-label="Publication identity"><p><strong>Release v0.4.0</strong>, dated 3 November 2026. The legislation catalogue snapshot is 11 July 2026 at 18:00 UTC; the Whole-Law source-access snapshot is 25 July 2026.</p><p>This release changes the semantic, documentation and interface publication. It does not claim that the July source snapshots were refreshed in November.</p></section>
+</div>
+<main id="main-content">
+<section aria-labelledby="coverage-heading"><h2 id="coverage-heading">What is in this publication</h2><div class="stats"><div class="stat"><strong>365,786</strong><span>legal works</span></div><div class="stat"><strong>906,754</strong><span>active relationships</span></div><div class="stat"><strong>14,712</strong><span>official effect assertions</span></div><div class="stat"><strong>56,479</strong><span>reviewed model-assisted assertions</span></div></div><p class="hint">Relationship authority is preserved. Model-assisted topics, concepts and entities are discovery aids, not official legal classification or legal advice.</p></section>
+
+<section aria-labelledby="search-heading"><h2 id="search-heading">Search the recorded catalogue</h2><div class="grid-two"><form id="catalogue-search" class="search-panel"><label for="query">Words from a title, citation or identifier</label><div class="search-row"><input id="query" name="query" type="search" maxlength="200" placeholder="For example, Human Rights Act" required><button type="submit">Search</button></div><p class="hint">This deterministic search reads the same bounded static index as the publication. Use the full Explorer for facets, graph views and live official full-text discovery.</p></form><aside class="search-panel" aria-labelledby="ai-heading"><h3 id="ai-heading">Use with an AI assistant</h3><p id="webmcp-status" class="tool-state" role="status">Checking optional WebMCP page tools…</p><p>Five read-only tools expose publication identity, catalogue search, a selected work, its bounded relationships and Whole-Law source records. Registration does not prove that a particular AI host can invoke them.</p><a href="docs/using-with-ai.html">AI and WebMCP guide</a></aside></div><p id="search-status" role="status" aria-live="polite"></p><section id="search-results-panel" class="results-panel" hidden><h3>Search results</h3><ol id="search-results" class="results"></ol></section></section>
+
+<section aria-labelledby="interfaces-heading"><h2 id="interfaces-heading">Standard interfaces</h2><div class="interfaces"><article class="interface-card"><h3>Human documentation</h3><p>Every maintained guide has an HTML page with working HTML navigation. Markdown remains available only as the authored and machine-readable source.</p><p><a href="docs/">Browse documentation</a></p></article><article class="interface-card"><h3>OKF Explorer</h3><p>Search, facets, type views, timelines, provenance and bounded relationship hydration for the full large corpus.</p><p><a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></p></article><article class="interface-card"><h3>Linked data</h3><p>Authored YAML-LD with JSON-LD and Turtle projections, schemas, vocabulary and conformance evidence.</p><p><a href="okf-bundle.yamlld">YAML-LD</a> · <a href="okf-bundle.jsonld">JSON-LD</a> · <a href="whole-law/okf-bundle.ttl">Turtle</a></p></article><article class="interface-card"><h3>Machine discovery</h3><p>Versioned descriptors, interface manifest, integrity data and declared alternate access routes without guessed paths.</p><p><a href=".well-known/okf.json">Discovery document</a> · <a href="interfaces.json">Interface manifest</a></p></article><article class="interface-card"><h3>WebMCP</h3><p>Feature-detected, page-scoped, read-only browser tools over the frozen public snapshot. Outputs are explicitly untrusted data.</p><p><a href="docs/using-with-ai.html#webmcp">Read the WebMCP contract</a></p></article><article class="interface-card"><h3>Release and provenance</h3><p>Checksums, source constraints, model-cost boundary, SBOM, rights and release-gate evidence.</p><p><a href="release-assurance/release-report.json">Release evidence</a> · <a href="checksums.json">Checksums</a></p></article></div></section>
+
+<section aria-labelledby="publications-heading"><h2 id="publications-heading">Two compatible publications</h2><div class="cards"><article class="card"><h3>UK Legislation OKF</h3><p>The complete recorded legislation.gov.uk work catalogue at the declared snapshot, with bounded search and relationship delivery.</p><p><a href="https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json">Descriptor</a> · <a href="docs/uk-legislation-okf.html">Architecture</a></p></article><article class="card"><h3>UK Whole-Law OKF</h3><p>A federation map of 72 authoritative-source records and 36 legal-source classes. UK Legislation is its one implemented child; other source families remain honestly labelled research coverage.</p><p><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Federation descriptor</a> · <a href="whole-law/docs/">Guide</a></p></article></div><p><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Immutable release and archive downloads</a></p></section>
+
+<section aria-labelledby="official-heading"><h2 id="official-heading">Official source and limitations</h2><p>Use <a href="https://www.legislation.gov.uk/">legislation.gov.uk</a> and its <a href="https://legislation.github.io/data-documentation/">official data documentation</a> to verify current legal text, commencement, extent, amendments and unapplied effects. See the official <a href="https://guidance.data.gov.uk/get_data/api_documentation/">data.gov.uk API documentation</a> and the published <a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN OKF example</a> for related discovery patterns.</p><p>To create another bundle, use the copy-ready <a href="https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html">OKF Foundry authoring and domain profiles guide</a>. This independent prototype is not legal advice or qualified practitioner assurance.</p><p>GitHub Pages currently serves <code>.yamlld</code> as <code>application/octet-stream</code>. The YAML-LD bytes remain semantically validated; JSON-LD and immutable release downloads are the strict transport fallbacks until a permanent host can serve <code>application/ld+yaml</code>.</p></section>
 </main>
+<footer><p>Published by <a href="https://github.com/chris-page-gov">Chris Page</a> as an independent government prototype. Source material is subject to its recorded rights and the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence</a> where applicable.</p></footer>
 </body>
 </html>

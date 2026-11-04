@@ -6,16 +6,15 @@ legislation-specific Explorer behaviour and the additive Whole-Law federation.
 ## Current publication
 
 The current published Legislation/Whole-Law bundle is
-[v0.3.0](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0),
-published on **27 July 2026** from commit
-`3fd2700f275fff53d8605f38eb3257780ea591fa`. It uses the **OKF 0.2**
+[v0.4.0](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.4.0),
+published on **3 November 2026**. Its release receipt binds the exact commit,
+archive and digest. It uses the **OKF 0.2**
 specification. The legislation catalogue snapshot is dated 11 July 2026 and
 the Whole-Law source-access snapshot is dated 25 July 2026.
 
-Some machine descriptors in the immutable release still carry their
-pre-promotion `candidate`/`preview` labels; the release record is the
-authoritative publication status. There is no Legislation/Whole-Law `v0.4.0`
-release.
+Bundle version **v0.4.0** and format version **OKF 0.2** are independent. The
+July source snapshots remain explicit; the November release does not imply a
+November refresh of upstream legal data.
 
 - [Open the hosted UK Legislation Explorer](https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview)
 - [Open the hosted Whole-Law federation](https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fwhole-law%2Fokf-explorer.json&view=reader#overview)
@@ -31,6 +30,7 @@ release.
 | design an agent that answers with passage-level provenance | [Agent research guide](agent-research-guide.md) |
 | understand completeness, ontology and official access methods | [Architecture and data model](uk-legislation-okf.md) |
 | understand relationship composition | [Relationships](relationships.md) |
+| author or consume directed YAML-LD assertions | [Rich relationship semantics](rich-relationship-semantics.md) |
 | inspect official effects and model-assisted enrichment | [Effects and enrichment](effects-and-enrichment.md) |
 | understand Whole-Law sources, rights and access state | [Source coverage](source-coverage.md) |
 | assess an AI answer or the Explorer itself | [Evaluation and quality](evaluation-and-quality.md) |
@@ -70,13 +70,15 @@ Keep these source and worked-example routes available without path guessing:
   [official data/API documentation](https://legislation.github.io/data-documentation/);
 - the official [data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/);
 - the [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json);
-- the preserved [OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md).
+- the current [OKF Foundry authoring guide](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html).
 
 The original combined repository README and documentation remain at the
 [compatibility site](https://chris-page-gov.github.io/ai-infrastructure-wiki/).
-It preserves the [OKF Bundle authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md),
-[Explorer manual](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/use-okf-explorer.md)
-and [GOV.UK CKAN example](https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fai-engineering-lab-hackathon-london-2026%2Fgov-ckan%2Fokf-explorer.json&view=reader#overview).
+It preserves the historical authoring material, while the current workflow is
+the [OKF Foundry authoring guide](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html).
+The preserved [Explorer manual](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/use-okf-explorer.html)
+and [GOV.UK CKAN example](https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fai-engineering-lab-hackathon-london-2026%2Fgov-ckan%2Fokf-explorer.json&view=reader#overview)
+remain available alongside it.
 
 ## Boundaries
 

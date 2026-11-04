@@ -20,6 +20,13 @@ okflaw:Federation a rdfs:Class ;
   rdfs:label "OKF federation" .
 okflaw:SourceRegister a rdfs:Class ;
   rdfs:label "governed source register" .
+okflaw:RelationshipDataset a rdfs:Class ;
+  rdfs:label "bounded relationship semantic dataset" .
+okflaw:RelationshipPlane a rdfs:Class ;
+  rdfs:label "governed relationship authority and lifecycle plane" .
+okflaw:RelationshipAssertion a rdfs:Class ;
+  rdfs:subClassOf rdf:Statement ;
+  rdfs:label "evidence-bearing directed relationship assertion" .
 okflaw:SourceRecord a rdfs:Class ;
   rdfs:subClassOf dcat:CatalogRecord, prov:Entity ;
   rdfs:label "governed source record" .
@@ -80,6 +87,12 @@ okflaw:childBundle a rdf:Property ;
 okflaw:sourceRegister a rdf:Property ;
   rdfs:range okflaw:SourceRegister ;
   rdfs:label "source register" .
+okflaw:relationshipManifest a rdf:Property ;
+  rdfs:range okflaw:RelationshipDataset ;
+  rdfs:label "relationship-authoritative YAML-LD manifest" .
+okflaw:relationshipManifestJson a rdf:Property ;
+  rdfs:range okflaw:RelationshipDataset ;
+  rdfs:label "relationship-authoritative JSON-LD manifest" .
 okflaw:sourceRecord a rdf:Property ;
   rdfs:range okflaw:SourceRecord ;
   rdfs:label "governing source record" .

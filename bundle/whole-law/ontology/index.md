@@ -13,6 +13,12 @@ No unregistered `w3id.org` identifier is asserted.
 - [Semantic-conformance receipt](../assurance/semantic-conformance.json)
 - [Compact core relationship row v1](../schemas/core-relationship-row.schema.json)
 - [Rich relationship assertion v2](../schemas/relationship-assertion.schema.json)
+- [Reader-facing rich directed relationship assertion v3](../schemas/relationship-assertion-v3.schema.json)
+- [Pinned shared Bundle Wiki semantic assertion](../schemas/semantic-assertion.schema.json)
+- [Reader runtime relationship row](../schemas/relationship-runtime-row.schema.json)
+- [Reader runtime manifest](../schemas/relationship-runtime-manifest.schema.json)
+- [Reader route-locator manifest](../schemas/relationship-route-locator.schema.json)
+- [Reader route-locator bucket](../schemas/relationship-route-locator-bucket.schema.json)
 - [Model candidate output v1](../schemas/model-enrichment-candidate.schema.json)
 - [Independent model review v1](../schemas/model-enrichment-review.schema.json)
 - [Paid model run v2](../schemas/model-enrichment-run-v2.schema.json)
@@ -26,17 +32,21 @@ Legal-source identifiers and properties remain source-native. Crosswalks use
 exact, narrower, broader or related mappings; similarity alone never becomes
 `owl:sameAs`.
 
-The compact v1 row is retained only for the bounded legacy legislation data
-plane. Official effects and audited model-assisted assertions use the richer
-v2 contract. Publication summaries identify the applicable contract and
+The compact v1 row remains a bounded legacy/source projection. Official
+effects and governed model-assisted inputs retain the v2 contracts against
+which they were frozen. The additive v3 Reader projection maps every active or
+historical input to an absolute directed assertion, validated local routes and
+matching direct/reified JSON-LD and a local-route Reader runtime projection
+without rewriting those inputs. Publication
+summaries identify the source contract, semantic projection, authority and
 freshness policy per datapack.
 
 The semantic-conformance receipt validates the complete authored and generated
-federation descriptor graphs with SHACL. Those graphs contain the Federation
-and its hash-bound SourceRegister contract node; they do not contain the
-365,786 catalogued legal works. The receipt separately records exhaustive JSON
-Schema validation of every compact core and provider relationship row so RDF
-descriptor conformance is not overstated as corpus-wide RDF materialisation.
+federation control graphs with SHACL. Those startup graphs contain the
+Federation, its hash-bound SourceRegister contract node and the relationship
+manifest link. Bounded JSON-LD shards separately materialise every active and
+historical assertion as a direct triple plus evidence-bearing reification; the
+receipt validates their counts, source bindings and exact reconciliation.
 
 The entity-model contract also defines and non-vacuously validates legal
 manifestations, provisions and evidential passages, cases, courts,

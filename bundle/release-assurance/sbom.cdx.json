@@ -11,15 +11,15 @@
         },
         {
           "name": "okf:artifact-hash-digest",
-          "value": "sha256:e8a43fc379630e059925a1a892476a23b7bccd0ca459d07da2015594755a191c"
+          "value": "sha256:fae29d9f671559dd53991cfd2dc673799764bf2f650ab01f73b8a5f0a60d1909"
         },
         {
           "name": "okf:direct-dependency-count",
-          "value": "7"
+          "value": "9"
         },
         {
           "name": "okf:identity-digest",
-          "value": "sha256:9542649bd62f7064e1bf6bfc82b4db0bc3260015649fd20cc804077076bc0c97"
+          "value": "sha256:d66bdd006f5f3d69a0137aab0a0f5e5cf9b0d57c8e0dba3a1763d5fe2a33b57c"
         },
         {
           "name": "okf:package-count",
@@ -27,7 +27,7 @@
         },
         {
           "name": "okf:transitive-dependency-count",
-          "value": "45"
+          "value": "43"
         }
       ],
       "purl": "pkg:generic/okf-validation-environment@1",
@@ -40,7 +40,7 @@
       "properties": [
         {
           "name": "okf:workflow",
-          "value": ".github/workflows/ci.yml, .github/workflows/drift.yml, .github/workflows/pages.yml"
+          "value": ".github/workflows/drift.yml, .github/workflows/pages.yml, .github/workflows/validation-phase.yml"
         },
         {
           "name": "okf:ref-kind",
@@ -91,7 +91,7 @@
       "properties": [
         {
           "name": "okf:workflow",
-          "value": ".github/workflows/ci.yml, .github/workflows/drift.yml, .github/workflows/pages.yml"
+          "value": ".github/workflows/drift.yml, .github/workflows/validation-phase.yml"
         },
         {
           "name": "okf:ref-kind",
@@ -275,27 +275,27 @@
       "version": "26.1.0"
     },
     {
-      "bom-ref": "pkg:pypi/certifi@2026.7.22",
+      "bom-ref": "pkg:pypi/certifi@2026.10.19",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775"
+          "content": "035c1e85572b141bf1c3a3eff0e33a8eb74917522f2559075ff8d2fea780a1ae"
         },
         {
           "alg": "SHA-256",
-          "content": "741e2c3b351ddf169a738da9f2c048608ff7f2c5cc02f1ebc6b118bb090d5d55"
+          "content": "42d35340cc5b9ba78e818ddbff0c5b1c2b779de448a340fd1b989f5fa8670e1b"
         }
       ],
       "name": "certifi",
       "properties": [
         {
           "name": "uk.gov.okf.validation-dependency-kind",
-          "value": "transitive"
+          "value": "direct"
         }
       ],
-      "purl": "pkg:pypi/certifi@2026.7.22",
+      "purl": "pkg:pypi/certifi@2026.10.19",
       "type": "library",
-      "version": "2026.7.22"
+      "version": "2026.10.19"
     },
     {
       "bom-ref": "pkg:pypi/charset-normalizer@3.4.9",
@@ -4650,27 +4650,27 @@
       "version": "3.0.0"
     },
     {
-      "bom-ref": "pkg:pypi/urllib3@2.7.0",
+      "bom-ref": "pkg:pypi/urllib3@2.8.0",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "231e0ec3b63ceb14667c67be60f2f2c40a518cb38b03af60abc813da26505f4c"
+          "content": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3"
         },
         {
           "alg": "SHA-256",
-          "content": "9fb4c81ebbb1ce9531cce37674bbc6f1360472bc18ca9a553ede278ef7276897"
+          "content": "63bf2ead4c879426ebf22ef2a781eeb4aa3b4ae798a0435506f8687fd5bb9b63"
         }
       ],
       "name": "urllib3",
       "properties": [
         {
           "name": "uk.gov.okf.validation-dependency-kind",
-          "value": "transitive"
+          "value": "direct"
         }
       ],
-      "purl": "pkg:pypi/urllib3@2.7.0",
+      "purl": "pkg:pypi/urllib3@2.8.0",
       "type": "library",
-      "version": "2.7.0"
+      "version": "2.8.0"
     },
     {
       "bom-ref": "pkg:pypi/wcwidth@0.8.2",
@@ -5574,7 +5574,7 @@
         "pkg:pypi/beautifulsoup4@4.15.0",
         "pkg:pypi/cachetools@7.1.6",
         "pkg:pypi/cattrs@26.1.0",
-        "pkg:pypi/certifi@2026.7.22",
+        "pkg:pypi/certifi@2026.10.19",
         "pkg:pypi/charset-normalizer@3.4.9",
         "pkg:pypi/documented@0.1.4",
         "pkg:pypi/frozendict@2.4.7",
@@ -5615,7 +5615,7 @@
         "pkg:pypi/typing-extensions@4.16.0",
         "pkg:pypi/typing-inspection@0.4.2",
         "pkg:pypi/url-normalize@3.0.0",
-        "pkg:pypi/urllib3@2.7.0",
+        "pkg:pypi/urllib3@2.8.0",
         "pkg:pypi/wcwidth@0.8.2",
         "pkg:pypi/yaml-ld@1.1.22",
         "pkg:pypi/yarl@1.24.5",
@@ -5673,7 +5673,7 @@
     },
     {
       "dependsOn": [],
-      "ref": "pkg:pypi/certifi@2026.7.22"
+      "ref": "pkg:pypi/certifi@2026.10.19"
     },
     {
       "dependsOn": [],
@@ -5837,7 +5837,7 @@
     },
     {
       "dependsOn": [],
-      "ref": "pkg:pypi/urllib3@2.7.0"
+      "ref": "pkg:pypi/urllib3@2.8.0"
     },
     {
       "dependsOn": [],
@@ -5868,7 +5868,7 @@
       ],
       "name": "okf-uk-legislation",
       "type": "application",
-      "version": "0.3.0-candidate"
+      "version": "0.4.0"
     },
     "timestamp": "2026-07-26T20:54:40Z",
     "tools": {
@@ -5881,7 +5881,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:23bf7857-3bac-58e0-af5c-edbe4dadc19d",
+  "serialNumber": "urn:uuid:ac03ef62-03d2-598d-b051-864c30cdba20",
   "specVersion": "1.6",
   "version": 1
 }

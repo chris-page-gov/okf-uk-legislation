@@ -3,10 +3,14 @@
 # requirements-validation.txt is the generated, hash-locked CPython 3.12
 # Linux x86_64 closure. Change direct requirements here, then regenerate the
 # lock with the command documented in docs/validation-dependency-lock.md.
+# Security exception for the compromised emSign trust root; see the lock guide.
+certifi==2026.10.19
 jsonschema==4.25.1
 PyLD==2.0.4
 pyshacl==0.30.1
 PyYAML==6.0.2
 rdflib==7.6.0
+# Security exception to the frozen transitive closure; see the lock guide.
+urllib3==2.8.0
 yaml-ld==1.1.22
 zstandard==0.23.0

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graph and enrichment gate assurance – UK Whole-Law OKF</title>
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../">Home</a> <a href="../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Graph and enrichment gate assurance</h1>
+<p><strong>Decision:</strong> PASSED</p>
+<p>This deterministic audit reads the built publication only. It does not rebuild the corpus, make network requests, or invoke GUI tools.</p>
+<h2>Audited totals</h2>
+<ul>
+<li>Legal works: 365,786</li>
+<li>Core relationships: 835,563</li>
+<li>Official effects: 14,712</li>
+<li>Eligible enrichment attempts: 365,786</li>
+<li>Independently accepted model-assisted assertions: 56,479</li>
+<li>Accepted v3 kinds: topic 23,469, concept 31,874, entity 1,136</li>
+<li>Combined relationships: 906,754</li>
+</ul>
+<h2>Checks</h2>
+<ul>
+<li><code>G05-COMPOSITION</code> — <strong>passed</strong> — relationship-composition-reconciliation</li>
+<li><code>G05-CORE</code> — <strong>passed</strong> — core-relationship-integrity</li>
+<li><code>G05-DESCRIPTORS</code> — <strong>passed</strong> — descriptor-entrypoints-and-counts</li>
+<li><code>G05-EFFECTS</code> — <strong>passed</strong> — official-effects</li>
+<li><code>G05-EFFECTS-CHUNKS</code> — <strong>passed</strong> — EFFECTS-chunk-integrity</li>
+<li><code>G05-EFFECTS-EVIDENCE</code> — <strong>passed</strong> — immutable-official-evidence</li>
+<li><code>G05-EFFECTS-LIVE</code> — <strong>passed</strong> — post-build-live-reconciliation</li>
+<li><code>G05-ENRICHMENT</code> — <strong>passed</strong> — accepted-v3-model-assisted-assertions</li>
+<li><code>G05-ENRICHMENT-ATTEMPTS</code> — <strong>passed</strong> — complete-v3-terminal-outcomes-and-review</li>
+<li><code>G05-ENRICHMENT-CHUNKS</code> — <strong>passed</strong> — accepted-v3-chunk-integrity</li>
+<li><code>G05-ENRICHMENT-COST</code> — <strong>passed</strong> — model-cost-boundary</li>
+<li><code>G05-EXPLORER</code> — <strong>passed</strong> — explorer-queryability</li>
+<li><code>G05-FEDERATION-SUMMARY</code> — <strong>passed</strong> — federation-relationship-summary-reconciliation</li>
+<li><code>G05-GRAPH-INDEX</code> — <strong>passed</strong> — graph-provider-datapack-discovery</li>
+<li><code>G05-ROOT-SUMMARY</code> — <strong>passed</strong> — root-relationship-summary-reconciliation</li>
+<li><code>G05-TOTALS</code> — <strong>passed</strong> — locked-release-totals</li>
+<li><code>G05-V1-CORE</code> — <strong>passed</strong> — v1-contamination</li>
+</ul>
+<h2>Scope boundaries</h2>
+<ul>
+<li>Official effects are source-derived assertions from successful frozen legislation.gov.uk routes; coverage remains explicitly partial.</li>
+<li>Active enrichment contains only independently accepted v3 topic, concept and entity-link discovery metadata. Historical v2 evidence is not counted; no enrichment is official legal classification or legal advice.</li>
+<li>The zero-cost statement is limited to incremental OpenAI API usage recorded by the repository. Codex subscription usage and external billing are not exposed.</li>
+<li>Core-row freshness describes the current immutable publication snapshot; it is not a claim that each provision is in force.</li>
+<li>The separately bound Explorer acceptance receipt proves loading, federation and relationship rendering for the exact descriptor digests. Informational JSON entrypoints are also directly resolvable.</li>
+</ul>
+<h2>Entity-model limitation</h2>
+<p>P04-01 is verified at the approved catalogue/schema grain. The entity contract covers every named class, while the complete expression, provision, case, court, organisation, publication, jurisdiction and temporal-state inventories remain unpopulated. The publication must not imply full source-family ingestion.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

@@ -19,26 +19,19 @@ already been ingested.
 
 | Item | Value |
 |---|---|
-| Legislation/Whole-Law bundle release | **[v0.3.0][release-v030]** |
-| Published | **27 July 2026 at 15:40:30 UTC** |
-| Release commit | `3fd2700f275fff53d8605f38eb3257780ea591fa` |
-| Immutable archive | 277,647,814 bytes; SHA-256 `27bc8cb09f683132d3966108629c3416f8b8d0ad58f6c922862cdbfc7bde8e5e` |
+| Legislation/Whole-Law bundle release | **[v0.4.0][release-v040]** |
+| Published | **3 November 2026** |
+| Release identity | The final release receipt binds the exact commit, archive and SHA-256 digest |
 | OKF specification used | **OKF 0.2** (this is the format version, not the bundle release) |
 | Legislation catalogue snapshot | 11 July 2026 at 18:00 UTC |
 | Whole-Law source-access snapshot | 25 July 2026 |
-| Explorer release used | `v0.5.4` |
+| Explorer release used | `v0.8.1` |
 
-The release candidate and final release use the same commit and byte-identical
-archive. There is no UK Legislation or Whole-Law `v0.4.0` release. The separate
-UK Government APIs exemplar used a `0.4.0` preview value, while OKF Explorer
-subsequently reached `v0.5.4`; neither is the version of this bundle.
-
-The frozen `v0.3.0` machine representations retain some pre-promotion
-`candidate`/`preview` lifecycle labels, and the root YAML-LD/JSON-LD descriptor
-retains the earlier `0.2.0` bundle value. These are known metadata defects in
-the immutable release, not evidence that the long-run work was lost. The
-GitHub release record above is the authoritative publication record; the
-frozen release is not being rewritten retrospectively.
+Bundle version **v0.4.0** and format version **OKF 0.2** are independent.
+Release v0.4.0 consolidates the completed semantic-profile, dependency,
+documentation, UI and WebMCP work. Its source snapshots remain dated July
+2026: publishing corrected interfaces in November does not claim a November
+refresh of legislation.gov.uk or the Whole-Law source register.
 
 ## Open the publications
 
@@ -66,7 +59,7 @@ For source and cross-domain context, keep these direct entry points:
 - [legislation.gov.uk][legislation-service] and its [official data/API documentation][legislation-data-docs];
 - the official [data.gov.uk API documentation][govuk-data-docs];
 - the [GOV.UK CKAN example descriptor][ckan-descriptor] and [Explorer view][ckan-example];
-- the preserved [OKF Bundle Wiki authoring guide][bundle-authoring].
+- the current, copy-ready [OKF Foundry authoring guide][bundle-authoring].
 
 The original combined repository README and documentation remain available in
 the [AI Infrastructure Wiki compatibility repository][compat-repository].
@@ -84,7 +77,7 @@ redirects instead of silently disappearing. Clients should follow each
 descriptor’s declared repository, `raw_subpath`, documentation and alternate
 routes; they should not guess raw paths.
 
-## Published v0.3.0 contents
+## Published v0.4.0 contents
 
 The published release contains:
 
@@ -166,11 +159,20 @@ routing, publication authority and current live-verification gap. Read the
 [build and publication method](PUBLICATION-METHOD.md) before changing
 workflows, generated projections or release evidence.
 
-Pull requests run the complete validator once. Feature pushes do not duplicate
-that pull-request run, and protected-main validation is owned by the Pages
-workflow rather than repeated in general CI. The validator checks the tracked
-publication without rebuilding it and emits per-step timings to support a
-future, evidence-led dependency split.
+Pull requests run the complete validation contract as four mandatory,
+read-only jobs: core, legislation, semantics and federation. A stable
+fail-closed `validate` job succeeds only when all four jobs succeed. Feature
+pushes do not duplicate that pull-request run, and protected-main validation
+is owned by the Pages workflow rather than repeated in general CI. Pages
+deployment depends on the same `validate` gate. The shared validator checks
+the tracked publication without rebuilding it; its default local mode still
+runs every phase serially and emits per-step timings.
+
+The [validation dependency lock](docs/validation-dependency-lock.md) keeps the
+52-package closure frozen except for reviewed urllib3 and certifi security
+updates. Certifi 2026.10.19 removes the compromised emSign trust root while
+preserving unaffected roots. The dependency-bound release evidence is regenerated;
+the immutable source snapshots and published release are preserved.
 
 The machine-readable
 [`reproduction-profile.json`](release-assurance/reproduction-profile.json) is
@@ -180,12 +182,15 @@ authored and generated layers with exactly its `build_commands`:
 
 ```sh
 .venv/bin/python scripts/build_legislation_okf.py --from-existing
+.venv/bin/python scripts/build_release_metadata.py
 .venv/bin/python scripts/build_model_enrichment_input_evidence.py
 .venv/bin/python scripts/build_codex_semantic_enrichment.py
 .venv/bin/python scripts/build_legislation_effects.py --offline
 .venv/bin/python scripts/build_codex_semantic_enrichment_v3.py build
 .venv/bin/python scripts/audit_codex_semantic_enrichment_v3.py audit
 .venv/bin/python scripts/rebuild_legislation_discovery.py
+.venv/bin/python scripts/build_relationship_semantics.py
+.venv/bin/python scripts/build_bounded_relationship_navigation.py
 .venv/bin/python scripts/build_legislation_evaluation.py
 .venv/bin/python scripts/build_whole_law_evaluation.py
 .venv/bin/python scripts/run_yaml_ld_conformance.py
@@ -220,8 +225,11 @@ Then validate without changing the publication with exactly the profile's
 ```sh
 .venv/bin/python -m unittest discover -s tests -v
 .venv/bin/python scripts/build_publication_docs.py --check
+.venv/bin/python scripts/build_release_metadata.py --check
 .venv/bin/python scripts/check_internal_links.py
 .venv/bin/python scripts/rebuild_legislation_discovery.py --check
+.venv/bin/python scripts/build_relationship_semantics.py --check
+.venv/bin/python scripts/build_bounded_relationship_navigation.py --check
 .venv/bin/python scripts/check_legislation_okf.py
 .venv/bin/python scripts/legislation_effects_evidence_archive.py check --snapshot-id legislation-effects-2026-07-25
 .venv/bin/python scripts/build_legislation_effects.py --check
@@ -264,25 +272,14 @@ Source refreshes create immutable attempts and datapacks; they do not rewrite
 historical evidence. The release sequence is fail-closed:
 `draft → candidate → validated → rc → published`.
 The [reproduction and promotion contract](release-assurance/reproduction-and-promotion.md)
-keeps `okf-uk-legislation-v0.3.0.tar.zst` byte-identical and identically named
-across the `v0.3.0-rc.1` and `v0.3.0` releases.
+keeps `okf-uk-legislation-v0.4.0.tar.zst` byte-identical and identically named
+across the `v0.4.0-rc.1` and `v0.4.0` releases.
 
-Published Explorer `v0.5.4` at protected-main commit
-`a23dfdea56fea0184b6d53f3163b292dd1a312ed` is the active release
-prerequisite. The release history remains explicit: `v0.5.0` is the original
-release-order milestone, `v0.5.1` is historical corrective work, and `v0.5.2`
-is superseded because its timestamp-derived SvelteKit build bytes were not
-reproducible. `v0.5.3` is also historical and superseded: an independent
-observation of its Actions TAR found a 159-byte `404.html` after assembly,
-while the canonical app-build manifest declared the 1,122-byte Svelte file.
-
-The `v0.5.4` Pages assembly preserves the built `404.html`, runs a
-manifest-bound post-assembly verifier before upload, and binds the canonical
-16-file app tree at SHA-256
-`b246c88f4bbcc3eae47f79b4dd6eaad76ea758272e427823a895604f71ba40c7`.
-Its durable Pages release asset is
-`okf-explorer-v0.5.4-pages-artifact.zip` (185,023,908 bytes; SHA-256
-`357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0`).
+OKF Explorer `v0.8.1` is the release consumer for this publication. The
+release receipt binds its exact commit and deployed Pages identity before the
+Legislation release is promoted. Historical Explorer releases remain in their
+own changelog and immutable GitHub releases; they are not the active contract
+for this bundle.
 
 [legislation-explorer]: https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview
 [whole-law-explorer]: https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fwhole-law%2Fokf-explorer.json&view=reader#overview
@@ -293,18 +290,23 @@ Its durable Pages release asset is
 [whole-law-turtle]: https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.ttl
 [repository]: https://github.com/chris-page-gov/okf-uk-legislation
 [releases]: https://github.com/chris-page-gov/okf-uk-legislation/releases
-[release-v030]: https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0
+[release-v040]: https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.4.0
 [whole-law-guide]: https://chris-page-gov.github.io/okf-uk-legislation/whole-law/docs/
 [compat-repository]: https://github.com/chris-page-gov/ai-infrastructure-wiki
 [compat-docs]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/
-[bundle-authoring]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md
-[use-explorer]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/use-okf-explorer.md
-[ai-okf-usage]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/ai-okf-usage.md
+[bundle-authoring]: https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html
+[use-explorer]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/use-okf-explorer.html
+[ai-okf-usage]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/ai-okf-usage.html
 [legislation-guide]: https://chris-page-gov.github.io/okf-uk-legislation/docs/
-[legacy-legislation-guide]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/uk-legislation/index.md
+[legacy-legislation-guide]: https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/uk-legislation/
 [ckan-example]: https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fai-engineering-lab-hackathon-london-2026%2Fgov-ckan%2Fokf-explorer.json&view=reader#overview
 [ckan-descriptor]: https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json
 [legislation-service]: https://www.legislation.gov.uk/
 [legislation-data-docs]: https://legislation.github.io/data-documentation/
 [govuk-data-docs]: https://guidance.data.gov.uk/get_data/api_documentation/
 [ogl]: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+
+The [profile-reconciliation history](docs/profile-reconciliation-2026-09.md)
+records how the semantic-profile correction was reviewed before adoption into
+v0.4.0. Its [bounded graph alternatives](docs/bounded-relationship-navigation.md)
+preserve Explorer memory limits and offer individually scoped work routes.

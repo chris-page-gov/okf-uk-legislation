@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1/relationship-assertion-v3.schema.json",
+  "title": "OKF rich directed relationship assertion v3",
+  "description": "The Reader-facing assertion projection shared by the active core, official-effects and governed model-assisted planes, and by explicitly historical planes. It preserves authority and lifecycle rather than merging them.",
+  "type": "object",
+  "required": [
+    "@id",
+    "@type",
+    "schema",
+    "id",
+    "source",
+    "source_iri",
+    "target",
+    "target_iri",
+    "source_route",
+    "target_route",
+    "predicate",
+    "kind",
+    "label",
+    "inverse_label",
+    "direction",
+    "assertion_status",
+    "assertion_scope",
+    "authority",
+    "derivation",
+    "observed_at",
+    "evidence",
+    "rights",
+    "plane",
+    "lifecycle",
+    "active"
+  ],
+  "properties": {
+    "@id": {"$ref": "#/$defs/absoluteIri"},
+    "@type": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "schema": {"const": "okf-relationship-assertion.v3"},
+    "id": {"$ref": "#/$defs/absoluteIri"},
+    "source": {"$ref": "#/$defs/absoluteIri"},
+    "target": {"$ref": "#/$defs/absoluteIri"},
+    "source_iri": {"$ref": "#/$defs/absoluteIri"},
+    "target_iri": {"$ref": "#/$defs/absoluteIri"},
+    "source_route": {"$ref": "#/$defs/localRoute"},
+    "target_route": {"$ref": "#/$defs/localRoute"},
+    "predicate": {"$ref": "#/$defs/absoluteIri"},
+    "kind": {"type": "string", "minLength": 1},
+    "label": {"type": "string", "minLength": 1},
+    "inverse_label": {"type": "string", "minLength": 1},
+    "direction": {"const": "source-to-target"},
+    "assertion_status": {
+      "enum": ["official", "normalized", "inferred", "model-derived"]
+    },
+    "assertion_scope": {"enum": ["real-world", "synthetic-fixture"]},
+    "authority": {
+      "type": "object",
+      "required": ["class", "label", "source"],
+      "properties": {
+        "class": {
+          "enum": ["official", "derived", "model-assisted", "synthetic", "unclassified"]
+        },
+        "label": {"type": "string", "minLength": 1},
+        "source": {"$ref": "#/$defs/httpIri"}
+      },
+      "additionalProperties": true
+    },
+    "derivation": {"$ref": "#/$defs/absoluteIri"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "minProperties": 2,
+        "required": [
+          "@id",
+          "type",
+          "url",
+          "source_field",
+          "source_value_sha256",
+          "retrieved_at",
+          "source_route"
+        ],
+        "properties": {
+          "@id": {"$ref": "#/$defs/absoluteIri"},
+          "type": {"type": "string", "minLength": 1},
+          "url": {"$ref": "#/$defs/httpIri"},
+          "source_route": {"$ref": "#/$defs/localRoute"},
+          "source_field": {"type": "string", "minLength": 1},
+          "source_value_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "retrieved_at": {"type": "string", "format": "date-time"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "rights": {
+      "type": "object",
+      "required": ["source", "assertion"],
+      "properties": {
+        "source": {"$ref": "#/$defs/httpIri"},
+        "assertion": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "plane": {"$ref": "#/$defs/absoluteIri"},
+    "lifecycle": {"enum": ["active", "historical", "rejected"]},
+    "active": {"type": "boolean"},
+    "derivation_activity": {"$ref": "#/$defs/absoluteIri"},
+    "rule": {"$ref": "#/$defs/absoluteIri"},
+    "supporting_assertions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/absoluteIri"}
+    },
+    "confidence_score": {"type": "number", "minimum": 0, "maximum": 1},
+    "review_status": {"type": "string", "minLength": 1},
+    "confidence": {},
+    "freshness": {"enum": ["current", "stale", "unknown", "historical"]},
+    "source_assertion": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"active": {"const": true}},
+        "required": ["active"]
+      },
+      "then": {"properties": {"lifecycle": {"const": "active"}}},
+      "else": {
+        "properties": {
+          "lifecycle": {"enum": ["historical", "rejected"]}
+        }
+      }
+    },
+    {
+      "properties": {
+        "@type": {"contains": {"const": "rdf:Statement"}}
+      }
+    },
+    {
+      "properties": {
+        "@type": {"contains": {"const": "okf:RelationshipAssertion"}}
+      }
+    },
+    {
+      "if": {
+        "properties": {"assertion_status": {"const": "inferred"}},
+        "required": ["assertion_status"]
+      },
+      "then": {
+        "required": [
+          "rule",
+          "supporting_assertions",
+          "confidence_score",
+          "derivation_activity"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {"assertion_status": {"const": "model-derived"}},
+        "required": ["assertion_status"]
+      },
+      "then": {
+        "required": [
+          "confidence_score",
+          "derivation_activity",
+          "review_status"
+        ]
+      }
+    }
+  ],
+  "additionalProperties": true,
+  "$defs": {
+    "absoluteIri": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s]+$"
+    },
+    "httpIri": {
+      "type": "string",
+      "pattern": "^https?://[^\\s]+$"
+    },
+    "localRoute": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*(?:/[A-Za-z0-9._~-]+)+$"
+    }
+  }
+}

@@ -1,6 +1,50 @@
 # Changelog
 
-## Unreleased
+## 0.4.0 — 2026-11-03
+
+- Consolidated the reconciled OKF 0.2 and YAML-LD semantic profile, bounded
+  relationship navigation, v3 governed enrichment and official-effects graph
+  into the current release contract.
+- Added an accessible Pages home, HTML projections for every maintained guide,
+  machine interface discovery and five feature-detected, read-only WebMCP page
+  tools over the frozen publication snapshot.
+- Updated Legislation and Whole-Law descriptors to v0.4.0 while retaining the
+  July 2026 source-snapshot identities and explicit authority boundaries.
+- Bound the publication to OKF Explorer v0.8.1 and its current federation,
+  search, facets, graph, provenance and bounded-adjacency behaviour.
+- Reworked the successor-release assurance contracts so historical runtime
+  receipts remain immutable while the active Explorer, reproduction and
+  promotion identities fail closed against the exact new release.
+- Rebound the headless security gate to the installed Codex Security 0.1.32
+  producer and its canonical coverage, findings and scan-manifest schemas;
+  the known-broken Desktop Security workspace remains expressly prohibited.
+- Switched the WebMCP relationship tool from the legacy core-only adjacency to
+  the digest-bound rich route locator. It now reports current core,
+  official-effects and model-assisted v3 plane totals and hydrates a bounded
+  sample under explicit browser-memory ceilings.
+- Raised the complete CI and Pages validation ceilings from 60 to 80 minutes
+  after GitHub-hosted run 41705607815 completed every preceding check but was
+  cancelled during the v3 audit at the former timeout. The complete gate and
+  fail-closed timeout semantics are unchanged.
+- Excluded macOS Finder `.DS_Store` and AppleDouble metadata from authored
+  Whole-Law publication inputs. A bounded Linux diagnostic for run
+  41719576058 proved that two untracked Finder files had leaked only into the
+  integrity manifest; no legal, semantic or research content differed.
+- Divided protected CI and Pages validation into `core`, `legislation`,
+  `semantics` and `federation` jobs behind the same fail-closed `validate`
+  status. Every existing check remains mandatory; cancellation, failure or a
+  skipped phase fails the aggregator. The local default still runs all phases
+  serially.
+
+- Pin certifi 2026.10.19 as a second bounded security exception to the frozen
+  validation closure. Remove the compromised emSign root, retain unaffected
+  roots and TLS verification, and test the installed trust store. Regenerate
+  the SBOM, provenance, reproduction contract, projected guide and checksums;
+  preserve all other package versions and immutable publication evidence.
+
+- Pin urllib3 2.8.0 as a narrow security exception to the frozen validation
+  closure, retain hash enforcement and test bounded chunk-size parsing with
+  synthetic HTTP responses. Publication and semantic evidence stay unchanged.
 
 - Added the OKF build and publication lifecycle contract, repository-specific
   contract and documentation-lockstep checks, and a maintained methodology
@@ -12,8 +56,8 @@
   so later dependency-aware optimisation can use measured evidence.
 - Added a public HTML landing page and prominent release/version record after
   the published Pages root was found to return 404.
-- Documented the frozen `v0.3.0` machine-metadata discrepancy without
-  rewriting or rebuilding the immutable release.
+- Preserved the frozen v0.3.0 metadata discrepancy as historical evidence;
+  v0.4.0 corrects the current descriptors without rewriting that release.
 
 ## 0.3.0 — 2026-07-27
 
@@ -49,3 +93,20 @@
   route-scoped adjacency shards.
 - Added governed model-assisted enrichment provenance, reproducible API runner,
   explicit quota constraint and $0.00 rejected-call cost record.
+
+## Historical development record — profile reconciliation candidate
+
+- Register the bounded-navigation producer’s exact HTML/JavaScript outputs with the documentation builder; preserve strict byte checks and refusal of unknown files. Retain the failed locked-reproduction attempt that exposed the missing ownership integration.
+
+- Candidate-only follow-up: all three browser journeys and exact staged-material checks pass diagnostically, but current release pins are incompatible. Retain the complete validation and checksum failures; the profile reconciliation is not release-ready. Historical Explorer and legislation tags are unchanged.
+
+- Recheck the repaired candidate: 486 tests, 11 failures and one skip; checksums, publication contract and documentation lockstep pass. Retain the failed complete-validator log and keep publication blocked.
+
+- Retain a beginner-readable candidate status, failed browser/unit observations and a separate adoption sequence; no new legislation release is claimed.
+
+- Reconcile a copy of the unfinished migration with current main; preserve the original checkout and v0.3.0.
+- Vendor the exact canonical profile, validate every retained semantic assertion, and move legislation-specific descriptor fields into a namespaced extension with absolute child routes.
+- Preserve the old dormant policy/schema bytes and bind its existing digest to the historical archive. No API permission, model setting or cost cap changes.
+- Offer bounded work-level alternatives for broad graph routes without increasing loading limits.
+- Distinguish correction notices from newly observed legal works in freshness reports.
+- Release reproduction, current candidate receipts and public browser acceptance remain gates; a generated projection is not a published release.

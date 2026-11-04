@@ -23,7 +23,7 @@ The 25 explicit routes cover:
 - Explorer shell URLs carrying the exact legislation, Whole-Law and GOV.UK
   CKAN descriptor queries;
 - the public GitHub Pages workflow result for Explorer, pinned to the exact
-  v0.5.4 commit and successful deployment run;
+  v0.8.1 commit and successful deployment run;
 - the compatibility documentation index, bundle-authoring instructions and
   CKAN/Explorer guide;
 - compatibility moved descriptors for legislation, Whole-Law and CKAN;
@@ -43,14 +43,16 @@ release assurance, not an Explorer runtime dependency, so API exhaustion
 cannot prevent normal Pages, raw-content or release-archive fallback use.
 Browser loading, CORS behaviour, interaction completion, accessibility and
 runtime performance remain separately evidenced by GATE-07 and GATE-08.
-Explorer v0.5.2 remains a historical release but is not the active smoke-test
-binding because its timestamp-derived SvelteKit build bytes were not
-reproducible. Explorer v0.5.3 also remains historical and is superseded
-because its independently observed Actions TAR contained a 159-byte
-`404.html`, while the canonical app-build manifest declared 1,122 bytes. The
-v0.5.4 prerequisite preserves the built `404.html`, verifies the assembled app
-against that canonical manifest, and provides the complete deterministic
-build-tree digest.
+Explorer v0.5.2 through v0.5.4 remain historical releases and are not the
+active smoke-test binding. Explorer v0.8.1 is the current prerequisite. Its
+annotated tag peels to commit `dcd0c43e29593436b13c59271c75d37d06e2b754`;
+CI run `41659154521` and Pages run `41663805875` passed. The published
+43-file application tree has SHA-256
+`5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4`.
+Its release verification also records the accepted non-hard omission of one
+nested research workflow from the Pages transport and one reproducible
+narrow-viewport deep-link detail failure; neither changes this manifest's
+runtime identity binding.
 
 ## Network and SSRF controls
 
@@ -123,24 +125,24 @@ placeholders from the eligible clean-room reproduction:
 
 ```sh
 cp release-assurance/deployed-entrypoints-manifest.json \
-  /tmp/okf-v0.3.0/deployed-entrypoints-manifest.template.json
+  /tmp/okf-v0.4.0/deployed-entrypoints-manifest.template.json
 
 .venv/bin/python scripts/build_post_rc_assurance_receipts.py \
   lock-deployed-manifest \
-  --reproduction-dir /tmp/okf-v0.3.0/reproduction \
-  --template /tmp/okf-v0.3.0/deployed-entrypoints-manifest.template.json \
-  --rc-tag v0.3.0-rc.1 \
-  --output /tmp/okf-v0.3.0/deployed-entrypoints-manifest.json
+  --reproduction-dir /tmp/okf-v0.4.0/reproduction \
+  --template /tmp/okf-v0.4.0/deployed-entrypoints-manifest.template.json \
+  --rc-tag v0.4.0-rc.1 \
+  --output /tmp/okf-v0.4.0/deployed-entrypoints-manifest.json
 ```
 
 Before running the probe:
 
 1. confirm the generated manifest contains the exact 40-hex candidate commit,
-   final bundle-tree digest and `v0.3.0-rc.1` tag;
+   final bundle-tree digest and `v0.4.0-rc.1` tag;
 2. confirm it contains no placeholder and its state is `locked`;
 3. retain the frozen production asset name
-   `okf-uk-legislation-v0.3.0.tar.zst` on both the `v0.3.0-rc.1` and final
-   `v0.3.0` releases; only the release/tag URL changes, so promotion preserves
+   `okf-uk-legislation-v0.4.0.tar.zst` on both the `v0.4.0-rc.1` and final
+   `v0.4.0` releases; only the release/tag URL changes, so promotion preserves
    both the bytes and filename;
 4. confirm every Pages, raw, archive and compatibility URL is the intended
    immutable or deployed route;
@@ -152,11 +154,11 @@ Only then run:
 
 ```sh
 .venv/bin/python scripts/probe_deployed_entrypoints.py validate-manifest \
-  --manifest /tmp/okf-v0.3.0/deployed-entrypoints-manifest.json
+  --manifest /tmp/okf-v0.4.0/deployed-entrypoints-manifest.json
 
 .venv/bin/python scripts/probe_deployed_entrypoints.py run \
-  --manifest /tmp/okf-v0.3.0/deployed-entrypoints-manifest.json \
-  --output-root /tmp/okf-v0.3.0/deployed-entrypoint-attempts \
+  --manifest /tmp/okf-v0.4.0/deployed-entrypoints-manifest.json \
+  --output-root /tmp/okf-v0.4.0/deployed-entrypoint-attempts \
   --allow-network
 ```
 
@@ -164,7 +166,7 @@ Verify the completed attempt without network access:
 
 ```sh
 .venv/bin/python scripts/probe_deployed_entrypoints.py verify-attempt \
-  /tmp/okf-v0.3.0/deployed-entrypoint-attempts/GATE09_ATTEMPT_DIRECTORY
+  /tmp/okf-v0.4.0/deployed-entrypoint-attempts/GATE09_ATTEMPT_DIRECTORY
 ```
 
 A failed or partial attempt remains immutable evidence. Correct the deployed

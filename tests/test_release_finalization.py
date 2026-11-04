@@ -312,11 +312,11 @@ class FinalizationFixture:
         pages = self.contract["explorer"]["runtime_provenance"]["pages"]
         pages["build_manifest"] = finalization.material(
             build_manifest_path,
-            finalization.EXPLORER_BUILD_MANIFEST_PATH,
+            finalization.EXPLORER_BUILD_MANIFEST_NAME,
         )
         pages["build_index"] = finalization.material(
             build_index_path,
-            finalization.EXPLORER_BUILD_INDEX_PATH,
+            Path(finalization.EXPLORER_BUILD_INDEX_PATH).name,
         )
         pages["build_tree"] = {
             "algorithm": finalization.EXPLORER_BUILD_ALGORITHM,
@@ -410,17 +410,11 @@ class FinalizationFixture:
                 },
                 "build_manifest": {
                     **copy.deepcopy(build["manifest"]),
-                    "path": (
-                        f"{finalization.EXPLORER_BUILD_ROOT}/"
-                        f"{build['manifest']['path']}"
-                    ),
+                    "path": build["manifest"]["path"],
                 },
                 "build_index": {
                     **copy.deepcopy(build["index"]),
-                    "path": (
-                        f"{finalization.EXPLORER_BUILD_ROOT}/"
-                        f"{build['index']['path']}"
-                    ),
+                    "path": build["index"]["path"],
                 },
                 "build_tree": {
                     "algorithm": build["tree"]["algorithm"],
@@ -535,16 +529,24 @@ class FinalizationFixture:
         runner = copy.deepcopy(
             self.contract["explorer"]["runtime_provenance"]["runner"]
         )
-        build_index = copy.deepcopy(
+        contract_build_index = copy.deepcopy(
             self.contract["explorer"]["runtime_provenance"]["pages"][
                 "build_index"
             ]
         )
-        build_manifest = copy.deepcopy(
+        contract_build_manifest = copy.deepcopy(
             self.contract["explorer"]["runtime_provenance"]["pages"][
                 "build_manifest"
             ]
         )
+        build_index = {
+            **contract_build_index,
+            "path": finalization.EXPLORER_BUILD_INDEX_PATH,
+        }
+        build_manifest = {
+            **contract_build_manifest,
+            "path": finalization.EXPLORER_BUILD_MANIFEST_PATH,
+        }
         build_tree = copy.deepcopy(
             self.contract["explorer"]["runtime_provenance"]["pages"][
                 "build_tree"

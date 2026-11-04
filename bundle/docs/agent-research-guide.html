@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Research Guide – UK Legislation and Whole-Law OKF</title>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Legislation and Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../">Home</a> <a href="../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Agent Research Guide</h1>
+<p><a href="index.html">Documentation spine</a> · <a href="getting-started.html">Getting started</a> · <a href="personas-and-user-journeys.html">Personas and journeys</a> · <a href="illustrated-manual.html">Illustrated manual</a> · <a href="evaluation-and-quality.html">Evaluation</a> · <a href="maintenance.html">Maintenance</a></p>
+<p>This guide defines how an agent should use the UK Legislation OKF pack without loading the whole corpus or losing provenance.</p>
+<h2>Progressive discovery algorithm</h2>
+<ol>
+<li>Fetch the canonical descriptor:
+<code>https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json</code>.
+For cross-source discovery, fetch
+<code>https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json</code>.</li>
+<li>Read the descriptor, overview, counts, notices and available facets.</li>
+<li>Convert the user question into candidate title terms, citation terms, jurisdiction, time and document-type constraints.</li>
+<li>Search titles locally; use the official remote full-text search when wording rather than title is needed.</li>
+<li>Rank candidate works, but require identity confirmation from title/type/year/number/official ID.</li>
+<li>Load only the selected work's official CLML structure.</li>
+<li>Locate the smallest relevant subdivisions and retain their source IDs.</li>
+<li>Open selected-passage, work, contents and changes/effects links as required.</li>
+<li>Check version, commencement, extent and amendment context.</li>
+<li>Write discrete propositions with a citation ledger and explicit uncertainty.</li>
+</ol>
+<p>Do not infer a raw repository path from either published URL. Read the
+descriptor's <code>repository.raw_subpath</code> (<code>bundle</code> for legislation or
+<code>bundle/whole-law</code> for the federation) and its declared Pages, raw-content and
+release/archive alternatives.</p>
+<h2>Source hierarchy</h2>
+<p>Prefer, in order:</p>
+<ol>
+<li>official selected passage and official work/version pages;</li>
+<li>official CLML/Atom/effects data;</li>
+<li>normalized OKF identity and navigation metadata;</li>
+<li>derived topic or quality metadata only as discovery context.</li>
+</ol>
+<p>Never cite a derived topic as law. Never turn a catalogue absence into a claim that no legislation exists.</p>
+<h2>Minimum answer shape</h2>
+<pre><code class="language-json">{
+  "question_id": "LQ001",
+  "answer": "Answer-first synthesis with qualifications.",
+  "propositions": [
+    {
+      "claim": "One material proposition.",
+      "citations": [
+        {
+          "source_title": "Exact title",
+          "url": "https://www.legislation.gov.uk/.../section/6",
+          "passage": "Supporting passage",
+          "version": "Current text checked on the stated date",
+          "retrieved_at": "2026-07-11"
+        }
+      ]
+    }
+  ],
+  "temporal_context": {
+    "version": "...",
+    "commencement": "...",
+    "extent": "...",
+    "amendments": "..."
+  }
+}
+</code></pre>
+<h2>Guardrails</h2>
+<ul>
+<li>Say when a conclusion depends on missing facts.</li>
+<li>Distinguish statutory wording from inference and application.</li>
+<li>Identify when case law, retained-EU interpretation or another source class is required.</li>
+<li>Do not describe the latest displayed text as operative everywhere without currency checks.</li>
+<li>Do not imply that the research bulk/SPARQL surfaces were harvested while anonymous access remains restricted.</li>
+<li>Treat source timestamp anomalies as source facts to flag, not values to silently repair.</li>
+</ul>
+<h2>Evaluation</h2>
+<p>Use the <a href="evaluation-and-quality.html">evaluation and quality guide</a> and the 100-question suite. Automated scores validate observable evidence structure; expert review remains necessary for substantive legal correctness and forensic utility.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

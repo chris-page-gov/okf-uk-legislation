@@ -303,7 +303,7 @@ class PostRCAssuranceReceiptTests(unittest.TestCase):
         self.assertEqual(output, builder.build_deployed_manifest(args))
         self.assertEqual(first, output.read_bytes())
 
-        manifest["candidate"]["release_tag"] = "v0.3.0-rc.2"
+        manifest["candidate"]["release_tag"] = "v0.4.0-rc.2"
         output.write_bytes(finalization.render(manifest))
         with self.assertRaisesRegex(
             builder.ReceiptBuildError,

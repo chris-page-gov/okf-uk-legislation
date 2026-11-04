@@ -12,10 +12,10 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
-import html
 import json
 import re
 import shutil
+import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -25,7 +25,11 @@ from urllib.parse import urljoin
 import rdflib
 from pyld import jsonld
 
+SCRIPTS = Path(__file__).resolve().parent
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
 import build_legislation_okf as legislation_builder
+from publication_html import render_markdown_page
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "whole-law"
@@ -62,12 +66,24 @@ def load(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+RELEASE = load(ROOT / "publication" / "release.json")
+
+
 def render_json(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
 
 
 def sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
+
+
+def is_authored_publication_file(relative: Path) -> bool:
+    """Exclude operating-system metadata without hiding valid dot paths."""
+
+    return not any(
+        part == ".DS_Store" or part.startswith("._")
+        for part in relative.parts
+    )
 
 
 def render_canonical_turtle(document: dict[str, Any]) -> bytes:
@@ -424,6 +440,39 @@ def relationship_summary() -> dict[str, Any]:
     }
 
 
+def canonical_descriptor(native: dict[str, Any]) -> dict[str, Any]:
+    """Project the extended Whole-Law descriptor into Explorer's supported shape."""
+    import copy
+    import jsonschema
+    result = copy.deepcopy(native)
+    base = result['@id']
+    extensions = result.setdefault('extensions', {}).setdefault('okf-whole-law.v1', {})
+    summary = result['relationship_summary']
+    allowed_summary = {'scope', 'total', 'by_predicate', 'by_authority', 'by_freshness', 'observed_at', 'snapshot'}
+    extensions['relationship_summary_details'] = {k: summary.pop(k) for k in list(summary) if k not in allowed_summary}
+    for child in result['children']:
+        # Canonical HTTP identities and the fetched snapshot's transport are
+        # distinct. Consumers supporting this versioned extension must not fall
+        # back to public main when the matching local/pinned sibling is absent.
+        child.setdefault('extensions', {})['okf-federation-relative-child.v1'] = {
+            'descriptor': child['descriptor'],
+            'semantic_descriptor': child['semantic_descriptor'],
+        }
+        extra = child['extensions'].setdefault('okf-whole-law.v1', {})
+        for key in ['relationship_manifest', 'relationship_manifest_jsonld']:
+            if key in child: extra[key] = urljoin(base, child.pop(key))
+        for key in ['descriptor', 'semantic_descriptor']:
+            if key in child: child[key] = urljoin(base, child[key])
+        discovery = child.get('discovery', {})
+        if 'relationship_manifest' in discovery:
+            extra['discovery_relationship_manifest'] = discovery.pop('relationship_manifest')
+        for route in discovery.get('routes', []): route['url'] = urljoin(base, route['url'])
+    result['bundles'] = result['children']
+    schema = load(ROOT / 'profiles/federation/v1/descriptor.schema.json')
+    jsonschema.Draft202012Validator(schema).validate(result)
+    return result
+
+
 def descriptor(
     source_register: dict[str, Any],
     taxonomy: dict[str, Any],
@@ -446,6 +495,8 @@ def descriptor(
         # public/raw routes remain explicit fallbacks below.
         "descriptor": "../okf-explorer.json",
         "semantic_descriptor": "../okf-bundle.yamlld",
+        "relationship_manifest": "../data/semantic/manifest.yamlld",
+        "relationship_manifest_jsonld": "../data/semantic/manifest.jsonld",
         "authority": {
             "class": "official",
             "label": "Official publication identities and source-derived legal effects",
@@ -478,6 +529,9 @@ def descriptor(
             "raw_subpath": "bundle",
             "release_archive": "https://github.com/chris-page-gov/okf-uk-legislation/releases",
             "semantic_descriptor": f"{PUBLIC}/okf-bundle.yamlld",
+            "relationship_manifest": (
+                f"{PUBLIC}/data/semantic/manifest.yamlld"
+            ),
             "routes": [
                 {
                     "kind": "descriptor-relative",
@@ -534,6 +588,15 @@ def descriptor(
             ),
         },
     }
+    runtime_manifest_path = (
+        ROOT / "bundle" / "data" / "semantic" / "runtime-manifest.json"
+    )
+    if not runtime_manifest_path.is_file():
+        raise ValueError(
+            "rich relationship runtime manifest must be built before the "
+            "Whole-Law descriptor"
+        )
+    runtime_manifest_body = runtime_manifest_path.read_bytes()
     return {
         "@context": f"{PUBLIC}/whole-law/ontology/context.jsonld",
         "@id": f"{PUBLIC}/whole-law/okf-explorer.json",
@@ -542,8 +605,8 @@ def descriptor(
         "okf_version": "0.2",
         "title": "UK Whole-Law OKF",
         "description": "A federated, evidence-led map of authoritative and supporting UK legal sources.",
-        "version": "0.3.0",
-        "status": "candidate",
+        "version": RELEASE["bundle_version"],
+        "status": RELEASE["status"],
         "generated_at": GENERATED_AT,
         "snapshot": "whole-law-2026-07-25",
         "publisher": "https://github.com/chris-page-gov",
@@ -589,11 +652,22 @@ def descriptor(
         "entrypoints": {
             "viewer": "https://chris-page-gov.github.io/okf-explorer/",
             "markdown_index": "index.md",
+            "html_index": "index.html",
+            "documentation_html": "docs/index.html",
+            "interfaces": "../interfaces.json",
+            "webmcp": "../interfaces.json#webmcp",
             "source_register": "data/source-register.json",
             "source_classes": "data/legal-source-taxonomy.json",
             "coverage": "data/coverage.json",
             "constraints": "data/source-constraint-ledger.json",
             "relationship_summary": "data/relationship-summary.json",
+            "relationship_semantics": "../data/semantic/manifest.yamlld",
+            "relationship_semantics_jsonld": (
+                "../data/semantic/manifest.jsonld"
+            ),
+            "relationship_runtime": "../data/semantic/runtime-manifest.json",
+            "predicate_registry": "../data/semantic/predicate-registry.json",
+            "iri_route_registry": "../data/semantic/iri-route-registry.json",
             "standards": "ontology/standards.json",
             "ontology": "ontology/index.md",
             "shapes": "ontology/shapes.ttl",
@@ -619,7 +693,21 @@ def descriptor(
                 "../enrichment/codex-assisted-v2.json"
             ),
             "integrity": "integrity.json",
-            "docs": "docs/index.md",
+            "docs": "docs/index.html",
+        },
+        "entrypoint_integrity": {
+            "relationship_runtime": {
+                "path": "../data/semantic/runtime-manifest.json",
+                "bytes": len(runtime_manifest_body),
+                "sha256": hashlib.sha256(runtime_manifest_body).hexdigest(),
+                "content_encoding": "identity",
+            }
+        },
+        "performance": {
+            "route_relationship_hydration": (
+                "sha256-prefix rich relationship route locator; legacy "
+                "FNV-1a adjacency retained as the compact-core fallback"
+            )
         },
         "counts": {
             "children": 1,
@@ -656,6 +744,17 @@ def descriptor(
             "okf-explorer-analysis.v1": {
                 "mode": "external",
                 "entrypoint": "coverage",
+            },
+            "okf-rich-directed-relationships.v1": {
+                "mode": (
+                    "bounded-json-ld-shards-with-yaml-ld-control-plane"
+                ),
+                "entrypoint": "relationship_semantics",
+                "runtime_entrypoint": "relationship_runtime",
+                "direct_triple_policy": (
+                    "generated-with-evidence-bearing-reification"
+                ),
+                "authority_planes_preserved": True,
             },
         },
         "notices": [
@@ -818,7 +917,8 @@ def build_files() -> dict[Path, bytes]:
     family_by_id = {row["id"]: row for row in families}
     constraints = build_constraints(source_register)
     relations = relationship_summary()
-    desc = descriptor(source_register, taxonomy, families, relations)
+    native_desc = descriptor(source_register, taxonomy, families, relations)
+    desc = canonical_descriptor(native_desc)
     execution_rows: list[dict[str, Any]] = []
     execution_root = SOURCE / "evaluation" / "executions"
     if execution_root.is_dir():
@@ -877,7 +977,7 @@ def build_files() -> dict[Path, bytes]:
         "description": desc["description"],
         "version": desc["version"],
         "status": desc["status"],
-        "issued": "2026-07-25",
+        "issued": RELEASE["release_date"],
         "descriptor": {"@id": desc["@id"]},
         "childBundle": [
             {"@id": urljoin(desc["@id"], bundle["descriptor"])}
@@ -895,6 +995,12 @@ def build_files() -> dict[Path, bytes]:
             "accessTestDate": source_register["access_test_date"],
             "sourceHash": f"sha256:{source_register_sha256}",
         },
+        "relationshipManifest": (
+            f"{PUBLIC}/data/semantic/manifest.yamlld"
+        ),
+        "relationshipManifestJson": (
+            f"{PUBLIC}/data/semantic/manifest.jsonld"
+        ),
         "generatedAt": GENERATED_AT,
         "license": {"@id": OGL},
     }
@@ -907,6 +1013,8 @@ def build_files() -> dict[Path, bytes]:
     for source_path in SOURCE.rglob("*"):
         if source_path.is_file():
             relative = source_path.relative_to(SOURCE)
+            if not is_authored_publication_file(relative):
+                continue
             put(relative, source_path.read_bytes())
     put(
         "assurance/enrichment-v3-reviewer-task-receipt.json",
@@ -1007,42 +1115,7 @@ binding, coverage strata, evidence and independent verification state.
 - [Official legislation data/API documentation](https://legislation.github.io/data-documentation/)
 - [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
 - [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
-- [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
-""")
-    latest_execution_html = (
-        "<li><a href=\"executions/"
-        + html.escape(latest_execution["report"])
-        + "\">Latest executed assurance report</a> — "
-        + html.escape(latest_execution["decision"])
-        + "</li>"
-        if latest_execution
-        else "<li>No release evaluation execution has been recorded.</li>"
-    )
-    put("evaluation/index.html", f"""<!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title>Whole-Law evaluation</title>
-<main><h1>Whole-Law evaluation</h1><ul>
-{latest_execution_html}
-<li><a href="release-questions.json">Release questions</a></li>
-<li><a href="coverage.json">Coverage</a></li>
-<li><a href="historical-baselines.json">Historical baselines</a></li>
-<li><a href="answer-schema.json">Answer schema</a></li>
-<li><a href="claude-access-suite.json">Claude access suite</a></li>
-<li><a href="executions/index.json">All immutable evaluation executions</a></li>
-</ul>
-<h2>Canonical publication access</h2><ul>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
-<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Canonical federation descriptor</a></li>
-<li>Declared raw subpath: <code>bundle/whole-law</code></li>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
-</ul>
-<h2>Official sources and examples</h2><ul>
-<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
-<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
-<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
-</ul></main></html>
+- [OKF Foundry authoring and domain profiles](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html)
 """)
     put(
         "evaluation/executions/index.json",
@@ -1098,38 +1171,7 @@ binding, coverage strata, evidence and independent verification state.
 - [Official legislation data/API documentation](https://legislation.github.io/data-documentation/)
 - [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
 - [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
-- [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
-""")
-    put("docs/index.html", """<!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title>UK Whole-Law OKF documentation</title>
-<main><h1>UK Whole-Law OKF documentation</h1><ul>
-<li><a href="getting-started.md">Getting started</a></li>
-<li><a href="authority-and-evidence.md">Authority and evidence</a></li>
-<li><a href="sources-and-coverage.md">Sources and coverage</a></li>
-<li><a href="standards-and-validation.md">Standards and validation</a></li>
-<li><a href="maintenance.md">Maintenance and recovery</a></li>
-<li><a href="../evaluation/">Evaluation</a></li>
-<li><a href="../../docs/roles/">Role guides</a></li>
-</ul>
-<h2>Canonical access</h2><ul>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
-<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Canonical federation descriptor</a></li>
-<li>Declared raw subpath: <code>bundle/whole-law</code></li>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
-</ul>
-<h2>Semantic representations</h2><ul>
-<li><a href="../okf-bundle.yamlld">Authored YAML-LD</a></li>
-<li><a href="../okf-bundle.jsonld">Generated JSON-LD</a></li>
-<li><a href="../okf-bundle.ttl">Canonical Turtle</a></li>
-</ul>
-<h2>Official sources and examples</h2><ul>
-<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
-<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
-<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
-</ul></main></html>
+- [OKF Foundry authoring and domain profiles](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html)
 """)
     put("docs/getting-started.md", f"""# Getting started
 
@@ -1198,18 +1240,24 @@ documented compatibility decision.
 
 ## Authored and generated representations
 
-`okf-bundle.yamlld` is the authored semantic publication. The builder emits
+`okf-bundle.yamlld` is the authored semantic control publication. The builder emits
 `okf-bundle.jsonld` and canonical N-Triples-compatible
 `okf-bundle.ttl` from the same governed values. Validation exercises YAML-LD
 expansion, JSON-LD compaction, flattening and framing, RDF conversion,
 RDF-to-JSON-LD-to-RDF round-trip, three-way graph isomorphism and canonical
 dataset-digest equivalence. SHACL validates all three complete semantic
-descriptor graphs and the example/entity contract. The semantic descriptor
-contains the Federation and its hash-bound SourceRegister contract node; it
-does not materialise the 365,786 catalogued legal works as RDF. The
+descriptor graphs and the example/entity contract. The bounded descriptor
+contains the Federation, its hash-bound SourceRegister contract node and a
+link to the relationship-authoritative YAML-LD manifest. Separate bounded
+JSON-LD shards materialise matching direct triples and evidence-bearing
+`rdf:Statement`/`okf:RelationshipAssertion` nodes without forcing all 365,786
+works into the startup descriptor graph. A separately generated runtime
+manifest lists active default planes, opt-in historical planes, local-route
+assertion arrays and a hash-bucket route locator for bounded Reader hydration.
+The
 [deterministic conformance receipt](../assurance/semantic-conformance.json)
-separately records exhaustive JSON Schema validation of every compact core and
-provider relationship row.
+separately records exhaustive source-row validation and direct/reified
+reconciliation for every active and historical semantic assertion shard.
 
 These checks establish conformance of this publication to its declared basic
 profile. They do not claim that the selected third-party processor passes
@@ -1244,41 +1292,21 @@ the dated snapshot remains available without being described as current.
 The release state is draft, candidate, validated, RC and published. RC
 artefacts are promoted by digest without rebuilding.
 """)
-    put("index.html", f"""<!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title>UK Whole-Law OKF</title>
-<main><h1>UK Whole-Law OKF</h1>
-<p>A federated, evidence-led map of authoritative and supporting UK legal sources.</p>
-<h2>Published release</h2>
-<dl>
-<dt>Bundle release</dt><dd><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0"><strong>v0.3.0</strong></a></dd>
-<dt>Published</dt><dd>27 July 2026 at 15:40:30 UTC</dd>
-<dt>OKF specification</dt><dd>OKF 0.2</dd>
-<dt>Source-access snapshot</dt><dd>25 July 2026</dd>
-<dt>Legislation child snapshot</dt><dd>11 July 2026 at 18:00 UTC</dd>
-</dl>
-<p>The immutable release retains pre-promotion <code>candidate</code> labels in some machine representations. The GitHub release record is the authoritative publication status. There is no Legislation/Whole-Law <code>v0.4.0</code> release.</p>
-<ul>
-<li><a href="https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json">Canonical Explorer descriptor</a></li>
-<li><a href="okf-bundle.yamlld">YAML-LD</a></li>
-<li><a href="okf-bundle.jsonld">JSON-LD</a></li>
-<li><a href="okf-bundle.ttl">Turtle</a></li>
-<li><a href="docs/">Documentation</a></li>
-<li><a href="data/source-register.json">Source register</a></li>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation">Repository</a></li>
-<li>Declared raw subpath: <code>bundle/whole-law</code></li>
-<li><a href="https://github.com/chris-page-gov/okf-uk-legislation/releases">Release/archive fallback</a></li>
-</ul>
-<h2>Official sources and examples</h2><ul>
-<li><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a></li>
-<li><a href="https://legislation.github.io/data-documentation/">Official legislation data/API documentation</a></li>
-<li><a href="https://guidance.data.gov.uk/get_data/api_documentation/">Official data.gov.uk API documentation</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json">GOV.UK CKAN example descriptor</a></li>
-<li><a href="https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md">Preserved OKF Bundle Wiki authoring guide</a></li>
-</ul>
-<p>Coverage and authority state are explicit. This prototype is not legal advice.</p>
-</main></html>
-""")
+    # Every maintained Markdown page has a deterministic HTML projection.
+    # Markdown remains available as source; public navigation uses HTML.
+    for markdown_path, body in list(files.items()):
+        if markdown_path.suffix != ".md":
+            continue
+        html_path = markdown_path.with_suffix(".html")
+        put(
+            html_path,
+            render_markdown_page(
+                body.decode("utf-8"),
+                output_relative=Path("whole-law") / html_path,
+                fallback_title=markdown_path.stem.replace("-", " ").title(),
+                publication_label="UK Whole-Law OKF",
+            ),
+        )
 
     integrity_rows = []
     for path, body in sorted(files.items(), key=lambda item: item[0].as_posix()):

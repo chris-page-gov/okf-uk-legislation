@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import csv
+import gzip
 import hashlib
 import json
 import re
@@ -12,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 try:
+    import build_whole_law_okf as whole_law_builder
     import jsonschema
     import rdflib
     from run_semantic_conformance import build_receipt, compare_receipt
@@ -65,6 +67,18 @@ def load(path: Path) -> Any:
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def confined_bundle_path(relative: str, bundle_root: Path | None = None) -> Path:
+    """Confine manifest-selected files before any read, stat or decompression."""
+    root = (bundle_root or ROOT / "bundle").resolve()
+    value = Path(relative)
+    if not relative or value.is_absolute() or ".." in value.parts:
+        raise ValueError("relationship route-locator bucket path is not relative")
+    target = (root / value).resolve()
+    if not target.is_relative_to(root):
+        raise ValueError("relationship route-locator bucket escapes the bundle")
+    return target
 
 
 def check_research(errors: list[str]) -> None:
@@ -172,6 +186,109 @@ def validate_schema(errors: list[str], instance_path: Path, schema_path: Path) -
         errors.append(f"JSON Schema failure for {instance_path.relative_to(ROOT)}: {exc}")
 
 
+def check_federation_descriptor_contract(errors: list[str]) -> None:
+    """Validate the public Explorer projection and its richer source contract."""
+    schemas = PACK / "schemas"
+    descriptor_path = PACK / "okf-explorer.json"
+    canonical_schema_path = schemas / "canonical-federation-descriptor.schema.json"
+    profile_schema_path = ROOT / "profiles" / "federation" / "v1" / "descriptor.schema.json"
+    native_schema_path = schemas / "federation.schema.json"
+
+    validate_schema(errors, descriptor_path, canonical_schema_path)
+    if canonical_schema_path.read_bytes() != profile_schema_path.read_bytes():
+        errors.append(
+            "Whole-Law canonical federation schema differs from the pinned "
+            "Explorer federation profile"
+        )
+
+    source_register = load(RESEARCH / "source-register.json")
+    taxonomy = load(RESEARCH / "legal-source-taxonomy.json")
+    families = whole_law_builder.source_family_rows(taxonomy, source_register)
+    native = whole_law_builder.descriptor(
+        source_register,
+        taxonomy,
+        families,
+        whole_law_builder.relationship_summary(),
+    )
+    native_schema = load(native_schema_path)
+    native_validator = jsonschema.Draft202012Validator(
+        native_schema,
+        format_checker=jsonschema.Draft202012Validator.FORMAT_CHECKER,
+    )
+    native_errors = sorted(
+        native_validator.iter_errors(native), key=lambda row: list(row.path)
+    )
+    if native_errors:
+        errors.append(
+            "Whole-Law native federation descriptor does not satisfy its "
+            f"extended contract: {native_errors[0].message}"
+        )
+
+    descriptor = load(descriptor_path)
+    summary_details = (
+        descriptor.get("extensions", {})
+        .get("okf-whole-law.v1", {})
+        .get("relationship_summary_details")
+    )
+    expected_details = {
+        key: value
+        for key, value in native["relationship_summary"].items()
+        if key
+        not in {
+            "scope",
+            "total",
+            "by_predicate",
+            "by_authority",
+            "by_freshness",
+            "observed_at",
+            "snapshot",
+        }
+    }
+    if summary_details != expected_details:
+        errors.append(
+            "Whole-Law canonical relationship-summary extension differs from "
+            "the governed native descriptor"
+        )
+
+    canonical_children = {
+        child.get("id"): child
+        for child in descriptor.get("children", [])
+        if isinstance(child, dict)
+    }
+    for native_child in native.get("children", []):
+        canonical_child = canonical_children.get(native_child.get("id"), {})
+        relative_binding = canonical_child.get("extensions", {}).get(
+            "okf-federation-relative-child.v1", {}
+        )
+        for key in ("descriptor", "semantic_descriptor"):
+            if relative_binding.get(key) != native_child.get(key):
+                errors.append(
+                    "Whole-Law canonical child relative binding differs from "
+                    f"the governed native {key}: {native_child.get('id')}"
+                )
+
+    safe_relative = json.loads(json.dumps(native))
+    safe_relative["children"][0]["descriptor"] = "../okf-explorer.json"
+    if not native_validator.is_valid(safe_relative):
+        errors.append(
+            "native federation schema rejects the declared safe parent "
+            "descriptor route"
+        )
+    for unsafe in (
+        "javascript:alert(1)",
+        "//evil.example/descriptor.json",
+        "../../descriptor.json",
+        "%2e%2e/descriptor.json",
+        "/absolute/descriptor.json",
+    ):
+        unsafe_descriptor = json.loads(json.dumps(native))
+        unsafe_descriptor["children"][0]["descriptor"] = unsafe
+        if native_validator.is_valid(unsafe_descriptor):
+            errors.append(
+                f"native federation schema accepts unsafe child descriptor route: {unsafe}"
+            )
+
+
 def check_semantics(errors: list[str]) -> None:
     receipt, conformance_errors = build_receipt()
     errors.extend(conformance_errors)
@@ -240,6 +357,67 @@ def check_public_semantic_entrypoints(errors: list[str]) -> None:
         errors.append(
             "Whole-Law descriptor does not expose the Turtle entrypoint"
         )
+    relationship_entrypoints = {
+        "relationship_semantics": "../data/semantic/manifest.yamlld",
+        "relationship_semantics_jsonld": "../data/semantic/manifest.jsonld",
+        "relationship_runtime": "../data/semantic/runtime-manifest.json",
+        "predicate_registry": "../data/semantic/predicate-registry.json",
+        "iri_route_registry": "../data/semantic/iri-route-registry.json",
+    }
+    for name, relative in relationship_entrypoints.items():
+        if entrypoints.get(name) != relative:
+            errors.append(
+                "Whole-Law descriptor does not expose the bounded rich "
+                f"relationship entrypoint {name}"
+            )
+            continue
+        target = (PACK / relative).resolve()
+        expected_root = (PACK.parent / "data" / "semantic").resolve()
+        if expected_root not in target.parents or not target.is_file():
+            errors.append(
+                "Whole-Law rich relationship entrypoint is missing or "
+                f"escapes the governed semantic directory: {name}"
+            )
+
+    runtime_relative = relationship_entrypoints["relationship_runtime"]
+    runtime_path = (PACK / runtime_relative).resolve()
+    runtime_body = runtime_path.read_bytes() if runtime_path.is_file() else b""
+    runtime_sha256 = sha256(runtime_path) if runtime_path.is_file() else None
+    runtime_integrity = descriptor.get("entrypoint_integrity", {}).get(
+        "relationship_runtime"
+    )
+    if (
+        not isinstance(runtime_integrity, dict)
+        or runtime_integrity.get("path") != runtime_relative
+        or runtime_integrity.get("bytes") != len(runtime_body)
+        or runtime_integrity.get("sha256") != runtime_sha256
+        or runtime_integrity.get("content_encoding") != "identity"
+    ):
+        errors.append("Whole-Law relationship runtime integrity differs")
+    if "sha256-prefix" not in str(
+        descriptor.get("performance", {}).get(
+            "route_relationship_hydration", ""
+        )
+    ):
+        errors.append("Whole-Law descriptor omits SHA-256 route lookup")
+
+    children = descriptor.get("children")
+    if isinstance(children, list) and children:
+        child = children[0] if isinstance(children[0], dict) else {}
+        if child.get("extensions", {}).get("okf-whole-law.v1", {}).get("relationship_manifest") != (
+            "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.yamlld"
+        ):
+            errors.append(
+                "Whole-Law child does not declare its canonical relationship "
+                "manifest"
+            )
+        if child.get("extensions", {}).get("okf-whole-law.v1", {}).get("relationship_manifest_jsonld") != (
+            "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.jsonld"
+        ):
+            errors.append(
+                "Whole-Law child does not declare its JSON-LD relationship "
+                "manifest fallback"
+            )
 
     alternate_access = descriptor.get("alternate_access")
     if not isinstance(alternate_access, list):
@@ -301,12 +479,61 @@ def check_public_semantic_entrypoints(errors: list[str]) -> None:
 
 def check_contracts(errors: list[str]) -> None:
     schemas = PACK / "schemas"
-    validate_schema(errors, PACK / "okf-explorer.json", schemas / "federation.schema.json")
+    check_federation_descriptor_contract(errors)
     validate_schema(
         errors,
         PACK / "data" / "source-constraint-ledger.json",
         schemas / "source-constraint-ledger.schema.json",
     )
+    validate_schema(
+        errors,
+        ROOT / "bundle" / "data" / "semantic" / "runtime-manifest.json",
+        schemas / "relationship-runtime-manifest.schema.json",
+    )
+    locator_manifest_path = (
+        ROOT
+        / "bundle"
+        / "data"
+        / "semantic"
+        / "runtime"
+        / "route-locator"
+        / "manifest.json"
+    )
+    validate_schema(
+        errors,
+        locator_manifest_path,
+        schemas / "relationship-route-locator.schema.json",
+    )
+    if locator_manifest_path.is_file():
+        locator_manifest = load(locator_manifest_path)
+        bucket_validator = jsonschema.Draft202012Validator(
+            load(schemas / "relationship-route-locator-bucket.schema.json"),
+            format_checker=jsonschema.Draft202012Validator.FORMAT_CHECKER,
+        )
+        for binding in locator_manifest.get("buckets", []):
+            try:
+                bucket_path = confined_bundle_path(str(binding.get("path") or ""))
+            except ValueError as error:
+                errors.append(str(error))
+                continue
+            if (
+                not bucket_path.is_file()
+                or bucket_path.stat().st_size != binding.get("bytes")
+                or sha256(bucket_path) != binding.get("sha256")
+            ):
+                errors.append(
+                    "relationship route-locator bucket binding differs: "
+                    f"{binding.get('path')}"
+                )
+                continue
+            with gzip.open(bucket_path, "rt", encoding="utf-8") as handle:
+                bucket = json.load(handle)
+            violations = list(bucket_validator.iter_errors(bucket))
+            if violations:
+                errors.append(
+                    "relationship route-locator bucket schema differs: "
+                    f"{binding.get('path')}: {violations[0].message}"
+                )
     optional = [
         (
             ROOT / "bundle" / "data" / "effects" / "manifest.json",
@@ -326,28 +553,6 @@ def check_contracts(errors: list[str]) -> None:
             validate_schema(errors, instance, schema)
 
     descriptor = load(PACK / "okf-explorer.json")
-    federation_schema = load(schemas / "federation.schema.json")
-    federation_validator = jsonschema.Draft202012Validator(
-        federation_schema,
-        format_checker=jsonschema.Draft202012Validator.FORMAT_CHECKER,
-    )
-    safe_relative = json.loads(json.dumps(descriptor))
-    safe_relative["children"][0]["descriptor"] = "../okf-explorer.json"
-    if not federation_validator.is_valid(safe_relative):
-        errors.append("federation schema rejects the declared safe parent descriptor route")
-    for unsafe in (
-        "javascript:alert(1)",
-        "//evil.example/descriptor.json",
-        "../../descriptor.json",
-        "%2e%2e/descriptor.json",
-        "/absolute/descriptor.json",
-    ):
-        unsafe_descriptor = json.loads(json.dumps(descriptor))
-        unsafe_descriptor["children"][0]["descriptor"] = unsafe
-        if federation_validator.is_valid(unsafe_descriptor):
-            errors.append(
-                f"federation schema accepts unsafe child descriptor route: {unsafe}"
-            )
     if len(descriptor.get("bundles", [])) != 1:
         errors.append("federation must contain exactly the implemented legislation child")
     if len(descriptor.get("source_families", [])) != EXPECTED["source_classes"]:

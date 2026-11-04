@@ -181,11 +181,18 @@ def contract_errors(contract: Any, root: Path = ROOT) -> list[str]:
             "impact routing must remain full-suite until a fail-closed "
             "classifier is proven"
         )
-    if ci.get("parallelism") != "serial":
+    expected_phases = ["core", "legislation", "semantics", "federation"]
+    if ci.get("parallelism") != "four-phase-fail-closed":
+        errors.append("CI must use the four-phase fail-closed validation topology")
+    if ci.get("validation_phases") != expected_phases:
         errors.append(
-            "the monolithic validator must remain serial until dependencies "
-            "are proven"
+            "ci.validation_phases must be core, legislation, semantics and "
+            "federation in that order"
         )
+    if ci.get("phase_timeout_minutes") != 55:
+        errors.append("each CI validation phase must retain the 55-minute ceiling")
+    if ci.get("aggregator_job") != "validate":
+        errors.append("the protected fail-closed aggregator job must remain validate")
     workflow_paths = _strings(
         ci.get("workflow_paths"), "ci.workflow_paths", errors
     )
@@ -212,12 +219,24 @@ def contract_errors(contract: Any, root: Path = ROOT) -> list[str]:
     limitations = contract.get("limitations")
     if not isinstance(verification, dict):
         errors.append("verification must be an object")
-    elif verification.get("required") is not False:
-        errors.append("do not claim real-browser assurance until exact deployed evidence exists")
+    else:
+        if verification.get("required") is not True:
+            errors.append("release publication must require real-browser assurance")
+        if verification.get("exact_commit_required") is not True:
+            errors.append("real-browser assurance must bind the exact deployed commit")
+        if verification.get("status") not in {
+            "required-pending-deployment",
+            "passed",
+        }:
+            errors.append("verification status must be pending deployment or passed")
+        if verification.get("status") == "passed" and not verification.get(
+            "evidence_paths"
+        ):
+            errors.append("passed browser verification must name its evidence paths")
     if not isinstance(limitations, list) or not any(
-        isinstance(item, str) and "real-browser" in item for item in limitations
+        isinstance(item, str) and "WebMCP" in item for item in limitations
     ):
-        errors.append("limitations must disclose the real-browser verification gap")
+        errors.append("limitations must distinguish WebMCP registration from host invocation")
 
     return errors
 

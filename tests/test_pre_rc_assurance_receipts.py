@@ -85,7 +85,7 @@ class PreRcAssuranceReceiptBuilderTests(unittest.TestCase):
             )
         rows.sort(key=lambda row: row["path"])
 
-        prefix = "okf-uk-legislation-v0.3.0"
+        prefix = "okf-uk-legislation-v0.4.0"
         tar_path = self.root / "production-layout.tar"
         reproduction.deterministic_tar(
             publication,
@@ -117,7 +117,7 @@ class PreRcAssuranceReceiptBuilderTests(unittest.TestCase):
             )
 
     def test_legacy_root_layout_is_rejected(self) -> None:
-        prefix = "okf-uk-legislation-v0.3.0"
+        prefix = "okf-uk-legislation-v0.4.0"
         tar_path = self.root / "legacy-root-layout.tar"
         with tarfile.open(tar_path, mode="w") as archive:
             for key, relative in finalization.EMBEDDED_RELEASE_FILES.items():
@@ -366,8 +366,14 @@ class PreRcAssuranceReceiptBuilderTests(unittest.TestCase):
                     "bytes": 16384,
                     "sha256": "8" * 64,
                 },
-                "build_manifest": json.loads(json.dumps(build_manifest)),
-                "build_index": json.loads(json.dumps(build_index)),
+                "build_manifest": {
+                    **json.loads(json.dumps(build_manifest)),
+                    "path": builder.EXPLORER_BUILD_MANIFEST_NAME,
+                },
+                "build_index": {
+                    **json.loads(json.dumps(build_index)),
+                    "path": Path(builder.EXPLORER_BUILD_INDEX_PATH).name,
+                },
                 "build_tree": {
                     "algorithm": builder.EXPLORER_BUILD_ALGORITHM,
                     "files": len(build_source_materials),

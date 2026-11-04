@@ -1,0 +1,18 @@
+{
+  "schema": "okf-legislation-validation-observation.v1",
+  "status": "failed",
+  "scope": "Current isolated format candidate; not a release acceptance",
+  "tests": 486,
+  "failures": 11,
+  "skipped": 1,
+  "stopped_at": "unit suite",
+  "checksum_check_before_run": "passed: 9313 files",
+  "publication_contract": "passed",
+  "documentation_lockstep": "passed",
+  "log": {
+    "path": "release-assurance/profile-reconcile-20260927/validation-attempt-04/complete-validation.log",
+    "bytes": 96154,
+    "sha256": "6af30ddf4505bdac4c0876b2817e0b278087145ea1379368c5eff6572ab0b210"
+  },
+  "boundary": "The documentation ownership repair passes its three focused tests; complete reproduction and successor release-contract work remain open. Historical failed checks remain retained."
+}

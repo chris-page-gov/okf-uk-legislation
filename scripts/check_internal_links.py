@@ -19,7 +19,9 @@ SKIP_PARTS = {
     "bundle",
     "evidence",
     "node_modules",
+    "release-assurance",
     "research",
+    "web",
     "yaml-ld-tests",
 }
 INLINE = re.compile(r"!?\[[^\]]*\]\(\s*(<[^>]+>|[^\s)]+)")
@@ -52,9 +54,9 @@ CKAN_DESCRIPTOR = (
     "https://chris-page-gov.github.io/"
     "ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json"
 )
-BUNDLE_AUTHORING = (
-    "https://chris-page-gov.github.io/"
-    "ai-infrastructure-wiki/docs/okf-bundle-authoring.md"
+FOUNDRY_AUTHORING = (
+    "https://chris-page-gov.github.io/okf-explorer/"
+    "docs/beginners/19-foundry-authoring-and-domain-profiles.html"
 )
 COMPATIBILITY_PREFIX = "https://chris-page-gov.github.io/ai-infrastructure-wiki/"
 COMPATIBILITY_LABELS = ("compatibility", "preserved", "historical")
@@ -69,7 +71,7 @@ COMMON_LANDING_REQUIREMENTS = (
     OFFICIAL_DATA_DOCS,
     GOVUK_DATA_DOCS,
     CKAN_DESCRIPTOR,
-    BUNDLE_AUTHORING,
+    FOUNDRY_AUTHORING,
 )
 LANDING_REQUIREMENTS = {
     Path("README.md"): COMMON_LANDING_REQUIREMENTS
@@ -96,8 +98,8 @@ LANDING_REQUIREMENTS = {
     + (
         LEGISLATION_DESCRIPTOR,
         WHOLE_LAW_DESCRIPTOR,
-        "v0.3.0",
-        "27 July 2026",
+        "v0.4.0",
+        "3 November 2026",
         "OKF 0.2",
     ),
     Path("bundle/evaluation/index.html"): COMMON_LANDING_REQUIREMENTS
@@ -189,6 +191,21 @@ def html_targets(text: str) -> list[tuple[int, str]]:
         (text.count("\n", 0, match.start()) + 1, match.group("target"))
         for match in HTML.finditer(text)
     ]
+
+
+def generated_html_failures(source: Path, text: str) -> list[str]:
+    """Require Pages navigation to use HTML rather than raw Markdown."""
+
+    failures: list[str] = []
+    for line_number, target in html_targets(text):
+        parsed = urlsplit(unquote(target))
+        is_pages_or_relative = not parsed.scheme or parsed.netloc == PAGES_HOST
+        if is_pages_or_relative and parsed.path.lower().endswith(".md"):
+            failures.append(
+                f"{source.relative_to(ROOT)}:{line_number}: public HTML links "
+                f"to raw Markdown {target!r}"
+            )
+    return failures
 
 
 def json_targets(text: str) -> list[tuple[int, str]]:
@@ -384,6 +401,11 @@ def main() -> int:
                     )
     for source in policy_documents():
         failures.extend(url_policy_failures(source, source.read_text(encoding="utf-8")))
+    generated_html = sorted((ROOT / "bundle").rglob("*.html"))
+    for source in generated_html:
+        failures.extend(
+            generated_html_failures(source, source.read_text(encoding="utf-8"))
+        )
     for relative in LANDING_REQUIREMENTS:
         source = ROOT / relative
         if not source.is_file():
@@ -419,6 +441,7 @@ def main() -> int:
     print(
         "internal link validation passed: "
         f"{len(pages)} authored pages, {len(json_manifests)} JSON manifests, "
+        f"{len(generated_html)} generated HTML pages, "
         f"{len(policy_documents())} URL-policy documents, "
         f"{len(LANDING_REQUIREMENTS)} landing pages, {checked} internal links"
     )

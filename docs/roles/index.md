@@ -22,7 +22,7 @@ Supporting entry points:
   [official data/API documentation](https://legislation.github.io/data-documentation/);
 - the official [data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/);
 - the [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json);
-- the preserved [OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md).
+- the current [OKF Foundry authoring guide](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html).
 
 Follow `raw_subpath` and alternate-access declarations in the descriptor. A
 404 at a guessed raw root is not evidence that the publication is absent.

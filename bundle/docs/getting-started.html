@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with UK Legislation and Whole-Law OKF – UK Legislation and Whole-Law OKF</title>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Legislation and Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../">Home</a> <a href="../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Getting started with UK Legislation and Whole-Law OKF</h1>
+<p><a href="index.html">Documentation spine</a> · <a href="personas-and-user-journeys.html">Personas and journeys</a> · <a href="illustrated-manual.html">Illustrated manual</a> · <a href="agent-research-guide.html">Agent guide</a> · <a href="evaluation-and-quality.html">Evaluation</a> · <a href="maintenance.html">Maintenance</a></p>
+<h2>Open the publications</h2>
+<p>Use the <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&amp;view=reader#overview" rel="noopener noreferrer">hosted UK Legislation Explorer</a>.
+It opens the corpus overview without hydrating every work or provision.
+Initial loading is limited to the descriptor, overview, presentation and
+bounded search/locator manifests. Facet selection loads one exact compressed
+postings file; opening a result resolves its route through a small locator
+bucket and hydrates one work shard. A long-running “Loading record index…”
+state indicates a publication or Explorer regression, not expected behaviour.</p>
+<p>Use the <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fwhole-law%2Fokf-explorer.json&amp;view=reader#overview" rel="noopener noreferrer">hosted Whole-Law Explorer</a>
+to navigate the 36 researched legal-source classes and load the real
+legislation child explicitly.</p>
+<p>The canonical descriptors are:</p>
+<pre><code class="language-text">https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json
+https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json
+</code></pre>
+<p>Every descriptor declares its repository, documentation, raw subpath,
+release/archive route and semantic alternatives. If GitHub API access is
+exhausted, use the declared Pages, raw or archive route. If a raw root returns
+404, follow <code>raw_subpath</code>; do not probe guessed directories.</p>
+<h2>Find legislation</h2>
+<ol>
+<li>Search for an exact title, citation, year or distinctive phrase.</li>
+<li>Use Category, Document Type, Creation Year and Jurisdiction to reduce
+ambiguous results.</li>
+<li>Treat Topic as a discovery aid only; it is derived or model-assisted.</li>
+<li>Select the exact work, checking type code, year, number and jurisdiction.</li>
+<li>Open the official work if the result could be confused with a commencement,
+amendment or remedial instrument.</li>
+</ol>
+<p>Local title search is combined with official legislation.gov.uk full-text
+search. Results identify whether they came from the static pack or a live
+official route.</p>
+<h2>Find and cite a provision</h2>
+<ol>
+<li>Open a work’s detail card.</li>
+<li>Review the official identifier, document type, category, year/number,
+jurisdiction, legal-status note and manifestations.</li>
+<li>Load the official CLML structure for the selected work.</li>
+<li>Search within the instrument for a section number or phrase.</li>
+<li>Open the official selected-passage URL.</li>
+<li>Copy the provenance citation as the start of a citation ledger.</li>
+<li>Separately check version, commencement, extent, amendments and unapplied
+effects.</li>
+</ol>
+<h2>Minimum evidence for an answer</h2>
+<p>Every material proposition should record:</p>
+<ul>
+<li>source title and source-native identifier;</li>
+<li>direct selected-passage URL;</li>
+<li>supporting text or faithful paraphrase;</li>
+<li>version or point-in-time context;</li>
+<li>commencement and extent context where material;</li>
+<li>retrieval date and evidence hash where available;</li>
+<li>authority class and any unresolved amendment, interpretation, access or
+missing-fact issue.</li>
+</ul>
+<p>An Act landing page alone is not pinpoint provenance. A catalogue or
+model-assisted result alone is not the law.</p>
+<h2>Next steps</h2>
+<ul>
+<li>Follow the <a href="illustrated-manual.html">illustrated manual</a> for worked journeys.</li>
+<li>Use the <a href="agent-research-guide.html">agent research guide</a> for automated
+research.</li>
+<li>Read <a href="relationships.html">relationships</a> and
+<a href="effects-and-enrichment.html">effects and enrichment</a>.</li>
+<li>Read <a href="source-coverage.html">source coverage</a> before relying on a Whole-Law
+source family.</li>
+</ul>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

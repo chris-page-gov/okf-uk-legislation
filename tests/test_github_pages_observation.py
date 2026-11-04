@@ -369,30 +369,30 @@ class GithubPagesObservationTests(unittest.TestCase):
 
     def test_fixed_production_target_records_all_authoritative_facts(self) -> None:
         profile = capture.DEFAULT_PROFILE
-        self.assertEqual(30228627196, profile.run_id)
+        self.assertEqual(41663805875, profile.run_id)
         self.assertEqual(1, profile.run_attempt)
-        self.assertEqual(8639352412, profile.artifact_id)
-        self.assertEqual(185023908, profile.zip_bytes)
+        self.assertEqual(13245490839, profile.artifact_id)
+        self.assertEqual(189110263, profile.zip_bytes)
         self.assertEqual(
-            "357c2fcfbdb4fda34a830d933feb290dd8980cc61b0a82f51cd5e0e5a226c1c0",
+            "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
             profile.zip_sha256,
         )
-        self.assertEqual(817694720, profile.tar_bytes)
-        self.assertEqual(9980, profile.tar_member_count)
-        self.assertEqual(807618104, profile.tar_total_file_bytes)
+        self.assertEqual(834416640, profile.tar_bytes)
+        self.assertEqual(10908, profile.tar_member_count)
+        self.assertEqual(823634678, profile.tar_total_file_bytes)
         self.assertEqual(
-            "13928e64e515171336f8c8523c515706693a1c13d8c46abc83728e779a913c61",
+            "dfccde90f6ec44c28fb727b6187391739bda118a85914103aa9e692bf10d691b",
             profile.tar_inventory_sha256,
         )
         self.assertEqual(
-            "a23dfdea56fea0184b6d53f3163b292dd1a312ed",
+            "dcd0c43e29593436b13c59271c75d37d06e2b754",
             profile.head_sha,
         )
         self.assertEqual(
-            "981d5c967b7017c78f37aab379edd95f44917cf5",
+            "87487a50c10f0dce144b1530b6a97de6e1277aff",
             profile.git_tree,
         )
-        self.assertEqual(490852327, profile.alternate_asset_id)
+        self.assertEqual(706118888, profile.alternate_asset_id)
 
     def test_capture_validates_schema_and_closes_raw_evidence(self) -> None:
         profile, zipped = fixture_archive()

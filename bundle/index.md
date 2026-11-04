@@ -8,9 +8,9 @@ This pack indexes **365,786 legal works** returned by the official legislation a
 
 # Published release
 
-This catalogue is included in [Legislation/Whole-Law v0.3.0](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0), published on **27 July 2026**. The bundle uses the **OKF 0.2** specification and this legislation catalogue snapshot is dated 11 July 2026.
+This catalogue is included in [Legislation/Whole-Law v0.4.0](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.4.0), published on **3 November 2026**. The bundle uses the **OKF 0.2** specification and this legislation catalogue snapshot is dated 11 July 2026.
 
-The immutable release retains pre-promotion `candidate`/`preview` labels and an earlier bundle value in some machine representations. The GitHub release record is the authoritative publication status. There is no Legislation/Whole-Law `v0.4.0` release.
+The release version and the OKF specification version are independent: this is bundle release **v0.4.0**, authored to the **OKF 0.2** profile. The source snapshot remains dated July 2026; publishing the corrected semantics and interfaces in November does not imply that upstream source data was refreshed.
 
 # Progressive discovery
 
@@ -39,7 +39,7 @@ The immutable release retains pre-promotion `candidate`/`preview` labels and an 
 * [Official legislation data/API documentation](https://legislation.github.io/data-documentation/)
 * [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
 * [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
-* [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
+* [OKF Foundry authoring and domain profiles](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html)
 
 # Source notes
 [1] [Legislation.gov.uk data reuse documentation](https://legislation.github.io/data-documentation/)

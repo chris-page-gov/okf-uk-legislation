@@ -1,0 +1,160 @@
+{
+  "schema": "okf-legislation-migration-reconciliation.v1",
+  "source_head": "3675aa0b903d12e82845aeb76571a100a4bcf85a",
+  "candidate_base": "93e072f0010af26c383381c0c59ea1ed66ff381a",
+  "imported_authored_files": [
+    {
+      "path": "docs/effects-and-enrichment.md",
+      "bytes": 4323,
+      "sha256": "dc26687cf79f0b2b0e1aabf282fcb8bff7d6de8e3ef6eb00c12c8814c1305f1f"
+    },
+    {
+      "path": "docs/index.md",
+      "bytes": 5932,
+      "sha256": "13278fd63436974bd79f5144e6355bd9209b854a6e03335b885f599f284a3dca"
+    },
+    {
+      "path": "docs/maintenance.md",
+      "bytes": 14092,
+      "sha256": "dd45046153405f451771cb81d3d31f3bd723f394508bfda4c9a0996d676c55db"
+    },
+    {
+      "path": "docs/relationships.md",
+      "bytes": 2855,
+      "sha256": "a079ac5d507042e0a5570271c14684205dcf0f3c2683f11479289b4d129cda95"
+    },
+    {
+      "path": "docs/rich-relationship-semantics.md",
+      "bytes": 8591,
+      "sha256": "56f78b4c273320c2230bf50ce0ecc1ebceedfcaa49b1e4950b895862ebbc4ab6"
+    },
+    {
+      "path": "okf.semantic.json",
+      "bytes": 7298,
+      "sha256": "20e916e886984c6bcff0bb770bc3365e4be97ca44a419bfaedb6541d34651bda"
+    },
+    {
+      "path": "release-assurance/reproduction-profile.json",
+      "bytes": 9686,
+      "sha256": "55fa518185b02733f134d8394c2064f91727312e4d07ce22ab960e9244573ac3"
+    },
+    {
+      "path": "scripts/build_legislation_okf.py",
+      "bytes": 147558,
+      "sha256": "83d2e8708cd3441bb3c73151603f713db89dce4112663589b95493903588853c"
+    },
+    {
+      "path": "scripts/build_relationship_semantics.py",
+      "bytes": 86983,
+      "sha256": "5ed6ffb07c4f93aa4e2a175d2a3294e1b859ca7524ed0b7e8f0fb141bbf0249b"
+    },
+    {
+      "path": "scripts/build_whole_law_okf.py",
+      "bytes": 60238,
+      "sha256": "9b2d1f5b924726d104a5a832b580cf527fcc38005ce3e5b9ba317a089cd6b9a3"
+    },
+    {
+      "path": "scripts/check_legislation_okf.py",
+      "bytes": 37898,
+      "sha256": "623ed358dabda3e4467ba563fd9ad8006a3172701f46b925e188d72d9d5d1559"
+    },
+    {
+      "path": "scripts/check_whole_law_okf.py",
+      "bytes": 24333,
+      "sha256": "390ee4c17d504c83169720f3704dfc2c27f54ad182a4d7009cc599d3a56fb161"
+    },
+    {
+      "path": "scripts/rebuild_legislation_discovery.py",
+      "bytes": 33342,
+      "sha256": "8c04500546235e7e6455c59753d23928a71e294a26bae9db90bb927a53eb9c17"
+    },
+    {
+      "path": "scripts/run_semantic_conformance.py",
+      "bytes": 42463,
+      "sha256": "e7d7cb622b99eb4b4c758853a6f465395f6c18cfc37ec7923894524692f89b54"
+    },
+    {
+      "path": "tests/test_relationship_semantics.py",
+      "bytes": 7413,
+      "sha256": "1b5adf769831a6dabfa41363b2af8c801c2d2e33acdaf6f36b74d277587e326c"
+    },
+    {
+      "path": "tests/test_semantic_conformance.py",
+      "bytes": 11543,
+      "sha256": "fe6198cba2593ebe549daa5564fdab3c99d1b71af45e300a3c93ed971bd5cc26"
+    },
+    {
+      "path": "tests/test_whole_law_okf.py",
+      "bytes": 9467,
+      "sha256": "a0377dd041c8c1277172c51d1367997526754a685705caf9b0e575483e131be6"
+    },
+    {
+      "path": "tests/test_whole_law_turtle_descriptor.py",
+      "bytes": 3752,
+      "sha256": "6490e054eeff0174d9b412baee8dcdf55f003ff98716dead1a8c69de97c34480"
+    },
+    {
+      "path": "whole-law/okf-bundle.yamlld",
+      "bytes": 2784,
+      "sha256": "3f293d671e72efe6ef2f2b828538563945f7bab9673f36e03a10be483f2abc4e"
+    },
+    {
+      "path": "whole-law/ontology/context.jsonld",
+      "bytes": 4682,
+      "sha256": "e3a400b5a7b81aaca38d3d258090b3b95ff23f375a38e0c74d136a9a8e60258f"
+    },
+    {
+      "path": "whole-law/ontology/index.md",
+      "bytes": 3656,
+      "sha256": "007bc687f3580abd0ee631504a1a00eef501011359395af7beb21565358bf9a1"
+    },
+    {
+      "path": "whole-law/ontology/shapes.ttl",
+      "bytes": 11120,
+      "sha256": "44d02101e5b48317df224295599af908c530697c33840aa256829e73b16b99b0"
+    },
+    {
+      "path": "whole-law/ontology/vocabulary.ttl",
+      "bytes": 6622,
+      "sha256": "ae637f48e021b8b901838eeeaecbdeed2c3895708816d56155e6367e4ddbe53a"
+    },
+    {
+      "path": "whole-law/schemas/federation.schema.json",
+      "bytes": 12047,
+      "sha256": "8588348f3ae8dd64bf0875f71cf0c97c8eecd91f0db63ab5504390a7df4fac07"
+    },
+    {
+      "path": "whole-law/schemas/relationship-assertion-v3.schema.json",
+      "bytes": 5958,
+      "sha256": "993d6dd2001373ceabe0b79259f175ccc5573329399788e20be1b44c23541fb4"
+    },
+    {
+      "path": "whole-law/schemas/relationship-route-locator-bucket.schema.json",
+      "bytes": 2678,
+      "sha256": "c174af26cd722d4e8eaded5011e072ac82689188a0b9665a2a6bfe49c2afe2eb"
+    },
+    {
+      "path": "whole-law/schemas/relationship-route-locator.schema.json",
+      "bytes": 2503,
+      "sha256": "c73dfcee889a0e34ae1ca59d3cf82919a6297e7db7b48d90ec718c1a6bc874a2"
+    },
+    {
+      "path": "whole-law/schemas/relationship-runtime-manifest.schema.json",
+      "bytes": 4913,
+      "sha256": "82c4e81fd7c3583e6dba2c68230049700ed5395d99c4b1b8cf4d1ab5c44d0e96"
+    },
+    {
+      "path": "whole-law/schemas/relationship-runtime-row.schema.json",
+      "bytes": 4536,
+      "sha256": "35e4a7634f45525fcb769a5aceced7defc986e98ae7cf50ca3c9ba59d95a9741"
+    },
+    {
+      "path": "whole-law/schemas/semantic-assertion.schema.json",
+      "bytes": 7268,
+      "sha256": "307e59c5a3b1f502d50c7d82233a330e6919634b7b57fbdaed96a6a6a290af52"
+    }
+  ],
+  "generated_outputs_imported": false,
+  "original_checkout": "preserved; not changed",
+  "status": "selectively-imported; validation pending"
+}

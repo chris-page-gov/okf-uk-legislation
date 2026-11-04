@@ -117,7 +117,7 @@
       ],
       "properties": {
         "path": {
-          "const": "okf-uk-legislation-v0.3.0.tar.zst"
+          "const": "okf-uk-legislation-v0.4.0.tar.zst"
         },
         "bytes": {
           "type": "integer",
@@ -142,7 +142,7 @@
           "const": "https://github.com/chris-page-gov/okf-explorer"
         },
         "tag": {
-          "const": "v0.5.4"
+          "const": "v0.8.1"
         },
         "commit": {
           "type": "string",

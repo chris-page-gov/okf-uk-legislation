@@ -34,7 +34,7 @@
     "enrichment_v2_historical_audit": {
       "bytes": 10752,
       "path": "whole-law/assurance/enrichment-v2-independent-audit-20260726.json",
-      "sha256": "e69d355c5c6b01990b5cb7237ec0f0668a0a54840c7d4c71d48bd11468eb2f80"
+      "sha256": "1ec508b4739a6ef7e8e9d017114d0d4214ec0d8efacb16e150be57a50aa1e9d2"
     },
     "enrichment_v2_historical_run": {
       "bytes": 4766,
@@ -77,9 +77,9 @@
       "sha256": "e4e1d508a07602bfa981e6d042d264979f487865efa1821f667658324bb5fe9a"
     },
     "explorer_runtime_acceptance": {
-      "bytes": 77151,
+      "bytes": 107235,
       "path": "release-assurance/explorer-runtime-acceptance.json",
-      "sha256": "5bfa975b1a19d3beeaf8260da29e86dcaf80e7d66b0bc7a659dd9dec0f7b125b"
+      "sha256": "8e79e7685d3b80d6fcef489b66e8b414fde350e440dc29df226840302e4246ba"
     },
     "federation_relationship_summary": {
       "bytes": 74960,
@@ -92,9 +92,9 @@
       "sha256": "40b9fec22be0e08c96803f1ed59a199fb10000d055063a7a8921b9dcbe14a029"
     },
     "relationship_assertion_schema": {
-      "bytes": 4937,
+      "bytes": 4942,
       "path": "whole-law/schemas/relationship-assertion.schema.json",
-      "sha256": "1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4"
+      "sha256": "6117dc4f8cb51c12dbe3f78d0e1bb523270b8c3e15f0ad4e22c8137fe3b876ba"
     },
     "relationship_composition": {
       "bytes": 244796,
@@ -102,9 +102,9 @@
       "sha256": "6c6f74acf08b2596b4804427fe6dcfc927a49b5836a345c1aac66013808015a7"
     },
     "root_explorer_descriptor": {
-      "bytes": 8392,
+      "bytes": 10144,
       "path": "bundle/okf-explorer.json",
-      "sha256": "93405064a3fd04ed1f5a4d8aa64a1827ee2d08977952e98a7c55bcefcab19d82"
+      "sha256": "65427bc18f0091758a1033c5874e7370b235bbced607e6f736861a290726ae11"
     },
     "root_relationship_summary": {
       "bytes": 146607,
@@ -112,9 +112,9 @@
       "sha256": "965964d211313f17721a2610e6bdfec4996a00a9ea6b40527d95e74f25487fd3"
     },
     "whole_law_explorer_descriptor": {
-      "bytes": 110999,
+      "bytes": 113991,
       "path": "bundle/whole-law/okf-explorer.json",
-      "sha256": "18297c95e172b1af4a15eb4332851f09ab04a981ea9aa53e57f74f6ec82d96eb"
+      "sha256": "1d926b6b71850b678370d2cfff5f12f50b7cc0816ce11dccc782e767a137bd3c"
     }
   },
   "blockers": [],
@@ -367,18 +367,47 @@
     {
       "dimension": "explorer-queryability",
       "evidence": {
-        "expected_legislation_descriptor_sha256": "93405064a3fd04ed1f5a4d8aa64a1827ee2d08977952e98a7c55bcefcab19d82",
-        "expected_whole_law_descriptor_sha256": "18297c95e172b1af4a15eb4332851f09ab04a981ea9aa53e57f74f6ec82d96eb",
+        "accepted_for": "embedded-explorer-queryability-only",
+        "accessibility_status": "passed",
+        "evidence_class": "diagnostic",
+        "expected_legislation_descriptor_sha256": "65427bc18f0091758a1033c5874e7370b235bbced607e6f736861a290726ae11",
+        "expected_whole_law_descriptor_sha256": "1d926b6b71850b678370d2cfff5f12f50b7cc0816ce11dccc782e767a137bd3c",
+        "failures_empty": true,
         "federation_and_child": {
           "status": "passed"
         },
         "graph_relationship_rendering": {
           "status": "passed"
         },
+        "integrity_status": "passed",
         "legislation_descriptor_current": true,
-        "receipt_legislation_descriptor_sha256": "93405064a3fd04ed1f5a4d8aa64a1827ee2d08977952e98a7c55bcefcab19d82",
-        "receipt_status": "passed",
-        "receipt_whole_law_descriptor_sha256": "18297c95e172b1af4a15eb4332851f09ab04a981ea9aa53e57f74f6ec82d96eb",
+        "performance_status": "passed",
+        "receipt_legislation_descriptor_sha256": "65427bc18f0091758a1033c5874e7370b235bbced607e6f736861a290726ae11",
+        "receipt_status": "failed",
+        "receipt_whole_law_descriptor_sha256": "1d926b6b71850b678370d2cfff5f12f50b7cc0816ce11dccc782e767a137bd3c",
+        "release_eligible": false,
+        "required_browser_statuses": {
+          "chrome": "passed",
+          "firefox": "passed",
+          "webkit": "passed"
+        },
+        "required_gate_statuses": {
+          "accessibility": "passed",
+          "browser_memory": "passed",
+          "cold_search": "passed",
+          "cross_browser": "passed",
+          "facet_count_colour_and_space": "passed",
+          "federation_and_child": "passed",
+          "graph_relationship_rendering": "passed",
+          "keyboard": "passed",
+          "live_reconciliation_states": "passed",
+          "model_assisted_styling_and_filtering": "passed",
+          "startup_transfer": "passed",
+          "warm_search": "passed"
+        },
+        "satisfies_final_release_gate": false,
+        "schema": "okf-explorer-runtime-acceptance.v1",
+        "serious_or_critical_accessibility_violations": 0,
         "whole_law_descriptor_current": true
       },
       "id": "G05-EXPLORER",
@@ -606,6 +635,6 @@
     "works": 365786
   },
   "schema": "okf-graph-enrichment-gate-assurance.v1",
-  "scope": "Built UK Legislation graph, official-effects datapack, model-assisted v3 accepted datapack, historical v2 evidence, relationship summaries, descriptors and bound Explorer runtime receipt.",
+  "scope": "Built UK Legislation graph, official-effects datapack, model-assisted v3 accepted datapack, historical v2 evidence, relationship summaries, descriptors and digest-bound Explorer queryability evidence. A release-ineligible diagnostic can satisfy only the embedded graph gate; final release still requires the separate bound v2 receipt.",
   "status": "passed"
 }

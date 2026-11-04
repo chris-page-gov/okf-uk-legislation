@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK Whole-Law OKF evaluation execution – UK Whole-Law OKF</title>
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../../../">Home</a> <a href="../../../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>UK Whole-Law OKF evaluation execution</h1>
+<p>Run <code>eval-b1af1bdfdf83d1010d3c</code> was executed at 2026-07-26T00:08:49Z against corpus
+binding <code>161204dc3c146e7b19219a7587bb7fc6cef19c1fcd596c97788af456020e829d</code>.</p>
+<h2>Truthful result</h2>
+<p>The evaluation artefacts are structurally executable and evidence-bound, but
+the release evaluation gate is <strong>blocked</strong>. No legal answers were supplied,
+no question has been independently verified as gold, and no legal-answer score
+is reported.</p>
+<ul>
+<li>Legislation suite: 100 questions; structural assurance
+100.00/100; legal-answer score:
+<strong>not measured</strong>.</li>
+<li>Whole-Law suite: 415 questions; structural assurance
+100.00/100; legal-answer score:
+<strong>not measured</strong>.</li>
+<li>Structural hard failures: 0.</li>
+<li>Independently verified gold questions: 0.</li>
+<li>Answers executed: 0.</li>
+<li>Historical non-gold baselines: 100 questions; hash
+verification: <strong>failed</strong>.</li>
+<li>Future-answer schema: 9/
+9 contract checks; answers validated: 0.</li>
+<li>Applicable pair/high-risk coverage:
+2334/
+2334.</li>
+</ul>
+<h2>OKF workflow compared with the frozen direct-source access baseline</h2>
+<p>The deterministic local OKF/Explorer workflow passed
+9/9 descriptor, child,
+entrypoint and byte-identical publication-mirror checks. It resolved
+100/100
+legislation questions to corpus works and
+415/415
+Whole-Law questions to catalogued source records. It linked
+415/415
+Whole-Law questions to frozen route evidence.</p>
+<p>The direct-source access baseline contains 108 observed access
+methods across 72 source records. All required sources
+had an observed reachable method for
+294/415
+questions; at least one required source was reachable for
+414/415.
+These are dated frozen observations, not current live checks or proof of corpus
+completeness. This is an access baseline, not a direct-source legal-answer
+baseline.</p>
+<p>Declared non-available access cases are preserved:
+partial=1, planned=1, restricted=1, unavailable=3.
+The restricted question IDs are
+WLR-ACCESS-RESTRICTED.</p>
+<h2>Claude adversarial access journey</h2>
+<p>The named Claude journey passed 7 deterministic
+local publication contracts with 0 failures.
+Its overall status is <strong>blocked-pending-deployed-journey-receipts</strong>:
+0/8
+public HTTP, compatibility-host and browser receipts are complete. Local
+descriptor evidence is not substituted for those deployed journeys.</p>
+<h2>Release gates</h2>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Status</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>phase8-structural-and-corpus-binding</code></td>
+<td>failed</td>
+<td>100 legislation and 415 Whole-Law questions checked; 0 structural hard failures.</td>
+</tr>
+<tr>
+<td><code>phase8-persona-task-source-access-coverage</code></td>
+<td>met</td>
+<td>38 personas, 20 tasks, 36 source classes and all five declared access states represented; 2334/2334 applicable pair/high-risk combinations covered.</td>
+</tr>
+<tr>
+<td><code>phase8-historical-non-gold-baselines</code></td>
+<td>failed</td>
+<td>100 historical questions hash-verified; 100-question legislation and 360-question research sources remain non-gold.</td>
+</tr>
+<tr>
+<td><code>phase8-deterministic-okf-explorer-workflow</code></td>
+<td>met</td>
+<td>9/9 local descriptor, child, entrypoint and publication-mirror checks passed.</td>
+</tr>
+<tr>
+<td><code>phase8-answer-schema-contract</code></td>
+<td>met</td>
+<td>9/9 fail-closed answer-schema contract checks passed; 0 answers validated.</td>
+</tr>
+<tr>
+<td><code>phase8-claude-local-contract-journey</code></td>
+<td>met</td>
+<td>7 local Claude access contracts passed; 0 failed.</td>
+</tr>
+<tr>
+<td><code>phase8-claude-deployed-access-journey</code></td>
+<td>blocked</td>
+<td>0/8 public HTTP, compatibility-host and browser receipts completed.</td>
+</tr>
+<tr>
+<td><code>phase8-independent-gold-evidence</code></td>
+<td>blocked</td>
+<td>0 questions independently verified as gold; the retained and release suites are explicitly non-gold baselines.</td>
+</tr>
+<tr>
+<td><code>phase8-executed-answer-schema-and-citations</code></td>
+<td>blocked</td>
+<td>0 legal answers supplied or executed; no answer score is reported.</td>
+</tr>
+<tr>
+<td><code>phase8-critical-persona-task-minimum-85</code></td>
+<td>blocked</td>
+<td>No 85/100 claim is made because legal-answer correctness was not evaluated.</td>
+</tr>
+<tr>
+<td><code>phase8-two-successive-held-out-challenge-passes</code></td>
+<td>blocked</td>
+<td>No held-out legal-answer challenge pass has been executed.</td>
+</tr>
+<tr>
+<td><code>phase8-frozen-direct-source-access-baseline</code></td>
+<td>met</td>
+<td>72/72 source records have frozen route envelopes; 215/215 integrity receipts verified.</td>
+</tr>
+<tr>
+<td><code>phase8-direct-source-answer-baseline</code></td>
+<td>blocked</td>
+<td>Frozen access envelopes were checked, but no direct-source legal answers were produced, cited or independently scored.</td>
+</tr>
+</tbody>
+</table>
+<h2>Timings</h2>
+<p>Timing uses <code>time.perf_counter_ns</code> and is recorded as execution evidence. It is
+not part of the deterministic run identity.</p>
+<ul>
+<li><code>answer_schema_contract_ms</code>: 0.069 ms</li>
+<li><code>claude_access_journey_ms</code>: 0.501 ms</li>
+<li><code>historical_baselines_ms</code>: 0.588 ms</li>
+<li><code>legislation_suite_ms</code>: 73.162 ms</li>
+<li><code>okf_explorer_workflow_ms</code>: 4.476 ms</li>
+<li><code>verify_frozen_evidence_ms</code>: 0.001 ms</li>
+<li><code>whole_law_suite_ms</code>: 26.898 ms</li>
+<li><code>total_ms</code>: 211.240 ms</li>
+</ul>
+<h2>Assurance boundary</h2>
+<ul>
+<li>This run checks suite structure, citation contracts, corpus binding, source
+discovery, access-state disclosure and immutable acquisition evidence.</li>
+<li>It does not answer a legal question, verify legal propositions or provide
+legal advice.</li>
+<li>The 100-question legislation suite and 415-question Whole-Law suite remain
+non-gold until independent source evidence and qualified domain review exist.</li>
+<li>The locked 85/100 critical-persona threshold, schema-valid answer threshold,
+citation-resolution threshold and two held-out challenge passes remain
+blocked rather than being inferred from structural success.</li>
+</ul>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

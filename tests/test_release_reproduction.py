@@ -303,14 +303,14 @@ class ReleaseReproductionTests(unittest.TestCase):
         self.assertEqual(
             {
                 "package_count": 52,
-                "direct_count": 7,
-                "transitive_count": 45,
+                "direct_count": 9,
+                "transitive_count": 43,
                 "artifact_hash_count": 1159,
                 "identity_sha256": (
-                    "9542649bd62f7064e1bf6bfc82b4db0bc3260015649fd20cc804077076bc0c97"
+                    "d66bdd006f5f3d69a0137aab0a0f5e5cf9b0d57c8e0dba3a1763d5fe2a33b57c"
                 ),
                 "artifact_hash_sha256": (
-                    "e8a43fc379630e059925a1a892476a23b7bccd0ca459d07da2015594755a191c"
+                    "fae29d9f671559dd53991cfd2dc673799764bf2f650ab01f73b8a5f0a60d1909"
                 ),
             },
             identity,
@@ -543,7 +543,7 @@ class ReleaseReproductionTests(unittest.TestCase):
             commands[-3:],
         )
 
-    def test_production_profile_uses_active_v3_audit_without_embedded_runtime(
+    def test_production_profile_uses_active_v3_audit_and_current_explorer(
         self,
     ) -> None:
         profile = json.loads(
@@ -588,7 +588,7 @@ class ReleaseReproductionTests(unittest.TestCase):
                 / "external-finalization-contract.json"
             ).read_text(encoding="utf-8")
         )
-        self.assertEqual("v0.5.4", contract["explorer"]["required_tag"])
+        self.assertEqual("v0.8.1", contract["explorer"]["required_tag"])
         self.assertEqual(
             "release-assurance/schemas/explorer-runtime-receipt.schema.json",
             contract["input_schemas"]["explorer_runtime_receipt"],

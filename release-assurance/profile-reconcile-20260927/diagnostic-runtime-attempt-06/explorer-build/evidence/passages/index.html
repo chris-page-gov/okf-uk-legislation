@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#17202a" />
+    <link rel="icon" href="../../favicon.svg" />
+    <script>
+      (() => {
+        const landingFragments = new Set(['', '#start', '#journey', '#subjects', '#bundles', '#people', '#concepts', '#responsible', '#help']);
+        const route = location.pathname.split('/').filter(Boolean).at(-1) || '';
+        if (route !== 'explore' && route !== 'evidence' && route !== 'passages' && route !== 'reading-help' && route !== 'corpus' && location.pathname.endsWith('/') && (location.search || !landingFragments.has(location.hash))) {
+          location.replace(`${location.pathname}explore/${location.search}${location.hash}`);
+        }
+      })();
+    </script>
+    <link href="../../_app/immutable/entry/start.BGQBuB7x.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/prOePLLl.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/AlwHAjQD.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.DknEP8E3.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/uBIymjUX.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.DSQV_b3a.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CLNn816V.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/2.Dyrl2qj0.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/3.Dyrl2qj0.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/8.Ckz6pulQ.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/dvbtP5nc.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CNDyI767.js" rel="modulepreload">
+		
+		<link href="../../_app/immutable/assets/8.CsDtSv47.css" rel="stylesheet">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div>
+			<script>
+				{
+					__sveltekit_1vzjma = {
+						base: new URL("../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.BGQBuB7x.js"),
+						import("../../_app/immutable/entry/app.DknEP8E3.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>

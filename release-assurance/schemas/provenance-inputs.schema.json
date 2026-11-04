@@ -379,7 +379,7 @@
       "required": ["path", "bytes", "sha256"],
       "properties": {
         "path": {
-          "const": "explorer-build/okf-explorer-build-manifest.json"
+          "const": "okf-explorer-build-manifest.json"
         },
         "bytes": {"type": "integer", "minimum": 1},
         "sha256": {"$ref": "#/$defs/sha256"}
@@ -390,7 +390,7 @@
       "type": "object",
       "required": ["path", "bytes", "sha256"],
       "properties": {
-        "path": {"const": "explorer-build/index.html"},
+        "path": {"const": "index.html"},
         "bytes": {"type": "integer", "minimum": 1},
         "sha256": {"$ref": "#/$defs/sha256"}
       },

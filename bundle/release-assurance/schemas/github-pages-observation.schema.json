@@ -668,10 +668,10 @@
           "minimum": 1
         },
         "name": {
-          "const": "okf-explorer-v0.5.4-pages-artifact.zip"
+          "const": "okf-explorer-v0.8.1-pages-artifact.zip"
         },
         "url": {
-          "const": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.5.4/okf-explorer-v0.5.4-pages-artifact.zip"
+          "const": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.8.1/okf-explorer-v0.8.1-pages-artifact.zip"
         },
         "bytes": {
           "type": "integer",

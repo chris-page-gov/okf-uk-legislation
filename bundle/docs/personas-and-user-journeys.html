@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personas And User Journeys – UK Legislation and Whole-Law OKF</title>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Legislation and Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../">Home</a> <a href="../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Personas And User Journeys</h1>
+<p><a href="index.html">Documentation spine</a> · <a href="getting-started.html">Getting started</a> · <a href="illustrated-manual.html">Illustrated manual</a> · <a href="agent-research-guide.html">Agent guide</a> · <a href="evaluation-and-quality.html">Evaluation</a> · <a href="maintenance.html">Maintenance</a></p>
+<p>These personas anchor documentation, interface review and evaluation. They are behavioural roles rather than claims about every real user in a profession.</p>
+<h2>Personas</h2>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary need</th>
+<th>Main risk</th>
+<th>Evidence of success</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Barrister</td>
+<td>locate the operative provision and build a submission with pinpoint authority</td>
+<td>relying on the wrong version, extent or related instrument</td>
+<td>every proposition maps to an official selected passage and currency checks are explicit</td>
+</tr>
+<tr>
+<td>Pupil barrister or paralegal</td>
+<td>orient quickly across unfamiliar primary and secondary legislation</td>
+<td>mistaking an amendment, commencement order or draft for the principal work</td>
+<td>exact work identity, type, year, number and official identifier are recorded</td>
+</tr>
+<tr>
+<td>Policy researcher</td>
+<td>understand the scale and themes of the statute book</td>
+<td>treating a title-derived topic or catalogue count as an official legal classification</td>
+<td>corpus boundary and derived metadata are stated accurately</td>
+</tr>
+<tr>
+<td>Legislative data engineer</td>
+<td>inspect identifiers, manifestations, CLML structure and access routes</td>
+<td>flattening Work, Expression, Manifestation and subdivision concepts</td>
+<td>ELI/CLML roles and source-native identifiers remain distinguishable</td>
+</tr>
+<tr>
+<td>Knowledge curator</td>
+<td>refresh the pack and keep documentation synchronized</td>
+<td>stale screenshots, counts or source-access statements surviving a corpus update</td>
+<td>generator, validator, docs, screenshot manifest and Pages build agree</td>
+</tr>
+<tr>
+<td>AI operator or evaluator</td>
+<td>obtain a useful answer with complete provenance</td>
+<td>fluent but unsupported conclusions</td>
+<td>answer schema passes, official citations cover every material proposition and expert scoring is completed</td>
+</tr>
+</tbody>
+</table>
+<h2>Journey map</h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>User question</th>
+<th>Explorer action</th>
+<th>Required evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orient</td>
+<td>What corpus am I looking at?</td>
+<td>read Overview, counts and notices</td>
+<td>descriptor, generation timestamp and corpus boundary</td>
+</tr>
+<tr>
+<td>Discover</td>
+<td>Which work or instrument is relevant?</td>
+<td>search, then reduce by category/type/year/jurisdiction</td>
+<td>exact work identity and source adapter</td>
+</tr>
+<tr>
+<td>Inspect</td>
+<td>Is this the principal work and what formats exist?</td>
+<td>open detail card and manifestations</td>
+<td>official identifier, document type, year/number and official links</td>
+</tr>
+<tr>
+<td>Traverse</td>
+<td>Where is the operative wording?</td>
+<td>load CLML and search within the instrument</td>
+<td>normalized subdivision ID, supporting passage and pinpoint URL</td>
+</tr>
+<tr>
+<td>Validate</td>
+<td>Can I rely on this wording for the question asked?</td>
+<td>open official work and effects links</td>
+<td>version, commencement, extent, amendments and uncertainty</td>
+</tr>
+<tr>
+<td>Answer</td>
+<td>How do I communicate the result?</td>
+<td>build proposition ledger</td>
+<td>one or more official citations per material proposition</td>
+</tr>
+<tr>
+<td>Assure</td>
+<td>How well did the person or AI perform?</td>
+<td>apply evaluation rubric</td>
+<td>scored answer, hard failures and reviewer notes</td>
+</tr>
+</tbody>
+</table>
+<h2>Critical user journeys</h2>
+<h3>J1 — Counsel finds an operative section</h3>
+<p>Search the principal Act, distinguish it from related instruments, open its CLML tree, locate the section wording, open the selected passage and record currency checks.</p>
+<p>Success means the answer does not rely on the catalogue summary and does not omit version, commencement, extent or effects questions.</p>
+<h3>J2 — A pupil distinguishes primary and secondary material</h3>
+<p>Search a shared phrase, compare Category and Document Type, and record the exact type code/year/number before opening the result.</p>
+<p>Success means a remedial, amendment, commencement or draft instrument is not confused with the principal Act.</p>
+<h3>J3 — A researcher explores a legal theme</h3>
+<p>Begin with Topic, then verify candidate relevance against titles and official text. Report the result as a pack-derived navigation grouping.</p>
+<p>Success means the derived topic is never described as an official subject classification.</p>
+<h3>J4 — An engineer resolves structured text</h3>
+<p>Start from the ELI-style work identity, inspect manifestations, load CLML, and preserve source element names and IDs alongside normalized labels.</p>
+<p>Success means Work, manifestation and subdivision identity are not collapsed into one undifferentiated record.</p>
+<h3>J5 — An AI produces a counsel-grade answer</h3>
+<p>Follow progressive discovery, construct discrete propositions, attach citations and temporal context, then run the evaluation suite.</p>
+<p>Success means there are no uncited material propositions and no claim of completeness beyond the legislation corpus.</p>
+<h3>J6 — A curator refreshes the publication</h3>
+<p>Regenerate from cached or refreshed official feeds, validate exact partition counts, rebuild screenshots whose states changed, update documentation dates/counts and verify Pages.</p>
+<p>Success means the <a href="maintenance.html">maintenance checklist</a> is complete and documentation lockstep passes.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

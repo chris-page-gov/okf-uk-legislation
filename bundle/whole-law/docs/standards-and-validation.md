@@ -25,18 +25,24 @@ documented compatibility decision.
 
 ## Authored and generated representations
 
-`okf-bundle.yamlld` is the authored semantic publication. The builder emits
+`okf-bundle.yamlld` is the authored semantic control publication. The builder emits
 `okf-bundle.jsonld` and canonical N-Triples-compatible
 `okf-bundle.ttl` from the same governed values. Validation exercises YAML-LD
 expansion, JSON-LD compaction, flattening and framing, RDF conversion,
 RDF-to-JSON-LD-to-RDF round-trip, three-way graph isomorphism and canonical
 dataset-digest equivalence. SHACL validates all three complete semantic
-descriptor graphs and the example/entity contract. The semantic descriptor
-contains the Federation and its hash-bound SourceRegister contract node; it
-does not materialise the 365,786 catalogued legal works as RDF. The
+descriptor graphs and the example/entity contract. The bounded descriptor
+contains the Federation, its hash-bound SourceRegister contract node and a
+link to the relationship-authoritative YAML-LD manifest. Separate bounded
+JSON-LD shards materialise matching direct triples and evidence-bearing
+`rdf:Statement`/`okf:RelationshipAssertion` nodes without forcing all 365,786
+works into the startup descriptor graph. A separately generated runtime
+manifest lists active default planes, opt-in historical planes, local-route
+assertion arrays and a hash-bucket route locator for bounded Reader hydration.
+The
 [deterministic conformance receipt](../assurance/semantic-conformance.json)
-separately records exhaustive JSON Schema validation of every compact core and
-provider relationship row.
+separately records exhaustive source-row validation and direct/reified
+reconciliation for every active and historical semantic assertion shard.
 
 These checks establish conformance of this publication to its declared basic
 profile. They do not claim that the selected third-party processor passes

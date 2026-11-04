@@ -48,6 +48,14 @@
       "@id": "okflaw:sourceRegister",
       "@type": "@id"
     },
+    "relationshipManifest": {
+      "@id": "okflaw:relationshipManifest",
+      "@type": "@id"
+    },
+    "relationshipManifestJson": {
+      "@id": "okflaw:relationshipManifestJson",
+      "@type": "@id"
+    },
     "registerSchema": "okflaw:registerSchema",
     "recordCount": {
       "@id": "okflaw:recordCount",

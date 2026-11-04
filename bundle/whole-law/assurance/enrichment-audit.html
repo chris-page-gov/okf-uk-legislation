@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Independent audit of Codex-assisted semantic enrichment v2 – UK Whole-Law OKF</title>
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../">Home</a> <a href="../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Independent audit of Codex-assisted semantic enrichment v2</h1>
+<p><strong>Audit date:</strong> 25 July 2026</p>
+<p><strong>Decision:</strong> Changes required</p>
+<p><strong>Release recommendation:</strong> Do not promote this enrichment as <code>governed-accepted-for-discovery</code> until the high-severity findings are resolved.</p>
+<blockquote>
+<p><strong>Historical evidence:</strong> This decision is bound to the 23,502-assertion pre-remediation candidate and exact hashes below. The implementation changed after evidence capture. A reported 22,651-assertion remediation is not assessed here and requires a separate re-audit.</p>
+</blockquote>
+<h2>Outcome</h2>
+<p>The generated datapack is mechanically sound: all 365,786 source works were traversed, all 366 source and output chunks reconcile, all 23,502 assertions can be reconstructed exactly from the rules, and every evidence literal is present in the cited title. Assertion identifiers are unique, source references resolve, current JSON Schemas pass, and the generator makes no OpenAI API request.</p>
+<p>The semantic assurance does not pass. The reported 100% precision is based on a small, co-authored calibration that omits 19 of 55 rules and has no rule-specific hard negative. Corpus-wide review found at least 335 assertions labelled <strong>Civil justice and procedure</strong> whose titles explicitly contain “criminal”. Every generated topic target also uses a noncanonical identifier that will not join the core topic graph.</p>
+<p>This is a reproducible, Codex-assisted <strong>deterministic title-topic stage</strong>. It is not yet the full strategy-compliant semantic enrichment of titles, long titles, source metadata, CLML, concepts and entities.</p>
+<p>The independent status is therefore <code>changes-required</code>. This audit is an analytical Codex sub-agent review, not qualified-practitioner or third-party legal assurance.</p>
+<h2>Scope and reviewed digests</h2>
+<p>The review covered the rules, calibration, generator, run record, provider datapack, coverage and attempt ledgers, all generated assertion chunks, and the applicable schemas.</p>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enrichment/codex-assisted-v2-rules.json</code></td>
+<td><code>379779d15a155cb554bd4e8d478e91613c830c9836f75b04e5d9eb5437cead33</code></td>
+</tr>
+<tr>
+<td><code>enrichment/codex-assisted-v2-calibration.json</code></td>
+<td><code>3e577e26fc2a6c454c3ed856b9204f97507c17ee5d474061b9c009de9370c0d6</code></td>
+</tr>
+<tr>
+<td><code>scripts/build_codex_semantic_enrichment.py</code></td>
+<td><code>95c590790ea57121602badaf6f656b2c3b702556a19b9f5a8500723844cbe5b0</code></td>
+</tr>
+<tr>
+<td><code>bundle/enrichment/codex-assisted-v2.json</code></td>
+<td><code>2e2be48e4ce0dcf9468d3b9805313bf9481c10bb28ae9a0b18dfa8caf9f57844</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/manifest.json</code></td>
+<td><code>5a88d57f015e9eb2621f5bb0ba2b16db2a9dfa71c2409a6071a0d523160686f1</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/coverage.json</code></td>
+<td><code>619b51263e0bd83f7db10a9b3cfd5e3206a7b1c599a40c12dd64580577bca3c0</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/attempt-ledger.json</code></td>
+<td><code>57f94eb3fd146b1834c06dbf680e0fffad59389687a87d4bdca80d1fcb207b8c</code></td>
+</tr>
+<tr>
+<td><code>whole-law/schemas/relationship-assertion.schema.json</code></td>
+<td><code>b0ef39a27ece683bf1e9a4457190a39b6bccf28f2c2476829189b4681ed1a503</code></td>
+</tr>
+<tr>
+<td><code>whole-law/schemas/model-enrichment-run.schema.json</code></td>
+<td><code>5d912ffd5d2c6eda81010ca025fe921cb50be388b1f677a5193e1073648c0a7b</code></td>
+</tr>
+</tbody>
+</table>
+<p>The audited Git base was <code>4110711e96d4f69c0cb1791fce2fee19ab7bec4d</code>. The enrichment artifacts were uncommitted candidate outputs at review time, so their content hashes above are the authoritative audit binding.</p>
+<h2>Commands executed</h2>
+<pre><code class="language-sh">python3 -m py_compile scripts/build_codex_semantic_enrichment.py
+python3 scripts/build_codex_semantic_enrichment.py --check
+.venv/bin/python scripts/check_whole_law_okf.py
+shasum -a 256 enrichment/codex-assisted-v2-rules.json enrichment/codex-assisted-v2-calibration.json scripts/build_codex_semantic_enrichment.py bundle/enrichment/codex-assisted-v2.json bundle/data/enrichment/manifest.json bundle/data/enrichment/coverage.json bundle/data/enrichment/attempt-ledger.json whole-law/schemas/relationship-assertion.schema.json whole-law/schemas/model-enrichment-run.schema.json
+</code></pre>
+<p>The synchronization command reported:</p>
+<pre><code class="language-text">Codex enrichment synchronized: 365,786 attempts, 23,502 accepted assertions, $0 API cost
+</code></pre>
+<p>The Whole-Law validator reported:</p>
+<pre><code class="language-text">Whole-Law OKF validation passed: 72 sources, 36 source classes, 38 personas, 20 tasks
+</code></pre>
+<p>That validator checks the run and provider manifests, but not every assertion. The independent corpus reconciler therefore applied <code>Draft202012Validator</code> and <code>FormatChecker</code> to all 23,502 assertions as a separate check.</p>
+<h2>Full-corpus method</h2>
+<p>The read-only reconciler performed these operations:</p>
+<ol>
+<li>Read each of the 366 work paths declared by <code>bundle/data/manifest.json</code>.</li>
+<li>Read the aligned assertion chunk and attempt-ledger entry.</li>
+<li>Recompute source and output SHA-256 values, byte counts and record counts.</li>
+<li>Re-run all 55 regular expressions against every title.</li>
+<li>Independently apply the existing-topic and same-topic suppression rules.</li>
+<li>Compare the independently reconstructed and generated assertion multisets exactly.</li>
+<li>Validate every assertion against <code>relationship-assertion.schema.json</code>.</li>
+<li>Check identifier and source-target-predicate uniqueness.</li>
+<li>Resolve each assertion source to its aligned work record.</li>
+<li>Check its rule, evidence literal, topic, confidence, authority and source URL.</li>
+<li>Profile match, no-match, suppression, collision, prior-classification and title-shape states.</li>
+</ol>
+<p>The essential reconstruction logic was:</p>
+<pre><code class="language-python">for index, source_path in enumerate(source_manifest["chunks"]["datasets"]):
+    works = load_gzip_json(bundle / source_path)
+    assertions = load_gzip_json(
+        bundle / "data" / "enrichment" / f"assertions-{index:03d}.json.gz"
+    )
+    expected = []
+    for work in works:
+        existing = {
+            value for value in work.get("topics", [])
+            if not str(value).startswith("Unclassified")
+        }
+        seen = set()
+        for rule, pattern in compiled_rules:
+            match = pattern.search(str(work.get("title", "")))
+            if not match or rule["topic"] in existing or rule["topic"] in seen:
+                continue
+            seen.add(rule["topic"])
+            expected.append((
+                work["id"],
+                f"topic:{rule['topic']}",
+                "classified as",
+                rule["id"],
+                match.group(0),
+            ))
+    actual = [
+        (
+            assertion["source"],
+            assertion["target"],
+            assertion["predicate"],
+            assertion["evidence"][0]["rule_id"],
+            assertion["evidence"][0]["value"],
+        )
+        for assertion in assertions
+    ]
+    assert Counter(expected) == Counter(actual)
+</code></pre>
+<h2>Sampling method</h2>
+<p>Three deterministic samples supplemented the complete structural replay:</p>
+<ul>
+<li><strong>Topic sample:</strong> five assertions per emitted topic, selected by ascending <code>SHA-256(topic + NUL + source identifier)</code>. This produced 95 records across all 19 topics.</li>
+<li><strong>Rule sample:</strong> two assertions per emitting rule, selected by ascending <code>SHA-256(rule identifier + NUL + source identifier)</code>. This produced 92 records across all 46 emitting rules.</li>
+<li><strong>No-match sample:</strong> 20 previously unclassified, non-URL titles with no v2 match, selected by source-identifier hash. Corpus-wide term and bigram counts were also calculated over all 74,417 records in that stratum.</li>
+</ul>
+<p>These are deliberately reproducible red-team samples, not statistically representative precision estimates. The corpus-wide adversarial check of the Civil justice topic is a complete lexical scan, not a sample.</p>
+<h2>Data and grain summary</h2>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th style="text-align:right">Count</th>
+<th style="text-align:right">Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source works traversed</td>
+<td style="text-align:right">365,786</td>
+<td style="text-align:right">100.000%</td>
+</tr>
+<tr>
+<td>Records receiving a new assertion</td>
+<td style="text-align:right">23,460</td>
+<td style="text-align:right">6.414%</td>
+</tr>
+<tr>
+<td>Assertions emitted</td>
+<td style="text-align:right">23,502</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>Records receiving no new assertion</td>
+<td style="text-align:right">342,326</td>
+<td style="text-align:right">93.586%</td>
+</tr>
+<tr>
+<td>Raw rule-match records</td>
+<td style="text-align:right">26,610</td>
+<td style="text-align:right">7.275%</td>
+</tr>
+<tr>
+<td>Records matching multiple rules</td>
+<td style="text-align:right">3,806</td>
+<td style="text-align:right">1.041%</td>
+</tr>
+<tr>
+<td>Records matching multiple topics</td>
+<td style="text-align:right">52</td>
+<td style="text-align:right">0.014%</td>
+</tr>
+</tbody>
+</table>
+<p>The v1 unclassified population breaks down exactly as follows:</p>
+<table>
+<thead>
+<tr>
+<th>v1-unclassified outcome</th>
+<th style="text-align:right">Count</th>
+<th style="text-align:right">Share of 97,899</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received a v2 topic</td>
+<td style="text-align:right">16,803</td>
+<td style="text-align:right">17.164%</td>
+</tr>
+<tr>
+<td>Has a human-readable title but no v2 match</td>
+<td style="text-align:right">74,417</td>
+<td style="text-align:right">76.014%</td>
+</tr>
+<tr>
+<td>Has a URL in the title field</td>
+<td style="text-align:right">6,679</td>
+<td style="text-align:right">6.822%</td>
+</tr>
+</tbody>
+</table>
+<p>Another 6,657 already-classified records received an additional topic. They are 28.376% of all records receiving a v2 assertion.</p>
+<h2>Checks that passed</h2>
+<ul>
+<li>All 366 source and 366 output chunks reconcile.</li>
+<li>All compressed byte counts and SHA-256 values match their manifests.</li>
+<li>All per-chunk attempt and accepted counts match the attempt ledger.</li>
+<li>Independent rule replay produces the exact generated assertion multiset.</li>
+<li>All 23,502 assertion IDs are unique.</li>
+<li>All 23,502 source-target-predicate tuples are unique.</li>
+<li>Every source resolves to the corresponding input work.</li>
+<li>Every evidence literal is the exact text matched in the source title.</li>
+<li>Every rule ID, topic and numeric confidence agrees with the rule file.</li>
+<li>Every assertion validates against the current JSON Schema.</li>
+<li>The generator contains no API client or API-request path. Incremental OpenAI API cost is correctly reported as US$0; Codex task billing and tokens are not exposed.</li>
+</ul>
+<p>These results establish mechanical integrity and literal evidence integrity. They do not establish semantic precision.</p>
+<h2>Findings</h2>
+<h3>ENR-AUD-001 — High: this is not the full semantic-enrichment phase</h3>
+<p>The script traverses every record, but classification uses only <code>record.title</code>. It emits only <code>classified as</code> topic assertions. Long titles, source metadata and CLML are not assessed, and no new concept or entity-link assertions are produced. The <code>entity_suffixes</code> configuration is unused.</p>
+<p>The full-corpus attempt claim is therefore true only for the deterministic title-rule stage. It does not satisfy the broader locked strategy by itself.</p>
+<p>Required action:</p>
+<ul>
+<li>Name and present this as the “Codex-assisted deterministic title-topic stage”.</li>
+<li>Record field availability and assessment for title, long title, source metadata and CLML.</li>
+<li>Add separately typed concept and entity candidates, with no assertion where evidence is absent.</li>
+</ul>
+<h3>ENR-AUD-002 — High: 100% precision is not independently calibrated</h3>
+<p>The authored suite contains 40 cases: 32 positives and eight generic negatives. It exercises only 36 of 55 rules (65.455%). None of the negative cases triggers a rule, so no rule has a rule-specific hard negative. <code>evidence_support</code> and <code>schema_validity</code> are assigned <code>1.0</code> constants by <code>calibration()</code> rather than calculated from validation results.</p>
+<p>The suite can show that its own examples behave as expected. It cannot support 100% out-of-sample precision, 100% evidence support, or the assigned 0.96–0.99 per-rule confidence values.</p>
+<p>Required action:</p>
+<ul>
+<li>Freeze independently labelled calibration and held-out suites before scoring.</li>
+<li>Exercise every rule with positive, boundary, collision and hard-negative records across type, jurisdiction and decade where possible.</li>
+<li>Report micro and macro precision/recall, per-rule confusion counts and confidence intervals.</li>
+<li>Calculate evidence support and schema validity rather than assigning them.</li>
+</ul>
+<h3>ENR-AUD-003 — High: the Civil justice topic contains criminal-law records</h3>
+<p>Of 2,056 emitted <strong>Civil justice and procedure</strong> assertions, 335 titles contain the whole word “criminal” (16.294%). Examples include:</p>
+<ul>
+<li><code>R008</code>: “The Criminal Legal Aid (Remuneration) (Amendment) Regulations 2026”</li>
+<li><code>R009</code>: “The Advice and Assistance (Summary Criminal Proceedings) … Regulations 2022”</li>
+<li><code>R010</code>: “The Magistrates’ Courts (Costs in Criminal Cases) … Rules 2012”</li>
+</ul>
+<p>The equal-per-topic sample also found two explicit criminal titles among its five Civil justice records. This directly conflicts with the controlled topic label and disproves the claimed 0.98–0.99 semantic confidence for a material subset.</p>
+<p>Required action:</p>
+<ul>
+<li>Split civil, criminal and mixed legal-aid/procedure rules, or rename the topic to an honestly broader justice topic.</li>
+<li>Apply explicit criminal and mixed-context branches before the generic rules.</li>
+<li>Rebuild and independently re-score every affected assertion.</li>
+</ul>
+<h3>ENR-AUD-004 — High: topic targets do not join the core graph</h3>
+<p>All 23,502 targets use a colon form with spaces, for example:</p>
+<pre><code class="language-text">topic:Civil justice and procedure
+</code></pre>
+<p>The core relationships and published topic pages use:</p>
+<pre><code class="language-text">topic/civil-justice-and-procedure
+</code></pre>
+<p>The generated form is neither the core route identifier nor a declared absolute or compact IRI. It can produce unresolved or duplicate topic nodes in Explorer and RDF projections.</p>
+<p>Required action:</p>
+<ul>
+<li>Emit <code>topic/&lt;slug&gt;</code> or a declared absolute topic IRI.</li>
+<li>Enforce the identifier pattern and topic-registry referential integrity.</li>
+<li>Regenerate assertion IDs if target identity is part of their identity contract.</li>
+</ul>
+<h3>ENR-AUD-005 — High: independent verification is claimed prematurely</h3>
+<p>Every assertion already contains:</p>
+<pre><code class="language-json">{
+  "by": "process:codex-assisted-rule-review",
+  "method": "deterministic calibration and independent rule review"
+}
+</code></pre>
+<p>The run says <code>governed-accepted-for-discovery</code>, while the authored calibration says <code>independent-review-required</code>. This first independent audit concludes <code>changes-required</code>.</p>
+<p>Required action:</p>
+<ul>
+<li>Change the run and assertion-set status to pending review or changes required.</li>
+<li>Remove per-assertion verification until it links to the digest of a passed audit.</li>
+<li>After corrections, supersede this audit explicitly and run a fresh independent held-out review.</li>
+</ul>
+<h3>ENR-AUD-006 — High: authoring provenance is incomplete</h3>
+<p><code>prompt_hash</code> is computed from a synthetic <code>prompt_basis</code> assembled by the generator. It is not the hash of the actual Codex task transcript or exact rule-authoring prompt. The exact model identifier is unavailable, and the run lacks schema hashes, exposed model parameters and interactive task usage.</p>
+<p>Deterministic rule execution is reproducible. Model-assisted rule authorship is not.</p>
+<p>Required action:</p>
+<ul>
+<li>Rename the current field to <code>prompt_basis_hash</code>.</li>
+<li>Link and hash the immutable task transcript or exact authoring prompt if available.</li>
+<li>Record schema hashes, exposed parameters and explicit reasons for unavailable fields.</li>
+</ul>
+<h3>ENR-AUD-007 — Medium: 100% attempt coverage hides evidence and coverage cliffs</h3>
+<p>Every record passed through the loop, but 6,679 records have a URL instead of a title. Among the v1 unclassified records, 74,417 have usable text titles and still receive no v2 assertion.</p>
+<p>Frequent unmatched phrases include:</p>
+<table>
+<thead>
+<tr>
+<th>Phrase</th>
+<th style="text-align:right">Unmatched records</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pensions</td>
+<td style="text-align:right">1,662</td>
+</tr>
+<tr>
+<td>roads</td>
+<td style="text-align:right">1,426</td>
+</tr>
+<tr>
+<td>companies</td>
+<td style="text-align:right">854</td>
+</tr>
+<tr>
+<td>courts</td>
+<td style="text-align:right">678</td>
+</tr>
+<tr>
+<td>local authorities</td>
+<td style="text-align:right">662</td>
+</tr>
+<tr>
+<td>children</td>
+<td style="text-align:right">654</td>
+</tr>
+<tr>
+<td>schools</td>
+<td style="text-align:right">623</td>
+</tr>
+<tr>
+<td>railways</td>
+<td style="text-align:right">472</td>
+</tr>
+<tr>
+<td>fisheries</td>
+<td style="text-align:right">446</td>
+</tr>
+<tr>
+<td>agriculture</td>
+<td style="text-align:right">421</td>
+</tr>
+<tr>
+<td>goods vehicles</td>
+<td style="text-align:right">374</td>
+</tr>
+<tr>
+<td>public service vehicles</td>
+<td style="text-align:right">288</td>
+</tr>
+<tr>
+<td>patents</td>
+<td style="text-align:right">240</td>
+</tr>
+</tbody>
+</table>
+<p>These counts do not prove the appropriate topic for every title, but they demonstrate substantial, stratifiable false-negative candidates.</p>
+<p>Required action:</p>
+<ul>
+<li>Publish traversal, evidence availability, new-assertion and unresolved-title coverage separately.</li>
+<li>Repair URL-only title records from authoritative localized metadata.</li>
+<li>Use the unmatched strata to create the next independently labelled discovery suite.</li>
+</ul>
+<h3>ENR-AUD-008 — Medium: run counts mix grains</h3>
+<p>The run combines:</p>
+<ul>
+<li><code>accepted_assertions = 23,502</code>, an assertion count; and</li>
+<li><code>rejected_records = 342,326</code>, a record count.</li>
+</ul>
+<p>Their sum is 365,828, which exceeds the 365,786 attempted records. The record-level accepted count is 23,460, and that is the value that partitions the population with 342,326.</p>
+<p>Required action:</p>
+<ul>
+<li>Add <code>records_with_accepted_assertions</code>.</li>
+<li>Rename <code>rejected_records</code> to <code>records_without_new_supported_assertions</code>.</li>
+<li>Group record and assertion metrics and validate each reconciliation.</li>
+</ul>
+<h3>ENR-AUD-009 — Medium: the schemas are too permissive for the semantic contract</h3>
+<p>The relationship schema accepts any non-empty target string, so all 23,502 noncanonical targets pass. The run schema leaves <code>usage</code>, <code>cost</code> and calibration largely unconstrained and does not enforce count grain.</p>
+<p>Required action:</p>
+<ul>
+<li>Require an absolute IRI or declared bundle-route pattern.</li>
+<li>Constrain authority, verification state, hashes, cost currency and unavailable-field reasons.</li>
+<li>Add controlled-topic referential-integrity and cross-file count tests.</li>
+</ul>
+<h3>ENR-AUD-010 — Low: dead and redundant rules obscure the effective surface</h3>
+<p>Nine rules emit nothing:</p>
+<pre><code class="language-text">R002 R007 R014 R017 R024 R036 R042 R045 R047
+</code></pre>
+<p><code>R007</code> never matches any corpus title. The other zero-output rules are redundant with an earlier same-topic rule or a pre-existing topic for every current hit.</p>
+<p>Required action:</p>
+<ul>
+<li>Declare aliases or remove redundant rules.</li>
+<li>Correct and calibrate <code>R007</code> against the actual corpus phrase if it remains needed.</li>
+<li>Publish raw match, suppression and emitted counts for every rule, including zeros.</li>
+</ul>
+<h2>Required acceptance conditions for re-audit</h2>
+<p>Re-audit should begin only after:</p>
+<ol>
+<li>Every high-severity finding above is resolved.</li>
+<li>The datapack is regenerated with canonical topic identifiers.</li>
+<li>Civil, criminal and mixed justice assertions are corrected or the vocabulary is honestly redefined.</li>
+<li>Independent, rule-complete held-out evidence replaces the self-authored precision claim.</li>
+<li>Premature <code>verified</code> and <code>governed-accepted</code> claims are removed.</li>
+<li>The title-only stage is distinguished from completion of the full semantic-enrichment phase.</li>
+<li>Schemas enforce identifier and count-grain contracts.</li>
+</ol>
+<p>Mechanical integrity passed. Literal evidence integrity passed. Semantic precision assurance and strategy completion did not pass.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

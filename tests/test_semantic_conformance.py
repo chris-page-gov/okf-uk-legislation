@@ -72,6 +72,18 @@ class SemanticConformanceTests(unittest.TestCase):
             receipt["scope"]["relationship_rows_exhaustively_validated_as_json"],
         )
         self.assertEqual(
+            929_053,
+            receipt["scope"]["relationship_rows_materialized_as_rdf"],
+        )
+        self.assertEqual(
+            906_754,
+            receipt["scope"]["active_relationship_direct_triples"],
+        )
+        self.assertEqual(
+            22_299,
+            receipt["scope"]["historical_relationship_direct_triples"],
+        )
+        self.assertEqual(
             835_563,
             receipt["json_schema"]["totals"]["core_rows"],
         )
@@ -89,14 +101,19 @@ class SemanticConformanceTests(unittest.TestCase):
         self.assertTrue(semantic["graphs_isomorphic"])
         self.assertTrue(semantic["canonical_serializations_equal"])
         self.assertTrue(semantic["turtle_rdf_round_trip"])
+        self.assertGreaterEqual(semantic["yaml_graph_triples"], 23)
         self.assertEqual(
-            [21, 21, 21],
+            [semantic["yaml_graph_triples"]] * 3,
             [
                 semantic["yaml_graph_triples"],
                 semantic["json_graph_triples"],
                 semantic["turtle_graph_triples"],
             ],
         )
+        rich = receipt["rich_relationship_semantics"]
+        self.assertEqual(906_754, rich["active_assertions"])
+        self.assertEqual(22_299, rich["historical_assertions"])
+        self.assertEqual(929_053, rich["all_assertions"])
         self.assertEqual(
             1,
             len(

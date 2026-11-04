@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Illustrated UK Legislation OKF Manual – UK Legislation and Whole-Law OKF</title>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Legislation and Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../">Home</a> <a href="../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Illustrated UK Legislation OKF Manual</h1>
+<p><a href="index.html">Documentation spine</a> · <a href="getting-started.html">Getting started</a> · <a href="personas-and-user-journeys.html">Personas and journeys</a> · <a href="agent-research-guide.html">Agent guide</a> · <a href="evaluation-and-quality.html">Evaluation</a> · <a href="maintenance.html">Maintenance</a></p>
+<p>This manual is organized around the personas and journeys in <a href="personas-and-user-journeys.html">Personas and user journeys</a>. Screenshots were captured from the hosted Explorer on 2026-07-11. Their routes and refresh instructions are recorded in <a href="assets/uk-legislation-manual/manifest.json">the screenshot manifest</a> and <a href="maintenance.html">maintenance guide</a>.</p>
+<h2>1. Orient before searching</h2>
+<p><strong>Persona:</strong> policy researcher or first-time user
+<strong>User story:</strong> As a researcher, I want to understand the corpus before searching so I do not mistake a pack count for a claim about all law.</p>
+<p><img alt="UK Legislation corpus overview" src="assets/uk-legislation-manual/01-corpus-overview.jpg"/></p>
+<p>Check:</p>
+<ul>
+<li>the title says <strong>UK Legislation OKF</strong>;</li>
+<li>legal works and manifestations are counted separately;</li>
+<li>Category, Creation Year, Document Type, Jurisdiction and Topic are available;</li>
+<li>the generated timestamp and overview-only hydration state are visible;</li>
+<li>notices explain official versus derived metadata.</li>
+</ul>
+<p>The initial state is intentionally lightweight. It does not load hundreds of thousands of work records or provision trees.</p>
+<h2>2. Search without confusing related instruments</h2>
+<p><strong>Persona:</strong> pupil barrister or paralegal
+<strong>User story:</strong> As a pupil, I want to find the Human Rights Act 1998 while seeing related instruments so I can select the principal Act deliberately.</p>
+<p><img alt="Search results for Human Rights Act 1998" src="assets/uk-legislation-manual/02-search-human-rights-act.jpg"/></p>
+<p>Steps:</p>
+<ol>
+<li>Search <code>Human Rights Act 1998</code>.</li>
+<li>Compare principal, remedial, amendment, commencement and draft results.</li>
+<li>Prefer the exact title only after checking Category, type, year and number.</li>
+<li>Retain the search in the URL so the research state can be shared.</li>
+</ol>
+<p>Expected behaviour:</p>
+<ul>
+<li>search starts from compressed static shards;</li>
+<li>official full-text Atom results can supplement local title matches;</li>
+<li>results state source, confidence, access and protocol;</li>
+<li>a high score is relevance, not legal currency.</li>
+</ul>
+<h2>3. Inspect identity and provenance</h2>
+<p><strong>Persona:</strong> barrister or legislative data engineer
+<strong>User story:</strong> As counsel, I want the record card to distinguish authoritative identifiers and formats from derived catalogue fields.</p>
+<p><img alt="Human Rights Act work provenance card" src="assets/uk-legislation-manual/03-legal-work-provenance.jpg"/></p>
+<p>Record before relying on the work:</p>
+<ul>
+<li>official identifier;</li>
+<li>document type and normalized category;</li>
+<li>year and number;</li>
+<li>jurisdiction;</li>
+<li>legal-status warning;</li>
+<li>source adapter and confidence;</li>
+<li>available manifestations and official work/contents/effects links.</li>
+</ul>
+<p>The record uses ELI and Schema.org alignment for interoperability, while CLML remains the authoritative structural source. The Open Government Licence statement does not remove any additional terms applying to particular material.</p>
+<h2>4. Resolve and cite the selected passage</h2>
+<p><strong>Persona:</strong> barrister or AI operator
+<strong>User story:</strong> As counsel, I want to search the authoritative instrument structure and cite the exact wording supporting each proposition.</p>
+<p><img alt="Live CLML provisions filtered for public authority" src="assets/uk-legislation-manual/04-live-provision-tree.jpg"/></p>
+<p>Steps:</p>
+<ol>
+<li>Select <strong>Load every Part, Chapter, section, article and nested provision</strong>.</li>
+<li>Search within the instrument for <code>public authority</code> or a provision number.</li>
+<li>Read the normalized provision label together with its CLML element and ID.</li>
+<li>Open <strong>Selected passage</strong> to verify the official pinpoint source.</li>
+<li>Use <strong>Copy provenance citation</strong>, then add version, commencement, extent, amendments and retrieval date.</li>
+</ol>
+<p>The filter shown reduces 453 normalized Human Rights Act concepts to the provisions containing the phrase. Nested P2-P7 structures remain explicitly identified rather than being falsely promoted to top-level sections.</p>
+<h2>5. Build the answer as propositions</h2>
+<p><strong>Persona:</strong> AI operator or evaluator
+<strong>User story:</strong> As an evaluator, I want every material statement to be traceable so a fluent answer cannot hide unsupported conclusions.</p>
+<p>For each proposition, create:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>claim</td>
+<td>one material legal proposition</td>
+</tr>
+<tr>
+<td>source title</td>
+<td>exact work/instrument title</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>direct selected-passage URL</td>
+</tr>
+<tr>
+<td>passage</td>
+<td>supporting text or faithful pinpoint extract</td>
+</tr>
+<tr>
+<td>version</td>
+<td>point-in-time/current-text context</td>
+</tr>
+<tr>
+<td>commencement</td>
+<td>checked status or explicit uncertainty</td>
+</tr>
+<tr>
+<td>extent</td>
+<td>territorial application or explicit uncertainty</td>
+</tr>
+<tr>
+<td>amendments</td>
+<td>applied/unapplied effects checked</td>
+</tr>
+<tr>
+<td>retrieved at</td>
+<td>ISO date</td>
+</tr>
+</tbody>
+</table>
+<p>Validate the answer against <code>evaluation/legislation/answer-schema.json</code> and score it with <code>scripts/evaluate_legislation_answers.py</code>. Missing official or proposition-level provenance triggers the suite's hard cap.</p>
+<h2>6. Know when to leave the pack</h2>
+<p>The Explorer answers questions about the legislation corpus. Leave it—and say why—when the task needs:</p>
+<ul>
+<li>case law or judicial treatment;</li>
+<li>a citator or authoritative commencement analysis beyond the displayed sources;</li>
+<li>procedural rules or practice directions not represented as legislation.gov.uk works;</li>
+<li>facts, evidence or client instructions;</li>
+<li>legal advice rather than source-grounded research assistance.</li>
+</ul>
+<h2>Updating this manual</h2>
+<p>Do not replace screenshots casually. Follow the state contract in <a href="maintenance.html">maintenance.md</a>: reproduce the route and interaction, verify the expected text, capture at 1280×720, update the manifest, inspect the image, and rerun the Pages build. If only counts changed, update the affected screenshots and text without rewriting stable user journeys.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

@@ -34,6 +34,7 @@ from urllib.request import Request, urlopen
 import build_uk_government_api_okf as large_corpus
 
 ROOT = Path(__file__).resolve().parents[1]
+RELEASE = json.loads((ROOT / "publication" / "release.json").read_text(encoding="utf-8"))
 DEFAULT_OUTPUT = ROOT / "bundle"
 DEFAULT_CACHE = ROOT / "tmp" / "legislation-okf-source"
 USER_AGENT = "OKF-Legislation-Explorer/1.0 (public-interest research; chris-page-gov)"
@@ -44,6 +45,18 @@ UKM = "http://www.legislation.gov.uk/namespaces/metadata"
 NS = {"atom": ATOM, "open": OPEN_SEARCH, "leg": LEG, "ukm": UKM}
 BASE = "https://www.legislation.gov.uk"
 OGL = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+RELATIONSHIP_SEMANTIC_MANIFEST = (
+    "https://chris-page-gov.github.io/okf-uk-legislation/"
+    "data/semantic/manifest.yamlld"
+)
+RELATIONSHIP_SEMANTIC_MANIFEST_JSON = (
+    "https://chris-page-gov.github.io/okf-uk-legislation/"
+    "data/semantic/manifest.jsonld"
+)
+WHOLE_LAW_NAMESPACE = (
+    "https://chris-page-gov.github.io/okf-uk-legislation/"
+    "profile/whole-law/v1#"
+)
 DATA_DOCS = "https://legislation.github.io/data-documentation/"
 URI_DOCS = f"{DATA_DOCS}model/uris.html"
 MODEL_DOCS = f"{DATA_DOCS}model/legislation.html"
@@ -2302,9 +2315,9 @@ This pack indexes **{len(records):,} legal works** returned by the official legi
 
 # Published release
 
-This catalogue is included in [Legislation/Whole-Law v0.3.0](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.3.0), published on **27 July 2026**. The bundle uses the **OKF 0.2** specification and this legislation catalogue snapshot is dated 11 July 2026.
+This catalogue is included in [Legislation/Whole-Law v{RELEASE['bundle_version']}](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/{RELEASE['release_tag']}), published on **{RELEASE['release_date_label']}**. The bundle uses the **OKF {RELEASE['okf_version']}** specification and this legislation catalogue snapshot is dated 11 July 2026.
 
-The immutable release retains pre-promotion `candidate`/`preview` labels and an earlier bundle value in some machine representations. The GitHub release record is the authoritative publication status. There is no Legislation/Whole-Law `v0.4.0` release.
+The release version and the OKF specification version are independent: this is bundle release **v{RELEASE['bundle_version']}**, authored to the **OKF {RELEASE['okf_version']}** profile. The source snapshot remains dated July 2026; publishing the corrected semantics and interfaces in November does not imply that upstream source data was refreshed.
 
 # Progressive discovery
 
@@ -2333,7 +2346,7 @@ The immutable release retains pre-promotion `candidate`/`preview` labels and an 
 * [Official legislation data/API documentation]({DATA_DOCS})
 * [Official data.gov.uk API documentation](https://guidance.data.gov.uk/get_data/api_documentation/)
 * [GOV.UK CKAN example descriptor](https://chris-page-gov.github.io/ai-engineering-lab-hackathon-london-2026/gov-ckan/okf-explorer.json)
-* [Preserved OKF Bundle Wiki authoring guide](https://chris-page-gov.github.io/ai-infrastructure-wiki/docs/okf-bundle-authoring.md)
+* [OKF Foundry authoring and domain profiles](https://chris-page-gov.github.io/okf-explorer/docs/beginners/19-foundry-authoring-and-domain-profiles.html)
 
 {citations(("Legislation.gov.uk data reuse documentation", DATA_DOCS), ("Legislation document data model", MODEL_DOCS), ("ELI ontology", ELI), ("Schema.org Legislation", SCHEMA_ORG), ("CLML User Guide", CLML_DOCS))}""")
     files[Path("log.md")] = f"# Legislation OKF generation log\n\n## {generated_at[:10]}\n\n* **Generation**: indexed {len(records):,} official works and {sum(row['resource_count'] for row in records):,} advertised manifestations.\n* **Normalization**: mapped works and subdivisions to ELI 1.5, ELI-I, Schema.org Legislation, CLML and Akoma Ntoso.\n* **Access**: retained Atom, CLML, AKN, RDF/XML, HTML, PDF, CSV, effects and publication-log routes where supplied or documented.\n"
@@ -2464,6 +2477,12 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
         "title": "legislation.gov.uk complete corpus",
         "generated_at": generated_at,
         "snapshot": snapshot,
+        "release": {
+            "version": RELEASE["bundle_version"],
+            "tag": RELEASE["release_tag"],
+            "date": RELEASE["release_date"],
+            "source_snapshot_refreshed": False,
+        },
         "counts": counts,
         "top_publishers": [{"name": row["name"], "title": row["title"], "dataset_count": row["dataset_count"], "resource_count": row["resource_count"]} for row in publishers],
         "recent_datasets": [
@@ -2526,14 +2545,20 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
         "core_conformance": "Markdown concept layer",
         "title": "UK Legislation OKF",
         "description": "Complete work-level index of legislation.gov.uk with ELI/Schema.org normalization, corpus facets, official full-text search, and live CLML provision-level progressive discovery.",
-        "version": "0.2.0",
-        "status": "preview",
+        "version": RELEASE["bundle_version"],
+        "status": RELEASE["status"],
         "profile": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/",
         "publisher": "https://github.com/chris-page-gov",
         "license": OGL,
         "semantic_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.yamlld",
         "generated_at": generated_at,
         "snapshot": snapshot,
+        "release": {
+            "version": RELEASE["bundle_version"],
+            "tag": RELEASE["release_tag"],
+            "date": RELEASE["release_date"],
+            "source_snapshot_refreshed": False,
+        },
         "entrypoints": {
             "viewer": "https://chris-page-gov.github.io/okf-explorer/",
             "data_manifest": "data/manifest.json",
@@ -2544,10 +2569,19 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
             "record_locator": "data/records/manifest.json",
             "relationship_adjacency": "data/adjacency/manifest.json",
             "relationship_composition": "data/relationship-composition.json",
+            "relationship_semantics": "data/semantic/manifest.yamlld",
+            "relationship_semantics_jsonld": "data/semantic/manifest.jsonld",
+            "relationship_runtime": "data/semantic/runtime-manifest.json",
+            "predicate_registry": "data/semantic/predicate-registry.json",
+            "iri_route_registry": "data/semantic/iri-route-registry.json",
             "markdown_index": "index.md",
+            "html_index": "index.html",
+            "documentation_html": "docs/index.html",
+            "interfaces": "interfaces.json",
+            "webmcp": "interfaces.json#webmcp",
             "notes": "methodology/index.md",
             "ontology": "ontology/index.md",
-            "evaluation": "evaluation/README.md",
+            "evaluation": "evaluation/index.html",
             "model_enrichment": "enrichment/model-assisted-v1.json",
             "model_enrichment_v1_audit": (
                 "enrichment/model-assisted-v1-independent-audit.json"
@@ -2556,6 +2590,13 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
                 "enrichment/model-assisted-v1-independent-audit.md"
             ),
         },
+        "alternate_access": [
+            {"kind": "pages", "url": RELEASE["legislation_descriptor"]},
+            {"kind": "repository", "url": RELEASE["repository"]},
+            {"kind": "raw", "url": "https://raw.githubusercontent.com/chris-page-gov/okf-uk-legislation/main/bundle/okf-explorer.json"},
+            {"kind": "archive", "url": f"{RELEASE['repository']}/releases/tag/{RELEASE['release_tag']}"},
+            {"kind": "jsonld-fallback", "url": f"{RELEASE['pages']}okf-bundle.jsonld"},
+        ],
         "counts": counts,
         "performance": manifest["performance"],
         "source": {"title": "legislation.gov.uk public API", "url": BASE, "data_url": f"{BASE}/all/data.feed", "license": "Open Government Licence v3.0 unless additional terms apply", "source_adapter": "legislation_gov_uk_atom", "request_count": len(source_meta.get("requests", [])), "fair_use": FAIR_USE_DOCS},
@@ -2605,6 +2646,23 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
                 "records": "fnv1a32-route-locator",
                 "compression": "pre-compressed-gzip",
                 "full_corpus_browser_hydration": False,
+            },
+            "okf-rich-directed-relationships.v1": {
+                "mode": "bounded-json-ld-shards-with-yaml-ld-control-plane",
+                "entrypoint": "relationship_semantics",
+                "jsonld_fallback": "relationship_semantics_jsonld",
+                "runtime_entrypoint": "relationship_runtime",
+                "direct_triple_policy": "generated-with-evidence-bearing-reification",
+                "authority_planes_preserved": True,
+                "active_planes": [
+                    "core",
+                    "official-effects",
+                    "model-assisted-v3",
+                ],
+                "historical_planes": [
+                    "model-assisted-v2-historical",
+                    "model-assisted-v1-rejected",
+                ],
             },
         },
         "discovery": {
@@ -2799,9 +2857,43 @@ def record_chunk_metadata(
     return rows
 
 
-def output_files(corpus: dict[str, Any], source_meta: dict[str, Any]) -> dict[Path, str | bytes]:
+def output_files(
+    corpus: dict[str, Any],
+    source_meta: dict[str, Any],
+    *,
+    runtime_manifest_path: Path | None = None,
+) -> dict[Path, str | bytes]:
+    descriptor = json.loads(json.dumps(corpus["descriptor"]))
+    descriptor.setdefault("performance", {})[
+        "route_relationship_hydration"
+    ] = (
+        "sha256-prefix rich relationship route locator; legacy FNV-1a "
+        "adjacency retained as the compact-core fallback"
+    )
+    if runtime_manifest_path is not None and runtime_manifest_path.is_file():
+        runtime_body = runtime_manifest_path.read_bytes()
+        descriptor.setdefault("entrypoint_integrity", {})[
+            "relationship_runtime"
+        ] = {
+            "path": "data/semantic/runtime-manifest.json",
+            "bytes": len(runtime_body),
+            "sha256": hashlib.sha256(runtime_body).hexdigest(),
+            "content_encoding": "identity",
+        }
     semantic_descriptor = {
-        "@context": corpus["descriptor"]["@context"],
+        "@context": [
+            corpus["descriptor"]["@context"],
+            {
+                "relationshipManifest": {
+                    "@id": f"{WHOLE_LAW_NAMESPACE}relationshipManifest",
+                    "@type": "@id",
+                },
+                "relationshipManifestJson": {
+                    "@id": f"{WHOLE_LAW_NAMESPACE}relationshipManifestJson",
+                    "@type": "@id",
+                },
+            },
+        ],
         "@id": "https://chris-page-gov.github.io/okf-uk-legislation/",
         "@type": "okf:Bundle",
         "okf_version": "0.2",
@@ -2814,11 +2906,15 @@ def output_files(corpus: dict[str, Any], source_meta: dict[str, Any]) -> dict[Pa
         "publisher": {"@id": corpus["descriptor"]["publisher"]},
         "license": {"@id": corpus["descriptor"]["license"]},
         "generatedAt": corpus["descriptor"]["generated_at"],
+        "relationshipManifest": {"@id": RELATIONSHIP_SEMANTIC_MANIFEST},
+        "relationshipManifestJson": {
+            "@id": RELATIONSHIP_SEMANTIC_MANIFEST_JSON
+        },
     }
     files: dict[Path, str | bytes] = {
         Path("okf-bundle.yamlld"): json.dumps(semantic_descriptor, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         Path("okf-bundle.jsonld"): large_corpus.render_json(semantic_descriptor),
-        Path("okf-explorer.json"): large_corpus.render_json(corpus["descriptor"]),
+        Path("okf-explorer.json"): large_corpus.render_json(descriptor),
         Path("data/manifest.json"): large_corpus.render_json(corpus["manifest"]),
         Path("data/overview.json"): large_corpus.render_json(corpus["overview"]),
         Path("data/analysis/overview.json"): large_corpus.render_json(corpus["analysis"]),
@@ -3005,7 +3101,13 @@ def main(argv: list[str] | None = None) -> int:
         or now_utc()
     )
     corpus = build_corpus(records, source_meta, generated_at)
-    files = output_files(corpus, source_meta)
+    files = output_files(
+        corpus,
+        source_meta,
+        runtime_manifest_path=(
+            output / "data" / "semantic" / "runtime-manifest.json"
+        ),
+    )
     if args.check:
         errors = large_corpus.check_files(output, files)
         if errors:

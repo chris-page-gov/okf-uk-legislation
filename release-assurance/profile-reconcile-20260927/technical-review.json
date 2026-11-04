@@ -1,0 +1,58 @@
+{
+  "schema": "okf-legislation-candidate-technical-review.v1",
+  "candidate_base": "93e072f0010af26c383381c0c59ea1ed66ff381a",
+  "review_mode": "Independent implementation-agent read-only review of selected authored changes; no model content interpretation or legal acceptance.",
+  "reviewed_materials": [
+    {
+      "path": "scripts/build_whole_law_okf.py",
+      "sha256": "db8076c86ed8e0810f09d35d9863e727c53f48f721202b7c97a8c904319832c1"
+    },
+    {
+      "path": "scripts/build_bounded_relationship_navigation.py",
+      "sha256": "08ac062570d42d1824005f7e7c146aff1859fc8ffd7e456e15f3786aff0036d3"
+    },
+    {
+      "path": "scripts/check_whole_law_okf.py",
+      "sha256": "0a527861073ce6a7ca78785c7264d642263d8e665ac6be7fea3811bfebce34da"
+    },
+    {
+      "path": "tests/test_whole_law_okf.py",
+      "sha256": "74f786b3c12efcfe4e32a1d04fa4a074d9eae682edd9a0918f3e66df6136184f"
+    },
+    {
+      "path": "tests/test_freshness_classification.py",
+      "sha256": "5a8fb3631a350e94b7923625ad2f355145742e950075d2ff15436242bc1e7ad9"
+    },
+    {
+      "path": "scripts/build_legislation_okf.py",
+      "sha256": "83d2e8708cd3441bb3c73151603f713db89dce4112663589b95493903588853c"
+    }
+  ],
+  "scope": [
+    "canonical federation projection and relative-child transport",
+    "bounded-navigation local and pinned source confinement",
+    "canonical profile mirrors and vendor lock",
+    "schema identity separation",
+    "correction notices versus new legal works"
+  ],
+  "findings": [
+    {
+      "status": "fixed-and-rechecked",
+      "path": "scripts/check_whole_law_okf.py",
+      "problem": "Manifest-selected locator bucket paths could be read outside the publication root despite schema errors being accumulated.",
+      "repair": "Confine before stat, hashing and decompression; reject absolute, parent and resolved symlink escapes.",
+      "regression": "All nine test_whole_law_okf tests passed, including three path-confinement controls."
+    }
+  ],
+  "outcome": "No further material fault found within the stated bounded review.",
+  "remaining_gates": [
+    "Fresh successful browser acceptance",
+    "Current graph, checksum and release-assurance receipts",
+    "Locked reproduction and independent candidate publication; historical v0.3.0 unchanged"
+  ],
+  "limitations": [
+    "No specialist legal review.",
+    "No new source acquisition or content-model calls.",
+    "The review did not rerun exhaustive corpus validation. Root separately retained exhaustive semantic conformance."
+  ]
+}

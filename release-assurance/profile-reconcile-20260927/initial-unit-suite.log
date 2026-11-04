@@ -1,0 +1,289 @@
+..............................................................................F.....................................................................................F.................................s................................................................................................FF.FFFFF..FF..F.....................F...../Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/.venv/lib/python3.12/site-packages/rdflib/plugins/parsers/jsonld.py:159: DeprecationWarning: ConjunctiveGraph is deprecated, use Dataset instead.
+  conj_sink = ConjunctiveGraph(store=sink.store, identifier=sink.identifier)
+.........................................................................F........./Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/.venv/lib/python3.12/site-packages/rdflib/plugins/parsers/jsonld.py:159: DeprecationWarning: ConjunctiveGraph is deprecated, use Dataset instead.
+  conj_sink = ConjunctiveGraph(store=sink.store, identifier=sink.identifier)
+.FF.........................................E...........
+======================================================================
+ERROR: test_generator_publishes_and_integrity_binds_turtle_alternate (test_whole_law_turtle_descriptor.WholeLawTurtleDescriptorTests.test_generator_publishes_and_integrity_binds_turtle_alternate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_whole_law_turtle_descriptor.py", line 51, in test_generator_publishes_and_integrity_binds_turtle_alternate
+    files = builder.build_files()
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/scripts/build_whole_law_okf.py", line 892, in build_files
+    relations = relationship_summary()
+                ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/scripts/build_whole_law_okf.py", line 285, in relationship_summary
+    governed_v3 = legislation_builder.load_governed_model_enrichment_v3()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/scripts/build_legislation_okf.py", line 641, in load_governed_model_enrichment_v3
+    name: bound_file(
+          ^^^^^^^^^^^
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/scripts/build_legislation_okf.py", line 479, in bound_file
+    raise ValueError(f"{label} byte count does not match its binding")
+ValueError: v3 audit material source_manifest byte count does not match its binding
+
+======================================================================
+FAIL: unittest.case.FunctionTestCase (test_assurance_receipt_is_current_and_passed)
+test_assurance_receipt_is_current_and_passed
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_graph_enrichment_gate.py", line 56, in test_assurance_receipt_is_current_and_passed
+    assert receipt() == expected
+           ^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+======================================================================
+FAIL: test_policy_binds_exact_schema_and_helper_bytes (test_model_enrichment_governance.ModelEnrichmentGovernanceTests.test_policy_binds_exact_schema_and_helper_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_model_enrichment_governance.py", line 879, in test_policy_binds_exact_schema_and_helper_bytes
+    self.assertEqual(
+AssertionError: '1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4' != '6117dc4f8cb51c12dbe3f78d0e1bb523270b8c3e15f0ad4e22c8137fe3b876ba'
+- 1ea4fc423bb97a634cb3bef7d969994543e90259ef0f47246a14edff3145cad4
++ 6117dc4f8cb51c12dbe3f78d0e1bb523270b8c3e15f0ad4e22c8137fe3b876ba
+
+
+======================================================================
+FAIL: test_detailed_dated_status_is_published_without_overwriting_summary (test_release_assurance.ReleaseAssuranceTests.test_detailed_dated_status_is_published_without_overwriting_summary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_assurance.py", line 175, in test_detailed_dated_status_is_published_without_overwriting_summary
+    self.assertEqual([], self.errors)
+AssertionError: Lists differ: [] != ['release report relationship composition [281 chars]ate']
+
+Second list contains 4 additional elements.
+First extra element 0:
+'release report relationship composition does not reconcile to the governed Codex v3 accepted assertions'
+
+- []
++ ['release report relationship composition does not reconcile to the governed '
++  'Codex v3 accepted assertions',
++  'release report cannot pass with model-cost validation errors',
++  'release report requires a candidate-ready governed Codex enrichment and cost '
++  'receipt',
++  'current release state validated exceeds evidenced state candidate']
+
+======================================================================
+FAIL: test_dormant_paid_governance_is_not_an_active_release_gate (test_release_assurance.ReleaseAssuranceTests.test_dormant_paid_governance_is_not_an_active_release_gate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_assurance.py", line 680, in test_dormant_paid_governance_is_not_an_active_release_gate
+    self.assertEqual([], errors)
+AssertionError: Lists differ: [] != ['release report relationship composition [281 chars]ate']
+
+Second list contains 4 additional elements.
+First extra element 0:
+'release report relationship composition does not reconcile to the governed Codex v3 accepted assertions'
+
+- []
++ ['release report relationship composition does not reconcile to the governed '
++  'Codex v3 accepted assertions',
++  'release report cannot pass with model-cost validation errors',
++  'release report requires a candidate-ready governed Codex enrichment and cost '
++  'receipt',
++  'current release state validated exceeds evidenced state candidate']
+
+======================================================================
+FAIL: test_evidence_binds_originals_without_modifying_them (test_release_assurance.ReleaseAssuranceTests.test_evidence_binds_originals_without_modifying_them)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_assurance.py", line 250, in test_evidence_binds_originals_without_modifying_them
+    self.assertEqual([], self.errors)
+AssertionError: Lists differ: [] != ['release report relationship composition [281 chars]ate']
+
+Second list contains 4 additional elements.
+First extra element 0:
+'release report relationship composition does not reconcile to the governed Codex v3 accepted assertions'
+
+- []
++ ['release report relationship composition does not reconcile to the governed '
++  'Codex v3 accepted assertions',
++  'release report cannot pass with model-cost validation errors',
++  'release report requires a candidate-ready governed Codex enrichment and cost '
++  'receipt',
++  'current release state validated exceeds evidenced state candidate']
+
+======================================================================
+FAIL: test_external_finalization_contract_policy_schemas_and_tool_are_bound (test_release_assurance.ReleaseAssuranceTests.test_external_finalization_contract_policy_schemas_and_tool_are_bound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_assurance.py", line 889, in test_external_finalization_contract_policy_schemas_and_tool_are_bound
+    self.assertEqual([], self.errors)
+AssertionError: Lists differ: [] != ['release report relationship composition [281 chars]ate']
+
+Second list contains 4 additional elements.
+First extra element 0:
+'release report relationship composition does not reconcile to the governed Codex v3 accepted assertions'
+
+- []
++ ['release report relationship composition does not reconcile to the governed '
++  'Codex v3 accepted assertions',
++  'release report cannot pass with model-cost validation errors',
++  'release report requires a candidate-ready governed Codex enrichment and cost '
++  'receipt',
++  'current release state validated exceeds evidenced state candidate']
+
+======================================================================
+FAIL: test_gate_12_report_is_complete_and_checksum_bound (test_release_assurance.ReleaseAssuranceTests.test_gate_12_report_is_complete_and_checksum_bound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_assurance.py", line 969, in test_gate_12_report_is_complete_and_checksum_bound
+    self.assertEqual([], self.errors)
+AssertionError: Lists differ: [] != ['release report relationship composition [281 chars]ate']
+
+Second list contains 4 additional elements.
+First extra element 0:
+'release report relationship composition does not reconcile to the governed Codex v3 accepted assertions'
+
+- []
++ ['release report relationship composition does not reconcile to the governed '
++  'Codex v3 accepted assertions',
++  'release report cannot pass with model-cost validation errors',
++  'release report requires a candidate-ready governed Codex enrichment and cost '
++  'receipt',
++  'current release state validated exceeds evidenced state candidate']
+
+======================================================================
+FAIL: test_github_environment_receipt_is_credential_safe (test_release_assurance.ReleaseAssuranceTests.test_github_environment_receipt_is_credential_safe)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_assurance.py", line 850, in test_github_environment_receipt_is_credential_safe
+    self.assertEqual([], self.errors)
+AssertionError: Lists differ: [] != ['release report relationship composition [281 chars]ate']
+
+Second list contains 4 additional elements.
+First extra element 0:
+'release report relationship composition does not reconcile to the governed Codex v3 accepted assertions'
+
+- []
++ ['release report relationship composition does not reconcile to the governed '
++  'Codex v3 accepted assertions',
++  'release report cannot pass with model-cost validation errors',
++  'release report requires a candidate-ready governed Codex enrichment and cost '
++  'receipt',
++  'current release state validated exceeds evidenced state candidate']
+
+======================================================================
+FAIL: test_gui_helper_crash_is_contained_without_source_mutation (test_release_assurance.ReleaseAssuranceTests.test_gui_helper_crash_is_contained_without_source_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_assurance.py", line 864, in test_gui_helper_crash_is_contained_without_source_mutation
+    self.assertEqual([], self.errors)
+AssertionError: Lists differ: [] != ['release report relationship composition [281 chars]ate']
+
+Second list contains 4 additional elements.
+First extra element 0:
+'release report relationship composition does not reconcile to the governed Codex v3 accepted assertions'
+
+- []
++ ['release report relationship composition does not reconcile to the governed '
++  'Codex v3 accepted assertions',
++  'release report cannot pass with model-cost validation errors',
++  'release report requires a candidate-ready governed Codex enrichment and cost '
++  'receipt',
++  'current release state validated exceeds evidenced state candidate']
+
+======================================================================
+FAIL: test_projection_is_synchronized_and_fail_closed (test_release_assurance.ReleaseAssuranceTests.test_projection_is_synchronized_and_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_assurance.py", line 137, in test_projection_is_synchronized_and_fail_closed
+    self.assertEqual([], self.errors)
+AssertionError: Lists differ: [] != ['release report relationship composition [281 chars]ate']
+
+Second list contains 4 additional elements.
+First extra element 0:
+'release report relationship composition does not reconcile to the governed Codex v3 accepted assertions'
+
+- []
++ ['release report relationship composition does not reconcile to the governed '
++  'Codex v3 accepted assertions',
++  'release report cannot pass with model-cost validation errors',
++  'release report requires a candidate-ready governed Codex enrichment and cost '
++  'receipt',
++  'current release state validated exceeds evidenced state candidate']
+
+======================================================================
+FAIL: test_real_fresh_codex_v3_auditor_passes_current_candidate (test_release_assurance.ReleaseAssuranceTests.test_real_fresh_codex_v3_auditor_passes_current_candidate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_assurance.py", line 842, in test_real_fresh_codex_v3_auditor_passes_current_candidate
+    self.assertEqual("passed", result["status"])
+AssertionError: 'passed' != 'failed'
+- passed
++ failed
+
+
+======================================================================
+FAIL: test_sbom_builder_rejects_malformed_or_incomplete_lock (test_release_assurance.ReleaseAssuranceTests.test_sbom_builder_rejects_malformed_or_incomplete_lock)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_assurance.py", line 524, in test_sbom_builder_rejects_malformed_or_incomplete_lock
+    self.assertEqual("candidate", cost["release_effect"])
+AssertionError: 'candidate' != 'blocked-invalid-governed-codex-evidence'
+- candidate
++ blocked-invalid-governed-codex-evidence
+
+
+======================================================================
+FAIL: test_local_observation_is_read_only_and_integrity_bound (test_release_drift.ReleaseDriftTests.test_local_observation_is_read_only_and_integrity_bound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_drift.py", line 32, in test_local_observation_is_read_only_and_integrity_bound
+    self.assertEqual([], failures)
+AssertionError: Lists differ: [] != ['publication checksum manifest is not synchronized']
+
+Second list contains 1 additional elements.
+First extra element 0:
+'publication checksum manifest is not synchronized'
+
+- []
++ ['publication checksum manifest is not synchronized']
+
+======================================================================
+FAIL: test_readme_commands_exactly_match_reproduction_profile (test_release_runbook_commands.ReleaseRunbookCommandTests.test_readme_commands_exactly_match_reproduction_profile)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_release_runbook_commands.py", line 475, in test_readme_commands_exactly_match_reproduction_profile
+    self.assertEqual(expected_build, parse(build_block))
+AssertionError: Lists differ: [['.v[547 chars]uild_relationship_semantics.py'], ['.venv/bin/[835 chars]py']] != [['.v[547 chars]uild_legislation_evaluation.py'], ['.venv/bin/[770 chars]py']]
+
+First differing element 7:
+['.venv/bin/python', 'scripts/build_relationship_semantics.py']
+['.venv/bin/python', 'scripts/build_legislation_evaluation.py']
+
+First list contains 1 additional elements.
+First extra element 21:
+['.venv/bin/python', 'scripts/build_checksums.py']
+
+Diff is 1504 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_receipt_is_explicit_about_rdf_and_json_scope (test_semantic_conformance.SemanticConformanceTests.test_receipt_is_explicit_about_rdf_and_json_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_semantic_conformance.py", line 74, in test_receipt_is_explicit_about_rdf_and_json_scope
+    self.assertEqual(
+AssertionError: 929053 != 0
+
+======================================================================
+FAIL: test_receipt_material_hashes_are_current (test_semantic_conformance.SemanticConformanceTests.test_receipt_material_hashes_are_current)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_semantic_conformance.py", line 211, in test_receipt_material_hashes_are_current
+    walk(receipt["materials"])
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_semantic_conformance.py", line 206, in walk
+    walk(child)
+  File "/Volumes/ExtSSD-Data/!From MacBook M4Max/tmp/okf-uk-legislation-v0.3.0-3fd2700f275f/tests/test_semantic_conformance.py", line 200, in walk
+    self.assertEqual(value["bytes"], len(body))
+AssertionError: 2392 != 2784
+
+----------------------------------------------------------------------
+Ran 476 tests in 234.592s
+
+FAILED (failures=16, errors=1, skipped=1)
+wrote 130 files for 2 legal works to /Users/crpage/tmp/tmp19hagpkv/bundle
+wrote 130 files for 2 legal works to /Users/crpage/tmp/tmp19hagpkv/bundle
+wrote 130 files for 2 legal works to /Users/crpage/tmp/tmpmtxtpvvu/bundle
+wrote 130 files for 2 legal works to /Users/crpage/tmp/tmpmtxtpvvu/bundle

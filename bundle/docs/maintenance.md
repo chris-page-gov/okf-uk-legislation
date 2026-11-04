@@ -12,8 +12,8 @@ attempt and replacement lineage.
 
 The
 [reproduction and promotion contract](../release-assurance/reproduction-and-promotion.md)
-keeps the literal asset name `okf-uk-legislation-v0.3.0.tar.zst` on both
-`v0.3.0-rc.1` and `v0.3.0`. Promotion reuses the sealed bytes and SHA-256;
+keeps the literal asset name `okf-uk-legislation-v0.4.0.tar.zst` on both
+`v0.4.0-rc.1` and `v0.4.0`. Promotion reuses the sealed bytes and SHA-256;
 rebuilding or renaming the asset is prohibited.
 
 Release policy v2 separates embedded pre-freeze evidence from a write-once
@@ -70,6 +70,7 @@ performs network access. See the
 | official effect snapshot | immutable request/response envelopes and effects config | `bundle/data/effects/` |
 | governed Codex-assisted discovery | hash-bound prompts, rules, per-work outcomes and independent review | `bundle/enrichment/codex-assisted-v3/` and the active `bundle/data/enrichment-v3/` projection |
 | historical Codex v2 discovery | preserved rules, calibration and independent audit | `bundle/enrichment/codex-assisted-v2.json` |
+| rich directed relationship semantics | the governed work, effects, accepted v3, historical v2 and rejected v1 source planes | `bundle/data/semantic/` direct/reified JSON-LD, Reader runtime arrays, hash-bucket route locator and registries |
 | optional direct API discovery profile | `enrichment/model-assisted-paid-v2/` observed evidence | optional `bundle/enrichment/model-assisted-paid-v2.json`; not a release prerequisite |
 | Whole-Law contracts and ontology | `whole-law/` | `bundle/whole-law/` |
 | answer benchmarks | evaluation builders | root and Whole-Law evaluation routes |
@@ -85,6 +86,7 @@ python3 scripts/build_legislation_effects.py --offline
 python3 scripts/build_codex_semantic_enrichment_v3.py
 python3 scripts/audit_codex_semantic_enrichment_v3.py
 python3 scripts/rebuild_legislation_discovery.py
+python3 scripts/build_relationship_semantics.py
 python3 scripts/build_legislation_evaluation.py
 python3 scripts/build_whole_law_evaluation.py
 python3 scripts/run_yaml_ld_conformance.py
@@ -135,6 +137,21 @@ reflects their current immutable chunks.
 
 ## Validation
 
+GitHub Actions executes the complete validation contract through four
+mandatory, read-only jobs: core, legislation, semantics and federation. The
+stable `validate` gate fails unless every phase succeeds, and Pages deployment
+cannot start before that gate passes. This is a runtime-bound split of one
+full-suite contract, not impact-based test selection. Run
+`sh scripts/validate_publication.sh` without `OKF_VALIDATION_PHASE` for the
+same complete contract in serial local mode.
+
+The Whole-Law builder excludes Finder `.DS_Store` files and AppleDouble
+`._*` sidecars from authored and generated publication inventories. These are
+operating-system metadata, not OKF content. If a clean runner reports a stale
+Whole-Law integrity manifest, remove neither governed source data nor checks:
+regenerate the projection with the builder and confirm that the manifest does
+not contain those metadata paths.
+
 ```sh
 python3 -m unittest discover -s tests -v
 python3 scripts/check_legislation_okf.py
@@ -144,6 +161,7 @@ python3 scripts/build_legislation_effects.py --check
 python3 scripts/build_codex_semantic_enrichment_v3.py check
 python3 scripts/audit_codex_semantic_enrichment_v3.py check
 python3 scripts/rebuild_legislation_discovery.py --check
+python3 scripts/build_relationship_semantics.py --check
 python3 scripts/build_whole_law_evaluation.py --check
 python3 scripts/run_release_evaluation.py --check
 python3 scripts/build_publication_docs.py --check
@@ -161,12 +179,15 @@ excluded from the active build and validation sequences, requires a new
 explicit decision, and must not request an API key or block this Codex-only
 release.
 
-Validation includes OKF 0.2 Markdown, YAML-LD/JSON-LD RDF equivalence, complete
+Validation includes OKF 0.2 Markdown, YAML-LD/JSON-LD RDF equivalence, Reader
+runtime row/manifest reconciliation, bounded route-locator integrity, complete
 descriptor-graph SHACL, exhaustive JSON Schema checks over all core/provider
-relationship rows, CSVW, federation and source contracts, source/effect/model
-coverage reconciliation, links and checksums. The semantic receipt explicitly
-distinguishes the two-node RDF descriptor from the 365,786-work JSON data
-plane; it does not claim that the work corpus is materialised as RDF.
+source rows, CSVW, federation and source contracts, source/effect/model
+coverage reconciliation, links and checksums. It also recomputes all bounded
+relationship semantic shards and reconciles one direct triple with one rich
+reified assertion for every active or explicitly historical source row. The
+startup descriptor remains bounded; the sharded semantic plane is separately
+and accurately reported as RDF materialisation.
 
 ## Immutable refresh attempts
 

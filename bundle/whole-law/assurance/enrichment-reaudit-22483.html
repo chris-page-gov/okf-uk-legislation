@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Independent re-audit of the 22,483-assertion enrichment candidate – UK Whole-Law OKF</title>
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../">Home</a> <a href="../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Independent re-audit of the 22,483-assertion enrichment candidate</h1>
+<p><strong>Audit date:</strong> 25 July 2026</p>
+<p><strong>Decision:</strong> Changes required</p>
+<blockquote>
+<p><strong>Hash-bound evidence:</strong> This report applies only to the 22,483-assertion
+candidate identified below. A later rebuild requires a separately named
+independent audit.</p>
+</blockquote>
+<h2>Outcome</h2>
+<p>The second candidate is mechanically sound and its two intended remediations
+work:</p>
+<ul>
+<li>all 365,786 works were evaluated;</li>
+<li>all 366 source/output chunks and attempt-ledger entries reconciled;</li>
+<li>the independently reconstructed assertion sequence exactly matched all
+22,483 outputs;</li>
+<li>all assertions used canonical, registered <code>topic/&lt;slug&gt;</code> targets;</li>
+<li>all assertions passed the synchronized OKF Explorer
+<code>relationship-assertion.v2</code> schema;</li>
+<li>evidence, authority, derivation, rights, freshness and pending-review
+metadata were internally consistent;</li>
+<li>55 of 55 rule positives, 55 of 55 near-miss negatives and 40 of 40
+end-to-end cases passed with independently recomputed metrics;</li>
+<li>all 147 European Social Fund collisions are excluded from R041; and</li>
+<li>none of the prior police-station, prisoner-defence or defence-certificate
+records remains in the Civil output.</li>
+</ul>
+<p>The reduction reconciles exactly:</p>
+<pre><code class="language-text">22,651 - 147 European Social Fund - 21 Civil defence-context records = 22,483
+</code></pre>
+<p>Semantic assurance still fails. Whole-output adversarial scans found at least
+139 clear false positives:</p>
+<table>
+<thead>
+<tr>
+<th>Collision</th>
+<th style="text-align:right">Count</th>
+<th style="text-align:right">Affected slice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Veterinary or animal-only medicines → Health and social care</td>
+<td style="text-align:right">123</td>
+<td style="text-align:right">17.324% of R033</td>
+</tr>
+<tr>
+<td>Criminal-subject LASPO instruments → Civil justice and procedure</td>
+<td style="text-align:right">11</td>
+<td style="text-align:right">1.463% of R008</td>
+</tr>
+<tr>
+<td><code>Civilian</code> prefix → Civil justice and procedure</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">13.636% of R010</td>
+</tr>
+<tr>
+<td>Animals (Cruel Poisons) → Health and social care</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1.136% of R034</td>
+</tr>
+<tr>
+<td><strong>Known lower bound</strong></td>
+<td style="text-align:right"><strong>139</strong></td>
+<td style="text-align:right"><strong>0.618% of candidate</strong></td>
+</tr>
+</tbody>
+</table>
+<p>This yields a candidate-wide known precision ceiling of 99.382%, but the
+aggregate hides failed slices: R033 has an 82.676% ceiling and R010 an 86.364%
+ceiling. The Health topic contains at least 125 errors among 1,286 assertions,
+for a 90.280% known precision ceiling.</p>
+<p>The 22,483 candidate is therefore <code>changes-required</code>. Its conservative no-match
+and excluded-without-rerouting populations remain disclosed recall limitations;
+they are not scored as emitted false positives.</p>
+<h2>Hash binding</h2>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enrichment/codex-assisted-v2-rules.json</code></td>
+<td><code>a051f4349bb93a256ac6dcef982fb15f3a8253f21fa9a7875d72ebbd82c6e098</code></td>
+</tr>
+<tr>
+<td><code>enrichment/codex-assisted-v2-calibration.json</code></td>
+<td><code>37407b6bfe5075dd6c5ceda2262c5c245dbe032f2b4c86a9221c85b7ec87af86</code></td>
+</tr>
+<tr>
+<td><code>scripts/build_codex_semantic_enrichment.py</code></td>
+<td><code>b5babea3e2f8f9b48907ca0ebdf6844115a048922bcffb58f3ab274c011a27bd</code></td>
+</tr>
+<tr>
+<td><code>bundle/enrichment/codex-assisted-v2.json</code></td>
+<td><code>b1a9aa04401409683ae62c7776fb63045e68ad59c80a231d69568ef84190fe84</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/manifest.json</code></td>
+<td><code>db254c88a0d645ed0d76007d153be7f32259748dae1ca4f0e36dbae1d19f3470</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/coverage.json</code></td>
+<td><code>296dc12f64d205c0867f6bd6e39601a15050c5d98ab7f95cca61840f5e8a3d27</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/attempt-ledger.json</code></td>
+<td><code>e1b72f95ad170c3294395cc0dcfbc48044c8f4ca161335aea74d60b516eac99e</code></td>
+</tr>
+<tr>
+<td><code>bundle/data/enrichment/calibration.json</code></td>
+<td><code>1e5f95cd4523ebe7a20f7007e5a6cf49e4b99eeca0e40bc17172e89e15117a6c</code></td>
+</tr>
+<tr>
+<td>Legislation and Explorer relationship schema</td>
+<td><code>4a1eb1d91f84d0bcb95084dc8fdbba96984e4b093c5788a16e72e400d9184006</code></td>
+</tr>
+<tr>
+<td>Model enrichment run schema</td>
+<td><code>5d912ffd5d2c6eda81010ca025fe921cb50be388b1f677a5193e1073648c0a7b</code></td>
+</tr>
+</tbody>
+</table>
+<p>The input semantic SHA-256 was:</p>
+<pre><code class="language-text">a2f3e65772f33d339825cb2d94923671ce2f1fec87ae4e63647da9ba4b362b36
+</code></pre>
+<p>The ordered manifest chunk-root SHA-256 was:</p>
+<pre><code class="language-text">4f958c9cb46f2a883260d15b733e3663b11cde9839714815f4bdeebf431519da
+</code></pre>
+<p>It hashes, in manifest order, each UTF-8
+<code>path NUL sha256 NUL bytes NUL records LF</code> row.</p>
+<p>The sorted assertion-ID-set SHA-256 was:</p>
+<pre><code class="language-text">03c039ff7143c497190f97648ffe46edb69705a317e961ac78e076a437dd37b5
+</code></pre>
+<h2>Commands and release-gate context</h2>
+<pre><code class="language-sh">python3 -m py_compile scripts/build_codex_semantic_enrichment.py
+python3 scripts/build_codex_semantic_enrichment.py --check
+python3 -m unittest discover -s tests -v
+python3 scripts/check_legislation_okf.py
+.venv/bin/python scripts/check_whole_law_okf.py
+python3 scripts/build_checksums.py --check
+</code></pre>
+<p>The enrichment synchronization check passed:</p>
+<pre><code class="language-text">Codex enrichment synchronized: 365,786 attempts, 22,483 accepted assertions, $0 API cost
+</code></pre>
+<p>All eight unit tests passed. The complete legislation, Whole-Law and checksum
+validators encountered concurrent authored/generated publication integration
+errors: missing frontmatter/publication-time alignment, a Whole-Law integrity
+path-set mismatch, and an out-of-date or absent checksum publication. They did
+not identify a mechanical enrichment assertion error. Those failures remain
+release gates outside this audit’s edit scope; this report does not treat the
+repository as release-ready.</p>
+<h2>Independent method</h2>
+<p>The reviewer:</p>
+<ol>
+<li>Loaded every source work and aligned assertion chunk.</li>
+<li>Recomputed input/output hashes, compressed bytes, counts and attempt-ledger
+values.</li>
+<li>Recompiled all include and exclude regular expressions.</li>
+<li>Reconstructed every expected assertion after existing-topic and same-topic
+suppression.</li>
+<li>Compared exact expected and actual ordered assertion objects.</li>
+<li>Validated all assertions directly against the Explorer profile and the run
+record against <code>model-enrichment-run.v1</code>.</li>
+<li>Checked identifiers, duplicates, source and topic joins, literal evidence,
+authority, derivation, review, verification, rights and freshness.</li>
+<li>Replayed every rule and end-to-end calibration case.</li>
+<li>Sampled actual emitted records independently by every topic and emitting
+rule.</li>
+<li>Ran whole-output collision scans suggested by the rules, sampled records
+and earlier failures.</li>
+</ol>
+<p>The primary deterministic sample selected:</p>
+<ul>
+<li>five assertions per emitted topic by ascending
+<code>SHA-256(topic + NUL + source)</code> — 95 assertions;</li>
+<li>three assertions per emitting rule by ascending
+<code>SHA-256(rule + NUL + source)</code>, or every assertion if fewer — 136 assertions;
+and</li>
+<li>229 unique assertions after overlap.</li>
+</ul>
+<p>All 19 topics and all 46 emitting rules were represented. A second read-only
+review used a separately seeded assertion-ID ranking and reviewed 228 unique
+assertions. Neither seeded sample contained a clear false positive. The
+failures came from whole-output adversarial scans, demonstrating why passing a
+small random or authored calibration set is insufficient.</p>
+<h2>Profile and recall limits</h2>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th style="text-align:right">Count</th>
+<th style="text-align:right">Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Works attempted</td>
+<td style="text-align:right">365,786</td>
+<td style="text-align:right">100.000%</td>
+</tr>
+<tr>
+<td>Records with an assertion</td>
+<td style="text-align:right">22,443</td>
+<td style="text-align:right">6.136%</td>
+</tr>
+<tr>
+<td>Assertions</td>
+<td style="text-align:right">22,483</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>Post-exclusion raw-match records</td>
+<td style="text-align:right">25,565</td>
+<td style="text-align:right">6.989%</td>
+</tr>
+<tr>
+<td>Multiple-rule records</td>
+<td style="text-align:right">3,793</td>
+<td style="text-align:right">1.037%</td>
+</tr>
+<tr>
+<td>Multiple-topic records</td>
+<td style="text-align:right">47</td>
+<td style="text-align:right">0.013%</td>
+</tr>
+</tbody>
+</table>
+<p>The 97,899 previously unclassified records divided into:</p>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th style="text-align:right">Count</th>
+<th style="text-align:right">Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Received a new topic</td>
+<td style="text-align:right">16,373</td>
+<td style="text-align:right">16.724%</td>
+</tr>
+<tr>
+<td>Human title, no new match</td>
+<td style="text-align:right">74,847</td>
+<td style="text-align:right">76.453%</td>
+</tr>
+<tr>
+<td>URL instead of title</td>
+<td style="text-align:right">6,679</td>
+<td style="text-align:right">6.822%</td>
+</tr>
+</tbody>
+</table>
+<p>The 74,847 no-matches are not automatically errors. The publication correctly
+states that literal title evidence is incomplete and no-match is not evidence
+of no topic.</p>
+<p>The remediation also excludes, without replacement:</p>
+<ul>
+<li>147 European Social Fund records that could support an
+EU/employment/cohesion concept;</li>
+<li>21 police-station or prisoner-defence records that could support Criminal law
+and policing; and</li>
+<li>seven mixed Civil and Criminal Legal Aid titles that lose a potentially valid
+Civil assertion.</li>
+</ul>
+<p>These are visible recall choices, not fabricated relationships.</p>
+<h2>Checks passed</h2>
+<ul>
+<li>Zero chunk, byte, hash or attempt-ledger discrepancies.</li>
+<li>Zero deterministic reconstruction discrepancies.</li>
+<li>Zero duplicate assertion IDs or source-target-predicate tuples.</li>
+<li>Zero missing source records.</li>
+<li>Zero noncanonical or unregistered topic targets.</li>
+<li>Zero Explorer or model-run schema errors.</li>
+<li>Zero literal-evidence or evidence-URL discrepancies.</li>
+<li>Zero authority, derivation, review, verification, rights or freshness
+discrepancies.</li>
+<li>55 of 55 unique rule positives passed.</li>
+<li>55 of 55 unique rule near-miss negatives passed.</li>
+<li>40 of 40 end-to-end cases passed.</li>
+<li>Generated precision, recall, evidence-support and structural-validity values
+agreed with independent recomputation.</li>
+<li>Zero API requests and US$0 incremental API cost; Codex task billing remains
+unavailable.</li>
+<li>No new fair-use or licence constraint was triggered by this audit.</li>
+</ul>
+<h2>Findings</h2>
+<h3>REA-22483-F001 — High: animal medicines mapped to human health/social care</h3>
+<p>R033 maps every <code>medicine</code> or <code>medicines</code> phrase to <strong>Health and social care</strong>.
+At least 123 of its 710 outputs are explicitly veterinary, animal-use or
+animal-feed measures. The count conservatively excludes <code>Products Other Than Veterinary Drugs</code> titles and mixed human-and-veterinary EU measures.</p>
+<p>Examples include:</p>
+<ul>
+<li><code>The Veterinary Medicines Regulations 2013</code>;</li>
+<li><code>The Medicines (Products for Animal Use—Fees) Regulations 2004</code>; and</li>
+<li><code>The Medicines (Medicated Animal Feeding Stuffs) (Amendment) Regulations 1997</code>.</li>
+</ul>
+<p>Of the 123, 116 were previously unclassified. R033’s known error rate is
+17.324%, and these records make up 9.565% of the entire Health output. Together
+with the two Cruel Poisons errors below, the Health topic’s known precision
+ceiling is 90.280%.</p>
+<p>This is internally inconsistent with R028, whose rationale explicitly places
+animal health under <strong>Environment, energy and agriculture</strong>.</p>
+<p>Required correction:</p>
+<ul>
+<li>exclude veterinary, animal-use and animal-feed contexts from R033;</li>
+<li>route supported animal-only titles to Environment/agriculture or a governed
+veterinary-medicine concept;</li>
+<li>add actual <code>Veterinary Medicines</code> and <code>Products Other Than Veterinary Drugs</code>
+contrast cases; and</li>
+<li>enforce at least 95% precision per emitting rule and material topic slice,
+not only in aggregate.</li>
+</ul>
+<h3>REA-22483-F002 — Medium: parent Act name causes criminal-subject Civil matches</h3>
+<p>R008 emits 51 titles containing the parent name <code>Legal Aid, Sentencing and Punishment of Offenders Act 2012</code>. Eleven are clearly about the Act’s criminal
+sentencing/fines/detention subjects rather than legal aid:</p>
+<ul>
+<li>six alcohol-abstinence and monitoring sentence piloting orders;</li>
+<li>two Fines on Summary Conviction instruments;</li>
+<li>one Standard Scale of Fines for Summary Offences order;</li>
+<li>one section 85 fines-proportions instrument; and</li>
+<li>one youth-detention accommodation instrument.</li>
+</ul>
+<p>Examples include
+<a href="https://www.legislation.gov.uk/id/uksi/2017/525" rel="noopener noreferrer"><code>uksi/2017/525</code></a>,
+<a href="https://www.legislation.gov.uk/id/uksi/2015/664" rel="noopener noreferrer"><code>uksi/2015/664</code></a> and
+<a href="https://www.legislation.gov.uk/id/uksi/2012/2813" rel="noopener noreferrer"><code>uksi/2012/2813</code></a>.</p>
+<p>A phrase in a multi-subject parent Act title is not evidence that the child
+instrument regulates that phrase’s domain. Subject-bearing suffixes must be
+distinguished from cited parent names, with the actual collision families added
+as hard negatives.</p>
+<h3>REA-22483-F003 — Medium: <code>civil</code> matches the prefix of <code>Civilian</code></h3>
+<p>R010’s alternation begins <code>civil</code> without an ending boundary. It therefore
+classifies all three <code>Magistrates’ Courts (Civilian ... Enforcement Officers)</code>
+titles as Civil:</p>
+<ul>
+<li><a href="https://www.legislation.gov.uk/id/uksi/2001/164" rel="noopener noreferrer"><code>uksi/2001/164</code></a>;</li>
+<li><a href="https://www.legislation.gov.uk/id/uksi/1990/2260" rel="noopener noreferrer"><code>uksi/1990/2260</code></a>; and</li>
+<li><a href="https://www.legislation.gov.uk/id/uksi/1990/1190" rel="noopener noreferrer"><code>uksi/1990/1190</code></a>.</li>
+</ul>
+<p>That is 13.636% of R010’s 22 outputs, leaving an 86.364% precision ceiling. Add
+the missing boundary and use an actual Civilian Enforcement Officers title as a
+hard negative.</p>
+<h3>REA-22483-F004 — Low: Cruel Poisons animal legislation mapped to Health</h3>
+<p>R034 maps two explicit animal-cruelty works to Health and social care:</p>
+<ul>
+<li><a href="https://www.legislation.gov.uk/id/uksi/1963/1278" rel="noopener noreferrer"><code>The Animals (Cruel Poisons) Regulations 1963</code></a>; and</li>
+<li><a href="https://www.legislation.gov.uk/id/ukpga/Eliz2/10-11/26" rel="noopener noreferrer"><code>Animals (Cruel Poisons) Act 1962</code></a>.</li>
+</ul>
+<p>Exclude or route this family to a governed animal-welfare/environment concept
+and add both titles as hard negatives.</p>
+<h3>REA-22483-F005 — Medium: model-authoring provenance remains partial</h3>
+<p><code>prompt_hash</code> is a digest of a synthetic prompt basis assembled by the
+generator, not the actual Codex rule-authoring transcript. The exact model
+deployment, exposed parameters and Codex task usage are unavailable.</p>
+<p>Deterministic rule execution is reproducible; model-assisted rule authorship is
+not fully reproducible from the run manifest. Name the field
+<code>prompt_basis_hash</code>, or link it to a hash-bound governance transcript with
+explicit unavailable reasons.</p>
+<h3>REA-22483-F006 — Low: count grains differ in the run record</h3>
+<p><code>accepted_assertions = 22,483</code> is assertion-grain, while
+<code>rejected_records = 343,343</code> is record-grain. The provider manifest correctly
+supplies <code>records_with_accepted_assertions = 22,443</code>.</p>
+<p>Group record and assertion measures explicitly and rename <code>rejected_records</code> to
+<code>records_without_new_supported_assertions</code>.</p>
+<h3>REA-22483-F007 — Low: nine rules emit no current assertion</h3>
+<p>The zero-output rules are:</p>
+<pre><code class="language-text">R002 R007 R014 R017 R024 R036 R042 R045 R047
+</code></pre>
+<p>This does not damage emitted data, but synthetic rule-test coverage should not
+be mistaken for actual-corpus output coverage. Raw include, excluded,
+suppressed and emitted counts should remain visible per rule.</p>
+<h2>Decision</h2>
+<p>Mechanical integrity, Explorer conformance, literal evidence,
+authority/review metadata and both named remediations passed. Conservative
+recall is honestly disclosed and accepted.</p>
+<p>Semantic precision did not pass because four clear collision families remain,
+including two material rule slices below the approved 95% precision threshold.
+Do not promote the 22,483 candidate. Rebuild to new hashes after correction and
+repeat full reconstruction, fresh sampling and whole-output adversarial scans.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>

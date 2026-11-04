@@ -27,6 +27,9 @@ import build_legislation_okf as builder
 ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / "bundle"
 DATA = PACK / "data"
+RELEASE = json.loads(
+    (ROOT / "publication" / "release.json").read_text(encoding="utf-8")
+)
 IMMUTABLE_INPUTS = (
     ROOT / "research",
     ROOT / "evidence",
@@ -91,6 +94,58 @@ def load_json(path: Path) -> Any:
     if path.suffix == ".gz":
         return json.loads(gzip.decompress(path.read_bytes()).decode("utf-8"))
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def release_discovery() -> dict[str, Any]:
+    """Return the release-bound discovery routes shared with metadata."""
+
+    repository = RELEASE["repository"]
+    pages = RELEASE["pages"]
+    descriptor = RELEASE["legislation_descriptor"]
+    archive = f"{repository}/releases/tag/{RELEASE['release_tag']}"
+    return {
+        "repository": repository,
+        "documentation": f"{pages}docs/",
+        "interfaces": f"{pages}interfaces.json",
+        "raw_subpath": "bundle",
+        "release_archive": archive,
+        "semantic_descriptor": f"{pages}okf-bundle.yamlld",
+        "routes": [
+            {
+                "kind": "published",
+                "purpose": "descriptor",
+                "priority": 10,
+                "url": descriptor,
+            },
+            {
+                "kind": "raw",
+                "purpose": "descriptor",
+                "priority": 20,
+                "url": (
+                    "https://raw.githubusercontent.com/chris-page-gov/"
+                    "okf-uk-legislation/main/bundle/okf-explorer.json"
+                ),
+            },
+            {
+                "kind": "published",
+                "purpose": "documentation",
+                "priority": 30,
+                "url": f"{pages}docs/",
+            },
+            {
+                "kind": "published",
+                "purpose": "interfaces",
+                "priority": 40,
+                "url": f"{pages}interfaces.json",
+            },
+            {
+                "kind": "release",
+                "purpose": "archive",
+                "priority": 50,
+                "url": archive,
+            },
+        ],
+    }
 
 
 def write_json(path: Path, value: Any) -> None:
@@ -730,22 +785,44 @@ def main(argv: list[str] | None = None) -> int:
             "model_enrichment_v2_historical_manifest": historical_v2[
                 "manifest"
             ],
+            "official_effects": "data/effects/manifest.json",
             "presentation": "data/presentation.json",
             "record_locator": "data/records/manifest.json",
             "performance": "data/performance.json",
             "publication_contract": "docs/uk-legislation-okf.md",
             "relationship_composition": "data/relationship-composition.json",
+            "relationship_summary": "data/relationship-summary.json",
             "search_manifest": "data/search/manifest.json",
         }
     )
     descriptor["entrypoints"].pop("model_enrichment_v2", None)
     descriptor["performance"] = manifest["performance"]
+    descriptor["performance"]["route_relationship_hydration"] = (
+        "sha256-prefix rich relationship route locator; legacy FNV-1a "
+        "adjacency retained as the compact-core fallback"
+    )
     descriptor["counts"].pop("model_assisted_relationships_v2", None)
     descriptor["counts"].update(active_relationship_counts)
     descriptor.setdefault("extensions", {}).pop(
         "okf-model-enrichment.v2",
         None,
     )
+    effects_manifest_path = DATA / "effects" / "manifest.json"
+    if effects_manifest_path.is_file():
+        effects_manifest = load_json(effects_manifest_path)
+        descriptor["extensions"]["okf-official-effects.v1"] = {
+            "mode": "external-provider-datapack",
+            "entrypoint": "official_effects",
+            "snapshot_id": effects_manifest["snapshot_id"],
+            "assertions": int(effects_manifest["counts"]["assertions"]),
+            "authority": effects_manifest["acquisition"]["authority"],
+            "coverage_status": effects_manifest["acquisition"][
+                "coverage_status"
+            ],
+            "reconciliation": effects_manifest["acquisition"][
+                "reconciliation"
+            ],
+        }
     descriptor["extensions"]["okf-model-enrichment.v3"] = {
         "mode": "external-provider-datapack",
         "entrypoint": "model_enrichment_v3",
@@ -787,40 +864,7 @@ def main(argv: list[str] | None = None) -> int:
         "compression": "pre-compressed-gzip",
         "full_corpus_browser_hydration": False,
     }
-    descriptor["discovery"] = {
-        "repository": "https://github.com/chris-page-gov/okf-uk-legislation",
-        "documentation": (
-            "https://chris-page-gov.github.io/okf-uk-legislation/docs/"
-        ),
-        "raw_subpath": "bundle",
-        "release_archive": (
-            "https://github.com/chris-page-gov/okf-uk-legislation/releases"
-        ),
-        "semantic_descriptor": (
-            "https://chris-page-gov.github.io/okf-uk-legislation/"
-            "okf-bundle.yamlld"
-        ),
-        "routes": [
-            {
-                "kind": "published",
-                "purpose": "descriptor",
-                "priority": 10,
-                "url": (
-                    "https://chris-page-gov.github.io/okf-uk-legislation/"
-                    "okf-explorer.json"
-                ),
-            },
-            {
-                "kind": "raw",
-                "purpose": "descriptor",
-                "priority": 20,
-                "url": (
-                    "https://raw.githubusercontent.com/chris-page-gov/"
-                    "okf-uk-legislation/main/bundle/okf-explorer.json"
-                ),
-            },
-        ],
-    }
+    descriptor["discovery"] = release_discovery()
     publish_json("okf-explorer.json", descriptor)
 
     graph = load_json(DATA / "graph.json")

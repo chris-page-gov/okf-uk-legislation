@@ -1,0 +1,33 @@
+{
+  "schema": "okf-local-accessibility-diagnosis.v1",
+  "candidate_receipt": "/Volumes/ExtSSD-Data/!From MacBook M4Max/cache/legislation-runtime-20260927-05/explorer-runtime-acceptance.json",
+  "explorer_commit": "6b7ec7c0b181ed431b2f04c0fbb5a46b9f04a113",
+  "browser": "Chrome",
+  "journey": "direct startup, cold search, graph edge, warm search, model-assisted graph filter hide and restore",
+  "axe_tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "blocking": [
+    {
+      "id": "target-size",
+      "impact": "serious",
+      "help": "All touch targets must be 24px large, or leave sufficient space",
+      "targets": [
+        "button[data-facet-colour=\"Defence and national security\"]",
+        "topic facet third compact bar segment",
+        "button[data-facet-colour=\"akoma_ntoso\"]",
+        "button[data-facet-colour=\"clml\"]",
+        "button[data-facet-colour=\"csv\"]",
+        "button[data-facet-colour=\"html5\"]",
+        "button[data-facet-colour=\"rdf_xml\"]",
+        "button[data-facet-colour=\"website\"]",
+        "button[data-facet-colour=\"xhtml\"]"
+      ]
+    }
+  ],
+  "note": "Focused local browser diagnosis; release acceptance remained failed. No gate was weakened."
+}

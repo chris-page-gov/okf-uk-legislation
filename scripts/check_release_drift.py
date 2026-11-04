@@ -13,6 +13,7 @@ import argparse
 import gzip
 import hashlib
 import json
+import re
 import sys
 import urllib.error
 import urllib.request
@@ -196,6 +197,18 @@ def route_exists(route: str, locator: dict[str, Any]) -> bool:
     return route in rows or route in locator.get("route_aliases", {})
 
 
+def classify_feed_record(record: dict[str, Any]) -> str:
+    """Keep official correction notices distinct from newly catalogued works."""
+    identifier = str(record.get('id', ''))
+    path = urlparse(identifier).path.lower()
+    if ('/correction' in path or re.search(r'(?:^|/)[^/]*correction[^/]*\.pdf$', path)
+            or (path.endswith('.pdf') and 'correction' in str(record.get('title', '')).lower())):
+        return 'correction-notice'
+    if re.fullmatch(r'/id/[a-z]+/[0-9]+/[0-9]+', path):
+        return 'legal-work'
+    return 'unresolved-feed-entry'
+
+
 def new_work_observation(body: bytes) -> tuple[dict[str, Any], list[str]]:
     failures: list[str] = []
     try:
@@ -208,15 +221,23 @@ def new_work_observation(body: bytes) -> tuple[dict[str, Any], list[str]]:
         observed = []
         for record in records:
             route = str(record["route"])
-            represented = route_exists(route, locator)
+            classification = classify_feed_record(record)
+            represented = route_exists(route, locator) if classification == "legal-work" else None
             observed.append(
                 {
                     "id": record["id"],
+                    "classification": classification,
                     "represented_in_snapshot": represented,
                     "route": route,
                 }
             )
-        missing = [row for row in observed if not row["represented_in_snapshot"]]
+        missing = [row for row in observed if row["classification"] == "legal-work" and not row["represented_in_snapshot"]]
+        corrections = [row for row in observed if row["classification"] == "correction-notice"]
+        unresolved = [row for row in observed if row["classification"] == "unresolved-feed-entry"]
+        if corrections:
+            failures.append(f"{len(corrections)} correction notices require separate reconciliation")
+        if unresolved:
+            failures.append(f"{len(unresolved)} feed entries have unresolved identity")
         if missing:
             failures.append(
                 f"{len(missing)} recently published works are absent from the snapshot"
@@ -226,6 +247,10 @@ def new_work_observation(body: bytes) -> tuple[dict[str, Any], list[str]]:
                 "observed_entries": len(observed),
                 "new_works": missing,
                 "new_works_count": len(missing),
+                "correction_notices": corrections,
+                "correction_notice_count": len(corrections),
+                "unresolved_entries": unresolved,
+                "unresolved_entry_count": len(unresolved),
                 "records": observed,
             },
             failures,

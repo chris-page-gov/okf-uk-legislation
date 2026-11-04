@@ -1,6 +1,6 @@
 {
   "schema": "okf-repository-publication-contract.v1",
-  "modified": "2026-08-18",
+  "modified": "2026-11-03",
   "locale": "en-GB",
   "time_zone": "Europe/London",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/chris-page-gov/okf-uk-legislation",
     "role": "large-corpus-producer",
     "root_index": "README.md",
-    "lifecycle": "migration"
+    "lifecycle": "release"
   },
   "semantic_contract": {
     "path": "bundle/okf-bundle.yamlld",
@@ -146,6 +146,14 @@
         "role": "documentation"
       },
       {
+        "path": "publication/**",
+        "role": "publication-metadata"
+      },
+      {
+        "path": "web/**",
+        "role": "pages-interface"
+      },
+      {
         "path": "AGENTS.md",
         "role": "documentation"
       },
@@ -156,6 +164,14 @@
       {
         "path": ".github/workflows/**",
         "role": "workflow"
+      },
+      {
+        "path": "okf.semantic.json",
+        "role": "policy"
+      },
+      {
+        "path": "profiles/**",
+        "role": "policy"
       }
     ],
     "generated": [
@@ -183,6 +199,46 @@
         "path": "bundle/data/**",
         "role": "semantic-shards",
         "plane": "runtime",
+        "required": true,
+        "build_command_ids": [],
+        "check_command_ids": [
+          "validate-publication"
+        ]
+      },
+      {
+        "path": "bundle/index.html",
+        "role": "pages-home",
+        "plane": "documentation",
+        "required": true,
+        "build_command_ids": [],
+        "check_command_ids": [
+          "validate-publication"
+        ]
+      },
+      {
+        "path": "bundle/docs/**/*.html",
+        "role": "html-documentation",
+        "plane": "documentation",
+        "required": true,
+        "build_command_ids": [],
+        "check_command_ids": [
+          "validate-publication"
+        ]
+      },
+      {
+        "path": "bundle/interfaces.json",
+        "role": "interface-discovery",
+        "plane": "runtime",
+        "required": true,
+        "build_command_ids": [],
+        "check_command_ids": [
+          "validate-publication"
+        ]
+      },
+      {
+        "path": "bundle/pages.mjs",
+        "role": "webmcp-and-pages-runtime",
+        "plane": "browser",
         "required": true,
         "build_command_ids": [],
         "check_command_ids": [
@@ -234,6 +290,7 @@
         "bundle/okf-bundle.yamlld",
         "bundle/okf-bundle.jsonld",
         "scripts/build_legislation_okf.py",
+        "scripts/build_release_metadata.py",
         "scripts/build_whole_law_okf.py",
         "scripts/run_semantic_conformance.py"
       ],
@@ -249,6 +306,8 @@
       "paths": [
         "bundle/data/**",
         "bundle/okf-explorer.json",
+        "bundle/interfaces.json",
+        "bundle/pages.mjs",
         "scripts/rebuild_legislation_discovery.py"
       ],
       "command_ids": [
@@ -267,7 +326,11 @@
         "PUBLICATION-METHOD.md",
         "README.md",
         "docs/**",
-        "okf.publication.json"
+        "okf.publication.json",
+        "publication/**",
+        "web/**",
+        "scripts/build_publication_docs.py",
+        "scripts/publication_html.py"
       ],
       "command_ids": [
         "check-contract",
@@ -315,6 +378,9 @@
         "deployment"
       ],
       "paths": [
+        "bundle/index.html",
+        "bundle/pages.mjs",
+        "bundle/interfaces.json",
         "release-assurance/deployed-entrypoints-manifest.json",
         "release-assurance/public-entrypoint-smoke.md",
         "scripts/probe_deployed_entrypoints.py"
@@ -367,7 +433,7 @@
         "review_status": "reviewed-local-guidance",
         "network": "none",
         "mutates": "none",
-        "timeout_minutes": 60
+        "timeout_minutes": 80
       }
     ]
   },
@@ -385,7 +451,11 @@
       "research/**",
       "scripts/**",
       "tests/**",
-      "whole-law/**"
+      "whole-law/**",
+      "publication/**",
+      "web/**",
+      "okf.semantic.json",
+      "profiles/**"
     ],
     "documentation_paths": [
       "README.md",
@@ -402,24 +472,45 @@
     "workflow_paths": [
       ".github/workflows/ci.yml",
       ".github/workflows/drift.yml",
-      ".github/workflows/pages.yml"
+      ".github/workflows/pages.yml",
+      ".github/workflows/validation-phase.yml"
     ],
     "impact_routing": "full-suite",
-    "parallelism": "serial",
+    "parallelism": "four-phase-fail-closed",
+    "validation_phases": [
+      "core",
+      "legislation",
+      "semantics",
+      "federation"
+    ],
+    "phase_timeout_minutes": 55,
+    "aggregator_job": "validate",
     "unknown_path_policy": "full-suite",
     "browser": {
       "ordinary": {
-        "policy": "not-applicable",
-        "engines": [],
-        "command_ids": []
+        "policy": "required-release-evidence",
+        "engines": [
+          "chromium"
+        ],
+        "command_ids": [
+          "validate-publication"
+        ]
       },
       "cross_engine": {
-        "policy": "not-applicable",
-        "engines": [],
-        "command_ids": [],
+        "policy": "required-release-evidence",
+        "engines": [
+          "chromium",
+          "firefox",
+          "webkit"
+        ],
+        "command_ids": [
+          "validate-publication"
+        ],
         "installation": {
-          "policy": "none",
-          "command_ids": []
+          "policy": "locked-browser-runtime",
+          "command_ids": [
+            "validate-publication"
+          ]
         }
       }
     }
@@ -447,18 +538,32 @@
     ]
   },
   "verification": {
-    "required": false,
-    "browser": "not-applicable",
-    "exact_commit_required": false,
-    "identity_checks": [],
-    "journeys": [],
-    "console_policy": "not-applicable",
-    "command_ids": []
+    "required": true,
+    "status": "required-pending-deployment",
+    "browser": "chromium-firefox-webkit",
+    "exact_commit_required": true,
+    "identity_checks": [
+      "deployed-commit",
+      "descriptor-version-and-snapshot",
+      "release-asset-digest",
+      "explorer-consumer-version"
+    ],
+    "journeys": [
+      "pages-home-and-html-documentation",
+      "legislation-search-and-selected-work",
+      "bounded-relationship-adjacency",
+      "whole-law-federation",
+      "webmcp-registration-boundary"
+    ],
+    "console_policy": "no-unexpected-errors",
+    "command_ids": [
+      "validate-publication"
+    ]
   },
   "limitations": [
-    "The current release-assurance probe is bounded HTTP evidence, not a real-browser, console-clean journey bound to the exact deployed commit; that verification remains an explicit publication-method backlog item.",
-    "The repository predates a standalone okf.semantic.json contract, so this lifecycle contract points to the governed YAML-LD descriptor while that migration is reviewed separately.",
-    "The complete validator remains one fail-closed serial gate. Per-step timings are emitted, but dependency-safe sharding and documentation-only impact routing require measured evidence before adoption.",
-    "GitHub Pages serves YAML-LD as application/octet-stream; strict JSON-LD remains the transport fallback."
+    "The complete validator remains one fail-closed frozen-candidate gate. Focused checks are used during correction so small documentation changes do not repeatedly rebuild the corpus.",
+    "GitHub Pages serves YAML-LD as application/octet-stream; strict JSON-LD remains the transport fallback.",
+    "WebMCP is a W3C Community Group draft. Successful page-tool registration does not establish that every host can discover or invoke those tools.",
+    "The historical v0.3.0 release remains immutable; v0.4.0 is a distinct release and does not rewrite its evidence."
   ]
 }

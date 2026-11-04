@@ -65,3 +65,10 @@ candidate they assessed; prior v2 audit decisions are preserved as historical
 evidence and are excluded from current active relationship totals.
 The [v3 review history](model-assisted-enrichment-review-history.md)
 records the rejected pre-release freezes and their corrections.
+
+Both governed planes now have an additive Reader projection described in the
+[rich relationship semantics guide](rich-relationship-semantics.md). The
+projection retains each frozen input row, identifier, evidence item,
+confidence, licence and review boundary while adding absolute predicate IRIs,
+validated local routes, forward/inverse labels and matching direct/reified
+JSON-LD. It does not rewrite an acquisition archive or accepted model artefact.

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chris-page-gov.github.io/okf-explorer/profile/federation/v1/descriptor.schema.json",
+  "$id": "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1/federation.schema.json",
   "title": "OKF Explorer federation descriptor v1",
   "description": "A lightweight federation control plane. Child descriptors and data planes are loaded only after explicit selection.",
   "type": "object",
@@ -201,6 +201,9 @@
         "semantic_descriptor": {
           "$ref": "#/$defs/httpUrl"
         },
+        "relationship_manifest": {
+          "$ref": "#/$defs/httpUrl"
+        },
         "routes": {
           "type": "array",
           "minItems": 1,
@@ -335,6 +338,12 @@
           "$ref": "#/$defs/httpUrlReference"
         },
         "semantic_descriptor": {
+          "$ref": "#/$defs/httpUrlReference"
+        },
+        "relationship_manifest": {
+          "$ref": "#/$defs/httpUrlReference"
+        },
+        "relationship_manifest_jsonld": {
           "$ref": "#/$defs/httpUrlReference"
         },
         "authority": {

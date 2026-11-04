@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maintainer guide – UK Legislation and Whole-Law OKF</title>
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+<p class="eyebrow">UK Legislation and Whole-Law OKF</p>
+<nav aria-label="Publication"><a href="../../">Home</a> <a href="../../docs/">Documentation</a> <a href="https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview">Open Explorer</a></nav>
+</header>
+<main id="main-content" class="document-page">
+<h1>Maintainer guide</h1>
+<p><a href="index.html">Role guides</a> · <a href="../maintenance.html">Maintenance</a> ·
+<a href="../source-coverage.html">Source coverage</a> · <a href="../evaluation-and-quality.html">Evaluation</a></p>
+<p>Maintain authored Markdown/YAML-LD, generated JSON-LD/Explorer descriptors,
+documentation, checksums and release evidence in lockstep. Source refreshes
+create immutable attempts; they never rewrite evidence behind an existing
+candidate.</p>
+<p>Before release:</p>
+<ol>
+<li>run the repository validation commands in the
+<a href="../maintenance.html">maintenance guide</a>;</li>
+<li>run <code>python3 scripts/check_internal_links.py</code>;</li>
+<li>verify all five role guides and both canonical descriptors;</li>
+<li>check the repository, <code>raw_subpath</code>, release/archive and official-source
+routes on every landing page;</li>
+<li>run the Explorer test and browser journeys in the separate
+<a href="https://github.com/chris-page-gov/okf-explorer" rel="noopener noreferrer"><code>okf-explorer</code></a> repository;</li>
+<li>preserve compatibility routes and label them as historical or preserved;</li>
+<li>promote the exact validated release-candidate digests without rebuilding.</li>
+</ol>
+<p>Never bypass authentication, suppress a rights/access constraint or describe
+model-assisted output as official classification.</p>
+
+</main>
+<footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
+</body>
+</html>
