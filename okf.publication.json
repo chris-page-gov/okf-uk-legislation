@@ -1,6 +1,6 @@
 {
   "schema": "okf-repository-publication-contract.v1",
-  "modified": "2026-11-03",
+  "modified": "2026-11-18",
   "locale": "en-GB",
   "time_zone": "Europe/London",
   "repository": {
@@ -562,6 +562,7 @@
   },
   "limitations": [
     "The complete validator remains one fail-closed frozen-candidate gate. Focused checks are used during correction so small documentation changes do not repeatedly rebuild the corpus.",
+    "Pages serves a separately assembled typed Reader transport after its legislation phase validates it. The descriptor binds that transport receipt and its immutable checked-in work inputs. Historical enrichment verification uses those checked-in inputs.",
     "GitHub Pages serves YAML-LD as application/octet-stream; strict JSON-LD remains the transport fallback.",
     "WebMCP is a W3C Community Group draft. Successful page-tool registration does not establish that every host can discover or invoke those tools.",
     "The historical v0.3.0 release remains immutable; v0.4.0 is a distinct release and does not rewrite its evidence."

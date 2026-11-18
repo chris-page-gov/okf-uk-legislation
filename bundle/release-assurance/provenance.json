@@ -395,14 +395,14 @@
       "sha256": "61ed08d0409689b0c52df3c6aecb108584e64d4d6c56c72462236cc2c9abfb5d"
     },
     {
-      "bytes": 2025,
+      "bytes": 1894,
       "path": ".github/workflows/pages.yml",
-      "sha256": "846af59e67da7e7e89fcd1682d986bbba63044bb8c1cae8b5369e54d9d7da53a"
+      "sha256": "11714c9a006ed0075229e3cf8c20adcf9925276a207469cbb736a94bf5d8675e"
     },
     {
-      "bytes": 1562,
+      "bytes": 2267,
       "path": ".github/workflows/validation-phase.yml",
-      "sha256": "b8e13fadaf8a2f38d47b3c18b4c944b971a9edd9e1ea66f57e65ffeef26debb2"
+      "sha256": "ff2aa924f23b54839d9a2eea58e472e4d07c49229aaea94e8960da4e510222b8"
     },
     {
       "bytes": 141234,
@@ -625,7 +625,7 @@
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
     }
   ],
-  "materials_digest": "sha256:9b64c4f8f1be6853aa31a3a93b1082f4b928bbdf0b5eb7f824cba7ccda2fa60e",
+  "materials_digest": "sha256:91445d5701bd6248df34056bd16b41208328fe75cc8df3d10e2cd61aed23215a",
   "optional_direct_api_model_governance": {
     "authored_run": null,
     "current_release_required": false,

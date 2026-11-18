@@ -12,6 +12,11 @@ on:
         required: false
         default: ""
         type: string
+      publish_reader:
+        description: Retain the verified Reader candidate for the Pages deployment
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -47,4 +52,15 @@ jobs:
         env:
           OKF_VALIDATION_PHASE: ${{ inputs.phase }}
           OKF_VALIDATION_TIMINGS: ${{ runner.temp }}/okf-validation-timings.tsv
-        run: sh scripts/validate_publication.sh
+          RETAIN_READER_CANDIDATE: ${{ inputs.publish_reader }}
+        run: |
+          if [ "$RETAIN_READER_CANDIDATE" = "true" ]; then
+            test "$OKF_VALIDATION_PHASE" = legislation
+            export OKF_VALIDATED_READER_OUTPUT="$RUNNER_TEMP/legislation-reader"
+          fi
+          sh scripts/validate_publication.sh
+      - name: Upload the verified Reader candidate
+        if: inputs.publish_reader
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with:
+          path: ${{ runner.temp }}/legislation-reader

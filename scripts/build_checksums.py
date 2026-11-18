@@ -13,11 +13,11 @@ BUNDLE = ROOT / "bundle"
 OUTPUT = BUNDLE / "checksums.json"
 
 
-def build() -> str:
+def build(bundle: Path = BUNDLE) -> str:
     rows = {}
-    for path in sorted(BUNDLE.rglob("*")):
-        if path.is_file() and path != OUTPUT and path.name != ".DS_Store":
-            rows[path.relative_to(BUNDLE).as_posix()] = {
+    for path in sorted(bundle.rglob("*")):
+        if path.is_file() and path != bundle / OUTPUT.name and path.name != ".DS_Store":
+            rows[path.relative_to(bundle).as_posix()] = {
                 "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
                 "bytes": path.stat().st_size,
             }
