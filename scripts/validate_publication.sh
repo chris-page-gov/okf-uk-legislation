@@ -62,7 +62,9 @@ fi
 
 if phase_enabled legislation; then
   run_step "legislation discovery" python3 scripts/rebuild_legislation_discovery.py --check
-  run_step "legislation OKF" python3 scripts/check_legislation_okf.py
+  reader_output="${OKF_VALIDATED_READER_OUTPUT:-"$validation_tmp/reader"}"
+  run_step "legislation OKF and typed Reader transport" python3 scripts/build_reader_transport.py \
+    --source bundle --source-commit "$(git rev-parse HEAD)" --output "$reader_output"
   run_step "effects evidence archive" python3 scripts/legislation_effects_evidence_archive.py check \
     --snapshot-id legislation-effects-2026-07-25
   run_step "effects projection" python3 scripts/build_legislation_effects.py --check

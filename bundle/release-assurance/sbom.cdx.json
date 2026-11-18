@@ -125,7 +125,7 @@
       "properties": [
         {
           "name": "okf:workflow",
-          "value": ".github/workflows/pages.yml"
+          "value": ".github/workflows/validation-phase.yml"
         },
         {
           "name": "okf:ref-kind",
@@ -5881,7 +5881,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:9a734df3-dd3d-5dc4-b096-982245cda4ef",
+  "serialNumber": "urn:uuid:819b9c8f-8a09-522d-bc5e-8d5ae48c09d3",
   "specVersion": "1.6",
   "version": 1
 }

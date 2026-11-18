@@ -25,7 +25,7 @@ REQUIRED_VALIDATION_COMMANDS = (
     "python3 scripts/build_publication_docs.py --check",
     "python3 scripts/check_internal_links.py",
     "python3 scripts/rebuild_legislation_discovery.py --check",
-    "python3 scripts/check_legislation_okf.py",
+    "python3 scripts/build_reader_transport.py",
     "python3 scripts/legislation_effects_evidence_archive.py check",
     "--snapshot-id legislation-effects-2026-07-25",
     "python3 scripts/build_legislation_effects.py --check",
@@ -61,7 +61,7 @@ EXPECTED_PHASE_LABELS = {
     },
     "legislation": {
         "legislation discovery",
-        "legislation OKF",
+        "legislation OKF and typed Reader transport",
         "effects evidence archive",
         "effects projection",
         "effects reconciliation",
@@ -223,6 +223,17 @@ class WorkflowContractTests(unittest.TestCase):
             job_block(self.pages, "deploy"),
             r"(?m)^    needs: validate$",
         )
+
+    def test_pages_promotes_the_validated_reader_artifact(self) -> None:
+        self.assertIn("publish_reader: true", job_block(self.pages, "legislation"))
+        self.assertNotIn("publish_reader: true", self.ci)
+        self.assertIn("if: inputs.publish_reader", self.phase_workflow)
+        self.assertIn("actions/upload-pages-artifact@", self.phase_workflow)
+        self.assertIn("OKF_VALIDATED_READER_OUTPUT", self.phase_workflow)
+        self.assertNotIn("actions/upload-pages-artifact@", job_block(self.pages, "deploy"))
+        reader_builder = (ROOT / "scripts" / "build_reader_transport.py").read_text(encoding="utf-8")
+        self.assertIn('"check_legislation_okf.py"', reader_builder)
+        self.assertIn('"--bundle", str(staged)', reader_builder)
 
     def test_pages_write_permissions_are_deploy_scoped(self) -> None:
         pre_jobs = self.pages.split("\njobs:\n", 1)[0]

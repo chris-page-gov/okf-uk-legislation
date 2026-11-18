@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — typed official Reader sources
+
+- Assemble and validate a separate Pages transport with typed CLML work
+  and expression references. Bind its work shards to the checked-in
+  source snapshot and publish the exact validated transport.
+
 ## 0.4.0 — 2026-11-03
 
 - Hardened fresh official-source acquisition: HTTPS public-address pinning,

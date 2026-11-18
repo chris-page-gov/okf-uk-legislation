@@ -86,6 +86,25 @@ with one explicit phase. The convergence job has no shortcut: a failure,
 cancellation or skipped result in any phase makes `validate` fail. Pages uses
 the identical topology and deploys only after that aggregator succeeds.
 
+The legislation phase assembles the versioned Reader transport in a
+temporary directory. It reads the retained work shards, checks their hashes
+against the source locator and adds typed official CLML references to the
+derived records. The projection removes a legacy JSON shortcut when it
+points to the same XML and preserves the record routes, legal source links
+and search and relationship indexes. The retained bundle remains the
+authoritative input to the frozen enrichment checks.
+
+The assembled Explorer descriptor binds the Reader transport receipt.
+The receipt identifies the exact Git source commit, source manifest and
+input checksums, and gives both the source and Reader digest for each
+work shard. The phase checks the assembled bundle and its size. Only the
+protected-main Pages run retains its verified archive for deployment.
+The legislation conformance check runs once, against that assembled
+transport. The discovery and historical enrichment checks continue to
+verify the original data independently.
+Use the receipt's recorded Git commit when retrieving work shards for a
+historical enrichment audit.
+
 ## Documentation lockstep
 
 Changes to workflows, scripts, tests, requirements, source/evidence,
