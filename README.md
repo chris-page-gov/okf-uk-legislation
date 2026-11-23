@@ -310,3 +310,7 @@ The [profile-reconciliation history](docs/profile-reconciliation-2026-09.md)
 records how the semantic-profile correction was reviewed before adoption into
 v0.4.0. Its [bounded graph alternatives](docs/bounded-relationship-navigation.md)
 preserve Explorer memory limits and offer individually scoped work routes.
+
+## OKF standards and bundle discovery
+
+The [central standards register](https://github.com/chris-page-gov/okf-explorer/blob/main/docs/okf-standards.md) records current and historical OKF specifications, version-specific pins and the public bundle catalogue. Use the [machine-readable register](https://raw.githubusercontent.com/chris-page-gov/okf-explorer/main/registry/okf-standards.json) to resolve the version implemented by this repository.
