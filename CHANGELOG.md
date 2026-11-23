@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased — standards references
+
+- Link the central current and historical OKF standards register and public bundle catalogue.
+
+
 ## Unreleased — typed official Reader sources
 
 - Assemble and validate a separate Pages transport with typed CLML work
