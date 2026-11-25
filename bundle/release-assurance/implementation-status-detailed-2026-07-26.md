@@ -2,12 +2,13 @@
 
 > **Superseded historical snapshot.** This document records the candidate
 > position observed on 26 July 2026. It is retained for provenance and must not
-> be read as the current publication status. The current publication contract
-> is bundle version 0.4.0, dated 3 November 2026, using OKF 0.2 and Explorer
-> v0.8.1. See [`../publication/release.json`](../publication/release.json), the
-> repository [`README.md`](../README.md) and the generated current release
-> assurance projection. All v0.3.0 and Explorer v0.5.x references below are
-> historical.
+> be read as the current publication status. The active development contract
+> prepares bundle version 0.5.0, Core 0.3 and Explorer v0.9.2. It is not yet a
+> published release. The published v0.4.0 and its Core 0.2 acceptance remain
+> historical. See [`../publication/release.json`](../publication/release.json),
+> the repository [`README.md`](../README.md), the migration guide and current
+> release-assurance projection. The dated implementation account below is
+> retained unchanged.
 
 Status date: **26 July 2026**
 Repository state: **validated pre-freeze candidate; not a frozen release candidate**

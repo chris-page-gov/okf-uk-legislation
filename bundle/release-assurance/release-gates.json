@@ -20,7 +20,7 @@
       "evidence_plane": "embedded",
       "group": "validation",
       "id": "GATE-03",
-      "requirement": "OKF 0.2, YAML-LD semantic round-trip, JSON-LD/RDF equivalence, SHACL, JSON Schema and vocabulary competency checks pass.",
+      "requirement": "OKF 0.3, YAML-LD semantic round-trip, JSON-LD/RDF equivalence, SHACL, JSON Schema and vocabulary competency checks pass.",
       "status": "passed"
     },
     {
@@ -101,9 +101,9 @@
             "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
           },
           {
-            "bytes": 23901,
+            "bytes": 23961,
             "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-            "sha256": "6da9de74f5a24d2c67eba25b88a8e5d49ae214496c3d6051e067c128b7d66f4a"
+            "sha256": "5f4f66ed721dc8b56917a3de7b996d3a539c5beea343e7c89b3f4628a4bd3220"
           },
           {
             "bytes": 96352,

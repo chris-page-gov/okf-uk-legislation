@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_PATH = ROOT / "okf.publication.json"
 EXPECTED_SCHEMA = "okf-repository-publication-contract.v1"
 EXPECTED_PROFILE = (
-    "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/"
+    "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v2/"
 )
 EXPECTED_REPOSITORY = {
     "name": "okf-uk-legislation",

@@ -77,14 +77,14 @@
       "sha256": "e4e1d508a07602bfa981e6d042d264979f487865efa1821f667658324bb5fe9a"
     },
     "explorer_runtime_acceptance": {
-      "bytes": 107235,
+      "bytes": 120814,
       "path": "release-assurance/explorer-runtime-acceptance.json",
-      "sha256": "8e79e7685d3b80d6fcef489b66e8b414fde350e440dc29df226840302e4246ba"
+      "sha256": "aa301ac5a3e90621e0e6dfcc67b5a863e484b704b5500d41f6b4098a10068bb5"
     },
     "federation_relationship_summary": {
-      "bytes": 74960,
+      "bytes": 75020,
       "path": "bundle/whole-law/data/relationship-summary.json",
-      "sha256": "ca1178a23db8cc7ed5e290d59fee460ae1579e5330bff9554e5f02e1526ac46d"
+      "sha256": "3552622b9ebb19b74145fe116602eaa016e9809488837f177e2dd582403b150a"
     },
     "graph_overview": {
       "bytes": 1808,
@@ -102,9 +102,9 @@
       "sha256": "6c6f74acf08b2596b4804427fe6dcfc927a49b5836a345c1aac66013808015a7"
     },
     "root_explorer_descriptor": {
-      "bytes": 10144,
+      "bytes": 10501,
       "path": "bundle/okf-explorer.json",
-      "sha256": "65427bc18f0091758a1033c5874e7370b235bbced607e6f736861a290726ae11"
+      "sha256": "f6ac88a4b88e155ad4480a8cd0cf07f607b0eee5634ff55368e3b94a5801cb49"
     },
     "root_relationship_summary": {
       "bytes": 146607,
@@ -112,9 +112,9 @@
       "sha256": "965964d211313f17721a2610e6bdfec4996a00a9ea6b40527d95e74f25487fd3"
     },
     "whole_law_explorer_descriptor": {
-      "bytes": 113991,
+      "bytes": 114201,
       "path": "bundle/whole-law/okf-explorer.json",
-      "sha256": "1d926b6b71850b678370d2cfff5f12f50b7cc0816ce11dccc782e767a137bd3c"
+      "sha256": "1576b8fdb1cb68cf5c3ab388dadd3cf5b5de258e482b642c47654a8d923afd5e"
     }
   },
   "blockers": [],
@@ -370,8 +370,8 @@
         "accepted_for": "embedded-explorer-queryability-only",
         "accessibility_status": "passed",
         "evidence_class": "diagnostic",
-        "expected_legislation_descriptor_sha256": "65427bc18f0091758a1033c5874e7370b235bbced607e6f736861a290726ae11",
-        "expected_whole_law_descriptor_sha256": "1d926b6b71850b678370d2cfff5f12f50b7cc0816ce11dccc782e767a137bd3c",
+        "expected_legislation_descriptor_sha256": "f6ac88a4b88e155ad4480a8cd0cf07f607b0eee5634ff55368e3b94a5801cb49",
+        "expected_whole_law_descriptor_sha256": "1576b8fdb1cb68cf5c3ab388dadd3cf5b5de258e482b642c47654a8d923afd5e",
         "failures_empty": true,
         "federation_and_child": {
           "status": "passed"
@@ -382,9 +382,9 @@
         "integrity_status": "passed",
         "legislation_descriptor_current": true,
         "performance_status": "passed",
-        "receipt_legislation_descriptor_sha256": "65427bc18f0091758a1033c5874e7370b235bbced607e6f736861a290726ae11",
+        "receipt_legislation_descriptor_sha256": "f6ac88a4b88e155ad4480a8cd0cf07f607b0eee5634ff55368e3b94a5801cb49",
         "receipt_status": "failed",
-        "receipt_whole_law_descriptor_sha256": "1d926b6b71850b678370d2cfff5f12f50b7cc0816ce11dccc782e767a137bd3c",
+        "receipt_whole_law_descriptor_sha256": "1576b8fdb1cb68cf5c3ab388dadd3cf5b5de258e482b642c47654a8d923afd5e",
         "release_eligible": false,
         "required_browser_statuses": {
           "chrome": "passed",
@@ -420,7 +420,7 @@
         "by_datapack_equal": true,
         "by_freshness_equal": true,
         "by_predicate_equal": true,
-        "freshness_semantics": "`current` means the frozen datapack is inside its declared refresh window. It does not mean that every legal provision is in force, unamended or suitable for reliance without live verification.",
+        "freshness_semantics": "`current` retains the status recorded in the July snapshot. It is not a new freshness check; declared review dates may now be overdue. It does not establish that any provision is in force, unamended or suitable for reliance without current verification.",
         "total": 906754
       },
       "id": "G05-FEDERATION-SUMMARY",

@@ -1,6 +1,6 @@
 {
   "archive": {
-    "filename": "okf-uk-legislation-v0.4.0.tar.zst"
+    "filename": "okf-uk-legislation-v0.5.0.tar.zst"
   },
   "assurance_receipt_controllers": [
     "scripts/build_pre_rc_assurance_receipts.py",
@@ -9,20 +9,20 @@
   "codex_security": {
     "producer": {
       "name": "codex-security-plugin",
-      "version": "0.1.32"
+      "version": "0.1.33"
     },
     "schemas": {
       "coverage": {
         "filename": "coverage.schema.json",
-        "sha256": "6ac14e659e884e9582d8bd9ba480f6364ca17309e1a3dee9469ab025a3380b11"
+        "sha256": "3629bdde34e73e13be85d54c81487805677560c6d7c9077a50444715afcf188d"
       },
       "findings": {
         "filename": "findings.schema.json",
-        "sha256": "a480337cc0fa4c48c44fc7be17c6c4348767815570775cda80f2aaf797b8e56c"
+        "sha256": "c53067bf1f17b88de5b555ed4d074f7d17975294345b40f16c7a9f91019c9f67"
       },
       "scan_manifest": {
         "filename": "scan-manifest.schema.json",
-        "sha256": "c621d4136ac81741ac8da1960c7f5e92ade22c0b5490e378ea4339b09e45b6f3"
+        "sha256": "4bac4a5b898ebe72d9bf1128f3a8530979159b3c3bfe2c37ccd3c651f47ce234"
       }
     }
   },
@@ -32,32 +32,32 @@
     "version": "1.0.0"
   },
   "candidate": {
-    "final_tag": "v0.4.0",
-    "rc_tag": "v0.4.0-rc.1",
+    "final_tag": "v0.5.0",
+    "rc_tag": "v0.5.0-rc.1",
     "repository": "https://github.com/chris-page-gov/okf-uk-legislation"
   },
   "evidence_plane": "external-write-once",
   "explorer": {
-    "ci_workflow_run_id": 41659154521,
-    "git_tree": "87487a50c10f0dce144b1530b6a97de6e1277aff",
+    "ci_workflow_run_id": 45552712413,
+    "git_tree": "ea01a79472061b1bbf4179ad809a8b78dad69152",
     "pages_workflow": "pages.yml",
-    "pages_workflow_run_id": 41663805875,
+    "pages_workflow_run_id": 45556087556,
     "repository": "https://github.com/chris-page-gov/okf-explorer",
     "release_asset": {
-      "asset_id": 706118888,
-      "bytes": 189110263,
-      "name": "okf-explorer-v0.8.1-pages-artifact.zip",
-      "sha256": "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
-      "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.8.1/okf-explorer-v0.8.1-pages-artifact.zip"
+      "asset_id": 790300679,
+      "bytes": 199260836,
+      "name": "okf-explorer-v0.9.2-pages-artifact.zip",
+      "sha256": "e9c90628f815b177f756231ef4101671ebf0911d1f0525d08aa8f786ba89d779",
+      "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.9.2/okf-explorer-v0.9.2-pages-artifact.zip"
     },
-    "required_commit": "dcd0c43e29593436b13c59271c75d37d06e2b754",
-    "required_tag": "v0.8.1",
-    "required_tag_object": "ad3ec81c40dd128da75eeabb4325a65b060048b0",
+    "required_commit": "acf23958aa1ce11ec52c41313649b20d24f17609",
+    "required_tag": "v0.9.2",
+    "required_tag_object": "9b583053719259f5962fe7b4bce392420e1b9db7",
     "runtime_provenance": {
       "runner": {
         "path": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs",
-        "bytes": 98104,
-        "sha256": "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281"
+        "bytes": 98344,
+        "sha256": "d024df239a2a6dab58006e9e334c375cecaa69ce759feb0300f6f504754cb725"
       },
       "site_assembly": {
         "app_manifest_module": {
@@ -67,8 +67,8 @@
         },
         "assembler": {
           "path": "scripts/build_site.py",
-          "bytes": 75971,
-          "sha256": "8aed583a894d1a9e6f511b2fb7980d41accf1e0423d1e81292f1a934332d3140"
+          "bytes": 83041,
+          "sha256": "348964a1ad1c445fbf33c5359832c24c0c424d54de710a8e34c21779d2313947"
         },
         "verifier": {
           "path": "apps/okf-explorer/scripts/verify_assembled_site.mjs",
@@ -78,35 +78,35 @@
       },
       "pages": {
         "workflow_path": ".github/workflows/pages.yml",
-        "workflow_bytes": 9283,
-        "workflow_sha256": "afcf0b17d2700fed35664b33a4d6ca7ef8cd3b982b69c2ea1ad0687dcc9eadf0",
-        "run_id": 41663805875,
+        "workflow_bytes": 9991,
+        "workflow_sha256": "916efe0b396281df5de7114fded87694c922c7f5d28f05f779b0684fedc8bc71",
+        "run_id": 45556087556,
         "run_attempt": 1,
-        "commit": "dcd0c43e29593436b13c59271c75d37d06e2b754",
-        "artifact_id": 13245490839,
+        "commit": "acf23958aa1ce11ec52c41313649b20d24f17609",
+        "artifact_id": 14995464665,
         "artifact_name": "github-pages",
         "artifact_zip": {
-          "bytes": 189110263,
-          "sha256": "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1"
+          "bytes": 199260836,
+          "sha256": "e9c90628f815b177f756231ef4101671ebf0911d1f0525d08aa8f786ba89d779"
         },
         "artifact_tar": {
-          "bytes": 834416640,
-          "sha256": "1cb52fe47e6568447cfc35d50f6e6c8d997459a4e73d85341d38a7409b04fb81"
+          "bytes": 858245120,
+          "sha256": "daeac57516c8ec0d64b99cdaf5d15dbc0e28a0f7ae81adaf9d2d4c1903fd9336"
         },
         "build_manifest": {
           "path": "okf-explorer-build-manifest.json",
-          "bytes": 7398,
-          "sha256": "8c1c0394806ed4d466f5adee7084a807543664e2dde776eef7fab26998c56a69"
+          "bytes": 11412,
+          "sha256": "351a0b828c7571d10554e3cbb13c502cd0f06ea48a59cab84ce84235b0820b33"
         },
         "build_index": {
           "path": "index.html",
-          "bytes": 17696,
-          "sha256": "b1224b22be0ee8659ae928d0abd9b56c2d124600a3cc77deecb1c494d967d027"
+          "bytes": 18449,
+          "sha256": "6860b8769479eb1d5938f00ba164b3f2a5089ce604d4640efa7ecb82d8eedd55"
         },
         "build_tree": {
           "algorithm": "sha256-canonical-json-materials-v1",
-          "files": 43,
-          "sha256": "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4"
+          "files": 67,
+          "sha256": "ab0c8afb2823c7945ceae0b977bd648cc17c89bdaf4174086aa1c2306399a388"
         }
       }
     }
@@ -121,7 +121,9 @@
   "final_promotion_authorization": {
     "output_filename": "final-promotion-authorization-receipt.json",
     "output_schema": "release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
-    "required_gates": ["GATE-09"],
+    "required_gates": [
+      "GATE-09"
+    ],
     "state": "final_promotion_eligible",
     "write_once": true
   },
@@ -151,8 +153,21 @@
   "pre_rc_authorization": {
     "output_filename": "pre-rc-authorization-receipt.json",
     "output_schema": "release-assurance/schemas/pre-rc-authorization-receipt.schema.json",
-    "required_gates": ["GATE-06", "GATE-07", "GATE-08", "GATE-10"],
-    "required_embedded_gates": ["GATE-01", "GATE-02", "GATE-03", "GATE-04", "GATE-05", "GATE-11", "GATE-12"],
+    "required_gates": [
+      "GATE-06",
+      "GATE-07",
+      "GATE-08",
+      "GATE-10"
+    ],
+    "required_embedded_gates": [
+      "GATE-01",
+      "GATE-02",
+      "GATE-03",
+      "GATE-04",
+      "GATE-05",
+      "GATE-11",
+      "GATE-12"
+    ],
     "required_embedded_state": "validated",
     "state": "rc_eligible",
     "write_once": true
@@ -160,8 +175,8 @@
   "release_observations": {
     "controller": "scripts/capture_github_release_observation.py",
     "explorer": "explorer-release-observation.json",
-    "final": "okf-uk-legislation-v0.4.0-release-observation.json",
-    "rc": "okf-uk-legislation-v0.4.0-rc.1-release-observation.json",
+    "final": "okf-uk-legislation-v0.5.0-release-observation.json",
+    "rc": "okf-uk-legislation-v0.5.0-rc.1-release-observation.json",
     "schema": "release-assurance/schemas/github-release-observation.schema.json"
   },
   "pages_observation": {
@@ -170,55 +185,55 @@
     "output": "github-pages-observation.json",
     "target": {
       "repository": "https://github.com/chris-page-gov/okf-explorer",
-      "run_id": 41663805875,
+      "run_id": 45556087556,
       "run_attempt": 1,
-      "head_sha": "dcd0c43e29593436b13c59271c75d37d06e2b754",
-      "git_tree": "87487a50c10f0dce144b1530b6a97de6e1277aff",
+      "head_sha": "acf23958aa1ce11ec52c41313649b20d24f17609",
+      "git_tree": "ea01a79472061b1bbf4179ad809a8b78dad69152",
       "workflow_path": ".github/workflows/pages.yml",
-      "artifact_id": 13245490839,
+      "artifact_id": 14995464665,
       "artifact_name": "github-pages"
     },
     "archive": {
       "zip": {
         "path": "raw/github-pages-artifact.zip",
-        "bytes": 189110263,
-        "sha256": "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1"
+        "bytes": 199260836,
+        "sha256": "e9c90628f815b177f756231ef4101671ebf0911d1f0525d08aa8f786ba89d779"
       },
       "tar": {
         "name": "artifact.tar",
-        "bytes": 834416640,
-        "sha256": "1cb52fe47e6568447cfc35d50f6e6c8d997459a4e73d85341d38a7409b04fb81",
-        "member_count": 10908,
-        "file_count": 10734,
-        "directory_count": 174,
-        "total_file_bytes": 823634678,
+        "bytes": 858245120,
+        "sha256": "daeac57516c8ec0d64b99cdaf5d15dbc0e28a0f7ae81adaf9d2d4c1903fd9336",
+        "member_count": 11595,
+        "file_count": 11328,
+        "directory_count": 267,
+        "total_file_bytes": 846947247,
         "retained_separately": false,
         "raw_header_census": {
-          "raw_headers": 13326,
+          "raw_headers": 14013,
           "gnu_longname_headers": 2418,
-          "logical_members": 10908,
-          "regular_headers": 10734,
-          "directory_headers": 174
+          "logical_members": 11595,
+          "regular_headers": 11328,
+          "directory_headers": 267
         }
       },
       "inventory": {
         "path": "inventory/tar-files.json",
-        "bytes": 2096446,
-        "sha256": "3afe6d8c16ef4ef85254433c241117433dd809ec1f7591a1782694f2327fb810",
-        "file_count": 10734,
-        "total_file_bytes": 823634678,
-        "materials_sha256": "dfccde90f6ec44c28fb727b6187391739bda118a85914103aa9e692bf10d691b"
+        "bytes": 2208373,
+        "sha256": "39437667fa3a6592e3a1f928e2116c6a6f027608c2b523e9914fcc816156d73a",
+        "file_count": 11328,
+        "total_file_bytes": 846947247,
+        "materials_sha256": "dcb2e02cb3b0af5422f45fb4907103d82043885da435451dc6adf816bc135b50"
       },
       "build": {
         "manifest": {
           "path": "okf-explorer-build-manifest.json",
-          "bytes": 7398,
-          "sha256": "8c1c0394806ed4d466f5adee7084a807543664e2dde776eef7fab26998c56a69"
+          "bytes": 11412,
+          "sha256": "351a0b828c7571d10554e3cbb13c502cd0f06ea48a59cab84ce84235b0820b33"
         },
         "index": {
           "path": "index.html",
-          "bytes": 17696,
-          "sha256": "b1224b22be0ee8659ae928d0abd9b56c2d124600a3cc77deecb1c494d967d027"
+          "bytes": 18449,
+          "sha256": "6860b8769479eb1d5938f00ba164b3f2a5089ce604d4640efa7ecb82d8eedd55"
         },
         "not_found": {
           "path": "404.html",
@@ -227,19 +242,19 @@
         },
         "tree": {
           "algorithm": "sha256-canonical-json-materials-v1",
-          "files": 43,
-          "sha256": "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4",
-          "computed_sha256": "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4"
+          "files": 67,
+          "sha256": "ab0c8afb2823c7945ceae0b977bd648cc17c89bdaf4174086aa1c2306399a388",
+          "computed_sha256": "ab0c8afb2823c7945ceae0b977bd648cc17c89bdaf4174086aa1c2306399a388"
         }
       }
     },
     "durable_alternate": {
-      "asset_id": 706118888,
-      "name": "okf-explorer-v0.8.1-pages-artifact.zip",
-      "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.8.1/okf-explorer-v0.8.1-pages-artifact.zip",
-      "bytes": 189110263,
-      "sha256": "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
-      "github_digest": "sha256:6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
+      "asset_id": 790300679,
+      "name": "okf-explorer-v0.9.2-pages-artifact.zip",
+      "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.9.2/okf-explorer-v0.9.2-pages-artifact.zip",
+      "bytes": 199260836,
+      "sha256": "e9c90628f815b177f756231ef4101671ebf0911d1f0525d08aa8f786ba89d779",
+      "github_digest": "sha256:e9c90628f815b177f756231ef4101671ebf0911d1f0525d08aa8f786ba89d779",
       "cross_binding": "required-from-github-release-observation"
     }
   },
@@ -270,23 +285,79 @@
       "D-07"
     ],
     "frozen_ids": [
-      "P01-01", "P01-02", "P01-03", "P01-04",
-      "P02-01", "P02-02", "P02-03", "P02-04",
-      "P03-01", "P03-02", "P03-03", "P03-04",
-      "P04-01", "P04-02", "P04-03", "P04-04",
-      "P05-01", "P05-02", "P05-03", "P05-04", "P05-05", "P05-06",
-      "P06-01", "P06-02", "P06-03", "P06-04", "P06-05",
-      "P07-01", "P07-02", "P07-03", "P07-04", "P07-05", "P07-06",
-      "P08-01", "P08-02", "P08-03", "P08-04", "P08-05", "P08-06", "P08-07",
-      "P09-01", "P09-02", "P09-03", "P09-04", "P09-05",
-      "P10-01", "P10-02", "P10-03", "P10-04", "P10-05",
-      "D-01", "D-02", "D-03", "D-04", "D-05", "D-06",
-      "D-07", "D-08", "D-09", "D-10", "D-11", "D-12", "D-13"
+      "P01-01",
+      "P01-02",
+      "P01-03",
+      "P01-04",
+      "P02-01",
+      "P02-02",
+      "P02-03",
+      "P02-04",
+      "P03-01",
+      "P03-02",
+      "P03-03",
+      "P03-04",
+      "P04-01",
+      "P04-02",
+      "P04-03",
+      "P04-04",
+      "P05-01",
+      "P05-02",
+      "P05-03",
+      "P05-04",
+      "P05-05",
+      "P05-06",
+      "P06-01",
+      "P06-02",
+      "P06-03",
+      "P06-04",
+      "P06-05",
+      "P07-01",
+      "P07-02",
+      "P07-03",
+      "P07-04",
+      "P07-05",
+      "P07-06",
+      "P08-01",
+      "P08-02",
+      "P08-03",
+      "P08-04",
+      "P08-05",
+      "P08-06",
+      "P08-07",
+      "P09-01",
+      "P09-02",
+      "P09-03",
+      "P09-04",
+      "P09-05",
+      "P10-01",
+      "P10-02",
+      "P10-03",
+      "P10-04",
+      "P10-05",
+      "D-01",
+      "D-02",
+      "D-03",
+      "D-04",
+      "D-05",
+      "D-06",
+      "D-07",
+      "D-08",
+      "D-09",
+      "D-10",
+      "D-11",
+      "D-12",
+      "D-13"
     ],
     "frozen_ledger_path": "release-assurance/implementation-traceability.json",
-    "frozen_ledger_sha256": "f26c1d5d238a623334abc0b9fdfcf316db2d06b6433b4aeae27d89aece8845d7",
-    "terminal_dispositions": ["passed", "deferred", "blocked", "superseded"]
+    "frozen_ledger_sha256": "62562c5b1550f951f9b29ec6a992dcaf48dcf74c950305625b03aec81b302cad",
+    "terminal_dispositions": [
+      "passed",
+      "deferred",
+      "blocked",
+      "superseded"
+    ]
   },
   "schema": "okf-external-finalization-contract.v3",
-  "version": "3.0.0"
+  "version": "3.1.0"
 }

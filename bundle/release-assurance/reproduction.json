@@ -15,17 +15,17 @@
   },
   "external_finalization": {
     "contract": {
-      "bytes": 12275,
+      "bytes": 12703,
       "path": "release-assurance/external-finalization-contract.json",
       "projected_path": "external-finalization-contract.json",
-      "sha256": "83b83908f49b1c9236c19121c03409060d6f8dce61221932d5ad4c8eff59b8eb"
+      "sha256": "e67c98374a252b6c69a889817063457116468be8742f204f6fba36deade7ee70"
     },
     "evidence_plane": "external-write-once",
     "evidence_storage": "All authorization, deployed-attempt and finalization receipts are regular files outside the frozen repository. Each output is write-once; verification reconstructs it from the same external evidence without changing the checkout or archive.",
     "finalizer": {
       "bytes": 220116,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "21d32d89a6a9bdc8dba5a27ec95787c6537f2e4c95d1d79395ed7c767bee1ff5"
+      "sha256": "4c347efac3af41314b70a902ade2549d523f5beb57bbef2913055069d6256f6e"
     },
     "invariants": {
       "archive_rebuild_prohibited": true,
@@ -41,16 +41,16 @@
       "sha256": "aaae2690ab1b421ea775625a96a4c8b36939e0c7060ed9531b973a432a1865b0"
     },
     "release_observation_controller": {
-      "bytes": 36974,
+      "bytes": 38099,
       "path": "scripts/capture_github_release_observation.py",
-      "sha256": "9e891757ec9f37a0d22d9fb022e8c522d8fb30c66ba9192d3d899a45ae58cbf4"
+      "sha256": "c15c74e42fd1957b5eb89dbe6cb126509c7f5def8c574938bfcd8f2a105c274e"
     },
     "schemas": [
       {
         "bytes": 4268,
         "path": "release-assurance/schemas/accessibility-assurance-receipt.schema.json",
         "projected_path": "schemas/accessibility-assurance-receipt.schema.json",
-        "sha256": "93a0ae89e42bf09d4c66c1f44c9e2ae7972dc0a89a27c8e0d8d5f43e2c473c60"
+        "sha256": "c48e35e7369f93b39f4a1d4ff2799d2305600630c0824084e051001d837ed0ba"
       },
       {
         "bytes": 1422,
@@ -74,49 +74,49 @@
         "bytes": 3793,
         "path": "release-assurance/schemas/explorer-release-receipt.schema.json",
         "projected_path": "schemas/explorer-release-receipt.schema.json",
-        "sha256": "05a9d8dd33638dd7180da352b954c7c8f824d50c6fdc0e1391217f44e7ffc55f"
+        "sha256": "ffa3a64ca99654403cc325e3f736a2e5850683bdf305187f955ec1d5d2909b8c"
       },
       {
-        "bytes": 32580,
+        "bytes": 32581,
         "path": "release-assurance/schemas/explorer-runtime-receipt.schema.json",
         "projected_path": "schemas/explorer-runtime-receipt.schema.json",
-        "sha256": "70393809c4a9e5f2de77978d5ef81c0055cbe885c54e9249f5d4a482c43fe40d"
+        "sha256": "4197a85fe8404737cd567e95607e9e9b09e060e1c043d059633843b9b7c88c44"
       },
       {
         "bytes": 9773,
         "path": "release-assurance/schemas/external-finalization-receipt.schema.json",
         "projected_path": "schemas/external-finalization-receipt.schema.json",
-        "sha256": "7b3bc7d333f92f15de0492425949611a9102e026e3db88bbaaed29e3a31bf661"
+        "sha256": "327596c44773aee10f8d9787d6282b6d3f80ac9acfac62e803d130e79e8efdb8"
       },
       {
         "bytes": 6303,
         "path": "release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
         "projected_path": "schemas/final-promotion-authorization-receipt.schema.json",
-        "sha256": "230b1ab52aa9a1c67f41e062e74655b154f7fe87748036dbceaa3448c2363a38"
+        "sha256": "fffb46d6fcc99951f1261541b30684777cdfeb84f6c8332b3bbec643dcf0cfcd"
       },
       {
         "bytes": 17408,
         "path": "release-assurance/schemas/github-pages-observation.schema.json",
         "projected_path": "schemas/github-pages-observation.schema.json",
-        "sha256": "4d4ddacf0adbba720d8e13fea68e87e7aee4366b5762af1d6364d040b62fee8f"
+        "sha256": "03b5d4df611651a0bb9e20a3352676e4b9d75d8cbf391d4b20ee10c83e7c8a2f"
       },
       {
-        "bytes": 6129,
+        "bytes": 6419,
         "path": "release-assurance/schemas/github-release-observation.schema.json",
         "projected_path": "schemas/github-release-observation.schema.json",
-        "sha256": "047851609b1f6268b58df13090df32e647b5d9c551954fa8e6c05e5d9ef1fa78"
+        "sha256": "eccb7bbd77dc5fa4ade6d7775674510de5364f9058879d9ba6bc4fc08bcccdee"
       },
       {
         "bytes": 4003,
         "path": "release-assurance/schemas/performance-assurance-receipt.schema.json",
         "projected_path": "schemas/performance-assurance-receipt.schema.json",
-        "sha256": "520821b3440bdd55cbc7b52d32ad8f1a0ee5736695cd9a0b713f676b836e908d"
+        "sha256": "d3e7a513e8e09498fd2510a21855708984747fa20f36f6491eb93e01bbdd353c"
       },
       {
         "bytes": 5997,
         "path": "release-assurance/schemas/pre-rc-authorization-receipt.schema.json",
         "projected_path": "schemas/pre-rc-authorization-receipt.schema.json",
-        "sha256": "920ceffea08bfc7a4eb38bc789d33ced98a801406094eb5fb0bdf1ca95604e97"
+        "sha256": "b8e32c9b4496d047dc9c6c4ec1bcc5a155b0ce88a461accb6f0003565c5f8053"
       },
       {
         "bytes": 18400,
@@ -174,7 +174,7 @@
   },
   "generated_at": "2026-07-26T20:54:40Z",
   "inputs": {
-    "materials_digest": "sha256:91445d5701bd6248df34056bd16b41208328fe75cc8df3d10e2cd61aed23215a",
+    "materials_digest": "sha256:3892c6729205c20673b6fa0598a0e7deea5883d5ac1034b8b1301a1f7df067eb",
     "research_evidence_verified": true
   },
   "limitations": [

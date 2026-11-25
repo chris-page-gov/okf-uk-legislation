@@ -56,3 +56,19 @@ architecture or Python minor version requires a separately generated and
 reviewed lock. Release-reproduction parsing and full installed-environment
 attestation are separate closure steps and must be completed before candidate
 freeze.
+
+## Governed local UV environment
+
+From 24 November 2026, `pyproject.toml`, `uv.lock` and `.python-version` provide
+a CPython 3.12.11 environment for macOS and Linux using UV 0.13.4. Its nine
+direct dependencies and 52 constrained versions preserve the historical
+validation closure. Run `uv sync --locked`, then `uv run --locked python`.
+Platform-specific wheel hashes are recorded in the new UV lock; the Linux
+requirements lock and its historical release receipts remain unchanged.
+This environment adoption does not migrate the corpus to Core 0.3 or refresh
+source snapshots. Those require separate validation and release evidence.
+
+CI validation and the scheduled drift observer now use the same reviewed,
+SHA-pinned setup action, UV 0.13.4 and CPython 3.12.11 as local checks. The
+52 installed dependency versions remain identical to the historical closure;
+the original Linux requirements lock is retained as frozen release evidence.

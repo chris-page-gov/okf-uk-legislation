@@ -396,9 +396,9 @@ class LegislationOkfTests(unittest.TestCase):
         self.assertIn(Path("access/search-lists-feeds.md"), files)
         descriptor = json.loads(files[Path("okf-explorer.json")])
         self.assertEqual("okf-large-corpus", descriptor["kind"])
-        self.assertEqual("0.2", descriptor["okf_version"])
-        self.assertEqual("0.2", corpus["manifest"]["okf_version"])
-        self.assertTrue(files[Path("index.md")].startswith('---\nokf_version: "0.2"\n---'))
+        self.assertEqual("0.3", descriptor["okf_version"])
+        self.assertEqual("0.3", corpus["manifest"]["okf_version"])
+        self.assertTrue(files[Path("index.md")].startswith('---\nokf_version: "0.3"\n---'))
         self.assertFalse(files[Path("ontology/index.md")].startswith("---"))
         self.assertTrue(files[Path("log.md")].startswith("# Legislation OKF generation log\n\n## 2026-07-10"))
         concept = files[Path("ontology/normalized-vocabulary.md")]

@@ -75,6 +75,18 @@ class Target:
 
 
 TARGETS = {
+    ("https://github.com/chris-page-gov/okf-explorer", "v0.9.2"): Target(
+        repository="https://github.com/chris-page-gov/okf-explorer",
+        slug="chris-page-gov/okf-explorer", tag="v0.9.2", observation_filename="explorer-release-observation.json"),
+    ("https://github.com/chris-page-gov/okf-explorer", "v0.9.1"): Target(
+        repository="https://github.com/chris-page-gov/okf-explorer",
+        slug="chris-page-gov/okf-explorer", tag="v0.9.1", observation_filename="explorer-release-observation.json"),
+    ("https://github.com/chris-page-gov/okf-uk-legislation", "v0.5.0-rc.1"): Target(
+        repository="https://github.com/chris-page-gov/okf-uk-legislation",
+        slug="chris-page-gov/okf-uk-legislation", tag="v0.5.0-rc.1", observation_filename="okf-uk-legislation-v0.5.0-rc.1-release-observation.json"),
+    ("https://github.com/chris-page-gov/okf-uk-legislation", "v0.5.0"): Target(
+        repository="https://github.com/chris-page-gov/okf-uk-legislation",
+        slug="chris-page-gov/okf-uk-legislation", tag="v0.5.0", observation_filename="okf-uk-legislation-v0.5.0-release-observation.json"),
     (
         "https://github.com/chris-page-gov/okf-explorer",
         "v0.8.1",

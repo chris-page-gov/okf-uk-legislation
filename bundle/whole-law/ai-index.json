@@ -1,0 +1,1574 @@
+{
+  "bundle": "whole-law",
+  "complete_context": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/ai-context.json",
+  "complete_graph_manifest": {
+    "bytes": 1429876,
+    "path": "data/semantic/manifest.jsonld",
+    "sha256": "d1552f0328626e27ecc253aa87903d6eb0b1e64bc93ee185d5cbc5a58e7b7596",
+    "url": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.jsonld"
+  },
+  "core_concepts": 168,
+  "graph_base_url": "https://chris-page-gov.github.io/okf-uk-legislation/",
+  "instructions": [
+    "Start with a relevant source document or the bounded locator; do not load the whole corpus.",
+    "Use complete_context for the complete manifest and reviewed offline JSON-LD contexts.",
+    "Verify file hashes and retain source dates, authority, rights and lifecycle.",
+    "For the two named migration evaluation answer payloads, follow typed_site_payload_encoding and verify the manifest before decoding each gzip representation; the pinned plain sources and release archive remain available.",
+    "The original source locator is pinned separately from the typed Reader transport.",
+    "Static retrieval requires no bundle code execution and does not certify a model answer."
+  ],
+  "negative_controls": [
+    "A catalogued court source is not an ingested judgments corpus.",
+    "Absence of a case from this bundle does not establish that no relevant case exists.",
+    "Public access does not confer permission for every form of computational analysis."
+  ],
+  "okf_version": "0.3",
+  "pinned_original_source_locator": {
+    "base_url": "https://raw.githubusercontent.com/chris-page-gov/okf-uk-legislation/4d1fcb4645c72b7adbd0cd57d0883bf5d024f514/bundle/",
+    "bytes": 110783,
+    "notice": "This pinned original source locator precedes the separately assembled typed Reader transport. Identities are preserved.",
+    "okf_version": "0.2",
+    "path": "data/records/manifest.json",
+    "sha256": "159318b7871956851feffab85bb6538194f119acff97a17f1544d21cb3308bb7",
+    "url": "https://raw.githubusercontent.com/chris-page-gov/okf-uk-legislation/4d1fcb4645c72b7adbd0cd57d0883bf5d024f514/bundle/data/records/manifest.json"
+  },
+  "schema": "okf-legislation-ai-index.v1",
+  "source_documents": [
+    {
+      "path": "acquisition/README.md",
+      "sha256": "5984e256d6288d708da0b38fcee8a892a16c989e5cc65ee82802f5e9eea7882a",
+      "title": "Whole-Law source-access evidence",
+      "type": "Source Access Reference",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/acquisition/README.md"
+    },
+    {
+      "path": "acquisition/current/source-access-review.md",
+      "sha256": "62889ede2b85708f58610066a47f60cfb9a71b4087fe5e611ffe33c935487607",
+      "title": "Whole-Law source-access review — 25 July 2026",
+      "type": "Source Access Review",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/acquisition/current/source-access-review.md"
+    },
+    {
+      "path": "acquisition/replacements/current/replacement-access-review.md",
+      "sha256": "d17ffd38f315be55b0cf776d0829df93cdd539ee71665f6646e2287d0692c1bd",
+      "title": "Whole-Law replacement-route access review",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/acquisition/replacements/current/replacement-access-review.md"
+    },
+    {
+      "path": "acquisition/replacements/supplements/20260726T005723Z-c0f5a002/replacement-access-review.md",
+      "sha256": "f40d24c0c737ab323d52ba19fb799931777680dc6a61ba3b990cd15798018524",
+      "title": "Whole-Law replacement-route access review",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/acquisition/replacements/supplements/20260726T005723Z-c0f5a002/replacement-access-review.md"
+    },
+    {
+      "path": "acquisition/replacements/supplements/20260726T010545Z-c0f5a003/replacement-access-review.md",
+      "sha256": "d5beea79bba67c40c8e10ecd66214ea513401302926c1a3c381733538b02cbbb",
+      "title": "Whole-Law replacement-route access review",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/acquisition/replacements/supplements/20260726T010545Z-c0f5a003/replacement-access-review.md"
+    },
+    {
+      "path": "assurance/enrichment-audit.md",
+      "sha256": "54a345d85f89a3d4f0c4e5239c6a4943f759fb22e67f737829679cc279b2f565",
+      "title": "Independent audit of Codex-assisted semantic enrichment v2",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/assurance/enrichment-audit.md"
+    },
+    {
+      "path": "assurance/enrichment-reaudit-22299.md",
+      "sha256": "ab975a47b183c75ced03b17ae488089c460c15cbe8d99b5b41a02d897bb24738",
+      "title": "Independent re-audit of the 22,299-assertion enrichment candidate",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/assurance/enrichment-reaudit-22299.md"
+    },
+    {
+      "path": "assurance/enrichment-reaudit-22483.md",
+      "sha256": "06eaae6af55c49711d5acd76a68c99595b8232f8ca1cab7b07136d7ff1e73dcc",
+      "title": "Independent re-audit of the 22,483-assertion enrichment candidate",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/assurance/enrichment-reaudit-22483.md"
+    },
+    {
+      "path": "assurance/enrichment-reaudit-22651.md",
+      "sha256": "8a2f03c17343ad7b78a52ce885d046cc7384c6fd74300ddfbee4ad0c30af6632",
+      "title": "Independent re-audit of the 22,651-assertion enrichment candidate",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/assurance/enrichment-reaudit-22651.md"
+    },
+    {
+      "path": "assurance/enrichment-v2-independent-audit-20260726.md",
+      "sha256": "14e4d5080a0da32132b641805cb4adad6503212acd91177867c205d260028aeb",
+      "title": "Model-assisted v2 independent audit — 26 July 2026",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/assurance/enrichment-v2-independent-audit-20260726.md"
+    },
+    {
+      "path": "assurance/enrichment-v2-v1-rejection-preservation.md",
+      "sha256": "971c074b2646a24ac1da62b76e856b0bcf84d7fff9dad39073dd16d48cb96d48",
+      "title": "v2 preservation after legacy v1 rejection",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/assurance/enrichment-v2-v1-rejection-preservation.md"
+    },
+    {
+      "path": "assurance/entity-model-coverage-assessment-20260726.md",
+      "sha256": "ad64e2367623f7a8af972ae0edff310269dc4664fae92e96d5c350af5fb868a8",
+      "title": "Entity-model coverage assessment",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/assurance/entity-model-coverage-assessment-20260726.md"
+    },
+    {
+      "path": "assurance/graph-enrichment-gate-20260726.md",
+      "sha256": "a12e31b89d80217eaa94960732503d8e26ce5e3707c9d840dcd07e37d7ec31e8",
+      "title": "Graph and enrichment gate assurance",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/assurance/graph-enrichment-gate-20260726.md"
+    },
+    {
+      "path": "assurance/model-assisted-input-eligibility-20260726.md",
+      "sha256": "c9f170216ac5ea7b2cd0a4b4f2eaefd19eb6212dcc9b6e6415ad0b9dd8a0c3c0",
+      "title": "Model-assisted enrichment input and eligibility evidence",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/assurance/model-assisted-input-eligibility-20260726.md"
+    },
+    {
+      "path": "assurance/source-acquisition-gate-20260726.md",
+      "sha256": "301c7cf4aa618101637b0f7a167169fb5ca43c61712e6dbb3e4aa58b8e4efaa2",
+      "title": "Whole-Law source-acquisition gate review",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/assurance/source-acquisition-gate-20260726.md"
+    },
+    {
+      "path": "coverage/index.md",
+      "sha256": "6dea4c91c6f467fc4849687172c180e2436ec14c639c09b005b18810da041d63",
+      "title": "Coverage and source constraints",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/coverage/index.md"
+    },
+    {
+      "path": "docs/authority-and-evidence.md",
+      "sha256": "97d3b1317ace07afc25763f0d8a2dc62d96d961817909051691ff44eb821c7ff",
+      "title": "Authority, evidence and legal-use boundaries",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/docs/authority-and-evidence.md"
+    },
+    {
+      "path": "docs/getting-started.md",
+      "sha256": "613fdeb2cbc927f018bc7e1114e0dbad6dae521539d6dcb9d186250c743b42a9",
+      "title": "Getting started",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/docs/getting-started.md"
+    },
+    {
+      "path": "docs/index.md",
+      "sha256": "50eac141444f91e5e1e5e7e197f30d53fbf5ec87c2f82472766c00eda156102f",
+      "title": "UK Whole-Law OKF documentation",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/docs/index.md"
+    },
+    {
+      "path": "docs/maintenance.md",
+      "sha256": "0a85797ac8d7e626cc5d5eb07cb1464be2bcc44a349d09785d8111b2138a0761",
+      "title": "Maintenance and recovery",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/docs/maintenance.md"
+    },
+    {
+      "path": "docs/sources-and-coverage.md",
+      "sha256": "f0a461b5ae82b7fedf4bc7412888c7e2ad9e974d1097c3af4098b203426f112c",
+      "title": "Sources, access and coverage",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/docs/sources-and-coverage.md"
+    },
+    {
+      "path": "docs/standards-and-validation.md",
+      "sha256": "1b4ee1981584a8adece74d0cca119239d6d011cdcd6e1dc1a9929394b5d1f299",
+      "title": "Standards and validation",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/docs/standards-and-validation.md"
+    },
+    {
+      "path": "evaluation/README.md",
+      "sha256": "304b11bc6e54ad03c43d902a5cd53379695cdb00793c591626b7a03296a1ab5c",
+      "title": "Whole-Law release evaluation",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/README.md"
+    },
+    {
+      "path": "evaluation/executions/eval-120b21f028cc516d845b/report.md",
+      "sha256": "8d1a86691b71d50a173ba87475f556642113e4f386a5256b7708a71fbe79f4bd",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-120b21f028cc516d845b/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-1edbcf9ff765b952ee03/report.md",
+      "sha256": "39be93f59142a970bf9451bf6a4c8798c02825df2b74486be2d20a20bf1da500",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-1edbcf9ff765b952ee03/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-24eeb1c54bbb2b604c70/report.md",
+      "sha256": "238fbead519354ee51127c9ab8179a5682042c57f205e7764042fc3d4c5599e8",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-24eeb1c54bbb2b604c70/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-3618fd20c40e54e9e565/report.md",
+      "sha256": "7f57fdd3b4ef7364c710e874efa168b2481d62be1af0cfaebf28ef0e5b8a758b",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-3618fd20c40e54e9e565/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-4609b04d4f94664dac57/report.md",
+      "sha256": "0506f40fc7793dbde93e1de6e3bf65688ead16cc7d532b7b902f43d183ab0437",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-4609b04d4f94664dac57/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-4f0df195a6fa4e73da62/report.md",
+      "sha256": "85efa7cab1d8b5241e32306c104518c55bb9dc4e5a040363052820e80d077ca3",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-4f0df195a6fa4e73da62/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-76d593e3295063f2cbe5/report.md",
+      "sha256": "66e64a1e837abb46a1860da61755cfe6d8bbab8afea4c0ae66777ce38cf04943",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-7d891e153705f9991f2e/report.md",
+      "sha256": "862882b9828c6d28c3e98c4fbb3ad0eb6e211cb14c575cdbfc52b54814475742",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-7d891e153705f9991f2e/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-8f946bb8ae73276a58a7/report.md",
+      "sha256": "c05ae7f0e7bc5143c4b0feb0ecb4a636b3c3bb294b7a7f763dcc0b9e1234a9ee",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-8f946bb8ae73276a58a7/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-914e1a86d457923dc9c4/report.md",
+      "sha256": "ae28c8914375035069acf7dd1e7a813f13a1a878b636dd7ffbdca7b0a847c43b",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-914e1a86d457923dc9c4/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-a1a482662e93df9a151b/report.md",
+      "sha256": "3ff9845de87713b6ea8d1bae595823e5cc0a0cb2c67268f1f419d94c4573ff6d",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-a1a482662e93df9a151b/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-a8b12d5facb86443fd21/report.md",
+      "sha256": "e4804a7387d3063bfa7307d19c4f68439bebb6cceb0a30b3718df76d1302a3d9",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-a8f62b2b807ab4be3bdb/report.md",
+      "sha256": "ae6ad53ef4dac8abdbecb5fbc630dab2e68b987d2007046d52c7641d83317500",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-a8f62b2b807ab4be3bdb/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-adfb4966bc96bcec6503/report.md",
+      "sha256": "1bd14496ad8be5aa6242cb9101b2b050ad05c91e1913151ab4ba990070228cc1",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-adfb4966bc96bcec6503/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-b1af1bdfdf83d1010d3c/report.md",
+      "sha256": "eff600c1c90095234bb2e6819e60aa3484d7472fffc190a6cfd7f5ca6f421bac",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-b1af1bdfdf83d1010d3c/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-d230e81ccf60fa3d0489/report.md",
+      "sha256": "26d364bc4cee0869703f9a21037fedb68efbb8da3301de1eda36f3265a1204f1",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-d230e81ccf60fa3d0489/report.md"
+    },
+    {
+      "path": "evaluation/executions/eval-f58a8fc7155f9ce36b2c/report.md",
+      "sha256": "f0f832b58a24a6225c5f1472aa1b36bcf6e94b436cfbc77788ec08c59b8cecfc",
+      "title": "UK Whole-Law OKF evaluation execution",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/executions/eval-f58a8fc7155f9ce36b2c/report.md"
+    },
+    {
+      "path": "evaluation/index.md",
+      "sha256": "64b11c1c6b2bb2a0d64d93bd9b7898078ba05a282cf65e6c0f74b9b18de50a71",
+      "title": "Whole-Law evaluation",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/evaluation/index.md"
+    },
+    {
+      "path": "governance/architecture-decisions/ADR-016-namespace-migration.md",
+      "sha256": "5403b333654798223c409647edd4708b740458109c53f3165ecb94c9c3490403",
+      "title": "ADR-016: migrate the Whole-Law namespace without breaking published identifiers",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/governance/architecture-decisions/ADR-016-namespace-migration.md"
+    },
+    {
+      "path": "governance/index.md",
+      "sha256": "9444613faca25b5e539eb44f8ee7b28d88a86e421602d98227cc24f214a04066",
+      "title": "Whole-Law governance and release assurance",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/governance/index.md"
+    },
+    {
+      "path": "index.md",
+      "sha256": "b3a55e9458e2409ebf39b026a49fd896aba25fd86a3d8cad59e99400cab58495",
+      "title": "UK Whole-Law OKF",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/index.md"
+    },
+    {
+      "path": "log.md",
+      "sha256": "0bbd713a06efad53128313f414be96c7943e6d8cd1e98793edd404e0ac65e141",
+      "title": "UK Whole-Law OKF publication log",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/log.md"
+    },
+    {
+      "path": "ontology/index.md",
+      "sha256": "007bc687f3580abd0ee631504a1a00eef501011359395af7beb21565358bf9a1",
+      "title": "Whole-Law ontology and standards",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/ontology/index.md"
+    },
+    {
+      "path": "personas/index.md",
+      "sha256": "bc048705ebe387193b88f42ebc71aa3ae2f412a4056bd47fa777fb0cdf69ab09",
+      "title": "Whole-Law research personas",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/index.md"
+    },
+    {
+      "path": "personas/p01-barrister.md",
+      "sha256": "d69e8d33b83187c24ad5f1f1facf3b6defb9e7b03af35addec08688b2ceeee55",
+      "title": "Barrister",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p01-barrister.md"
+    },
+    {
+      "path": "personas/p02-pupil-barrister.md",
+      "sha256": "71eeed76e2beec07e82d12e6b7174a6dd2511c4b532f70584d586cee29bc6bc2",
+      "title": "Pupil barrister",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p02-pupil-barrister.md"
+    },
+    {
+      "path": "personas/p03-barristers-clerk.md",
+      "sha256": "f9c9fd7f047df487d5e8752068914a0dd3a719af3db69ffcd01105ee54f0ac0a",
+      "title": "Barristers’ clerk",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p03-barristers-clerk.md"
+    },
+    {
+      "path": "personas/p04-solicitor.md",
+      "sha256": "439c8518cc2b3b1c3749887de15f1621f5a6689303ffc50ce04ac3e555c7c888",
+      "title": "Solicitor",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p04-solicitor.md"
+    },
+    {
+      "path": "personas/p05-trainee-solicitor.md",
+      "sha256": "bd73833d8445295070c7b5e7ae8e4745101b3cd381990d683e7329707300ef76",
+      "title": "Trainee solicitor",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p05-trainee-solicitor.md"
+    },
+    {
+      "path": "personas/p06-paralegal.md",
+      "sha256": "afd706c1647d22ffd65088a4f80ef1db38d179f94ff1785c2e7c5098856974ff",
+      "title": "Paralegal",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p06-paralegal.md"
+    },
+    {
+      "path": "personas/p07-judge.md",
+      "sha256": "fc47dba8f931f982ac241840633d5671e71f813a5c861c94c01adbc1973d3b90",
+      "title": "Judge",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p07-judge.md"
+    },
+    {
+      "path": "personas/p08-tribunal-member.md",
+      "sha256": "a36717bef9e076311187c4e7db10211a6ffdad82981e5de5999159e8c13ca9d7",
+      "title": "Tribunal member",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p08-tribunal-member.md"
+    },
+    {
+      "path": "personas/p09-judicial-assistant.md",
+      "sha256": "282e536994c6fa909fe97da3691a573e134b97844b0c189e740cc6bf4c7a6d6e",
+      "title": "Judicial assistant",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p09-judicial-assistant.md"
+    },
+    {
+      "path": "personas/p10-prosecutor.md",
+      "sha256": "b19f529fbc9a4e520d47c1a45560700281e8fb8f18f2638d20f58eb0f9bc1f8e",
+      "title": "Prosecutor",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p10-prosecutor.md"
+    },
+    {
+      "path": "personas/p11-defence-practitioner.md",
+      "sha256": "a32e7310bf3faad109e5bfd56604b1ee21dc34e2f2f9668cd8b6efebb9317fef",
+      "title": "Defence practitioner",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p11-defence-practitioner.md"
+    },
+    {
+      "path": "personas/p12-government-lawyer.md",
+      "sha256": "e5cce02c7b5228aed1e473a38620b291ed4af07242d0b663648e53bf3149bea7",
+      "title": "Government lawyer",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p12-government-lawyer.md"
+    },
+    {
+      "path": "personas/p13-parliamentary-counsel.md",
+      "sha256": "ec55c99ecdb2f72aa0cd1f67748d340fc45a412ba6ba07cbdb731abf76753127",
+      "title": "Parliamentary counsel",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p13-parliamentary-counsel.md"
+    },
+    {
+      "path": "personas/p14-legislator.md",
+      "sha256": "bcb6f59131f3a74dd2e0adbc893827692413d0f3510f5b8d7af5ac2b39d92190",
+      "title": "Legislator",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p14-legislator.md"
+    },
+    {
+      "path": "personas/p15-policy-official-or-bill-team.md",
+      "sha256": "f8544e1dad45f28c2c732b90ddadc631da61b77b4d10c2b185506355035da0f0",
+      "title": "Policy official or Bill team",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p15-policy-official-or-bill-team.md"
+    },
+    {
+      "path": "personas/p16-regulator.md",
+      "sha256": "9258577c843a9c92538f01e3dedc24d2191cd680fcb2145dbc51ad569db340f7",
+      "title": "Regulator",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p16-regulator.md"
+    },
+    {
+      "path": "personas/p17-inspector-or-enforcement-officer.md",
+      "sha256": "a951a4c4164a985b04d730380378ab900a6fb4efe80f9e8b2c13ff4854d736f2",
+      "title": "Inspector or enforcement officer",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p17-inspector-or-enforcement-officer.md"
+    },
+    {
+      "path": "personas/p18-police-or-investigator.md",
+      "sha256": "d25e14bf70746f59f88924bca4c8547df545da423c2b5a90bf0e910b0a1a7097",
+      "title": "Police or investigator",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p18-police-or-investigator.md"
+    },
+    {
+      "path": "personas/p19-local-authority-lawyer.md",
+      "sha256": "f46aedfa62a99a616b23c40c0adad5150bfe52a8a1087f68b074958899d841dd",
+      "title": "Local-authority lawyer",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p19-local-authority-lawyer.md"
+    },
+    {
+      "path": "personas/p20-local-authority-operational-officer.md",
+      "sha256": "54043fcc8b7728252ecebe13ff0c7cf50fd6f900d632d443a51dd837ae731167",
+      "title": "Local-authority operational officer",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p20-local-authority-operational-officer.md"
+    },
+    {
+      "path": "personas/p21-in-house-counsel.md",
+      "sha256": "14f856bc047cf34144123f786be77b702c277ad3839a4b8a7651b04aa3eed0cf",
+      "title": "In-house counsel",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p21-in-house-counsel.md"
+    },
+    {
+      "path": "personas/p22-compliance-risk-or-governance-professional.md",
+      "sha256": "0d1260cf1a59e1a45fa1645fd89cd881d41cbbcaccdd68b93bd56c176376a3f4",
+      "title": "Compliance, risk or governance professional",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p22-compliance-risk-or-governance-professional.md"
+    },
+    {
+      "path": "personas/p23-legal-aid-or-advice-worker.md",
+      "sha256": "c7390d432dfd1c86e31059c9e9aa2fd3509d5146f83a398596a798f6adbbb2fc",
+      "title": "Legal-aid or advice worker",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p23-legal-aid-or-advice-worker.md"
+    },
+    {
+      "path": "personas/p24-civil-society-or-human-rights-advocate.md",
+      "sha256": "cd6ae1e262883a92a67a220394714bb1018ee91d52e0e3a4f2d006c2eff763cc",
+      "title": "Civil-society or human-rights advocate",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p24-civil-society-or-human-rights-advocate.md"
+    },
+    {
+      "path": "personas/p25-mediator.md",
+      "sha256": "d9814a316d69842a42b30165f3d9930ce69b734b235b9f280f51dd3a9b533aed",
+      "title": "Mediator",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p25-mediator.md"
+    },
+    {
+      "path": "personas/p26-arbitrator.md",
+      "sha256": "b52e99ee3e50be687f63cc792b5622731bc7c25eef0d444f9a80d9db8eebd95b",
+      "title": "Arbitrator",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p26-arbitrator.md"
+    },
+    {
+      "path": "personas/p27-legal-academic.md",
+      "sha256": "40e856e30dd9e6673f0e36bea21c83ac52b6852d9365a977675485c98b747108",
+      "title": "Legal academic",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p27-legal-academic.md"
+    },
+    {
+      "path": "personas/p28-empirical-legal-researcher.md",
+      "sha256": "94e65b3b362d10d9f7dade356aef7115575300b5214f54277c7afd4da2413fb4",
+      "title": "Empirical legal researcher",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p28-empirical-legal-researcher.md"
+    },
+    {
+      "path": "personas/p29-law-student.md",
+      "sha256": "8f38ff5a949262665c9a0d0d98128141e6b02e49f6b676bb9b5a7f950a609f59",
+      "title": "Law student",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p29-law-student.md"
+    },
+    {
+      "path": "personas/p30-librarian-archivist-or-knowledge-manager.md",
+      "sha256": "3e97fb4a543e850b7455d25dd445c13712d19a5478cc6586d1617403aa63b8f9",
+      "title": "Librarian, archivist or knowledge manager",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p30-librarian-archivist-or-knowledge-manager.md"
+    },
+    {
+      "path": "personas/p31-journalist-or-fact-checker.md",
+      "sha256": "35c140ad0567b78a1915e5974d20dffc146016896b2dbcdd675ecd82c7de2da2",
+      "title": "Journalist or fact-checker",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p31-journalist-or-fact-checker.md"
+    },
+    {
+      "path": "personas/p32-litigant-in-person.md",
+      "sha256": "b9e0b412d94ce9df55a026ad4ff5baf6950d8533d4ffc5cc0b602e0991dc8f0b",
+      "title": "Litigant in person",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p32-litigant-in-person.md"
+    },
+    {
+      "path": "personas/p33-member-of-the-public.md",
+      "sha256": "1137e99c593198eb2e8b6550bf1d0bd90bc1702e1feaa22434513e3419c8c541",
+      "title": "Member of the public",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p33-member-of-the-public.md"
+    },
+    {
+      "path": "personas/p34-legislative-or-legal-data-engineer.md",
+      "sha256": "cbb93cc92ee243bd80fabcb98cef8481b9fe236eddbec875b112e89ce628c49f",
+      "title": "Legislative or legal-data engineer",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p34-legislative-or-legal-data-engineer.md"
+    },
+    {
+      "path": "personas/p35-ontology-or-knowledge-graph-designer.md",
+      "sha256": "2953fbf0378e488203c42a4b6646a32402ad9c04d0e39824fc2d73273ab1dc1b",
+      "title": "Ontology or knowledge-graph designer",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p35-ontology-or-knowledge-graph-designer.md"
+    },
+    {
+      "path": "personas/p36-ai-agent-developer-or-operator.md",
+      "sha256": "4794b4f17dd71d6378169d414266ab379c9ec75b2ee72327ed52c529775c08cb",
+      "title": "AI-agent developer or operator",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p36-ai-agent-developer-or-operator.md"
+    },
+    {
+      "path": "personas/p37-ai-auditor-or-evaluator.md",
+      "sha256": "7ee8a58c0e9f5599714fc55b457bc5df49802d8cca03e9308c5860334320c4a1",
+      "title": "AI auditor or evaluator",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p37-ai-auditor-or-evaluator.md"
+    },
+    {
+      "path": "personas/p38-accessibility-translation-or-plain-language-specialist.md",
+      "sha256": "f7aa708f1f54d40e3ed6c6d43a520ff955b1049274f0fae4c9e2322c7540eb84",
+      "title": "Accessibility, translation or plain-language specialist",
+      "type": "Research Persona",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/personas/p38-accessibility-translation-or-plain-language-specialist.md"
+    },
+    {
+      "path": "source-classes/index.md",
+      "sha256": "ea6f9eacbc94e64f4bd6671c970c561a6416252a0c8a8a468ea8c8b9d625c709",
+      "title": "Legal-source classes",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/index.md"
+    },
+    {
+      "path": "source-classes/sc01-primary-legislation.md",
+      "sha256": "0d994a2369a4fc16b41d79547bdf5945cf3a307c53c5875b88b2d87bb1dfb0a6",
+      "title": "Primary legislation",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc01-primary-legislation.md"
+    },
+    {
+      "path": "source-classes/sc02-secondary-and-delegated-legislation.md",
+      "sha256": "cb4f92f4b3a78c19255f4d14fbc9671885b35695608f0dfb4c86afb1ff27f62b",
+      "title": "Secondary and delegated legislation",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc02-secondary-and-delegated-legislation.md"
+    },
+    {
+      "path": "source-classes/sc03-draft-legislation-and-draft-instruments.md",
+      "sha256": "98222ce223a2afd23b21b0d21c4659e3846cdf0cb4dce2f0c48192e3e68ef87c",
+      "title": "Draft legislation and draft instruments",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc03-draft-legislation-and-draft-instruments.md"
+    },
+    {
+      "path": "source-classes/sc04-historical-and-revised-legislation-versions.md",
+      "sha256": "7c9d76d51eaa50cf2c259767f013cca976e606a015804e6a5ea307324401ac80",
+      "title": "Historical and revised legislation versions",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc04-historical-and-revised-legislation-versions.md"
+    },
+    {
+      "path": "source-classes/sc05-amendment-commencement-repeal-and-extent-effects.md",
+      "sha256": "f8a06e03f2ced152fc48e7f4c35e010acad1a4f77d235cd0eb01bdf29d32676a",
+      "title": "Amendment, commencement, repeal and extent effects",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc05-amendment-commencement-repeal-and-extent-effects.md"
+    },
+    {
+      "path": "source-classes/sc06-retained-and-assimilated-eu-law.md",
+      "sha256": "1e3f82f91148a7bb5e9bd0f98442a3b287aea0f123284d88a5d359f0ca28d43f",
+      "title": "Retained and assimilated EU law",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc06-retained-and-assimilated-eu-law.md"
+    },
+    {
+      "path": "source-classes/sc07-local-and-private-legislation.md",
+      "sha256": "1f05257cb58e2c514ca08b66e47d3e70f635c6c1df7b8c154e7bf55c555226f6",
+      "title": "Local and private legislation",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc07-local-and-private-legislation.md"
+    },
+    {
+      "path": "source-classes/sc08-treaties-and-international-instruments.md",
+      "sha256": "f680b608494b20f9dd581efbc6d5b5b291c0389cba3b4fb76967e48be7441ef4",
+      "title": "Treaties and international instruments",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc08-treaties-and-international-instruments.md"
+    },
+    {
+      "path": "source-classes/sc09-court-judgments.md",
+      "sha256": "e851b3b0977bb823fae00bffb4cf6c04106972765ba8afc2a939147a303ec37f",
+      "title": "Court judgments",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc09-court-judgments.md"
+    },
+    {
+      "path": "source-classes/sc10-tribunal-decisions.md",
+      "sha256": "3597fc7e9bf672fe283648ee45115149f6e420c5c04f4062dfc9fbf495a4e86c",
+      "title": "Tribunal decisions",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc10-tribunal-decisions.md"
+    },
+    {
+      "path": "source-classes/sc11-orders-opinions-and-separate-reasons.md",
+      "sha256": "fb913b337a1ee8d251aa918088329dcb5d2401d54ac0315fe874c73565995205",
+      "title": "Orders, opinions and separate reasons",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc11-orders-opinions-and-separate-reasons.md"
+    },
+    {
+      "path": "source-classes/sc12-neutral-and-report-citations.md",
+      "sha256": "db35b50f20cbdfe941eb7549ca3d9bac84ee050cadbcf39ff88218d98a9fce58",
+      "title": "Neutral and report citations",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc12-neutral-and-report-citations.md"
+    },
+    {
+      "path": "source-classes/sc13-precedent-citation-and-judicial-treatment.md",
+      "sha256": "054fb6616d8c9c0f03465721a83b15d91fc4de333d85a8ed78f3d3fe9c1d412d",
+      "title": "Precedent, citation and judicial treatment",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc13-precedent-citation-and-judicial-treatment.md"
+    },
+    {
+      "path": "source-classes/sc14-court-and-tribunal-reference-data.md",
+      "sha256": "5994f05546b32a9d6e8cb821909d31c45701281ac42599cb28f1f03f9efee774",
+      "title": "Court and tribunal reference data",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc14-court-and-tribunal-reference-data.md"
+    },
+    {
+      "path": "source-classes/sc15-court-and-tribunal-rules.md",
+      "sha256": "8ba3b8ad4f68adf21fa8676e60eb55f59aa65bade1d0ed53f33d41d735ed6383",
+      "title": "Court and tribunal rules",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc15-court-and-tribunal-rules.md"
+    },
+    {
+      "path": "source-classes/sc16-practice-directions-and-protocols.md",
+      "sha256": "3ecb518b5c1f5116fe7782f15c030ecc6d2d85af9c717ff4016553b3158672d6",
+      "title": "Practice directions and protocols",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc16-practice-directions-and-protocols.md"
+    },
+    {
+      "path": "source-classes/sc17-forms-fees-deadlines-and-procedural-guidance.md",
+      "sha256": "f100d1f8495d849b667c3a386ae0678923d62788bbe36fe8d3c0f56707518fd5",
+      "title": "Forms, fees, deadlines and procedural guidance",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc17-forms-fees-deadlines-and-procedural-guidance.md"
+    },
+    {
+      "path": "source-classes/sc18-sentencing-guidelines.md",
+      "sha256": "2f69e23c93cf53c75c5ad3302b348f6db53938d4bc1d0a7dbc3ec48656556bc5",
+      "title": "Sentencing guidelines",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc18-sentencing-guidelines.md"
+    },
+    {
+      "path": "source-classes/sc19-prosecution-and-enforcement-guidance.md",
+      "sha256": "d08caa729d65579d0376a8bc222c3941dc2dabf5b696dec21afecf7da841bfb0",
+      "title": "Prosecution and enforcement guidance",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc19-prosecution-and-enforcement-guidance.md"
+    },
+    {
+      "path": "source-classes/sc20-regulatory-handbooks-and-rules.md",
+      "sha256": "e02a0a92b86e49ac4f2d7d7712767a60fcc5920a6128363e0ab1f666d43e416a",
+      "title": "Regulatory handbooks and rules",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc20-regulatory-handbooks-and-rules.md"
+    },
+    {
+      "path": "source-classes/sc21-regulatory-decisions-and-enforcement-notices.md",
+      "sha256": "3160d69804f8011bc9cc997a3fc677f34aafb0840c3595c6f57726f301c11dd2",
+      "title": "Regulatory decisions and enforcement notices",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc21-regulatory-decisions-and-enforcement-notices.md"
+    },
+    {
+      "path": "source-classes/sc22-codes-of-practice-and-statutory-guidance.md",
+      "sha256": "e8fba3ee1aedf0552ce593aa0f4202ae2a5a95c9b651fed9e2cfb8bd32ccb6a1",
+      "title": "Codes of practice and statutory guidance",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc22-codes-of-practice-and-statutory-guidance.md"
+    },
+    {
+      "path": "source-classes/sc23-ombudsman-and-adjudicator-decisions.md",
+      "sha256": "95b79892b60dd8c4327274004d3e46547ab7d0fe1852ee5a74eb18204c3f2c0a",
+      "title": "Ombudsman and adjudicator decisions",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc23-ombudsman-and-adjudicator-decisions.md"
+    },
+    {
+      "path": "source-classes/sc24-parliamentary-materials-and-hansard.md",
+      "sha256": "1f430c542e88a0109400efe3c02a70c73e4eec7a418d06edb773ef9d167fc329",
+      "title": "Parliamentary materials and Hansard",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc24-parliamentary-materials-and-hansard.md"
+    },
+    {
+      "path": "source-classes/sc25-explanatory-notes-and-impact-assessments.md",
+      "sha256": "a69323e0863f5ba6458afda4bda600680e1abce95ce785840384f50de43f8c16",
+      "title": "Explanatory notes and impact assessments",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc25-explanatory-notes-and-impact-assessments.md"
+    },
+    {
+      "path": "source-classes/sc26-law-reform-publications.md",
+      "sha256": "08dc52ea2da2e5affad4b99234653c8cb4460812e4f7634ce7993353eb35dd00",
+      "title": "Law-reform publications",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc26-law-reform-publications.md"
+    },
+    {
+      "path": "source-classes/sc27-public-inquiries-and-official-investigations.md",
+      "sha256": "93f7f2b180b07d4a1ab3439c60c75ad0163c5d1ca7c7c6886136ae39236524a1",
+      "title": "Public inquiries and official investigations",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc27-public-inquiries-and-official-investigations.md"
+    },
+    {
+      "path": "source-classes/sc28-legal-aid-and-public-legal-assistance.md",
+      "sha256": "e27a8a9b92a446a013b9145e56b7954f5ab4170ee858f11db890fffd56b6dd7d",
+      "title": "Legal aid and public legal assistance",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc28-legal-aid-and-public-legal-assistance.md"
+    },
+    {
+      "path": "source-classes/sc29-public-notices-and-official-gazettes.md",
+      "sha256": "9429137ba7d36317d809096709dd4b93e904473ba7b215ce6c702cb76c213b56",
+      "title": "Public notices and official gazettes",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc29-public-notices-and-official-gazettes.md"
+    },
+    {
+      "path": "source-classes/sc30-jurisdiction-institution-and-public-body-reference-data.md",
+      "sha256": "252be8a41cccd641cf300fb90bfb0e1f87286e2ee5fda6617c1cc2c87a67b0ae",
+      "title": "Jurisdiction, institution and public-body reference data",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc30-jurisdiction-institution-and-public-body-reference-data.md"
+    },
+    {
+      "path": "source-classes/sc31-legal-service-listings-and-hearing-data.md",
+      "sha256": "9bd6c5d10dc1ac16cbea16c5dedc78ee1c00dff24f72ae481406afeb972cc0d1",
+      "title": "Legal-service listings and hearing data",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc31-legal-service-listings-and-hearing-data.md"
+    },
+    {
+      "path": "source-classes/sc32-european-union-legal-sources.md",
+      "sha256": "40b6c4446ea1addba88d8e949ef6587ef8d4d901776bbd33f9f59dbf36354d1f",
+      "title": "European Union legal sources",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc32-european-union-legal-sources.md"
+    },
+    {
+      "path": "source-classes/sc33-european-human-rights-and-international-decisions.md",
+      "sha256": "3cd758d45cbe62d2a9a09499927e96653127b4321c25a9b3c30bc5426eb02802",
+      "title": "European human-rights and international decisions",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc33-european-human-rights-and-international-decisions.md"
+    },
+    {
+      "path": "source-classes/sc34-professional-rules-and-legal-services-regulation.md",
+      "sha256": "fdda091a82a649e37ab14fc89395501e4008ffb18691b81313911f66eb6d025a",
+      "title": "Professional rules and legal-services regulation",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc34-professional-rules-and-legal-services-regulation.md"
+    },
+    {
+      "path": "source-classes/sc35-archival-legal-records-and-web-archives.md",
+      "sha256": "7eb89ab06f9af11cc0fa71dce8d18a4674405f57f9a5beeb30adf048878d0680",
+      "title": "Archival legal records and web archives",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc35-archival-legal-records-and-web-archives.md"
+    },
+    {
+      "path": "source-classes/sc36-secondary-reporting-and-commentary.md",
+      "sha256": "0733fb1b58cd15515c181f11d03426519a5aa5c6276929e6e0b576e712c854c2",
+      "title": "Secondary reporting and commentary",
+      "type": "Legal Source Class",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/source-classes/sc36-secondary-reporting-and-commentary.md"
+    },
+    {
+      "path": "sources/index.md",
+      "sha256": "4115652cc404c6ce609c0025f87a81b1b199608c98eb8affc59292c1b7b701a6",
+      "title": "Whole-Law source catalogue",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/index.md"
+    },
+    {
+      "path": "sources/src001-legislation-gov-uk-work-catalogue-and-atom-feeds.md",
+      "sha256": "06aaaf5c111b5677dfbf2de5649596f7058d4a754578673112aa91a9982a603a",
+      "title": "legislation.gov.uk work catalogue and Atom feeds",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src001-legislation-gov-uk-work-catalogue-and-atom-feeds.md"
+    },
+    {
+      "path": "sources/src002-legislation-gov-uk-clml-and-selected-passage-resources.md",
+      "sha256": "1fd2df99de358e6270a62ef797c0544d93f314109f2277a818415cdff1dc19b4",
+      "title": "legislation.gov.uk CLML and selected-passage resources",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src002-legislation-gov-uk-clml-and-selected-passage-resources.md"
+    },
+    {
+      "path": "sources/src003-legislation-gov-uk-effects-feeds.md",
+      "sha256": "f44dfd3926c75475db7c8af7f4a37721866d26b3adee5abb9c917bad4adb417d",
+      "title": "legislation.gov.uk effects feeds",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src003-legislation-gov-uk-effects-feeds.md"
+    },
+    {
+      "path": "sources/src004-legislation-gov-uk-publication-log.md",
+      "sha256": "818cc9f9c39528ad030c3636d7acd2d02646e2269dd72e9806fda82bf8561d2e",
+      "title": "legislation.gov.uk Publication Log",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src004-legislation-gov-uk-publication-log.md"
+    },
+    {
+      "path": "sources/src005-legislation-gov-uk-associated-documents-and-impact-assessments.md",
+      "sha256": "c880b497039e7b43e95bb3dd943f26d7f48509f9f937af581ec5239e2e5f825e",
+      "title": "legislation.gov.uk associated documents and impact assessments",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src005-legislation-gov-uk-associated-documents-and-impact-assessments.md"
+    },
+    {
+      "path": "sources/src006-legislation-gov-uk-draft-legislation-catalogue.md",
+      "sha256": "6e83f93f4abfedb59087fa64398c2a782a0326e20484cea92b0c736756f5453b",
+      "title": "legislation.gov.uk draft legislation catalogue",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src006-legislation-gov-uk-draft-legislation-catalogue.md"
+    },
+    {
+      "path": "sources/src007-legislation-gov-uk-research-bulk-data-and-sparql-surfaces.md",
+      "sha256": "c47cdc3940b35bfd27d6d24561cec813bf2c5e2c59c72af88d97bba82e2d4306",
+      "title": "legislation.gov.uk research bulk data and SPARQL surfaces",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src007-legislation-gov-uk-research-bulk-data-and-sparql-surfaces.md"
+    },
+    {
+      "path": "sources/src008-legislation-gov-uk-eu-origin-retained-and-assimilated-law.md",
+      "sha256": "731a2e7a7114fd022422d1ed74e8f9dbed887721521887b451b46d35d47ca572",
+      "title": "legislation.gov.uk EU-origin, retained and assimilated law",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src008-legislation-gov-uk-eu-origin-retained-and-assimilated-law.md"
+    },
+    {
+      "path": "sources/src009-find-case-law-public-service.md",
+      "sha256": "e0386dda91a2500d7db71e337356fb20d3e8adf0d59c01ad8fb1d895d74747d3",
+      "title": "Find Case Law public service",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src009-find-case-law-public-service.md"
+    },
+    {
+      "path": "sources/src010-find-case-law-api-and-computational-analysis-licence.md",
+      "sha256": "f31d937127edde338737064dcf7ecf6a3eafa190d92a50cbd99fd7eb001f21b0",
+      "title": "Find Case Law API and computational-analysis licence",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src010-find-case-law-api-and-computational-analysis-licence.md"
+    },
+    {
+      "path": "sources/src011-find-case-law-supreme-court-collection.md",
+      "sha256": "21683af5901668d7ad7efbc7f52cce807c3fb8b03ebd8e0d9aca40b4c411ad31",
+      "title": "Find Case Law Supreme Court collection",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src011-find-case-law-supreme-court-collection.md"
+    },
+    {
+      "path": "sources/src012-find-case-law-lower-court-and-tribunal-collections.md",
+      "sha256": "8298fb8d5d4598bee17ddd8db41f39fd9181e0e60fca233e5b0dd983720ad48d",
+      "title": "Find Case Law lower-court and tribunal collections",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src012-find-case-law-lower-court-and-tribunal-collections.md"
+    },
+    {
+      "path": "sources/src013-scottish-courts-and-tribunals-service-judgments.md",
+      "sha256": "d53a8cb1a203c6194b164f219782a85747d1bd26e3a4e61892d4e3cadb3672a3",
+      "title": "Scottish Courts and Tribunals Service judgments",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src013-scottish-courts-and-tribunals-service-judgments.md"
+    },
+    {
+      "path": "sources/src014-judiciary-ni-judgments.md",
+      "sha256": "56d034a7de518ec22ef220f072d9218c5251b57bf60953ea4fd8d46ae32292d9",
+      "title": "Judiciary NI judgments",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src014-judiciary-ni-judgments.md"
+    },
+    {
+      "path": "sources/src015-bailii-case-law-database.md",
+      "sha256": "bb2a863ea7a60167605504c77e0dc8cce5b0e1cc3ffdbd577b2db5ca49042d49",
+      "title": "BAILII case-law database",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src015-bailii-case-law-database.md"
+    },
+    {
+      "path": "sources/src016-uk-supreme-court-and-judicial-committee-websites.md",
+      "sha256": "759a9742580510601b6f64fce4177c17e11db2657617a23ce57cdcc8c8e080be",
+      "title": "UK Supreme Court and Judicial Committee websites",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src016-uk-supreme-court-and-judicial-committee-websites.md"
+    },
+    {
+      "path": "sources/src017-the-national-archives-discovery-legal-records.md",
+      "sha256": "afe6063d84cbb8ba5d1ca3d1aeadd5659b16de093d71ece0eefe1c0c168939c0",
+      "title": "The National Archives Discovery legal records",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src017-the-national-archives-discovery-legal-records.md"
+    },
+    {
+      "path": "sources/src018-civil-procedure-rules-and-practice-directions.md",
+      "sha256": "8b795cb346d95f850f369d05d82a3136e0a480e5e86d655726db0fc33dc8c4c2",
+      "title": "Civil Procedure Rules and practice directions",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src018-civil-procedure-rules-and-practice-directions.md"
+    },
+    {
+      "path": "sources/src019-criminal-procedure-rules-and-practice-directions.md",
+      "sha256": "b4da8dbd50afeb06d74382ce6a6852a6f886becb12288f6d245b64d450a25868",
+      "title": "Criminal Procedure Rules and practice directions",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src019-criminal-procedure-rules-and-practice-directions.md"
+    },
+    {
+      "path": "sources/src020-family-procedure-rules-and-practice-directions.md",
+      "sha256": "b0ceb4ff0505dcc8f933032035c59d1e821300181095ef584dca069ddc4273e8",
+      "title": "Family Procedure Rules and practice directions",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src020-family-procedure-rules-and-practice-directions.md"
+    },
+    {
+      "path": "sources/src021-tribunal-procedure-rules-and-practice-directions.md",
+      "sha256": "fe694c33053ae8f311a6334291788fadb9b04cd8521b59acc5201a0b78c71755",
+      "title": "Tribunal Procedure Rules and practice directions",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src021-tribunal-procedure-rules-and-practice-directions.md"
+    },
+    {
+      "path": "sources/src022-judiciary-practice-directions-and-guidance.md",
+      "sha256": "6aef9e4c7fe438628323abb246b5979d7f2577c23feb1bb69cb2e818aebf42f5",
+      "title": "Judiciary practice directions and guidance",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src022-judiciary-practice-directions-and-guidance.md"
+    },
+    {
+      "path": "sources/src023-hmcts-forms.md",
+      "sha256": "f623a9d9078326db093333b6a526500426be40d18bd49bb978db9a8baec52c7e",
+      "title": "HMCTS forms",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src023-hmcts-forms.md"
+    },
+    {
+      "path": "sources/src024-hmcts-court-and-tribunal-fees.md",
+      "sha256": "33e79b72e85649b3b05dc32d7daae90566202c08be199dd5eccb94e499dfcc92",
+      "title": "HMCTS court and tribunal fees",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src024-hmcts-court-and-tribunal-fees.md"
+    },
+    {
+      "path": "sources/src025-court-and-tribunal-hearings-service-cath-data.md",
+      "sha256": "37ed91035b7f2eef7aee319c92240f5813ade8495c19db09a0e127091a21c502",
+      "title": "Court and Tribunal Hearings Service (CaTH) data",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src025-court-and-tribunal-hearings-service-cath-data.md"
+    },
+    {
+      "path": "sources/src026-find-a-court-or-tribunal-service.md",
+      "sha256": "0c79d5b3738bc17af8d4ca550a54c4c71b13bc8ace4d98565cc498805834c997",
+      "title": "Find a Court or Tribunal service",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src026-find-a-court-or-tribunal-service.md"
+    },
+    {
+      "path": "sources/src027-sentencing-council-guidelines.md",
+      "sha256": "3b633171d05ecae1916278bd940d23dbf16c65081249ede14bc1cd5b41f76d2f",
+      "title": "Sentencing Council guidelines",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src027-sentencing-council-guidelines.md"
+    },
+    {
+      "path": "sources/src028-crown-prosecution-service-legal-guidance.md",
+      "sha256": "13b93087f5db97f3a53230bc0ad38f7a460497864b68683b91ea6d72e64973c4",
+      "title": "Crown Prosecution Service legal guidance",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src028-crown-prosecution-service-legal-guidance.md"
+    },
+    {
+      "path": "sources/src029-copfs-prosecution-code-and-guidance.md",
+      "sha256": "e9246c56415930033698b91a7c9d2ab2c170fbb93e55944339d58809963d25c5",
+      "title": "COPFS Prosecution Code and guidance",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src029-copfs-prosecution-code-and-guidance.md"
+    },
+    {
+      "path": "sources/src030-public-prosecution-service-ni-code-for-prosecutors.md",
+      "sha256": "9e3eac8b80b7bc349ceab098192f7402dbe80eb2778de15c223634fddafb8ff3",
+      "title": "Public Prosecution Service NI Code for Prosecutors",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src030-public-prosecution-service-ni-code-for-prosecutors.md"
+    },
+    {
+      "path": "sources/src031-fca-handbook.md",
+      "sha256": "5f57ef0a86c5404dec7dbfa670604b4123a0f75af161fade669e7425b4fe246e",
+      "title": "FCA Handbook",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src031-fca-handbook.md"
+    },
+    {
+      "path": "sources/src032-fca-enforcement-and-notices.md",
+      "sha256": "356e5cfd406379511f5c528582797647b1d8b2f8b87a95a9d3bae1361f766315",
+      "title": "FCA enforcement and notices",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src032-fca-enforcement-and-notices.md"
+    },
+    {
+      "path": "sources/src033-pra-rulebook.md",
+      "sha256": "b0c3fb41ebde58418f0b5961d2445c530032cc1026791322c2a50c9f4c38057c",
+      "title": "PRA Rulebook",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src033-pra-rulebook.md"
+    },
+    {
+      "path": "sources/src034-ofcom-rules-codes-and-regulatory-statements.md",
+      "sha256": "7a9f1a13e5ad2cd84af5caa5a01193a234d11fb5239d9a7253714cede4127611",
+      "title": "Ofcom rules, codes and regulatory statements",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src034-ofcom-rules-codes-and-regulatory-statements.md"
+    },
+    {
+      "path": "sources/src035-ofcom-enforcement-decisions.md",
+      "sha256": "4204ad9702cd83976eca305b9387b58c33825c3611c66817ed6ce5652c396b9c",
+      "title": "Ofcom enforcement decisions",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src035-ofcom-enforcement-decisions.md"
+    },
+    {
+      "path": "sources/src036-ico-statutory-guidance-codes-and-regulatory-guidance.md",
+      "sha256": "2aea42fb5e2ced6859710ec996153a7137768aa4027717106e1407c2e414607b",
+      "title": "ICO statutory guidance, codes and regulatory guidance",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src036-ico-statutory-guidance-codes-and-regulatory-guidance.md"
+    },
+    {
+      "path": "sources/src037-ico-decision-notices-and-enforcement-action.md",
+      "sha256": "6f5696276de2f615e0bb5450774f6241c3d62c7168a6c0dc3043d36bec3ec96b",
+      "title": "ICO decision notices and enforcement action",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src037-ico-decision-notices-and-enforcement-action.md"
+    },
+    {
+      "path": "sources/src038-competition-and-markets-authority-cases-and-decisions.md",
+      "sha256": "94b22c71e205d619d7590f9a7766b32082313eb07ba54479c6145fcd6e26cc62",
+      "title": "Competition and Markets Authority cases and decisions",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src038-competition-and-markets-authority-cases-and-decisions.md"
+    },
+    {
+      "path": "sources/src039-environment-agency-enforcement-and-sanctions-publications.md",
+      "sha256": "cc338734541385f7b66f03e9056abad9630d03468312b9c845586ff2ad90ca9c",
+      "title": "Environment Agency enforcement and sanctions publications",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src039-environment-agency-enforcement-and-sanctions-publications.md"
+    },
+    {
+      "path": "sources/src040-local-government-and-social-care-ombudsman-decisions.md",
+      "sha256": "73502583a8d9817ef6ff9019f1803ee7192413322e87675543487a1c0a9737e4",
+      "title": "Local Government and Social Care Ombudsman decisions",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src040-local-government-and-social-care-ombudsman-decisions.md"
+    },
+    {
+      "path": "sources/src041-parliamentary-and-health-service-ombudsman-case-decisions.md",
+      "sha256": "58b68138a44d03f13acb4d66b820b480a594d0c387025f963578e5923ef65eb9",
+      "title": "Parliamentary and Health Service Ombudsman case decisions",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src041-parliamentary-and-health-service-ombudsman-case-decisions.md"
+    },
+    {
+      "path": "sources/src042-scottish-public-services-ombudsman-decisions-and-reviews.md",
+      "sha256": "d0d348d080019dffd6a3455544bbb3e7fef21d5c7f3cbf126b4ff9e713e36526",
+      "title": "Scottish Public Services Ombudsman decisions and reviews",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src042-scottish-public-services-ombudsman-decisions-and-reviews.md"
+    },
+    {
+      "path": "sources/src043-northern-ireland-public-services-ombudsman-findings.md",
+      "sha256": "48d3e87630bd58e33f856fe560f7979da4ec39ef7bf10826fabf8613df0e0102",
+      "title": "Northern Ireland Public Services Ombudsman findings",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src043-northern-ireland-public-services-ombudsman-findings.md"
+    },
+    {
+      "path": "sources/src044-uk-parliament-bills-service.md",
+      "sha256": "e6b7561e42e27c1fa3ebe5870c9cc64fb2f9e3ea5d23a9cc8ade7b18e07aa6e5",
+      "title": "UK Parliament Bills service",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src044-uk-parliament-bills-service.md"
+    },
+    {
+      "path": "sources/src045-hansard-official-report.md",
+      "sha256": "0604d0af6ddb84a34a439a8a8237aefd657d777f9b6f36c0a488a2baff5458a6",
+      "title": "Hansard official report",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src045-hansard-official-report.md"
+    },
+    {
+      "path": "sources/src046-uk-parliament-committees-evidence-and-reports.md",
+      "sha256": "3410baf4f864b34c373f2471939ecb4a9a4494b3da8ac2b8189c0505fd1a4f0a",
+      "title": "UK Parliament committees, evidence and reports",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src046-uk-parliament-committees-evidence-and-reports.md"
+    },
+    {
+      "path": "sources/src047-uk-parliament-statutory-instrument-tracker.md",
+      "sha256": "0cc0a5875e47f6180dbed80b3d33b41470957918e709e3395a16e76598e2c4c1",
+      "title": "UK Parliament Statutory Instrument tracker",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src047-uk-parliament-statutory-instrument-tracker.md"
+    },
+    {
+      "path": "sources/src048-scottish-parliament-bills-and-official-report.md",
+      "sha256": "d56e2f9086ba42363e1b75bc3dcc534e7e94209e7491b09fbba259aeffc0d06f",
+      "title": "Scottish Parliament Bills and Official Report",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src048-scottish-parliament-bills-and-official-report.md"
+    },
+    {
+      "path": "sources/src049-senedd-cymru-legislation-and-record-of-proceedings.md",
+      "sha256": "03233341ea1aad8fe9329b161927e77dcaf8e811e25a4c18def052259b1a0074",
+      "title": "Senedd Cymru legislation and Record of Proceedings",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src049-senedd-cymru-legislation-and-record-of-proceedings.md"
+    },
+    {
+      "path": "sources/src050-northern-ireland-assembly-bills-and-official-report.md",
+      "sha256": "dd9a1e685e138da77643a4e49d176cd668531f4ec48c2658156604c7fb1d0ccb",
+      "title": "Northern Ireland Assembly Bills and Official Report",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src050-northern-ireland-assembly-bills-and-official-report.md"
+    },
+    {
+      "path": "sources/src051-law-commission-publications-and-projects.md",
+      "sha256": "05b93463e431c5b1dbdf067fe78a7eda2fb3943d49b5e6fafc9cafa9934c7101",
+      "title": "Law Commission publications and projects",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src051-law-commission-publications-and-projects.md"
+    },
+    {
+      "path": "sources/src052-scottish-law-commission-publications.md",
+      "sha256": "a09527bfd702e08c677ef530d86a5589c050acda7154467b576001a5bae88248",
+      "title": "Scottish Law Commission publications",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src052-scottish-law-commission-publications.md"
+    },
+    {
+      "path": "sources/src053-public-inquiry-reports-and-recommendation-tracking.md",
+      "sha256": "9fced3692f0beca3fadefdd63455e0273e90bd7b4b2b87dedb38e9f86a857bbc",
+      "title": "Public inquiry reports and recommendation tracking",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src053-public-inquiry-reports-and-recommendation-tracking.md"
+    },
+    {
+      "path": "sources/src054-official-accident-investigation-reports-aaib-raib-maib.md",
+      "sha256": "8ee12c3c8388bfe5ffe1c8ee53f1995f4139296b1c55f19d38fa06b430d03701",
+      "title": "Official accident investigation reports (AAIB, RAIB, MAIB)",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src054-official-accident-investigation-reports-aaib-raib-maib.md"
+    },
+    {
+      "path": "sources/src055-uk-treaties-online-and-treaty-dataset.md",
+      "sha256": "0d60a33aea37acc88a249f135301e4d21756c1909f127c09a6b44491655e1d43",
+      "title": "UK Treaties Online and treaty dataset",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src055-uk-treaties-online-and-treaty-dataset.md"
+    },
+    {
+      "path": "sources/src056-eur-lex.md",
+      "sha256": "8f470ec47c6cd8b1c93b24326f600c123a54f6f5e30bb2efa5dadfa2ce265815",
+      "title": "EUR-Lex",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src056-eur-lex.md"
+    },
+    {
+      "path": "sources/src057-cellar-repository-and-apis.md",
+      "sha256": "76063cfeb780f47d14bd50c677f52856889a1aa157ce10e901b00a2e94483334",
+      "title": "CELLAR repository and APIs",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src057-cellar-repository-and-apis.md"
+    },
+    {
+      "path": "sources/src058-hudoc-european-court-of-human-rights-database.md",
+      "sha256": "31cd02aa8c0d4bd20fd2e447d80b9645534edd71da27af56961e2b07b9f56371",
+      "title": "HUDOC European Court of Human Rights database",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src058-hudoc-european-court-of-human-rights-database.md"
+    },
+    {
+      "path": "sources/src059-the-gazette.md",
+      "sha256": "e5765893af6b6240d77ea6c0d8fde0660bc7c512eb74f54c0075bbe9e5e7c12e",
+      "title": "The Gazette",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src059-the-gazette.md"
+    },
+    {
+      "path": "sources/src060-local-authority-byelaws-and-local-legal-publications.md",
+      "sha256": "df662830fcf654f36a1aa5cdff99500ecc077c2ed7a5b69129d78629e9fdd368",
+      "title": "Local authority byelaws and local legal publications",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src060-local-authority-byelaws-and-local-legal-publications.md"
+    },
+    {
+      "path": "sources/src061-legal-aid-agency-eligibility-and-service-information.md",
+      "sha256": "b3e26134fbbf764a8e40662226679d8c5469d5b6ed240c52f3a08d8b10f40770",
+      "title": "Legal Aid Agency eligibility and service information",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src061-legal-aid-agency-eligibility-and-service-information.md"
+    },
+    {
+      "path": "sources/src062-scottish-legal-aid-board-information.md",
+      "sha256": "be3498c556d59bf539dab7a87fdff28fd495093b367e9e16d1ab4084903cfbc7",
+      "title": "Scottish Legal Aid Board information",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src062-scottish-legal-aid-board-information.md"
+    },
+    {
+      "path": "sources/src063-legal-aid-and-public-legal-assistance-in-northern-ireland.md",
+      "sha256": "bbaa32d8c350ffe7d570cc7eb19ba124191ca78c08122e37f97ad030d29731d4",
+      "title": "Legal aid and public legal assistance in Northern Ireland",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src063-legal-aid-and-public-legal-assistance-in-northern-ireland.md"
+    },
+    {
+      "path": "sources/src064-gov-uk-and-devolved-public-legal-guidance.md",
+      "sha256": "b53991b37d07abab897e371933667fd13f2faf679750e04aceb8c48328942d55",
+      "title": "GOV.UK and devolved public legal guidance",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src064-gov-uk-and-devolved-public-legal-guidance.md"
+    },
+    {
+      "path": "sources/src065-bar-standards-board-handbook-and-decisions.md",
+      "sha256": "b08f8d080d7122fb76852fc1a6f09fe0c64a2f471428629ada1566e5f21fdbf9",
+      "title": "Bar Standards Board Handbook and decisions",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src065-bar-standards-board-handbook-and-decisions.md"
+    },
+    {
+      "path": "sources/src066-sra-standards-and-regulations-and-decisions.md",
+      "sha256": "5759ec84f87a9f0103f8b7ad4357e6a3381feaa2e94f2b487d807b1d08f002d3",
+      "title": "SRA Standards and Regulations and decisions",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src066-sra-standards-and-regulations-and-decisions.md"
+    },
+    {
+      "path": "sources/src067-judicial-and-tribunal-office-reference-sources.md",
+      "sha256": "3a86a60726893ac39a400d1431ac7107fbf8d9c5d6ea69b278075d19892977f1",
+      "title": "Judicial and tribunal office reference sources",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src067-judicial-and-tribunal-office-reference-sources.md"
+    },
+    {
+      "path": "sources/src068-official-law-reports-and-iclr-platform.md",
+      "sha256": "828f011979f9408e9826a3e8d43fc712bfecd0c0718f7175b1f839a5c16f6c61",
+      "title": "Official law reports and ICLR platform",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src068-official-law-reports-and-iclr-platform.md"
+    },
+    {
+      "path": "sources/src069-westlaw-uk-and-lexis-legal-research-services.md",
+      "sha256": "f86e6453c4c08b6a8423e684a19dfe8a1958f37887553a31dad8e50128c7cad1",
+      "title": "Westlaw UK and Lexis+ legal research services",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src069-westlaw-uk-and-lexis-legal-research-services.md"
+    },
+    {
+      "path": "sources/src070-uk-web-archive-legal-and-government-collections.md",
+      "sha256": "d826d20afa8799705b9c910bcc886e228cfec6dc711cb7213b9de8e9bb41b985",
+      "title": "UK Web Archive legal and government collections",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src070-uk-web-archive-legal-and-government-collections.md"
+    },
+    {
+      "path": "sources/src071-devolved-government-statutory-guidance-and-regulatory-publications.md",
+      "sha256": "90bf4856f34458eab8de8280a087f1f06b8e64e192385f88a31594eea56ba554",
+      "title": "Devolved government statutory guidance and regulatory publications",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src071-devolved-government-statutory-guidance-and-regulatory-publications.md"
+    },
+    {
+      "path": "sources/src072-official-public-body-register-and-organisation-data.md",
+      "sha256": "991396a4d898057196baa934a8e906b3c331d2418211dc3ecc3e0b2253e616ad",
+      "title": "Official public-body register and organisation data",
+      "type": "Legal Source Record",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/sources/src072-official-public-body-register-and-organisation-data.md"
+    },
+    {
+      "path": "tasks/index.md",
+      "sha256": "e2fab619174cd8b0697955451369a62ce5f8fa23bb5aa41dd67e0974c5ecac46",
+      "title": "Whole-Law research tasks",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/index.md"
+    },
+    {
+      "path": "tasks/t01-locate-controlling-authority.md",
+      "sha256": "ecfee3459f125f736b2e92bed81ec059e923b43752acfb10f54559ecf02bc6c8",
+      "title": "Locate controlling authority",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t01-locate-controlling-authority.md"
+    },
+    {
+      "path": "tasks/t02-determine-whether-law-is-in-force.md",
+      "sha256": "48b1848ddb01ff39d7fc02f586df56a7bdef2e6d78d9af852cbea77090bd008e",
+      "title": "Determine whether law is in force",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t02-determine-whether-law-is-in-force.md"
+    },
+    {
+      "path": "tasks/t03-point-in-time-and-historical-research.md",
+      "sha256": "e536477654ca45572fb0d17849e5ddbb60490c899ffe8c12189c15321f47245c",
+      "title": "Point-in-time and historical research",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t03-point-in-time-and-historical-research.md"
+    },
+    {
+      "path": "tasks/t04-territorial-extent-and-jurisdiction.md",
+      "sha256": "1d71177578358073f5e03bc533447a2fa444eeaa383fd5c9569dc41e8b88a6d1",
+      "title": "Territorial extent and jurisdiction",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t04-territorial-extent-and-jurisdiction.md"
+    },
+    {
+      "path": "tasks/t05-trace-amendments-commencement-and-repeal.md",
+      "sha256": "26af5d02edbc4f8e78e69facd57842ebf91a22eeac3aa3b36d2e4d2103d7cf8c",
+      "title": "Trace amendments, commencement and repeal",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t05-trace-amendments-commencement-and-repeal.md"
+    },
+    {
+      "path": "tasks/t06-identify-judicial-interpretation-and-treatment.md",
+      "sha256": "185d183446bf2405b10d97f3d6ba515f2992f8a855e2d371405a418b4c7fc570",
+      "title": "Identify judicial interpretation and treatment",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t06-identify-judicial-interpretation-and-treatment.md"
+    },
+    {
+      "path": "tasks/t07-construct-a-chronology.md",
+      "sha256": "3e678b27ae7e59f90dfccf72d47ffb9b58848d1cb31ef32227c186beda0b545c",
+      "title": "Construct a chronology",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t07-construct-a-chronology.md"
+    },
+    {
+      "path": "tasks/t08-compare-jurisdictions.md",
+      "sha256": "332fded627664cc49664401a1cb510cb616614c5bd01b007443501eeeb91f1f6",
+      "title": "Compare jurisdictions",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t08-compare-jurisdictions.md"
+    },
+    {
+      "path": "tasks/t09-apply-rules-to-facts.md",
+      "sha256": "d0d095e2d3c953186110f5128191755fb30fda8af59527d0f5cb8b869d02b46d",
+      "title": "Apply rules to facts",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t09-apply-rules-to-facts.md"
+    },
+    {
+      "path": "tasks/t10-find-procedural-steps-deadlines-forms-and-fees.md",
+      "sha256": "b6d1b7a1a42b2449a3ba37005d34e9b543fb6e2303c60e5dca3c1c37f94bf801",
+      "title": "Find procedural steps, deadlines, forms and fees",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t10-find-procedural-steps-deadlines-forms-and-fees.md"
+    },
+    {
+      "path": "tasks/t11-prepare-litigation-advice-policy-compliance-or-enforcement-work.md",
+      "sha256": "c83e4961871d88cd9f49778a68cccd085558afc34d0790253ecd90dc08b764dc",
+      "title": "Prepare litigation, advice, policy, compliance or enforcement work",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t11-prepare-litigation-advice-policy-compliance-or-enforcement-work.md"
+    },
+    {
+      "path": "tasks/t12-research-legislative-intent.md",
+      "sha256": "42b216e0e9d141a5b9d2fd72e25ee558e781c7ad10d524a6d02abb36e72ee95a",
+      "title": "Research legislative intent",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t12-research-legislative-intent.md"
+    },
+    {
+      "path": "tasks/t13-monitor-legal-change.md",
+      "sha256": "1e1693471b210d65d9eb8202ecab168628edae3d2ad2e263cecf60e6bedee92d",
+      "title": "Monitor legal change",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t13-monitor-legal-change.md"
+    },
+    {
+      "path": "tasks/t14-quantitative-or-corpus-analysis.md",
+      "sha256": "2da08522e08d5e7b4905e15f8342b0a8fd13212342fe963818cd01f248bd5740",
+      "title": "Quantitative or corpus analysis",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t14-quantitative-or-corpus-analysis.md"
+    },
+    {
+      "path": "tasks/t15-draft-or-check-legal-instruments.md",
+      "sha256": "1f7b4255520631ab1f23461ba0dc2df1f9f7e69d9575aa4d851e228cfda50399",
+      "title": "Draft or check legal instruments",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t15-draft-or-check-legal-instruments.md"
+    },
+    {
+      "path": "tasks/t16-produce-accessible-public-explanation.md",
+      "sha256": "f527be3b884a031b50869c9074eab2b4113824ce61f6ec3276195b384821ac5c",
+      "title": "Produce accessible public explanation",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t16-produce-accessible-public-explanation.md"
+    },
+    {
+      "path": "tasks/t17-audit-an-ai-generated-legal-answer.md",
+      "sha256": "35cf4f5939271e91c47effaf3cb714825df8811d0bf447fc7afcf9142377ade5",
+      "title": "Audit an AI-generated legal answer",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t17-audit-an-ai-generated-legal-answer.md"
+    },
+    {
+      "path": "tasks/t18-identify-institutional-competence.md",
+      "sha256": "a32a5a479a2427c4562d8b30f5ed58c63aa0a9a0f987afa1f143f0bfc9cf2c85",
+      "title": "Identify institutional competence",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t18-identify-institutional-competence.md"
+    },
+    {
+      "path": "tasks/t19-identify-remedies-and-enforcement-outcomes.md",
+      "sha256": "963e93e75ed83dd51a6ba4276f78863a018896d2c53850f44326115e96bab56b",
+      "title": "Identify remedies and enforcement outcomes",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t19-identify-remedies-and-enforcement-outcomes.md"
+    },
+    {
+      "path": "tasks/t20-verify-citation-and-identity.md",
+      "sha256": "8ae67375396e45a764d19a7b1fba2e3252523daab81fbbc01cdd491801391686",
+      "title": "Verify citation and identity",
+      "type": "Legal Research Task",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/tasks/t20-verify-citation-and-identity.md"
+    },
+    {
+      "path": "walkthrough/source.md",
+      "sha256": "c2a1fd4feffce1344eeabafa0c108428fcea890d7abf0faeeb801055e9bbf0b8",
+      "title": "Which source families should a researcher inspect for legislation, amendments and judicial treatment of an equality duty, and which parts has Whole-Law actually ingested?",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/walkthrough/source.md"
+    }
+  ],
+  "targeted_graph_locator": {
+    "buckets": 256,
+    "id": "urn:okf:uk-legislation:artifact:sha256:569697b800d602278b5feb067f86d4059b4eda0dc769da0adebc531299b4d367",
+    "max_active_chunk_references_per_route": 674,
+    "max_active_incident_assertions_per_route": 162281,
+    "max_chunk_references_per_route": 979,
+    "max_incident_assertions_per_route": 162649,
+    "path": "data/semantic/runtime/route-locator/manifest.json",
+    "routes": 365919,
+    "sha256": "cda87c7aa341ded2fb1ff31688e386eb1080df4f9d251b97b2114c567ed7f5bc"
+  },
+  "typed_site_payload_encoding": {
+    "manifest_url": "https://chris-page-gov.github.io/okf-uk-legislation/data/reader-transport/v1/payload-encoding.json",
+    "scope": "Pages typed Site only; the canonical answer bytes remain in the source bundle and release archive.",
+    "selection": "The manifest names the two approved migration evaluation answer payloads and binds each original and gzip byte identity. Published historical executions retain their existing paths."
+  },
+  "walkthrough": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/walkthrough/index.html"
+}

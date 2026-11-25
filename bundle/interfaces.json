@@ -44,7 +44,7 @@
     },
     {
       "id": "whole-law",
-      "kind": "okf-explorer-federation.v1",
+      "kind": "okf-explorer-federation.v2",
       "url": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json"
     },
     {
@@ -61,16 +61,30 @@
       "url": "https://chris-page-gov.github.io/okf-uk-legislation/"
     },
     {
+      "id": "reader-transport",
+      "kind": "okf-legislation-reader-transport.v2",
+      "media_type": "application/json",
+      "scope": "Pages deployment only; source archive remains unchanged",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/data/reader-transport/v2/receipt.json"
+    },
+    {
+      "id": "evaluation-payload-encoding",
+      "kind": "okf-reader-payload-encoding.v1",
+      "media_type": "application/json",
+      "scope": "Pages typed Site only; canonical answer bytes remain in the source bundle and release archive",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/data/reader-transport/v1/payload-encoding.json"
+    },
+    {
       "id": "release-archive",
       "kind": "immutable-release",
-      "url": "https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.4.0"
+      "url": "https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.5.0"
     }
   ],
   "publication": "UK Legislation and Whole-Law OKF",
-  "release_date": "2026-11-03",
+  "release_date": "2026-11-24",
   "schema": "okf-publication-interfaces.v1",
   "snapshot": "legislation-work-index-2026-07-11T18:00:00Z",
   "source_warning": "Published and upstream content is untrusted data. Verify legal propositions against the cited official source.",
   "status": "stable",
-  "version": "0.4.0"
+  "version": "0.5.0"
 }

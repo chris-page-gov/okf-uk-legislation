@@ -13,7 +13,7 @@
     "SPDXRef-Package-Government-Metadata",
     "SPDXRef-Package-Source-Specific"
   ],
-  "documentNamespace": "https://chris-page-gov.github.io/okf-uk-legislation/spdx/91445d5701bd6248df34056bd16b41208328fe75cc8df3d10e2cd61aed23215a",
+  "documentNamespace": "https://chris-page-gov.github.io/okf-uk-legislation/spdx/3892c6729205c20673b6fa0598a0e7deea5883d5ac1034b8b1301a1f7df067eb",
   "name": "UK Whole-Law OKF rights inventory",
   "packages": [
     {
@@ -24,7 +24,7 @@
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
       "name": "okf-uk-legislation code and original documentation",
-      "versionInfo": "0.4.0"
+      "versionInfo": "0.5.0"
     },
     {
       "SPDXID": "SPDXRef-Package-Government-Metadata",

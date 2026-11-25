@@ -282,6 +282,11 @@
     "webmcp": "../interfaces.json#webmcp"
   },
   "extensions": {
+    "okf-ai-access.v1": {
+      "context": "ai-context.json",
+      "manifest": "ai-index.json",
+      "walkthrough": "walkthrough/index.html"
+    },
     "okf-explorer-analysis.v1": {
       "entrypoint": "coverage",
       "mode": "external"
@@ -326,7 +331,7 @@
             "stale_after": "2026-08-01T21:30:00Z"
           }
         },
-        "freshness_semantics": "`current` means the frozen datapack is inside its declared refresh window. It does not mean that every legal provision is in force, unamended or suitable for reliance without live verification.",
+        "freshness_semantics": "`current` retains the status recorded in the July snapshot. It is not a new freshness check; declared review dates may now be overdue. It does not establish that any provision is in force, unamended or suitable for reliance without current verification.",
         "reconciliation_routes": {
           "agreement_at_acquisition": 16,
           "inaccessible_at_acquisition": 6,
@@ -348,11 +353,11 @@
     "Official effects cover the declared seed snapshot; independently accepted v3 topics, concepts and entity links are non-official discovery metadata.",
     "GitHub Pages serves YAML-LD as application/octet-stream; JSON-LD is the strict transport fallback."
   ],
-  "okf_version": "0.2",
+  "okf_version": "0.3",
   "performance": {
     "route_relationship_hydration": "sha256-prefix rich relationship route locator; legacy FNV-1a adjacency retained as the compact-core fallback"
   },
-  "profile": "https://chris-page-gov.github.io/okf-explorer/profile/federation/v1/",
+  "profile": "https://chris-page-gov.github.io/okf-explorer/profile/federation/v2/",
   "publisher": "https://github.com/chris-page-gov",
   "relationship_summary": {
     "by_authority": {
@@ -1300,7 +1305,7 @@
     "snapshot": "whole-law-2026-07-25",
     "total": 906754
   },
-  "schema": "okf-explorer-federation.v1",
+  "schema": "okf-explorer-federation.v2",
   "semantic_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-bundle.yamlld",
   "snapshot": "whole-law-2026-07-25",
   "source_families": [
@@ -2039,5 +2044,5 @@
   ],
   "status": "stable",
   "title": "UK Whole-Law OKF",
-  "version": "0.4.0"
+  "version": "0.5.0"
 }

@@ -466,8 +466,8 @@
       "triples": 87
     },
     "shapes": {
-      "path": "whole-law/ontology/shapes.ttl",
-      "sha256": "44d02101e5b48317df224295599af908c530697c33840aa256829e73b16b99b0",
+      "path": "whole-law/ontology/shapes-core03.ttl",
+      "sha256": "a472f9303db2aee7bfb1c2e5ebf467903ab4386bb2238948209af7394c648bed",
       "triples": 426
     },
     "vocabulary": {

@@ -5,28 +5,28 @@
       "GATE-12": "passed"
     },
     "release_report": {
-      "bytes": 148905,
+      "bytes": 148188,
       "path": "bundle/release-assurance/release-report.json",
-      "sha256": "a74a6ec63474d100b38fd98845a768c88db876c2cb90241c65d339cfee864687"
+      "sha256": "2ea89f75aa126ef774fbba46b66a76c0611998454c356113103f8eb9ae503cdd"
     }
   },
   "external_finalization": {
     "contract": {
-      "bytes": 12275,
+      "bytes": 12703,
       "path": "release-assurance/external-finalization-contract.json",
       "projected_path": "external-finalization-contract.json",
-      "sha256": "83b83908f49b1c9236c19121c03409060d6f8dce61221932d5ad4c8eff59b8eb"
+      "sha256": "e67c98374a252b6c69a889817063457116468be8742f204f6fba36deade7ee70"
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
       "bytes": 220116,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "21d32d89a6a9bdc8dba5a27ec95787c6537f2e4c95d1d79395ed7c767bee1ff5"
+      "sha256": "4c347efac3af41314b70a902ade2549d523f5beb57bbef2913055069d6256f6e"
     },
     "release_observation_controller": {
-      "bytes": 36974,
+      "bytes": 38099,
       "path": "scripts/capture_github_release_observation.py",
-      "sha256": "9e891757ec9f37a0d22d9fb022e8c522d8fb30c66ba9192d3d899a45ae58cbf4"
+      "sha256": "c15c74e42fd1957b5eb89dbe6cb126509c7f5def8c574938bfcd8f2a105c274e"
     },
     "workflow": [
       {
@@ -77,7 +77,7 @@
       "evidence_plane": "embedded",
       "group": "validation",
       "id": "GATE-03",
-      "requirement": "OKF 0.2, YAML-LD semantic round-trip, JSON-LD/RDF equivalence, SHACL, JSON Schema and vocabulary competency checks pass.",
+      "requirement": "OKF 0.3, YAML-LD semantic round-trip, JSON-LD/RDF equivalence, SHACL, JSON Schema and vocabulary competency checks pass.",
       "status": "passed"
     },
     {
@@ -158,9 +158,9 @@
             "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
           },
           {
-            "bytes": 23901,
+            "bytes": 23961,
             "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-            "sha256": "6da9de74f5a24d2c67eba25b88a8e5d49ae214496c3d6051e067c128b7d66f4a"
+            "sha256": "5f4f66ed721dc8b56917a3de7b996d3a539c5beea343e7c89b3f4628a4bd3220"
           },
           {
             "bytes": 96352,

@@ -7,7 +7,12 @@ register](../ontology/standards.json) distinguishes `normative`, `projection`,
 `source-native`, `conditional`, `reference-only` and `not-applicable` use. The
 core pins are:
 
-- OKF 0.2 at repository revision
+- Core 0.3 uses the central current and historical standards register at
+  https://github.com/chris-page-gov/okf-explorer/blob/main/docs/okf-standards.md,
+  with specification revision 527e81aff55992be21507e97004286789126f88c.
+  The implementation date is 24 November 2026; announcement date 18 November 2026.
+- The frozen Whole-Law domain applicability register preserves the historical
+  Core 0.2 source profile at repository revision
   `3fcbb9f828c2f23d109c855ee403c3a4c81f3a96`;
 - YAML 1.2.2;
 - the 23 July 2026 YAML-LD 1.0 Working Draft;

@@ -201,11 +201,11 @@
     "@id": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json"
   },
   "generatedAt": "2026-07-25T22:54:00Z",
-  "issued": "2026-11-03",
+  "issued": "2026-11-24",
   "license": {
     "@id": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
   },
-  "okf_version": "0.2",
+  "okf_version": "0.3",
   "relationshipManifest": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.yamlld",
   "relationshipManifestJson": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.jsonld",
   "sourceRegister": {
@@ -222,5 +222,5 @@
   },
   "status": "stable",
   "title": "UK Whole-Law OKF",
-  "version": "0.4.0"
+  "version": "0.5.0"
 }

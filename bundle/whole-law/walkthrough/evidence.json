@@ -1,0 +1,282 @@
+{
+  "question": {
+    "negative_controls": [
+      "A catalogued court source is not an ingested judgments corpus.",
+      "Absence of a case from this bundle does not establish that no relevant case exists.",
+      "Public access does not confer permission for every form of computational analysis."
+    ],
+    "primary_route": "overview",
+    "question": "Which source families should a researcher inspect for legislation, amendments and judicial treatment of an equality duty, and which parts has Whole-Law actually ingested?",
+    "source_records": [
+      "SRC001",
+      "SRC009",
+      "SRC010"
+    ]
+  },
+  "source_records": [
+    {
+      "access_methods": [
+        {
+          "kind": "Atom catalogue",
+          "notes": "Public Atom catalogue used by the current baseline; the inspected descriptor records 397 source requests for its snapshot.",
+          "status": "verified working",
+          "test_method": "Browser HTTP GET to official page or endpoint",
+          "tested_at": "2026-07-25",
+          "url": "https://www.legislation.gov.uk/all/data.feed?results-count=1"
+        }
+      ],
+      "access_test_date": "2026-07-25",
+      "accessibility_and_language": "Public web/API; English and Welsh records where supplied by publisher.",
+      "authority_classes": [
+        "binding-authority"
+      ],
+      "corpus_boundary": "All items exposed by the public legislation.gov.uk Atom catalogue, including primary, secondary, draft and EU-origin types represented by the source.",
+      "coverage": {
+        "earliest": "1235 for some primary legislation metadata",
+        "latest": "live",
+        "notes": "Machine-readable/full-text coverage varies materially by type and period."
+      },
+      "coverage_status": "complete against official enumerated source",
+      "evidence_notes": [
+        "Official data guide states the site is also an API and documents machine-readable coverage limitations."
+      ],
+      "fair_use_rate_limit_robots": "Identify automation, cache, use conservative pacing and remain within the published fair-use ceiling; prefer filtered feeds/bulk for large work.",
+      "feeds_bulk_sitemaps": [],
+      "formats": [
+        "Atom",
+        "HTML",
+        "XML metadata links"
+      ],
+      "id": "SRC001",
+      "identifiers_and_citations": [
+        "legislation.gov.uk ID URI",
+        "type/year/number",
+        "alternative number",
+        "ISBN where present"
+      ],
+      "jurisdictions": [
+        "United Kingdom",
+        "England and Wales",
+        "Scotland",
+        "Northern Ireland"
+      ],
+      "known_omissions_or_inconsistencies": [
+        "Catalogue presence is not proof of complete text, revision, commencement or effect coverage. Some classes are metadata-only."
+      ],
+      "language_coverage": [
+        "English"
+      ],
+      "legal_force_or_role": "Official publication metadata and work identities; legal force derives from each instrument, not the catalogue record.",
+      "licence_and_reuse": "Open Government Licence v3.0; additional terms can apply to EU- and Westlaw-derived content.",
+      "non_uk_dependencies": [],
+      "official_enumeration_or_denominator": "Official Atom year and type facets; the baseline build validates each represented year count and draft feed count.",
+      "ontology_or_schema": [
+        "legislation.gov.uk metadata namespaces",
+        "ELI-aligned URI model"
+      ],
+      "owning_institution": "The National Archives / King’s Printer",
+      "provenance_obtainable": [
+        "Official ID",
+        "title",
+        "type",
+        "year",
+        "number",
+        "dates",
+        "publisher",
+        "representation links",
+        "feed retrieval hash"
+      ],
+      "recommended_ingestion_method": "Retain the present year-facet enumerated harvest as the legislation source-family pack; publish snapshot, request ledger and exact denominator.",
+      "sample_work_and_passage_urls": [
+        "https://www.legislation.gov.uk/id/ukpga/1998/42",
+        "https://www.legislation.gov.uk/ukpga/1998/42"
+      ],
+      "search_interfaces": [],
+      "source_classes": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC06",
+        "SC07"
+      ],
+      "title": "legislation.gov.uk work catalogue and Atom feeds",
+      "versioning_and_update_model": "Live catalogue with paginated feeds; publication events should be monitored separately through the Publication Log."
+    },
+    {
+      "access_methods": [
+        {
+          "kind": "Public website/search",
+          "notes": "Full-text search and court browsing accessible.",
+          "status": "verified working",
+          "test_method": "Browser HTTP GET to official page or endpoint",
+          "tested_at": "2026-07-25",
+          "url": "https://caselaw.nationalarchives.gov.uk/"
+        },
+        {
+          "kind": "Courts and coverage",
+          "notes": "Official page states service is not a complete record and excludes Scotland/NI.",
+          "status": "verified working",
+          "test_method": "Browser HTTP GET to official page or endpoint",
+          "tested_at": "2026-07-25",
+          "url": "https://caselaw.nationalarchives.gov.uk/courts-and-coverage"
+        }
+      ],
+      "access_test_date": "2026-07-25",
+      "accessibility_and_language": "Public, accessible service; judgment language primarily English; sensitive information handled under publishing policy.",
+      "authority_classes": [
+        "binding-authority",
+        "persuasive-authority"
+      ],
+      "corpus_boundary": "England-and-Wales courts/tribunals received for publication plus UKSC and Privy Council; excludes Scottish and Northern Irish courts/tribunals.",
+      "coverage": {
+        "earliest": "mostly early 2000s; court-specific",
+        "latest": "live"
+      },
+      "coverage_status": "partially complete",
+      "evidence_notes": [],
+      "fair_use_rate_limit_robots": "Reasonable requests; obey robots and no external indexing; programmatic bulk searching/enrichment is computational analysis requiring permission.",
+      "feeds_bulk_sitemaps": [],
+      "formats": [
+        "HTML",
+        "download formats exposed per judgment",
+        "API documented by terms"
+      ],
+      "id": "SRC009",
+      "identifiers_and_citations": [
+        "neutral citation",
+        "case name",
+        "court code",
+        "handed-down date",
+        "judgment URI"
+      ],
+      "jurisdictions": [
+        "England and Wales",
+        "United Kingdom for UKSC/JCPC"
+      ],
+      "known_omissions_or_inconsistencies": [
+        "Not all decisions are written or sent; lower-court coverage is selective; appeal status may not be linked; no Scotland/NI corpus."
+      ],
+      "language_coverage": [
+        "English"
+      ],
+      "legal_force_or_role": "Official free publication of judgments/decisions; precedential force depends on court, issue, date and later treatment.",
+      "licence_and_reuse": "Open Justice Licence for ordinary reuse; computational analysis requires an additional licence.",
+      "non_uk_dependencies": [],
+      "official_enumeration_or_denominator": "Official courts-and-coverage pages provide per-court date ranges and, increasingly, counts/completeness descriptions.",
+      "ontology_or_schema": [
+        "source judgment metadata; vendor-specific API representation"
+      ],
+      "owning_institution": "The National Archives with MoJ, HMCTS and Judicial Office",
+      "provenance_obtainable": [
+        "Judgment URI",
+        "neutral citation",
+        "court",
+        "date",
+        "judges/parties where present",
+        "version/correction metadata",
+        "retrieval hash"
+      ],
+      "recommended_ingestion_method": "Harvest metadata and permitted text only under the applicable licence; maintain per-court coverage ledger and live-source verification.",
+      "sample_work_and_passage_urls": [
+        "https://caselaw.nationalarchives.gov.uk/courts-and-tribunals/uksc",
+        "https://caselaw.nationalarchives.gov.uk/courts-and-tribunals/ewca/crim"
+      ],
+      "search_interfaces": [],
+      "source_classes": [
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12",
+        "SC14"
+      ],
+      "title": "Find Case Law public service",
+      "versioning_and_update_model": "Courts transfer new judgments; corrections and anonymisation changes can occur; per-court coverage is evolving."
+    },
+    {
+      "access_methods": [
+        {
+          "kind": "API (exact endpoint)",
+          "notes": "Terms confirm API access, but this research did not exercise an undocumented/unstated exact API route.",
+          "status": "documented but not tested",
+          "test_method": "Documentation inspected; endpoint not exercised",
+          "tested_at": null,
+          "url": "https://caselaw.nationalarchives.gov.uk/terms-of-use"
+        },
+        {
+          "kind": "Licence process",
+          "notes": "Official process states programmatic bulk searching, extraction or enrichment requires an additional licence.",
+          "status": "verified working",
+          "test_method": "Browser HTTP GET to official page or endpoint",
+          "tested_at": "2026-07-25",
+          "url": "https://caselaw.nationalarchives.gov.uk/licence-application-process"
+        }
+      ],
+      "access_test_date": "2026-07-25",
+      "accessibility_and_language": "Public documentation; licensed data access subject to approval.",
+      "authority_classes": [
+        "binding-authority",
+        "persuasive-authority"
+      ],
+      "corpus_boundary": "API access to Find Case Law records; bulk computational analysis is separately licensed.",
+      "coverage": {
+        "earliest": "same as service corpus",
+        "latest": "live"
+      },
+      "coverage_status": "licence-restricted",
+      "evidence_notes": [],
+      "fair_use_rate_limit_robots": "Reasonable use, robots and external-indexing restrictions; licensed access must follow award terms.",
+      "feeds_bulk_sitemaps": [],
+      "formats": [
+        "API representation varies",
+        "HTML/download"
+      ],
+      "id": "SRC010",
+      "identifiers_and_citations": [
+        "judgment URI",
+        "neutral citation",
+        "court code"
+      ],
+      "jurisdictions": [
+        "England and Wales",
+        "United Kingdom for UKSC/JCPC"
+      ],
+      "known_omissions_or_inconsistencies": [
+        "No licence was obtained or exercised during this research; therefore no bulk operational claim is made."
+      ],
+      "language_coverage": [
+        "English"
+      ],
+      "legal_force_or_role": "Machine access to the official case-law publication; does not alter legal force.",
+      "licence_and_reuse": "Open Justice Licence for ordinary use; additional computational-analysis licence required for bulk programmatic search/extraction/enrichment.",
+      "non_uk_dependencies": [],
+      "official_enumeration_or_denominator": "Same per-court denominators as public service; licence scope is use-specific.",
+      "ontology_or_schema": [
+        "Find Case Law API schema (source-native)"
+      ],
+      "owning_institution": "The National Archives",
+      "provenance_obtainable": [
+        "Licence ID/terms",
+        "source record ID",
+        "retrieval activity",
+        "hash",
+        "permitted purpose"
+      ],
+      "recommended_ingestion_method": "Create a licence-gated adapter with a no-text public-metadata mode and explicit feature flags.",
+      "sample_work_and_passage_urls": [
+        "https://caselaw.nationalarchives.gov.uk/what-you-can-do-freely"
+      ],
+      "search_interfaces": [],
+      "source_classes": [
+        "SC09",
+        "SC10",
+        "SC13"
+      ],
+      "title": "Find Case Law API and computational-analysis licence",
+      "versioning_and_update_model": "Live service; licence normally use-specific, including one-year R&D category."
+    }
+  ],
+  "source_snapshots": [
+    "2026-07-11",
+    "2026-07-25"
+  ]
+}

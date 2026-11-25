@@ -38,43 +38,43 @@ HEX64 = "2" * 64
 SHELL_VALUES = {
     "ARCHIVE_BYTES": "123",
     "ARCHIVE_SHA256": HEX64,
-    "ASSET_NAME": "okf-uk-legislation-v0.4.0.tar.zst",
+    "ASSET_NAME": "okf-uk-legislation-v0.5.0.tar.zst",
     "BUNDLE_TREE_SHA256": HEX64,
     "CANDIDATE_COMMIT": HEX40,
     "CANDIDATE_TREE": "3" * 40,
     "CODEX_SECURITY_SCHEMA_DIR": "/external/codex-security-schemas",
-    "EVIDENCE": "/external/okf-v0.4.0",
+    "EVIDENCE": "/external/okf-v0.5.0",
     "EXPLORER_COMMIT": "4" * 40,
     "EXPLORER_PAGES_OBSERVATION_PATH": (
-        "/external/okf-v0.4.0/explorer-pages-observation/"
+        "/external/okf-v0.5.0/explorer-pages-observation/"
         "github-pages-observation.json"
     ),
     "EXPLORER_RELEASE_OBSERVATION_PATH": (
-        "/external/okf-v0.4.0/explorer-observation/"
+        "/external/okf-v0.5.0/explorer-observation/"
         "explorer-release-observation.json"
     ),
     "EXPLORER_REPOSITORY": EXPLORER_REPOSITORY,
     "EXPLORER_ROOT": "/checkout/okf-explorer",
-    "EXPLORER_TAG": "v0.8.1",
+    "EXPLORER_TAG": "v0.9.2",
     "FINAL_ASSET": (
-        "/external/okf-v0.4.0/final-download/"
-        "okf-uk-legislation-v0.4.0.tar.zst"
+        "/external/okf-v0.5.0/final-download/"
+        "okf-uk-legislation-v0.5.0.tar.zst"
     ),
-    "FINAL_TAG": "v0.4.0",
+    "FINAL_TAG": "v0.5.0",
     "LEGISLATION_REPOSITORY": LEGISLATION_REPOSITORY,
     "LEGISLATION_ROOT": "/checkout/okf-uk-legislation",
-    "PUBLIC_ATTEMPT": "/external/okf-v0.4.0/public-attempt",
+    "PUBLIC_ATTEMPT": "/external/okf-v0.5.0/public-attempt",
     "RC_ASSET": (
-        "/external/okf-v0.4.0/rc-download/"
-        "okf-uk-legislation-v0.4.0.tar.zst"
+        "/external/okf-v0.5.0/rc-download/"
+        "okf-uk-legislation-v0.5.0.tar.zst"
     ),
-    "RC_TAG": "v0.4.0-rc.1",
+    "RC_TAG": "v0.5.0-rc.1",
     "SEALED_ARCHIVE": (
-        "/external/okf-v0.4.0/reproduction/"
-        "okf-uk-legislation-v0.4.0.tar.zst"
+        "/external/okf-v0.5.0/reproduction/"
+        "okf-uk-legislation-v0.5.0.tar.zst"
     ),
-    "SECURITY_SCAN_DIR": "/external/okf-v0.4.0/security-scan",
-    "TRACE_INPUT": "/external/okf-v0.4.0/traceability-input",
+    "SECURITY_SCAN_DIR": "/external/okf-v0.5.0/security-scan",
+    "TRACE_INPUT": "/external/okf-v0.5.0/traceability-input",
 }
 
 
@@ -119,9 +119,9 @@ def documented_python_controllers(document: str) -> list[list[str]]:
     commands: list[list[str]] = []
     for block in shell_blocks(document):
         for command in logical_shell_lines(block):
-            if not command.startswith(".venv/bin/python scripts/"):
+            if not command.startswith("uv run --locked python scripts/"):
                 continue
-            tokens = shlex.split(command)
+            tokens = shlex.split(command)[3:]
             commands.append([expand_shell_token(token) for token in tokens])
     return commands
 
@@ -313,7 +313,7 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             self.document,
         )
 
-    def test_runtime_screenshot_source_is_outside_receipt_evidence_root(
+    def test_runtime_uses_the_pinned_runner_managed_screenshot_layout(
         self,
     ) -> None:
         runner = next(
@@ -327,20 +327,10 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
         )
         tokens = [expand_shell_token(token) for token in shlex.split(runner)]
         output = Path(tokens[tokens.index("--output") + 1])
-        screenshot_source = Path(
-            tokens[tokens.index("--screenshot-root") + 1]
-        )
-        receipt_evidence_root = output.parent
-        self.assertNotEqual(receipt_evidence_root, screenshot_source)
-        self.assertFalse(
-            screenshot_source.is_relative_to(receipt_evidence_root),
-            "mutable screenshot source must not be nested under the "
-            "write-once receipt evidence root",
-        )
-        self.assertEqual(
-            Path("/external/okf-v0.4.0/runtime-screenshot-source"),
-            screenshot_source,
-        )
+        self.assertNotIn("--screenshot-root", tokens)
+        self.assertEqual(Path("/external/okf-v0.5.0/explorer-runtime"), output.parent)
+        self.assertIn('test ! -e "$EVIDENCE/explorer-runtime"', self.document)
+        self.assertNotIn('mkdir -m 700 "$EVIDENCE/explorer-runtime"', self.document)
         self.assertIn(
             "$EVIDENCE/explorer-runtime/output/playwright",
             self.document,
@@ -372,19 +362,19 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             and row[row.index("--repository") + 1] == EXPLORER_REPOSITORY
         )
         self.assertEqual(
-            "okf-explorer-v0.8.1-pages-artifact.zip",
+            "okf-explorer-v0.9.2-pages-artifact.zip",
             command[command.index("--asset-name") + 1],
         )
         self.assertEqual(
-            "189110263",
+            "199260836",
             command[command.index("--expected-asset-bytes") + 1],
         )
         self.assertEqual(
-            "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
+            "e9c90628f815b177f756231ef4101671ebf0911d1f0525d08aa8f786ba89d779",
             command[command.index("--expected-asset-sha256") + 1],
         )
-        self.assertIn("189,110,263-byte release asset", self.document)
-        self.assertIn("`6142f63f…eac1` release asset", self.document)
+        self.assertIn("199,260,836-byte release asset", self.document)
+        self.assertIn("`e9c90628…d779` release asset", self.document)
         self.assertNotIn("189,109,176-byte", self.document)
         self.assertNotIn("`940e02c4…4ff` release asset", self.document)
 
@@ -395,7 +385,7 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             if row[1] == "scripts/capture_github_pages_observation.py"
         )
         self.assertEqual(
-            "/external/okf-v0.4.0/explorer-pages-observation",
+            "/external/okf-v0.5.0/explorer-pages-observation",
             pages_capture[pages_capture.index("--output-dir") + 1],
         )
         self.assertIn("--allow-network", pages_capture)
@@ -407,14 +397,14 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
         )
         self.assertEqual(
             (
-                "/external/okf-v0.4.0/explorer-pages-observation/"
+                "/external/okf-v0.5.0/explorer-pages-observation/"
                 "github-pages-observation.json"
             ),
             builder[builder.index("--pages-observation") + 1],
         )
         self.assertEqual(
             (
-                "/external/okf-v0.4.0/explorer-observation/"
+                "/external/okf-v0.5.0/explorer-observation/"
                 "explorer-release-observation.json"
             ),
             builder[builder.index("--explorer-observation") + 1],
@@ -457,7 +447,7 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
         build_block = next(
             block
             for block in blocks
-            if "scripts/build_legislation_okf.py --from-existing" in block
+            if "uv run --locked python scripts/core03_snapshot.py" in block
         )
         validation_block = next(
             block
@@ -469,16 +459,16 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             return [
                 shlex.split(command)
                 for command in logical_shell_lines(block)
-                if command.startswith(".venv/bin/python ")
+                if command.startswith("uv run --locked python ")
             ]
 
         profile = json.loads(PROFILE.read_text(encoding="utf-8"))
         expected_build = [
-            [".venv/bin/python", *row[1:]]
+            ["uv", "run", "--locked", "python", *row[1:]]
             for row in profile["build_commands"]
         ]
         expected_validation = [
-            [".venv/bin/python", *row[1:]]
+            ["uv", "run", "--locked", "python", *row[1:]]
             for row in profile["validation_commands"]
         ]
         self.assertEqual(expected_build, parse(build_block))

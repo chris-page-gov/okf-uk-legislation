@@ -1162,9 +1162,9 @@
       "implementation_evidence": [
         "whole-law/evaluation/README.md",
         "scripts/evaluation_challenge_discovery.py",
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-discovery-calibration.json",
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-1.json",
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-2.json"
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/challenge-discovery-calibration.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/challenge-pass-1.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/challenge-pass-2.json"
       ],
       "phase": 8,
       "release_disposition": {
@@ -1181,7 +1181,7 @@
       },
       "status": "verified",
       "validation_evidence": [
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/integrity.json",
         "tests/test_release_evaluation_runner.py"
       ]
     },
@@ -1194,7 +1194,7 @@
       "implementation_evidence": [
         "whole-law/evaluation/release-questions.json",
         "whole-law/evaluation/answer-schema.json",
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/answers.json"
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/answers.json"
       ],
       "phase": 8,
       "release_disposition": {
@@ -1211,8 +1211,8 @@
       },
       "status": "verified",
       "validation_evidence": [
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/verification.json",
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/verification.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/integrity.json",
         "tests/test_release_evaluation_runner.py"
       ]
     },
@@ -1226,8 +1226,8 @@
         "whole-law/evaluation/README.md",
         "scripts/run_release_evaluation.py",
         "scripts/verify_release_evaluation_answers.py",
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/results.json",
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/direct-source-baseline.json"
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/results.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/direct-source-baseline.json"
       ],
       "phase": 8,
       "release_disposition": {
@@ -1244,9 +1244,9 @@
       },
       "status": "verified",
       "validation_evidence": [
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/verification.json",
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/scores.json",
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/verification.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/scores.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/integrity.json",
         "tests/test_release_evaluation_runner.py"
       ]
     },
@@ -1303,7 +1303,7 @@
       "status": "verified",
       "validation_evidence": [
         "whole-law/evaluation/README.md",
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/report.md"
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/report.md"
       ]
     },
     {
@@ -1630,7 +1630,7 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "Blocked only at the validated pre-freeze boundary. Every phase remains in scope and every embedded candidate obligation is verified, deferred or superseded; the remaining exact-candidate reproduction, assurance, release and promotion work is externally closable only after exact freeze. Full post-freeze completion is not claimed.",
+        "reason": "Blocked at the validated pre-freeze boundary. Historical Explorer releases and their evidence remain preserved. The active consumer prerequisite is immutable Explorer v0.9.2, commit acf23958aa1ce11ec52c41313649b20d24f17609, with verified release and Pages observations. Binding that consumer to the exact frozen Legislation candidate, publishing and deploying the immutable RC, running public smoke tests and promoting identical bytes are externally closable only after exact freeze. None of those candidate actions is claimed here.",
         "status": "blocked"
       },
       "requirement": "Approve all recommended defaults. Full implementation includes every phase.",
@@ -1748,7 +1748,7 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "Blocked only at the validated pre-freeze boundary. The embedded cost report records exact direct OpenAI API spend of USD 0 / GBP 0 and USD 0 per accepted assertion; Codex subscription or weekly-allowance consumption, exact deployment identity and billable task-surface token usage remain explicitly unavailable/unmetered. Binding that report into the final end-of-release receipt is externally closable only after exact freeze and promotion.",
+        "reason": "The controlling owner authorisation is implemented for lawful accessible sources and reviewed repository and release operations; its final release acceptance remains blocked and externally closable only after exact freeze. Acquisition constraints and immutable historical outcomes remain preserved. Explorer v0.9.2 is the published active consumer prerequisite, with independent release and Pages observations. The authorisation does not turn unavailable or restricted access into successful acquisition or claim unfinished Legislation acceptance, deployment or release actions.",
         "status": "blocked"
       },
       "requirement": "Yes please, report hte cost at the end",

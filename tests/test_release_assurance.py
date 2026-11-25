@@ -347,14 +347,14 @@ class ReleaseAssuranceTests(unittest.TestCase):
         action_components = [
             row
             for row in sbom["components"]
-            if row["purl"].startswith("pkg:github/actions/")
+            if row["purl"].startswith("pkg:github/")
         ]
         self.assertEqual(
             {
                 "actions/checkout",
                 "actions/configure-pages",
                 "actions/deploy-pages",
-                "actions/setup-python",
+                "astral-sh/setup-uv",
                 "actions/upload-artifact",
                 "actions/upload-pages-artifact",
             },
@@ -440,6 +440,31 @@ class ReleaseAssuranceTests(unittest.TestCase):
         duplicate = [*actions, copy.deepcopy(actions[0])]
         with self.assertRaisesRegex(ValueError, "duplicate component"):
             assurance.validated_workflow_actions(duplicate)
+
+    def test_reachable_composite_action_is_inventoried_and_pin_drift_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            workflow = root / ".github/workflows/ci.yml"
+            workflow.parent.mkdir(parents=True)
+            workflow.write_text("\n".join(
+                f"- uses: {name}@{commit}" for name, commit in assurance.EXPECTED_WORKFLOW_ACTIONS.items()
+                if name != "astral-sh/setup-uv"
+            ) + "\n- uses: ./.github/actions/setup-locked-python\n")
+            action = root / ".github/actions/setup-locked-python/action.yml"
+            action.parent.mkdir(parents=True)
+            pin = assurance.EXPECTED_WORKFLOW_ACTIONS["astral-sh/setup-uv"]
+            action.write_text(f"- uses: astral-sh/setup-uv@{pin}\n")
+            with mock.patch.object(assurance, "ROOT", root):
+                rows = assurance.validated_workflow_actions()
+                uv = next(row for row in rows if row["name"] == "astral-sh/setup-uv")
+                self.assertIn(".github/actions/setup-locked-python/action.yml", uv["workflows"])
+                self.assertEqual(6, len(rows))
+                action.write_text("- uses: astral-sh/setup-uv@v9\n")
+                with self.assertRaisesRegex(ValueError, "commit SHA"):
+                    assurance.validated_workflow_actions()
+                workflow.write_text("- uses: ./.github/actions/unreviewed\n")
+                with self.assertRaisesRegex(ValueError, "Unreviewed local"):
+                    assurance.workflow_paths()
 
     def test_sbom_validator_rejects_component_or_hash_divergence(self) -> None:
         dependency_lock = assurance.validation_dependency_inventory()

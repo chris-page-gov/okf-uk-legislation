@@ -68,7 +68,7 @@
       ],
       "phase": 1,
       "release_disposition": {
-        "reason": "The detailed dated authored review is published byte-for-byte under a distinct date-bearing filename, alongside—not in place of—the generated machine-ledger status table; neither equates acceptance or implementation with verification.",
+        "reason": "The detailed dated authored review is published byte-for-byte under a distinct date-bearing filename, alongside\u2014not in place of\u2014the generated machine-ledger status table; neither equates acceptance or implementation with verification.",
         "status": "verified"
       },
       "requirement": "Produce a dated implementation review distinguishing `proposed`, `started`, `implemented`, `verified`, `blocked` and `superseded`. An accepted requirement never counts as passed.",
@@ -149,15 +149,15 @@
         "whole-law/ontology/index.md"
       ],
       "id": "P02-02",
-  "implementation_evidence": [
-    "whole-law/ontology/context.jsonld",
-    "whole-law/ontology/standards.json",
-    "whole-law/governance/architecture-decisions/ADR-016-namespace-migration.md"
-  ],
+      "implementation_evidence": [
+        "whole-law/ontology/context.jsonld",
+        "whole-law/ontology/standards.json",
+        "whole-law/governance/architecture-decisions/ADR-016-namespace-migration.md"
+      ],
       "phase": 2,
-  "release_disposition": {
-    "reason": "The repository-controlled namespace is implemented, no unregistered w3id.org identifier is claimed, and ADR-016 governs a later permanent-domain migration while leaving domain selection explicitly deferred.",
-    "status": "verified"
+      "release_disposition": {
+        "reason": "The repository-controlled namespace is implemented, no unregistered w3id.org identifier is claimed, and ADR-016 governs a later permanent-domain migration while leaving domain selection explicitly deferred.",
+        "status": "verified"
       },
       "requirement": "Use the repo-controlled versioned namespace `https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#`; do not claim an unregistered `w3id.org` namespace. Record a namespace-migration ADR for the later permanent government domain.",
       "source_clause": {
@@ -167,10 +167,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 2",
         "verbatim": true
       },
-  "status": "verified",
-  "validation_evidence": [
-    "whole-law/governance/architecture-decisions/ADR-016-namespace-migration.md",
-    "tests/test_semantic_conformance.py"
+      "status": "verified",
+      "validation_evidence": [
+        "whole-law/governance/architecture-decisions/ADR-016-namespace-migration.md",
+        "tests/test_semantic_conformance.py"
       ]
     },
     {
@@ -485,19 +485,19 @@
       ]
     },
     {
-    "design_evidence": [
-      "docs/effects-and-enrichment.md",
-      "whole-law/schemas/model-enrichment-run-v2.schema.json",
-      "enrichment/codex-assisted-v3/generator-prompt.md",
-      "enrichment/codex-assisted-v3/rules.json"
-    ],
+      "design_evidence": [
+        "docs/effects-and-enrichment.md",
+        "whole-law/schemas/model-enrichment-run-v2.schema.json",
+        "enrichment/codex-assisted-v3/generator-prompt.md",
+        "enrichment/codex-assisted-v3/rules.json"
+      ],
       "id": "P05-01",
       "implementation_evidence": [
-      "bundle/enrichment/codex-assisted-v3/run.json",
-      "bundle/enrichment/codex-assisted-v3/coverage.json",
-      "bundle/enrichment/codex-assisted-v3/terminal-outcome-manifest.json",
-      "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
-      "whole-law/assurance/model-assisted-input-eligibility-20260726.json"
+        "bundle/enrichment/codex-assisted-v3/run.json",
+        "bundle/enrichment/codex-assisted-v3/coverage.json",
+        "bundle/enrichment/codex-assisted-v3/terminal-outcome-manifest.json",
+        "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+        "whole-law/assurance/model-assisted-input-eligibility-20260726.json"
       ],
       "phase": 5,
       "release_disposition": {
@@ -514,31 +514,31 @@
       },
       "status": "verified",
       "validation_evidence": [
-      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
-      "tests/test_codex_semantic_enrichment_v3.py"
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+        "tests/test_codex_semantic_enrichment_v3.py"
       ]
     },
     {
-    "design_evidence": [
-      "docs/effects-and-enrichment.md",
-      "whole-law/schemas/model-enrichment-run-v2.schema.json",
-      "evidence/requirements/controlling-requirements.md",
-      "enrichment/codex-assisted-v3/calibration.json"
-    ],
+      "design_evidence": [
+        "docs/effects-and-enrichment.md",
+        "whole-law/schemas/model-enrichment-run-v2.schema.json",
+        "evidence/requirements/controlling-requirements.md",
+        "enrichment/codex-assisted-v3/calibration.json"
+      ],
       "id": "P05-02",
       "implementation_evidence": [
-      "enrichment/codex-assisted-v2-calibration.json",
-      "bundle/enrichment/codex-assisted-v3/calibration-result.json",
-      "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
-      "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
-      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
-      "enrichment/model-assisted-calibration-manifest-v1.json",
-      "enrichment/model-assisted-paid-governance-v1.json"
+        "enrichment/codex-assisted-v2-calibration.json",
+        "bundle/enrichment/codex-assisted-v3/calibration-result.json",
+        "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+        "enrichment/model-assisted-calibration-manifest-v1.json",
+        "enrichment/model-assisted-paid-governance-v1.json"
       ],
       "phase": 5,
-  "release_disposition": {
+      "release_disposition": {
         "reason": "Superseded by D-13 for the current implementation. D-13 selected the governed Codex task/subagent route without direct API calls, replacing the priced-API-model comparison, lowest-cost API deployment selection and configured paid-model escalation mechanics. The completed calibration evidence is preserved: the governed Codex v3 result records 100% schema-validity, 100% fixed-set precision and 100% evidence-support, exceeding the 95% precision and 95% evidence-support thresholds, and the separate reviewer plus deterministic auditor accepted the result. This terminal supersession is not a claim that a calibration or enrichment-quality test is missing.",
-    "status": "superseded"
+        "status": "superseded"
       },
       "requirement": "Use a fixed calibration set to choose the lowest-cost available OpenAI structured-output model that achieves 100% schema validity, at least 95% precision and at least 95% evidence support. Escalate disagreements and high-risk records to the strongest available configured model.",
       "source_clause": {
@@ -548,16 +548,16 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 5",
         "verbatim": true
       },
-  "status": "superseded",
-  "validation_evidence": [
-      "AGENTS.md",
-      "bundle/enrichment/codex-assisted-v3/calibration-result.json",
-      "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
-      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
-      "evidence/requirements/controlling-requirements.md",
-      "release-assurance/gap-register.json",
-      "tests/test_codex_semantic_enrichment_v3.py",
-      "tests/test_release_assurance.py"
+      "status": "superseded",
+      "validation_evidence": [
+        "AGENTS.md",
+        "bundle/enrichment/codex-assisted-v3/calibration-result.json",
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+        "evidence/requirements/controlling-requirements.md",
+        "release-assurance/gap-register.json",
+        "tests/test_codex_semantic_enrichment_v3.py",
+        "tests/test_release_assurance.py"
       ]
     },
     {
@@ -591,18 +591,18 @@
       ]
     },
     {
-    "design_evidence": [
-      "docs/effects-and-enrichment.md",
-      "whole-law/schemas/model-enrichment-review.schema.json",
-      "whole-law/schemas/model-enrichment-run-v2.schema.json"
-    ],
+      "design_evidence": [
+        "docs/effects-and-enrichment.md",
+        "whole-law/schemas/model-enrichment-review.schema.json",
+        "whole-law/schemas/model-enrichment-run-v2.schema.json"
+      ],
       "id": "P05-04",
       "implementation_evidence": [
-      "enrichment/codex-assisted-v3/reviewer-prompt.md",
-      "enrichment/codex-assisted-v3/review-policy.json",
-      "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
-      "bundle/enrichment/codex-assisted-v3/review-verdict-manifest.json",
-      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json"
+        "enrichment/codex-assisted-v3/reviewer-prompt.md",
+        "enrichment/codex-assisted-v3/review-policy.json",
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+        "bundle/enrichment/codex-assisted-v3/review-verdict-manifest.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json"
       ],
       "phase": 5,
       "release_disposition": {
@@ -619,17 +619,17 @@
       },
       "status": "verified",
       "validation_evidence": [
-      "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
-      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
-      "tests/test_codex_semantic_enrichment_v3.py"
+        "enrichment/codex-assisted-v3/reviewer-task-receipt.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+        "tests/test_codex_semantic_enrichment_v3.py"
       ]
     },
     {
-    "design_evidence": [
-      "docs/effects-and-enrichment.md",
-      "whole-law/schemas/model-enrichment-run-v2.schema.json",
-      "AGENTS.md"
-    ],
+      "design_evidence": [
+        "docs/effects-and-enrichment.md",
+        "whole-law/schemas/model-enrichment-run-v2.schema.json",
+        "AGENTS.md"
+      ],
       "id": "P05-05",
       "implementation_evidence": [
         "bundle/enrichment/codex-assisted-v3/run.json",
@@ -660,19 +660,19 @@
       ]
     },
     {
-    "design_evidence": [
-      "docs/effects-and-enrichment.md",
-      "whole-law/schemas/model-enrichment-cost-cap-receipt.schema.json",
-      "whole-law/schemas/model-enrichment-run-v2.schema.json",
-      "evidence/requirements/controlling-requirements.md"
-    ],
+      "design_evidence": [
+        "docs/effects-and-enrichment.md",
+        "whole-law/schemas/model-enrichment-cost-cap-receipt.schema.json",
+        "whole-law/schemas/model-enrichment-run-v2.schema.json",
+        "evidence/requirements/controlling-requirements.md"
+      ],
       "id": "P05-06",
       "implementation_evidence": [
-      "bundle/enrichment/codex-assisted-v3/run.json",
-      "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
-      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
-      "release-assurance/release-policy.json",
-      "AGENTS.md"
+        "bundle/enrichment/codex-assisted-v3/run.json",
+        "bundle/enrichment/codex-assisted-v3/accepted-manifest.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+        "release-assurance/release-policy.json",
+        "AGENTS.md"
       ],
       "phase": 5,
       "release_disposition": {
@@ -689,12 +689,12 @@
       },
       "status": "superseded",
       "validation_evidence": [
-      "bundle/enrichment/codex-assisted-v3/run.json",
-      "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
-      "scripts/build_release_assurance.py",
-      "release-assurance/gap-register.json",
-      "tests/test_codex_semantic_enrichment_v3.py",
-      "tests/test_release_assurance.py"
+        "bundle/enrichment/codex-assisted-v3/run.json",
+        "whole-law/assurance/enrichment-v3-independent-audit-20260726.json",
+        "scripts/build_release_assurance.py",
+        "release-assurance/gap-register.json",
+        "tests/test_codex_semantic_enrichment_v3.py",
+        "tests/test_release_assurance.py"
       ]
     },
     {
@@ -967,7 +967,7 @@
         "reason": "The exact green Explorer commit passes declared Pages, raw-content and archive fallback tests plus subpath-aware raw-404 guidance. Exact-RC public access remains separately governed by P08-06, P09-05 and GATE-09.",
         "status": "verified"
       },
-      "requirement": "When GitHub API access is rate-limited, continue through Pages, raw-content and release/archive routes. A raw-root 404 must prompt use of the descriptor’s declared repository subpath rather than speculative probing.",
+      "requirement": "When GitHub API access is rate-limited, continue through Pages, raw-content and release/archive routes. A raw-root 404 must prompt use of the descriptor\u2019s declared repository subpath rather than speculative probing.",
       "source_clause": {
         "id": "P07-05",
         "path": "evidence/requirements/controlling-requirements.md",
@@ -1071,17 +1071,17 @@
         "whole-law/schemas/evaluation.schema.json"
       ],
       "id": "P08-03",
-  "implementation_evidence": [
-    "whole-law/evaluation/README.md",
-    "scripts/evaluation_challenge_discovery.py",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-discovery-calibration.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-1.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-2.json"
-  ],
+      "implementation_evidence": [
+        "whole-law/evaluation/README.md",
+        "scripts/evaluation_challenge_discovery.py",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/challenge-discovery-calibration.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/challenge-pass-1.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/challenge-pass-2.json"
+      ],
       "phase": 8,
-  "release_disposition": {
-    "reason": "The independently seeded corpus-navigation challenge-discovery protocol passed its calibration catalogue and two disjoint persona/task-complete passes with no critical failure mode and a 0% new non-critical-category rate in each pass.",
-    "status": "verified"
+      "release_disposition": {
+        "reason": "The independently seeded corpus-navigation challenge-discovery protocol passed its calibration catalogue and two disjoint persona/task-complete passes with no critical failure mode and a 0% new non-critical-category rate in each pass.",
+        "status": "verified"
       },
       "requirement": "Continue held-out challenge passes until two successive passes introduce no critical failure mode and less than 1% new non-critical categories.",
       "source_clause": {
@@ -1091,10 +1091,10 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 8",
         "verbatim": true
       },
-  "status": "verified",
-  "validation_evidence": [
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json",
-    "tests/test_release_evaluation_runner.py"
+      "status": "verified",
+      "validation_evidence": [
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/integrity.json",
+        "tests/test_release_evaluation_runner.py"
       ]
     },
     {
@@ -1103,15 +1103,15 @@
         "whole-law/schemas/evaluation.schema.json"
       ],
       "id": "P08-04",
-  "implementation_evidence": [
-    "whole-law/evaluation/release-questions.json",
-    "whole-law/evaluation/answer-schema.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/answers.json"
-  ],
+      "implementation_evidence": [
+        "whole-law/evaluation/release-questions.json",
+        "whole-law/evaluation/answer-schema.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/answers.json"
+      ],
       "phase": 8,
-  "release_disposition": {
-    "reason": "All 415 release-gold questions are bound to immutable corpus-navigation evidence, expected propositions, near-miss rules, temporal context, citation expectations, a snapshot identity and separate verification status. The retained broad legal prompts remain non-gold context and no legal-answer assurance is claimed.",
-    "status": "verified"
+      "release_disposition": {
+        "reason": "All 415 release-gold questions are bound to immutable corpus-navigation evidence, expected propositions, near-miss rules, temporal context, citation expectations, a snapshot identity and separate verification status. The retained broad legal prompts remain non-gold context and no legal-answer assurance is claimed.",
+        "status": "verified"
       },
       "requirement": "Every gold question requires immutable source evidence, expected propositions, near-miss rules, temporal context, citation expectations, corpus snapshot ID and separate verification status.",
       "source_clause": {
@@ -1121,11 +1121,11 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 8",
         "verbatim": true
       },
-  "status": "verified",
-  "validation_evidence": [
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/verification.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json",
-    "tests/test_release_evaluation_runner.py"
+      "status": "verified",
+      "validation_evidence": [
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/verification.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/integrity.json",
+        "tests/test_release_evaluation_runner.py"
       ]
     },
     {
@@ -1134,17 +1134,17 @@
         "whole-law/schemas/evaluation.schema.json"
       ],
       "id": "P08-05",
-  "implementation_evidence": [
-    "whole-law/evaluation/README.md",
-    "scripts/run_release_evaluation.py",
-    "scripts/verify_release_evaluation_answers.py",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/results.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/direct-source-baseline.json"
-  ],
+      "implementation_evidence": [
+        "whole-law/evaluation/README.md",
+        "scripts/run_release_evaluation.py",
+        "scripts/verify_release_evaluation_answers.py",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/results.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/direct-source-baseline.json"
+      ],
       "phase": 8,
-  "release_disposition": {
-    "reason": "The corpus-navigation release suite executed 415/415 answers through the OKF publication workflow and a separately reconstructed frozen direct-source baseline: all are schema-valid and citation-resolvable, with zero hard failures and a minimum critical persona/task-family score of 100/100. This is not a legal-answer score.",
-    "status": "verified"
+      "release_disposition": {
+        "reason": "The corpus-navigation release suite executed 415/415 answers through the OKF publication workflow and a separately reconstructed frozen direct-source baseline: all are schema-valid and citation-resolvable, with zero hard failures and a minimum critical persona/task-family score of 100/100. This is not a legal-answer score.",
+        "status": "verified"
       },
       "requirement": "Execute the suite against the Explorer/OKF workflow and a documented direct-source baseline. Release requires zero hard failures, 100% schema-valid answers, 100% resolvable citations and at least 85/100 for every critical persona/task family.",
       "source_clause": {
@@ -1154,12 +1154,12 @@
         "source": "User-approved SOTA UK Whole-Law OKF Implementation Plan, phase 8",
         "verbatim": true
       },
-  "status": "verified",
-  "validation_evidence": [
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/verification.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/scores.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json",
-    "tests/test_release_evaluation_runner.py"
+      "status": "verified",
+      "validation_evidence": [
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/verification.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/scores.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/integrity.json",
+        "tests/test_release_evaluation_runner.py"
       ]
     },
     {
@@ -1215,7 +1215,7 @@
       "status": "verified",
       "validation_evidence": [
         "whole-law/evaluation/README.md",
-        "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/report.md"
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/report.md"
       ]
     },
     {
@@ -1380,7 +1380,7 @@
         "reason": "The deterministic release policy and tests enforce the draft-to-candidate-to-validated-to-RC-to-published progression and prohibit rebuild-based promotion; no RC or publication is claimed before its separate evidence exists.",
         "status": "verified"
       },
-      "requirement": "Implement fail-closed release states: `draft → candidate → validated → rc → published`. Build the RC once and promote identical digests without rebuilding.",
+      "requirement": "Implement fail-closed release states: `draft \u2192 candidate \u2192 validated \u2192 rc \u2192 published`. Build the RC once and promote identical digests without rebuilding.",
       "source_clause": {
         "id": "P10-01",
         "path": "evidence/requirements/controlling-requirements.md",
@@ -1505,13 +1505,13 @@
         "release-assurance/release-gates.json"
       ],
       "id": "P10-05",
-  "implementation_evidence": [
-    ".github/workflows/drift.yml",
-    "release-assurance/refresh-attempt-policy.json",
-    "release-assurance/schemas/refresh-attempt-manifest.schema.json",
-    "release-assurance/schemas/refresh-attempt-datapack.schema.json",
-    "scripts/seal_refresh_attempt.py"
-  ],
+      "implementation_evidence": [
+        ".github/workflows/drift.yml",
+        "release-assurance/refresh-attempt-policy.json",
+        "release-assurance/schemas/refresh-attempt-manifest.schema.json",
+        "release-assurance/schemas/refresh-attempt-datapack.schema.json",
+        "scripts/seal_refresh_attempt.py"
+      ],
       "phase": 10,
       "release_disposition": {
         "reason": "The scheduled workflow and tested offline sealer observe source drift, new-work deltas, links, checksums and access, then create bounded content-addressed append-only attempt datapacks that preserve failed or drift observations before failing closed.",
@@ -1542,7 +1542,7 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "Blocked only at the validated pre-freeze boundary. Every phase remains in scope and every embedded candidate obligation is verified, deferred or superseded; the remaining exact-candidate reproduction, assurance, release and promotion work is externally closable only after exact freeze. Full post-freeze completion is not claimed.",
+        "reason": "Blocked at the validated pre-freeze boundary. Historical Explorer releases and their evidence remain preserved. The active consumer prerequisite is immutable Explorer v0.9.2, commit acf23958aa1ce11ec52c41313649b20d24f17609, with verified release and Pages observations. Binding that consumer to the exact frozen Legislation candidate, publishing and deploying the immutable RC, running public smoke tests and promoting identical bytes are externally closable only after exact freeze. None of those candidate actions is claimed here.",
         "status": "blocked"
       },
       "requirement": "Approve all recommended defaults. Full implementation includes every phase.",
@@ -1660,7 +1660,7 @@
       ],
       "phase": 0,
       "release_disposition": {
-        "reason": "Blocked only at the validated pre-freeze boundary. The embedded cost report records exact direct OpenAI API spend of USD 0 / GBP 0 and USD 0 per accepted assertion; Codex subscription or weekly-allowance consumption, exact deployment identity and billable task-surface token usage remain explicitly unavailable/unmetered. Binding that report into the final end-of-release receipt is externally closable only after exact freeze and promotion.",
+        "reason": "The controlling owner authorisation is implemented for lawful accessible sources and reviewed repository and release operations; its final release acceptance remains blocked and externally closable only after exact freeze. Acquisition constraints and immutable historical outcomes remain preserved. Explorer v0.9.2 is the published active consumer prerequisite, with independent release and Pages observations. The authorisation does not turn unavailable or restricted access into successful acquisition or claim unfinished Legislation acceptance, deployment or release actions.",
         "status": "blocked"
       },
       "requirement": "Yes please, report hte cost at the end",

@@ -1,5 +1,78 @@
 # Changelog
 
+## Unreleased
+
+- Encode the two fixed, unpublished Whole-Law migration evaluation answer
+  objects as deterministic gzip in the separate typed Pages projection. Bind
+  original and encoded
+  bytes, retain the canonical JSON in Source and the release archive, and
+  expose verified plain-source and archive routes to readers and AI clients.
+  Check the GNU TAR framing budget separately from published file bytes,
+  before the full corpus validator runs. Preserve published historical paths.
+
+- Build release assurance before the complete bundle guides so the AI context
+  captures the current assurance Markdown. Keep the bootstrap checksum before
+  assurance and the final checksum after both projections.
+
+- Refresh Whole-Law projections and append a corpus-navigation evaluation
+  for the current Core 0.3 inputs, preserving every historical execution.
+
+- Align the maintenance guide with the frozen Core 0.3 reproduction recipe
+  and v0.5.0 promotion identity, preserving the historical v0.4.0 evidence.
+
+- Bind the active consumer to published Explorer 0.9.2 and its exact signed,
+  immutable release, Pages archive and application bytes. Retain historical
+  Reader observations and require fresh final producer acceptance.
+
+- Refresh the embedded G05 Explorer queryability evidence from the 25 November native v0.9.2 diagnostic. Retain the release-ineligible v1 receipt and preserve the formal release-bound v2 requirement.
+
+- Make walkthrough template inputs explicit and check the rendered Markdown
+  links at their real bundle locations. Pin the vendored profile's acceptance
+  guidance to its actual central Explorer source.
+
+- Align the executable release runbook with the pinned runner's managed
+  screenshot layout and fresh evidence-root requirement. Retain its path
+  containment and single-writer protections.
+
+- Publish a versioned Reader transport proof through machine interfaces while
+  preserving exact canonical descriptor bytes across raw and Pages routes.
+  Bind the original and typed shard digests and keep the audited source pack
+  separate from its browser transport.
+
+- Include the reviewed local Python composite and its exact setup-uv commit
+  in the executable action inventory, provenance and SBOM. Reject unreviewed
+  local action paths and mutable nested pins.
+- Explain captured `current` graph labels as July observations, retaining
+  the original assertions and making overdue review boundaries explicit.
+
+- Rebind the unreleased v0.5.0 candidate to immutable Explorer v0.9.2 tag,
+  commit, Pages ZIP/TAR inventory and 67-file application tree. Preserve all
+  historical release-observation targets and fail-closed external gates.
+- Pin installed Codex Security 0.1.33 schemas explicitly; require a fresh
+  matching scan instead of treating the prior 0.1.32 evidence as compatible.
+
+- Replace the base-corpus and enrichment rebuild stages with a verified frozen
+  input boundary for the Core 0.3 projection recipe. Refuse accidental writes
+  to the default snapshot and retain every source and independent-audit check.
+
+- Use the governed locked Python environment in CI and drift observation,
+  retaining every existing dependency version and publication gate.
+
+- Declare a source-controlled SVG icon for every publication page and keep one
+  owner for root discovery, including the AI index and context links.
+
+- Add distinct authored Legislation and Whole-Law complex questions, responsive
+  source-linked diagrams, complete Markdown/graph AI indexes and explicit
+  coverage, rights, expired-review and negative controls.
+
+- Add a governed UV 0.13.4 and CPython 3.12.11 environment for macOS and Linux,
+  preserving the 52 existing dependency versions and historical Linux lock.
+- Prepare separate Core 0.3 projections with Bundle Wiki v2 and federation v2;
+  pin the accepted Core 0.2 manifest, works, evidence and structural v1 files
+  without refreshing their dates or meaning.
+- Begin separate UK Legislation and Whole-Law Core 0.3 acceptance; the published
+  v0.4.0 release and July source snapshots remain unchanged.
+
 ## Unreleased — standards references
 
 - Link the central current and historical OKF standards register and public bundle catalogue.

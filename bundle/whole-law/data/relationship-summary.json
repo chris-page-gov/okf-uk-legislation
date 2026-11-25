@@ -968,7 +968,7 @@
     "official effect: words substituted in earlier amending provision s.i. 2019/419, sch. 2 para. 85(4)": 1,
     "official effect: words substituted in earlier amending provision s.i. 2019/419, sch. 2 para. 85(7)": 1
   },
-  "freshness_semantics": "`current` means the frozen datapack is inside its declared refresh window. It does not mean that every legal provision is in force, unamended or suitable for reliance without live verification.",
+  "freshness_semantics": "`current` retains the status recorded in the July snapshot. It is not a new freshness check; declared review dates may now be overdue. It does not establish that any provision is in force, unamended or suitable for reliance without current verification.",
   "observed_at": "2026-07-25T22:54:00Z",
   "reconciliation_routes": {
     "agreement_at_acquisition": 16,

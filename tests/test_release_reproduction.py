@@ -462,66 +462,38 @@ class ReleaseReproductionTests(unittest.TestCase):
         ):
             reproduction.validate_profile(profile)
 
-    def test_production_profile_rebuilds_base_and_bootstraps_assurance(
-        self,
-    ) -> None:
-        profile = json.loads(
-            (
-                ROOT
-                / "release-assurance"
-                / "reproduction-profile.json"
-            ).read_text(encoding="utf-8")
-        )
+    def test_production_profile_preserves_frozen_inputs_and_bootstraps_assurance(self) -> None:
+        profile = json.loads((ROOT / "release-assurance/reproduction-profile.json").read_text())
         commands = profile["build_commands"]
-        base = [
-            "{python}",
+        self.assertEqual(["{python}", "scripts/core03_snapshot.py"], commands[0])
+        protected = {
             "scripts/build_legislation_okf.py",
-            "--from-existing",
-        ]
-        self.assertEqual(base, commands[0])
-        self.assertEqual(1, commands.count(base))
-        input_evidence = [
-            "{python}",
             "scripts/build_model_enrichment_input_evidence.py",
-        ]
-        v2 = [
-            "{python}",
             "scripts/build_codex_semantic_enrichment.py",
-        ]
-        effects = [
-            "{python}",
             "scripts/build_legislation_effects.py",
-            "--offline",
-        ]
-        v3_build = [
-            "{python}",
             "scripts/build_codex_semantic_enrichment_v3.py",
-            "build",
-        ]
-        v3_audit = [
-            "{python}",
             "scripts/audit_codex_semantic_enrichment_v3.py",
-            "audit",
-        ]
-        discovery = [
-            "{python}",
-            "scripts/rebuild_legislation_discovery.py",
-        ]
+        }
+        self.assertFalse(protected.intersection(row[1] for row in commands))
+        validations = profile["validation_commands"]
+        self.assertTrue((protected - {"scripts/build_legislation_okf.py"}).issubset(
+            row[1] for row in validations))
         stages = [
-            base,
-            input_evidence,
-            v2,
-            effects,
-            v3_build,
-            v3_audit,
-            discovery,
+            ["{python}", "scripts/core03_snapshot.py"],
+            ["{python}", "scripts/build_release_metadata.py"],
+            ["{python}", "scripts/rebuild_legislation_discovery.py"],
+            ["{python}", "scripts/build_relationship_semantics.py"],
         ]
         for stage in stages:
             self.assertEqual(1, commands.count(stage))
-        self.assertEqual(
-            [commands.index(stage) for stage in stages],
-            sorted(commands.index(stage) for stage in stages),
-        )
+        self.assertEqual([commands.index(stage) for stage in stages],
+                         sorted(commands.index(stage) for stage in stages))
+        guides = ["{python}", "scripts/build_bundle_guides.py"]
+        assurance = ["{python}", "scripts/build_release_assurance.py"]
+        checksums = ["{python}", "scripts/build_checksums.py"]
+        self.assertEqual(1, commands.count(guides))
+        self.assertEqual(2, commands.count(checksums))
+        self.assertLess(commands.index(assurance), commands.index(guides))
         self.assertLess(
             commands.index(
                 ["{python}", "scripts/build_whole_law_okf.py"]
@@ -536,11 +508,12 @@ class ReleaseReproductionTests(unittest.TestCase):
         )
         self.assertEqual(
             [
-                ["{python}", "scripts/build_checksums.py"],
-                ["{python}", "scripts/build_release_assurance.py"],
-                ["{python}", "scripts/build_checksums.py"],
+                checksums,
+                assurance,
+                guides,
+                checksums,
             ],
-            commands[-3:],
+            commands[-4:],
         )
 
     def test_production_profile_binds_current_dependency_lock(self) -> None:
@@ -574,9 +547,9 @@ class ReleaseReproductionTests(unittest.TestCase):
             [
                 "{python}",
                 "scripts/audit_codex_semantic_enrichment_v3.py",
-                "audit",
+                "check",
             ],
-            profile["build_commands"],
+            profile["validation_commands"],
         )
         self.assertNotIn(
             [
@@ -605,7 +578,7 @@ class ReleaseReproductionTests(unittest.TestCase):
                 / "external-finalization-contract.json"
             ).read_text(encoding="utf-8")
         )
-        self.assertEqual("v0.8.1", contract["explorer"]["required_tag"])
+        self.assertEqual("v0.9.2", contract["explorer"]["required_tag"])
         self.assertEqual(
             "release-assurance/schemas/explorer-runtime-receipt.schema.json",
             contract["input_schemas"]["explorer_runtime_receipt"],

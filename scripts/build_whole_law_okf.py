@@ -2,7 +2,7 @@
 """Build the UK Whole-Law OKF federation from governed research inputs.
 
 The research package is immutable evidence. This builder projects it into an
-OKF 0.2 Markdown publication, federation descriptor, source-family catalogue,
+OKF 0.3 Markdown publication, federation descriptor, source-family catalogue,
 coverage/constraint ledgers and standards artefacts without changing the
 original files.
 """
@@ -430,9 +430,10 @@ def relationship_summary() -> dict[str, Any]:
         },
         "by_datapack": dict(sorted(by_datapack.items())),
         "freshness_semantics": (
-            "`current` means the frozen datapack is inside its declared refresh "
-            "window. It does not mean that every legal provision is in force, "
-            "unamended or suitable for reliance without live verification."
+            "`current` retains the status recorded in the July snapshot. "
+            "It is not a new freshness check; declared review dates may now "
+            "be overdue. It does not establish that any provision is in force, "
+            "unamended or suitable for reliance without current verification."
         ),
         "reconciliation_routes": effects_reconciliation["states"],
         "observed_at": GENERATED_AT,
@@ -468,7 +469,7 @@ def canonical_descriptor(native: dict[str, Any]) -> dict[str, Any]:
             extra['discovery_relationship_manifest'] = discovery.pop('relationship_manifest')
         for route in discovery.get('routes', []): route['url'] = urljoin(base, route['url'])
     result['bundles'] = result['children']
-    schema = load(ROOT / 'profiles/federation/v1/descriptor.schema.json')
+    schema = load(ROOT / 'profiles/federation/v2/descriptor.schema.json')
     jsonschema.Draft202012Validator(schema).validate(result)
     return result
 
@@ -600,9 +601,9 @@ def descriptor(
     return {
         "@context": f"{PUBLIC}/whole-law/ontology/context.jsonld",
         "@id": f"{PUBLIC}/whole-law/okf-explorer.json",
-        "schema": "okf-explorer-federation.v1",
+        "schema": "okf-explorer-federation.v2",
         "kind": "okf-federation",
-        "okf_version": "0.2",
+        "okf_version": RELEASE["okf_version"],
         "title": "UK Whole-Law OKF",
         "description": "A federated, evidence-led map of authoritative and supporting UK legal sources.",
         "version": RELEASE["bundle_version"],
@@ -611,7 +612,7 @@ def descriptor(
         "snapshot": "whole-law-2026-07-25",
         "publisher": "https://github.com/chris-page-gov",
         "license": OGL,
-        "profile": "https://chris-page-gov.github.io/okf-explorer/profile/federation/v1/",
+        "profile": "https://chris-page-gov.github.io/okf-explorer/profile/federation/v2/",
         "semantic_descriptor": f"{PUBLIC}/whole-law/okf-bundle.yamlld",
         "discovery": {
             "repository": "https://github.com/chris-page-gov/okf-uk-legislation",
@@ -735,6 +736,7 @@ def descriptor(
             {"kind": "turtle", "url": f"{PUBLIC}/whole-law/okf-bundle.ttl"},
         ],
         "extensions": {
+            "okf-ai-access.v1": {"manifest": "ai-index.json", "context": "ai-context.json", "walkthrough": "walkthrough/index.html"},
             "okf-whole-law.v1": {
                 "authority_model_required": True,
                 "coverage_ledger_required": True,
@@ -972,7 +974,7 @@ def build_files() -> dict[Path, bytes]:
         "@context": load(SOURCE / "ontology" / "context.jsonld")["@context"],
         "@id": f"{PUBLIC}/whole-law/",
         "@type": "okflaw:Federation",
-        "okf_version": "0.2",
+        "okf_version": RELEASE["okf_version"],
         "title": desc["title"],
         "description": desc["description"],
         "version": desc["version"],
@@ -1222,7 +1224,12 @@ register](../ontology/standards.json) distinguishes `normative`, `projection`,
 `source-native`, `conditional`, `reference-only` and `not-applicable` use. The
 core pins are:
 
-- OKF 0.2 at repository revision
+- Core 0.3 uses the central current and historical standards register at
+  https://github.com/chris-page-gov/okf-explorer/blob/main/docs/okf-standards.md,
+  with specification revision 527e81aff55992be21507e97004286789126f88c.
+  The implementation date is 24 November 2026; announcement date 18 November 2026.
+- The frozen Whole-Law domain applicability register preserves the historical
+  Core 0.2 source profile at repository revision
   `3fcbb9f828c2f23d109c855ee403c3a4c81f3a96`;
 - YAML 1.2.2;
 - the 23 July 2026 YAML-LD 1.0 Working Draft;
@@ -1308,6 +1315,9 @@ artefacts are promoted by digest without rebuilding.
             ),
         )
 
+    from build_bundle_guides import whole_law_files
+    files.update(whole_law_files(files))
+
     integrity_rows = []
     for path, body in sorted(files.items(), key=lambda item: item[0].as_posix()):
         integrity_rows.append({
@@ -1361,11 +1371,11 @@ def main() -> int:
     if args.check:
         errors = check_files(files, output)
         if errors:
-            print("Whole-Law OKF is not synchronized:")
+            print("Whole-Law OKF is not synchronised:")
             for error in errors[:100]:
                 print(f"- {error}")
             return 1
-        print(f"Whole-Law OKF synchronized: {len(files)} files")
+        print(f"Whole-Law OKF synchronised: {len(files)} files")
         return 0
     write_files(files, output)
     try:

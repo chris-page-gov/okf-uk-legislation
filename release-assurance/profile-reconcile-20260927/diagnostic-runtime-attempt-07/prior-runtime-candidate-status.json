@@ -1,0 +1,16 @@
+{
+  "schema": "okf-legislation-runtime-candidate-status.v1",
+  "status": "release-blocked",
+  "technical_checks": "passed",
+  "release_eligible": false,
+  "consumer_commit": "26af7231c8350d123bbd72324dfbfeca9feaa497",
+  "receipt": {
+    "path": "release-assurance/profile-reconcile-20260927/diagnostic-runtime-attempt-06/explorer-runtime-acceptance.json",
+    "bytes": 102637,
+    "sha256": "6e3c528dc9299466cf4ed08653fd9d96c2929f56c64eacc56bb6689030347199"
+  },
+  "runtime_checks_passed": 12,
+  "integrity_checks_passed": 8,
+  "reason": "All three browser journeys and integrity checks passed, but this diagnostic is deliberately release-ineligible. The existing bound release contract requires Explorer v0.6.2 and a clean, annotated matching checkout; the current implementation is package 0.7.0. No threshold, receipt status or historical tag was changed to waive this requirement.",
+  "next_step": "Review a separately versioned runtime release profile for the current Explorer version, then bind clean candidate and annotated consumer identities. Keep v0.3.0 unchanged and do not promote this diagnostic to release authority."
+}

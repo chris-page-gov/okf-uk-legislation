@@ -127,33 +127,33 @@
     },
     {
       "area": "evaluation gold evidence",
-  "evidence": [
-    "whole-law/evaluation/README.md",
-    "whole-law/evaluation/release-questions.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/verification.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/integrity.json"
-  ],
-  "id": "IMP-GAP-010",
-  "next_action": "Preserve the explicit distinction between the independently verified corpus-navigation gold suite and the retained non-gold broad legal prompts; do not present the navigation score as legal-answer correctness.",
-  "release_effect": "resolved-for-corpus-navigation-GATE-11; no-legal-answer-assurance-claimed",
-  "status": "resolved",
-  "summary": "All 415 release questions now have independently reconstructed immutable corpus-navigation evidence, propositions, near-miss rules, temporal context and citations. Broad legal prompts remain non-gold context and no legal-answer correctness claim is made."
+      "evidence": [
+        "whole-law/evaluation/README.md",
+        "whole-law/evaluation/release-questions.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/verification.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/integrity.json"
+      ],
+      "id": "IMP-GAP-010",
+      "next_action": "Preserve the explicit distinction between the independently verified corpus-navigation gold suite and the retained non-gold broad legal prompts; do not present the navigation score as legal-answer correctness.",
+      "release_effect": "resolved-for-corpus-navigation-GATE-11; no-legal-answer-assurance-claimed",
+      "status": "resolved",
+      "summary": "All 415 release questions now have independently reconstructed immutable corpus-navigation evidence, propositions, near-miss rules, temporal context and citations. Broad legal prompts remain non-gold context and no legal-answer correctness claim is made."
     },
     {
       "area": "evaluation execution",
-  "evidence": [
-    "whole-law/evaluation/README.md",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/results.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/scores.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-discovery-calibration.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-1.json",
-    "whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/challenge-pass-2.json"
-  ],
-  "id": "IMP-GAP-011",
-  "next_action": "Bind this immutable evaluation execution into the final candidate and retain its corpus-navigation-only assurance boundary.",
-  "release_effect": "resolved-for-GATE-11",
-  "status": "resolved",
-  "summary": "The 415-answer release execution has zero hard failures, 100% schema-valid and citation-resolvable answers, a 100/100 minimum critical-family score, and two disjoint challenge passes with zero critical modes and 0% new categories."
+      "evidence": [
+        "whole-law/evaluation/README.md",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/results.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/scores.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/challenge-discovery-calibration.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/challenge-pass-1.json",
+        "whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/challenge-pass-2.json"
+      ],
+      "id": "IMP-GAP-011",
+      "next_action": "Bind this immutable evaluation execution into the final candidate and retain its corpus-navigation-only assurance boundary.",
+      "release_effect": "resolved-for-GATE-11",
+      "status": "resolved",
+      "summary": "The 415-answer release execution has zero hard failures, 100% schema-valid and citation-resolvable answers, a 100/100 minimum critical-family score, and two disjoint challenge passes with zero critical modes and 0% new categories."
     },
     {
       "area": "browser, accessibility and performance",
@@ -161,10 +161,10 @@
         "release-assurance/release-gates.json"
       ],
       "id": "IMP-GAP-012",
-      "next_action": "Bind and rerun the Chrome, Firefox and WebKit receipt against published Explorer v0.8.1 commit dcd0c43e29593436b13c59271c75d37d06e2b754 and the frozen Legislation descriptor digests, then record that binding in external finalization evidence.",
+      "next_action": "Run and bind fresh Chrome, Firefox and WebKit acceptance against immutable Explorer v0.9.2 commit acf23958aa1ce11ec52c41313649b20d24f17609 and the exact frozen Core 0.3 Legislation revision, descriptors and complete inventory. Retain separate public, clean-reproduction and release gates.",
       "release_effect": "blocks-GATE-07-and-GATE-08",
       "status": "blocked",
-      "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations. Explorer v0.5.0 remains the completed release-order milestone and v0.5.1 through v0.5.4 remain historical corrective releases. Explorer v0.8.0 was published from annotated tag object 81dec80cd14c1acc63f92ece5c51e7f1fe3279c2, peeling to protected-main commit 99f9e809fc17ee458f68eb742e8f440422b63432 and tree eb9991832f6f9b3b7f5fe4116b794b16bc242397, with green CI run 41646267903, Pages run 41650465220 and durable release asset SHA-256 940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff. The active prerequisite is published Explorer v0.8.1: annotated tag object ad3ec81c40dd128da75eeabb4325a65b060048b0 peels to protected-main commit dcd0c43e29593436b13c59271c75d37d06e2b754 and tree 87487a50c10f0dce144b1530b6a97de6e1277aff; CI run 41659154521 and Pages run 41663805875 passed. Its durable 189,110,263-byte Pages release asset has SHA-256 6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1 and asset ID 706118888; its 43-file application tree has SHA-256 5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4. Binding v0.8.1 to the frozen Legislation candidate is externally closable only after exact freeze."
+      "summary": "Historical consumer and mutable-candidate evidence remains preserved. The active v0.5.0 candidate pins immutable Explorer v0.9.2, tag object 9b583053719259f5962fe7b4bce392420e1b9db7, protected CI 45552712413 and Pages 45556087556. Its 199,260,836-byte ZIP, 858,245,120-byte TAR, 11,328-file inventory and 67-file application tree have independent exact-byte checks and fresh producer observations. Candidate-specific release-bound runtime, accessibility and performance acceptance remains pending; consumer archive identity does not establish those gates."
     },
     {
       "area": "public access and links",

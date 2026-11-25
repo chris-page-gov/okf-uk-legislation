@@ -1,0 +1,853 @@
+{
+  "bundle": "legislation",
+  "complete_context": "https://chris-page-gov.github.io/okf-uk-legislation/ai-context.json",
+  "complete_graph_manifest": {
+    "bytes": 1429876,
+    "path": "data/semantic/manifest.jsonld",
+    "sha256": "d1552f0328626e27ecc253aa87903d6eb0b1e64bc93ee185d5cbc5a58e7b7596",
+    "url": "https://chris-page-gov.github.io/okf-uk-legislation/data/semantic/manifest.jsonld"
+  },
+  "core_concepts": 72,
+  "graph_base_url": "https://chris-page-gov.github.io/okf-uk-legislation/",
+  "instructions": [
+    "Start with a relevant source document or the bounded locator; do not load the whole corpus.",
+    "Use complete_context for the complete manifest and reviewed offline JSON-LD contexts.",
+    "Verify file hashes and retain source dates, authority, rights and lifecycle.",
+    "For the two named migration evaluation answer payloads, follow typed_site_payload_encoding and verify the manifest before decoding each gzip representation; the pinned plain sources and release archive remain available.",
+    "The original source locator is pinned separately from the typed Reader transport.",
+    "Static retrieval requires no bundle code execution and does not certify a model answer."
+  ],
+  "negative_controls": [
+    "A recorded effect does not prove that every provision is in force today.",
+    "A parser verification is not a named human legal review.",
+    "The frozen current/applied labels describe the captured source state; they are not a November refresh."
+  ],
+  "okf_version": "0.3",
+  "pinned_original_source_locator": {
+    "base_url": "https://raw.githubusercontent.com/chris-page-gov/okf-uk-legislation/4d1fcb4645c72b7adbd0cd57d0883bf5d024f514/bundle/",
+    "bytes": 110783,
+    "notice": "This pinned original source locator precedes the separately assembled typed Reader transport. Identities are preserved.",
+    "okf_version": "0.2",
+    "path": "data/records/manifest.json",
+    "sha256": "159318b7871956851feffab85bb6538194f119acff97a17f1544d21cb3308bb7",
+    "url": "https://raw.githubusercontent.com/chris-page-gov/okf-uk-legislation/4d1fcb4645c72b7adbd0cd57d0883bf5d024f514/bundle/data/records/manifest.json"
+  },
+  "schema": "okf-legislation-ai-index.v1",
+  "source_documents": [
+    {
+      "path": "access/api-overview.md",
+      "sha256": "3d2794ac304598bcc60fdb19ce0867fe5a1fa018054d1ac33c7572c0e2f10f43",
+      "title": "Legislation API",
+      "type": "API Capability",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/access/api-overview.md"
+    },
+    {
+      "path": "access/bulk-data.md",
+      "sha256": "719528223b460c845ff27410e2f1d39392814face06976d4998ae080e6922022",
+      "title": "Bulk statute-book data",
+      "type": "API Capability",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/access/bulk-data.md"
+    },
+    {
+      "path": "access/changes-effects.md",
+      "sha256": "1f70fdfdd7a29ba1392c55d1491c212a714d89a99156622ce0f268ca1966eed6",
+      "title": "Changes, effects and commencements",
+      "type": "API Capability",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/access/changes-effects.md"
+    },
+    {
+      "path": "access/fair-use.md",
+      "sha256": "dcf02587ed83a2c518604d8fd45c00905dd6593fb53afe13e29b4d81b0f1d879",
+      "title": "Fair use",
+      "type": "API Capability",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/access/fair-use.md"
+    },
+    {
+      "path": "access/index.md",
+      "sha256": "78ca087cdf8c827bed674e5e64aa621a6b3db8b0098619697e468ad3fd6e5807",
+      "title": "Access surfaces",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/access/index.md"
+    },
+    {
+      "path": "access/licensing.md",
+      "sha256": "5609d170a3ecd3fd9eb2ae7b5c323d74c95a72778551015520e2245b61c2b4b0",
+      "title": "Licensing",
+      "type": "API Capability",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/access/licensing.md"
+    },
+    {
+      "path": "access/metadata-resources.md",
+      "sha256": "e58a9bb2531b2627ccf2b5dd6d95f18a9c19b0c8a0e14a6155b00d5e9b20bd0e",
+      "title": "Metadata resources and associated documents",
+      "type": "API Capability",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/access/metadata-resources.md"
+    },
+    {
+      "path": "access/publication-log.md",
+      "sha256": "2164fc8de08e03f7c18937f1394236fe7b37a79cc9660ad8f87eaaf5678152fb",
+      "title": "Publication Log",
+      "type": "API Capability",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/access/publication-log.md"
+    },
+    {
+      "path": "access/representations.md",
+      "sha256": "b9e6dd3a536647c4515e85183b72c5e432d577c2c02f6782fd1fb8e9d82e5904",
+      "title": "Representations and content negotiation",
+      "type": "API Capability",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/access/representations.md"
+    },
+    {
+      "path": "access/search-lists-feeds.md",
+      "sha256": "4692ccc0156177efe71f1aad1d49f081ffbd7e391238a0367d328737ee8bf3d0",
+      "title": "Search, lists and Atom feeds",
+      "type": "API Capability",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/access/search-lists-feeds.md"
+    },
+    {
+      "path": "access/sparql.md",
+      "sha256": "94e381c20cc445e7505f4f4ec8426181e3988e44cea5031ebc595cd293ea9f07",
+      "title": "Linked Data and SPARQL",
+      "type": "API Capability",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/access/sparql.md"
+    },
+    {
+      "path": "docs/agent-research-guide.md",
+      "sha256": "530aebae8defa04abcf66ba263013aea77d61c6deeb5a954f1b66e291a543c25",
+      "title": "Agent Research Guide",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/agent-research-guide.md"
+    },
+    {
+      "path": "docs/bounded-relationship-navigation.md",
+      "sha256": "feec820717de84af823967d32fa9c1bfd1ead2978b3a5ce7cf24072a31898ca9",
+      "title": "Bounded relationship navigation",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/bounded-relationship-navigation.md"
+    },
+    {
+      "path": "docs/effects-and-enrichment.md",
+      "sha256": "dc26687cf79f0b2b0e1aabf282fcb8bff7d6de8e3ef6eb00c12c8814c1305f1f",
+      "title": "Official effects and Codex-assisted enrichment",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/effects-and-enrichment.md"
+    },
+    {
+      "path": "docs/evaluation-and-quality.md",
+      "sha256": "ea0062a733ebe6ed168ccd45717fe1184587b059a76b5ae7eba6e1c3dd0a5112",
+      "title": "Evaluation And Quality",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/evaluation-and-quality.md"
+    },
+    {
+      "path": "docs/getting-started.md",
+      "sha256": "40b66f5ad240a2b39d8d3c51c432638ea016ca2447781d3dd5e34e3c82c504a5",
+      "title": "Getting started with UK Legislation and Whole-Law OKF",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/getting-started.md"
+    },
+    {
+      "path": "docs/illustrated-manual.md",
+      "sha256": "4febf436f1fcee5407316456d18bd4cb7c3879e20f473fd42e77c5a75a302773",
+      "title": "Illustrated UK Legislation OKF Manual",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/illustrated-manual.md"
+    },
+    {
+      "path": "docs/index.md",
+      "sha256": "76a2026bda1d742e2db1bfcec6b363ae55001101f15c2d6ea35921840f2541a6",
+      "title": "UK Legislation and Whole-Law OKF documentation",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/index.md"
+    },
+    {
+      "path": "docs/maintenance.md",
+      "sha256": "a86fe124758838b255aaac551de4d13c5c6a74b45919f3adb344df03341d470d",
+      "title": "Maintenance, validation and recovery",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/maintenance.md"
+    },
+    {
+      "path": "docs/model-assisted-enrichment-governance.md",
+      "sha256": "2882a680db50ae81acc6c63338e4d93505430cf8bb9e37a76e6673b65384b970",
+      "title": "Model-assisted enrichment governance",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/model-assisted-enrichment-governance.md"
+    },
+    {
+      "path": "docs/model-assisted-enrichment-review-history.md",
+      "sha256": "04100c7f34818afe5b2fb2c227cbeabecb0bf4e467ccea80e1be939c940f555f",
+      "title": "Codex-assisted enrichment v3 review history",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/model-assisted-enrichment-review-history.md"
+    },
+    {
+      "path": "docs/okf-0.2-yaml-ld-semantic-authoring.md",
+      "sha256": "b567bd88aaccda5ae382c163407986f65db4d7389d718c0a855468cf45744057",
+      "title": "OKF and YAML-LD semantic authoring",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/okf-0.2-yaml-ld-semantic-authoring.md"
+    },
+    {
+      "path": "docs/okf-03-migration.md",
+      "sha256": "b8e613523a3a74b5dcf45859d81a3708ccc5ecbcfc0ce5ab138fc2a79be6c517",
+      "title": "Core 0.3 migration candidate",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/okf-03-migration.md"
+    },
+    {
+      "path": "docs/personas-and-user-journeys.md",
+      "sha256": "23af532a07799a4b2606157ec87eef7cecb307516f4a2d30110122c7bbdb6874",
+      "title": "Personas And User Journeys",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/personas-and-user-journeys.md"
+    },
+    {
+      "path": "docs/profile-reconciliation-2026-09.md",
+      "sha256": "a4dfc7cde6d3bebb7e9ed856298af1ac13323ad0353bcb8441d23646eec8051a",
+      "title": "Profile reconciliation history (September 2026)",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/profile-reconciliation-2026-09.md"
+    },
+    {
+      "path": "docs/provider-datapacks.md",
+      "sha256": "138027cc4ed306ec4aa58cc6d59f746c0eecc0041676cae9dd9eb2fdb6ae3e70",
+      "title": "Provider datapacks",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/provider-datapacks.md"
+    },
+    {
+      "path": "docs/relationships.md",
+      "sha256": "a079ac5d507042e0a5570271c14684205dcf0f3c2683f11479289b4d129cda95",
+      "title": "Relationship authority, confidence and coverage",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/relationships.md"
+    },
+    {
+      "path": "docs/rich-relationship-semantics.md",
+      "sha256": "3414faa0aa9af230ab340229fa7e1da3d50ea6be450fab7aea6fced5ff0a3728",
+      "title": "Rich directed relationship semantics",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/rich-relationship-semantics.md"
+    },
+    {
+      "path": "docs/roles/agent.md",
+      "sha256": "fc56a37b7f5bc2d8a6b42c1a5eb382657a499a2abc873227bcfeae5a9c3911f0",
+      "title": "Agent guide",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/roles/agent.md"
+    },
+    {
+      "path": "docs/roles/data-engineer.md",
+      "sha256": "e23d0d65a97840e7fba025c705d417602f6f9d1c2e861b6634dc54dda331ed2a",
+      "title": "Data-engineer guide",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/roles/data-engineer.md"
+    },
+    {
+      "path": "docs/roles/index.md",
+      "sha256": "5785121d417a6339916b9495098322a47296cc3c435989576bcc9aaad1344bde",
+      "title": "Role guides",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/roles/index.md"
+    },
+    {
+      "path": "docs/roles/legal-professional.md",
+      "sha256": "cb869361b7abca91d43f220d134d606693567b14fe75bdc744320bfc8ceb1129",
+      "title": "Legal-professional guide",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/roles/legal-professional.md"
+    },
+    {
+      "path": "docs/roles/maintainer.md",
+      "sha256": "20300e8f496570c332e188ee0f2a1ace9d537f560bcd78a2c0881b21e12dcf59",
+      "title": "Maintainer guide",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/roles/maintainer.md"
+    },
+    {
+      "path": "docs/roles/researcher.md",
+      "sha256": "d1f73042da74d03dc45bd688f8f73765b20e9b7e8bf9610603b4825b93589577",
+      "title": "Researcher guide",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/roles/researcher.md"
+    },
+    {
+      "path": "docs/source-coverage.md",
+      "sha256": "12b00bec070832b6943944ca68548a695780533389f8cacc0eee5517edd08e8a",
+      "title": "Whole-Law source coverage and constraints",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/source-coverage.md"
+    },
+    {
+      "path": "docs/uk-legislation-okf.md",
+      "sha256": "f6ec3047185d7b59ce9d663f5d47eb6d4cdd5c9228c4487a897065a9c0ee5e1b",
+      "title": "UK Legislation OKF",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/uk-legislation-okf.md"
+    },
+    {
+      "path": "docs/using-with-ai.md",
+      "sha256": "3605f4d8fca5b34a5fc5bf9200e186fe4f2e55f73ef17934b333f181c38fe29a",
+      "title": "Use the UK Legislation OKF with an AI assistant",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/using-with-ai.md"
+    },
+    {
+      "path": "docs/validation-dependency-lock.md",
+      "sha256": "6c2f1b0680e05825d8095bd94200564ad1b4da2653ebdc1c51478b49ebbd0d78",
+      "title": "Validation dependency lock",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/validation-dependency-lock.md"
+    },
+    {
+      "path": "enrichment/model-assisted-v1-independent-audit.md",
+      "sha256": "da740b142fcb6d7e6dadeb77661f50030e2edf42af2c643b04b168e335741f20",
+      "title": "Independent audit of `model-assisted-v1`",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/enrichment/model-assisted-v1-independent-audit.md"
+    },
+    {
+      "path": "evaluation/README.md",
+      "sha256": "9c438452656e1138ba81b02b3955c212674287b6f1593822abcae98ebcadc54b",
+      "title": "UK legislation AI-answer evaluation",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/evaluation/README.md"
+    },
+    {
+      "path": "evidence/source-acquisitions/legislation-effects/README.md",
+      "sha256": "a2fa3db2157dbb822c6e702155cc86db78a91053cd7382b9cb82dc786542a975",
+      "title": "Official effects acquisition evidence",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/evidence/source-acquisitions/legislation-effects/README.md"
+    },
+    {
+      "path": "index.md",
+      "sha256": "3797c4ad0186548ef31d4cbf942d67073372e51d035a54ff59d62bb8e7d1fd2b",
+      "title": "Scope",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/index.md"
+    },
+    {
+      "path": "log.md",
+      "sha256": "2963ea8f769d970770b7f6610ecb0d85bea48ed8d3cf7d9cf00498838fe93429",
+      "title": "Legislation OKF generation log",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/log.md"
+    },
+    {
+      "path": "methodology/index.md",
+      "sha256": "18fe978ac2c31ae080df22b21ec3eb2998a8719eb801a1d45075da839068df53",
+      "title": "Completeness contract",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/methodology/index.md"
+    },
+    {
+      "path": "ontology/akoma-ntoso.md",
+      "sha256": "4ec68d008b39c096cae2414c8a349ad14127f0fae3a2fe034d2a892c38fb79fb",
+      "title": "Akoma Ntoso",
+      "type": "Legal Ontology",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/ontology/akoma-ntoso.md"
+    },
+    {
+      "path": "ontology/clml.md",
+      "sha256": "dd9f934c0cf2b08dc0a43026915818a4ad28cbac0a092d2752288b97b73c8b8b",
+      "title": "Crown Legislation Markup Language",
+      "type": "Legal Ontology",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/ontology/clml.md"
+    },
+    {
+      "path": "ontology/crosswalk.md",
+      "sha256": "50c6176f652506b038a4ef9e67013fd1bb46bd920bd46f38501515b58440b0f6",
+      "title": "Legal standards crosswalk",
+      "type": "Legal Ontology",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/ontology/crosswalk.md"
+    },
+    {
+      "path": "ontology/eli.md",
+      "sha256": "4d05df9974eb2b9a4f0744d629917f6cbda37af68f7e54439c8755af3ad42d89",
+      "title": "ELI and ELI-I",
+      "type": "Legal Ontology",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/ontology/eli.md"
+    },
+    {
+      "path": "ontology/index.md",
+      "sha256": "822f0a66db44ae39de1f737b2302be8b94039c17c230738991b6681915b03e65",
+      "title": "Selected model",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/ontology/index.md"
+    },
+    {
+      "path": "ontology/normalized-vocabulary.md",
+      "sha256": "43e76f1d6adcf3b68e36b863a933c1680c0e637f095bbf72907d850ee5ee74dc",
+      "title": "Normalized legislation vocabulary",
+      "type": "Legal Ontology",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/ontology/normalized-vocabulary.md"
+    },
+    {
+      "path": "ontology/schema-org.md",
+      "sha256": "f804a3ae1ec277decd3b977fa9d1a54965a52c2f3995c9fe6ddc3e52cc5df26f",
+      "title": "Schema.org Legislation",
+      "type": "Legal Ontology",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/ontology/schema-org.md"
+    },
+    {
+      "path": "release-assurance/README.md",
+      "sha256": "8db0a5477b1165f1c04e030c60e13d890957e5ea0775d71e4e0932c785a87f1b",
+      "title": "Release assurance",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/README.md"
+    },
+    {
+      "path": "release-assurance/controlling-requirements.md",
+      "sha256": "1a36cb7715ed02c34e62a3ee0872bee5911ca39dcb85e7b926a5f989c17aa84e",
+      "title": "Controlling requirements evidence",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/controlling-requirements.md"
+    },
+    {
+      "path": "release-assurance/implementation-status-detailed-2026-07-26.md",
+      "sha256": "a5fa2ced42e81c048b2452463aea306b180a3bc124814d6f57b086f7544de120",
+      "title": "Historical UK Whole-Law OKF implementation status",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/implementation-status-detailed-2026-07-26.md"
+    },
+    {
+      "path": "release-assurance/implementation-status.md",
+      "sha256": "a4904975a47735793024a5bb62e22e47d4a0af8e77c1d2d210ec5e31662a74b1",
+      "title": "UK Whole-Law OKF implementation status",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/release-assurance/implementation-status.md"
+    },
+    {
+      "path": "topics/civil-justice-and-procedure.md",
+      "sha256": "434dd5d81bb22b528bd782164151628546260b75e6eab5b20943da841f288e32",
+      "title": "Civil justice and procedure",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/civil-justice-and-procedure.md"
+    },
+    {
+      "path": "topics/communications-data-and-technology.md",
+      "sha256": "c246690ab9b54e9cdf2568e908ee9fc3289102287c97733df3c31718bbd6fde2",
+      "title": "Communications, data and technology",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/communications-data-and-technology.md"
+    },
+    {
+      "path": "topics/companies-insolvency-and-financial-services.md",
+      "sha256": "0a611747c9cd56afff3d3bbf5a626890f093c0f9ee6d4beb55876168d889b8f2",
+      "title": "Companies, insolvency and financial services",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/companies-insolvency-and-financial-services.md"
+    },
+    {
+      "path": "topics/constitutional-and-administrative-law.md",
+      "sha256": "60d06ba8b09498dc1f2e5ce7a65ac8216be58e356901713271c8072bc5d9dfa1",
+      "title": "Constitutional and administrative law",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/constitutional-and-administrative-law.md"
+    },
+    {
+      "path": "topics/consumer-and-commercial-law.md",
+      "sha256": "3628885e3317d785bc76fc0f096ea86bd43935af7d8fa237888c5e1b3105bd9e",
+      "title": "Consumer and commercial law",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/consumer-and-commercial-law.md"
+    },
+    {
+      "path": "topics/criminal-law-and-policing.md",
+      "sha256": "5a82f6d9366da08e01b11ee281339ebc39d3af83816333fcfa92378dc59f4bdf",
+      "title": "Criminal law and policing",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/criminal-law-and-policing.md"
+    },
+    {
+      "path": "topics/defence-and-national-security.md",
+      "sha256": "2adb55b8cf1eb5bd60455a286f31cfed04295b7bd9958d121fc864a168a09806",
+      "title": "Defence and national security",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/defence-and-national-security.md"
+    },
+    {
+      "path": "topics/education-and-children.md",
+      "sha256": "c8623d8cacd2def88f9125b539d6fedc62603e36d25bfe17bef64d804d71c652",
+      "title": "Education and children",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/education-and-children.md"
+    },
+    {
+      "path": "topics/elections-and-political-parties.md",
+      "sha256": "dcfedec65d8ede5dd3c2bbb2b558f65b3f5803b4b175ba9bd947ddb9eff28196",
+      "title": "Elections and political parties",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/elections-and-political-parties.md"
+    },
+    {
+      "path": "topics/employment-and-industrial-relations.md",
+      "sha256": "0d0d9299cfa23d22b45f77d4350b84c05019ac3240849f59f62265f4c324f113",
+      "title": "Employment and industrial relations",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/employment-and-industrial-relations.md"
+    },
+    {
+      "path": "topics/environment-energy-and-agriculture.md",
+      "sha256": "d1e153f16122170e5240ec529aed0acd43a47b462c189df953a288db3f9fcef7",
+      "title": "Environment, energy and agriculture",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/environment-energy-and-agriculture.md"
+    },
+    {
+      "path": "topics/european-union-and-retained-eu-law.md",
+      "sha256": "1ea6bd5917dc15a56874cd0b895ff6f616912401fdffb5e8e1daa662ed73803b",
+      "title": "European Union and retained EU law",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/european-union-and-retained-eu-law.md"
+    },
+    {
+      "path": "topics/family-and-succession.md",
+      "sha256": "99f4250417205b330973b34e03eae18aafc32dbcdcadcf51c607f6503eb5d4d0",
+      "title": "Family and succession",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/family-and-succession.md"
+    },
+    {
+      "path": "topics/health-and-social-care.md",
+      "sha256": "15417de9ac3fc6c321ebda405f1506dd1aceb396aa9c53801c2aa5ee6214470c",
+      "title": "Health and social care",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/health-and-social-care.md"
+    },
+    {
+      "path": "topics/human-rights-and-equality.md",
+      "sha256": "4ed503ff54fd3cbb8ee75e90c07c529037a20f1f898dcfa6993a5eae311a1ba4",
+      "title": "Human rights and equality",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/human-rights-and-equality.md"
+    },
+    {
+      "path": "topics/immigration-nationality-and-asylum.md",
+      "sha256": "f6e758a8339ac59e8e0fe3a02b0022e823d45080707e9d81acd88eb64e98eeeb",
+      "title": "Immigration, nationality and asylum",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/immigration-nationality-and-asylum.md"
+    },
+    {
+      "path": "topics/index.md",
+      "sha256": "71c470ff0f2a0845bb9d5fb7817521202385cd0ba0325285e1335c8e5775b595",
+      "title": "Important status",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/index.md"
+    },
+    {
+      "path": "topics/intellectual-property-and-media.md",
+      "sha256": "fdaa7b7828d458043c5f698486bf2f8753419db20302b749a3fd56b3d5a16163",
+      "title": "Intellectual property and media",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/intellectual-property-and-media.md"
+    },
+    {
+      "path": "topics/land-housing-and-planning.md",
+      "sha256": "d3ec77aabae86aef974a28d466c3f006746285c8deee840146d15571d729fa13",
+      "title": "Land, housing and planning",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/land-housing-and-planning.md"
+    },
+    {
+      "path": "topics/local-government.md",
+      "sha256": "bd1fc32c62f82dd46f0cb896ec133b9687057a932c03d480aa90c9e65f091c1c",
+      "title": "Local government",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/local-government.md"
+    },
+    {
+      "path": "topics/professional-regulation.md",
+      "sha256": "340ee4860e7f753377ec9134cf2c3dfeb213ee23e6a827b74f944b85992432d6",
+      "title": "Professional regulation",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/professional-regulation.md"
+    },
+    {
+      "path": "topics/social-security-and-welfare.md",
+      "sha256": "09d47c9932b9619c32a046da10a44d6f46b9365d93e1a1548bfcf71bcfd6b9a9",
+      "title": "Social security and welfare",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/social-security-and-welfare.md"
+    },
+    {
+      "path": "topics/taxation-and-customs.md",
+      "sha256": "d4d6ff816417a1c9f0d470015099bdd91f3b14e08115b8c5ee891054468744cd",
+      "title": "Taxation and customs",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/taxation-and-customs.md"
+    },
+    {
+      "path": "topics/transport-and-infrastructure.md",
+      "sha256": "b7cd796216be1ae918568571386623617d845165c5b76d9faee18159ff848ecf",
+      "title": "Transport and infrastructure",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/transport-and-infrastructure.md"
+    },
+    {
+      "path": "topics/unclassified-title-only-heuristic.md",
+      "sha256": "3b31ccfc834177c727fcbc3312c635d80020a34f90f843e13817e12a5c375141",
+      "title": "Unclassified — title-only heuristic",
+      "type": "Derived Legal Topic",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/topics/unclassified-title-only-heuristic.md"
+    },
+    {
+      "path": "types/aep.md",
+      "sha256": "612c555900f0cf460822d7349ddeedf0934ddfa226fc7ea0ff3c475b15c1b339",
+      "title": "Acts of the English Parliament",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/aep.md"
+    },
+    {
+      "path": "types/aip.md",
+      "sha256": "e5ada32e1cab7a7dcc3fa76be05121f62939122e3df15b2dabd853aba9d5fabf",
+      "title": "Acts of the Old Irish Parliament",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/aip.md"
+    },
+    {
+      "path": "types/anaw.md",
+      "sha256": "38bd7fee7a1244171b925c7cece5a45d245040f1b00e7630991e3972d67da5dd",
+      "title": "Acts of the National Assembly for Wales",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/anaw.md"
+    },
+    {
+      "path": "types/aosp.md",
+      "sha256": "26ccca339a6f7567952633b231d2aba6306d933dd49d0cf733a239c3d3e9aace",
+      "title": "Acts of the Old Scottish Parliament",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/aosp.md"
+    },
+    {
+      "path": "types/apgb.md",
+      "sha256": "5bd415fadda20f0f8384f421cf002dd389d060cb071d023126fb098d1aecd323",
+      "title": "Acts of the Parliament of Great Britain",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/apgb.md"
+    },
+    {
+      "path": "types/apni.md",
+      "sha256": "be7587b89071b1f720a8bf85df0c0ec913e2c320b20127ca2bf20e5df160753b",
+      "title": "Acts of the Parliament of Northern Ireland",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/apni.md"
+    },
+    {
+      "path": "types/asc.md",
+      "sha256": "c16b873534c9ccb8d43fabf7ed42fc9143012008e1c4401b32de95c66ded4e63",
+      "title": "Acts of Senedd Cymru",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/asc.md"
+    },
+    {
+      "path": "types/asp.md",
+      "sha256": "f83e31e782cfcbbc56ed19c2273230dfee4b9b45f1d26bf93c380c0aadda6305",
+      "title": "Acts of the Scottish Parliament",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/asp.md"
+    },
+    {
+      "path": "types/eudn.md",
+      "sha256": "e99a4d4fdd92717d7124c7987ea4d36f0d4361e528f057ccad0083b8f2f0c61f",
+      "title": "European Union Decisions",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/eudn.md"
+    },
+    {
+      "path": "types/eudr.md",
+      "sha256": "c1fa7e1139eba071d6304b764cf1b11afa82bf19d5453ffed35ab3afc3c66e2f",
+      "title": "European Union Directives",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/eudr.md"
+    },
+    {
+      "path": "types/eur.md",
+      "sha256": "2a154f4d6fa6b314427935bcb04d7f719a8a6475df8141c31e5153701fa1a6f3",
+      "title": "European Union Regulations",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/eur.md"
+    },
+    {
+      "path": "types/gbla.md",
+      "sha256": "977bb8f5b63a2603092082a2dfadf423847b1916e8eb715f59dea29b81f37764",
+      "title": "Local Acts of the Parliament of Great Britain",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/gbla.md"
+    },
+    {
+      "path": "types/index.md",
+      "sha256": "06d87940f679714c647b73fb29e715315693dd2fd855590106f087613df42456",
+      "title": "Types",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/index.md"
+    },
+    {
+      "path": "types/mnia.md",
+      "sha256": "0581cb597c65f0f9c735617e66a4e7cc3a235c6af0db95282c4de152db2e18ad",
+      "title": "Measures of the Northern Ireland Assembly",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/mnia.md"
+    },
+    {
+      "path": "types/mwa.md",
+      "sha256": "5d18e4a461fc6b0ca23b08306067bac27a523186bdf7db54c03d3cd7983e65a1",
+      "title": "Measures of the Welsh Assembly",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/mwa.md"
+    },
+    {
+      "path": "types/nia.md",
+      "sha256": "e14039376a39d3fc64415ce87ecb16a5018e7f45b3ab6d9ea72c760018079578",
+      "title": "Acts of the Northern Ireland Assembly",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/nia.md"
+    },
+    {
+      "path": "types/nidsr.md",
+      "sha256": "2bbbd3ff40c924f5e54f1c9fd350376ab5f9de63ac1df549d52779e497c110c6",
+      "title": "Northern Ireland Draft Statutory Rules",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/nidsr.md"
+    },
+    {
+      "path": "types/nisi.md",
+      "sha256": "0e77c7368d6e5434acecfd0e41fc55c2bfee28f9193e9601476acb1ad345a8c3",
+      "title": "Northern Ireland Orders in Council",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/nisi.md"
+    },
+    {
+      "path": "types/nisr.md",
+      "sha256": "53dbbb47b53124e0f440a676237a02e3e73f3a0b67763cf6e0967644f2ff7f40",
+      "title": "Northern Ireland Statutory Rules",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/nisr.md"
+    },
+    {
+      "path": "types/nisro.md",
+      "sha256": "3639d265569a44356b13182fee6555522b872c2408232802ede4ab208f1b3edf",
+      "title": "Northern Ireland Statutory Rules and Orders",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/nisro.md"
+    },
+    {
+      "path": "types/sdsi.md",
+      "sha256": "10654af0ce48a8658f53c9698f6afbf509d06b49588f73bfe1a073453ef064fe",
+      "title": "Scottish Draft Statutory Instruments",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/sdsi.md"
+    },
+    {
+      "path": "types/ssi.md",
+      "sha256": "542144f12a4b18199a71505b26af1f1c56992d9b39a32549a066e2d04badd113",
+      "title": "Scottish Statutory Instruments",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/ssi.md"
+    },
+    {
+      "path": "types/ukci.md",
+      "sha256": "d32fa4c98bea95c249efc1c9d7c04240b11d8d6907239acc17f2aed5e72a16c2",
+      "title": "UK Church Instruments",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/ukci.md"
+    },
+    {
+      "path": "types/ukcm.md",
+      "sha256": "a23299a00e02ad5a2d78e910c097ef328455db0a7f002ba855c6ac060cab5f14",
+      "title": "UK Church Measures",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/ukcm.md"
+    },
+    {
+      "path": "types/ukdsi.md",
+      "sha256": "96b6dd044c9825b275d7ce8516b60d55292d6e022372fe408d08f8eb65f8d6c5",
+      "title": "UK Draft Statutory Instruments",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/ukdsi.md"
+    },
+    {
+      "path": "types/ukla.md",
+      "sha256": "f938aeda9eeec3558dd0d6109ebfd600a4f4067ab67b30eb94638e698e1fe1af",
+      "title": "UK Local Acts",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/ukla.md"
+    },
+    {
+      "path": "types/ukmd.md",
+      "sha256": "78cc2c2348b8253ffe0786e535907007584421b0a390cad13f147cc8f42b455b",
+      "title": "UK Ministerial Directions",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/ukmd.md"
+    },
+    {
+      "path": "types/ukmo.md",
+      "sha256": "636958f8d4546fa69e6e2654f10d1a0aa2bad9c926d995b86ff384a4cd377474",
+      "title": "UK Ministerial Orders",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/ukmo.md"
+    },
+    {
+      "path": "types/ukpga.md",
+      "sha256": "72204b4012278932f06db7744281c0ae3a7b5e43b5090f1d6c2f3dd84178d024",
+      "title": "UK Public General Acts",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/ukpga.md"
+    },
+    {
+      "path": "types/ukppa.md",
+      "sha256": "6a4c0c130e27cee2c1b3dc9252ca00d7e97a54aadf9a6fe2bbbc76610779d4f5",
+      "title": "UK Private and Personal Acts",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/ukppa.md"
+    },
+    {
+      "path": "types/uksi.md",
+      "sha256": "d23e0b3db3dae5d380cac13eb455ed89424a1813a0ae5c3adbf7d5a4d29e5cad",
+      "title": "UK Statutory Instruments",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/uksi.md"
+    },
+    {
+      "path": "types/uksro.md",
+      "sha256": "1d27a712776efd4e92e1d5657e4d6b07e3d8ed6c6c35be4961a29f64c2ac4c32",
+      "title": "UK Statutory Rules and Orders",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/uksro.md"
+    },
+    {
+      "path": "types/wsi.md",
+      "sha256": "d0f9afaae0205e819df4b4fade09bdf383b91287ad2da45b57cc11dc5db8119a",
+      "title": "Welsh Statutory Instruments",
+      "type": "Legislation Type",
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/types/wsi.md"
+    },
+    {
+      "path": "walkthroughs/legislation/source.md",
+      "sha256": "73a6af91b0f22d28b67a4ddb9c5b99728829ee636a224c21aab46ea9c1bed7be",
+      "title": "How can a researcher trace a recorded commencement effect on the Equality Act 2010, inspect the provision evidence and establish what still needs checking today?",
+      "type": null,
+      "url": "https://chris-page-gov.github.io/okf-uk-legislation/walkthroughs/legislation/source.md"
+    }
+  ],
+  "targeted_graph_locator": {
+    "buckets": 256,
+    "id": "urn:okf:uk-legislation:artifact:sha256:569697b800d602278b5feb067f86d4059b4eda0dc769da0adebc531299b4d367",
+    "max_active_chunk_references_per_route": 674,
+    "max_active_incident_assertions_per_route": 162281,
+    "max_chunk_references_per_route": 979,
+    "max_incident_assertions_per_route": 162649,
+    "path": "data/semantic/runtime/route-locator/manifest.json",
+    "routes": 365919,
+    "sha256": "cda87c7aa341ded2fb1ff31688e386eb1080df4f9d251b97b2114c567ed7f5bc"
+  },
+  "typed_site_payload_encoding": {
+    "manifest_url": "https://chris-page-gov.github.io/okf-uk-legislation/data/reader-transport/v1/payload-encoding.json",
+    "scope": "Pages typed Site only; the canonical answer bytes remain in the source bundle and release archive.",
+    "selection": "The manifest names the two approved migration evaluation answer payloads and binds each original and gzip byte identity. Published historical executions retain their existing paths."
+  },
+  "walkthrough": "https://chris-page-gov.github.io/okf-uk-legislation/walkthroughs/legislation/index.html"
+}

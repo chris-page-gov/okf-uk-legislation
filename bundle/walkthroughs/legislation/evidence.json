@@ -1,0 +1,92 @@
+{
+  "effect": {
+    "affected_provisions": [
+      {
+        "label": "Sch. 26",
+        "missing": false,
+        "ref": "schedule-26",
+        "uri": "https://www.legislation.gov.uk/id/ukpga/2010/15/schedule/26"
+      },
+      {
+        "label": "para. 30",
+        "missing": false,
+        "ref": "schedule-26-paragraph-30",
+        "uri": "https://www.legislation.gov.uk/id/ukpga/2010/15/schedule/26/paragraph/30"
+      }
+    ],
+    "affecting_provisions": [
+      {
+        "label": "art. 2(15)(e)(ii)",
+        "missing": false,
+        "ref": "article-2-15-e-ii",
+        "uri": "https://www.legislation.gov.uk/id/uksi/2010/2317/article/2/15/e/ii"
+      }
+    ],
+    "application_status": "applied",
+    "authority": {
+      "class": "official",
+      "label": "legislation.gov.uk editorial effect",
+      "source": "https://www.legislation.gov.uk/changes"
+    },
+    "confidence": 1.0,
+    "derivation": "source-native-official-atom-feed",
+    "direction": "source-to-target",
+    "evidence": [
+      {
+        "affected_provisions": "Sch. 26 para. 30",
+        "affecting_provisions": "art. 2(15)(e)(ii)",
+        "capture": "evidence/source-acquisitions/legislation-effects/archives/legislation-effects-2026-07-25.tar.xz",
+        "capture_member": "legislation-effects-2026-07-25/ukpga-2010-15/affected/page-010.xml",
+        "entry_title": "The Equality Act 2010 (Commencement No. 4, Savings, Consequential, Transitional, Transitory and Incidental Provisions and Revocation) Order 2010 effect on Equality Act 2010",
+        "entry_updated": "2025-08-27T10:47:46Z",
+        "feed_route": "affected",
+        "seed_work": "ukpga/2010/15",
+        "source_native_type": "coming into force",
+        "source_url": "https://www.legislation.gov.uk/changes/affected/ukpga/2010/15/affecting/uksi/2010/2317/key-ecda6a29f68ec4223ca00fd691e55521/modified/2025-08-27T10:47:46Z",
+        "type": "official-legislation-effect",
+        "url": "https://www.legislation.gov.uk/changes/affected/ukpga/2010/15/affecting/uksi/2010/2317/key-ecda6a29f68ec4223ca00fd691e55521/modified/2025-08-27T10:47:46Z"
+      }
+    ],
+    "freshness": "current",
+    "generated_at": "2026-07-25T21:30:00Z",
+    "id": "urn:okf:official-effect:sha256:006e817fa36efb6526910a953eb46fdc51b9002a3ec9101c0a8428496ab734c7",
+    "observed_at": "2026-07-25T20:16:19.565932Z",
+    "predicate": "official effect: coming into force",
+    "rights": {
+      "attribution": "Contains public sector information licensed under the Open Government Licence v3.0.",
+      "source": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+    },
+    "source": "https://www.legislation.gov.uk/id/uksi/2010/2317",
+    "source_native_effect_id": "key-ecda6a29f68ec4223ca00fd691e55521",
+    "source_native_type": "coming into force",
+    "source_native_uri": "https://www.legislation.gov.uk/id/effect/key-ecda6a29f68ec4223ca00fd691e55521",
+    "stale_after": "2026-08-25T00:00:00Z",
+    "target": "https://www.legislation.gov.uk/id/ukpga/2010/15",
+    "valid_from": "2010-10-01",
+    "valid_to": null,
+    "verified": [
+      {
+        "at": "2026-07-25T21:30:00Z",
+        "by": "process:official-effect-feed-parser",
+        "method": "frozen official Atom feed parse",
+        "scope": "source-native relationship and supplied application state"
+      }
+    ]
+  },
+  "question": {
+    "effect_id": "urn:okf:official-effect:sha256:006e817fa36efb6526910a953eb46fdc51b9002a3ec9101c0a8428496ab734c7",
+    "negative_controls": [
+      "A recorded effect does not prove that every provision is in force today.",
+      "A parser verification is not a named human legal review.",
+      "The frozen current/applied labels describe the captured source state; they are not a November refresh."
+    ],
+    "primary_route": "dataset/ukpga-2010-15",
+    "question": "How can a researcher trace a recorded commencement effect on the Equality Act 2010, inspect the provision evidence and establish what still needs checking today?",
+    "source": "https://www.legislation.gov.uk/id/uksi/2010/2317",
+    "target": "https://www.legislation.gov.uk/id/ukpga/2010/15"
+  },
+  "source_snapshots": [
+    "2026-07-11",
+    "2026-07-25"
+  ]
+}

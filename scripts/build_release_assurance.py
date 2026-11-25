@@ -146,7 +146,7 @@ EXPECTED_WORKFLOW_ACTIONS = {
     "actions/checkout": "11d5960a326750d5838078e36cf38b85af677262",
     "actions/configure-pages": "983d7736d9b0ae728b81ab479565c72886d7745b",
     "actions/deploy-pages": "d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
-    "actions/setup-python": "a26af69be951a213d495a4c3e4e4022e16d87065",
+    "astral-sh/setup-uv": "c771a70e6277c0a99b617c7a806ffedaca235ff9",
     "actions/upload-artifact": "ea165f8d65b6e75b540449e92b4886f43607fa02",
     "actions/upload-pages-artifact": (
         "56afc609e74202658d3ffba0e8f6dda462b719fa"
@@ -269,40 +269,40 @@ def external_finalization_projection(
     else:
         expected_explorer = {
             "repository": "https://github.com/chris-page-gov/okf-explorer",
-            "required_tag": "v0.8.1",
+            "required_tag": "v0.9.2",
             "required_tag_object": (
-                "ad3ec81c40dd128da75eeabb4325a65b060048b0"
+                "9b583053719259f5962fe7b4bce392420e1b9db7"
             ),
             "required_commit": (
-                "dcd0c43e29593436b13c59271c75d37d06e2b754"
+                "acf23958aa1ce11ec52c41313649b20d24f17609"
             ),
-            "git_tree": "87487a50c10f0dce144b1530b6a97de6e1277aff",
-            "ci_workflow_run_id": 41659154521,
-            "pages_workflow_run_id": 41663805875,
+            "git_tree": "ea01a79472061b1bbf4179ad809a8b78dad69152",
+            "ci_workflow_run_id": 45552712413,
+            "pages_workflow_run_id": 45556087556,
         }
         for field, expected in expected_explorer.items():
             if explorer.get(field) != expected:
                 errors.append(
-                    f"Explorer {field} must bind published v0.8.1 fact "
+                    f"Explorer {field} must bind published v0.9.2 fact "
                     f"{expected!r}"
                 )
         if explorer.get("pages_workflow") != "pages.yml":
             errors.append("Explorer Pages workflow binding is invalid")
         expected_release_asset = {
-            "asset_id": 706118888,
-            "name": "okf-explorer-v0.8.1-pages-artifact.zip",
-            "bytes": 189110263,
+            "asset_id": 790300679,
+            "name": "okf-explorer-v0.9.2-pages-artifact.zip",
+            "bytes": 199260836,
             "sha256": (
-                "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1"
+                "e9c90628f815b177f756231ef4101671ebf0911d1f0525d08aa8f786ba89d779"
             ),
             "url": (
                 "https://github.com/chris-page-gov/okf-explorer/releases/"
-                "download/v0.8.1/okf-explorer-v0.8.1-pages-artifact.zip"
+                "download/v0.9.2/okf-explorer-v0.9.2-pages-artifact.zip"
             ),
         }
         if explorer.get("release_asset") != expected_release_asset:
             errors.append(
-                "Explorer release asset must bind the exact durable v0.8.1 "
+                "Explorer release asset must bind the exact durable v0.9.2 "
                 "Pages artifact"
             )
         expected_runtime_provenance = {
@@ -311,9 +311,9 @@ def external_finalization_projection(
                     "apps/okf-explorer/scripts/"
                     "run_legislation_runtime_acceptance.mjs"
                 ),
-                "bytes": 98104,
+                "bytes": 98344,
                 "sha256": (
-                    "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281"
+                    "d024df239a2a6dab58006e9e334c375cecaa69ce759feb0300f6f504754cb725"
                 ),
             },
             "site_assembly": {
@@ -328,9 +328,9 @@ def external_finalization_projection(
                 },
                 "assembler": {
                     "path": "scripts/build_site.py",
-                    "bytes": 75971,
+                    "bytes": 83041,
                     "sha256": (
-                        "8aed583a894d1a9e6f511b2fb7980d41accf1e0423d1e81292f1a934332d3140"
+                        "348964a1ad1c445fbf33c5359832c24c0c424d54de710a8e34c21779d2313947"
                     ),
                 },
                 "verifier": {
@@ -345,48 +345,48 @@ def external_finalization_projection(
             },
             "pages": {
                 "workflow_path": ".github/workflows/pages.yml",
-                "workflow_bytes": 9283,
+                "workflow_bytes": 9991,
                 "workflow_sha256": (
-                    "afcf0b17d2700fed35664b33a4d6ca7ef8cd3b982b69c2ea1ad0687dcc9eadf0"
+                    "916efe0b396281df5de7114fded87694c922c7f5d28f05f779b0684fedc8bc71"
                 ),
-                "run_id": 41663805875,
+                "run_id": 45556087556,
                 "run_attempt": 1,
-                "commit": "dcd0c43e29593436b13c59271c75d37d06e2b754",
-                "artifact_id": 13245490839,
+                "commit": "acf23958aa1ce11ec52c41313649b20d24f17609",
+                "artifact_id": 14995464665,
                 "artifact_name": "github-pages",
                 "artifact_zip": {
-                    "bytes": 189110263,
+                    "bytes": 199260836,
                     "sha256": (
-                        "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1"
+                        "e9c90628f815b177f756231ef4101671ebf0911d1f0525d08aa8f786ba89d779"
                     ),
                 },
                 "artifact_tar": {
-                    "bytes": 834416640,
+                    "bytes": 858245120,
                     "sha256": (
-                        "1cb52fe47e6568447cfc35d50f6e6c8d997459a4e73d85341d38a7409b04fb81"
+                        "daeac57516c8ec0d64b99cdaf5d15dbc0e28a0f7ae81adaf9d2d4c1903fd9336"
                     ),
                 },
                 "build_manifest": {
                     "path": (
                         "okf-explorer-build-manifest.json"
                     ),
-                    "bytes": 7398,
+                    "bytes": 11412,
                     "sha256": (
-                        "8c1c0394806ed4d466f5adee7084a807543664e2dde776eef7fab26998c56a69"
+                        "351a0b828c7571d10554e3cbb13c502cd0f06ea48a59cab84ce84235b0820b33"
                     ),
                 },
                 "build_index": {
                     "path": "index.html",
-                    "bytes": 17696,
+                    "bytes": 18449,
                     "sha256": (
-                        "b1224b22be0ee8659ae928d0abd9b56c2d124600a3cc77deecb1c494d967d027"
+                        "6860b8769479eb1d5938f00ba164b3f2a5089ce604d4640efa7ecb82d8eedd55"
                     ),
                 },
                 "build_tree": {
                     "algorithm": "sha256-canonical-json-materials-v1",
-                    "files": 43,
+                    "files": 67,
                     "sha256": (
-                        "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4"
+                        "ab0c8afb2823c7945ceae0b977bd648cc17c89bdaf4174086aa1c2306399a388"
                     ),
                 },
             },
@@ -394,7 +394,7 @@ def external_finalization_projection(
         if explorer.get("runtime_provenance") != expected_runtime_provenance:
             errors.append(
                 "Explorer runtime provenance must bind the exact published "
-                "v0.8.1 Pages build"
+                "v0.9.2 Pages build"
             )
         pages_declaration = contract.get("pages_observation")
         pages_tree = None
@@ -413,7 +413,7 @@ def external_finalization_projection(
         if pages_tree != expected_pages_tree:
             errors.append(
                 "Pages observation contract must bind both the declared and "
-                "independently computed Explorer v0.8.1 build-tree digest"
+                "independently computed Explorer v0.9.2 build-tree digest"
             )
     codex_security = contract.get("codex_security")
     if not isinstance(codex_security, dict):
@@ -421,7 +421,7 @@ def external_finalization_projection(
     else:
         if codex_security.get("producer") != {
             "name": "codex-security-plugin",
-            "version": "0.1.32",
+            "version": "0.1.33",
         }:
             errors.append("Codex Security producer binding is invalid")
         security_schemas = codex_security.get("schemas")
@@ -1477,8 +1477,33 @@ def validation_dependency_inventory() -> ValidationDependencyLock:
 
 
 def workflow_paths() -> tuple[Path, ...]:
-    root = ROOT / ".github" / "workflows"
-    return tuple(sorted({*root.glob("*.yml"), *root.glob("*.yaml")}))
+    """Include the reviewed local composite in the exact executable inventory."""
+    directory = ROOT / ".github" / "workflows"
+    pending = sorted({*directory.glob("*.yml"), *directory.glob("*.yaml")})
+    found: set[Path] = set()
+    uses = re.compile(r"^\s*(?:-\s+)?uses:\s*([^\s#]+)")
+    reviewed = {
+        "./.github/actions/setup-locked-python": ".github/actions/setup-locked-python/action.yml",
+        "./.github/workflows/validation-phase.yml": ".github/workflows/validation-phase.yml",
+    }
+    while pending:
+        path = pending.pop()
+        if path in found:
+            continue
+        if path.is_symlink() or not path.resolve().is_relative_to(ROOT.resolve()):
+            raise ValueError("Workflow action source escapes the repository")
+        found.add(path)
+        for line in path.read_text(encoding="utf-8").splitlines():
+            match = uses.match(line)
+            if match and match.group(1).startswith("./"):
+                if match.group(1) not in reviewed:
+                    raise ValueError("Unreviewed local workflow action")
+                action = ROOT / reviewed[match.group(1)]
+                if not action.is_file() or any(parent.is_symlink() for parent in
+                    (action, action.parent, action.parent.parent, action.parent.parent.parent)):
+                    raise ValueError("Reviewed local action is absent or uses a symlink")
+                pending.append(action)
+    return tuple(sorted(found))
 
 
 def workflow_actions() -> list[dict[str, Any]]:

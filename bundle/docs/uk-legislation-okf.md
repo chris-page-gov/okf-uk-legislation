@@ -146,4 +146,4 @@ checks run in
 [`chris-page-gov/okf-explorer`](https://github.com/chris-page-gov/okf-explorer)
 against this publication's canonical descriptors.
 
-The source cache under `tmp/legislation-okf-source/` is intentionally untracked. The generated `bundle/` pack is checked in so Pages deployment and review do not depend on live upstream availability. Its Markdown hierarchy conforms to OKF v0.2; JSON/YAML-LD descriptors, static search, adjacency and live CLML resolution remain additive Explorer extensions.
+The source cache under `tmp/legislation-okf-source/` is intentionally untracked. The generated `bundle/` pack is checked in so Pages deployment and review do not depend on live upstream availability. Its Markdown hierarchy uses OKF Core 0.3; JSON/YAML-LD descriptors, static search, adjacency and live CLML resolution remain additive Explorer extensions.

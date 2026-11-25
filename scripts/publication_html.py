@@ -100,6 +100,7 @@ def render_markdown_page(
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)} – {html.escape(publication_label)}</title>
 <link rel="stylesheet" href="{root}assets/site.css">
+<link rel="icon" type="image/svg+xml" href="{root}assets/favicon.svg">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>

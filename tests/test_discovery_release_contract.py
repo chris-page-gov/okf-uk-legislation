@@ -32,7 +32,7 @@ class DiscoveryReleaseContractTests(unittest.TestCase):
             "interfaces.json",
             actual["interfaces"],
         )
-        self.assertTrue(actual["release_archive"].endswith("/tag/v0.4.0"))
+        self.assertTrue(actual["release_archive"].endswith("/tag/v0.5.0"))
 
 
 if __name__ == "__main__":

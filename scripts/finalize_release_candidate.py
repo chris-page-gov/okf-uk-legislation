@@ -90,8 +90,8 @@ MAX_EMBEDDED_JSON_BYTES = 16 * 1024 * 1024
 MAX_EXPLORER_BUILD_FILES = 4096
 MAX_EXPLORER_BUILD_FILE_BYTES = 64 * 1024 * 1024
 MAX_EXPLORER_BUILD_TOTAL_BYTES = 256 * 1024 * 1024
-PINNED_EXPLORER_V081_RUNNER_SHA256 = (
-    "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281"
+PINNED_EXPLORER_V092_RUNNER_SHA256 = (
+    "d024df239a2a6dab58006e9e334c375cecaa69ce759feb0300f6f504754cb725"
 )
 EXPLORER_BUILD_ROOT = "explorer-build"
 EXPLORER_BUILD_MANIFEST_NAME = "okf-explorer-build-manifest.json"
@@ -1406,15 +1406,15 @@ def runtime_material(value: Any, label: str) -> dict[str, Any]:
 def validate_explorer_runtime_invocation(
     runtime: dict[str, Any], contract: dict[str, Any]
 ) -> list[dict[str, Any]]:
-    """Validate the pinned v0.8.1 invocation and return its material closure."""
+    """Validate the pinned v0.9.2 invocation and return its material closure."""
 
     explorer_contract = require_object(contract.get("explorer"), "contract Explorer")
     provenance = require_object(explorer_contract.get("runtime_provenance"), "contract Explorer runtime provenance")
     contract_runner = runtime_material(provenance.get("runner"), "contract Explorer runtime runner")
     invocation = runtime.get("invocation")
     if invocation is None:
-        if contract_runner["sha256"] == PINNED_EXPLORER_V081_RUNNER_SHA256:
-            raise FinalizationError("pinned Explorer v0.8.1 runtime receipt omits invocation attestation")
+        if contract_runner["sha256"] == PINNED_EXPLORER_V092_RUNNER_SHA256:
+            raise FinalizationError("pinned Explorer v0.9.2 runtime receipt omits invocation attestation")
         return []
 
     invocation = require_object(invocation, "Explorer runtime invocation")
@@ -1425,7 +1425,7 @@ def validate_explorer_runtime_invocation(
         "executable_materials", "repository_identity", "snapshots", "resources",
     }
     require_equal(set(invocation), invocation_keys, "Explorer runtime invocation keys")
-    require_equal(contract_runner["sha256"], PINNED_EXPLORER_V081_RUNNER_SHA256, "invocation producer runner")
+    require_equal(contract_runner["sha256"], PINNED_EXPLORER_V092_RUNNER_SHA256, "invocation producer runner")
     for key, expected in (
         ("mode", "checkout-scoped-single-writer-wrapper"),
         ("evidence_class", "release"),
@@ -1483,7 +1483,7 @@ def validate_explorer_runtime_invocation(
         ("tag_object", explorer_contract.get("required_tag_object")),
         ("tag_type", "tag"),
         ("package_name", "@okf/explorer"),
-        ("package_version", "0.8.1"),
+        ("package_version", "0.9.2"),
         ("clean", True),
         ("dirty_entries", 0),
     ):

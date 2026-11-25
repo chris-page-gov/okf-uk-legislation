@@ -71,7 +71,7 @@
           "const": "https://github.com/chris-page-gov/okf-uk-legislation"
         },
         "tag": {
-          "const": "v0.4.0-rc.1"
+          "const": "v0.5.0-rc.1"
         },
         "peeled_commit": {
           "type": "string",
@@ -137,13 +137,13 @@
               "pattern": "^[0-9a-f]{64}$"
             },
             "release_tag": {
-              "const": "v0.4.0-rc.1"
+              "const": "v0.5.0-rc.1"
             },
             "explorer_commit": {
-              "const": "dcd0c43e29593436b13c59271c75d37d06e2b754"
+              "const": "acf23958aa1ce11ec52c41313649b20d24f17609"
             },
             "explorer_release": {
-              "const": "v0.8.1"
+              "const": "v0.9.2"
             }
           }
         },
@@ -258,7 +258,7 @@
       ],
       "properties": {
         "path": {
-          "const": "okf-uk-legislation-v0.4.0.tar.zst"
+          "const": "okf-uk-legislation-v0.5.0.tar.zst"
         },
         "bytes": {
           "type": "integer",

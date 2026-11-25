@@ -19,7 +19,7 @@
       "evidence_plane": "embedded",
       "group": "validation",
       "id": "GATE-03",
-      "requirement": "OKF 0.2, YAML-LD semantic round-trip, JSON-LD/RDF equivalence, SHACL, JSON Schema and vocabulary competency checks pass.",
+      "requirement": "OKF 0.3, YAML-LD semantic round-trip, JSON-LD/RDF equivalence, SHACL, JSON Schema and vocabulary competency checks pass.",
       "status": "passed"
     },
     {

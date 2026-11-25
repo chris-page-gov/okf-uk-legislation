@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Validation dependency lock – UK Legislation and Whole-Law OKF</title>
 <link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -61,6 +62,19 @@ architecture or Python minor version requires a separately generated and
 reviewed lock. Release-reproduction parsing and full installed-environment
 attestation are separate closure steps and must be completed before candidate
 freeze.</p>
+<h2>Governed local UV environment</h2>
+<p>From 24 November 2026, <code>pyproject.toml</code>, <code>uv.lock</code> and <code>.python-version</code> provide
+a CPython 3.12.11 environment for macOS and Linux using UV 0.13.4. Its nine
+direct dependencies and 52 constrained versions preserve the historical
+validation closure. Run <code>uv sync --locked</code>, then <code>uv run --locked python</code>.
+Platform-specific wheel hashes are recorded in the new UV lock; the Linux
+requirements lock and its historical release receipts remain unchanged.
+This environment adoption does not migrate the corpus to Core 0.3 or refresh
+source snapshots. Those require separate validation and release evidence.</p>
+<p>CI validation and the scheduled drift observer now use the same reviewed,
+SHA-pinned setup action, UV 0.13.4 and CPython 3.12.11 as local checks. The
+52 installed dependency versions remain identical to the historical closure;
+the original Linux requirements lock is retained as frozen release evidence.</p>
 
 </main>
 <footer><p>Independent public prototype. Verify legal effect and current text against the cited official source. Model-assisted discovery metadata is not official legal classification or legal advice.</p></footer>
