@@ -19,7 +19,7 @@ ASSURANCE = ROOT / "whole-law" / "assurance"
 QUESTIONS = ONTOLOGY / "competency-questions.json"
 EXAMPLES = ONTOLOGY / "examples.jsonld"
 VOCABULARY = ONTOLOGY / "vocabulary.ttl"
-SHAPES = ONTOLOGY / "shapes.ttl"
+SHAPES = ONTOLOGY / "shapes-core03.ttl"
 OUTPUT = ASSURANCE / "competency-question-results.json"
 
 OKFLAW = "https://chris-page-gov.github.io/okf-uk-legislation/profile/whole-law/v1#"

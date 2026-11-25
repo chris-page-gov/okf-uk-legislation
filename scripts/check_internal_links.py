@@ -35,6 +35,7 @@ JSON_URL = re.compile(r"https?://[^\s\"'<>\\\\]+")
 
 REPOSITORY = "https://github.com/chris-page-gov/okf-uk-legislation"
 RELEASES = f"{REPOSITORY}/releases"
+RELEASE = json.loads((ROOT / "publication/release.json").read_bytes())
 LEGISLATION_DESCRIPTOR = (
     "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json"
 )
@@ -98,9 +99,9 @@ LANDING_REQUIREMENTS = {
     + (
         LEGISLATION_DESCRIPTOR,
         WHOLE_LAW_DESCRIPTOR,
-        "v0.4.0",
-        "3 November 2026",
-        "OKF 0.2",
+        RELEASE["release_tag"],
+        RELEASE["release_date_label"],
+        "OKF " + RELEASE["okf_version"],
     ),
     Path("bundle/evaluation/index.html"): COMMON_LANDING_REQUIREMENTS
     + (LEGISLATION_DESCRIPTOR, "bundle"),
@@ -162,6 +163,14 @@ def authored_pages() -> list[Path]:
             and not any(part in SKIP_PARTS for part in relative.parts)
         ):
             pages.append(path)
+    for relative in (
+        "bundle/walkthroughs/legislation/source.md",
+        "bundle/whole-law/walkthrough/source.md",
+    ):
+        rendered = ROOT / relative
+        if not rendered.is_file():
+            raise ValueError("Rendered walkthrough source is missing: " + relative)
+        pages.append(rendered)
     return sorted(pages)
 
 
@@ -401,6 +410,8 @@ def main() -> int:
                     )
     for source in policy_documents():
         failures.extend(url_policy_failures(source, source.read_text(encoding="utf-8")))
+    for template in (ROOT / "walkthroughs").glob("*.md.in"):
+        failures.extend(url_policy_failures(template, template.read_text(encoding="utf-8")))
     generated_html = sorted((ROOT / "bundle").rglob("*.html"))
     for source in generated_html:
         failures.extend(

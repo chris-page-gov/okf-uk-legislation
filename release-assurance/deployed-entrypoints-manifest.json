@@ -9,8 +9,8 @@
   ],
   "candidate": {
     "bundle_tree_sha256": "__BUNDLE_TREE_SHA256__",
-    "explorer_commit": "dcd0c43e29593436b13c59271c75d37d06e2b754",
-    "explorer_release": "v0.8.1",
+    "explorer_commit": "acf23958aa1ce11ec52c41313649b20d24f17609",
+    "explorer_release": "v0.9.2",
     "git_commit": "__CANDIDATE_COMMIT__",
     "release_tag": "__RC_TAG__",
     "repository": "https://github.com/chris-page-gov/okf-uk-legislation"
@@ -89,8 +89,8 @@
         "document_kind": "json",
         "json_fields": {
           "/conclusion": "success",
-          "/head_sha": "dcd0c43e29593436b13c59271c75d37d06e2b754",
-          "/id": 41663805875,
+          "/head_sha": "acf23958aa1ce11ec52c41313649b20d24f17609",
+          "/id": 45556087556,
           "/status": "completed"
         },
         "media_types": [
@@ -101,7 +101,7 @@
         ]
       },
       "id": "explorer-pages-deployment",
-      "url": "https://api.github.com/repos/chris-page-gov/okf-explorer/actions/runs/41663805875"
+      "url": "https://api.github.com/repos/chris-page-gov/okf-explorer/actions/runs/45556087556"
     },
     {
       "allowed_redirect_hosts": [
@@ -137,7 +137,7 @@
       "expected": {
         "document_kind": "json",
         "json_fields": {
-          "/schema": "okf-explorer-federation.v1"
+          "/schema": "okf-explorer-federation.v2"
         },
         "media_types": [
           "application/json",
@@ -338,7 +338,7 @@
       "expected": {
         "document_kind": "json",
         "json_fields": {
-          "/schema": "okf-explorer-federation.v1"
+          "/schema": "okf-explorer-federation.v2"
         },
         "media_types": [
           "application/json",
@@ -419,7 +419,7 @@
       },
       "id": "github-candidate-release-asset",
       "maximum_body_bytes": 65536,
-      "url": "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/__RC_TAG__/okf-uk-legislation-v0.4.0.tar.zst"
+      "url": "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/__RC_TAG__/okf-uk-legislation-v0.5.0.tar.zst"
     },
     {
       "allowed_redirect_hosts": [

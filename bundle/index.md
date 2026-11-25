@@ -1,16 +1,16 @@
 ---
-okf_version: "0.2"
+okf_version: "0.3"
 ---
 
 # Scope
 
 This pack indexes **365,786 legal works** returned by the official legislation and draft Atom feeds. It includes 32 live document types, 392 represented calendar years, all advertised manifestations for each work, every documented data-access surface, and a normalized vocabulary for document subdivisions.
 
-# Published release
+# Format and source snapshots
 
-This catalogue is included in [Legislation/Whole-Law v0.4.0](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.4.0), published on **3 November 2026**. The bundle uses the **OKF 0.2** specification and this legislation catalogue snapshot is dated 11 July 2026.
+This candidate identifies bundle version **0.5.0** and uses **OKF Core 0.3**, implemented on **24 November 2026**. Publication and acceptance are recorded in the [release history](https://github.com/chris-page-gov/okf-uk-legislation/releases). The legislation catalogue snapshot remains dated 11 July 2026.
 
-The release version and the OKF specification version are independent: this is bundle release **v0.4.0**, authored to the **OKF 0.2** profile. The source snapshot remains dated July 2026; publishing the corrected semantics and interfaces in November does not imply that upstream source data was refreshed.
+The release version and the OKF specification version are independent: this is bundle release **v0.5.0**, authored to the **OKF 0.3** profile. The source snapshot remains dated July 2026; publishing the corrected semantics and interfaces in November does not imply that upstream source data was refreshed.
 
 # Progressive discovery
 

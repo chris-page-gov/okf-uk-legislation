@@ -151,3 +151,9 @@ lockstep checks also passed. This supersedes the earlier checksum failure withou
 erasing that observation. The [latest retained log and receipt](../release-assurance/profile-reconcile-20260927/validation-attempt-04/receipt.json)
 keep the unresolved current-release bindings visible. No complete fresh locked
 reproduction pass or new legislation release is claimed.
+
+### 25 November embedded queryability checkpoint
+
+The native Explorer v0.9.2 diagnostic at [attempt 07](../release-assurance/profile-reconcile-20260927/diagnostic-runtime-attempt-07/provenance.md) passes all 12 detailed runtime queryability checks and all eight integrity checks. Chrome, Firefox and WebKit, accessibility and performance checks also pass. Its receipt remains a v1 diagnostic with overall status **failed** and `release_eligible=false`; it is adopted only as input to the embedded G05 queryability calculation. The current alias is byte-identical to the archived receipt (SHA-256 `aa301ac5a3e90621e0e6dfcc67b5a863e484b704b5500d41f6b4098a10068bb5`). The previous alias and candidate-status record are preserved in attempt 07.
+
+This diagnostic does not establish a release or satisfy the formal release and promotion controller. That controller remains bound to a clean, annotated, release-bound v2 receipt. The final v2 guard, historical archives and semantic profile v1 are unchanged; no current legislation release or final contract rebind is claimed.

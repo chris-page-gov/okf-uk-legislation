@@ -161,8 +161,8 @@ def check_okf_markdown(errors: list[str]) -> None:
                 errors.append(f"invalid Markdown frontmatter {root.name}/{relative}: {exc}")
                 continue
             if relative == Path("index.md"):
-                if values != {"okf_version": "0.2"}:
-                    errors.append(f"{root.name}/index.md must contain only okf_version 0.2")
+                if values != {"okf_version": whole_law_builder.RELEASE["okf_version"]}:
+                    errors.append(f"{root.name}/index.md must contain only the declared current okf_version")
             elif path.name in {"index.md", "log.md"}:
                 if values:
                     errors.append(f"reserved Markdown has frontmatter: {root.name}/{relative}")
@@ -191,8 +191,8 @@ def check_federation_descriptor_contract(errors: list[str]) -> None:
     schemas = PACK / "schemas"
     descriptor_path = PACK / "okf-explorer.json"
     canonical_schema_path = schemas / "canonical-federation-descriptor.schema.json"
-    profile_schema_path = ROOT / "profiles" / "federation" / "v1" / "descriptor.schema.json"
-    native_schema_path = schemas / "federation.schema.json"
+    profile_schema_path = ROOT / "profiles" / "federation" / "v2" / "descriptor.schema.json"
+    native_schema_path = schemas / "federation-v2.schema.json"
 
     validate_schema(errors, descriptor_path, canonical_schema_path)
     if canonical_schema_path.read_bytes() != profile_schema_path.read_bytes():
@@ -305,21 +305,59 @@ def check_semantics(errors: list[str]) -> None:
                     errors.append(f"provisional w3id namespace remains: {path.relative_to(ROOT)}")
 
 
-def check_integrity(errors: list[str]) -> None:
-    integrity = load(PACK / "integrity.json")
+def check_integrity(
+    errors: list[str],
+    *,
+    pack: Path | None = None,
+    typed_site_root: Path | None = None,
+) -> None:
+    """Check canonical integrity, or an explicitly validated typed projection."""
+
+    if pack is None:
+        pack = PACK
+    integrity = load(pack / "integrity.json")
+    projected_sources: set[str] = set()
+    projected_transport: dict[str, str] = {}
+    if typed_site_root is not None:
+        try:
+            from reader_payload_encoding import COMPRESSED_PATH, validate
+
+            projected_sources = validate(typed_site_root)
+            projected_transport = {
+                path.removeprefix("whole-law/"): COMPRESSED_PATH.removeprefix("whole-law/")
+                for path in projected_sources
+                if path.endswith("/answers.json")
+            }
+        except (OSError, KeyError, TypeError, ValueError) as error:
+            errors.append(f"typed payload encoding is invalid: {error}")
+            return
     expected_paths = set()
     for row in integrity.get("files", []):
-        path = PACK / row["path"]
-        expected_paths.add(row["path"])
+        relative = row["path"]
+        path = pack / relative
+        expected_paths.add(relative)
+        if typed_site_root is not None and relative in projected_transport:
+            continue
+        if typed_site_root is not None and relative in {
+            path.removeprefix("whole-law/") for path in projected_sources
+        }:
+            # The payload validator reverses the deterministic report link
+            # insertion and checks it against this source integrity identity.
+            continue
         if not path.is_file():
             errors.append(f"Whole-Law integrity target missing: {row['path']}")
         elif path.stat().st_size != row["bytes"] or sha256(path) != row["sha256"]:
             errors.append(f"Whole-Law integrity mismatch: {row['path']}")
     actual = {
-        path.relative_to(PACK).as_posix()
-        for path in PACK.rglob("*")
-        if path.is_file() and path != PACK / "integrity.json"
+        path.relative_to(pack).as_posix()
+        for path in pack.rglob("*")
+        if path.is_file() and path != pack / "integrity.json"
     }
+    if typed_site_root is not None:
+        compressed_relative = next(iter(projected_transport.values()), None)
+        if compressed_relative:
+            actual.discard(compressed_relative)
+            actual.add(next(iter(projected_transport)))
     if actual != expected_paths:
         errors.append("Whole-Law integrity path set does not equal publication path set")
     required_semantic_paths = {

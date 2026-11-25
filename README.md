@@ -124,7 +124,7 @@ the GitHub Pages publication:
   the independently accepted v3 assertions;
 - `bundle/data/effects/` — frozen official effect assertions, route coverage
   and live-reconciliation metadata;
-- `bundle/whole-law/okf-explorer.json` — Explorer federation v1 control plane;
+- `bundle/whole-law/okf-explorer.json` — Explorer federation v2 control plane;
 - `bundle/whole-law/okf-bundle.yamlld`, `okf-bundle.jsonld` and
   `okf-bundle.ttl` — authored YAML-LD plus generated JSON-LD and canonical
   Turtle Whole-Law semantics;
@@ -177,93 +177,92 @@ the immutable source snapshots and published release are preserved.
 The machine-readable
 [`reproduction-profile.json`](release-assurance/reproduction-profile.json) is
 the source of truth for the ordered, offline build and validation sequences.
-Using the pinned virtual-environment interpreter, create the deterministic
-authored and generated layers with exactly its `build_commands`:
+Run `uv sync --locked` first. Using the governed CPython 3.12.11 interpreter,
+verify the 2,603 frozen input files and regenerate only their Core 0.3
+projections with exactly the profile's `build_commands`:
 
 ```sh
-.venv/bin/python scripts/build_legislation_okf.py --from-existing
-.venv/bin/python scripts/build_release_metadata.py
-.venv/bin/python scripts/build_model_enrichment_input_evidence.py
-.venv/bin/python scripts/build_codex_semantic_enrichment.py
-.venv/bin/python scripts/build_legislation_effects.py --offline
-.venv/bin/python scripts/build_codex_semantic_enrichment_v3.py build
-.venv/bin/python scripts/audit_codex_semantic_enrichment_v3.py audit
-.venv/bin/python scripts/rebuild_legislation_discovery.py
-.venv/bin/python scripts/build_relationship_semantics.py
-.venv/bin/python scripts/build_bounded_relationship_navigation.py
-.venv/bin/python scripts/build_legislation_evaluation.py
-.venv/bin/python scripts/build_whole_law_evaluation.py
-.venv/bin/python scripts/run_yaml_ld_conformance.py
-.venv/bin/python scripts/run_ontology_competency_questions.py
-.venv/bin/python scripts/build_publication_docs.py
-.venv/bin/python scripts/build_whole_law_okf.py
-.venv/bin/python scripts/run_release_evaluation.py --check
-.venv/bin/python scripts/run_semantic_conformance.py
-.venv/bin/python scripts/build_whole_law_okf.py
-.venv/bin/python scripts/audit_graph_enrichment_gate.py build
-.venv/bin/python scripts/build_whole_law_okf.py
-.venv/bin/python scripts/build_checksums.py
-.venv/bin/python scripts/build_release_assurance.py
-.venv/bin/python scripts/build_checksums.py
+uv run --locked python scripts/core03_snapshot.py
+uv run --locked python scripts/build_release_metadata.py
+uv run --locked python scripts/rebuild_legislation_discovery.py
+uv run --locked python scripts/build_relationship_semantics.py
+uv run --locked python scripts/build_bounded_relationship_navigation.py
+uv run --locked python scripts/build_legislation_evaluation.py
+uv run --locked python scripts/build_whole_law_evaluation.py
+uv run --locked python scripts/run_yaml_ld_conformance.py
+uv run --locked python scripts/run_ontology_competency_questions.py
+uv run --locked python scripts/build_publication_docs.py
+uv run --locked python scripts/build_whole_law_okf.py
+uv run --locked python scripts/run_release_evaluation.py --check
+uv run --locked python scripts/run_semantic_conformance.py
+uv run --locked python scripts/build_whole_law_okf.py
+uv run --locked python scripts/audit_graph_enrichment_gate.py build
+uv run --locked python scripts/build_whole_law_okf.py
+uv run --locked python scripts/build_checksums.py
+uv run --locked python scripts/build_release_assurance.py
+uv run --locked python scripts/build_bundle_guides.py
+uv run --locked python scripts/build_checksums.py
 ```
 
-The official-effects projection must precede the v3 build. The v3 governed
-materials bind the post-v2, post-effects data manifest, so reversing those
-stages invalidates the independent review receipt even when the work corpus
-and semantic candidate population are unchanged.
+The accepted July work, effects and enrichment inputs retain their original
+bytes and dates. The Core 0.3 recipe checks these inputs instead of rerunning
+their acquisition or enrichment builders. The base builder refuses to write
+to the frozen default `bundle/`; use a separate output for a new acquisition.
+All source, enrichment and independent-audit validation gates remain required.
 
 Check the lifecycle contract and local documentation lockstep separately:
 
 ```sh
-.venv/bin/python scripts/check_publication_contract.py
-.venv/bin/python scripts/check_documentation_lockstep.py
+uv run --locked python scripts/check_publication_contract.py
+uv run --locked python scripts/check_documentation_lockstep.py
 ```
 
 Then validate without changing the publication with exactly the profile's
 `validation_commands`:
 
 ```sh
-.venv/bin/python -m unittest discover -s tests -v
-.venv/bin/python scripts/build_publication_docs.py --check
-.venv/bin/python scripts/build_release_metadata.py --check
-.venv/bin/python scripts/check_internal_links.py
-.venv/bin/python scripts/rebuild_legislation_discovery.py --check
-.venv/bin/python scripts/build_relationship_semantics.py --check
-.venv/bin/python scripts/build_bounded_relationship_navigation.py --check
-.venv/bin/python scripts/check_legislation_okf.py
-.venv/bin/python scripts/legislation_effects_evidence_archive.py check --snapshot-id legislation-effects-2026-07-25
-.venv/bin/python scripts/build_legislation_effects.py --check
-.venv/bin/python scripts/build_model_enrichment_input_evidence.py --check
-.venv/bin/python scripts/build_codex_semantic_enrichment.py --check
-.venv/bin/python scripts/build_codex_semantic_enrichment_v3.py check
-.venv/bin/python scripts/audit_codex_semantic_enrichment_v3.py check
-.venv/bin/python scripts/audit_model_assisted_v2_independent.py --check
-.venv/bin/python scripts/build_whole_law_evaluation.py --check
-.venv/bin/python scripts/run_release_evaluation.py --check
-.venv/bin/python scripts/run_yaml_ld_conformance.py --check
-.venv/bin/python scripts/run_ontology_competency_questions.py --check
-.venv/bin/python scripts/build_whole_law_okf.py --check
-.venv/bin/python scripts/run_semantic_conformance.py --check
-.venv/bin/python scripts/check_whole_law_okf.py
-.venv/bin/python scripts/audit_graph_enrichment_gate.py check
-.venv/bin/python scripts/build_release_assurance.py --check
-.venv/bin/python scripts/build_checksums.py --check
-.venv/bin/python scripts/reconcile_legislation_effects_live.py check
-.venv/bin/python scripts/source_access_evidence_archive.py check --run-id 20260725T203207Z-dd7315c3
-.venv/bin/python scripts/capture_whole_law_route_replacements.py check --run 20260726T005115Z-04a20f01
-.venv/bin/python scripts/capture_whole_law_route_replacements.py check --run 20260726T005723Z-c0f5a002
-.venv/bin/python scripts/capture_whole_law_route_replacements.py check --run 20260726T010545Z-c0f5a003
-.venv/bin/python scripts/audit_source_acquisition_gate.py check
-.venv/bin/python scripts/check_implementation_traceability.py --check
+uv run --locked python -m unittest discover -s tests -v
+uv run --locked python scripts/core03_snapshot.py
+uv run --locked python scripts/build_publication_docs.py --check
+uv run --locked python scripts/build_release_metadata.py --check
+uv run --locked python scripts/build_bundle_guides.py --check
+uv run --locked python scripts/check_internal_links.py
+uv run --locked python scripts/rebuild_legislation_discovery.py --check
+uv run --locked python scripts/build_relationship_semantics.py --check
+uv run --locked python scripts/build_bounded_relationship_navigation.py --check
+uv run --locked python scripts/check_legislation_okf.py
+uv run --locked python scripts/legislation_effects_evidence_archive.py check --snapshot-id legislation-effects-2026-07-25
+uv run --locked python scripts/build_legislation_effects.py --check
+uv run --locked python scripts/build_model_enrichment_input_evidence.py --check
+uv run --locked python scripts/build_codex_semantic_enrichment.py --check
+uv run --locked python scripts/build_codex_semantic_enrichment_v3.py check
+uv run --locked python scripts/audit_codex_semantic_enrichment_v3.py check
+uv run --locked python scripts/audit_model_assisted_v2_independent.py --check
+uv run --locked python scripts/build_whole_law_evaluation.py --check
+uv run --locked python scripts/run_release_evaluation.py --check
+uv run --locked python scripts/run_yaml_ld_conformance.py --check
+uv run --locked python scripts/run_ontology_competency_questions.py --check
+uv run --locked python scripts/build_whole_law_okf.py --check
+uv run --locked python scripts/run_semantic_conformance.py --check
+uv run --locked python scripts/check_whole_law_okf.py
+uv run --locked python scripts/audit_graph_enrichment_gate.py check
+uv run --locked python scripts/build_release_assurance.py --check
+uv run --locked python scripts/build_checksums.py --check
+uv run --locked python scripts/reconcile_legislation_effects_live.py check
+uv run --locked python scripts/source_access_evidence_archive.py check --run-id 20260725T203207Z-dd7315c3
+uv run --locked python scripts/capture_whole_law_route_replacements.py check --run 20260726T005115Z-04a20f01
+uv run --locked python scripts/capture_whole_law_route_replacements.py check --run 20260726T005723Z-c0f5a002
+uv run --locked python scripts/capture_whole_law_route_replacements.py check --run 20260726T010545Z-c0f5a003
+uv run --locked python scripts/audit_source_acquisition_gate.py check
+uv run --locked python scripts/check_implementation_traceability.py --check
 ```
 
 The preserved direct-API/paid-model profile is not part of either command
 sequence. It is historical and optional, requires a new explicit decision,
 and must not gate this Codex-only release or request an API key.
 
-The input-evidence builder/check must run after the base legislation corpus
-exists and before the governed Codex v3 build and independent review. It binds
-the complete 365,786-work order. Codex v3 records one terminal outcome for
+The preserved input evidence binds the complete 365,786-work order; its
+check remains mandatory in the projection recipe. Codex v3 records one terminal outcome for
 every work, publishes only evidence-supported candidate discovery metadata,
 and makes no direct OpenAI API call. The paid-publication check validates an
 optional future profile; its absence does not block this release.
@@ -272,14 +271,14 @@ Source refreshes create immutable attempts and datapacks; they do not rewrite
 historical evidence. The release sequence is fail-closed:
 `draft → candidate → validated → rc → published`.
 The [reproduction and promotion contract](release-assurance/reproduction-and-promotion.md)
-keeps `okf-uk-legislation-v0.4.0.tar.zst` byte-identical and identically named
-across the `v0.4.0-rc.1` and `v0.4.0` releases.
+requires the candidate `okf-uk-legislation-v0.5.0.tar.zst` to remain byte-identical
+and identically named across `v0.5.0-rc.1` and `v0.5.0`.
 
-OKF Explorer `v0.8.1` is the release consumer for this publication. The
-release receipt binds its exact commit and deployed Pages identity before the
-Legislation release is promoted. Historical Explorer releases remain in their
-own changelog and immutable GitHub releases; they are not the active contract
-for this bundle.
+OKF Explorer `v0.9.2` is the consumer for the unreleased Core 0.3 candidate.
+The active contract binds its immutable tag, exact commit, deployed Pages
+archive and all 67 application files. Codex Security 0.1.33 has a separate
+explicit schema pin; an actual matching scan and all release gates are still
+required. The published v0.4.0 release and its older acceptance remain history.
 
 [legislation-explorer]: https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fokf-explorer.json&view=reader#overview
 [whole-law-explorer]: https://chris-page-gov.github.io/okf-explorer/?bundle=https%3A%2F%2Fchris-page-gov.github.io%2Fokf-uk-legislation%2Fwhole-law%2Fokf-explorer.json&view=reader#overview
@@ -314,3 +313,9 @@ preserve Explorer memory limits and offer individually scoped work routes.
 ## OKF standards and bundle discovery
 
 The [central standards register](https://github.com/chris-page-gov/okf-explorer/blob/main/docs/okf-standards.md) records current and historical OKF specifications, version-specific pins and the public bundle catalogue. Use the [machine-readable register](https://raw.githubusercontent.com/chris-page-gov/okf-explorer/main/registry/okf-standards.json) to resolve the version implemented by this repository.
+
+## Core 0.3 development
+
+The [migration candidate and acceptance boundaries](docs/okf-03-migration.md)
+cover UK Legislation and Whole-Law separately. The published release table above
+remains historical until the new candidate passes all release gates.

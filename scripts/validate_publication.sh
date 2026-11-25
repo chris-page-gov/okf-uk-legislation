@@ -50,9 +50,11 @@ phase_enabled() {
 
 if phase_enabled core; then
   run_step "publication contract" python3 scripts/check_publication_contract.py
+  run_step "frozen Core 0.2 source inputs" python3 scripts/core03_snapshot.py
   run_step "unit suite" python3 -m unittest discover -s tests -v
   run_step "release metadata" python3 scripts/build_release_metadata.py --check
   run_step "publication documentation" python3 scripts/build_publication_docs.py --check
+  run_step "complete AI context and complex question" python3 scripts/build_bundle_guides.py --check
   run_step "internal links" python3 scripts/check_internal_links.py
   run_step "fixture build" python3 scripts/build_legislation_okf.py \
     --fixture tests/fixtures/legislation_okf/sample.feed.xml \

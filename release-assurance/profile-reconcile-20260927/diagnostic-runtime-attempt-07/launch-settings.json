@@ -1,0 +1,8 @@
+{
+  "observed_at": "2026-11-25T05:19:11.045533+00:00",
+  "scope": "Diagnostic v1 only; mutable producer and clean pre-publication Reader. Final frozen release acceptance remains separate.",
+  "reader_commit": "9de91464c1e52c8a3f5d806a7c1c0b9029197bd4",
+  "application_data_scope": "This owned native invocation and its child processes only; HOME and macOS permissions unchanged.",
+  "CFFIXED_USER_HOME": "/Volumes/ExtSSD-Data/codex-okf-03-staging-20261123/uk-legislation/tmp/native092-app-data-0_vxmp0_",
+  "upstream_issue": "https://github.com/microsoft/playwright/issues/42768"
+}

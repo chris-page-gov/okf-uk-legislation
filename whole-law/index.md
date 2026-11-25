@@ -1,5 +1,5 @@
 ---
-okf_version: "0.2"
+okf_version: "0.3"
 ---
 
 # UK Whole-Law OKF
@@ -14,18 +14,18 @@ advice, a claim that every source is complete, or a substitute for checking the
 controlling source, jurisdiction, date, extent, version and subsequent
 treatment.
 
-## Published release
+## Format and source snapshots
 
-This publication is part of
-[Legislation/Whole-Law v0.4.0](https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.4.0),
-published on **3 November 2026**. It uses the **OKF 0.2** specification. Its
-source-access snapshot is dated 25 July 2026; the implemented Legislation
-child's catalogue snapshot is dated 11 July 2026.
+This candidate uses Core 0.3 and identifies bundle version 0.5.0. Its format
+implementation date is 24 November 2026. Publication and acceptance are recorded
+in the [release history](https://github.com/chris-page-gov/okf-uk-legislation/releases).
 
-The release version and the OKF specification version are independent: this is
-bundle release **v0.4.0**, authored to the **OKF 0.2** profile. The source
-snapshots remain dated July 2026; publishing the corrected semantics and
-interfaces in November does not imply that upstream source data was refreshed.
+The source-access snapshot remains 25 July 2026 and the Legislation child's
+catalogue snapshot remains 11 July 2026. Format migration does not refresh
+sources, determine current law or establish a new human review.
+
+Use the central [current and historical standards register](https://github.com/chris-page-gov/okf-explorer/blob/main/docs/okf-standards.md)
+and [bundle catalogue](https://github.com/chris-page-gov/okf-explorer/blob/main/registry/okf-estate-registry.yaml).
 
 ## Start here
 

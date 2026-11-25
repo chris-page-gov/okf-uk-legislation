@@ -1,6 +1,6 @@
 {
   "schema": "okf-repository-publication-contract.v1",
-  "modified": "2026-11-18",
+  "modified": "2026-11-25",
   "locale": "en-GB",
   "time_zone": "Europe/London",
   "repository": {
@@ -12,7 +12,7 @@
   },
   "semantic_contract": {
     "path": "bundle/okf-bundle.yamlld",
-    "profile": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/"
+    "profile": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v2/"
   },
   "source_families": [
     {
@@ -24,7 +24,8 @@
         "evidence/**",
         "enrichment/**",
         "research/**",
-        "whole-law/**"
+        "whole-law/**",
+        "source/**"
       ],
       "formats": [
         "application/json",
@@ -172,6 +173,36 @@
       {
         "path": "profiles/**",
         "role": "policy"
+      },
+      {
+        "path": "pyproject.toml",
+        "role": "policy"
+      },
+      {
+        "path": "uv.lock",
+        "role": "policy"
+      },
+      {
+        "path": ".python-version",
+        "role": "policy"
+      },
+      {
+        "path": "source/**",
+        "role": "source-register",
+        "source_family_id": "governed-snapshot-inputs"
+      },
+      {
+        "path": "walkthroughs/**",
+        "role": "content",
+        "source_family_id": "governed-snapshot-inputs"
+      },
+      {
+        "path": ".gitignore",
+        "role": "policy"
+      },
+      {
+        "path": ".github/actions/**",
+        "role": "workflow"
       }
     ],
     "generated": [
@@ -275,7 +306,8 @@
         "evidence/**",
         "enrichment/**",
         "research/**",
-        "whole-law/**"
+        "whole-law/**",
+        "source/**"
       ],
       "command_ids": [
         "validate-publication"
@@ -330,7 +362,8 @@
         "publication/**",
         "web/**",
         "scripts/build_publication_docs.py",
-        "scripts/publication_html.py"
+        "scripts/publication_html.py",
+        "walkthroughs/**"
       ],
       "command_ids": [
         "check-contract",
@@ -352,7 +385,11 @@
         "requirements-validation.in",
         "requirements-validation.txt",
         "scripts/**",
-        "tests/**"
+        "tests/**",
+        "pyproject.toml",
+        "uv.lock",
+        ".python-version",
+        ".github/actions/**"
       ],
       "command_ids": [
         "check-contract",
@@ -397,7 +434,7 @@
           "documentation",
           "release"
         ],
-        "command": "python3 scripts/check_publication_contract.py",
+        "command": "uv run --locked python scripts/check_publication_contract.py",
         "source": "AGENTS.md",
         "review_status": "reviewed-local-guidance",
         "network": "none",
@@ -410,7 +447,7 @@
         "planes": [
           "documentation"
         ],
-        "command": "python3 scripts/check_documentation_lockstep.py",
+        "command": "uv run --locked python scripts/check_documentation_lockstep.py",
         "source": "AGENTS.md",
         "review_status": "reviewed-local-guidance",
         "network": "none",
@@ -428,7 +465,7 @@
           "release",
           "deployment"
         ],
-        "command": "sh scripts/validate_publication.sh",
+        "command": "uv run --locked sh scripts/validate_publication.sh",
         "source": "AGENTS.md",
         "review_status": "reviewed-local-guidance",
         "network": "none",
@@ -455,7 +492,14 @@
       "publication/**",
       "web/**",
       "okf.semantic.json",
-      "profiles/**"
+      "profiles/**",
+      "pyproject.toml",
+      "uv.lock",
+      ".python-version",
+      "source/**",
+      "walkthroughs/**",
+      ".gitignore",
+      ".github/actions/**"
     ],
     "documentation_paths": [
       "README.md",
@@ -563,8 +607,10 @@
   "limitations": [
     "The complete validator remains one fail-closed frozen-candidate gate. Focused checks are used during correction so small documentation changes do not repeatedly rebuild the corpus.",
     "Pages serves a separately assembled typed Reader transport after its legislation phase validates it. The descriptor binds that transport receipt and its immutable checked-in work inputs. Historical enrichment verification uses those checked-in inputs.",
+    "The typed Pages projection encodes only the selected current Whole-Law evaluation answers.json as exact-byte deterministic gzip, bound by data/reader-transport/v1/payload-encoding.json. The canonical bundle, Whole-Law integrity manifest and release archive retain the original JSON bytes; typed-site integrity must decode and verify the declared representation.",
     "GitHub Pages serves YAML-LD as application/octet-stream; strict JSON-LD remains the transport fallback.",
     "WebMCP is a W3C Community Group draft. Successful page-tool registration does not establish that every host can discover or invoke those tools.",
-    "The historical v0.3.0 release remains immutable; v0.4.0 is a distinct release and does not rewrite its evidence."
+    "The historical v0.3.0 release remains immutable; v0.4.0 is a distinct release and does not rewrite its evidence.",
+    "The Core 0.3 projection pins the accepted Core 0.2 source manifest rather than relabelling historical evidence."
   ]
 }

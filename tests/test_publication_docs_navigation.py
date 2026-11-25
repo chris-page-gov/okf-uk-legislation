@@ -68,6 +68,22 @@ class PublicationDocsNavigationTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "conflicts"):
                     publication.files()
 
+    def test_discovery_interfaces_publish_the_versioned_payload_encoding_receipt(self) -> None:
+        interface = next(
+            row for row in publication.interface_manifest()["interfaces"]
+            if row["id"] == "evaluation-payload-encoding"
+        )
+        self.assertEqual("okf-reader-payload-encoding.v1", interface["kind"])
+        self.assertEqual(
+            "https://chris-page-gov.github.io/okf-uk-legislation/"
+            "data/reader-transport/v1/payload-encoding.json",
+            interface["url"],
+        )
+        self.assertIn("canonical answer bytes remain", interface["scope"])
+        self.assertEqual(
+            interface["url"], publication.discovery_document()["ai_payload_encodings"]
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

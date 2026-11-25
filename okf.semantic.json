@@ -1,8 +1,8 @@
 {
   "okf_core": {
-    "specification": "https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md",
+    "specification": "https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md",
     "status": "conformant",
-    "version": "0.2"
+    "version": "0.3"
   },
   "reader": {
     "consumer": "https://chris-page-gov.github.io/okf-explorer/",
@@ -55,7 +55,7 @@
     "role": "federation",
     "root_index": "whole-law/index.md"
   },
-  "schema": "okf-repository-semantic-contract.v1",
+  "schema": "okf-repository-semantic-contract.v2",
   "semantic_layer": {
     "authoritative_inputs": [
       "bundle/data/works-*.json.gz",
@@ -66,7 +66,8 @@
       "enrichment/model-assisted-v1-independent-audit.json",
       "whole-law/ontology/",
       "whole-law/schemas/semantic-assertion.schema.json",
-      "scripts/build_relationship_semantics.py"
+      "scripts/build_relationship_semantics.py",
+      "source/core03-frozen-inputs.json"
     ],
     "context_policy": "pinned-local-contexts-no-browser-remote-expansion",
     "identity_policy": "absolute-semantic-iri-plus-validated-local-route",
@@ -74,7 +75,8 @@
       "Bundle version 0.4.0 publishes this semantic projection. The immutable v0.3.0 release predates it and remains unchanged.",
       "bundle/data/manifest.json is immutable accepted-v3 input evidence and is not rewritten to advertise the additive relationship runtime. The root and Whole-Law descriptors independently bind that runtime by exact path, SHA-256 and byte count.",
       "High-degree aggregate topic/type routes can exceed the Reader's 64-chunk or 100,000-row browser hydration ceiling. The Reader fails before shard fetch and reports the committed fan-out; use a paginated or offline analytical query rather than raising the bounded browser ceiling.",
-      "Whole-Law extension details are projected into namespaced extensions; the public child descriptors use canonical absolute URLs."
+      "Whole-Law extension details are projected into namespaced extensions; the public child descriptors use canonical absolute URLs.",
+      "Core 0.3 migration on 24 November 2026 preserves the accepted Core 0.2 manifest and all pinned inputs. Whole-Law v1 domain identities and 16 frozen v1 structural files remain unchanged. The live federation uses the distinct Core 0.3 federation profile v2."
     ],
     "outputs": [
       {
@@ -204,21 +206,21 @@
         "role": "semantic-validation"
       }
     ],
-    "profile": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/",
+    "profile": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v2/",
     "state": "generated-yaml-ld-sharded-graph"
   },
   "tooling": {
     "build": [
-      "python3 scripts/rebuild_legislation_discovery.py",
-      "python3 scripts/build_relationship_semantics.py",
-      "python3 scripts/build_whole_law_okf.py"
+      "uv run --locked python scripts/rebuild_legislation_discovery.py",
+      "uv run --locked python scripts/build_relationship_semantics.py",
+      "uv run --locked python scripts/build_whole_law_okf.py"
     ],
     "check": [
-      "python3 scripts/check_legislation_okf.py",
-      "python3 scripts/build_relationship_semantics.py --check",
-      "python3 scripts/check_whole_law_okf.py",
-      "python3 scripts/run_semantic_conformance.py --check",
-      "python3 ../okf-explorer/scripts/reconcile_okf_repositories.py --repo . --strict"
+      "uv run --locked python scripts/check_legislation_okf.py",
+      "uv run --locked python scripts/build_relationship_semantics.py --check",
+      "uv run --locked python scripts/check_whole_law_okf.py",
+      "uv run --locked python scripts/run_semantic_conformance.py --check",
+      "uv run --locked python ../okf-explorer/scripts/reconcile_okf_repositories.py --repo . --strict"
     ]
   }
 }

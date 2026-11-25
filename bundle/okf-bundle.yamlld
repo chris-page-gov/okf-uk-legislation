@@ -22,9 +22,9 @@
   "license": {
     "@id": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
   },
-  "okf_version": "0.2",
+  "okf_version": "0.3",
   "profile": {
-    "@id": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/"
+    "@id": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v2/"
   },
   "publisher": {
     "@id": "https://github.com/chris-page-gov"
@@ -37,5 +37,5 @@
   },
   "status": "stable",
   "title": "UK Legislation OKF",
-  "version": "0.4.0"
+  "version": "0.5.0"
 }

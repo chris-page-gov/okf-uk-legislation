@@ -8,3 +8,6 @@ tmp/
 _site/
 evidence/source-acquisitions/whole-law-access/.partial-*/
 evidence/source-acquisitions/legislation-effects/legislation-effects-*/
+
+# Governed local Python environment.
+.venv/

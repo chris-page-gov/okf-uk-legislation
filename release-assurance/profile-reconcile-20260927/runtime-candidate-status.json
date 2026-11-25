@@ -3,14 +3,23 @@
   "status": "release-blocked",
   "technical_checks": "passed",
   "release_eligible": false,
-  "consumer_commit": "26af7231c8350d123bbd72324dfbfeca9feaa497",
+  "consumer_commit": "9de91464c1e52c8a3f5d806a7c1c0b9029197bd4",
   "receipt": {
-    "path": "release-assurance/profile-reconcile-20260927/diagnostic-runtime-attempt-06/explorer-runtime-acceptance.json",
-    "bytes": 102637,
-    "sha256": "6e3c528dc9299466cf4ed08653fd9d96c2929f56c64eacc56bb6689030347199"
+    "path": "release-assurance/profile-reconcile-20260927/diagnostic-runtime-attempt-07/explorer-runtime-acceptance.json",
+    "bytes": 120814,
+    "sha256": "aa301ac5a3e90621e0e6dfcc67b5a863e484b704b5500d41f6b4098a10068bb5"
   },
   "runtime_checks_passed": 12,
   "integrity_checks_passed": 8,
-  "reason": "All three browser journeys and integrity checks passed, but this diagnostic is deliberately release-ineligible. The existing bound release contract requires Explorer v0.6.2 and a clean, annotated matching checkout; the current implementation is package 0.7.0. No threshold, receipt status or historical tag was changed to waive this requirement.",
-  "next_step": "Review a separately versioned runtime release profile for the current Explorer version, then bind clean candidate and annotated consumer identities. Keep v0.3.0 unchanged and do not promote this diagnostic to release authority."
+  "reason": "The 25 November 2026 native diagnostic passes all detailed Explorer queryability, browser, accessibility, performance and integrity checks. It is retained for embedded G05 queryability only and remains deliberately release-ineligible; the formal release and promotion controller still requires a clean, annotated, release-bound v2 receipt.",
+  "next_step": "Obtain and review the actual clean, annotated Explorer v0.9.2 release-bound v2 acceptance receipt, then satisfy the unchanged formal release and promotion controller. Do not promote this v1 diagnostic or change the final v2 guard.",
+  "embedded_queryability": {
+    "status": "passed",
+    "evidence_class": "diagnostic",
+    "release_eligible": false,
+    "scope": "G05 embedded queryability only",
+    "observed_on": "2026-11-25",
+    "source_receipt": "/Users/crpage/tmp/okf-unattended/estate-03-acceptance/legislation-review/native-core03-v1-fifth/explorer-runtime-acceptance.json",
+    "source_sha256": "aa301ac5a3e90621e0e6dfcc67b5a863e484b704b5500d41f6b4098a10068bb5"
+  }
 }

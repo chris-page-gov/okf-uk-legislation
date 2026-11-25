@@ -18,66 +18,66 @@
     "The evaluation covers corpus-navigation metadata, not legal-answer correctness or qualified legal assurance."
   ],
   "release": {
-    "archive": "okf-uk-legislation-v0.4.0.tar.zst",
+    "archive": "okf-uk-legislation-v0.5.0.tar.zst",
     "candidate": {
-      "final_tag": "v0.4.0",
-      "rc_tag": "v0.4.0-rc.1",
+      "final_tag": "v0.5.0",
+      "rc_tag": "v0.5.0-rc.1",
       "repository": "https://github.com/chris-page-gov/okf-uk-legislation"
     },
     "explorer": {
-      "ci_workflow_run_id": 41659154521,
-      "git_tree": "87487a50c10f0dce144b1530b6a97de6e1277aff",
+      "ci_workflow_run_id": 45552712413,
+      "git_tree": "ea01a79472061b1bbf4179ad809a8b78dad69152",
       "pages_workflow": "pages.yml",
-      "pages_workflow_run_id": 41663805875,
+      "pages_workflow_run_id": 45556087556,
       "release_asset": {
-        "asset_id": 706118888,
-        "bytes": 189110263,
-        "name": "okf-explorer-v0.8.1-pages-artifact.zip",
-        "sha256": "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1",
-        "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.8.1/okf-explorer-v0.8.1-pages-artifact.zip"
+        "asset_id": 790300679,
+        "bytes": 199260836,
+        "name": "okf-explorer-v0.9.2-pages-artifact.zip",
+        "sha256": "e9c90628f815b177f756231ef4101671ebf0911d1f0525d08aa8f786ba89d779",
+        "url": "https://github.com/chris-page-gov/okf-explorer/releases/download/v0.9.2/okf-explorer-v0.9.2-pages-artifact.zip"
       },
       "repository": "https://github.com/chris-page-gov/okf-explorer",
-      "required_commit": "dcd0c43e29593436b13c59271c75d37d06e2b754",
-      "required_tag": "v0.8.1",
-      "required_tag_object": "ad3ec81c40dd128da75eeabb4325a65b060048b0",
+      "required_commit": "acf23958aa1ce11ec52c41313649b20d24f17609",
+      "required_tag": "v0.9.2",
+      "required_tag_object": "9b583053719259f5962fe7b4bce392420e1b9db7",
       "runtime_provenance": {
         "pages": {
-          "artifact_id": 13245490839,
+          "artifact_id": 14995464665,
           "artifact_name": "github-pages",
           "artifact_tar": {
-            "bytes": 834416640,
-            "sha256": "1cb52fe47e6568447cfc35d50f6e6c8d997459a4e73d85341d38a7409b04fb81"
+            "bytes": 858245120,
+            "sha256": "daeac57516c8ec0d64b99cdaf5d15dbc0e28a0f7ae81adaf9d2d4c1903fd9336"
           },
           "artifact_zip": {
-            "bytes": 189110263,
-            "sha256": "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1"
+            "bytes": 199260836,
+            "sha256": "e9c90628f815b177f756231ef4101671ebf0911d1f0525d08aa8f786ba89d779"
           },
           "build_index": {
-            "bytes": 17696,
+            "bytes": 18449,
             "path": "index.html",
-            "sha256": "b1224b22be0ee8659ae928d0abd9b56c2d124600a3cc77deecb1c494d967d027"
+            "sha256": "6860b8769479eb1d5938f00ba164b3f2a5089ce604d4640efa7ecb82d8eedd55"
           },
           "build_manifest": {
-            "bytes": 7398,
+            "bytes": 11412,
             "path": "okf-explorer-build-manifest.json",
-            "sha256": "8c1c0394806ed4d466f5adee7084a807543664e2dde776eef7fab26998c56a69"
+            "sha256": "351a0b828c7571d10554e3cbb13c502cd0f06ea48a59cab84ce84235b0820b33"
           },
           "build_tree": {
             "algorithm": "sha256-canonical-json-materials-v1",
-            "files": 43,
-            "sha256": "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4"
+            "files": 67,
+            "sha256": "ab0c8afb2823c7945ceae0b977bd648cc17c89bdaf4174086aa1c2306399a388"
           },
-          "commit": "dcd0c43e29593436b13c59271c75d37d06e2b754",
+          "commit": "acf23958aa1ce11ec52c41313649b20d24f17609",
           "run_attempt": 1,
-          "run_id": 41663805875,
-          "workflow_bytes": 9283,
+          "run_id": 45556087556,
+          "workflow_bytes": 9991,
           "workflow_path": ".github/workflows/pages.yml",
-          "workflow_sha256": "afcf0b17d2700fed35664b33a4d6ca7ef8cd3b982b69c2ea1ad0687dcc9eadf0"
+          "workflow_sha256": "916efe0b396281df5de7114fded87694c922c7f5d28f05f779b0684fedc8bc71"
         },
         "runner": {
-          "bytes": 98104,
+          "bytes": 98344,
           "path": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs",
-          "sha256": "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281"
+          "sha256": "d024df239a2a6dab58006e9e334c375cecaa69ce759feb0300f6f504754cb725"
         },
         "site_assembly": {
           "app_manifest_module": {
@@ -86,9 +86,9 @@
             "sha256": "6750dfe9ab09eeea945525473c9919e4d308e7f9a87f748244cbcd13e8b1d867"
           },
           "assembler": {
-            "bytes": 75971,
+            "bytes": 83041,
             "path": "scripts/build_site.py",
-            "sha256": "8aed583a894d1a9e6f511b2fb7980d41accf1e0423d1e81292f1a934332d3140"
+            "sha256": "348964a1ad1c445fbf33c5359832c24c0c424d54de710a8e34c21779d2313947"
           },
           "verifier": {
             "bytes": 1435,
@@ -217,27 +217,27 @@
         "No browser, public HTTP or compatibility-host result was inferred from a local descriptor check."
       ],
       "corpus_navigation_score": 100,
-      "executed_at": "2026-11-03T18:48:19Z",
+      "executed_at": "2026-11-25T06:48:05Z",
       "hard_failures": [],
       "materials": [
         {
-          "bytes": 7085,
+          "bytes": 7981,
           "path": "bundle/whole-law/evaluation/executions/index.json",
-          "sha256": "8ca0ac6bbd90209e3697fe4c315a0dff058228afe1924019c62ad1aecf142bc4"
+          "sha256": "dce528edb83157d4d840d328341dfee9c732a1eb33116b516e7e9bc46fffea95"
         },
         {
           "bytes": 3125672,
-          "path": "bundle/whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/results.json",
-          "sha256": "320f271b03b8c487f3e4e26463d914db07191e89500f23224a0d0c0f330dd36d"
+          "path": "bundle/whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/results.json",
+          "sha256": "b7ec6585cf0a4307e382d49a7d3562988a39577e980f2e41240a0280d19d497e"
         },
         {
           "bytes": 10678,
-          "path": "bundle/whole-law/evaluation/executions/eval-a8b12d5facb86443fd21/scores.json",
+          "path": "bundle/whole-law/evaluation/executions/eval-76d593e3295063f2cbe5/scores.json",
           "sha256": "8228f85adbf098493e28892d5901c15d2f7ce11ea2e84d82b97281b778a3642c"
         }
       ],
       "minimum_critical_family_score": 100,
-      "run_id": "eval-a8b12d5facb86443fd21",
+      "run_id": "eval-76d593e3295063f2cbe5",
       "scope": "corpus-navigation-metadata",
       "status": "passed"
     },
@@ -250,9 +250,9 @@
         "total": 26
       },
       "source": {
-        "bytes": 23568,
+        "bytes": 22946,
         "path": "release-assurance/gap-register.json",
-        "sha256": "3aa64f6613ea1e8e78423eb8d369e1dc6cd9b568ea2ebbb6b6e4acd206e47ccd"
+        "sha256": "48b3cbbc8d79748effd79db9d633f027d4fb5510c65a003d6bca05f6fc901d6c"
       },
       "unresolved": [
         {
@@ -266,10 +266,10 @@
         {
           "area": "browser, accessibility and performance",
           "id": "IMP-GAP-012",
-          "next_action": "Bind and rerun the Chrome, Firefox and WebKit receipt against published Explorer v0.8.1 commit dcd0c43e29593436b13c59271c75d37d06e2b754 and the frozen Legislation descriptor digests, then record that binding in external finalization evidence.",
+          "next_action": "Run and bind fresh Chrome, Firefox and WebKit acceptance against immutable Explorer v0.9.2 commit acf23958aa1ce11ec52c41313649b20d24f17609 and the exact frozen Core 0.3 Legislation revision, descriptors and complete inventory. Retain separate public, clean-reproduction and release gates.",
           "release_effect": "blocks-GATE-07-and-GATE-08",
           "status": "blocked",
-          "summary": "A digest-bound mutable-candidate Explorer receipt passes all 12 runtime checks across Chrome, Firefox and WebKit with zero serious or critical accessibility violations. Explorer v0.5.0 remains the completed release-order milestone and v0.5.1 through v0.5.4 remain historical corrective releases. Explorer v0.8.0 was published from annotated tag object 81dec80cd14c1acc63f92ece5c51e7f1fe3279c2, peeling to protected-main commit 99f9e809fc17ee458f68eb742e8f440422b63432 and tree eb9991832f6f9b3b7f5fe4116b794b16bc242397, with green CI run 41646267903, Pages run 41650465220 and durable release asset SHA-256 940e02c435392bc78499f3e7cb124350d00ad1a2c81f3a8c0714f7880a0e94ff. The active prerequisite is published Explorer v0.8.1: annotated tag object ad3ec81c40dd128da75eeabb4325a65b060048b0 peels to protected-main commit dcd0c43e29593436b13c59271c75d37d06e2b754 and tree 87487a50c10f0dce144b1530b6a97de6e1277aff; CI run 41659154521 and Pages run 41663805875 passed. Its durable 189,110,263-byte Pages release asset has SHA-256 6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1 and asset ID 706118888; its 43-file application tree has SHA-256 5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4. Binding v0.8.1 to the frozen Legislation candidate is externally closable only after exact freeze."
+          "summary": "Historical consumer and mutable-candidate evidence remains preserved. The active v0.5.0 candidate pins immutable Explorer v0.9.2, tag object 9b583053719259f5962fe7b4bce392420e1b9db7, protected CI 45552712413 and Pages 45556087556. Its 199,260,836-byte ZIP, 858,245,120-byte TAR, 11,328-file inventory and 67-file application tree have independent exact-byte checks and fresh producer observations. Candidate-specific release-bound runtime, accessibility and performance acceptance remains pending; consumer archive identity does not establish those gates."
         },
         {
           "area": "public access and links",
@@ -1445,9 +1445,9 @@
             "sha256": "f67a578990c970b9e87c8c25975c74437a38cbe72ff4909f51000ca68b675f55"
           },
           {
-            "bytes": 23901,
+            "bytes": 23961,
             "path": "whole-law/assurance/graph-enrichment-gate-20260726.json",
-            "sha256": "6da9de74f5a24d2c67eba25b88a8e5d49ae214496c3d6051e067c128b7d66f4a"
+            "sha256": "5f4f66ed721dc8b56917a3de7b996d3a539c5beea343e7c89b3f4628a4bd3220"
           },
           {
             "bytes": 96352,
@@ -1516,7 +1516,7 @@
       "source": {
         "bytes": 6778,
         "path": "bundle/release-assurance/model-cost-report.json",
-        "sha256": "2d833d854585ec767ca90e089e0a423a89920ad58317c28bcec3ce0403713e65"
+        "sha256": "4c978c605f14397f313882c8c3ae4a2a208711e033c83933565131c307f83373"
       },
       "source_kind": "governed-codex-assisted-v3",
       "usage": {

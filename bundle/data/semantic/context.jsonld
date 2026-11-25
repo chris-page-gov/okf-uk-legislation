@@ -6,6 +6,7 @@
       "@id": "okf:authority",
       "@type": "@json"
     },
+    "core_role": "https://chris-page-gov.github.io/okf-explorer/ns#coreRole",
     "counts": {
       "@id": "okf:counts",
       "@type": "@json"

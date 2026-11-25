@@ -149,10 +149,14 @@ class PagesInterfaceTests(unittest.TestCase):
 
     def test_public_home_explains_release_and_snapshot_dates(self) -> None:
         home = (BUNDLE / "index.html").read_text()
-        self.assertIn("Published bundle v0.4.0", home)
-        self.assertIn("3 November 2026", home)
+        self.assertIn("Bundle v0.5.0", home)
+        self.assertIn("format implementation dated 24 November 2026", home)
         self.assertIn("11 July 2026 at 18:00 UTC", home)
-        self.assertIn("does not claim that the July source snapshots were refreshed", home)
+        self.assertIn("Whole-Law source-access snapshot is 25 July 2026", home)
+        self.assertIn("Format migration retains the July source snapshots", home)
+        self.assertIn("release history", home)
+        self.assertIn("publication and acceptance", home)
+        self.assertNotIn("Published bundle v0.5.0", home)
 
 
 if __name__ == "__main__":

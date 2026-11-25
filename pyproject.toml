@@ -1,0 +1,75 @@
+[project]
+name = "okf-uk-legislation-tooling"
+version = "0.0.0"
+description = "Governed offline Legislation and Whole-Law validation"
+requires-python = "==3.12.11"
+dependencies = [
+    "certifi==2026.10.19",
+    "jsonschema==4.25.1",
+    "PyLD==2.0.4",
+    "pyshacl==0.30.1",
+    "PyYAML==6.0.2",
+    "rdflib==7.6.0",
+    "urllib3==2.8.0",
+    "yaml-ld==1.1.22",
+    "zstandard==0.23.0"
+]
+
+[tool.uv]
+package = false
+required-version = "==0.13.4"
+environments = ["sys_platform == 'darwin' or sys_platform == 'linux'"]
+constraint-dependencies = [
+    "annotated-doc==0.0.4",
+    "annotated-types==0.8.0",
+    "attrs==26.1.0",
+    "beautifulsoup4==4.15.0",
+    "cachetools==7.1.6",
+    "cattrs==26.1.0",
+    "certifi==2026.10.19",
+    "charset-normalizer==3.4.9",
+    "documented==0.1.4",
+    "frozendict==2.4.7",
+    "funcy==2.0",
+    "html5rdf==1.2.1",
+    "idna==3.18",
+    "jsonschema==4.25.1",
+    "jsonschema-specifications==2025.9.1",
+    "lxml==6.1.1",
+    "markdown-it-py==4.2.0",
+    "mdurl==0.1.2",
+    "multidict==6.7.1",
+    "owlrl==7.6.2",
+    "packaging==26.2",
+    "platformdirs==4.11.0",
+    "prettytable==3.18.0",
+    "propcache==0.5.2",
+    "pydantic==2.13.4",
+    "pydantic-core==2.46.4",
+    "pygments==2.20.0",
+    "pyld==2.0.4",
+    "pyparsing==3.3.2",
+    "pyshacl==0.30.1",
+    "python-frontmatter==1.3.0",
+    "pyyaml==6.0.2",
+    "rdflib==7.6.0",
+    "rdflib-pyld-compat==0.1.0",
+    "referencing==0.37.0",
+    "requests==2.34.2",
+    "requests-cache==1.3.3",
+    "rich==15.0.0",
+    "rpds-py==2026.6.3",
+    "ruamel-yaml==0.19.1",
+    "shellingham==1.5.4",
+    "soupsieve==2.9.1",
+    "testfixtures==12.3.0",
+    "typer==0.27.0",
+    "typing-extensions==4.16.0",
+    "typing-inspection==0.4.2",
+    "url-normalize==3.0.0",
+    "urllib3==2.8.0",
+    "wcwidth==0.8.2",
+    "yaml-ld==1.1.22",
+    "yarl==1.24.5",
+    "zstandard==0.23.0"
+]

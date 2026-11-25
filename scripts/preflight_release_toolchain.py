@@ -191,7 +191,7 @@ def run(args: argparse.Namespace) -> dict:
     finalization.validate_schema(runtime, ROOT / "release-assurance/schemas/explorer-runtime-receipt.schema.json", "real Explorer runtime fixture")
     invocation = runtime.get("invocation")
     if not isinstance(invocation, dict) or invocation.get("release_eligible") is not True:
-        raise RuntimeError("the real v0.8.1 fixture must retain release invocation evidence")
+        raise RuntimeError("the real pinned Explorer fixture must retain release invocation evidence")
     binding = runtime["candidate"]
     finalization.reconstruct_explorer_runtime(
         runtime, contract=json.loads((ROOT / "release-assurance/external-finalization-contract.json").read_text()),

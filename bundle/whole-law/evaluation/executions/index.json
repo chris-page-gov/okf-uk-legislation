@@ -1,5 +1,5 @@
 {
-  "execution_count": 15,
+  "execution_count": 17,
   "executions": [
     {
       "corpus_binding_sha256": "ba98e7c72ccbc67697890227c1e738eb8a9f9005ea76ace4f319603bd5c9495a",
@@ -135,9 +135,27 @@
       "report": "eval-a8b12d5facb86443fd21/report.md",
       "results": "eval-a8b12d5facb86443fd21/results.json",
       "run_id": "eval-a8b12d5facb86443fd21"
+    },
+    {
+      "corpus_binding_sha256": "7f68f7495e7163add32f34dac5d1f7f1c06a42ab11a447f843156b8c9f154f2f",
+      "decision": "blocked-pending-deployed-access-journey-receipts",
+      "executed_at": "2026-11-24T18:14:21Z",
+      "integrity": "eval-1edbcf9ff765b952ee03/integrity.json",
+      "report": "eval-1edbcf9ff765b952ee03/report.md",
+      "results": "eval-1edbcf9ff765b952ee03/results.json",
+      "run_id": "eval-1edbcf9ff765b952ee03"
+    },
+    {
+      "corpus_binding_sha256": "d151236343bee80ee809ee59986b953c991c6da9456ceeea57c535cdd0d8764e",
+      "decision": "blocked-pending-deployed-access-journey-receipts",
+      "executed_at": "2026-11-25T06:48:05Z",
+      "integrity": "eval-76d593e3295063f2cbe5/integrity.json",
+      "report": "eval-76d593e3295063f2cbe5/report.md",
+      "results": "eval-76d593e3295063f2cbe5/results.json",
+      "run_id": "eval-76d593e3295063f2cbe5"
     }
   ],
   "generated_at": "2026-07-25T22:54:00Z",
-  "latest_run_id": "eval-a8b12d5facb86443fd21",
+  "latest_run_id": "eval-76d593e3295063f2cbe5",
   "schema": "okf-evaluation-execution-index.v1"
 }

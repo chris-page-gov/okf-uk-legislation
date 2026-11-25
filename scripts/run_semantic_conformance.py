@@ -48,7 +48,7 @@ PUBLISHED_YAML = PACK / "okf-bundle.yamlld"
 GENERATED_JSONLD = PACK / "okf-bundle.jsonld"
 GENERATED_TURTLE = PACK / "okf-bundle.ttl"
 CONTEXT = SOURCE / "ontology" / "context.jsonld"
-SHAPES = SOURCE / "ontology" / "shapes.ttl"
+SHAPES = SOURCE / "ontology" / "shapes-core03.ttl"
 VOCABULARY = SOURCE / "ontology" / "vocabulary.ttl"
 EXAMPLES = SOURCE / "ontology" / "examples.jsonld"
 SOURCE_REGISTER = PACK / "data" / "source-register.json"
@@ -546,6 +546,7 @@ def build_receipt() -> tuple[dict[str, Any], list[str]]:
     for relative in (
         Path("ontology/context.jsonld"),
         Path("ontology/shapes.ttl"),
+        Path("ontology/shapes-core03.ttl"),
         Path("ontology/vocabulary.ttl"),
         *(
             Path("schemas") / path.name

@@ -175,5 +175,17 @@ class InternalLinkTests(unittest.TestCase):
                 self.assertEqual(payload[field], expected)
 
 
+class RenderedWalkthroughLinkTests(unittest.TestCase):
+    def test_current_rendered_sources_are_checked_and_have_no_template_links(self):
+        pages = links.authored_pages()
+        for relative in ("bundle/walkthroughs/legislation/source.md",
+                         "bundle/whole-law/walkthrough/source.md"):
+            path = links.ROOT / relative
+            self.assertIn(path, pages)
+            for _, target in links.markdown_targets(path.read_text()):
+                self.assertNotIn("{reader}", target)
+                self.assertNotIn("{effect_url}", target)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -9,6 +9,8 @@ import re
 from pathlib import Path
 from typing import Any
 
+from core03_snapshot import manifest_binding, verify_frozen_inputs
+
 ROOT = Path(__file__).resolve().parents[1]
 BUNDLE = ROOT / "bundle"
 RELEASE = json.loads((ROOT / "publication" / "release.json").read_text(encoding="utf-8"))
@@ -21,7 +23,7 @@ FOUNDRY_AUTHORING = (
     "docs/beginners/19-foundry-authoring-and-domain-profiles.html"
 )
 RELEASE_SECTION = re.compile(
-    r"# Published release\n\n.*?(?=# Progressive discovery)", re.DOTALL
+    r"# (?:Published release|Format and source snapshots)\n\n.*?(?=# Progressive discovery)", re.DOTALL
 )
 
 
@@ -45,8 +47,12 @@ def release_identity() -> dict[str, Any]:
 def descriptor() -> dict[str, Any]:
     value = json.loads((BUNDLE / "okf-explorer.json").read_text(encoding="utf-8"))
     value["version"] = RELEASE["bundle_version"]
+    value["okf_version"] = RELEASE["okf_version"]
     value["status"] = RELEASE["status"]
     value["release"] = release_identity()
+    value["profile"] = "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v2/"
+    value.setdefault("extensions", {})["okf-core03-frozen-source.v1"] = manifest_binding()
+    value["extensions"]["okf-ai-access.v1"] = {"manifest": "ai-index.json", "context": "ai-context.json", "walkthrough": "walkthroughs/legislation/index.html"}
     entrypoints = value.setdefault("entrypoints", {})
     entrypoints.update(
         {
@@ -92,7 +98,9 @@ def descriptor() -> dict[str, Any]:
 def semantic_descriptor() -> dict[str, Any]:
     value = json.loads((BUNDLE / "okf-bundle.yamlld").read_text(encoding="utf-8"))
     value["version"] = RELEASE["bundle_version"]
+    value["okf_version"] = RELEASE["okf_version"]
     value["status"] = RELEASE["status"]
+    value["profile"] = {"@id": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v2/"}
     return value
 
 
@@ -104,9 +112,10 @@ def overview() -> dict[str, Any]:
 
 def index_markdown() -> bytes:
     source = (BUNDLE / "index.md").read_text(encoding="utf-8")
-    replacement = f"""# Published release
+    source = re.sub(r'(?m)^okf_version: "0\.[23]"$', 'okf_version: ' + json.dumps(RELEASE["okf_version"]), source, count=1)
+    replacement = f"""# Format and source snapshots
 
-This catalogue is included in [Legislation/Whole-Law v{RELEASE['bundle_version']}]({RELEASE['repository']}/releases/tag/{RELEASE['release_tag']}), published on **{RELEASE['release_date_label']}**. The bundle uses the **OKF {RELEASE['okf_version']}** specification and this legislation catalogue snapshot is dated 11 July 2026.
+This candidate identifies bundle version **{RELEASE['bundle_version']}** and uses **OKF Core {RELEASE['okf_version']}**, implemented on **{RELEASE['release_date_label']}**. Publication and acceptance are recorded in the [release history]({RELEASE['repository']}/releases). The legislation catalogue snapshot remains dated 11 July 2026.
 
 The release version and the OKF specification version are independent: this is bundle release **v{RELEASE['bundle_version']}**, authored to the **OKF {RELEASE['okf_version']}** profile. The source snapshot remains dated July 2026; publishing the corrected semantics and interfaces in November does not imply that upstream source data was refreshed.
 
@@ -134,6 +143,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
+    verify_frozen_inputs()
     expected = expected_files()
     if args.check:
         errors = [

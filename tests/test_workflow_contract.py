@@ -53,6 +53,8 @@ REQUIRED_VALIDATION_COMMANDS = (
 EXPECTED_PHASE_LABELS = {
     "core": {
         "publication contract",
+        "frozen Core 0.2 source inputs",
+        "complete AI context and complex question",
         "unit suite",
         "release metadata",
         "publication documentation",
@@ -263,6 +265,20 @@ class WorkflowContractTests(unittest.TestCase):
             for line in action_lines:
                 if LOCAL_VALIDATION_WORKFLOW in line:
                     self.assertEqual(LOCAL_VALIDATION_WORKFLOW, line.strip())
+                    continue
+                if "uses: ./.github/actions/" in line:
+                    self.assertEqual(
+                        "uses: ./.github/actions/setup-locked-python",
+                        line.strip(),
+                    )
+                    action = ROOT / ".github/actions/setup-locked-python/action.yml"
+                    self.assertFalse(action.is_symlink())
+                    composite = action.read_text(encoding="utf-8")
+                    self.assertIn("using: composite", composite)
+                    nested = [row for row in composite.splitlines() if "uses:" in row]
+                    self.assertTrue(nested)
+                    for row in nested:
+                        self.assertIsNotNone(PINNED_ACTION.fullmatch(row), row)
                     continue
                 self.assertIsNotNone(
                     PINNED_ACTION.fullmatch(line),

@@ -1,0 +1,7 @@
+{
+  "context": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/ai-context.json",
+  "descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json",
+  "manifest": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/ai-index.json",
+  "okf_version": "0.3",
+  "standards": "https://github.com/chris-page-gov/okf-explorer/blob/main/registry/okf-standards.json"
+}

@@ -12,8 +12,9 @@ attempt and replacement lineage.
 
 The
 [reproduction and promotion contract](../release-assurance/reproduction-and-promotion.md)
-keeps the literal asset name `okf-uk-legislation-v0.4.0.tar.zst` on both
-`v0.4.0-rc.1` and `v0.4.0`. Promotion reuses the sealed bytes and SHA-256;
+keeps the literal asset name `okf-uk-legislation-v0.5.0.tar.zst` on both
+`v0.5.0-rc.1` and `v0.5.0`. The published v0.4.0 archive and its
+original promotion evidence remain immutable history. Promotion reuses the sealed bytes and SHA-256;
 rebuilding or renaming the asset is prohibited.
 
 Release policy v2 separates embedded pre-freeze evidence from a write-once
@@ -66,7 +67,7 @@ performs network access. See the
 | Surface | Source of truth | Generated or maintained output |
 |---|---|---|
 | work catalogue and facets | official Atom feeds and legislation builders | `bundle/` |
-| provision normalization | Explorer CLML loader | live browser CLML tree |
+| provision normalisation | Explorer CLML loader | live browser CLML tree |
 | official effect snapshot | immutable request/response envelopes and effects config | `bundle/data/effects/` |
 | governed Codex-assisted discovery | hash-bound prompts, rules, per-work outcomes and independent review | `bundle/enrichment/codex-assisted-v3/` and the active `bundle/data/enrichment-v3/` projection |
 | historical Codex v2 discovery | preserved rules, calibration and independent audit | `bundle/enrichment/codex-assisted-v2.json` |
@@ -78,49 +79,62 @@ performs network access. See the
 
 ## Deterministic rebuild
 
+Run `uv sync --locked` to establish the governed CPython 3.12.11
+environment. The [reproduction profile](../release-assurance/reproduction-profile.json)
+defines the current Core 0.3 build sequence:
+
 ```sh
-python3 scripts/build_legislation_okf.py --from-existing
-python3 scripts/build_model_enrichment_input_evidence.py
-python3 scripts/build_codex_semantic_enrichment.py
-python3 scripts/build_legislation_effects.py --offline
-python3 scripts/build_codex_semantic_enrichment_v3.py
-python3 scripts/audit_codex_semantic_enrichment_v3.py
-python3 scripts/rebuild_legislation_discovery.py
-python3 scripts/build_relationship_semantics.py
-python3 scripts/build_legislation_evaluation.py
-python3 scripts/build_whole_law_evaluation.py
-python3 scripts/run_yaml_ld_conformance.py
-python3 scripts/run_ontology_competency_questions.py
-python3 scripts/build_publication_docs.py
-python3 scripts/build_whole_law_okf.py
-python3 scripts/run_release_evaluation.py --check
-python3 scripts/run_semantic_conformance.py
-python3 scripts/build_whole_law_okf.py
-python3 scripts/audit_graph_enrichment_gate.py build
-python3 scripts/build_whole_law_okf.py
-python3 scripts/build_checksums.py
-python3 scripts/build_release_assurance.py
-python3 scripts/build_checksums.py
+uv run --locked python scripts/core03_snapshot.py
+uv run --locked python scripts/build_release_metadata.py
+uv run --locked python scripts/rebuild_legislation_discovery.py
+uv run --locked python scripts/build_relationship_semantics.py
+uv run --locked python scripts/build_bounded_relationship_navigation.py
+uv run --locked python scripts/build_legislation_evaluation.py
+uv run --locked python scripts/build_whole_law_evaluation.py
+uv run --locked python scripts/run_yaml_ld_conformance.py
+uv run --locked python scripts/run_ontology_competency_questions.py
+uv run --locked python scripts/build_publication_docs.py
+uv run --locked python scripts/build_whole_law_okf.py
+uv run --locked python scripts/run_release_evaluation.py --check
+uv run --locked python scripts/run_semantic_conformance.py
+uv run --locked python scripts/build_whole_law_okf.py
+uv run --locked python scripts/audit_graph_enrichment_gate.py build
+uv run --locked python scripts/build_whole_law_okf.py
+uv run --locked python scripts/build_checksums.py
+uv run --locked python scripts/build_release_assurance.py
+uv run --locked python scripts/build_bundle_guides.py
+uv run --locked python scripts/build_checksums.py
 ```
 
-The first command performs a complete offline base-publication rebuild from
-the checked-in corpus shards and preserves the descriptor's existing
-`generated_at` value. This makes a clean checkout byte-reproducible while
-still allowing an explicitly supplied `--generated-at` value for a genuinely
-new snapshot. The first checksum pass bootstraps the integrity input consumed
-by the release-assurance projection; the final pass then binds that projection
-itself. Omitting either pass is not an equivalent release build.
+The recipe verifies all 2,603 frozen source inputs and regenerates only
+their publication projections. It retains the accepted July work, effects
+and enrichment bytes, dates and independent audits. Do not run the historical
+`build_legislation_okf.py --from-existing` sequence against this frozen
+publication: the base builder refuses to replace its default `bundle/`.
+A new acquisition requires a separately identified output and review.
 
-The model-enrichment input-evidence build is ordered immediately after the base
-corpus. It fixes the complete work order and credential-free eligibility
-projection before the governed Codex v3 build. The official-effects projection
-must follow v2 and precede v3 because the v3 governed materials bind the
-post-v2, post-effects data manifest. Reversing those stages invalidates the
-independent reviewer binding even when the source-corpus semantic digest is
-unchanged. The v3 terminal ledger then records exactly one outcome for each of
-all 365,786 works. The historical v2 and optional direct API publication checks
-remain preservation/contract checks; neither an API key nor a direct API call
-is required by the current release.
+The first checksum pass bootstraps the integrity input consumed by the
+release-assurance projection; the final pass then binds that projection
+itself. Omitting either pass is not an equivalent release build. The
+historical enrichment and effects builders are checked for preservation
+rather than rerun. Their validation gates remain mandatory; no API key or
+direct API call is required by this release.
+
+The separately assembled Pages transport deterministically gzip-encodes only
+the selected current Whole-Law evaluation `answers.json` from its exact source
+bytes. Its v1 payload-encoding receipt binds both byte identities, the frozen
+source commit, the plain raw-source route and the release archive fallback.
+The report HTML and AI/discovery metadata point to the compressed payload and
+receipt. Canonical `bundle/whole-law/` answers and integrity files remain
+unchanged; the default Whole-Law validator still requires every original file.
+The typed-site integrity check accepts this one encoding only after bounded
+single-member decompression reproduces the canonical byte count and SHA-256.
+The encoding policy also verifies that its selected execution remains the
+current one. A new evaluation needs a reviewed policy and size assessment;
+the builder refuses to silently encode an older run. This large assurance
+payload is separate from the phone question journey, which must use small
+plain evidence files and source-linked graph selections. Measure and report
+the remaining Pages headroom before promotion.
 
 Network refreshes are separate and create immutable acquisition attempts. They
 must not overwrite the evidence used by an existing release candidate.

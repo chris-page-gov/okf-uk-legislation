@@ -2054,11 +2054,11 @@ class ReleaseFinalizationTests(unittest.TestCase):
     def test_pinned_v081_runner_requires_invocation_attestation(self) -> None:
         contract = copy.deepcopy(self.fixture.contract)
         contract["explorer"]["runtime_provenance"]["runner"]["sha256"] = (
-            finalization.PINNED_EXPLORER_V081_RUNNER_SHA256
+            finalization.PINNED_EXPLORER_V092_RUNNER_SHA256
         )
         with self.assertRaisesRegex(
             finalization.FinalizationError,
-            "pinned Explorer v0.8.1 runtime receipt omits invocation attestation",
+            "pinned Explorer v0.9.2 runtime receipt omits invocation attestation",
         ):
             finalization.validate_explorer_runtime_invocation(
                 copy.deepcopy(self.fixture.runtime), contract

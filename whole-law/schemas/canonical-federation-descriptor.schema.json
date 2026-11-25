@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chris-page-gov.github.io/okf-explorer/profile/federation/v1/descriptor.schema.json",
-  "title": "OKF Explorer federation descriptor v1",
+  "$id": "https://chris-page-gov.github.io/okf-explorer/profile/federation/v2/descriptor.schema.json",
+  "title": "OKF Explorer federation descriptor v2",
   "description": "A lightweight federation control plane. Child descriptors and data planes are loaded only after explicit selection.",
   "type": "object",
   "required": [
@@ -27,13 +27,13 @@
       "$ref": "#/$defs/httpUrl"
     },
     "schema": {
-      "const": "okf-explorer-federation.v1"
+      "const": "okf-explorer-federation.v2"
     },
     "kind": {
       "const": "okf-federation"
     },
     "okf_version": {
-      "const": "0.2"
+      "const": "0.3"
     },
     "title": {
       "type": "string",

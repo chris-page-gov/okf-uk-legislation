@@ -342,7 +342,7 @@
           "runner": {
             "properties": {
               "sha256": {
-                "const": "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281"
+                "const": "d024df239a2a6dab58006e9e334c375cecaa69ce759feb0300f6f504754cb725"
               }
             },
             "required": ["sha256"]
@@ -442,12 +442,12 @@
       "properties": {
         "root": {"const": "apps/okf-explorer/build"},
         "manifest_path": {"const": "apps/okf-explorer/build/okf-explorer-build-manifest.json"},
-        "manifest_bytes": {"const": 7398},
-        "manifest_sha256": {"const": "8c1c0394806ed4d466f5adee7084a807543664e2dde776eef7fab26998c56a69"},
+        "manifest_bytes": {"const": 11412},
+        "manifest_sha256": {"const": "351a0b828c7571d10554e3cbb13c502cd0f06ea48a59cab84ce84235b0820b33"},
         "manifest_schema": {"const": "okf-explorer-app-build-manifest.v1"},
         "algorithm": {"const": "sha256-canonical-json-materials-v1"},
-        "files": {"const": 43},
-        "tree_sha256": {"const": "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4"}
+        "files": {"const": 67},
+        "tree_sha256": {"const": "ab0c8afb2823c7945ceae0b977bd648cc17c89bdaf4174086aa1c2306399a388"}
       }
     },
     "executableMaterials": {
@@ -465,7 +465,7 @@
         "dependency_lock": {"$ref": "#/$defs/dependencyLockMaterial"}
       }
     },
-    "runnerMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs"}, "bytes": {"const": 98104}, "sha256": {"const": "2aff383f7b0532749acb6add9e7889fc07cdabd1326d24396d5e4f8dddbcd281"}}},
+    "runnerMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs"}, "bytes": {"const": 98344}, "sha256": {"const": "d024df239a2a6dab58006e9e334c375cecaa69ce759feb0300f6f504754cb725"}}},
     "runtimeContractMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/runtime_acceptance_contract.mjs"}, "bytes": {"const": 25697}, "sha256": {"const": "b8575412d88796daa95e77d2cb45941730f90c82e57dfa9ec4b9bb8c01aefd41"}}},
     "appManifestMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/app_build_manifest.mjs"}, "bytes": {"const": 22932}, "sha256": {"const": "6750dfe9ab09eeea945525473c9919e4d308e7f9a87f748244cbcd13e8b1d867"}}},
     "invocationWrapperMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/run_acceptance_invocation.mjs"}, "bytes": {"const": 2489}, "sha256": {"const": "95b2d3287f16698f221221b615392421b5654c17c98b909b205727dfa55c3772"}}},
@@ -484,13 +484,13 @@
       "type": "object", "additionalProperties": false,
       "required": ["commit", "tree", "clean", "dirty_entries", "tag", "tag_object", "tag_commit", "tag_type", "package_name", "package_version"],
       "properties": {
-        "commit": {"const": "dcd0c43e29593436b13c59271c75d37d06e2b754"},
-        "tree": {"const": "87487a50c10f0dce144b1530b6a97de6e1277aff"},
+        "commit": {"const": "acf23958aa1ce11ec52c41313649b20d24f17609"},
+        "tree": {"const": "ea01a79472061b1bbf4179ad809a8b78dad69152"},
         "clean": {"const": true}, "dirty_entries": {"const": 0},
-        "tag": {"const": "v0.8.1"},
-        "tag_object": {"const": "ad3ec81c40dd128da75eeabb4325a65b060048b0"},
-        "tag_commit": {"const": "dcd0c43e29593436b13c59271c75d37d06e2b754"},
-        "tag_type": {"const": "tag"}, "package_name": {"const": "@okf/explorer"}, "package_version": {"const": "0.8.1"}
+        "tag": {"const": "v0.9.2"},
+        "tag_object": {"const": "9b583053719259f5962fe7b4bce392420e1b9db7"},
+        "tag_commit": {"const": "acf23958aa1ce11ec52c41313649b20d24f17609"},
+        "tag_type": {"const": "tag"}, "package_name": {"const": "@okf/explorer"}, "package_version": {"const": "0.9.2"}
       }
     },
     "candidateRepositoryIdentity": {
@@ -642,7 +642,7 @@
           "const": "https://github.com/chris-page-gov/okf-explorer"
         },
         "tag": {
-          "const": "v0.8.1"
+          "const": "v0.9.2"
         },
         "commit": {
           "type": "string",

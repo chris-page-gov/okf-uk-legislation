@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import sys
+import tomllib
+from packaging.markers import Marker, default_environment
 import unittest
 from pathlib import Path
 
@@ -273,19 +275,52 @@ class ValidationDependencyLockTests(unittest.TestCase):
                 with self.assertRaises(DependencyLockError):
                     parse_direct_requirements_text(content)
 
-    def test_validation_workflows_enforce_hashes(self) -> None:
+    def test_validation_workflows_use_governed_hash_locked_environment(self) -> None:
+        action = (ROOT / ".github/actions/setup-locked-python/action.yml").read_text(encoding="utf-8")
+        self.assertIn("astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9", action)
+        self.assertIn('version: "0.13.4"', action)
+        self.assertIn("cache-dependency-glob: uv.lock", action)
+        self.assertIn("run: uv sync --locked", action)
         for workflow in WORKFLOWS:
             with self.subTest(workflow=workflow.name):
                 body = workflow.read_text(encoding="utf-8")
-                self.assertEqual(body.count("--require-hashes"), 1)
-                self.assertIn(
-                    "--requirement requirements-validation.txt",
-                    body,
-                )
-                self.assertIn(
-                    "cache-dependency-path: requirements-validation.txt",
-                    body,
-                )
+                self.assertEqual(body.count("uses: ./.github/actions/setup-locked-python"), 1)
+                self.assertNotIn("pip install", body)
+        uv_lock = tomllib.loads((ROOT / "uv.lock").read_text(encoding="utf-8"))
+        self.assertEqual("==3.12.11", uv_lock["requires-python"])
+        all_packages = {row["name"]: row for row in uv_lock["package"]}
+        project = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["project"]["name"]
+        locked = load_validation_dependency_lock(LOCK, DIRECT)
+        expected = {row.name: row.version for row in locked.requirements}
+        for platform in ("darwin", "linux"):
+            environment = {**default_environment(), "sys_platform": platform,
+                           "implementation_name": "cpython", "platform_python_implementation": "CPython",
+                           "python_version": "3.12", "python_full_version": "3.12.11"}
+            visited = set()
+            processed = set()
+            def visit(name, extras=()):
+                key = (name, tuple(sorted(extras)))
+                if key in processed:
+                    return
+                processed.add(key)
+                visited.add(name)
+                dependencies = list(all_packages[name].get("dependencies", []))
+                for extra in extras:
+                    dependencies.extend(all_packages[name].get("optional-dependencies", {})[extra])
+                for dependency in dependencies:
+                    if "marker" not in dependency or Marker(dependency["marker"]).evaluate(environment):
+                        visit(dependency["name"], dependency.get("extra", ()))
+            visit(project)
+            packages = [all_packages[name] for name in visited if "registry" in all_packages[name]["source"]]
+            self.assertEqual(expected, {row["name"]: row["version"] for row in packages}, platform)
+        packages = [row for row in uv_lock["package"] if "registry" in row["source"]]
+        for row in packages:
+            artifacts = [*row.get("wheels", [])]
+            if "sdist" in row:
+                artifacts.append(row["sdist"])
+            self.assertTrue(artifacts, row["name"])
+            for artifact in artifacts:
+                self.assertRegex(artifact["hash"], r"^sha256:[0-9a-f]{64}$")
 
 
 if __name__ == "__main__":

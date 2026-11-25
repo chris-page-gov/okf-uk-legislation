@@ -1,13 +1,16 @@
 {
+  "ai_context": "https://chris-page-gov.github.io/okf-uk-legislation/ai-context.json",
+  "ai_index": "https://chris-page-gov.github.io/okf-uk-legislation/ai-index.json",
+  "ai_payload_encodings": "https://chris-page-gov.github.io/okf-uk-legislation/data/reader-transport/v1/payload-encoding.json",
   "descriptors": {
     "legislation": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
     "whole_law": "https://chris-page-gov.github.io/okf-uk-legislation/whole-law/okf-explorer.json"
   },
   "documentation": "https://chris-page-gov.github.io/okf-uk-legislation/docs/",
   "interfaces": "https://chris-page-gov.github.io/okf-uk-legislation/interfaces.json",
-  "okf_version": "0.2",
-  "release": "https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.4.0",
-  "release_date": "2026-11-03",
+  "okf_version": "0.3",
+  "release": "https://github.com/chris-page-gov/okf-uk-legislation/releases/tag/v0.5.0",
+  "release_date": "2026-11-24",
   "repository": "https://github.com/chris-page-gov/okf-uk-legislation",
   "schema": "okf-publication-discovery.v1",
   "snapshots": {
@@ -16,5 +19,6 @@
   },
   "status": "stable",
   "title": "UK Legislation and Whole-Law OKF",
-  "version": "0.4.0"
+  "version": "0.5.0",
+  "walkthrough": "https://chris-page-gov.github.io/okf-uk-legislation/walkthroughs/legislation/index.html"
 }

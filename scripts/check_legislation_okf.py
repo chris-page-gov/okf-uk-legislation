@@ -242,7 +242,7 @@ def check_markdown(errors: list[str], generated_at: str) -> int:
         text = path.read_text(encoding="utf-8")
         if relative == Path("index.md"):
             if not text.startswith("---\n"):
-                errors.append("root index.md does not declare OKF v0.2")
+                errors.append("root index.md does not declare OKF v0.3")
                 continue
             try:
                 raw, body = text[4:].split("\n---\n", 1)
@@ -250,8 +250,8 @@ def check_markdown(errors: list[str], generated_at: str) -> int:
             except ValueError as error:
                 errors.append(f"root index.md frontmatter is invalid: {error}")
                 continue
-            if values != {"okf_version": "0.2"}:
-                errors.append("root index.md frontmatter must contain only okf_version 0.2")
+            if values != {"okf_version": "0.3"}:
+                errors.append("root index.md frontmatter must contain only okf_version 0.3")
             if not re.search(r"(?m)^# .+", body):
                 errors.append("root index.md has no section heading")
             continue
@@ -637,14 +637,14 @@ def main() -> int:
     descriptor = load(descriptor_path)
     manifest = load(manifest_path)
     counts = manifest.get("counts", {})
-    if descriptor.get("okf_version") != "0.2":
-        errors.append("Explorer descriptor does not declare okf_version 0.2")
+    if descriptor.get("okf_version") != "0.3":
+        errors.append("Explorer descriptor does not declare okf_version 0.3")
     if manifest.get("okf_version") != "0.2":
-        errors.append("data manifest does not declare okf_version 0.2")
+        errors.append("frozen accepted source manifest does not retain okf_version 0.2")
     for semantic_name in ("okf-bundle.yamlld", "okf-bundle.jsonld"):
         semantic_path = PACK / semantic_name
-        if semantic_path.is_file() and load(semantic_path).get("okf_version") != "0.2":
-            errors.append(f"{semantic_name} does not declare okf_version 0.2")
+        if semantic_path.is_file() and load(semantic_path).get("okf_version") != "0.3":
+            errors.append(f"{semantic_name} does not declare okf_version 0.3")
     if descriptor.get("kind") != "okf-large-corpus":
         errors.append("descriptor kind is not okf-large-corpus")
     if counts.get("works", 0) < MINIMUM_COMPLETE_WORKS:
@@ -854,7 +854,7 @@ def main() -> int:
         for error in errors[:100]:
             print(f"- {error}")
         return 1
-    print(f"Legislation OKF check passed: {works:,} unique works, {relationship_rows:,} relationships, {len(type_codes)} type codes, {len(work_files)} work chunks, {concept_count} OKF v0.2 concepts")
+    print(f"Legislation OKF check passed: {works:,} unique works, {relationship_rows:,} relationships, {len(type_codes)} type codes, {len(work_files)} work chunks, {concept_count} OKF v0.3 concepts")
     return 0
 
 

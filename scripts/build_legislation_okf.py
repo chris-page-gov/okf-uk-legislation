@@ -2447,7 +2447,7 @@ ELI 1.5 is the primary interoperability ontology because it models legal works, 
         if path.name != "index.md":
             continue
         _frontmatter, body = document.split("\n---\n", 1)
-        prefix = '---\nokf_version: "0.2"\n---\n\n' if path == Path("index.md") else ""
+        prefix = '---\nokf_version: ' + json.dumps(RELEASE["okf_version"]) + '\n---\n\n' if path == Path("index.md") else ""
         files[path] = prefix + body.lstrip("\n")
     return files
 
@@ -2541,7 +2541,7 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
         "notices": analysis["summary"]["notices"],
     }
     manifest = {
-        "okf_version": "0.2",
+        "okf_version": RELEASE["okf_version"],
         "title": "legislation.gov.uk static work index with live provision resolver",
         "generated_at": generated_at,
         "snapshot": snapshot,
@@ -2584,13 +2584,13 @@ def build_corpus(records: list[dict[str, Any]], source_meta: dict[str, Any], gen
         "@id": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
         "schema": "okf-explorer-large-corpus.v1",
         "kind": "okf-large-corpus",
-        "okf_version": "0.2",
+        "okf_version": RELEASE["okf_version"],
         "core_conformance": "Markdown concept layer",
         "title": "UK Legislation OKF",
         "description": "Complete work-level index of legislation.gov.uk with ELI/Schema.org normalization, corpus facets, official full-text search, and live CLML provision-level progressive discovery.",
         "version": RELEASE["bundle_version"],
         "status": RELEASE["status"],
-        "profile": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v1/",
+        "profile": "https://chris-page-gov.github.io/okf-explorer/profile/bundle-wiki/v2/",
         "publisher": "https://github.com/chris-page-gov",
         "license": OGL,
         "semantic_descriptor": "https://chris-page-gov.github.io/okf-uk-legislation/okf-bundle.yamlld",
@@ -2939,7 +2939,7 @@ def output_files(
         ],
         "@id": "https://chris-page-gov.github.io/okf-uk-legislation/",
         "@type": "okf:Bundle",
-        "okf_version": "0.2",
+        "okf_version": RELEASE["okf_version"],
         "title": corpus["descriptor"]["title"],
         "description": corpus["descriptor"]["description"],
         "version": corpus["descriptor"]["version"],
@@ -3122,6 +3122,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     output = args.output if args.output.is_absolute() else ROOT / args.output
     cache = args.cache if args.cache.is_absolute() else ROOT / args.cache
+    if (ROOT / "source/core03-frozen-inputs.json").is_file() and output.resolve() == DEFAULT_OUTPUT.resolve():
+        parser.error(
+            "the default bundle is a frozen source snapshot; use the Core 0.3 "
+            "projection recipe or a separate --output for new acquisition"
+        )
     if args.fixture and args.from_existing:
         parser.error("--fixture and --from-existing are mutually exclusive")
     if args.from_existing:

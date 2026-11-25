@@ -32,14 +32,14 @@
       "sha256": "678ff8d0479ea52758173920dd14491b74572fd8bd2fd641e3eb030807f87256"
     },
     {
-      "bytes": 12275,
+      "bytes": 12703,
       "path": "external-finalization-contract.json",
-      "sha256": "83b83908f49b1c9236c19121c03409060d6f8dce61221932d5ad4c8eff59b8eb"
+      "sha256": "e67c98374a252b6c69a889817063457116468be8742f204f6fba36deade7ee70"
     },
     {
-      "bytes": 23568,
+      "bytes": 22946,
       "path": "gap-register.json",
-      "sha256": "3aa64f6613ea1e8e78423eb8d369e1dc6cd9b568ea2ebbb6b6e4acd206e47ccd"
+      "sha256": "48b3cbbc8d79748effd79db9d633f027d4fb5510c65a003d6bca05f6fc901d6c"
     },
     {
       "bytes": 1049,
@@ -52,14 +52,14 @@
       "sha256": "64d7649c4ad3134dc555b81907c5739082d80af0f595e021c4503cf1d3413210"
     },
     {
-      "bytes": 10144,
+      "bytes": 10231,
       "path": "implementation-status-detailed-2026-07-26.md",
-      "sha256": "7b9bb03ec291989a7dc1486c7016ba331a40c040ea172f0a8cb1f1230d21c2b7"
+      "sha256": "a5fa2ced42e81c048b2452463aea306b180a3bc124814d6f57b086f7544de120"
     },
     {
-      "bytes": 98447,
+      "bytes": 98786,
       "path": "implementation-status.json",
-      "sha256": "c8b4a4c7416e804971631e70eab9fd98f9773c80e405b4273a994d5771988e44"
+      "sha256": "849075b67bbdcad2419a380e93ae4b8c94daa58c385601bee00cb2da9282a82d"
     },
     {
       "bytes": 1076,
@@ -67,24 +67,24 @@
       "sha256": "a4904975a47735793024a5bb62e22e47d4a0af8e77c1d2d210ec5e31662a74b1"
     },
     {
-      "bytes": 97686,
+      "bytes": 98448,
       "path": "implementation-traceability.json",
-      "sha256": "f26c1d5d238a623334abc0b9fdfcf316db2d06b6433b4aeae27d89aece8845d7"
+      "sha256": "62562c5b1550f951f9b29ec6a992dcaf48dcf74c950305625b03aec81b302cad"
     },
     {
       "bytes": 6778,
       "path": "model-cost-report.json",
-      "sha256": "2d833d854585ec767ca90e089e0a423a89920ad58317c28bcec3ce0403713e65"
+      "sha256": "4c978c605f14397f313882c8c3ae4a2a208711e033c83933565131c307f83373"
     },
     {
-      "bytes": 27500,
+      "bytes": 27680,
       "path": "provenance.json",
-      "sha256": "80bff9b993c9c29eef4e292e7ce9884465641bf97e82e8c008c556b2cc3f8d7a"
+      "sha256": "8860e12f2820e3a2143ec7d835b723cf48488a492f78f8ea8015b688e808cf54"
     },
     {
       "bytes": 10884,
       "path": "release-gates.json",
-      "sha256": "68d73daeff0114170cd5f59f55d96b9c5c0f603abd330f11da7a9b27392f2867"
+      "sha256": "d2c6939294fc9220c96e3d77dcc2ca57da151a717c53e11a222ebd44f2de1bcb"
     },
     {
       "bytes": 2131,
@@ -92,34 +92,34 @@
       "sha256": "aaae2690ab1b421ea775625a96a4c8b36939e0c7060ed9531b973a432a1865b0"
     },
     {
-      "bytes": 148905,
+      "bytes": 148188,
       "path": "release-report.json",
-      "sha256": "a74a6ec63474d100b38fd98845a768c88db876c2cb90241c65d339cfee864687"
+      "sha256": "2ea89f75aa126ef774fbba46b66a76c0611998454c356113103f8eb9ae503cdd"
     },
     {
       "bytes": 13161,
       "path": "release-state.json",
-      "sha256": "782ab5e7325df31b4275f7f345e12f9227bc8bdb9880182b978ad6256ab08942"
+      "sha256": "4fe7946acb5d99f5cccffb0bbc2bcf4d0b09a259f58dfb8dc10cb64d6bf3975d"
     },
     {
       "bytes": 8277,
       "path": "reproduction.json",
-      "sha256": "75a78007f664ad4a581751c3f1be4cb3287703da6febca0daae57a93ca5babaf"
+      "sha256": "3a1ccc3f5bdba8dd5c97cab470be614eb17d4f6896d59abd0d2581b87ca69fb7"
     },
     {
       "bytes": 2368,
       "path": "rights.spdx.json",
-      "sha256": "bbb1a6e2ceb9f6d5c1a635176d47c824a5d59b7cf441b562bd1106cf738ae092"
+      "sha256": "5c88ef98693187c9cd20fc2f513f5ee06da37dac6bd0cbf3825c3471426e52d2"
     },
     {
-      "bytes": 189456,
+      "bytes": 189425,
       "path": "sbom.cdx.json",
-      "sha256": "6077b5505243f2f0600bc1f96f9c7e4bc98011b782355f7f96f2a42e4d840f74"
+      "sha256": "0a18bc77dfc510f54cda1a135442e9c2c58f8d7d0a6f659d1d2a005ea57b198b"
     },
     {
       "bytes": 4268,
       "path": "schemas/accessibility-assurance-receipt.schema.json",
-      "sha256": "93a0ae89e42bf09d4c66c1f44c9e2ae7972dc0a89a27c8e0d8d5f43e2c473c60"
+      "sha256": "c48e35e7369f93b39f4a1d4ff2799d2305600630c0824084e051001d837ed0ba"
     },
     {
       "bytes": 1422,
@@ -139,42 +139,42 @@
     {
       "bytes": 3793,
       "path": "schemas/explorer-release-receipt.schema.json",
-      "sha256": "05a9d8dd33638dd7180da352b954c7c8f824d50c6fdc0e1391217f44e7ffc55f"
+      "sha256": "ffa3a64ca99654403cc325e3f736a2e5850683bdf305187f955ec1d5d2909b8c"
     },
     {
-      "bytes": 32580,
+      "bytes": 32581,
       "path": "schemas/explorer-runtime-receipt.schema.json",
-      "sha256": "70393809c4a9e5f2de77978d5ef81c0055cbe885c54e9249f5d4a482c43fe40d"
+      "sha256": "4197a85fe8404737cd567e95607e9e9b09e060e1c043d059633843b9b7c88c44"
     },
     {
       "bytes": 9773,
       "path": "schemas/external-finalization-receipt.schema.json",
-      "sha256": "7b3bc7d333f92f15de0492425949611a9102e026e3db88bbaaed29e3a31bf661"
+      "sha256": "327596c44773aee10f8d9787d6282b6d3f80ac9acfac62e803d130e79e8efdb8"
     },
     {
       "bytes": 6303,
       "path": "schemas/final-promotion-authorization-receipt.schema.json",
-      "sha256": "230b1ab52aa9a1c67f41e062e74655b154f7fe87748036dbceaa3448c2363a38"
+      "sha256": "fffb46d6fcc99951f1261541b30684777cdfeb84f6c8332b3bbec643dcf0cfcd"
     },
     {
       "bytes": 17408,
       "path": "schemas/github-pages-observation.schema.json",
-      "sha256": "4d4ddacf0adbba720d8e13fea68e87e7aee4366b5762af1d6364d040b62fee8f"
+      "sha256": "03b5d4df611651a0bb9e20a3352676e4b9d75d8cbf391d4b20ee10c83e7c8a2f"
     },
     {
-      "bytes": 6129,
+      "bytes": 6419,
       "path": "schemas/github-release-observation.schema.json",
-      "sha256": "047851609b1f6268b58df13090df32e647b5d9c551954fa8e6c05e5d9ef1fa78"
+      "sha256": "eccb7bbd77dc5fa4ade6d7775674510de5364f9058879d9ba6bc4fc08bcccdee"
     },
     {
       "bytes": 4003,
       "path": "schemas/performance-assurance-receipt.schema.json",
-      "sha256": "520821b3440bdd55cbc7b52d32ad8f1a0ee5736695cd9a0b713f676b836e908d"
+      "sha256": "d3e7a513e8e09498fd2510a21855708984747fa20f36f6491eb93e01bbdd353c"
     },
     {
       "bytes": 5997,
       "path": "schemas/pre-rc-authorization-receipt.schema.json",
-      "sha256": "920ceffea08bfc7a4eb38bc789d33ced98a801406094eb5fb0bdf1ca95604e97"
+      "sha256": "b8e32c9b4496d047dc9c6c4ec1bcc5a155b0ce88a461accb6f0003565c5f8053"
     },
     {
       "bytes": 18400,

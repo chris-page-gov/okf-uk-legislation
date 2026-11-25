@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Capture one immutable, independently verified GitHub Pages artifact.
 
-The public command supports exactly the OKF Explorer v0.8.1 Pages workflow
+The public command supports exactly the OKF Explorer v0.9.2 Pages workflow
 attempt pinned below.  It validates the GitHub Actions run and artifact API
 objects, streams the Actions ZIP through a bounded manual redirect chain,
 fully scans the ZIP/TAR closure without extracting the TAR, and independently
@@ -156,51 +156,51 @@ class TargetProfile:
 DEFAULT_PROFILE = TargetProfile(
     repository="https://github.com/chris-page-gov/okf-explorer",
     slug="chris-page-gov/okf-explorer",
-    run_id=41663805875,
+    run_id=45556087556,
     run_attempt=1,
-    head_sha="dcd0c43e29593436b13c59271c75d37d06e2b754",
-    git_tree="87487a50c10f0dce144b1530b6a97de6e1277aff",
+    head_sha="acf23958aa1ce11ec52c41313649b20d24f17609",
+    git_tree="ea01a79472061b1bbf4179ad809a8b78dad69152",
     workflow_path=".github/workflows/pages.yml",
-    artifact_id=13245490839,
+    artifact_id=14995464665,
     artifact_name="github-pages",
-    artifact_api_bytes=189110263,
-    zip_bytes=189110263,
+    artifact_api_bytes=199260836,
+    zip_bytes=199260836,
     zip_sha256=(
-        "6142f63f4a5e6c8340e93553f1a92c0948d1ecebfb46d9ba67e45c1c2fb8eac1"
+        "e9c90628f815b177f756231ef4101671ebf0911d1f0525d08aa8f786ba89d779"
     ),
     tar_name="artifact.tar",
-    tar_bytes=834416640,
+    tar_bytes=858245120,
     tar_sha256=(
-        "1cb52fe47e6568447cfc35d50f6e6c8d997459a4e73d85341d38a7409b04fb81"
+        "daeac57516c8ec0d64b99cdaf5d15dbc0e28a0f7ae81adaf9d2d4c1903fd9336"
     ),
-    tar_member_count=10908,
-    tar_file_count=10734,
-    tar_directory_count=174,
-    tar_total_file_bytes=823634678,
+    tar_member_count=11595,
+    tar_file_count=11328,
+    tar_directory_count=267,
+    tar_total_file_bytes=846947247,
     tar_inventory_sha256=(
-        "dfccde90f6ec44c28fb727b6187391739bda118a85914103aa9e692bf10d691b"
+        "dcb2e02cb3b0af5422f45fb4907103d82043885da435451dc6adf816bc135b50"
     ),
-    tar_raw_header_count=13326,
+    tar_raw_header_count=14013,
     tar_gnu_longname_count=2418,
     build_manifest_path="okf-explorer-build-manifest.json",
-    build_manifest_bytes=7398,
+    build_manifest_bytes=11412,
     build_manifest_sha256=(
-        "8c1c0394806ed4d466f5adee7084a807543664e2dde776eef7fab26998c56a69"
+        "351a0b828c7571d10554e3cbb13c502cd0f06ea48a59cab84ce84235b0820b33"
     ),
-    build_file_count=43,
+    build_file_count=67,
     build_tree_sha256=(
-        "5320dbeffebe59d647488ca6f7bd2fa3c6408b99cbbd5cb1f7295fcd971969e4"
+        "ab0c8afb2823c7945ceae0b977bd648cc17c89bdaf4174086aa1c2306399a388"
     ),
     build_index_path="index.html",
-    build_index_bytes=17696,
+    build_index_bytes=18449,
     build_index_sha256=(
-        "b1224b22be0ee8659ae928d0abd9b56c2d124600a3cc77deecb1c494d967d027"
+        "6860b8769479eb1d5938f00ba164b3f2a5089ce604d4640efa7ecb82d8eedd55"
     ),
-    alternate_asset_id=706118888,
-    alternate_asset_name="okf-explorer-v0.8.1-pages-artifact.zip",
+    alternate_asset_id=790300679,
+    alternate_asset_name="okf-explorer-v0.9.2-pages-artifact.zip",
     alternate_asset_url=(
         "https://github.com/chris-page-gov/okf-explorer/releases/download/"
-        "v0.8.1/okf-explorer-v0.8.1-pages-artifact.zip"
+        "v0.9.2/okf-explorer-v0.9.2-pages-artifact.zip"
     ),
 )
 
@@ -513,7 +513,7 @@ def _validate_profile(profile: TargetProfile) -> None:
     if not profile.alternate_asset_name:
         raise CaptureError("alternate release asset name is invalid")
     expected_alternate = (
-        f"{profile.repository}/releases/download/v0.8.1/"
+        f"{profile.repository}/releases/download/v0.9.2/"
         f"{profile.alternate_asset_name}"
     )
     if profile.alternate_asset_url != expected_alternate:

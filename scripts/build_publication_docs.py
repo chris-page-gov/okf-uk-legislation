@@ -143,8 +143,14 @@ def interface_manifest() -> dict[str, object]:
             {"id": "yaml-ld", "kind": "linked-data", "media_type": "application/ld+yaml", "transport_media_type_exception": "GitHub Pages serves application/octet-stream", "url": f"{base}okf-bundle.yamlld"},
             {"id": "json-ld", "kind": "linked-data", "media_type": "application/ld+json", "url": f"{base}okf-bundle.jsonld"},
             {"id": "turtle", "kind": "linked-data", "media_type": "text/turtle", "scope": "Whole-Law federation descriptor", "url": f"{base}whole-law/okf-bundle.ttl"},
-            {"id": "whole-law", "kind": "okf-explorer-federation.v1", "url": RELEASE["whole_law_descriptor"]},
+            {"id": "whole-law", "kind": "okf-explorer-federation.v2", "url": RELEASE["whole_law_descriptor"]},
             {"id": "webmcp", "kind": "page-tools", "specification_status": "W3C Community Group draft, not a W3C Standard", "url": base, "tools": ["okf_describe_publication", "okf_search_legislation", "okf_get_legislation_work", "okf_get_legislation_relationships", "okf_find_whole_law_sources"]},
+            {"id": "reader-transport", "kind": "okf-legislation-reader-transport.v2",
+             "media_type": "application/json", "scope": "Pages deployment only; source archive remains unchanged",
+             "url": f"{base}data/reader-transport/v2/receipt.json"},
+            {"id": "evaluation-payload-encoding", "kind": "okf-reader-payload-encoding.v1",
+             "media_type": "application/json", "scope": "Pages typed Site only; canonical answer bytes remain in the source bundle and release archive",
+             "url": f"{base}data/reader-transport/v1/payload-encoding.json"},
             {"id": "release-archive", "kind": "immutable-release", "url": f"{RELEASE['repository']}/releases/tag/{RELEASE['release_tag']}"},
         ],
         "authority_warning": "Model-assisted discovery metadata is not official legal classification or legal advice.",
@@ -154,6 +160,9 @@ def interface_manifest() -> dict[str, object]:
 
 def discovery_document() -> dict[str, object]:
     return {
+        "ai_index": RELEASE["pages"] + "ai-index.json",
+        "ai_context": RELEASE["pages"] + "ai-context.json",
+        "walkthrough": RELEASE["pages"] + "walkthroughs/legislation/index.html",
         "schema": "okf-publication-discovery.v1",
         "title": "UK Legislation and Whole-Law OKF",
         "version": RELEASE["bundle_version"],
@@ -168,6 +177,7 @@ def discovery_document() -> dict[str, object]:
         "release": f"{RELEASE['repository']}/releases/tag/{RELEASE['release_tag']}",
         "documentation": f"{RELEASE['pages']}docs/",
         "interfaces": f"{RELEASE['pages']}interfaces.json",
+        "ai_payload_encodings": f"{RELEASE['pages']}data/reader-transport/v1/payload-encoding.json",
         "descriptors": {
             "legislation": RELEASE["legislation_descriptor"],
             "whole_law": RELEASE["whole_law_descriptor"],
@@ -182,6 +192,7 @@ def page_files() -> dict[Path, bytes]:
         Path("index.html"): root_landing(),
         Path("pages.mjs"): (WEB / "pages.mjs").read_bytes(),
         Path("assets/site.css"): (WEB / "site.css").read_bytes(),
+        Path("assets/favicon.svg"): (WEB / "favicon.svg").read_bytes(),
         Path("interfaces.json"): json_bytes(interface_manifest()),
         Path(".well-known/okf.json"): json_bytes(discovery_document()),
         Path(".nojekyll"): b"",

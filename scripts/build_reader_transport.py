@@ -16,13 +16,20 @@ from urllib.parse import urlparse
 
 from build_legislation_okf import BASE, gzip_json, https_url, inflate_single_gzip, large_corpus
 from build_checksums import build as build_checksums
+from reader_payload_encoding import (
+    COMPRESSED_PATH,
+    ORIGINAL_PATH,
+    POLICY_PATH,
+    REPORT_PATH,
+    project as project_payload_encoding,
+)
 
 
 PROFILE = f"{BASE}/schema/legislation"
 REVISION = re.compile(r"/([0-9]{4}-[0-9]{2}-[0-9]{2}|enacted|made|created|adopted|prospective)$")
 LANGUAGE = re.compile(r"/(english|welsh)$")
 WORK_SHARD = re.compile(r"data/works-(0|[1-9][0-9]*)\.json\.gz")
-RECEIPT = "data/reader-transport/v1/receipt.json"
+RECEIPT = "data/reader-transport/v2/receipt.json"
 PAGES_LIMIT = 1_000_000_000
 
 
@@ -67,7 +74,7 @@ def typed_work(record: dict) -> dict:
     }
     other_representations = [row for row in record.get("source_representations", [])
                              if row["id"] != representation["id"]]
-    result = {**record, "source_representations": [*other_representations, representation]}
+    result = {**record, "core_role": "extension", "source_representations": [*other_representations, representation]}
     if https_url(result.get("source_api_url") or "") == source:
         del result["source_api_url"]
     return result
@@ -119,40 +126,57 @@ def project(root: Path, source_commit: str) -> dict:
     if work_count != manifest["counts"]["works"]:
         raise ValueError("Typed transport does not cover the declared work set")
 
+    # Preserve the canonical answer bytes in Source, while encoding this one
+    # newly introduced large payload in the disposable Pages transport.
+    project_payload_encoding(root, source_commit)
+
     locator_bytes = render_at(locator_file, locator)
     performance_file = root / "data/performance.json"
     performance = json.loads(performance_file.read_bytes())
     performance["planes"]["work_records"].update(compressed_bytes=compressed_bytes, decoded_json_bytes=decoded_bytes)
     performance["targeted_record_hydration"]["maximum_record_chunk_bytes"] = max(row["compressed_bytes"] for row in chunks)
     performance["full_hydration"]["decoded_json_bytes_before_object_overhead"] += decoded_bytes - default_bytes
+    descriptor_file = root / "okf-explorer.json"
+    descriptor_before = descriptor_file.read_bytes()
     receipt = {
-        "schema": "okf-legislation-reader-transport.v1",
+        "canonical_descriptor_sha256": sha256(descriptor_before).hexdigest(),
+        "canonical_descriptor_bytes": len(descriptor_before),
+        "descriptor_policy": "preserve-exact-source-bytes",
+        "schema": "okf-legislation-reader-transport.v2",
         "source_commit": source_commit,
         "source_manifest": f"https://raw.githubusercontent.com/chris-page-gov/okf-uk-legislation/{source_commit}/bundle/data/manifest.json",
         "source_checksums_sha256": sha256(original_checksums).hexdigest(),
         "work_count": work_count, "work_shards": rewritten,
     }
     receipt_bytes = render_at(root / RECEIPT, receipt)
-    descriptor_file = root / "okf-explorer.json"
-    descriptor_before = descriptor_file.read_bytes()
-    descriptor = json.loads(descriptor_before)
-    descriptor["entrypoints"]["reader_transport_receipt"] = {
-        "path": RECEIPT, "bytes": len(receipt_bytes), "sha256": sha256(receipt_bytes).hexdigest(),
-    }
-    descriptor_bytes = render_at(descriptor_file, descriptor)
-    performance["startup"]["control_plane_bytes"] += (
-        len(locator_bytes) - len(locator_before) + len(descriptor_bytes) - len(descriptor_before)
-    )
+    # The source and Pages descriptors have the same exact bytes. The typed
+    # work shards are a separate transport, discovered through interfaces.json.
+    # Their complete locator and source/transport digests are bound above.
+    performance["startup"]["control_plane_bytes"] += len(locator_bytes) - len(locator_before)
     render_at(performance_file, performance)
     checksums = build_checksums(root)
     original_files = json.loads(original_checksums)["files"]
     published_files = json.loads(checksums)["files"]
     changed = {name for name in original_files.keys() | published_files.keys()
                if original_files.get(name) != published_files.get(name)}
-    allowed = {*chunk_paths, "data/records/manifest.json", "data/performance.json", "okf-explorer.json", RECEIPT}
+    allowed = {
+        *chunk_paths, "data/records/manifest.json", "data/performance.json", RECEIPT,
+        POLICY_PATH, ORIGINAL_PATH, COMPRESSED_PATH, REPORT_PATH,
+    }
     if unexpected := changed - allowed:
         raise ValueError(f"Unexpected changes outside the typed Reader transport: {sorted(unexpected)[:10]}")
+    if descriptor_file.read_bytes() != descriptor_before:
+        raise ValueError("Typed transport changed the canonical source descriptor")
     (root / "checksums.json").write_text(checksums, encoding="utf-8")
+    # The canonical Whole-Law validator still requires its original payloads.
+    # This explicit typed-site integrity pass verifies and decodes the one
+    # declared gzip representation before accepting the projection.
+    from check_whole_law_okf import check_integrity
+
+    errors: list[str] = []
+    check_integrity(errors, pack=root / "whole-law", typed_site_root=root)
+    if errors:
+        raise ValueError("Typed Whole-Law payload integrity failed: " + "; ".join(errors[:5]))
     size = sum(path.stat().st_size for path in root.rglob("*") if path.is_file())
     if size > PAGES_LIMIT:
         raise ValueError(f"Typed Reader Site would exceed the Pages limit: {size} bytes")

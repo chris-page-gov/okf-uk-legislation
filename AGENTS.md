@@ -16,8 +16,8 @@
 - Update maintained documentation and `CHANGELOG.md` in the same change as
   controlled publication material. Dependency updates have no blanket
   exemption when they can alter validation or release-bound bytes.
-- Run `python3 scripts/check_publication_contract.py` and
-  `python3 scripts/check_documentation_lockstep.py` before committing. CI
+- Run `uv run --locked python scripts/check_publication_contract.py` and
+  `uv run --locked python scripts/check_documentation_lockstep.py` before committing. CI
   supplies the candidate base when it assesses a pull request or main push.
 - Do not infer that a successful HTTP probe is exact-commit real-browser
   evidence. Until that separate gate is implemented, report the browser and
@@ -77,3 +77,19 @@ Read [the central standards and bundle catalogue reference](https://github.com/c
 before changing specification links or an OKF version declaration. Resolve the
 implemented version through the shared register and preserve historical pins.
 <!-- okf-standards:end -->
+
+## Governed local Python tooling
+
+Use `uv 0.13.4` and `uv sync --locked` for CPython 3.12.11. Run local Python
+through `uv run --locked python`. The UV manifest preserves all 52 versions in
+the existing validation closure; its cross-platform lock covers macOS and
+Linux. The historical Linux hash lock remains separate release evidence.
+Do not substitute host Python, direct pip installation or an unpinned environment.
+
+## Core 0.3 projection
+
+Read [the migration boundaries](docs/okf-03-migration.md) before changing sources
+or projections. Preserve the frozen input lock and Core 0.2 source manifest.
+Use the central [standards register](https://github.com/chris-page-gov/okf-explorer/blob/main/docs/okf-standards.md),
+[machine register](https://github.com/chris-page-gov/okf-explorer/blob/main/registry/okf-standards.json)
+and [bundle catalogue](https://github.com/chris-page-gov/okf-explorer/blob/main/registry/okf-estate-registry.yaml).

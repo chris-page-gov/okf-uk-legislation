@@ -95,6 +95,7 @@ CONTEXT: dict[str, Any] = {
     "target_iri": {"@id": "okf:targetIri", "@type": "@id"},
     "plane": {"@id": "okf:relationshipPlane", "@type": "@id"},
     "lifecycle": "okf:lifecycle",
+    "core_role": "https://chris-page-gov.github.io/okf-explorer/ns#coreRole",
     "shard": {"@id": "okf:shard", "@type": "@id", "@container": "@set"},
     "runtimeShard": {"@id": "okf:runtimeShard", "@type": "@id", "@container": "@set"},
     "sourceMaterial": {"@id": "prov:wasDerivedFrom", "@type": "@id"},
@@ -994,6 +995,26 @@ def validate_shared_assertion(row: dict[str, Any]) -> None:
         )
 
 
+
+@lru_cache(maxsize=1)
+def core_concept_routes() -> frozenset[str]:
+    '''Map only actual typed Markdown documents to their existing routes.'''
+    routes = set()
+    for prefix, directory in (("topic", "topics"), ("legislation-type", "types")):
+        for path in (BUNDLE / directory).glob("*.md"):
+            if path.name in {"index.md", "log.md"}:
+                continue
+            text = path.read_text(encoding="utf-8")
+            if text.startswith("---\n") and re.search(r"(?m)^type:\s*\S", text):
+                routes.add(prefix + "/" + path.stem)
+    return frozenset(routes)
+
+
+def core_role_for_route(route: str) -> str:
+    '''Virtual work and enrichment routes are source-backed extensions.'''
+    return "concept" if route in core_concept_routes() else "extension"
+
+
 def shard_document(
     assertions: list[dict[str, Any]],
     *,
@@ -1007,7 +1028,11 @@ def shard_document(
         graph.append({
             "@id": assertion["source"],
             "route": assertion["source_route"],
-            assertion["predicate"]: {"@id": assertion["target"]},
+            "core_role": core_role_for_route(assertion["source_route"]),
+            assertion["predicate"]: {
+                "@id": assertion["target"],
+                "core_role": core_role_for_route(assertion["target_route"]),
+            },
         })
         graph.append(assertion)
     return {
