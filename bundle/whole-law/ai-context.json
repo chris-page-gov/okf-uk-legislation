@@ -51950,6 +51950,6 @@
   "typed_site_payload_encoding": {
     "manifest_url": "https://chris-page-gov.github.io/okf-uk-legislation/data/reader-transport/v1/payload-encoding.json",
     "scope": "Pages typed Site only; the canonical answer bytes remain in the source bundle and release archive.",
-    "selection": "The manifest names the single approved current evaluation answer payload and binds its original and gzip byte identities."
+    "selection": "The manifest names the two approved migration evaluation answer payloads and binds each original and gzip byte identity. Published historical executions retain their existing paths."
   }
 }

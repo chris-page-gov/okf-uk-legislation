@@ -13,7 +13,7 @@
     "Start with a relevant source document or the bounded locator; do not load the whole corpus.",
     "Use complete_context for the complete manifest and reviewed offline JSON-LD contexts.",
     "Verify file hashes and retain source dates, authority, rights and lifecycle.",
-    "For the named current evaluation answer payload, follow typed_site_payload_encoding and verify the manifest before decoding its gzip representation; the pinned plain source and release archive remain available.",
+    "For the two named migration evaluation answer payloads, follow typed_site_payload_encoding and verify the manifest before decoding each gzip representation; the pinned plain sources and release archive remain available.",
     "The original source locator is pinned separately from the typed Reader transport.",
     "Static retrieval requires no bundle code execution and does not certify a model answer."
   ],
@@ -162,7 +162,7 @@
     },
     {
       "path": "docs/maintenance.md",
-      "sha256": "f161f08cd7ed56ba94e5c97d6c55f8dead87403cb1853a0dc193b331cd5f9613",
+      "sha256": "a86fe124758838b255aaac551de4d13c5c6a74b45919f3adb344df03341d470d",
       "title": "Maintenance, validation and recovery",
       "type": null,
       "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/maintenance.md"
@@ -847,7 +847,7 @@
   "typed_site_payload_encoding": {
     "manifest_url": "https://chris-page-gov.github.io/okf-uk-legislation/data/reader-transport/v1/payload-encoding.json",
     "scope": "Pages typed Site only; the canonical answer bytes remain in the source bundle and release archive.",
-    "selection": "The manifest names the single approved current evaluation answer payload and binds its original and gzip byte identities."
+    "selection": "The manifest names the two approved migration evaluation answer payloads and binds each original and gzip byte identity. Published historical executions retain their existing paths."
   },
   "walkthrough": "https://chris-page-gov.github.io/okf-uk-legislation/walkthroughs/legislation/index.html"
 }

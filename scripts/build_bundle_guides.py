@@ -44,7 +44,7 @@ def source_document(path, raw):
 def payload_encoding_access():
     return {"manifest_url": PUBLIC + "data/reader-transport/v1/payload-encoding.json",
             "scope": "Pages typed Site only; the canonical answer bytes remain in the source bundle and release archive.",
-            "selection": "The manifest names the single approved current evaluation answer payload and binds its original and gzip byte identities."}
+            "selection": "The manifest names the two approved migration evaluation answer payloads and binds each original and gzip byte identity. Published historical executions retain their existing paths."}
 
 def ai_context(name, documents):
     semantic = BUNDLE / ("whole-law/" if name == "whole-law" else "") / "okf-bundle.jsonld"
@@ -201,7 +201,7 @@ def guide_files(name, documents):
              "instructions":["Start with a relevant source document or the bounded locator; do not load the whole corpus.",
                              "Use complete_context for the complete manifest and reviewed offline JSON-LD contexts.",
                              "Verify file hashes and retain source dates, authority, rights and lifecycle.",
-                             "For the named current evaluation answer payload, follow typed_site_payload_encoding and verify the manifest before decoding its gzip representation; the pinned plain source and release archive remain available.",
+                             "For the two named migration evaluation answer payloads, follow typed_site_payload_encoding and verify the manifest before decoding each gzip representation; the pinned plain sources and release archive remain available.",
                              "The original source locator is pinned separately from the typed Reader transport.",
                              "Static retrieval requires no bundle code execution and does not certify a model answer."]}
     return {prefix/"index.html":page,prefix/"source.md":body.encode(),prefix/"evidence.json":encoded(evidence),

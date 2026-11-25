@@ -2,10 +2,13 @@
 
 ## Unreleased
 
-- Encode the selected current Whole-Law evaluation answers as deterministic
-  gzip in the separate typed Pages projection. Bind original and encoded
+- Encode the two fixed, unpublished Whole-Law migration evaluation answer
+  objects as deterministic gzip in the separate typed Pages projection. Bind
+  original and encoded
   bytes, retain the canonical JSON in Source and the release archive, and
   expose verified plain-source and archive routes to readers and AI clients.
+  Check the GNU TAR framing budget separately from published file bytes,
+  before the full corpus validator runs. Preserve published historical paths.
 
 - Build release assurance before the complete bundle guides so the AI context
   captures the current assurance Markdown. Keep the bootstrap checksum before

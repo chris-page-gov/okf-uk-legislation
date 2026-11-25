@@ -1,6 +1,8 @@
 from pathlib import Path
 from hashlib import sha256
 import json
+from io import BytesIO
+import tarfile
 import tempfile
 import sys
 import unittest
@@ -12,6 +14,22 @@ import build_reader_transport as transport  # noqa: E402
 
 
 class ReaderTransportTest(unittest.TestCase):
+    def test_pages_tar_size_matches_gnu_archive_padding_and_long_names(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "site"
+            (root / "nested").mkdir(parents=True)
+            for index, size in enumerate((0, 1, 511, 512, 513)):
+                (root / "nested" / str(index)).write_bytes(b"x" * size)
+            (root / ("a" * 120)).write_bytes(b"long name")
+            stream = BytesIO()
+            with tarfile.open(fileobj=stream, mode="w", format=tarfile.GNU_FORMAT,
+                              dereference=True) as archive:
+                archive.add(root, arcname=".")
+            self.assertEqual(len(stream.getvalue()), transport.pages_tar_size(root))
+            (root / "unsafe-link").symlink_to(root / "nested" / "0")
+            with self.assertRaisesRegex(ValueError, "non-regular member"):
+                transport.pages_tar_size(root)
+
     def test_preserves_exact_welsh_expression_and_distinguishes_the_json_shortcut(self):
         work = "https://www.legislation.gov.uk/wsi/2026/99/made"
         xml = work + "/welsh/data.xml"
@@ -79,7 +97,13 @@ class CanonicalDescriptorParityTest(unittest.TestCase):
             (execution / "answers.json").write_bytes(answer_bytes)
             report_bytes = b"<html><code>answers.json</code></html>\n"
             (execution / "report.html").write_bytes(report_bytes)
-            execution_index = json.dumps({"latest_run_id": "eval-76d593e3295063f2cbe5"}).encode()
+            earlier = root / "whole-law/evaluation/executions/eval-1edbcf9ff765b952ee03"
+            earlier.mkdir()
+            (earlier / "answers.json").write_bytes(answer_bytes + b" \n")
+            (earlier / "report.html").write_bytes(report_bytes)
+            execution_index = json.dumps({"latest_run_id": "eval-76d593e3295063f2cbe5",
+                "executions": [{"run_id": run} for run in (
+                    "eval-76d593e3295063f2cbe5", "eval-1edbcf9ff765b952ee03")]}).encode()
             (execution.parent / "index.json").write_bytes(execution_index)
             whole_law_rows = [
                 {"path": "evaluation/executions/eval-76d593e3295063f2cbe5/answers.json",
@@ -93,6 +117,10 @@ class CanonicalDescriptorParityTest(unittest.TestCase):
                 body = (name + " fixture\n").encode()
                 (root / "whole-law" / name).write_bytes(body)
                 whole_law_rows.append({"path": name, "bytes": len(body), "sha256": sha256(body).hexdigest()})
+            for name in ("answers.json", "report.html"):
+                body = (earlier / name).read_bytes()
+                whole_law_rows.append({"path": "evaluation/executions/eval-1edbcf9ff765b952ee03/" + name,
+                    "bytes": len(body), "sha256": sha256(body).hexdigest()})
             (root / "whole-law/integrity.json").write_text(json.dumps({"files": whole_law_rows}), encoding="utf-8")
             source_checksums = transport.build_checksums(root)
             (root / "checksums.json").write_text(source_checksums)

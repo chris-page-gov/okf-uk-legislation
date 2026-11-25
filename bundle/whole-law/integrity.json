@@ -192,14 +192,14 @@
       "sha256": "29cacaa811f8c41e90c859a24c0785c137843d9dbd0439477409d95ecfc4bcf0"
     },
     {
-      "bytes": 3352320,
+      "bytes": 3352380,
       "path": "ai-context.json",
-      "sha256": "0aed420d36cb9f4ebb84bbf4598898fbf806f768d117defa17aa9ecc7e7484f7"
+      "sha256": "8ea71dde46716d7e2b715c9a6a5b20b721b05598e9327bb9192a3e41c70f0c11"
     },
     {
-      "bytes": 85888,
+      "bytes": 85957,
       "path": "ai-index.json",
-      "sha256": "33407dfed2f5d6f27349183e270b44ba6698ef081895231aea1e27373e7da196"
+      "sha256": "3d23bf8638efdba16b606a3995ff37c62bd07f91481d296b37e92340341a6bea"
     },
     {
       "bytes": 16338,

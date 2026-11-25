@@ -11,16 +11,17 @@ import re
 import shutil
 import subprocess
 import sys
+import tarfile
 from tempfile import TemporaryDirectory
 from urllib.parse import urlparse
 
 from build_legislation_okf import BASE, gzip_json, https_url, inflate_single_gzip, large_corpus
 from build_checksums import build as build_checksums
 from reader_payload_encoding import (
-    COMPRESSED_PATH,
-    ORIGINAL_PATH,
+    COMPRESSED_PATHS,
+    ORIGINAL_PATHS,
     POLICY_PATH,
-    REPORT_PATH,
+    REPORT_PATHS,
     project as project_payload_encoding,
 )
 
@@ -87,6 +88,28 @@ def render_at(path: Path, value: dict) -> bytes:
     return body
 
 
+def pages_tar_size(root: Path) -> int:
+    """Count GNU TAR headers, payload padding and 20-block end framing."""
+    framed = 0
+    for path in (root, *sorted(root.rglob("*"))):
+        relative = path.relative_to(root)
+        if any(part in (".git", ".github") for part in relative.parts):
+            continue
+        if path.is_symlink() or not (path.is_dir() or path.is_file()):
+            raise ValueError("Pages TAR contains a non-regular member")
+        info = tarfile.TarInfo("." if path == root else "./" + relative.as_posix())
+        stat = path.stat()
+        info.uid, info.gid, info.mtime = stat.st_uid, stat.st_gid, int(stat.st_mtime)
+        info.mode = stat.st_mode & 0o777
+        if path.is_dir():
+            info.type = tarfile.DIRTYPE
+        else:
+            info.size = stat.st_size
+        framed += len(info.tobuf(format=tarfile.GNU_FORMAT, encoding="utf-8"))
+        framed += ((info.size + 511) // 512) * 512
+    return ((framed + 1024 + 10239) // 10240) * 10240
+
+
 def project(root: Path, source_commit: str) -> dict:
     original_checksums = (root / "checksums.json").read_bytes()
     manifest = json.loads((root / "data/manifest.json").read_bytes())
@@ -126,8 +149,8 @@ def project(root: Path, source_commit: str) -> dict:
     if work_count != manifest["counts"]["works"]:
         raise ValueError("Typed transport does not cover the declared work set")
 
-    # Preserve the canonical answer bytes in Source, while encoding this one
-    # newly introduced large payload in the disposable Pages transport.
+    # Preserve canonical answer bytes in Source, while encoding only the
+    # two newly introduced migration payloads in the disposable Pages transport.
     project_payload_encoding(root, source_commit)
 
     locator_bytes = render_at(locator_file, locator)
@@ -161,7 +184,7 @@ def project(root: Path, source_commit: str) -> dict:
                if original_files.get(name) != published_files.get(name)}
     allowed = {
         *chunk_paths, "data/records/manifest.json", "data/performance.json", RECEIPT,
-        POLICY_PATH, ORIGINAL_PATH, COMPRESSED_PATH, REPORT_PATH,
+        POLICY_PATH, *ORIGINAL_PATHS, *COMPRESSED_PATHS, *REPORT_PATHS,
     }
     if unexpected := changed - allowed:
         raise ValueError(f"Unexpected changes outside the typed Reader transport: {sorted(unexpected)[:10]}")
@@ -169,8 +192,8 @@ def project(root: Path, source_commit: str) -> dict:
         raise ValueError("Typed transport changed the canonical source descriptor")
     (root / "checksums.json").write_text(checksums, encoding="utf-8")
     # The canonical Whole-Law validator still requires its original payloads.
-    # This explicit typed-site integrity pass verifies and decodes the one
-    # declared gzip representation before accepting the projection.
+    # This explicit typed-site integrity pass verifies and decodes both
+    # declared gzip representations before accepting the projection.
     from check_whole_law_okf import check_integrity
 
     errors: list[str] = []
@@ -180,7 +203,11 @@ def project(root: Path, source_commit: str) -> dict:
     size = sum(path.stat().st_size for path in root.rglob("*") if path.is_file())
     if size > PAGES_LIMIT:
         raise ValueError(f"Typed Reader Site would exceed the Pages limit: {size} bytes")
+    tar_size = pages_tar_size(root)
+    if tar_size > PAGES_LIMIT:
+        raise ValueError(f"Typed Reader Pages TAR would exceed the conservative Pages budget: {tar_size} bytes")
     return {"work_count": work_count, "work_shards": len(chunks), "site_bytes": size,
+            "pages_tar_bytes": tar_size,
             "receipt_sha256": sha256(receipt_bytes).hexdigest()}
 
 

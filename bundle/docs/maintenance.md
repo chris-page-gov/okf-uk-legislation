@@ -121,20 +121,27 @@ rather than rerun. Their validation gates remain mandatory; no API key or
 direct API call is required by this release.
 
 The separately assembled Pages transport deterministically gzip-encodes only
-the selected current Whole-Law evaluation `answers.json` from its exact source
-bytes. Its v1 payload-encoding receipt binds both byte identities, the frozen
-source commit, the plain raw-source route and the release archive fallback.
+the two Whole-Law migration `answers.json` objects, from executions
+`eval-76d593e3295063f2cbe5` and `eval-1edbcf9ff765b952ee03`, using their exact
+source bytes. These objects were introduced during this migration; previously
+published historical executions retain their existing paths. The v1 encoding
+receipt binds original and encoded identities, the frozen source commit,
+plain raw-source routes and the release archive fallback.
 The report HTML and AI/discovery metadata point to the compressed payload and
 receipt. Canonical `bundle/whole-law/` answers and integrity files remain
 unchanged; the default Whole-Law validator still requires every original file.
-The typed-site integrity check accepts this one encoding only after bounded
-single-member decompression reproduces the canonical byte count and SHA-256.
-The encoding policy also verifies that its selected execution remains the
-current one. A new evaluation needs a reviewed policy and size assessment;
+The typed-site integrity check accepts these two encodings only after bounded
+single-member decompression reproduces each canonical byte count and SHA-256.
+The encoding policy also verifies that its current execution remains the
+declared latest one and both approved runs remain indexed. A new evaluation
+needs a reviewed policy and size assessment;
 the builder refuses to silently encode an older run. This large assurance
 payload is separate from the phone question journey, which must use small
 plain evidence files and source-linked graph selections. Measure and report
-the remaining Pages headroom before promotion.
+the remaining Pages headroom before promotion. The builder separately bounds
+file bytes and the GNU-format Pages TAR, including member headers, file
+padding and end blocks, to 1,000,000,000 bytes each. Exact CI packaging and
+deployment remain separate checks.
 
 Network refreshes are separate and create immutable acquisition attempts. They
 must not overwrite the evidence used by an existing release candidate.

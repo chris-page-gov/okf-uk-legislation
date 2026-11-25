@@ -607,7 +607,7 @@
   "limitations": [
     "The complete validator remains one fail-closed frozen-candidate gate. Focused checks are used during correction so small documentation changes do not repeatedly rebuild the corpus.",
     "Pages serves a separately assembled typed Reader transport after its legislation phase validates it. The descriptor binds that transport receipt and its immutable checked-in work inputs. Historical enrichment verification uses those checked-in inputs.",
-    "The typed Pages projection encodes only the selected current Whole-Law evaluation answers.json as exact-byte deterministic gzip, bound by data/reader-transport/v1/payload-encoding.json. The canonical bundle, Whole-Law integrity manifest and release archive retain the original JSON bytes; typed-site integrity must decode and verify the declared representation.",
+    "The typed Pages projection encodes only the two unpublished migration evaluation answers.json objects (eval-76d593e3295063f2cbe5 and eval-1edbcf9ff765b952ee03) as exact-byte deterministic gzip, bound by data/reader-transport/v1/payload-encoding.json. Canonical and archive bytes and previously published historical paths remain unchanged. Typed integrity must decode both representations. File bytes and GNU-format TAR framing each have a separate conservative 1,000,000,000-byte budget before heavy corpus validation.",
     "GitHub Pages serves YAML-LD as application/octet-stream; strict JSON-LD remains the transport fallback.",
     "WebMCP is a W3C Community Group draft. Successful page-tool registration does not establish that every host can discover or invoke those tools.",
     "The historical v0.3.0 release remains immutable; v0.4.0 is a distinct release and does not rewrite its evidence.",

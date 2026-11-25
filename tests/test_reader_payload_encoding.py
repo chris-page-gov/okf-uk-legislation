@@ -24,11 +24,16 @@ class ReaderPayloadEncodingTest(unittest.TestCase):
         self.execution.write_bytes(self.original)
         self.report = self.bundle / encoding.REPORT_PATH
         self.report.write_bytes(b"<html><code>answers.json</code></html>\n")
+        earlier = self.bundle / encoding.ORIGINAL_PATHS[1]
+        earlier.parent.mkdir(parents=True)
+        earlier.write_bytes(self.original + b" \n")
+        (self.bundle / encoding.REPORT_PATHS[1]).write_bytes(b"<html><code>answers.json</code></html>\n")
         (self.bundle / encoding.EXECUTION_INDEX_PATH).write_text(
-            json.dumps({"latest_run_id": encoding.APPROVED_RUN_ID}), encoding="utf-8"
+            json.dumps({"latest_run_id": encoding.APPROVED_RUN_ID,
+                        "executions": [{"run_id": run} for run in encoding.APPROVED_RUN_IDS]}), encoding="utf-8"
         )
         inner_files = []
-        for relative in (encoding.ORIGINAL_PATH, encoding.REPORT_PATH, encoding.EXECUTION_INDEX_PATH):
+        for relative in (*encoding.ORIGINAL_PATHS, *encoding.REPORT_PATHS, encoding.EXECUTION_INDEX_PATH):
             body = (self.bundle / relative).read_bytes()
             inner_files.append({
                 "path": relative.removeprefix("whole-law/"),
@@ -68,12 +73,16 @@ class ReaderPayloadEncodingTest(unittest.TestCase):
 
     def test_projects_exact_original_bytes_and_binds_both_routes(self):
         manifest, paths = self._project_and_validate()
-        self.assertEqual({encoding.ORIGINAL_PATH, encoding.REPORT_PATH}, paths)
+        self.assertEqual(set(encoding.ORIGINAL_PATHS) | set(encoding.REPORT_PATHS), paths)
         self.assertFalse((self.bundle / encoding.ORIGINAL_PATH).exists())
         compressed = (self.bundle / encoding.COMPRESSED_PATH).read_bytes()
         self.assertEqual(self.original, encoding.inflate_single_gzip(compressed, expected_bytes=len(self.original)))
         self.assertEqual(compressed, encoding.deterministic_gzip(self.original))
-        self.assertEqual(encoding.ORIGINAL_PATH, manifest["ai_access"]["payload_path"])
+        self.assertEqual(list(encoding.ORIGINAL_PATHS), manifest["ai_access"]["payload_paths"])
+        self.assertEqual(2, len(manifest["payloads"]))
+        for item in manifest["payloads"]:
+            self.assertEqual(item["sha256"], sha256(encoding.inflate_single_gzip(
+                (self.bundle / item["transport_path"]).read_bytes(), expected_bytes=item["bytes"])).hexdigest())
         report = (self.bundle / encoding.REPORT_PATH).read_text(encoding="utf-8")
         self.assertIn("answers.json.gz", report)
         self.assertIn(manifest["payloads"][0]["source_url"], report)
@@ -140,6 +149,23 @@ class ReaderPayloadEncodingTest(unittest.TestCase):
             encoding.project(self.bundle, "a" * 40)
         self.assertEqual(self.original, self.execution.read_bytes())
         self.assertFalse((self.bundle / encoding.COMPRESSED_PATH).exists())
+
+    def test_missing_second_report_does_not_mutate_either_original(self):
+        (self.bundle / encoding.REPORT_PATHS[1]).unlink()
+        with self.assertRaisesRegex(ValueError, "regular contained file"):
+            encoding.project(self.bundle, "a" * 40)
+        self.assertEqual(self.original, self.execution.read_bytes())
+        self.assertFalse(any((self.bundle / path).exists() for path in encoding.COMPRESSED_PATHS))
+
+    def test_second_encoded_object_is_checked_and_extra_objects_are_refused(self):
+        manifest, _ = self._project_and_validate()
+        (self.bundle / encoding.COMPRESSED_PATHS[1]).write_bytes(b"tampered second object")
+        with self.assertRaisesRegex(ValueError, "differs from its manifest"):
+            encoding.validate(self.bundle)
+        manifest["payloads"].append(dict(manifest["payloads"][0]))
+        (self.bundle / encoding.POLICY_PATH).write_text(json.dumps(manifest), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "over-broad"):
+            encoding.validate(self.bundle)
 
 
 if __name__ == "__main__":

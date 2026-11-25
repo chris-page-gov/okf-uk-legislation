@@ -320,11 +320,11 @@ def check_integrity(
     projected_transport: dict[str, str] = {}
     if typed_site_root is not None:
         try:
-            from reader_payload_encoding import COMPRESSED_PATH, validate
+            from reader_payload_encoding import validate
 
             projected_sources = validate(typed_site_root)
             projected_transport = {
-                path.removeprefix("whole-law/"): COMPRESSED_PATH.removeprefix("whole-law/")
+                path.removeprefix("whole-law/"): (path + ".gz").removeprefix("whole-law/")
                 for path in projected_sources
                 if path.endswith("/answers.json")
             }
@@ -354,10 +354,9 @@ def check_integrity(
         if path.is_file() and path != pack / "integrity.json"
     }
     if typed_site_root is not None:
-        compressed_relative = next(iter(projected_transport.values()), None)
-        if compressed_relative:
+        for original_relative, compressed_relative in projected_transport.items():
             actual.discard(compressed_relative)
-            actual.add(next(iter(projected_transport)))
+            actual.add(original_relative)
     if actual != expected_paths:
         errors.append("Whole-Law integrity path set does not equal publication path set")
     required_semantic_paths = {
