@@ -25,6 +25,7 @@ from jsonschema import Draft202012Validator
 import capture_github_pages_observation as pages
 import finalize_release_candidate as finalization
 import reproduce_release_candidate as reproduction
+from build_bundle_guides import source_document
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +35,8 @@ ASSURANCE_ONLY = (
     "bundle/docs/maintenance.md",
     "bundle/docs/maintenance.html",
 )
+MAINTENANCE_DOCUMENT = "docs/maintenance.md"
+MAINTENANCE_PROJECTIONS = {"bundle/ai-context.json", "bundle/ai-index.json"}
 TESTS = (
     "tests.test_release_toolchain_preflight",
     "tests.test_github_pages_observation",
@@ -134,21 +137,43 @@ def material(path: Path) -> dict:
     return {"path": str(path), "bytes": info.st_size, "sha256": digest.hexdigest()}
 
 
+def verify_maintenance_projection(baseline: str, path: str) -> None:
+    expected = json.loads(git("show", f"{baseline}:{path}"))
+    rows = [row for row in expected["source_documents"] if row["path"] == MAINTENANCE_DOCUMENT]
+    if len(rows) != 1:
+        raise RuntimeError(f"expected one maintenance document in {path}")
+    raw = (ROOT / "bundle" / MAINTENANCE_DOCUMENT).read_bytes()
+    document = source_document(MAINTENANCE_DOCUMENT, raw)
+    if path == "bundle/ai-context.json":
+        rows[0].update(document)
+    else:
+        rows[0]["sha256"] = document["sha256"]
+        rows[0]["title"] = next(
+            (line[2:] for line in document["body"].splitlines() if line.startswith("# ")),
+            MAINTENANCE_DOCUMENT,
+        )
+    if expected != json.loads((ROOT / path).read_bytes()):
+        raise RuntimeError(f"non-maintenance publication changes in {path}")
+
+
 def verify_preservation(baseline: str) -> dict:
     if not re.fullmatch(r"[0-9a-f]{40}", baseline):
         raise RuntimeError("baseline must be an exact full Git commit")
     changed = git("diff", "--name-only", baseline, "--", "bundle/").decode().splitlines()
-    unexpected = [p for p in changed if not any(p == a or (a.endswith("/") and p.startswith(a)) for a in ASSURANCE_ONLY)]
+    projections = MAINTENANCE_PROJECTIONS.intersection(changed)
+    unexpected = [p for p in changed if p not in projections and not any(p == a or (a.endswith("/") and p.startswith(a)) for a in ASSURANCE_ONLY)]
     untracked = git("ls-files", "--others", "--exclude-standard", "--", "bundle/").decode().splitlines()
     if unexpected or untracked:
         raise RuntimeError(f"non-assurance publication changes: {unexpected}; untracked: {untracked}")
+    for path in sorted(projections):
+        verify_maintenance_projection(baseline, path)
     protected = []
     for entry in git("ls-tree", "-r", "-z", baseline, "--", "bundle/").split(b"\0"):
         if not entry:
             continue
         header, raw_path = entry.split(b"\t", 1)
         path = raw_path.decode()
-        if any(path == a or (a.endswith("/") and path.startswith(a)) for a in ASSURANCE_ONLY):
+        if path in projections or any(path == a or (a.endswith("/") and path.startswith(a)) for a in ASSURANCE_ONLY):
             continue
         mode, kind, expected = header.decode().split()
         target = ROOT / path

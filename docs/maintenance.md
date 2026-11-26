@@ -159,11 +159,13 @@ reflects their current immutable chunks.
 ## Validation
 
 Before qualifying a release-tooling successor, run the bounded offline
-preflight with the retained real Explorer v0.8.1 evidence:
+preflight with a retained real Explorer v0.9.2 release-bound runtime receipt
+and its exact Pages archive. Set `FROZEN_BASELINE_COMMIT` to the verified
+Legislation revision whose publication bytes the change must preserve.
 
 ```sh
-python3 scripts/preflight_release_toolchain.py \
-  --baseline b323f257ef9861b7e7d3ab10eed02338699ec64a \
+uv run --locked python scripts/preflight_release_toolchain.py \
+  --baseline "$FROZEN_BASELINE_COMMIT" \
   --pages-zip /absolute/path/to/retained-pages.zip \
   --runtime /absolute/path/to/explorer-runtime-acceptance.json \
   --explorer-root /absolute/path/to/clean-pinned-okf-explorer \
@@ -173,8 +175,8 @@ python3 scripts/preflight_release_toolchain.py \
 This diagnostic compiles receipt schemas, checks the real Pages inventory and
 runtime fixture, invokes the actual pinned Explorer canonical-inventory helper
 on the current production file inventory, proves its digest equals the Python
-producer's digest, exercises native finaliser binding with an explicitly
-synthetic diagnostic copy, runs controller/finaliser regression round trips and
+producer's digest, reconstructs the retained native receipt against the
+current finaliser, runs controller and finaliser regression tests and
 rehashes every protected publication file against the baseline. Only the
 explicit assurance and maintenance-guide projection paths may differ. It
 does not refresh evidence, authorise publication or replace exact-successor

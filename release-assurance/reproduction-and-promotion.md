@@ -106,6 +106,14 @@ Expected output: the empty external evidence root and three exact revision
 variables. Any dirty checkout, existing evidence root, missing tag or revision
 mismatch stops the release.
 
+Before repeating a full reproduction, run the [release-toolchain preflight](../docs/maintenance.md#validation)
+with the retained real release-bound Explorer v0.9.2 receipt and Pages archive.
+This checks the consumer schema, executable materials and finaliser together.
+The runner's completed-build command digest includes the absolute Node
+executable, deterministic build script path and application working directory.
+Moving the Explorer checkout or changing the host Node executable requires
+reviewing that exact digest before a new release attempt.
+
 ## 1. Reproduce the exact frozen candidate
 
 This is the production invocation. `--candidate-frozen` requires a literal

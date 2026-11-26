@@ -430,7 +430,10 @@
       "properties": {
         "schema": {"const": "okf-explorer-completed-build-attestation.v1"},
         "completed_at": {"type": "string", "format": "date-time"},
-        "command_sha256": {"const": "48efd2a023a3eff6a832ca7a03cfe58b5ac3124d07407fa49320692eb07008cb"},
+        "command_sha256": {
+          "$comment": "Exact released v0.9.2 invocation observed on the release host. The runner hashes the absolute Node executable, script argument and working directory.",
+          "const": "891b18c88b9695239f43fe22746dfc830ec401605be5cc879d55595f3c9c2d25"
+        },
         "deterministic_build_script": {"$ref": "#/$defs/deterministicBuildMaterial"},
         "canonical_build": {"$ref": "#/$defs/canonicalBuild"}
       }
@@ -466,13 +469,13 @@
       }
     },
     "runnerMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/run_legislation_runtime_acceptance.mjs"}, "bytes": {"const": 98344}, "sha256": {"const": "d024df239a2a6dab58006e9e334c375cecaa69ce759feb0300f6f504754cb725"}}},
-    "runtimeContractMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/runtime_acceptance_contract.mjs"}, "bytes": {"const": 25697}, "sha256": {"const": "b8575412d88796daa95e77d2cb45941730f90c82e57dfa9ec4b9bb8c01aefd41"}}},
+    "runtimeContractMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/runtime_acceptance_contract.mjs"}, "bytes": {"const": 26866}, "sha256": {"const": "8e683aaecdaa881f66a6785807f08905e58d092620fcbb761b4a3d2c2f802ea8"}}},
     "appManifestMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/app_build_manifest.mjs"}, "bytes": {"const": 22932}, "sha256": {"const": "6750dfe9ab09eeea945525473c9919e4d308e7f9a87f748244cbcd13e8b1d867"}}},
     "invocationWrapperMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/run_acceptance_invocation.mjs"}, "bytes": {"const": 2489}, "sha256": {"const": "95b2d3287f16698f221221b615392421b5654c17c98b909b205727dfa55c3772"}}},
     "invocationLockMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/acceptance_invocation_lock.mjs"}, "bytes": {"const": 30724}, "sha256": {"const": "1f4741365c3a61c4d11f0e3844aff05bdc8aa3e9e71ff0b426667abe6050e4e7"}}},
     "deterministicBuildMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/scripts/check_deterministic_build.mjs"}, "bytes": {"const": 3309}, "sha256": {"const": "a4ee3e440aef1732da4e8b2de277c4cfe11573e4f35d16cb4c4348e84a6ff3e6"}}},
-    "packageMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/package.json"}, "bytes": {"const": 2872}, "sha256": {"const": "882534b3c8a800b7e2d0cf1dab5b7d5233283e039a6df99720ca0e6bb9d614d9"}}},
-    "dependencyLockMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/pnpm-lock.yaml"}, "bytes": {"const": 46184}, "sha256": {"const": "6b67ddb312bbd76e6658f902e61cbc6d4520afaa37ddf03a904c834751e0f5f3"}}},
+    "packageMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/package.json"}, "bytes": {"const": 3103}, "sha256": {"const": "724f80c8c40cf3cb811442964c473ae63f7c3fa49294995c8e0aa20d42465ee6"}}},
+    "dependencyLockMaterial": {"allOf": [{"$ref": "#/$defs/material"}], "properties": {"path": {"const": "apps/okf-explorer/pnpm-lock.yaml"}, "bytes": {"const": 46603}, "sha256": {"const": "3b7d5610daef8d4773c2f65e3130cf23aa9c9e067e7a3cfe425d004d0d32140d"}}},
     "repositoryIdentity": {
       "type": "object", "additionalProperties": false, "required": ["explorer", "candidate"],
       "properties": {
