@@ -50,6 +50,33 @@ class ReleaseToolchainPreflightTests(unittest.TestCase):
             with self.subTest(invalid=invalid), self.assertRaisesRegex(RuntimeError, "exact full Git commit"):
                 preflight.verify_preservation(invalid)
 
+    def test_ai_projection_allows_only_the_verified_maintenance_update(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            path = "bundle/ai-context.json"
+            maintenance = root / "bundle" / preflight.MAINTENANCE_DOCUMENT
+            maintenance.parent.mkdir(parents=True)
+            old = preflight.source_document(preflight.MAINTENANCE_DOCUMENT, b"# Maintenance\nOld\n")
+            new = preflight.source_document(preflight.MAINTENANCE_DOCUMENT, b"# Maintenance\nNew\n")
+            maintenance.write_text(new["source"])
+            before = {"source_documents": [old], "complete_relationship_graph": {"files": 1}}
+            after = before | {"source_documents": [new]}
+            target = root / path
+            for document, allowed in (
+                (after, True),
+                (after | {"complete_relationship_graph": {"files": 2}}, False),
+                (after | {"source_documents": [new | {"sha256": "0" * 64}]}, False),
+            ):
+                target.write_text(json.dumps(document))
+                with mock.patch.object(preflight, "ROOT", root), mock.patch.object(
+                    preflight, "git", return_value=json.dumps(before).encode()
+                ):
+                    if allowed:
+                        preflight.verify_maintenance_projection("a" * 40, path)
+                    else:
+                        with self.assertRaisesRegex(RuntimeError, "non-maintenance"):
+                            preflight.verify_maintenance_projection("a" * 40, path)
+
     def _inventory_preflight_fixture(self, root: Path, explorer_root: Path) -> dict:
         contract_dir = root / "release-assurance"
         contract_dir.mkdir(parents=True)

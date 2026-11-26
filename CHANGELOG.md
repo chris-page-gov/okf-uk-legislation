@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Bind the release assurance schema to the real Explorer 0.9.2 invocation
+  and the exact release tag's runtime contract, package and dependency lock.
+  Check the real receipt against the finaliser before another reproduction.
+
 - Encode the two fixed, unpublished Whole-Law migration evaluation answer
   objects as deterministic gzip in the separate typed Pages projection. Bind
   original and encoded

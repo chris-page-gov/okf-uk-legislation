@@ -207,10 +207,10 @@
         "sha256": "ffa3a64ca99654403cc325e3f736a2e5850683bdf305187f955ec1d5d2909b8c"
       },
       {
-        "bytes": 32581,
+        "bytes": 32776,
         "path": "release-assurance/schemas/explorer-runtime-receipt.schema.json",
         "projected_path": "schemas/explorer-runtime-receipt.schema.json",
-        "sha256": "4197a85fe8404737cd567e95607e9e9b09e060e1c043d059633843b9b7c88c44"
+        "sha256": "2c7542121607a63d5753412d576216beb67aaeef81fcd21d786f80b2065f3fcf"
       },
       {
         "bytes": 9773,
@@ -530,9 +530,9 @@
       "sha256": "ffa3a64ca99654403cc325e3f736a2e5850683bdf305187f955ec1d5d2909b8c"
     },
     {
-      "bytes": 32581,
+      "bytes": 32776,
       "path": "release-assurance/schemas/explorer-runtime-receipt.schema.json",
-      "sha256": "4197a85fe8404737cd567e95607e9e9b09e060e1c043d059633843b9b7c88c44"
+      "sha256": "2c7542121607a63d5753412d576216beb67aaeef81fcd21d786f80b2065f3fcf"
     },
     {
       "bytes": 9773,
@@ -630,7 +630,7 @@
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
     }
   ],
-  "materials_digest": "sha256:3892c6729205c20673b6fa0598a0e7deea5883d5ac1034b8b1301a1f7df067eb",
+  "materials_digest": "sha256:0654cf3db5fdba70ef1a7b825d0dbbb85f59be5c1a198b550f071e71f1818576",
   "optional_direct_api_model_governance": {
     "authored_run": null,
     "current_release_required": false,

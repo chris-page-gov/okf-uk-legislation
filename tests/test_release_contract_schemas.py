@@ -356,6 +356,34 @@ class ReleaseContractSchemaTests(unittest.TestCase):
         ):
             self.assertFalse(schema["$defs"][name]["additionalProperties"])
 
+    def test_runtime_invocation_pins_match_reader_092(self) -> None:
+        schema = load(SCHEMAS / "explorer-runtime-receipt.schema.json")
+        definitions = schema["$defs"]
+        command = definitions["completedBuild"]["properties"]["command_sha256"]
+        command_validator = Draft202012Validator(command)
+        self.assertTrue(command_validator.is_valid(
+            "891b18c88b9695239f43fe22746dfc830ec401605be5cc879d55595f3c9c2d25"
+        ))
+        self.assertFalse(command_validator.is_valid(
+            "48efd2a023a3eff6a832ca7a03cfe58b5ac3124d07407fa49320692eb07008cb"
+        ))
+        for name, path, size, digest in (
+            ("runtimeContractMaterial", "scripts/runtime_acceptance_contract.mjs", 26866,
+             "8e683aaecdaa881f66a6785807f08905e58d092620fcbb761b4a3d2c2f802ea8"),
+            ("packageMaterial", "package.json", 3103,
+             "724f80c8c40cf3cb811442964c473ae63f7c3fa49294995c8e0aa20d42465ee6"),
+            ("dependencyLockMaterial", "pnpm-lock.yaml", 46603,
+             "3b7d5610daef8d4773c2f65e3130cf23aa9c9e067e7a3cfe425d004d0d32140d"),
+        ):
+            with self.subTest(material=name):
+                validator = Draft202012Validator({
+                    "$ref": f"#/$defs/{name}", "$defs": definitions,
+                })
+                row = {"path": f"apps/okf-explorer/{path}", "bytes": size, "sha256": digest}
+                self.assertTrue(validator.is_valid(row))
+                self.assertFalse(validator.is_valid(row | {"bytes": size - 1}))
+                self.assertFalse(validator.is_valid(row | {"sha256": "0" * 64}))
+
     def test_runtime_summaries_match_the_v054_producer_contract(self) -> None:
         schema = load(SCHEMAS / "explorer-runtime-receipt.schema.json")
         runtime_ids = [
