@@ -295,7 +295,7 @@ class ReleaseAssuranceTests(unittest.TestCase):
         ]
         self.assertEqual(52, len(python_components))
         self.assertEqual(
-            1159,
+            1184,
             sum(len(row["hashes"]) for row in python_components),
         )
         dependency_kinds = Counter(
@@ -385,15 +385,15 @@ class ReleaseAssuranceTests(unittest.TestCase):
         self.assertEqual(52, environment["package_count"])
         self.assertEqual(9, environment["direct_count"])
         self.assertEqual(43, environment["transitive_count"])
-        self.assertEqual(1159, environment["artifact_hash_count"])
+        self.assertEqual(1184, environment["artifact_hash_count"])
         self.assertEqual(
             "sha256:"
-            "d66bdd006f5f3d69a0137aab0a0f5e5cf9b0d57c8e0dba3a1763d5fe2a33b57c",
+            "65e3231716f4484c496ba5a73bf2ec0416526cfdb86cd7eb185f07d3d3ad0637",
             environment["identity_digest"],
         )
         self.assertEqual(
             "sha256:"
-            "fae29d9f671559dd53991cfd2dc673799764bf2f650ab01f73b8a5f0a60d1909",
+            "e8af0c1ea24f83bc81467193b16fbc9e1851fda05096f7eca2a82598b636d16a",
             environment["artifact_hash_digest"],
         )
 

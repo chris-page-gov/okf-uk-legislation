@@ -79,7 +79,7 @@
     {
       "bytes": 27680,
       "path": "provenance.json",
-      "sha256": "324e07ced568b3a6c571107b11e56e485e4de57e8162856d03b15f35e2f51094"
+      "sha256": "bc7444328c5f0040864ac109046a93ce91ab3f6cefa01c9fd0f1d30c42d122a4"
     },
     {
       "bytes": 10884,
@@ -104,17 +104,17 @@
     {
       "bytes": 8277,
       "path": "reproduction.json",
-      "sha256": "b070a513e69c01126eb2e622ad0fd8e4b723580366187328a34715f6ea3068f2"
+      "sha256": "92057d0cc0b92a17d38df468df455cc863fb4a36df94cdf09ee43612136099f4"
     },
     {
       "bytes": 2368,
       "path": "rights.spdx.json",
-      "sha256": "bf9eaffc9cf10304a105ad070507db6df39621aed97fd2a34ed8c73b6fc44b74"
+      "sha256": "22201f2ecec387e385b72661407925e22601494b556c8bfa6aa3433929cd09e1"
     },
     {
-      "bytes": 189425,
+      "bytes": 192850,
       "path": "sbom.cdx.json",
-      "sha256": "89df8fdf6ad5e970d201f1c748e5e3c3af7662a18eba52a6dd943451296feb60"
+      "sha256": "38f49cdb8a3a096140eade73f845d222510399a0ed3115ad43755ba86b9e82b8"
     },
     {
       "bytes": 4268,

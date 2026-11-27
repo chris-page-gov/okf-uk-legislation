@@ -58,7 +58,7 @@ class ValidationDependencyLockTests(unittest.TestCase):
         self.assertEqual(len(dependency_lock.requirements), 52)
         self.assertEqual(len(dependency_lock.direct_requirements), 9)
         self.assertEqual(len(dependency_lock.transitive_names), 43)
-        self.assertEqual(len(dependency_lock.artifact_hashes), 1159)
+        self.assertEqual(len(dependency_lock.artifact_hashes), 1184)
         self.assertEqual(
             dependency_lock.direct_names,
             (
@@ -95,14 +95,14 @@ class ValidationDependencyLockTests(unittest.TestCase):
         inventory = dependency_lock.inventory()
         self.assertEqual(inventory, dependency_lock.inventory())
         self.assertEqual(inventory["package_count"], 52)
-        self.assertEqual(inventory["artifact_hash_count"], 1159)
+        self.assertEqual(inventory["artifact_hash_count"], 1184)
         self.assertEqual(
             dependency_lock.identity_digest,
-            "d66bdd006f5f3d69a0137aab0a0f5e5cf9b0d57c8e0dba3a1763d5fe2a33b57c",
+            "65e3231716f4484c496ba5a73bf2ec0416526cfdb86cd7eb185f07d3d3ad0637",
         )
         self.assertEqual(
             dependency_lock.artifact_hash_digest,
-            "fae29d9f671559dd53991cfd2dc673799764bf2f650ab01f73b8a5f0a60d1909",
+            "e8af0c1ea24f83bc81467193b16fbc9e1851fda05096f7eca2a82598b636d16a",
         )
 
         components = dependency_lock.sbom_components()

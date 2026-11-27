@@ -162,7 +162,7 @@
     },
     {
       "path": "docs/maintenance.md",
-      "sha256": "298312bdddaf3d3f780327053794d59cc11013879bcb9d316734eb56dbba84d1",
+      "sha256": "78d55c3fbb884ac8fbb20505bc1b95a57f99e6d59d344edf89041b96d463894a",
       "title": "Maintenance, validation and recovery",
       "type": null,
       "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/maintenance.md"
@@ -295,7 +295,7 @@
     },
     {
       "path": "docs/validation-dependency-lock.md",
-      "sha256": "6c2f1b0680e05825d8095bd94200564ad1b4da2653ebdc1c51478b49ebbd0d78",
+      "sha256": "49d2035dbd3d2c8d9bad464e5c9c75b8561a7857883e854a027ebe28b2a1f7cc",
       "title": "Validation dependency lock",
       "type": null,
       "url": "https://chris-page-gov.github.io/okf-uk-legislation/docs/validation-dependency-lock.md"

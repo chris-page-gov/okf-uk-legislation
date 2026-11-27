@@ -53,12 +53,12 @@
       "sha256": "94e381c20cc445e7505f4f4ec8426181e3988e44cea5031ebc595cd293ea9f07"
     },
     "ai-context.json": {
-      "bytes": 2996425,
-      "sha256": "1bd287ba797ffd527b70b0e604b8c8b6dee0a1c00b46c8c696383ec2c8f5f7a7"
+      "bytes": 2998881,
+      "sha256": "8edbc5998611cdb63bc49438a73c132557af26818657c39ec126bb1fa80b9e78"
     },
     "ai-index.json": {
       "bytes": 38880,
-      "sha256": "11bef59a375a6dace0e4ec043041021dab4ecd957b1591862f07021706a1c4dd"
+      "sha256": "d5a1be7ae7767d76257cba54138a7513b646fc0882b82f9ae73b200cab605add"
     },
     "assets/favicon.svg": {
       "bytes": 272,
@@ -29181,12 +29181,12 @@
       "sha256": "76a2026bda1d742e2db1bfcec6b363ae55001101f15c2d6ea35921840f2541a6"
     },
     "docs/maintenance.html": {
-      "bytes": 23147,
-      "sha256": "92488f051a16b288e6db53e380f600e875ee79f7aeef6c8c70d00d417778ca4e"
+      "bytes": 23513,
+      "sha256": "9cd7846e41c239f0373a277739aee210e9381effc965a303af0703d19a0bab88"
     },
     "docs/maintenance.md": {
-      "bytes": 20243,
-      "sha256": "298312bdddaf3d3f780327053794d59cc11013879bcb9d316734eb56dbba84d1"
+      "bytes": 20603,
+      "sha256": "78d55c3fbb884ac8fbb20505bc1b95a57f99e6d59d344edf89041b96d463894a"
     },
     "docs/model-assisted-enrichment-governance.html": {
       "bytes": 15073,
@@ -29333,12 +29333,12 @@
       "sha256": "3605f4d8fca5b34a5fc5bf9200e186fe4f2e55f73ef17934b333f181c38fe29a"
     },
     "docs/validation-dependency-lock.html": {
-      "bytes": 5061,
-      "sha256": "7748cfd60f4092994e8cae25b2bec624ce028b796e60ffc3cb986a80434895ea"
+      "bytes": 5932,
+      "sha256": "88d31a6031445783e8b168d47e0e134f1d30c46c90208b4c760bdbb245038acc"
     },
     "docs/validation-dependency-lock.md": {
-      "bytes": 3697,
-      "sha256": "6c2f1b0680e05825d8095bd94200564ad1b4da2653ebdc1c51478b49ebbd0d78"
+      "bytes": 4540,
+      "sha256": "49d2035dbd3d2c8d9bad464e5c9c75b8561a7857883e854a027ebe28b2a1f7cc"
     },
     "effects/legislation-gov-uk-2026-07-25.json": {
       "bytes": 992,
@@ -35366,7 +35366,7 @@
     },
     "release-assurance/checksums.json": {
       "bytes": 6887,
-      "sha256": "a7efcf5bd34c30a09c3443c48ee69f00d82b8aafb1e98d99ae504b665ad310bd"
+      "sha256": "6369121b742c7ef69a0d409c0f07378a335d7c69c703728bcf5d0f28c473344e"
     },
     "release-assurance/claude-observed-access-test.json": {
       "bytes": 2251,
@@ -35426,7 +35426,7 @@
     },
     "release-assurance/provenance.json": {
       "bytes": 27680,
-      "sha256": "324e07ced568b3a6c571107b11e56e485e4de57e8162856d03b15f35e2f51094"
+      "sha256": "bc7444328c5f0040864ac109046a93ce91ab3f6cefa01c9fd0f1d30c42d122a4"
     },
     "release-assurance/release-gates.json": {
       "bytes": 10884,
@@ -35446,15 +35446,15 @@
     },
     "release-assurance/reproduction.json": {
       "bytes": 8277,
-      "sha256": "b070a513e69c01126eb2e622ad0fd8e4b723580366187328a34715f6ea3068f2"
+      "sha256": "92057d0cc0b92a17d38df468df455cc863fb4a36df94cdf09ee43612136099f4"
     },
     "release-assurance/rights.spdx.json": {
       "bytes": 2368,
-      "sha256": "bf9eaffc9cf10304a105ad070507db6df39621aed97fd2a34ed8c73b6fc44b74"
+      "sha256": "22201f2ecec387e385b72661407925e22601494b556c8bfa6aa3433929cd09e1"
     },
     "release-assurance/sbom.cdx.json": {
-      "bytes": 189425,
-      "sha256": "89df8fdf6ad5e970d201f1c748e5e3c3af7662a18eba52a6dd943451296feb60"
+      "bytes": 192850,
+      "sha256": "38f49cdb8a3a096140eade73f845d222510399a0ed3115ad43755ba86b9e82b8"
     },
     "release-assurance/schemas/accessibility-assurance-receipt.schema.json": {
       "bytes": 4268,

@@ -12672,7 +12672,8 @@
       "sha256": "be390517c74f1cc7058bdfc4ea1f5b502fa006d01981b6a2cf8622cab0588c45"
     },
     {
-      "path": "requirements-validation.txt",
+      "path": "source/historical/core02-validation.lock.snapshot",
+      "source_path": "requirements-validation.txt",
       "bytes": 101608,
       "sha256": "d3f0734f3880558a95549ac6e6f26d8edd79136285dc6d971fb79f3ecad2fbcf"
     },

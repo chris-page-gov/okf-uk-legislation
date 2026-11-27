@@ -365,9 +365,9 @@
       "sha256": "be390517c74f1cc7058bdfc4ea1f5b502fa006d01981b6a2cf8622cab0588c45"
     },
     {
-      "bytes": 101608,
+      "bytes": 105445,
       "path": "requirements-validation.txt",
-      "sha256": "d3f0734f3880558a95549ac6e6f26d8edd79136285dc6d971fb79f3ecad2fbcf"
+      "sha256": "4bd24b9f439e6c33e501494d94e4a15c2ade47a77420c11f3fcb57c349e92e4d"
     },
     {
       "bytes": 20148,
@@ -630,7 +630,7 @@
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
     }
   ],
-  "materials_digest": "sha256:60ac30f639087df33e9aae6e8fc1d959b60d5d7fc9002dbbe6e13d98022346a3",
+  "materials_digest": "sha256:7a76e0942a3bd4660cc53c6b6f3f60a56e644c225c21ff086f0d6376832ad3da",
   "optional_direct_api_model_governance": {
     "authored_run": null,
     "current_release_required": false,
@@ -679,8 +679,8 @@
   },
   "schema": "okf-build-provenance.v1",
   "validation_dependency_environment": {
-    "artifact_hash_count": 1159,
-    "artifact_hash_digest": "sha256:fae29d9f671559dd53991cfd2dc673799764bf2f650ab01f73b8a5f0a60d1909",
+    "artifact_hash_count": 1184,
+    "artifact_hash_digest": "sha256:e8af0c1ea24f83bc81467193b16fbc9e1851fda05096f7eca2a82598b636d16a",
     "direct_count": 9,
     "direct_names": [
       "certifi",
@@ -693,7 +693,7 @@
       "yaml-ld",
       "zstandard"
     ],
-    "identity_digest": "sha256:d66bdd006f5f3d69a0137aab0a0f5e5cf9b0d57c8e0dba3a1763d5fe2a33b57c",
+    "identity_digest": "sha256:65e3231716f4484c496ba5a73bf2ec0416526cfdb86cd7eb185f07d3d3ad0637",
     "package_count": 52,
     "sources": {
       "controller": {
@@ -707,9 +707,9 @@
         "sha256": "be390517c74f1cc7058bdfc4ea1f5b502fa006d01981b6a2cf8622cab0588c45"
       },
       "lock": {
-        "bytes": 101608,
+        "bytes": 105445,
         "path": "requirements-validation.txt",
-        "sha256": "d3f0734f3880558a95549ac6e6f26d8edd79136285dc6d971fb79f3ecad2fbcf"
+        "sha256": "4bd24b9f439e6c33e501494d94e4a15c2ade47a77420c11f3fcb57c349e92e4d"
       },
       "parser": {
         "bytes": 20148,

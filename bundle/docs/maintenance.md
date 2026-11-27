@@ -158,6 +158,13 @@ reflects their current immutable chunks.
 
 ## Validation
 
+The optional live API catalogue builder uses the shared bounded public HTTPS
+transport for Ordnance Survey discovery. Each document and redirect must
+stay within the approved publisher's host. Discovery limits unique routes
+and total response bytes, and records incomplete responses as acquisition
+failures. Fixture-backed catalogue generation stays
+offline.
+
 Before starting a full release reproduction, run the exact-candidate
 [Security evidence preflight](https://github.com/chris-page-gov/okf-uk-legislation/blob/main/release-assurance/reproduction-and-promotion.md#1-reproduce-the-exact-frozen-candidate).
 It invokes the same Security evidence consumer used during promotion.
