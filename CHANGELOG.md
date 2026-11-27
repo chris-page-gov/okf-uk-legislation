@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Advance Soup Sieve and multidict to fixed releases in both validation
+  locks. Keep the other package versions and retain the frozen Core 0.2
+  lock byte for byte as historical evidence.
+
+- Use the shared bounded public HTTPS transport for Ordnance Survey catalogue
+  discovery. Restrict each requested URL to the approved publisher and
+  bound the total response bytes and queued discovery routes.
+
 - Check real, sealed Security evidence before full release reproduction.
   Accept a sealed supplementary coverage ledger and a separately verified
   repository binding when the Standard producer omits its remote. Keep the producer's original

@@ -305,12 +305,12 @@ class ReleaseReproductionTests(unittest.TestCase):
                 "package_count": 52,
                 "direct_count": 9,
                 "transitive_count": 43,
-                "artifact_hash_count": 1159,
+                "artifact_hash_count": 1184,
                 "identity_sha256": (
-                    "d66bdd006f5f3d69a0137aab0a0f5e5cf9b0d57c8e0dba3a1763d5fe2a33b57c"
+                    "65e3231716f4484c496ba5a73bf2ec0416526cfdb86cd7eb185f07d3d3ad0637"
                 ),
                 "artifact_hash_sha256": (
-                    "fae29d9f671559dd53991cfd2dc673799764bf2f650ab01f73b8a5f0a60d1909"
+                    "e8af0c1ea24f83bc81467193b16fbc9e1851fda05096f7eca2a82598b636d16a"
                 ),
             },
             identity,

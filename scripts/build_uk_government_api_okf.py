@@ -32,6 +32,9 @@ DEFAULT_OUTPUT = ROOT / "uk-government-apis"
 DEFAULT_SOURCE_URL = "https://raw.githubusercontent.com/co-cddo/api-catalogue/main/data/catalogue.csv"
 DEFAULT_CKAN_API_URL = "https://ckan.publishing.service.gov.uk/api/3/action/package_search"
 DEFAULT_OS_API_ROOT = "https://api.os.uk/"
+OS_DISCOVERY_HOSTS = {"api.os.uk"}
+MAX_OS_DOCUMENT_BYTES = 16 * 1024 * 1024
+MAX_OS_DISCOVERY_BYTES = 64 * 1024 * 1024
 DEFAULT_ONS_API_ROOT = "https://api.beta.ons.gov.uk/v1"
 OGL_V3_ID = "open-government-licence-v3"
 OGL_V3_TITLE = "Open Government Licence v3.0"
@@ -705,31 +708,66 @@ def load_ckan_packages(api_url: str = DEFAULT_CKAN_API_URL, rows_per_page: int =
 
 
 def discover_os_documents(root_url: str = DEFAULT_OS_API_ROOT, max_documents: int = 80) -> dict[str, dict[str, Any]]:
+    from capture_whole_law_route_replacements import (
+        fetch_public_request, validate_public_url,
+    )
+
+    validate_public_url(root_url, OS_DISCOVERY_HOSTS, resolve=False)
     documents: dict[str, dict[str, Any]] = {}
+    if max_documents <= 0:
+        return documents
     queue: deque[str] = deque([root_url])
-    while queue and len(documents) < max_documents:
+    discovered = {canonical_url(root_url)}
+    remaining_bytes = MAX_OS_DISCOVERY_BYTES
+    while queue:
         url = queue.popleft()
         normalized = canonical_url(url)
-        if normalized in documents:
-            continue
         try:
-            document = request_json(url)
+            if not remaining_bytes:
+                raise ValueError("Ordnance Survey discovery reached its response budget")
+            response = fetch_public_request(
+                url=url,
+                allowed_hosts=OS_DISCOVERY_HOSTS,
+                headers={**REQUEST_HEADERS, "Accept": "application/json", "Accept-Encoding": "identity"},
+                request_method="GET",
+                timeout_seconds=45,
+                max_body_bytes=min(MAX_OS_DOCUMENT_BYTES, remaining_bytes),
+            )
+            body = response["body"]
+            remaining_bytes -= len(body)
+            status = response["status"]
+            if status is None or not 200 <= status < 300 or response["error"] or response["truncated"]:
+                raise ValueError("Ordnance Survey discovery did not return a complete successful response")
+            document = json.loads(body.decode("utf-8"))
+            if not isinstance(document, dict):
+                raise ValueError("Ordnance Survey discovery did not return an object")
+            links = document.get("links", [])
+            if not isinstance(links, list):
+                raise ValueError("Ordnance Survey discovery did not return a link list")
         except Exception as exc:  # noqa: BLE001 - source robustness belongs in provenance.
             documents[normalized] = {"title": url, "description": f"Fetch failed: {exc}", "links": [], "fetch_error": str(exc), "source_url": url}
             continue
         document["source_url"] = url
         documents[normalized] = document
-        for link in document.get("links", []):
+        for link in links:
+            if len(discovered) >= max_documents:
+                break
+            if not isinstance(link, dict):
+                continue
             href = str(link.get("href", ""))
             link_type = link.get("type")
             rel = link.get("rel")
-            if not href.startswith("https://api.os.uk"):
-                continue
             if rel not in {"api-grouping", "landing-page"}:
                 continue
             if link_type != "application/json":
                 continue
-            if canonical_url(href) not in documents:
+            try:
+                validate_public_url(href, OS_DISCOVERY_HOSTS, resolve=False)
+            except ValueError:
+                continue
+            target = canonical_url(href)
+            if target not in discovered:
+                discovered.add(target)
                 queue.append(href)
     return documents
 

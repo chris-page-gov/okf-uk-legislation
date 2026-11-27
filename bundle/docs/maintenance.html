@@ -202,6 +202,12 @@ acquisition and fails if research, evidence, effects or enrichment inputs
 change during the run. Run enrichment/effects first so its exact composition
 reflects their current immutable chunks.</p>
 <h2>Validation</h2>
+<p>The optional live API catalogue builder uses the shared bounded public HTTPS
+transport for Ordnance Survey discovery. Each document and redirect must
+stay within the approved publisher's host. Discovery limits unique routes
+and total response bytes, and records incomplete responses as acquisition
+failures. Fixture-backed catalogue generation stays
+offline.</p>
 <p>Before starting a full release reproduction, run the exact-candidate
 <a href="https://github.com/chris-page-gov/okf-uk-legislation/blob/main/release-assurance/reproduction-and-promotion.md#1-reproduce-the-exact-frozen-candidate" rel="noopener noreferrer">Security evidence preflight</a>.
 It invokes the same Security evidence consumer used during promotion.
