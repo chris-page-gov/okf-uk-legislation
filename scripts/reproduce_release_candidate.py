@@ -2654,6 +2654,24 @@ def fixture_dry_run(output_dir: Path) -> dict[str, Any]:
         shutil.rmtree(fixture_root, ignore_errors=True)
 
 
+def verify_frozen_security(args: argparse.Namespace) -> None:
+    from build_post_rc_assurance_receipts import preflight_security
+    from finalize_release_candidate import FinalizationError
+
+    if not args.scan_dir or not args.codex_security_schema_dir:
+        raise ReproductionError(
+            "frozen reproduction requires --scan-dir and --codex-security-schema-dir"
+        )
+    if not EXACT_COMMIT.fullmatch(args.ref):
+        raise ReproductionError("--candidate-frozen requires an exact commit")
+    try:
+        preflight_commit = preflight_security(args, repository=args.repository)
+    except FinalizationError as exc:
+        raise ReproductionError(f"security evidence preflight failed: {exc}") from exc
+    if preflight_commit != args.ref:
+        raise ReproductionError("security preflight does not bind the requested frozen commit")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
@@ -2694,6 +2712,9 @@ def main() -> int:
         action="store_true",
         help="Explicitly authorize execution of the checked-out offline builders.",
     )
+    parser.add_argument("--scan-dir", type=Path, help="Sealed Codex Security scan for frozen reproduction.")
+    parser.add_argument("--scan-checkout", type=Path, help="Registered scan checkout if the native target omits its remote.")
+    parser.add_argument("--codex-security-schema-dir", type=Path, help="Pinned producer schemas for frozen reproduction.")
     parser.add_argument("--keep-worktree", action="store_true")
     args = parser.parse_args()
     try:
@@ -2704,6 +2725,8 @@ def main() -> int:
                 raise ReproductionError(
                     "production reproduction requires --allow-build-execution"
                 )
+            if args.candidate_frozen:
+                verify_frozen_security(args)
             receipt = run_reproduction(
                 args.repository,
                 args.ref,

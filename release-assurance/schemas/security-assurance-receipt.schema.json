@@ -95,7 +95,7 @@
     "materials": {
       "type": "array",
       "minItems": 8,
-      "maxItems": 8,
+      "maxItems": 9,
       "items": {
         "$ref": "#/$defs/roleMaterial"
       },
@@ -261,7 +261,8 @@
             "scan_manifest_schema",
             "findings_schema",
             "coverage_schema",
-            "artifact_inventory"
+            "artifact_inventory",
+            "repository_binding"
           ]
         },
         "path": {

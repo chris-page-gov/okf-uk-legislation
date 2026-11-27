@@ -19,9 +19,9 @@
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
-      "bytes": 220116,
+      "bytes": 222399,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "4c347efac3af41314b70a902ade2549d523f5beb57bbef2913055069d6256f6e"
+      "sha256": "f83238bf5cba49a9031a66893e0b4820fb6f919654f7c8155fd6c465a552859e"
     },
     "release_observation_controller": {
       "bytes": 38099,

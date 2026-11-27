@@ -16,6 +16,7 @@ import os
 import re
 import shutil
 import stat
+import subprocess
 import sys
 import tempfile
 from datetime import datetime, timezone
@@ -956,32 +957,71 @@ def security_artifact_files(
     return files, entries
 
 
+def read_scan_checkout(checkout: Path) -> dict[str, str]:
+    try:
+        root = checkout.resolve(strict=True)
+    except OSError as exc:
+        raise ReceiptBuildError("Security scan checkout is unavailable") from exc
+    environment = {key: value for key, value in os.environ.items() if not key.startswith("GIT_")}
+    environment.update(GIT_OPTIONAL_LOCKS="0", GIT_NO_LAZY_FETCH="1", GIT_ALLOW_PROTOCOL="")
+
+    def git(*arguments: str) -> str:
+        try:
+            result = subprocess.run(
+                ["git", "-c", "core.fsmonitor=false", "-C", str(root), *arguments],
+                env=environment, check=True, capture_output=True, text=True, timeout=60,
+            )
+        except (OSError, subprocess.SubprocessError) as exc:
+            raise ReceiptBuildError("cannot verify the Security scan Git checkout") from exc
+        return result.stdout.strip()
+
+    if Path(git("rev-parse", "--show-toplevel")).resolve() != root:
+        raise ReceiptBuildError("Security scan checkout must be the Git repository root")
+    if git("status", "--porcelain=v1", "--untracked-files=all"):
+        raise ReceiptBuildError("Security scan checkout must be clean")
+    tracked = git("ls-files", "-v").splitlines()
+    if any(row[:1] == "S" or row[:1].islower() for row in tracked):
+        raise ReceiptBuildError("Security scan checkout hides tracked files from Git status")
+    return {
+        "repository": git("remote", "get-url", "origin").removesuffix(".git"),
+        "commit": git("rev-parse", "HEAD"),
+        "tree": git("rev-parse", "HEAD^{tree}"),
+        "target_id": "target_sha256_" + finalization.sha256_bytes(f"local-workspace\0{root}".encode()),
+    }
+
+
 def build_security_files(
     identity: dict[str, Any],
     scan_dir: Path,
     schema_dir: Path,
+    scan_checkout: Path | None = None,
 ) -> tuple[dict[str, bytes], dict[str, Any]]:
+    finalization.require_external(scan_dir, "Codex Security scan")
+    reject_symlink_components(scan_dir, "Codex Security scan")
+    finalization.require_directory(scan_dir, "Codex Security scan")
     schema_bodies, schemas = load_security_schemas(identity, schema_dir)
-    core_bodies: dict[str, bytes] = {}
-    for role, filename in SECURITY_FILES.items():
-        maximum = MAX_JSON_BYTES if role != "report" else MAX_SECURITY_ARTIFACT_BYTES
-        core_bodies[role] = stable_file_bytes(
-            scan_dir / filename,
-            f"security {role}",
-            maximum,
-        )
+    core_bodies = {"scan_manifest": stable_file_bytes(
+        scan_dir / SECURITY_FILES["scan_manifest"], "security scan manifest", MAX_JSON_BYTES
+    )}
     manifest = parse_json_body(
         core_bodies["scan_manifest"],
         "security scan manifest",
     )
+    scan = finalization.require_object(manifest.get("scan"), "security scan manifest scan")
+    finalization.require_equal(scan.get("status"), "completed", "security scan status")
+    if "sealedAt" not in scan:
+        raise ReceiptBuildError("security manifest is an unsealed draft")
+    for role, maximum in (("findings", MAX_JSON_BYTES), ("report", MAX_SECURITY_ARTIFACT_BYTES)):
+        core_bodies[role] = stable_file_bytes(scan_dir / SECURITY_FILES[role], f"security {role}", maximum)
     findings = parse_json_body(
         core_bodies["findings"],
         "security findings",
     )
-    coverage = parse_json_body(
-        core_bodies["coverage"],
-        "security coverage",
+    coverage_source = finalization.security_coverage_source(scan)
+    core_bodies["coverage"] = stable_file_bytes(
+        scan_dir / coverage_source, "security coverage", MAX_JSON_BYTES,
     )
+    coverage = parse_json_body(core_bodies["coverage"], "security coverage")
     for role, document in (
         ("scan_manifest", manifest),
         ("findings", findings),
@@ -1001,10 +1041,6 @@ def build_security_files(
     expected_producer = finalization.require_object(
         security_contract.get("producer"),
         "contract Codex Security producer",
-    )
-    scan = finalization.require_object(
-        manifest.get("scan"),
-        "security scan manifest scan",
     )
     finalization.require_equal(
         scan.get("producer"),
@@ -1057,11 +1093,6 @@ def build_security_files(
         scan.get("target"),
         "security scan target",
     )
-    finalization.require_equal(
-        target.get("remote"),
-        identity["repository"],
-        "security scan target repository",
-    )
     if target.get("kind") != "git_revision":
         raise ReceiptBuildError(
             "security scan target must be the exact immutable Git revision"
@@ -1081,6 +1112,20 @@ def build_security_files(
         identity["commit"],
         "security scan target revision",
     )
+    candidate = {name: identity[name] for name in ("repository", "commit", "tree")}
+    binding = None
+    if "remote" in target:
+        finalization.require_equal(target["remote"], candidate["repository"], "security scan target repository")
+    else:
+        if scan_checkout is None:
+            raise ReceiptBuildError("scan manifest has no remote. Supply the exact clean --scan-checkout.")
+        observed = read_scan_checkout(scan_checkout)
+        finalization.require_equal(
+            observed, {**candidate, "target_id": target.get("targetId")}, "security scan checkout binding"
+        )
+        binding = finalization.security_repository_binding(
+            scan, candidate, finalization.sha256_bytes(core_bodies["scan_manifest"]),
+        )
     finding_rows = finalization.require_array(
         findings.get("findings"),
         "security findings",
@@ -1132,16 +1177,16 @@ def build_security_files(
             **material_from_body(inventory_body, SECURITY_INVENTORY_NAME),
         }
     )
+    if binding is not None:
+        filename = "repository-binding.json"
+        files[filename] = finalization.render(binding)
+        materials.append({"role": "repository_binding", **material_from_body(files[filename], filename)})
     document = {
         "schema": "okf-security-assurance-receipt.v2",
         "status": "passed",
         "gate": "GATE-10",
         "scan_id": scan_id,
-        "candidate": {
-            "repository": identity["repository"],
-            "commit": identity["commit"],
-            "tree": identity["tree"],
-        },
+        "candidate": candidate,
         "scan_target": {
             "kind": "git_revision",
             "repository": identity["repository"],
@@ -1189,15 +1234,11 @@ def validate_staged_security(
         contract=identity["contract"],
         commit=identity["commit"],
         tree=identity["tree"],
-        inventory=identity["inventory"],
     )
 
 
 def build_security_receipt(args: argparse.Namespace) -> Path:
     identity = load_candidate(args.reproduction_dir)
-    finalization.require_external(args.scan_dir, "Codex Security scan")
-    reject_symlink_components(args.scan_dir, "Codex Security scan")
-    finalization.require_directory(args.scan_dir, "Codex Security scan")
     output_dir = args.output_dir
     require_separate_output(
         output_dir,
@@ -1214,6 +1255,7 @@ def build_security_receipt(args: argparse.Namespace) -> Path:
         identity,
         args.scan_dir,
         args.codex_security_schema_dir,
+        getattr(args, "scan_checkout", None),
     )
     publish_output_directory(
         output_dir,
@@ -1226,6 +1268,28 @@ def build_security_receipt(args: argparse.Namespace) -> Path:
         ),
     )
     return output_dir / SECURITY_RECEIPT_NAME
+
+
+def preflight_security(args: argparse.Namespace, repository: Path | None = None) -> str:
+    """Apply the promotion consumer to real Security evidence before reproduction."""
+    observed = read_scan_checkout(repository if repository is not None else ROOT)
+    identity = {name: observed[name] for name in ("repository", "commit", "tree")}
+    contract = load_bounded_json(CONTRACT_PATH, "finalization contract")
+    finalization.require_equal(
+        identity["repository"], contract["candidate"]["repository"], "security preflight repository"
+    )
+    identity["contract"] = contract
+    files, receipt = build_security_files(
+        identity, args.scan_dir, args.codex_security_schema_dir, args.scan_checkout,
+    )
+    with tempfile.TemporaryDirectory(prefix="okf-security-preflight-") as temporary:
+        root = Path(temporary)
+        for name, body in files.items():
+            path = root / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(body)
+        validate_staged_security(root, receipt, identity)
+    return identity["commit"]
 
 
 def material_rows(
@@ -1580,6 +1644,12 @@ def parser() -> argparse.ArgumentParser:
         required=True,
     )
     security.add_argument("--output-dir", type=Path, required=True)
+    security.add_argument("--scan-checkout", type=Path, help="exact clean registered checkout if the scan omits its remote")
+
+    preflight = commands.add_parser("preflight-security", help="check actual scan evidence before an expensive build")
+    preflight.add_argument("--scan-dir", type=Path, required=True)
+    preflight.add_argument("--codex-security-schema-dir", type=Path, required=True)
+    preflight.add_argument("--scan-checkout", type=Path)
 
     traceability = commands.add_parser(
         "build-traceability",
@@ -1599,6 +1669,9 @@ def main() -> int:
             output = build_deployed_manifest(args)
         elif args.command == "build-security":
             output = build_security_receipt(args)
+        elif args.command == "preflight-security":
+            print(f"Security evidence compatibility passed for {preflight_security(args)}")
+            return 0
         elif args.command == "build-traceability":
             output = build_traceability_receipt(args)
         else:  # pragma: no cover - argparse prevents this

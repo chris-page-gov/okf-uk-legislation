@@ -163,7 +163,7 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
                 self.assert_controller_parser_accepts(command)
         self.assertEqual(
             {
-                "scripts/build_post_rc_assurance_receipts.py": 3,
+                "scripts/build_post_rc_assurance_receipts.py": 4,
                 "scripts/build_pre_rc_assurance_receipts.py": 1,
                 "scripts/capture_github_pages_observation.py": 1,
                 "scripts/capture_github_release_observation.py": 3,
@@ -185,6 +185,7 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
                 "run_id": "run",
             }
             with (
+                mock.patch.object(post_rc, "preflight_security", return_value=arguments[arguments.index("--ref") + 1]),
                 mock.patch.object(
                     reproduction, "run_reproduction", return_value=receipt
                 ),
@@ -286,6 +287,7 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
             and row[2] == "build-security"
         )
         self.assertIn("--codex-security-schema-dir", security)
+        self.assertIn("--scan-checkout", security)
         self.assertIn("--output-dir", security)
         self.assertNotIn("--output", security)
 
@@ -298,6 +300,25 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
         )
         self.assertIn("--output-dir", traceability)
         self.assertNotIn("--output", traceability)
+
+    def test_security_preflight_precedes_full_reproduction(self) -> None:
+        preflight = next(index for index, row in enumerate(self.commands)
+                         if row[1:3] == ["scripts/build_post_rc_assurance_receipts.py", "preflight-security"])
+        reproduction = next(index for index, row in enumerate(self.commands)
+                            if row[1] == "scripts/reproduce_release_candidate.py")
+        self.assertLess(preflight, reproduction)
+
+    def test_frozen_reproduction_stops_before_the_builder_on_preflight_failure(self) -> None:
+        command = next(row for row in self.commands if row[1] == "scripts/reproduce_release_candidate.py")
+        with (
+            mock.patch.object(post_rc, "preflight_security", return_value="0" * 40),
+            mock.patch.object(reproduction, "run_reproduction") as build,
+            mock.patch.object(sys, "argv", command[1:]),
+            redirect_stdout(io.StringIO()) as output,
+        ):
+            self.assertEqual(1, reproduction.main())
+        build.assert_not_called()
+        self.assertIn("does not bind the requested frozen commit", output.getvalue())
 
     def test_security_step_requires_standard_revision_contract(self) -> None:
         self.assertIn("`kind: git_revision`", self.document)

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Check real, sealed Security evidence before full release reproduction.
+  Accept a sealed supplementary coverage ledger and a separately verified
+  repository binding when the Standard producer omits its remote. Keep the producer's original
+  artefacts and the complete release checks intact.
+
 - Bind the release assurance schema to the real Explorer 0.9.2 invocation
   and the exact release tag's runtime contract, package and dependency lock.
   Check the real receipt against the finaliser before another reproduction.

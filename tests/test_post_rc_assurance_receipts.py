@@ -4,6 +4,7 @@ import argparse
 import copy
 import json
 import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -329,6 +330,120 @@ class PostRCAssuranceReceiptTests(unittest.TestCase):
         ):
             builder.build_deployed_manifest(args)
         self.assertFalse(args.output.exists())
+
+    def sealed_security_manifest(self) -> dict[str, Any]:
+        path = self.fixture.security_dir / "coverage.json"
+        coverage = self.load(path)
+        manifest = self.load(self.fixture.security_dir / "scan-manifest.json")
+        scan = manifest["scan"]
+        scan.pop("coverageRef")
+        scan["mode"] = "repository"
+        scan["review"] = {"excludedPaths": []}
+        coverage.pop("completeness")
+        retained = self.fixture.security_dir / finalization.SECURITY_COVERAGE_ARTIFACT
+        retained.parent.mkdir(exist_ok=True, parents=True)
+        write_json(retained, coverage)
+        row = next(row for row in scan["artifacts"] if row["path"] == "coverage.json")
+        row.update(path=finalization.SECURITY_COVERAGE_ARTIFACT,
+                   sha256=finalization.sha256_file(retained), mediaType="application/octet-stream")
+        scan["target"].pop("remote")
+        scan["target"]["targetId"] = "target_sha256_" + "f" * 64
+        path.unlink()
+        self._write_security_manifest(manifest)
+        return manifest
+
+    def test_sealed_security_uses_checked_repository_and_preserves_native_bytes(self) -> None:
+        manifest = self.sealed_security_manifest()
+        args = self.security_args()
+        with self.assertRaisesRegex(builder.ReceiptBuildError, "exact clean --scan-checkout"):
+            builder.build_security_receipt(args)
+        args.scan_checkout = self.root
+        observation = {**self.exact_candidate(), "target_id": manifest["scan"]["target"]["targetId"]}
+        with mock.patch.object(builder, "read_scan_checkout", return_value=observation | {"target_id": "wrong"}):
+            with self.assertRaisesRegex(finalization.FinalizationError, "security scan checkout binding"):
+                builder.build_security_receipt(args)
+        with mock.patch.object(builder, "read_scan_checkout", return_value=observation):
+            output = builder.build_security_receipt(args)
+        copied = output.parent / "scan-manifest.json"
+        self.assertEqual(copied.read_bytes(), (args.scan_dir / copied.name).read_bytes())
+        self.assertNotIn("remote", self.load(copied)["scan"]["target"])
+        binding = self.load(output.parent / "repository-binding.json")
+        self.assertEqual(self.exact_candidate(), binding["candidate"])
+        self.assertEqual(finalization.sha256_file(copied), binding["scan_manifest_sha256"])
+        retained = args.scan_dir / finalization.SECURITY_COVERAGE_ARTIFACT
+        self.assertEqual(retained.read_bytes(), (output.parent / "coverage.json").read_bytes())
+        self.assertNotIn("reviewState", self.load(copied)["scan"])
+
+        receipt = self.load(output)
+        binding["candidate"]["repository"] = "https://example.invalid/another-repository"
+        changed = output.parent / "repository-binding.json"
+        write_json(changed, binding)
+        material = next(row for row in receipt["materials"] if row["role"] == "repository_binding")
+        material.update(finalization.material(changed, changed.name))
+        identity = builder.load_candidate(args.reproduction_dir)
+        with self.assertRaisesRegex(finalization.FinalizationError, "security repository binding"):
+            builder.validate_staged_security(output.parent, receipt, identity)
+
+    def test_sealed_security_rejects_deferred_review(self) -> None:
+        manifest = self.sealed_security_manifest()
+        path = self.fixture.security_dir / finalization.SECURITY_COVERAGE_ARTIFACT
+        coverage = self.load(path)
+        coverage["deferred"] = [{"id": "pending", "reason": "unverified capability"}]
+        write_json(path, coverage)
+        row = next(row for row in manifest["scan"]["artifacts"]
+                   if row["path"] == finalization.SECURITY_COVERAGE_ARTIFACT)
+        row["sha256"] = finalization.sha256_file(path)
+        manifest["scan"]["target"]["remote"] = self.exact_candidate()["repository"]
+        self._write_security_manifest(manifest)
+        with self.assertRaisesRegex(finalization.FinalizationError, "security deferred coverage"):
+            builder.build_security_receipt(self.security_args())
+
+    def test_sealed_security_rejects_missing_or_changed_coverage(self) -> None:
+        manifest = self.sealed_security_manifest()
+        scan = manifest["scan"]
+        scan["target"]["remote"] = self.exact_candidate()["repository"]
+        self._write_security_manifest(manifest)
+        path = self.fixture.security_dir / finalization.SECURITY_COVERAGE_ARTIFACT
+        path.write_bytes(path.read_bytes() + b" ")
+        with self.assertRaisesRegex(finalization.FinalizationError, "SHA-256 differs"):
+            builder.build_security_receipt(self.security_args())
+        scan["artifacts"] = [row for row in scan["artifacts"]
+                             if row["path"] != finalization.SECURITY_COVERAGE_ARTIFACT]
+        scan["reviewState"] = {"deferred": []}
+        self._write_security_manifest(manifest)
+        with self.assertRaisesRegex(finalization.FinalizationError, "must bind one supplementary_coverage artifact"):
+            builder.build_security_receipt(self.security_args())
+
+    def test_security_completed_status_alone_does_not_accept_unsealed_native_draft(self) -> None:
+        manifest = self.sealed_security_manifest()
+        self.assertEqual("completed", manifest["scan"]["status"])
+        del manifest["scan"]["sealedAt"]
+        self._write_security_manifest(manifest)
+        (self.fixture.security_dir / "report.md").unlink()
+        with self.assertRaisesRegex(builder.ReceiptBuildError, "unsealed draft"):
+            builder.build_security_receipt(self.security_args())
+
+    def test_scan_checkout_identity_comes_from_clean_git(self) -> None:
+        checkout = self.root / "checked-out"
+        checkout.mkdir()
+
+        def git(*arguments: str) -> str:
+            return subprocess.check_output(["git", "-C", str(checkout), *arguments], text=True).strip()
+
+        git("init", "-q")
+        git("remote", "add", "origin", self.exact_candidate()["repository"] + ".git")
+        git("-c", "user.name=Test", "-c", "user.email=test@example.invalid", "commit", "-qm", "Fixture", "--allow-empty")
+        identity = builder.read_scan_checkout(checkout)
+        self.assertEqual(identity["repository"], self.exact_candidate()["repository"])
+        self.assertEqual(identity["commit"], git("rev-parse", "HEAD"))
+        self.assertEqual(identity["tree"], git("rev-parse", "HEAD^{tree}"))
+        self.assertEqual(
+            identity["target_id"],
+            "target_sha256_" + finalization.sha256_bytes(f"local-workspace\0{checkout.resolve()}".encode()),
+        )
+        (checkout / "untracked").write_text("changed", encoding="utf-8")
+        with self.assertRaisesRegex(builder.ReceiptBuildError, "must be clean"):
+            builder.read_scan_checkout(checkout)
 
     def test_security_wrapper_copies_complete_scan_atomically(self) -> None:
         args = self.security_args()
@@ -889,10 +1004,10 @@ def synthetic_security_schemas() -> dict[str, dict[str, object]]:
                     "sealedAt",
                     "target",
                     "scope",
-                    "coverageRef",
                     "findingsRef",
                     "artifacts",
                 ],
+                "anyOf": [{"required": ["coverageRef"]}, {"required": ["mode", "review"]}],
                 "properties": {
                     "id": {"type": "string", "minLength": 1},
                     "producer": {
@@ -939,7 +1054,6 @@ def synthetic_security_schemas() -> dict[str, dict[str, object]]:
             "schemaVersion",
             "scanId",
             "mode",
-            "completeness",
             "inventoryStrategy",
             "includePaths",
             "excludePaths",
