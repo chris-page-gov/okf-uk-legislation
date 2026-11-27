@@ -2543,6 +2543,7 @@ def manifest_artifact_material(
     expected_path = {
         "findings": "findings.json",
         "coverage": "coverage.json",
+        "supplementary_coverage": SECURITY_COVERAGE_ARTIFACT,
     }.get(role)
     matches = [
         require_object(value, "security scan manifest artifact")
@@ -2560,6 +2561,38 @@ def manifest_artifact_material(
     return matches[0]
 
 
+SECURITY_COVERAGE_ARTIFACT = "artifacts/02_analysis/okf-release-coverage.json"
+
+
+def security_coverage_source(scan: dict[str, Any]) -> str:
+    """Select a coverage document that must be bound by the producer seal."""
+    if "coverageRef" in scan:
+        require_equal(scan["coverageRef"], "coverage.json", "scan coverageRef")
+        return "coverage.json"
+
+    require_equal(scan.get("mode"), "repository", "security scan mode")
+    review = require_object(scan.get("review"), "security scan review summary")
+    require_equal(review.get("excludedPaths"), [], "security scan review exclusions")
+    manifest_artifact_material(scan, "supplementary_coverage")
+    return SECURITY_COVERAGE_ARTIFACT
+
+
+def security_repository_binding(
+    scan: dict[str, Any], candidate: dict[str, str], manifest_sha256: str,
+) -> dict[str, Any]:
+    target = require_object(scan.get("target"), "security scan target")
+    target_id = target.get("targetId")
+    if not isinstance(target_id, str) or not re.fullmatch(r"target_sha256_[0-9a-f]{64}", target_id):
+        raise FinalizationError("security scan lacks a recognised local target identity")
+    return {
+        "schema": "okf-security-scan-repository-binding.v1",
+        "candidate": candidate,
+        "scan_id": scan["id"],
+        "target_id": target_id,
+        "scan_manifest_sha256": manifest_sha256,
+    }
+
+
 def reconstruct_security_scan(
     *,
     receipt: dict[str, Any],
@@ -2567,7 +2600,6 @@ def reconstruct_security_scan(
     contract: dict[str, Any],
     commit: str,
     tree: str,
-    inventory: str,
 ) -> None:
     manifest_path, manifest_material = require_material(
         indexed,
@@ -2730,11 +2762,19 @@ def reconstruct_security_scan(
     if timestamps != sorted(timestamps):
         raise FinalizationError("security scan timestamps are not monotonic")
     target = require_object(scan.get("target"), "security scan manifest target")
-    require_equal(
-        target.get("remote"),
-        contract["candidate"]["repository"],
-        "security scan manifest remote",
-    )
+    if "remote" in target:
+        require_equal(target["remote"], candidate["repository"], "security scan manifest remote")
+        if "repository_binding" in indexed:
+            raise FinalizationError("security scan has a redundant repository binding")
+    else:
+        binding_path, _ = require_material(
+            indexed, role="repository_binding", filename="repository-binding.json", label="security"
+        )
+        require_equal(
+            load_json(binding_path),
+            security_repository_binding(scan, candidate, manifest_material["sha256"]),
+            "security repository binding",
+        )
     if target.get("kind") != "git_revision":
         raise FinalizationError(
             "security scan target must be the exact immutable Git revision"
@@ -2775,23 +2815,17 @@ def reconstruct_security_scan(
         "security receipt check set",
     )
     require_equal(scan.get("findingsRef"), "findings.json", "scan findingsRef")
-    require_equal(scan.get("coverageRef"), "coverage.json", "scan coverageRef")
-    for role, actual in (
-        ("findings", findings_material),
-        ("coverage", coverage_material),
+    coverage_source = security_coverage_source(scan)
+    coverage_role = "coverage" if coverage_source == "coverage.json" else "supplementary_coverage"
+    for role, source, actual, media_type in (
+        ("findings", "findings.json", findings_material, "application/json"),
+        (coverage_role, coverage_source, coverage_material,
+         "application/json" if coverage_role == "coverage" else "application/octet-stream"),
     ):
         declared = manifest_artifact_material(scan, role)
-        for key in ("path", "sha256"):
-            require_equal(
-                declared.get(key),
-                actual.get(key),
-                f"scan manifest {role} {key}",
-            )
-        require_equal(
-            declared.get("mediaType"),
-            "application/json",
-            f"scan manifest {role} media type",
-        )
+        require_equal(declared.get("path"), source, f"scan manifest {role} path")
+        require_equal(declared.get("sha256"), actual.get("sha256"), f"scan manifest {role} sha256")
+        require_equal(declared.get("mediaType"), media_type, f"scan manifest {role} media type")
     require_equal(
         findings.get("documentType"),
         "codex-security.findings",
@@ -2824,9 +2858,10 @@ def reconstruct_security_scan(
         coverage.get("schemaVersion"), "1.0", "security coverage schema version"
     )
     require_equal(coverage.get("scanId"), scan_id, "security coverage scan id")
-    require_equal(
-        coverage.get("completeness"), "complete", "security coverage completeness"
-    )
+    if coverage_role == "coverage" or "completeness" in coverage:
+        require_equal(
+            coverage.get("completeness"), "complete", "security coverage completeness"
+        )
     require_equal(
         coverage.get("explicitExclusions"), [], "security explicit exclusions"
     )
@@ -2853,12 +2888,16 @@ def reconstruct_security_scan(
             row.get("receiptRefs"),
             f"security coverage {check_id} receiptRefs",
         )
-        if not receipt_refs:
+        if not receipt_refs or SECURITY_COVERAGE_ARTIFACT in receipt_refs:
             raise FinalizationError(
                 f"security coverage {check_id} receiptRefs are empty"
             )
         for receipt_ref in receipt_refs:
-            if not isinstance(receipt_ref, str) or not receipt_ref:
+            if (
+                not isinstance(receipt_ref, str)
+                or not receipt_ref.startswith("artifacts/")
+                or receipt_ref == SECURITY_COVERAGE_ARTIFACT
+            ):
                 raise FinalizationError(
                     f"security coverage {check_id} receiptRef is invalid"
                 )
@@ -5230,7 +5269,6 @@ def assemble_receipt(
         contract=contract,
         commit=commit,
         tree=tree,
-        inventory=inventory,
     )
 
     candidate_binding = {

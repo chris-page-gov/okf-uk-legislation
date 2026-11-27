@@ -53,12 +53,12 @@
       "sha256": "94e381c20cc445e7505f4f4ec8426181e3988e44cea5031ebc595cd293ea9f07"
     },
     "ai-context.json": {
-      "bytes": 2995343,
-      "sha256": "83011fdeedbcee7511b2cdfcc7461ce4fd54077e81e20a155875731b03008f37"
+      "bytes": 2996425,
+      "sha256": "1bd287ba797ffd527b70b0e604b8c8b6dee0a1c00b46c8c696383ec2c8f5f7a7"
     },
     "ai-index.json": {
       "bytes": 38880,
-      "sha256": "8c7962d1a27fb6345681f319d87d1509d3ec8a1c69e45a5a859d6cde2db9ba35"
+      "sha256": "11bef59a375a6dace0e4ec043041021dab4ecd957b1591862f07021706a1c4dd"
     },
     "assets/favicon.svg": {
       "bytes": 272,
@@ -29181,12 +29181,12 @@
       "sha256": "76a2026bda1d742e2db1bfcec6b363ae55001101f15c2d6ea35921840f2541a6"
     },
     "docs/maintenance.html": {
-      "bytes": 22570,
-      "sha256": "fcc255f5f9866b1155b2baaf20e9305f9e767ffa1b8c528b84ea22dbce2516b4"
+      "bytes": 23147,
+      "sha256": "92488f051a16b288e6db53e380f600e875ee79f7aeef6c8c70d00d417778ca4e"
     },
     "docs/maintenance.md": {
-      "bytes": 19709,
-      "sha256": "8b64a7bf2c7a6bc4c28069ee09959fed8f2c2ed8920e7887406a973719a33438"
+      "bytes": 20243,
+      "sha256": "298312bdddaf3d3f780327053794d59cc11013879bcb9d316734eb56dbba84d1"
     },
     "docs/model-assisted-enrichment-governance.html": {
       "bytes": 15073,
@@ -35366,7 +35366,7 @@
     },
     "release-assurance/checksums.json": {
       "bytes": 6887,
-      "sha256": "0601b64b0befd41afbb4698bec4d6f3e98fe65680399b4596f35920d2a2f9f8d"
+      "sha256": "a7efcf5bd34c30a09c3443c48ee69f00d82b8aafb1e98d99ae504b665ad310bd"
     },
     "release-assurance/claude-observed-access-test.json": {
       "bytes": 2251,
@@ -35426,7 +35426,7 @@
     },
     "release-assurance/provenance.json": {
       "bytes": 27680,
-      "sha256": "7eb303d8f7cb9b451b7ee20ae744a5baef6e2a6d2ec8d7b44567525f587232f7"
+      "sha256": "324e07ced568b3a6c571107b11e56e485e4de57e8162856d03b15f35e2f51094"
     },
     "release-assurance/release-gates.json": {
       "bytes": 10884,
@@ -35442,19 +35442,19 @@
     },
     "release-assurance/release-state.json": {
       "bytes": 13161,
-      "sha256": "4fe7946acb5d99f5cccffb0bbc2bcf4d0b09a259f58dfb8dc10cb64d6bf3975d"
+      "sha256": "48ea56498c55093609fcf0aafd22ea5e32a1a5ac85248f189af9a3fc6fc9533d"
     },
     "release-assurance/reproduction.json": {
       "bytes": 8277,
-      "sha256": "247332374bf786829344f9720e0deedf6bec8dd61f3dd302eb455551188fcb55"
+      "sha256": "b070a513e69c01126eb2e622ad0fd8e4b723580366187328a34715f6ea3068f2"
     },
     "release-assurance/rights.spdx.json": {
       "bytes": 2368,
-      "sha256": "799e52c6fa4947a85496b175b5d79671ffc7e265a9e1ae264138dd630beec2e0"
+      "sha256": "bf9eaffc9cf10304a105ad070507db6df39621aed97fd2a34ed8c73b6fc44b74"
     },
     "release-assurance/sbom.cdx.json": {
       "bytes": 189425,
-      "sha256": "8623c1f1c966a65d7ab53e663586aa3b7f73b711285a6135cdd8164f8ee67a19"
+      "sha256": "89df8fdf6ad5e970d201f1c748e5e3c3af7662a18eba52a6dd943451296feb60"
     },
     "release-assurance/schemas/accessibility-assurance-receipt.schema.json": {
       "bytes": 4268,
@@ -35517,8 +35517,8 @@
       "sha256": "4316800bbe8020d159ff5d1b58865d84ed9ca370ef86887c06a2054010d0caa3"
     },
     "release-assurance/schemas/security-assurance-receipt.schema.json": {
-      "bytes": 6096,
-      "sha256": "6c519b3d68bbf8eec33d42ffbd588f209a31d38f0735b6cef999efe5becd5aea"
+      "bytes": 6130,
+      "sha256": "9cc32ca51cd422a1bf341f466efce9aac50dcb47d86a050c0163b7a2ffcbe434"
     },
     "release-assurance/schemas/traceability-closure-receipt.schema.json": {
       "bytes": 4741,

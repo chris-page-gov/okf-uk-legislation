@@ -116,9 +116,23 @@ reviewing that exact digest before a new release attempt.
 
 ## 1. Reproduce the exact frozen candidate
 
+Complete the exact-candidate Standard security review and run the
+[Security evidence preflight](#5-check-and-bind-the-exact-candidate-security-scan)
+before this expensive command. Use a real completed scan and the pinned
+schemas. Resolve producer incompatibility while the build is still pending.
+
+```sh
+uv run --locked python scripts/build_post_rc_assurance_receipts.py preflight-security \
+  --scan-dir "${SECURITY_SCAN_DIR:?set the completed scan directory from step 5}" \
+  --scan-checkout "${SECURITY_SCAN_CHECKOUT:?set the registered checkout from step 5}" \
+  --codex-security-schema-dir "$CODEX_SECURITY_SCHEMA_DIR"
+```
+
 This is the production invocation. `--candidate-frozen` requires a literal
 40-hex commit, and `--allow-build-execution` is the required acknowledgement
 that the controller may execute only the profile's pinned offline builders.
+The frozen invocation independently checks the same Security evidence before
+creating a worktree or running any builders.
 
 ```sh
 uv run --locked python scripts/reproduce_release_candidate.py \
@@ -127,6 +141,9 @@ uv run --locked python scripts/reproduce_release_candidate.py \
   --profile "$LEGISLATION_ROOT/release-assurance/reproduction-profile.json" \
   --output "$EVIDENCE/reproduction" \
   --candidate-frozen \
+  --scan-dir "$SECURITY_SCAN_DIR" \
+  --scan-checkout "$SECURITY_SCAN_CHECKOUT" \
+  --codex-security-schema-dir "$CODEX_SECURITY_SCHEMA_DIR" \
   --allow-build-execution
 ```
 
@@ -332,21 +349,25 @@ $EVIDENCE/pre-rc-assurance/accessibility-assurance-receipt.json
 $EVIDENCE/pre-rc-assurance/performance-assurance-receipt.json
 ```
 
-## 5. Run and bind the pre-approved exact-candidate security scan
+## 5. Check and bind the exact-candidate security scan
 
-Only now run the pre-approved standard Codex Security scan against
+Before step 1, run the pre-approved Standard Codex Security scan against
 `LEGISLATION_ROOT` at exactly `CANDIDATE_COMMIT`/`CANDIDATE_TREE`. Its target
 revision must be `CANDIDATE_COMMIT`, whose independently reproduced tree is
 `CANDIDATE_TREE`; do not scan an earlier worktree and do not change the
 candidate after the scan. The completed canonical scan directory
-must contain regular `scan-manifest.json`, `findings.json`, `coverage.json` and
+must contain regular `scan-manifest.json`, `findings.json` and
 `report.md` files, complete coverage of every required security capability,
 and no unresolved reportable finding. Set its actual durable path:
 
 This is a standard whole-repository scan, not a diff scan. The canonical
 manifest target must therefore be `kind: git_revision`, its `revision` must
-equal `CANDIDATE_COMMIT`, and its sanitized `remote` must equal
-`LEGISLATION_REPOSITORY`. `snapshotDigest`, `baseRevision` and `headRevision`
+equal `CANDIDATE_COMMIT`. If present, its sanitised `remote` must equal
+`LEGISLATION_REPOSITORY`. If the native workbench omits the remote, supply the
+exact registered checkout. The consumer independently checks its clean Git
+state, origin, commit, tree and workbench target ID, then retains a separate
+receipt tied to the original scan manifest digest. `snapshotDigest`,
+`baseRevision` and `headRevision`
 are inapplicable and must be omitted. The canonical coverage contract is
 `mode: repository`, `inventoryStrategy: repository`, `includePaths: ["."]`
 and `excludePaths: []`. The exact clean checkout and independently reproduced
@@ -354,33 +375,44 @@ candidate bind that revision to `CANDIDATE_TREE`.
 
 ```sh
 export SECURITY_SCAN_DIR="/absolute/path/from-the-completed-codex-security-scan-context"
+export SECURITY_SCAN_CHECKOUT="/absolute/path/to/the-exact-registered-scan-checkout"
 
 test -f "$SECURITY_SCAN_DIR/scan-manifest.json"
 test -f "$SECURITY_SCAN_DIR/findings.json"
-test -f "$SECURITY_SCAN_DIR/coverage.json"
 test -f "$SECURITY_SCAN_DIR/report.md"
 test ! -L "$SECURITY_SCAN_DIR/scan-manifest.json"
 test ! -L "$SECURITY_SCAN_DIR/findings.json"
-test ! -L "$SECURITY_SCAN_DIR/coverage.json"
 test ! -L "$SECURITY_SCAN_DIR/report.md"
 
 test "$(jq -r '.scan.target.kind' "$SECURITY_SCAN_DIR/scan-manifest.json")" = "git_revision"
 test "$(jq -r '.scan.target.revision' "$SECURITY_SCAN_DIR/scan-manifest.json")" = "$CANDIDATE_COMMIT"
-test "$(jq -r '.scan.target.remote' "$SECURITY_SCAN_DIR/scan-manifest.json")" = "$LEGISLATION_REPOSITORY"
-test "$(jq -r '.mode' "$SECURITY_SCAN_DIR/coverage.json")" = "repository"
-test "$(jq -r '.inventoryStrategy' "$SECURITY_SCAN_DIR/coverage.json")" = "repository"
 jq -e '.scan.target
   | has("snapshotDigest") or has("baseRevision") or has("headRevision")
   | not' "$SECURITY_SCAN_DIR/scan-manifest.json" >/dev/null
 ```
 
-Derive the candidate-bound security assurance directory with the pinned
-Codex Security producer schemas:
+The Standard draft tool accepts explicit surface IDs. Use the eleven IDs in
+the external finalisation contract so evidence can be reconciled to every
+required capability. Each one must reference an artefact sealed by the
+producer. Codex Security retains only exclusions in its current sealed
+review summary. Before sealing, save the detailed review ledger at
+`artifacts/02_analysis/okf-release-coverage.json` in the pinned coverage
+schema, with the scan ID, whole-repository scope, all eleven reviewed
+surfaces, their separate evidence references, and any exclusions, deferred
+work or open questions. Reference the ledger in the producer draft alongside
+the underlying evidence so the producer includes its SHA-256 in the seal.
+The ledger's own surface references must point to the underlying evidence.
+The preflight verifies that seal and every surface. It also accepts a
+producer-linked legacy `coverage.json`. Keep the producer's files intact.
+
+After reproduction, derive the candidate-bound security assurance directory
+from the same verified scan using the pinned Codex Security producer schemas.
 
 ```sh
 uv run --locked python scripts/build_post_rc_assurance_receipts.py build-security \
   --reproduction-dir "$EVIDENCE/reproduction" \
   --scan-dir "$SECURITY_SCAN_DIR" \
+  --scan-checkout "$SECURITY_SCAN_CHECKOUT" \
   --codex-security-schema-dir "$CODEX_SECURITY_SCHEMA_DIR" \
   --output-dir "$EVIDENCE/security-assurance"
 ```

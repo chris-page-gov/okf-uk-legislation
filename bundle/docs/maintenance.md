@@ -158,6 +158,13 @@ reflects their current immutable chunks.
 
 ## Validation
 
+Before starting a full release reproduction, run the exact-candidate
+[Security evidence preflight](https://github.com/chris-page-gov/okf-uk-legislation/blob/main/release-assurance/reproduction-and-promotion.md#1-reproduce-the-exact-frozen-candidate).
+It invokes the same Security evidence consumer used during promotion.
+Use a completed, sealed scan from the installed producer and the exact
+registered clean checkout. A missing capability, unresolved review or
+unbound producer report must stop qualification before the full build.
+
 Before qualifying a release-tooling successor, run the bounded offline
 preflight with a retained real Explorer v0.9.2 release-bound runtime receipt
 and its exact Pages archive. Set `FROZEN_BASELINE_COMMIT` to the verified
