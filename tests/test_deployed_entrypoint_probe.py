@@ -18,7 +18,7 @@ import probe_deployed_entrypoints as probe  # noqa: E402
 
 COMMIT = "1" * 40
 TREE = "2" * 64
-TAG = "v0.5.0-rc.1"
+TAG = "v0.5.0-rc.2"
 PUBLIC_ADDRESS = "93.184.216.34"
 
 
@@ -79,7 +79,8 @@ def response_for(route: dict[str, Any]) -> dict[str, Any]:
     }:
         body = json.dumps(
             {
-                "repository_subpath": "bundle",
+                "@id": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+                "okf_version": "0.3",
                 "schema": "okf-explorer-large-corpus.v1",
             },
             sort_keys=True,
@@ -155,7 +156,7 @@ def response_for(route: dict[str, Any]) -> dict[str, Any]:
     elif kind in {"markdown", "text"}:
         content_type = "text/plain; charset=utf-8"
     elif kind == "gzip-archive":
-        content_type = "application/gzip"
+        content_type = "application/x-gzip"
     else:
         content_type = "application/zstd"
     return {
@@ -257,6 +258,16 @@ class DeployedEntrypointProbeTests(unittest.TestCase):
             )
         self.assertEqual([], transport.requests)
 
+    def test_legislation_descriptor_matches_both_public_route_assertions(self) -> None:
+        manifest = json.loads(
+            (ROOT / "release-assurance/deployed-entrypoints-manifest.json").read_bytes()
+        )
+        descriptor = json.loads((ROOT / "bundle/okf-explorer.json").read_bytes())
+        for route in manifest["routes"]:
+            if route["id"] in {"pages-legislation-descriptor", "raw-legislation-descriptor"}:
+                for pointer, expected in route["expected"]["json_fields"].items():
+                    self.assertEqual(expected, probe.json_pointer(descriptor, pointer))
+
     def test_locked_fixture_executes_every_route_and_cross_assertion_offline(self) -> None:
         manifest = locked_manifest()
         self.assertEqual([], probe.validate_manifest(manifest, require_locked=True))
@@ -331,7 +342,7 @@ class DeployedEntrypointProbeTests(unittest.TestCase):
         )
         wrong_asset["url"] = wrong_asset["url"].replace(
             "okf-uk-legislation-v0.5.0.tar.zst",
-            "okf-uk-legislation-v0.5.0-rc.1.tar.zst",
+            "okf-uk-legislation-v0.5.0-rc.2.tar.zst",
         )
         self.assertTrue(
             any(

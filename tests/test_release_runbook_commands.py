@@ -68,7 +68,7 @@ SHELL_VALUES = {
         "/external/okf-v0.5.0/rc-download/"
         "okf-uk-legislation-v0.5.0.tar.zst"
     ),
-    "RC_TAG": "v0.5.0-rc.1",
+    "RC_TAG": "v0.5.0-rc.2",
     "SEALED_ARCHIVE": (
         "/external/okf-v0.5.0/reproduction/"
         "okf-uk-legislation-v0.5.0.tar.zst"

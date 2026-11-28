@@ -146,16 +146,16 @@
   },
   "external_finalization": {
     "contract": {
-      "bytes": 12703,
+      "bytes": 12811,
       "path": "release-assurance/external-finalization-contract.json",
       "projected_path": "external-finalization-contract.json",
-      "sha256": "e67c98374a252b6c69a889817063457116468be8742f204f6fba36deade7ee70"
+      "sha256": "f98a40558549c254db72e0adbd72a566a8084d1177c32bb675b65477b7f960df"
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
-      "bytes": 222399,
+      "bytes": 222889,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "f83238bf5cba49a9031a66893e0b4820fb6f919654f7c8155fd6c465a552859e"
+      "sha256": "9fd9dd3f2262713c3db7c2e73623224c2f21b4a195dcda07664e06143b7aacd5"
     },
     "invariants": {
       "archive_rebuild_prohibited": true,
@@ -171,9 +171,9 @@
       "sha256": "aaae2690ab1b421ea775625a96a4c8b36939e0c7060ed9531b973a432a1865b0"
     },
     "release_observation_controller": {
-      "bytes": 38099,
+      "bytes": 38664,
       "path": "scripts/capture_github_release_observation.py",
-      "sha256": "c15c74e42fd1957b5eb89dbe6cb126509c7f5def8c574938bfcd8f2a105c274e"
+      "sha256": "cc29504ac4f934a1baac9642c6cede1bea870d739c65fdd060ab0b02bc157c40"
     },
     "schemas": [
       {
@@ -216,13 +216,13 @@
         "bytes": 9773,
         "path": "release-assurance/schemas/external-finalization-receipt.schema.json",
         "projected_path": "schemas/external-finalization-receipt.schema.json",
-        "sha256": "327596c44773aee10f8d9787d6282b6d3f80ac9acfac62e803d130e79e8efdb8"
+        "sha256": "b0c57f4a8c151fbc22a12735e7b4af71fb025ea820eed9d825b1bccf77276d55"
       },
       {
         "bytes": 6303,
         "path": "release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
         "projected_path": "schemas/final-promotion-authorization-receipt.schema.json",
-        "sha256": "fffb46d6fcc99951f1261541b30684777cdfeb84f6c8332b3bbec643dcf0cfcd"
+        "sha256": "ad0d7e96fab9e8634518b5095bb71e8a453d773af56fbcdce3ba6f64e4ef2035"
       },
       {
         "bytes": 17408,
@@ -231,10 +231,10 @@
         "sha256": "03b5d4df611651a0bb9e20a3352676e4b9d75d8cbf391d4b20ee10c83e7c8a2f"
       },
       {
-        "bytes": 6419,
+        "bytes": 6541,
         "path": "release-assurance/schemas/github-release-observation.schema.json",
         "projected_path": "schemas/github-release-observation.schema.json",
-        "sha256": "eccb7bbd77dc5fa4ade6d7775674510de5364f9058879d9ba6bc4fc08bcccdee"
+        "sha256": "6ebdf644807b3604a890d4a637e2e5eecdcf308dc9588af6eeb12ac204fa8040"
       },
       {
         "bytes": 4003,
@@ -315,19 +315,19 @@
       "sha256": "26bf6896263074bf79e7d14e98741e95aa46c9d6757752b831d2bb9fc84178e2"
     },
     {
-      "bytes": 12703,
+      "bytes": 12811,
       "path": "release-assurance/external-finalization-contract.json",
-      "sha256": "e67c98374a252b6c69a889817063457116468be8742f204f6fba36deade7ee70"
+      "sha256": "f98a40558549c254db72e0adbd72a566a8084d1177c32bb675b65477b7f960df"
     },
     {
-      "bytes": 222399,
+      "bytes": 222889,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "f83238bf5cba49a9031a66893e0b4820fb6f919654f7c8155fd6c465a552859e"
+      "sha256": "9fd9dd3f2262713c3db7c2e73623224c2f21b4a195dcda07664e06143b7aacd5"
     },
     {
-      "bytes": 38099,
+      "bytes": 38664,
       "path": "scripts/capture_github_release_observation.py",
-      "sha256": "c15c74e42fd1957b5eb89dbe6cb126509c7f5def8c574938bfcd8f2a105c274e"
+      "sha256": "cc29504ac4f934a1baac9642c6cede1bea870d739c65fdd060ab0b02bc157c40"
     },
     {
       "bytes": 98448,
@@ -537,12 +537,12 @@
     {
       "bytes": 9773,
       "path": "release-assurance/schemas/external-finalization-receipt.schema.json",
-      "sha256": "327596c44773aee10f8d9787d6282b6d3f80ac9acfac62e803d130e79e8efdb8"
+      "sha256": "b0c57f4a8c151fbc22a12735e7b4af71fb025ea820eed9d825b1bccf77276d55"
     },
     {
       "bytes": 6303,
       "path": "release-assurance/schemas/final-promotion-authorization-receipt.schema.json",
-      "sha256": "fffb46d6fcc99951f1261541b30684777cdfeb84f6c8332b3bbec643dcf0cfcd"
+      "sha256": "ad0d7e96fab9e8634518b5095bb71e8a453d773af56fbcdce3ba6f64e4ef2035"
     },
     {
       "bytes": 17408,
@@ -550,9 +550,9 @@
       "sha256": "03b5d4df611651a0bb9e20a3352676e4b9d75d8cbf391d4b20ee10c83e7c8a2f"
     },
     {
-      "bytes": 6419,
+      "bytes": 6541,
       "path": "release-assurance/schemas/github-release-observation.schema.json",
-      "sha256": "eccb7bbd77dc5fa4ade6d7775674510de5364f9058879d9ba6bc4fc08bcccdee"
+      "sha256": "6ebdf644807b3604a890d4a637e2e5eecdcf308dc9588af6eeb12ac204fa8040"
     },
     {
       "bytes": 4003,
@@ -630,7 +630,7 @@
       "sha256": "aec7a637bd781933c4907655d22538ce22183a4722e9312ede03f109b713ff6c"
     }
   ],
-  "materials_digest": "sha256:7a76e0942a3bd4660cc53c6b6f3f60a56e644c225c21ff086f0d6376832ad3da",
+  "materials_digest": "sha256:ef0dbd39e29ee2476c4ac47f390f484dc74aa9961e43d5a5bf406487e9fefff5",
   "optional_direct_api_model_governance": {
     "authored_run": null,
     "current_release_required": false,

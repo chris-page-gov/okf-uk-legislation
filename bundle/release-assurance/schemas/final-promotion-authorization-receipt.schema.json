@@ -71,7 +71,7 @@
           "const": "https://github.com/chris-page-gov/okf-uk-legislation"
         },
         "tag": {
-          "const": "v0.5.0-rc.1"
+          "const": "v0.5.0-rc.2"
         },
         "peeled_commit": {
           "type": "string",
@@ -137,7 +137,7 @@
               "pattern": "^[0-9a-f]{64}$"
             },
             "release_tag": {
-              "const": "v0.5.0-rc.1"
+              "const": "v0.5.0-rc.2"
             },
             "explorer_commit": {
               "const": "acf23958aa1ce11ec52c41313649b20d24f17609"

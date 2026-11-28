@@ -21,7 +21,7 @@
     "archive": "okf-uk-legislation-v0.5.0.tar.zst",
     "candidate": {
       "final_tag": "v0.5.0",
-      "rc_tag": "v0.5.0-rc.1",
+      "rc_tag": "v0.5.0-rc.2",
       "repository": "https://github.com/chris-page-gov/okf-uk-legislation"
     },
     "explorer": {
@@ -40,6 +40,7 @@
       "required_commit": "acf23958aa1ce11ec52c41313649b20d24f17609",
       "required_tag": "v0.9.2",
       "required_tag_object": "9b583053719259f5962fe7b4bce392420e1b9db7",
+      "retained_release_observer_sha256": "c15c74e42fd1957b5eb89dbe6cb126509c7f5def8c574938bfcd8f2a105c274e",
       "runtime_provenance": {
         "pages": {
           "artifact_id": 14995464665,

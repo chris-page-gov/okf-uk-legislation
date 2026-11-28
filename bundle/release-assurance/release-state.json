@@ -5,28 +5,28 @@
       "GATE-12": "passed"
     },
     "release_report": {
-      "bytes": 148188,
+      "bytes": 148298,
       "path": "bundle/release-assurance/release-report.json",
-      "sha256": "2ea89f75aa126ef774fbba46b66a76c0611998454c356113103f8eb9ae503cdd"
+      "sha256": "4d52a350d23eb0b1d75468c70b945f5d44f7632a9715f67467d2558207bfb11c"
     }
   },
   "external_finalization": {
     "contract": {
-      "bytes": 12703,
+      "bytes": 12811,
       "path": "release-assurance/external-finalization-contract.json",
       "projected_path": "external-finalization-contract.json",
-      "sha256": "e67c98374a252b6c69a889817063457116468be8742f204f6fba36deade7ee70"
+      "sha256": "f98a40558549c254db72e0adbd72a566a8084d1177c32bb675b65477b7f960df"
     },
     "evidence_plane": "external-write-once",
     "finalizer": {
-      "bytes": 222399,
+      "bytes": 222889,
       "path": "scripts/finalize_release_candidate.py",
-      "sha256": "f83238bf5cba49a9031a66893e0b4820fb6f919654f7c8155fd6c465a552859e"
+      "sha256": "9fd9dd3f2262713c3db7c2e73623224c2f21b4a195dcda07664e06143b7aacd5"
     },
     "release_observation_controller": {
-      "bytes": 38099,
+      "bytes": 38664,
       "path": "scripts/capture_github_release_observation.py",
-      "sha256": "c15c74e42fd1957b5eb89dbe6cb126509c7f5def8c574938bfcd8f2a105c274e"
+      "sha256": "cc29504ac4f934a1baac9642c6cede1bea870d739c65fdd060ab0b02bc157c40"
     },
     "workflow": [
       {

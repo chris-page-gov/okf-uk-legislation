@@ -39,7 +39,7 @@ SCHEMA_PATH = (
 )
 OBSERVATION_SCHEMA = "okf-github-release-observation.v1"
 ATTEMPT_SCHEMA = "okf-github-release-observation-attempt.v1"
-TOOL_VERSION = "1.1.0"
+TOOL_VERSION = "1.2.0"
 
 API_HOST = "api.github.com"
 ASSET_HOSTS = {
@@ -49,7 +49,8 @@ ASSET_HOSTS = {
 MAXIMUM_REDIRECTS = 3
 REQUEST_TIMEOUT_SECONDS = 30.0
 MAXIMUM_API_BODY_BYTES = 4 * 1024 * 1024
-MAXIMUM_ASSET_BODY_BYTES = 512 * 1024 * 1024
+# The release profile bounds the compressed package as well as the normalised TAR.
+MAXIMUM_ASSET_BODY_BYTES = 1152 * 1024 * 1024
 MAXIMUM_HEADER_BYTES = 256 * 1024
 MAXIMUM_URL_BYTES = 8192
 COMMIT = re.compile(r"^[0-9a-f]{40}$")
@@ -84,6 +85,9 @@ TARGETS = {
     ("https://github.com/chris-page-gov/okf-uk-legislation", "v0.5.0-rc.1"): Target(
         repository="https://github.com/chris-page-gov/okf-uk-legislation",
         slug="chris-page-gov/okf-uk-legislation", tag="v0.5.0-rc.1", observation_filename="okf-uk-legislation-v0.5.0-rc.1-release-observation.json"),
+    ("https://github.com/chris-page-gov/okf-uk-legislation", "v0.5.0-rc.2"): Target(
+        repository="https://github.com/chris-page-gov/okf-uk-legislation",
+        slug="chris-page-gov/okf-uk-legislation", tag="v0.5.0-rc.2", observation_filename="okf-uk-legislation-v0.5.0-rc.2-release-observation.json"),
     ("https://github.com/chris-page-gov/okf-uk-legislation", "v0.5.0"): Target(
         repository="https://github.com/chris-page-gov/okf-uk-legislation",
         slug="chris-page-gov/okf-uk-legislation", tag="v0.5.0", observation_filename="okf-uk-legislation-v0.5.0-release-observation.json"),
@@ -578,6 +582,14 @@ def ensure_token_not_reflected(
         )
 
 
+def validate_asset_capacity(expected_asset_bytes: int) -> None:
+    positive_integer(expected_asset_bytes, "expected asset bytes")
+    if expected_asset_bytes > MAXIMUM_ASSET_BODY_BYTES:
+        raise CaptureError(
+            f"expected asset exceeds the {MAXIMUM_ASSET_BODY_BYTES}-byte hard body limit"
+        )
+
+
 def validate_asset_arguments(
     asset_name: str | None,
     expected_asset_bytes: int | None,
@@ -604,9 +616,7 @@ def validate_asset_arguments(
         or any(ord(character) < 32 for character in asset_name)
     ):
         raise CaptureError("asset name is unsafe")
-    positive_integer(expected_asset_bytes, "expected asset bytes")
-    if expected_asset_bytes > MAXIMUM_ASSET_BODY_BYTES:
-        raise CaptureError("expected asset exceeds the hard body limit")
+    validate_asset_capacity(expected_asset_bytes)
     if (
         not isinstance(expected_asset_sha256, str)
         or not DIGEST.fullmatch(expected_asset_sha256)

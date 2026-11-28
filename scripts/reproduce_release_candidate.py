@@ -44,6 +44,7 @@ except ImportError as exc:  # pragma: no cover - dependency setup failure
         "never installs dependencies itself."
     ) from exc
 
+import capture_github_release_observation as release_observation
 import validation_dependency_lock as validation_lock
 
 
@@ -953,6 +954,12 @@ def validate_profile(profile: dict[str, Any]) -> None:
     ):
         if not isinstance(archive.get(key), int) or archive[key] <= 0:
             raise ReproductionError(f"archive limit {key} must be positive")
+    try:
+        release_observation.validate_asset_capacity(archive["max_tar_bytes"])
+    except release_observation.CaptureError as error:
+        raise ReproductionError(
+            "compressed archive capacity is incompatible with the release observer"
+        ) from error
     safe_relative(archive["prefix"], label="archive prefix")
     if not archive["filename"].endswith(".tar.zst"):
         raise ReproductionError("release archive filename must end in .tar.zst")

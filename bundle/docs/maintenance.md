@@ -13,7 +13,7 @@ attempt and replacement lineage.
 The
 [reproduction and promotion contract](../release-assurance/reproduction-and-promotion.md)
 keeps the literal asset name `okf-uk-legislation-v0.5.0.tar.zst` on both
-`v0.5.0-rc.1` and `v0.5.0`. The published v0.4.0 archive and its
+`v0.5.0-rc.2` and `v0.5.0`. The published v0.4.0 archive and its
 original promotion evidence remain immutable history. Promotion reuses the sealed bytes and SHA-256;
 rebuilding or renaming the asset is prohibited.
 
@@ -174,7 +174,9 @@ unbound producer report must stop qualification before the full build.
 Frozen reproduction checks the source snapshot and runs the unit suite with
 the production offline guard before regenerating the corpus. The guard
 allows the Security verifier's exact local Git origin lookup. Git network
-operations remain blocked.
+operations remain blocked. The production preflight also checks that the
+configured compressed archive limit fits the release observer before
+reproduction starts. Published RC1 remains a historical attempt.
 
 Before qualifying a release-tooling successor, run the bounded offline
 preflight with a retained real Explorer v0.9.2 release-bound runtime receipt

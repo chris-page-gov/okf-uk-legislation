@@ -129,17 +129,17 @@ uv run --locked python scripts/build_post_rc_assurance_receipts.py \
   lock-deployed-manifest \
   --reproduction-dir /tmp/okf-v0.5.0/reproduction \
   --template /tmp/okf-v0.5.0/deployed-entrypoints-manifest.template.json \
-  --rc-tag v0.5.0-rc.1 \
+  --rc-tag v0.5.0-rc.2 \
   --output /tmp/okf-v0.5.0/deployed-entrypoints-manifest.json
 ```
 
 Before running the probe:
 
 1. confirm the generated manifest contains the exact 40-hex candidate commit,
-   final bundle-tree digest and `v0.5.0-rc.1` tag;
+   final bundle-tree digest and `v0.5.0-rc.2` tag;
 2. confirm it contains no placeholder and its state is `locked`;
 3. retain the frozen production asset name
-   `okf-uk-legislation-v0.5.0.tar.zst` on both the `v0.5.0-rc.1` and final
+   `okf-uk-legislation-v0.5.0.tar.zst` on both the `v0.5.0-rc.2` and final
    `v0.5.0` releases; only the release/tag URL changes, so promotion preserves
    both the bytes and filename;
 4. confirm every Pages, raw, archive and compatibility URL is the intended

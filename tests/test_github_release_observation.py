@@ -285,11 +285,18 @@ class GithubReleaseObservationTests(unittest.TestCase):
     def new_destination(self, temporary: str, name: str = "attempt") -> Path:
         return Path(temporary).resolve() / name
 
+    def test_observer_accepts_release_sized_asset_and_rejects_oversize(self) -> None:
+        capture.validate_asset_capacity(574_296_589)
+        capture.validate_asset_capacity(capture.MAXIMUM_ASSET_BODY_BYTES)
+        with self.assertRaisesRegex(capture.CaptureError, "hard body limit"):
+            capture.validate_asset_capacity(capture.MAXIMUM_ASSET_BODY_BYTES + 1)
+
     def test_target_registry_preserves_historical_explorer_release(self) -> None:
         self.assertIn((EXPLORER, "v0.8.1"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.9.1"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.9.2"), capture.TARGETS)
         self.assertIn((LEGISLATION, "v0.5.0-rc.1"), capture.TARGETS)
+        self.assertIn((LEGISLATION, "v0.5.0-rc.2"), capture.TARGETS)
         self.assertIn((LEGISLATION, "v0.5.0"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.8.0"), capture.TARGETS)
         self.assertIn((EXPLORER, "v0.5.4"), capture.TARGETS)
