@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Run the guarded unit suite before corpus regeneration. Allow the exact
+  read-only Git origin lookup required by Security receipt verification.
+
 - Advance Soup Sieve and multidict to fixed releases in both validation
   locks. Keep the other package versions and retain the frozen Core 0.2
   lock byte for byte as historical evidence.

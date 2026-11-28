@@ -163,10 +163,18 @@ def _offline_popen(args, *pargs, **kwargs):
     executable = _os.path.basename(str(command[0])).lower() if command else ""
     if executable in _BLOCKED_PROGRAMS:
         raise RuntimeError(_MESSAGE)
-    if executable == "git" and any(
-        str(value) in _BLOCKED_GIT_SUBCOMMANDS for value in command[1:]
-    ):
-        raise RuntimeError(_MESSAGE)
+    if executable == "git":
+        arguments = [str(value) for value in command[1:]]
+        if any(value in _BLOCKED_GIT_SUBCOMMANDS for value in arguments):
+            # The Security receipt reads the effective origin without contacting it.
+            local_origin_read = (
+                len(arguments) == 7
+                and arguments[:3] == ["-c", "core.fsmonitor=false", "-C"]
+                and _os.path.isabs(arguments[3])
+                and arguments[4:] == ["remote", "get-url", "origin"]
+            )
+            if not local_origin_read:
+                raise RuntimeError(_MESSAGE)
     return _ORIGINAL_POPEN(args, *pargs, **kwargs)
 
 

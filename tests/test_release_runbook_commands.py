@@ -473,7 +473,7 @@ class ReleaseRunbookCommandTests(unittest.TestCase):
         validation_block = next(
             block
             for block in blocks
-            if "-m unittest discover -s tests -v" in block
+            if "uv run --locked python scripts/build_publication_docs.py --check" in block
         )
 
         def parse(block: str) -> list[list[str]]:

@@ -466,6 +466,10 @@ class ReleaseReproductionTests(unittest.TestCase):
         profile = json.loads((ROOT / "release-assurance/reproduction-profile.json").read_text())
         commands = profile["build_commands"]
         self.assertEqual(["{python}", "scripts/core03_snapshot.py"], commands[0])
+        unit_tests = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-v"]
+        self.assertEqual(unit_tests, commands[1])
+        self.assertEqual(1, commands.count(unit_tests))
+        self.assertNotIn(unit_tests, profile["validation_commands"])
         protected = {
             "scripts/build_legislation_okf.py",
             "scripts/build_model_enrichment_input_evidence.py",

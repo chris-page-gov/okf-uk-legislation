@@ -431,7 +431,7 @@ class PostRCAssuranceReceiptTests(unittest.TestCase):
             return subprocess.check_output(["git", "-C", str(checkout), *arguments], text=True).strip()
 
         git("init", "-q")
-        git("remote", "add", "origin", self.exact_candidate()["repository"] + ".git")
+        git("config", "--local", "remote.origin.url", self.exact_candidate()["repository"] + ".git")
         git("-c", "user.name=Test", "-c", "user.email=test@example.invalid", "commit", "-qm", "Fixture", "--allow-empty")
         identity = builder.read_scan_checkout(checkout)
         self.assertEqual(identity["repository"], self.exact_candidate()["repository"])
