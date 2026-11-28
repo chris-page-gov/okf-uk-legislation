@@ -86,6 +86,15 @@
     ],
     [
       "{python}",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    [
+      "{python}",
       "scripts/build_release_metadata.py"
     ],
     [
@@ -164,15 +173,6 @@
     ]
   ],
   "validation_commands": [
-    [
-      "{python}",
-      "-m",
-      "unittest",
-      "discover",
-      "-s",
-      "tests",
-      "-v"
-    ],
     [
       "{python}",
       "scripts/core03_snapshot.py"

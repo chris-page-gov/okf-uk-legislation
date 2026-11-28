@@ -169,8 +169,8 @@ the tracked publication without rebuilding it; its default local mode still
 runs every phase serially and emits per-step timings.
 
 The [validation dependency lock](docs/validation-dependency-lock.md) keeps the
-52-package closure frozen except for reviewed urllib3 and certifi security
-updates. Certifi 2026.10.19 removes the compromised emSign trust root while
+52-package closure with reviewed security updates to urllib3, certifi,
+Soup Sieve and multidict. Certifi 2026.10.19 removes the compromised emSign trust root while
 preserving unaffected roots. The dependency-bound release evidence is regenerated;
 the immutable source snapshots and published release are preserved.
 
@@ -183,6 +183,7 @@ projections with exactly the profile's `build_commands`:
 
 ```sh
 uv run --locked python scripts/core03_snapshot.py
+uv run --locked python -m unittest discover -s tests -v
 uv run --locked python scripts/build_release_metadata.py
 uv run --locked python scripts/rebuild_legislation_discovery.py
 uv run --locked python scripts/build_relationship_semantics.py
@@ -221,7 +222,6 @@ Then validate without changing the publication with exactly the profile's
 `validation_commands`:
 
 ```sh
-uv run --locked python -m unittest discover -s tests -v
 uv run --locked python scripts/core03_snapshot.py
 uv run --locked python scripts/build_publication_docs.py --check
 uv run --locked python scripts/build_release_metadata.py --check

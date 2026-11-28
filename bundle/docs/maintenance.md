@@ -171,6 +171,10 @@ It invokes the same Security evidence consumer used during promotion.
 Use a completed, sealed scan from the installed producer and the exact
 registered clean checkout. A missing capability, unresolved review or
 unbound producer report must stop qualification before the full build.
+Frozen reproduction checks the source snapshot and runs the unit suite with
+the production offline guard before regenerating the corpus. The guard
+allows the Security verifier's exact local Git origin lookup. Git network
+operations remain blocked.
 
 Before qualifying a release-tooling successor, run the bounded offline
 preflight with a retained real Explorer v0.9.2 release-bound runtime receipt
