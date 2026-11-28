@@ -76,7 +76,7 @@
             "repository": {"const": "https://github.com/chris-page-gov/okf-uk-legislation"},
             "git_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
             "bundle_tree_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-            "release_tag": {"const": "v0.5.0-rc.1"},
+            "release_tag": {"const": "v0.5.0-rc.2"},
             "explorer_commit": {"const": "acf23958aa1ce11ec52c41313649b20d24f17609"},
             "explorer_release": {"const": "v0.9.2"}
           }
@@ -105,7 +105,7 @@
       "additionalProperties": false,
       "required": ["candidate_tag", "final_tag", "candidate_peeled_commit", "final_peeled_commit", "candidate_release_id", "final_release_id", "candidate_asset_id", "final_asset_id", "asset_filename", "candidate_release_url", "final_release_url", "candidate_observation", "final_observation", "candidate_asset", "final_asset", "identical"],
       "properties": {
-        "candidate_tag": {"const": "v0.5.0-rc.1"},
+        "candidate_tag": {"const": "v0.5.0-rc.2"},
         "final_tag": {"const": "v0.5.0"},
         "candidate_peeled_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
         "final_peeled_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
@@ -114,7 +114,7 @@
         "candidate_asset_id": {"type": "integer", "minimum": 1},
         "final_asset_id": {"type": "integer", "minimum": 1},
         "asset_filename": {"const": "okf-uk-legislation-v0.5.0.tar.zst"},
-        "candidate_release_url": {"const": "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.5.0-rc.1/okf-uk-legislation-v0.5.0.tar.zst"},
+        "candidate_release_url": {"const": "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.5.0-rc.2/okf-uk-legislation-v0.5.0.tar.zst"},
         "final_release_url": {"const": "https://github.com/chris-page-gov/okf-uk-legislation/releases/download/v0.5.0/okf-uk-legislation-v0.5.0.tar.zst"},
         "candidate_observation": {"$ref": "#/$defs/material"},
         "final_observation": {"$ref": "#/$defs/material"},

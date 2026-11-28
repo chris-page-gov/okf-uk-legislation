@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Check the full archive byte envelope before frozen reproduction. Qualify
+  RC2 with the bounded release observer and verify the active Legislation
+  descriptor and GitHub source-archive media type.
+
 - Run the guarded unit suite before corpus regeneration. Allow the exact
   read-only Git origin lookup required by Security receipt verification.
 

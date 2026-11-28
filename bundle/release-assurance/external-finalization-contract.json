@@ -33,7 +33,7 @@
   },
   "candidate": {
     "final_tag": "v0.5.0",
-    "rc_tag": "v0.5.0-rc.1",
+    "rc_tag": "v0.5.0-rc.2",
     "repository": "https://github.com/chris-page-gov/okf-uk-legislation"
   },
   "evidence_plane": "external-write-once",
@@ -52,6 +52,7 @@
     },
     "required_commit": "acf23958aa1ce11ec52c41313649b20d24f17609",
     "required_tag": "v0.9.2",
+    "retained_release_observer_sha256": "c15c74e42fd1957b5eb89dbe6cb126509c7f5def8c574938bfcd8f2a105c274e",
     "required_tag_object": "9b583053719259f5962fe7b4bce392420e1b9db7",
     "runtime_provenance": {
       "runner": {
@@ -176,7 +177,7 @@
     "controller": "scripts/capture_github_release_observation.py",
     "explorer": "explorer-release-observation.json",
     "final": "okf-uk-legislation-v0.5.0-release-observation.json",
-    "rc": "okf-uk-legislation-v0.5.0-rc.1-release-observation.json",
+    "rc": "okf-uk-legislation-v0.5.0-rc.2-release-observation.json",
     "schema": "release-assurance/schemas/github-release-observation.schema.json"
   },
   "pages_observation": {

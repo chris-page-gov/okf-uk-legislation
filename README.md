@@ -272,7 +272,7 @@ historical evidence. The release sequence is fail-closed:
 `draft → candidate → validated → rc → published`.
 The [reproduction and promotion contract](release-assurance/reproduction-and-promotion.md)
 requires the candidate `okf-uk-legislation-v0.5.0.tar.zst` to remain byte-identical
-and identically named across `v0.5.0-rc.1` and `v0.5.0`.
+and identically named across `v0.5.0-rc.2` and `v0.5.0`.
 
 OKF Explorer `v0.9.2` is the consumer for the unreleased Core 0.3 candidate.
 The active contract binds its immutable tag, exact commit, deployed Pages

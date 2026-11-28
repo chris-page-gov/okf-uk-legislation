@@ -113,7 +113,8 @@
       "expected": {
         "document_kind": "json",
         "json_fields": {
-          "/repository_subpath": "bundle",
+          "/@id": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+          "/okf_version": "0.3",
           "/schema": "okf-explorer-large-corpus.v1"
         },
         "media_types": [
@@ -314,7 +315,8 @@
       "expected": {
         "document_kind": "json",
         "json_fields": {
-          "/repository_subpath": "bundle",
+          "/@id": "https://chris-page-gov.github.io/okf-uk-legislation/okf-explorer.json",
+          "/okf_version": "0.3",
           "/schema": "okf-explorer-large-corpus.v1"
         },
         "media_types": [
@@ -364,6 +366,7 @@
         "document_kind": "gzip-archive",
         "media_types": [
           "application/gzip",
+          "application/x-gzip",
           "application/octet-stream"
         ],
         "statuses": [

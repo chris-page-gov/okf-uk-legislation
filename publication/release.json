@@ -2,7 +2,7 @@
   "schema": "okf-publication-release.v1",
   "bundle_version": "0.5.0",
   "release_tag": "v0.5.0",
-  "release_candidate_tag": "v0.5.0-rc.1",
+  "release_candidate_tag": "v0.5.0-rc.2",
   "release_date": "2026-11-24",
   "release_date_label": "24 November 2026",
   "status": "stable",

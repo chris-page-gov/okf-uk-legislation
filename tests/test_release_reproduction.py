@@ -588,6 +588,15 @@ class ReleaseReproductionTests(unittest.TestCase):
             contract["input_schemas"]["explorer_runtime_receipt"],
         )
 
+    def test_profile_rejects_archive_bound_exceeding_release_observer(self) -> None:
+        profile = json.loads((ROOT / "release-assurance/reproduction-profile.json").read_bytes())
+        reproduction.validate_profile(profile)
+        profile["archive"]["max_tar_bytes"] = (
+            reproduction.release_observation.MAXIMUM_ASSET_BODY_BYTES + 1
+        )
+        with self.assertRaisesRegex(reproduction.ReproductionError, "incompatible with the release observer"):
+            reproduction.validate_profile(profile)
+
     def test_profile_requires_canonical_release_observation_controller(
         self,
     ) -> None:

@@ -23,6 +23,7 @@ from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any
 
+import capture_github_release_observation as release_observation
 import finalize_release_candidate as finalization
 import jsonschema
 import probe_deployed_entrypoints as deployed_probe
@@ -1271,8 +1272,20 @@ def build_security_receipt(args: argparse.Namespace) -> Path:
 
 
 def preflight_security(args: argparse.Namespace, repository: Path | None = None) -> str:
-    """Apply the promotion consumer to real Security evidence before reproduction."""
-    observed = read_scan_checkout(repository if repository is not None else ROOT)
+    """Check the package envelope and real Security evidence before reproduction."""
+    candidate = repository if repository is not None else ROOT
+    observed = read_scan_checkout(candidate)
+    profile = load_bounded_json(
+        candidate / "release-assurance" / "reproduction-profile.json",
+        "reproduction profile",
+    )
+    archive = finalization.require_object(profile.get("archive"), "reproduction archive profile")
+    try:
+        release_observation.validate_asset_capacity(archive.get("max_tar_bytes"))
+    except release_observation.CaptureError as error:
+        raise ReceiptBuildError(
+            "compressed archive capacity is incompatible with the release observer"
+        ) from error
     identity = {name: observed[name] for name in ("repository", "commit", "tree")}
     contract = load_bounded_json(CONTRACT_PATH, "finalization contract")
     finalization.require_equal(

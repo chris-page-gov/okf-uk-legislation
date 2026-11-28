@@ -3825,11 +3825,21 @@ def verify_github_release_observation(
         raise FinalizationError(
             "release observation attempt tool version must be a non-empty string"
         )
-    require_equal(
-        tool.get("sha256"),
-        release_observation_controller["sha256"],
-        "release observation attempt tool SHA-256",
+    explorer = contract["explorer"]
+    retained_explorer_hash = explorer.get("retained_release_observer_sha256")
+    retained_explorer_observation = (
+        retained_explorer_hash is not None
+        and expected_repository == explorer["repository"]
+        and expected_tag == explorer["required_tag"]
+        and expected_commit == explorer["required_commit"]
+        and tool.get("sha256") == retained_explorer_hash
     )
+    if not retained_explorer_observation:
+        require_equal(
+            tool.get("sha256"),
+            release_observation_controller["sha256"],
+            "release observation attempt tool SHA-256",
+        )
     expected = {
         (row["path"], row["bytes"], row["sha256"])
         for row in verified_materials
